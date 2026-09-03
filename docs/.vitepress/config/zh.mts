@@ -1,6 +1,6 @@
 import type { DefaultTheme, LocaleSpecificConfig } from 'vitepress'
 import { sidebar } from './sidebar.mts'
-import { ORG } from './shared.mts'
+import { ORG, REPO } from './shared.mts'
 
 export const zh: LocaleSpecificConfig<DefaultTheme.Config> & {
   label: string
@@ -57,7 +57,7 @@ export const zh: LocaleSpecificConfig<DefaultTheme.Config> & {
     externalLinkIcon: true,
 
     editLink: {
-      pattern: `${ORG}/docs-site/edit/main/docs/:path`,
+      pattern: `${REPO}/edit/main/docs/:path`,
       text: '在 GitHub 上编辑此页'
     },
 

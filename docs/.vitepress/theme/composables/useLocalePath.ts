@@ -6,21 +6,22 @@ import { useData, withBase } from 'vitepress'
  *
  * Two things have to be applied that a raw `href` in a template would miss:
  * the locale prefix (`/en` for English, nothing for the root Chinese locale)
- * and the deploy base (`/ultra-ui/` on GitHub Pages). Because `cleanUrls` is
- * off for Pages, page paths also need their `.html` suffix — directory paths
- * ending in `/` resolve to `index.html` on their own and are left alone.
+ * and the deploy base. The `.html` suffix is added only when `cleanUrls` is
+ * off, so switching that config setting cannot leave dead links behind.
+ * Directory paths ending in `/` resolve to `index.html` on their own.
  *
- *   path('/guide/quickstart')  ->  /ultra-ui/en/guide/quickstart.html
- *   path('/components/')       ->  /ultra-ui/en/components/
+ *   path('/guide/quickstart')  ->  /en/guide/quickstart
+ *   path('/components/')       ->  /en/components/
  */
 export function useLocalePath() {
-  const { lang } = useData()
+  const { lang, site } = useData()
   const zh = computed(() => lang.value.startsWith('zh'))
 
   function path(p: string): string {
     const prefix = zh.value ? '' : '/en'
-    const suffix = p.endsWith('/') || p.endsWith('.html') ? '' : '.html'
-    return withBase(`${prefix}${p}${suffix}`)
+    const needsHtml =
+      !site.value.cleanUrls && !p.endsWith('/') && !p.endsWith('.html')
+    return withBase(`${prefix}${p}${needsHtml ? '.html' : ''}`)
   }
 
   return { zh, path }

@@ -24,7 +24,7 @@ const { zh, path } = useLocalePath()
         </a>
         <a
           class="btn btn-ghost"
-          href="https://github.com/ijry"
+          href="https://github.com/ly-ultra-ui"
           target="_blank"
           rel="noreferrer"
         >

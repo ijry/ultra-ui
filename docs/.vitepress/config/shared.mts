@@ -1,22 +1,26 @@
 import type { DefaultTheme, UserConfig } from 'vitepress'
 
-const ORG = 'https://github.com/ijry'
+const ORG = 'https://github.com/ly-ultra-ui'
+const REPO = `${ORG}/ly-ultra-ui.github.io`
+
+const SITE_ORIGIN = 'https://ly-ultra-ui.github.io'
 
 /**
- * Deploy base. The site is published to GitHub Pages at
- * https://ijry.github.io/ultra-ui/, so every asset and route is prefixed.
- * Serving from a domain root instead? Set this to '/'.
+ * Deploy base. This repository *is* the ly-ultra-ui organisation's Pages site,
+ * so it is served from the domain root. To publish to a project sub-path
+ * instead, set this to '/<repo-name>/' — assets, the favicon, the sitemap and
+ * every link built by useLocalePath() follow from here.
  */
-export const BASE = '/ultra-ui/'
+export const BASE = '/'
 
 export const shared: UserConfig<DefaultTheme.Config> = {
   srcDir: '.',
   outDir: '../dist',
   base: BASE,
-  // GitHub Pages cannot be configured to resolve extensionless URLs, so links
-  // keep their .html suffix. On a host that supports rewrites (nginx, Netlify)
-  // this can be flipped back to true.
-  cleanUrls: false,
+  // Verified against the live deploy: GitHub Pages answers /components/button
+  // with the contents of components/button.html (200, no redirect), and
+  // normalises /components to /components/. Clean URLs are safe here.
+  cleanUrls: true,
   lastUpdated: true,
   metaChunk: true,
 
@@ -39,7 +43,7 @@ export const shared: UserConfig<DefaultTheme.Config> = {
   },
 
   sitemap: {
-    hostname: `https://ijry.github.io${BASE}`
+    hostname: `${SITE_ORIGIN}${BASE}`
   },
 
   themeConfig: {
@@ -70,4 +74,4 @@ export const shared: UserConfig<DefaultTheme.Config> = {
   }
 }
 
-export { ORG }
+export { ORG, REPO, SITE_ORIGIN }
