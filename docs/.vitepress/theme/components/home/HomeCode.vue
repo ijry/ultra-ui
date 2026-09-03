@@ -1,11 +1,8 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-import { useData } from 'vitepress'
 import InstallCard from '../InstallCard.vue'
+import { useLocalePath } from '../../composables/useLocalePath'
 
-const { lang } = useData()
-const zh = computed(() => lang.value.startsWith('zh'))
-const base = computed(() => (zh.value ? '' : '/en'))
+const { zh, path } = useLocalePath()
 </script>
 
 <template>
@@ -24,7 +21,7 @@ const base = computed(() => (zh.value ? '' : '/en'))
           }}
         </p>
         <p class="install-more">
-          <a :href="`${base}/guide/quickstart`">
+          <a :href="path('/guide/quickstart')">
             {{ zh ? '查看完整的快速上手 →' : 'Read the full quick start →' }}
           </a>
         </p>

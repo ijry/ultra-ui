@@ -1,13 +1,11 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useData } from 'vitepress'
 import { platforms } from '../../data/platforms'
 import { groups } from '../../data/groups'
 import { components, coverage, totalComponents } from '../../data/registry'
+import { useLocalePath } from '../composables/useLocalePath'
 
-const { lang } = useData()
-const zh = computed(() => lang.value.startsWith('zh'))
-const base = computed(() => (zh.value ? '' : '/en'))
+const { zh, path } = useLocalePath()
 const locale = computed<'zh' | 'en'>(() => (zh.value ? 'zh' : 'en'))
 
 const counts = coverage()
@@ -47,7 +45,7 @@ const sections = computed(() =>
         </tr>
         <tr v-for="c in g.items" :key="c.id">
           <th class="matrix-row-head">
-            <a :href="`${base}/components/${c.id}`">{{ c.name.en }}</a>
+            <a :href="path(`/components/${c.id}`)">{{ c.name.en }}</a>
           </th>
           <td v-for="p in platforms" :key="p.id" class="matrix-cell">
             <span v-if="c.platforms[p.id]" class="yes" :title="c.platforms[p.id].symbol">

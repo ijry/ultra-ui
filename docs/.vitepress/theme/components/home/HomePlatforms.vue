@@ -1,15 +1,11 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-import { useData } from 'vitepress'
 import { platforms } from '../../../data/platforms'
 import { coverage, totalComponents } from '../../../data/registry'
 import { usePlatform } from '../../composables/usePlatform'
+import { useLocalePath } from '../../composables/useLocalePath'
 
-const { lang } = useData()
 const { setPlatform } = usePlatform()
-
-const zh = computed(() => lang.value.startsWith('zh'))
-const base = computed(() => (zh.value ? '' : '/en'))
+const { zh, path } = useLocalePath()
 const counts = coverage()
 </script>
 
@@ -35,7 +31,7 @@ const counts = coverage()
           v-for="p in platforms"
           :key="p.id"
           class="uui-card pcard"
-          :href="`${base}/guide/quickstart`"
+          :href="path('/guide/quickstart')"
           @click="setPlatform(p.id)"
         >
           <span

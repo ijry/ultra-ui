@@ -4,13 +4,11 @@ import { useData } from 'vitepress'
 import { platforms } from '../../../data/platforms'
 import { totalComponents } from '../../../data/registry'
 import { usePlatform } from '../../composables/usePlatform'
+import { useLocalePath } from '../../composables/useLocalePath'
 
 const slots = useSlots()
-const { lang } = useData()
 const { active, setPlatform } = usePlatform()
-
-const zh = computed(() => lang.value.startsWith('zh'))
-const base = computed(() => (zh.value ? '' : '/en'))
+const { zh, path } = useLocalePath()
 
 const available = computed(() => platforms.filter((p) => slots[p.id]))
 const current = computed(() => {
@@ -56,10 +54,10 @@ const shown = computed(() => platforms.find((p) => p.id === current.value))
         </p>
 
         <div class="hero-actions">
-          <a class="btn btn-primary" :href="`${base}/guide/quickstart`">
+          <a class="btn btn-primary" :href="path('/guide/quickstart')">
             {{ zh ? '快速上手' : 'Get started' }}
           </a>
-          <a class="btn btn-ghost" :href="`${base}/components/`">
+          <a class="btn btn-ghost" :href="path('/components/')">
             {{ zh ? '浏览组件' : 'Browse components' }}
           </a>
         </div>

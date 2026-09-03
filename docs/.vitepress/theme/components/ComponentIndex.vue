@@ -1,13 +1,11 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import { useData } from 'vitepress'
 import { platforms } from '../../data/platforms'
 import { groups } from '../../data/groups'
 import { components, totalComponents } from '../../data/registry'
+import { useLocalePath } from '../composables/useLocalePath'
 
-const { lang } = useData()
-const zh = computed(() => lang.value.startsWith('zh'))
-const base = computed(() => (zh.value ? '' : '/en'))
+const { zh, path } = useLocalePath()
 const locale = computed<'zh' | 'en'>(() => (zh.value ? 'zh' : 'en'))
 
 const query = ref('')
@@ -92,7 +90,7 @@ const sections = computed(() =>
           v-for="c in g.items"
           :key="c.id"
           class="cindex-item"
-          :href="`${base}/components/${c.id}`"
+          :href="path(`/components/${c.id}`)"
         >
           <span class="cindex-item-name">{{ c.name.en }}</span>
           <span v-if="zh" class="cindex-item-zh">{{ c.name.zh.replace(c.name.en, '').trim() }}</span>

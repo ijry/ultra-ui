@@ -2,15 +2,26 @@ import type { DefaultTheme, UserConfig } from 'vitepress'
 
 const ORG = 'https://github.com/ijry'
 
+/**
+ * Deploy base. The site is published to GitHub Pages at
+ * https://ijry.github.io/ultra-ui/, so every asset and route is prefixed.
+ * Serving from a domain root instead? Set this to '/'.
+ */
+export const BASE = '/ultra-ui/'
+
 export const shared: UserConfig<DefaultTheme.Config> = {
   srcDir: '.',
   outDir: '../dist',
-  cleanUrls: true,
+  base: BASE,
+  // GitHub Pages cannot be configured to resolve extensionless URLs, so links
+  // keep their .html suffix. On a host that supports rewrites (nginx, Netlify)
+  // this can be flipped back to true.
+  cleanUrls: false,
   lastUpdated: true,
   metaChunk: true,
 
   head: [
-    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: `${BASE}logo.svg` }],
     ['meta', { name: 'theme-color', content: '#4f5bff' }],
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:site_name', content: 'ultra-ui' }]
@@ -28,8 +39,7 @@ export const shared: UserConfig<DefaultTheme.Config> = {
   },
 
   sitemap: {
-    // TODO: point this at the real domain once the site is deployed
-    hostname: 'https://ultra-ui.jiangruyi.com'
+    hostname: `https://ijry.github.io${BASE}`
   },
 
   themeConfig: {

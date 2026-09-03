@@ -11,12 +11,23 @@ React Native、Taro、uni-app、uni-app-x。
 ```bash
 npm install
 npm run gen      # 扫描各平台源码，重新生成组件文档
-npm run dev      # http://localhost:9100
+npm run dev      # http://localhost:9100/ultra-ui/
 npm run build    # 产物在 dist/
 npm run preview  # 本地预览构建产物
 ```
 
 `npm run gen -- --dry-run` 只打印报告，不写文件。
+
+## 部署
+
+推送到 `main` 后由 `.github/workflows/deploy.yml` 自动构建并发布到 GitHub Pages：
+<https://ijry.github.io/ultra-ui/>
+
+站点以子路径部署，因此 `docs/.vitepress/config/shared.mts` 里 `BASE = '/ultra-ui/'`；
+GitHub Pages 无法配置无扩展名路由，所以 `cleanUrls: false`，链接保留 `.html`。
+如果改为部署到域名根目录（例如自建 nginx），把 `BASE` 改成 `'/'`、`cleanUrls`
+改成 `true` 即可，主题里的链接都走 `useLocalePath()`，会自动跟随。
+
 
 ## 目录
 

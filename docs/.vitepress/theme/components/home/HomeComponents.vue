@@ -1,12 +1,10 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useData } from 'vitepress'
 import { groups } from '../../../data/groups'
 import { components, totalComponents } from '../../../data/registry'
+import { useLocalePath } from '../../composables/useLocalePath'
 
-const { lang } = useData()
-const zh = computed(() => lang.value.startsWith('zh'))
-const base = computed(() => (zh.value ? '' : '/en'))
+const { zh, path } = useLocalePath()
 
 const sections = computed(() =>
   groups
@@ -50,14 +48,14 @@ const locale = computed<'zh' | 'en'>(() => (zh.value ? 'zh' : 'en'))
           <p class="cat-blurb">{{ g.blurb[locale] }}</p>
           <ul class="cat-list">
             <li v-for="c in g.items" :key="c.id">
-              <a :href="`${base}/components/${c.id}`">{{ c.name.en }}</a>
+              <a :href="path(`/components/${c.id}`)">{{ c.name.en }}</a>
             </li>
           </ul>
         </section>
       </div>
 
       <p class="cat-all">
-        <a class="cat-all-link" :href="`${base}/components/`">
+        <a class="cat-all-link" :href="path('/components/')">
           {{ zh ? '查看组件总览与平台支持矩阵 →' : 'See all components and the support matrix →' }}
         </a>
       </p>
