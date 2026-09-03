@@ -31,8 +31,6 @@ import UltraUI
 
 <template #android>
 
-### 图片
-
 ```kotlin
 import net.lingyun.ultraui.android.components.UPImage
 import net.lingyun.ultraui.android.components.UPImageProps
@@ -63,6 +61,17 @@ UPImage({ props: new UPImageProps({
 }) })
 ```
 
+```typescript
+UPImage({ props: new UPImageProps({
+  src: '',
+  width: 88,
+  height: 88,
+  shape: 'circle',
+  errorIcon: 'photo',
+  bgColor: '#f3f4f6'
+}) })
+```
+
 <small>示例来源 `ultra-ui-hos/sample/entry/src/main/ets/demos/ImageDemo.ets`</small>
 
 </template>
@@ -79,13 +88,42 @@ UPImage(
     onClick: () => UPToast.show(context, message: '点击图片'))
 ```
 
+```dart
+UPImage(src: _image, shape: 'circle', width: 80, height: 80)
+```
+
+```dart
+UPImage(src: _image, radius: 12, width: 80, height: 80)
+```
+
+```dart
+UPImage(src: _image, radius: 12, width: '100%', height: 80)
+```
+
+```dart
+UPImage(src: _image, mode: 'widthFix', width: 80, height: 80)
+```
+
+```dart
+UPImage(src: _image, mode: 'heightFix', width: 80, height: 80)
+```
+
+```dart
+UPImage(
+    src: _image, mode: 'scaleToFill', width: 80, height: 80)
+```
+
+```dart
+UPImage(src: _image, mode: 'aspectFit', width: 80, height: 80)
+```
+
 <small>示例来源 `ultra-ui-flutter/example/lib/pages/components_a/image_page.dart`</small>
 
 </template>
 
 <template #reactnative>
 
-### 自定义形状
+#### 自定义形状
 
 ```tsx
 import { UPImage } from 'ultra-ui-rn';
@@ -93,57 +131,46 @@ import { UPImage } from 'ultra-ui-rn';
 <UPImage shape="circle" src={SRC} width="80px" height="80px" />
 ```
 
-### 自定义圆角
+#### 自定义圆角
 
 ```tsx
 <UPImage radius="12" src={SRC} width="80px" height="80px" />
 ```
 
-### 宽度100%
+#### 宽度100%
 
 ```tsx
 <UPImage radius="12" src={SRC} width="100%" height="80px" />
 ```
 
-### 图片模式(widthFix)
+#### 图片模式(widthFix)
 
 ```tsx
 <UPImage src={SRC} width="80px" height="80px" mode="widthFix" />
 ```
 
-### 图片模式(heightFix)
+#### 图片模式(heightFix)
 
 ```tsx
 <UPImage src={SRC} width="80px" height="80px" mode="heightFix" />
 ```
 
-### 图片模式(scaleToFill)
+#### 图片模式(scaleToFill)
 
 ```tsx
 <UPImage src={SRC} width="80px" height="80px" mode="scaleToFill" />
 ```
 
-### 图片模式(aspectFit)
+#### 图片模式(aspectFit)
 
 ```tsx
 <UPImage src={SRC} width="80px" height="80px" mode="aspectFit" />
 ```
 
-### 图片模式(aspectFill)
+#### 图片模式(aspectFill)
 
 ```tsx
 <UPImage src={SRC} width="80px" height="80px" mode="aspectFill" />
-```
-
-### 自定义图片加载插槽
-
-```tsx
-<UPImage
-  src={src1}
-  width="80px"
-  height="80px"
-  mode="widthFix"
-  loading={<UPLoadingIcon color="red" />
 ```
 
 <small>示例来源 `ultra-ui-rn/example/pages/components/basic/ImageDemo.tsx`</small>
@@ -152,7 +179,7 @@ import { UPImage } from 'ultra-ui-rn';
 
 <template #taro>
 
-### 基础用法
+#### 基础用法
 
 width / height，数字按 px 语义处理
 
@@ -162,7 +189,7 @@ import { UPImage } from '@ultra-ui'
 <UPImage src={PIC} width='100%' height='160px' />
 ```
 
-### 裁剪模式
+#### 裁剪模式
 
 mode 取值同 Taro Image
 
@@ -170,7 +197,23 @@ mode 取值同 Taro Image
 <UPImage src={PIC2} mode={mode} width='90px' height='90px' />
 ```
 
-### 加载中占位
+#### 形状
+
+shape：square 方形 / circle 圆形
+
+```tsx
+<UPImage src={PIC} shape='square' width='90px' height='90px' />
+```
+
+#### 圆角
+
+radius 自定义圆角值
+
+```tsx
+<UPImage src={PIC3} radius={0} width='80px' height='80px' />
+```
+
+#### 加载中占位
 
 showLoading + loadingIcon，加载完成后消失
 
@@ -184,7 +227,15 @@ showLoading + loadingIcon，加载完成后消失
 />
 ```
 
-### 淡入效果
+#### 加载失败
+
+showError + errorIcon
+
+```tsx
+<UPImage src={BROKEN} width='90px' height='90px' showError />
+```
+
+#### 淡入效果
 
 fade + duration，点上方「重新挂载」可重复观察
 
@@ -199,12 +250,19 @@ fade + duration，点上方「重新挂载」可重复观察
 />
 ```
 
-### 其它能力
+#### 背景色
 
-lazyLoad 懒加载 / showMenuByLongpress 长按识别小程序码
+bgColor 用于占位区与深色背景融合
 
 ```tsx
-<UPImage src={PIC2} width='90px' height='90px' lazyLoad />
+<UPImage
+  key={`bg-${version}`}
+  src={BROKEN}
+  width='90px'
+  height='90px'
+  showError
+  bgColor='#ebedf0'
+/>
 ```
 
 <small>示例来源 `ultra-ui-taro/src/pages/components/image/index.tsx`</small>
@@ -213,7 +271,7 @@ lazyLoad 懒加载 / showMenuByLongpress 长按识别小程序码
 
 <template #uniapp>
 
-### 基本案例
+#### 基本案例
 
 ```vue
 <up-image
@@ -225,7 +283,7 @@ lazyLoad 懒加载 / showMenuByLongpress 长按识别小程序码
 ></up-image>
 ```
 
-### 自定义形状
+#### 自定义形状
 
 ```vue
 <up-image
@@ -236,7 +294,7 @@ lazyLoad 懒加载 / showMenuByLongpress 长按识别小程序码
 ></up-image>
 ```
 
-### 自定义圆角
+#### 自定义圆角
 
 ```vue
 <up-image
@@ -247,7 +305,7 @@ lazyLoad 懒加载 / showMenuByLongpress 长按识别小程序码
 ></up-image>
 ```
 
-### 图片模式(widthFix)
+#### 图片模式(widthFix)
 
 ```vue
 <up-image
@@ -258,7 +316,7 @@ lazyLoad 懒加载 / showMenuByLongpress 长按识别小程序码
 ></up-image>
 ```
 
-### 自定义图片加载插槽
+#### 自定义图片加载插槽
 
 ```vue
 <up-image
@@ -279,7 +337,7 @@ lazyLoad 懒加载 / showMenuByLongpress 长按识别小程序码
 
 <template #uniappx>
 
-### 基本案例
+#### 基本案例
 
 ```vue
 <up-image
@@ -291,7 +349,7 @@ lazyLoad 懒加载 / showMenuByLongpress 长按识别小程序码
 ></up-image>
 ```
 
-### 自定义形状
+#### 自定义形状
 
 ```vue
 <up-image
@@ -302,7 +360,7 @@ lazyLoad 懒加载 / showMenuByLongpress 长按识别小程序码
 ></up-image>
 ```
 
-### 自定义圆角
+#### 自定义圆角
 
 ```vue
 <up-image
@@ -313,7 +371,7 @@ lazyLoad 懒加载 / showMenuByLongpress 长按识别小程序码
 ></up-image>
 ```
 
-### 图片模式(widthFix)
+#### 图片模式(widthFix)
 
 ```vue
 <up-image
@@ -324,7 +382,7 @@ lazyLoad 懒加载 / showMenuByLongpress 长按识别小程序码
 ></up-image>
 ```
 
-### 自定义图片加载插槽
+#### 自定义图片加载插槽
 
 ```vue
 <up-image

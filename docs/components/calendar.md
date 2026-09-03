@@ -43,6 +43,88 @@ UPCalendar(
 )
 ```
 
+```dart
+UPCalendar(
+  key: common['key'] as Key,
+  show: common['show'] as bool,
+  mode: 'multiple',
+  defaultDate: const ['2026-08-11', '2026-08-12', '2026-08-13'],
+  onConfirm: common['onConfirm'] as ValueChanged<List<DateTime>>,
+  onClose: common['onClose'] as VoidCallback,
+)
+```
+
+```dart
+UPCalendar(
+  key: common['key'] as Key,
+  show: common['show'] as bool,
+  mode: 'range',
+  defaultDate: const ['2026-08-11'],
+  onConfirm: common['onConfirm'] as ValueChanged<List<DateTime>>,
+  onClose: common['onClose'] as VoidCallback,
+)
+```
+
+```dart
+UPCalendar(
+  key: common['key'] as Key,
+  show: common['show'] as bool,
+  mode: 'range',
+  color: '#f56c6c',
+  defaultDate: const ['2026-08-11', '2026-08-15'],
+  onConfirm: common['onConfirm'] as ValueChanged<List<DateTime>>,
+  onClose: common['onClose'] as VoidCallback,
+)
+```
+
+```dart
+UPCalendar(
+  key: common['key'] as Key,
+  show: common['show'] as bool,
+  mode: 'range',
+  startText: '住店',
+  endText: '离店',
+  confirmDisabledText: '请选择离店日期',
+  defaultDate: const ['2026-08-11'],
+  onConfirm: common['onConfirm'] as ValueChanged<List<DateTime>>,
+  onClose: common['onClose'] as VoidCallback,
+)
+```
+
+```dart
+UPCalendar(
+  key: common['key'] as Key,
+  show: common['show'] as bool,
+  maxDate: '2026-08-21',
+  defaultDate: '2026-08-11',
+  onConfirm: common['onConfirm'] as ValueChanged<List<DateTime>>,
+  onClose: common['onClose'] as VoidCallback,
+)
+```
+
+```dart
+UPCalendar(
+  key: common['key'] as Key,
+  show: common['show'] as bool,
+  showLunar: true,
+  defaultDate: '2026-08-11',
+  onConfirm: common['onConfirm'] as ValueChanged<List<DateTime>>,
+  onClose: common['onClose'] as VoidCallback,
+)
+```
+
+```dart
+UPCalendar(
+  key: common['key'] as Key,
+  show: common['show'] as bool,
+  minDate: '2026-08-01',
+  maxDate: '2026-08-21',
+  defaultDate: '2026-08-11',
+  onConfirm: common['onConfirm'] as ValueChanged<List<DateTime>>,
+  onClose: common['onClose'] as VoidCallback,
+)
+```
+
 <small>示例来源 `ultra-ui-flutter/example/lib/pages/components_c/calendar_page.dart`</small>
 
 </template>
@@ -82,6 +164,78 @@ import { UPCalendar } from '@ultra-ui'
 ></up-calendar>
 ```
 
+```vue
+<up-calendar
+    :show="show2"
+    mode="multiple"
+    :defaultDate="['2022-03-01']"
+    @confirm="confirm"
+    @close="close"
+></up-calendar>
+```
+
+```vue
+<up-calendar
+    :show="show3"
+    mode="range"
+    @confirm="confirm"
+    @close="close"
+></up-calendar>
+```
+
+```vue
+<up-calendar
+    :show="show4"
+    mode="range"
+    @confirm="confirm"
+    @close="close"
+    color="#f56c6c"
+    :defaultDate="customThemeDefaultDate"
+></up-calendar>
+```
+
+```vue
+<up-calendar
+    :show="show5"
+    mode="range"
+    @confirm="confirm"
+    @close="close"
+    :defaultDate="customTextDefaultDate"
+    startText="住店"
+    endText="离店"
+    confirmDisabledText="请选择离店日期"
+    :formatter="formatter"
+></up-calendar>
+```
+
+```vue
+<up-calendar
+    :show="show6"
+    @confirm="confirm"
+    @close="close"
+    :maxDate="maxDate"
+></up-calendar>
+```
+
+```vue
+<up-calendar
+    :show="show7"
+    @confirm="confirm"
+    @close="close"
+    showLunar
+></up-calendar>
+```
+
+```vue
+<up-calendar
+    :show="show8"
+    @confirm="confirm"
+    @close="close"
+    mode="multiple"
+    :defaultDate="defaultDateMultiple"
+></up-calendar>
+```
+
 <small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsC/calendar/calendar.uvue`</small>
 
 </template>
@@ -94,6 +248,78 @@ import { UPCalendar } from '@ultra-ui'
     defaultDate="2022-02-15"
     @confirm="confirm"
     @close="close"
+></up-calendar>
+```
+
+```vue
+<up-calendar
+    :show="show2"
+    mode="multiple"
+    :defaultDate="['2022-03-01']"
+    @confirm="confirm"
+    @close="close"
+></up-calendar>
+```
+
+```vue
+<up-calendar
+    :show="show3"
+    mode="range"
+    @confirm="confirm"
+    @close="close"
+></up-calendar>
+```
+
+```vue
+<up-calendar
+    :show="show4"
+    mode="range"
+    @confirm="confirm"
+    @close="close"
+    color="#f56c6c"
+    :defaultDate="customThemeDefaultDate"
+></up-calendar>
+```
+
+```vue
+<up-calendar
+    :show="show5"
+    mode="range"
+    @confirm="confirm"
+    @close="close"
+    :defaultDate="customTextDefaultDate"
+    startText="住店"
+    endText="离店"
+    confirmDisabledText="请选择离店日期"
+    :formatter="formatter"
+></up-calendar>
+```
+
+```vue
+<up-calendar
+    :show="show6"
+    @confirm="confirm"
+    @close="close"
+    :maxDate="maxDate"
+></up-calendar>
+```
+
+```vue
+<up-calendar
+    :show="show7"
+    @confirm="confirm"
+    @close="close"
+    showLunar
+></up-calendar>
+```
+
+```vue
+<up-calendar
+    :show="show8"
+    @confirm="confirm"
+    @close="close"
+    mode="multiple"
+    :defaultDate="defaultDateMultiple"
 ></up-calendar>
 ```
 

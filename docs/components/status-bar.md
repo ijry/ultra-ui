@@ -36,6 +36,10 @@ import { UPStatusBar, UPStatusBarProps } from '@lingyun/ultra-ui-hos';
 UPStatusBar({ props: new UPStatusBarProps({ bgColor: '#2979ff', onHeightChange: (height: number): void => { this.statusBarHeight = height; } }) })
 ```
 
+```typescript
+UPStatusBar({ props: new UPStatusBarProps({ height: 18, bgColor: '#ecf5ff' }) })
+```
+
 <small>示例来源 `ultra-ui-hos/sample/entry/src/main/ets/demos/StatusBarDemo.ets`</small>
 
 </template>

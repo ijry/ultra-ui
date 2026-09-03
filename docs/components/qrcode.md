@@ -18,6 +18,8 @@ generated: true
 
 <template #flutter>
 
+#### 不带logo
+
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
 
@@ -26,6 +28,25 @@ const UPQrcode(
   cid: 'up1',
   size: 150,
   val: _sourceValue,
+)
+```
+
+#### 带logo
+
+```dart
+UPQrcode(cid: 'up2', size: 150, val: _sourceValue)
+```
+
+#### 二维码颜色
+
+```dart
+const UPQrcode(
+  key: ValueKey('qrcode-page-colors'),
+  cid: 'up3',
+  size: 150,
+  val: _sourceValue,
+  background: 'red',
+  foreground: 'blue',
 )
 ```
 
@@ -41,13 +62,26 @@ import { UPQrcode } from 'ultra-ui-rn';
 <UPQrcode cid="up1" size={150} val={VAL} />
 ```
 
+```tsx
+<UPQrcode
+  cid="up2"
+  icon="https://uview-plus.jiangruyi.com/h5/static/uview/common/logo.png"
+  size={150}
+  val={VAL}
+/>
+```
+
+```tsx
+<UPQrcode background="red" cid="up3" foreground="blue" size={150} val={VAL} />
+```
+
 <small>示例来源 `ultra-ui-rn/example/pages/components/advanced/QrcodeDemo.tsx`</small>
 
 </template>
 
 <template #taro>
 
-### 基础用法
+#### 基础用法
 
 val 为二维码内容，可用手机扫码验证
 
@@ -57,7 +91,7 @@ import { UPQrcode } from '@ultra-ui'
 <UPQrcode val={text} size={200} showLoading={false} />
 ```
 
-### 自定义内容
+#### 自定义内容
 
 输入后二维码实时重绘
 
@@ -65,7 +99,7 @@ import { UPQrcode } from '@ultra-ui'
 <UPQrcode val={dynamic} size={180} showLoading={false} />
 ```
 
-### 尺寸
+#### 尺寸
 
 size 控制边长
 
@@ -73,7 +107,7 @@ size 控制边长
 <UPQrcode val='size 120' size={120} showLoading={false} />
 ```
 
-### 自定义配色
+#### 自定义配色
 
 foreground 码点色，background 底色，pdground 三个定位角单独配色
 
@@ -86,7 +120,7 @@ foreground 码点色，background 底色，pdground 三个定位角单独配色
 />
 ```
 
-### 纠错等级
+#### 纠错等级
 
 lv 0-3，等级越高容错越强、码点越密
 
@@ -94,7 +128,7 @@ lv 0-3，等级越高容错越强、码点越密
 <UPQrcode val='level 0' size={130} lv={0} showLoading={false} />
 ```
 
-### 静默区
+#### 静默区
 
 quietZone 控制四周留白圈数
 
@@ -107,7 +141,7 @@ quietZone 控制四周留白圈数
 />
 ```
 
-### 中心图标
+#### 中心图标
 
 icon 在码中心叠加图标，底部自动垫背景避免遮挡码点
 
@@ -121,7 +155,7 @@ icon 在码中心叠加图标，底部自动垫背景避免遮挡码点
 />
 ```
 
-### 点击预览
+#### 点击预览
 
 allowPreview 开启后点击可全屏查看
 
@@ -130,21 +164,6 @@ allowPreview 开启后点击可全屏查看
   val='allowPreview'
   size={160}
   allowPreview
-  showLoading={false}
-/>
-```
-
-### 手动绘制与导出
-
-loadMake=false 时不自动绘制，通过 ref 调用 make / toTempFilePath
-
-```tsx
-<UPQrcode
-  ref={manualRef}
-  val='manual make'
-  size={160}
-  loadMake={false}
-  onval={false}
   showLoading={false}
 />
 ```
@@ -159,6 +178,14 @@ loadMake=false 时不自动绘制，通过 ref 调用 make / toTempFilePath
 <up-qrcode cid="up-qrcode-basic" :size="200" :val="qrValue"></up-qrcode>
 ```
 
+```vue
+<up-qrcode cid="up-qrcode-logo" :size="200" :val="qrValue" :icon="logo"></up-qrcode>
+```
+
+```vue
+<up-qrcode cid="up-qrcode-color" :size="200" :val="qrValue" background="red" foreground="blue"></up-qrcode>
+```
+
 <small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/qrcode/qrcode.uvue`</small>
 
 </template>
@@ -167,6 +194,14 @@ loadMake=false 时不自动绘制，通过 ref 调用 make / toTempFilePath
 
 ```vue
 <up-qrcode cid="up-qrcode-basic" :size="200" :val="qrValue"></up-qrcode>
+```
+
+```vue
+<up-qrcode cid="up-qrcode-logo" :size="200" :val="qrValue" :icon="logo"></up-qrcode>
+```
+
+```vue
+<up-qrcode cid="up-qrcode-color" :size="200" :val="qrValue" background="red" foreground="blue"></up-qrcode>
 ```
 
 <small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/qrcode/qrcode.uvue`</small>

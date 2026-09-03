@@ -31,8 +31,6 @@ import UltraUI
 
 <template #android>
 
-### 徽标
-
 ```kotlin
 import net.lingyun.ultraui.android.components.UPBadge
 import net.lingyun.ultraui.android.components.UPBadgeProps
@@ -59,10 +57,18 @@ UPBadge(
 
 <template #harmony>
 
+#### 数字徽标
+
 ```typescript
 import { UPBadge, UPBadgeProps } from '@lingyun/ultra-ui-hos';
 
 UPBadge({ props: new UPBadgeProps({ value: 8 }) })
+```
+
+#### 圆点与反色
+
+```typescript
+UPBadge({ props: new UPBadgeProps({ isDot: true, type: 'success' }) })
 ```
 
 <small>示例来源 `ultra-ui-hos/sample/entry/src/main/ets/demos/BadgeDemo.ets`</small>
@@ -71,7 +77,7 @@ UPBadge({ props: new UPBadgeProps({ value: 8 }) })
 
 <template #flutter>
 
-### 直角边形状
+#### 直角边形状
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -79,25 +85,25 @@ import 'package:ultra_ui/ultra_ui.dart';
 UPBadge(value: 1500, shape: 'horn')
 ```
 
-### 徽标数显示方式
+#### 徽标数显示方式
 
 ```dart
 UPBadge(value: 5132, numberType: 'ellipsis')
 ```
 
-### 显示圆点
+#### 显示圆点
 
 ```dart
 UPBadge(value: 1011, numberType: 'overflow', isDot: true)
 ```
 
-### 自定义主题
+#### 自定义主题
 
 ```dart
 UPBadge(value: 9, type: 'error')
 ```
 
-### 反转色
+#### 反转色
 
 ```dart
 UPBadge(value: 9, type: 'error', inverted: true)
@@ -109,7 +115,7 @@ UPBadge(value: 9, type: 'error', inverted: true)
 
 <template #reactnative>
 
-### 直角边形状
+#### 直角边形状
 
 ```tsx
 import { UPBadge } from 'ultra-ui-rn';
@@ -117,25 +123,25 @@ import { UPBadge } from 'ultra-ui-rn';
 <UPBadge value={1500} shape="horn" />
 ```
 
-### 徽标数显示方式
+#### 徽标数显示方式
 
 ```tsx
 <UPBadge value={5132} numberType="ellipsis" />
 ```
 
-### 显示圆点
+#### 显示圆点
 
 ```tsx
 <UPBadge value={1011} numberType="overflow" isDot />
 ```
 
-### 自定义主题
+#### 自定义主题
 
 ```tsx
 <UPBadge value={9} type="error" />
 ```
 
-### 反转色
+#### 反转色
 
 ```tsx
 <UPBadge value={9} type="error" inverted />
@@ -147,17 +153,57 @@ import { UPBadge } from 'ultra-ui-rn';
 
 <template #taro>
 
-### 最大值
+#### 基础用法
 
-numberType=overflow（默认），超过 max 显示 max+
+value 为显示内容，支持数字与文字
 
 ```tsx
 import { UPBadge } from '@ultra-ui'
 
+<UPBadge value={1} />
+```
+
+#### 主题类型
+
+type：error / warning / success / primary / info
+
+```tsx
+<UPBadge type='error' value={8} />
+```
+
+#### 圆点
+
+isDot 为 true 时忽略 value，只显示小红点
+
+```tsx
+<UPBadge isDot />
+```
+
+#### 反色
+
+inverted 反转背景与文字颜色
+
+```tsx
+<UPBadge inverted type='error' value={9} />
+```
+
+#### 形状
+
+shape：circle 四角圆润 / horn 左下角为直角
+
+```tsx
+<UPBadge shape='circle' value={12} />
+```
+
+#### 最大值
+
+numberType=overflow（默认），超过 max 显示 max+
+
+```tsx
 <UPBadge max={9} value={5} />
 ```
 
-### 超出显示方式
+#### 超出显示方式
 
 numberType：overflow / ellipsis / limit
 
@@ -165,36 +211,12 @@ numberType：overflow / ellipsis / limit
 <UPBadge numberType='overflow' max={99} value={1000} />
 ```
 
-### 显示零
+#### 显示零
 
 showZero 决定 value 为 0 时是否展示
 
 ```tsx
 <UPBadge value={0} />
-```
-
-### 绝对定位
-
-absolute + offset=[top, right]，父元素需为相对定位
-
-```tsx
-<UPBadge absolute offset={[-4, -4]} value={9} />
-```
-
-### 动态数值
-
-value 变化时徽标实时更新
-
-```tsx
-<UPBadge type='primary' value={count} max={99} />
-```
-
-### 显隐控制
-
-show 为 false 时不渲染
-
-```tsx
-<UPBadge show={show} type='error' value={5} />
 ```
 
 <small>示例来源 `ultra-ui-taro/src/pages/components/badge/index.tsx`</small>
@@ -203,7 +225,7 @@ show 为 false 时不渲染
 
 <template #uniapp>
 
-### 直角边形状
+#### 直角边形状
 
 ```vue
 <up-badge
@@ -212,7 +234,7 @@ show 为 false 时不渲染
 ></up-badge>
 ```
 
-### 徽标数显示方式
+#### 徽标数显示方式
 
 ```vue
 <up-badge
@@ -221,7 +243,7 @@ show 为 false 时不渲染
 ></up-badge>
 ```
 
-### 显示圆点
+#### 显示圆点
 
 ```vue
 <up-badge
@@ -232,7 +254,7 @@ show 为 false 时不渲染
 </up-badge>
 ```
 
-### 自定义主题
+#### 自定义主题
 
 ```vue
 <up-badge
@@ -242,7 +264,7 @@ show 为 false 时不渲染
 </up-badge>
 ```
 
-### 反转色
+#### 反转色
 
 ```vue
 <up-badge
@@ -259,7 +281,7 @@ show 为 false 时不渲染
 
 <template #uniappx>
 
-### 直角边形状
+#### 直角边形状
 
 ```vue
 <up-badge
@@ -268,7 +290,7 @@ show 为 false 时不渲染
 ></up-badge>
 ```
 
-### 徽标数显示方式
+#### 徽标数显示方式
 
 ```vue
 <up-badge
@@ -277,7 +299,7 @@ show 为 false 时不渲染
 ></up-badge>
 ```
 
-### 显示圆点
+#### 显示圆点
 
 ```vue
 <up-badge
@@ -288,7 +310,7 @@ show 为 false 时不渲染
 </up-badge>
 ```
 
-### 自定义主题
+#### 自定义主题
 
 ```vue
 <up-badge
@@ -298,7 +320,7 @@ show 为 false 时不渲染
 </up-badge>
 ```
 
-### 反转色
+#### 反转色
 
 ```vue
 <up-badge

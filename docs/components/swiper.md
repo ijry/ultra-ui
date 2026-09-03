@@ -31,6 +31,8 @@ DemoSection("轮播图") { UPSwiper(UPSwiperProps(list = listOf("第一页", "�
 
 <template #flutter>
 
+#### 基础功能
+
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
 
@@ -43,11 +45,113 @@ UPSwiper(
 )
 ```
 
+#### 纵向滑动
+
+```dart
+UPSwiper(
+  key: ValueKey('swiper-page-vertical'),
+  list: _swiperImages,
+  vertical: true,
+  indicator: true,
+  indicatorMode: 'dot',
+  autoplay: false,
+  height: 200,
+)
+```
+
+#### 带标题
+
+```dart
+UPSwiper(
+  key: ValueKey('swiper-page-title'),
+  list: _swiperTitles,
+  keyName: 'image',
+  showTitle: true,
+  autoplay: false,
+  circular: true,
+)
+```
+
+#### 带指示器
+
+```dart
+UPSwiper(
+  key: ValueKey('swiper-page-indicator'),
+  list: _swiperImages,
+  indicator: true,
+  circular: true,
+  autoplay: false,
+)
+```
+
+#### 加载中
+
+```dart
+UPSwiper(
+  key: ValueKey('swiper-page-loading'),
+  list: _swiperImages,
+  loading: true,
+  autoplay: false,
+)
+```
+
+#### 嵌入视频
+
+```dart
+UPSwiper(
+  key: ValueKey('swiper-page-video'),
+  list: _swiperVideos,
+  keyName: 'url',
+  autoplay: false,
+)
+```
+
+#### 自定义内容
+
+```dart
+UPSwiper(
+  key: ValueKey('swiper-page-custom'),
+  list: _swiperTitles,
+  keyName: 'image',
+  showTitle: true,
+  autoplay: false,
+  circular: true,
+  itemBuilder: _customItemBuilder,
+)
+```
+
+#### 自定义指示器
+
+```dart
+UPSwiper(
+  key: const ValueKey('swiper-page-custom-indicator'),
+  list: _swiperImages,
+  autoplay: false,
+  onChange: _onCustomChange,
+  indicatorSlot: Container(
+    key: const ValueKey('swiper-page-custom-indicator-slot'),
+    padding:
+        const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+    decoration: BoxDecoration(
+      color: const Color(0x59000000),
+      borderRadius: BorderRadius.circular(20),
+    ),
+    child: UPSwiperIndicator(
+      length: _swiperImages.length,
+      current: _customCurrent,
+      indicatorMode: 'dot',
+    ),
+  ),
+)
+```
+
 <small>示例来源 `ultra-ui-flutter/example/lib/pages/components_c/swiper_page.dart`</small>
 
 </template>
 
 <template #reactnative>
+
+#### 纵向滑动
 
 ```tsx
 import { UPSwiper } from 'ultra-ui-rn';
@@ -62,13 +166,50 @@ import { UPSwiper } from 'ultra-ui-rn';
 />
 ```
 
+#### 带标题
+
+```tsx
+<UPSwiper autoplay={false} circular keyName="image" list={list2} showTitle />
+```
+
+#### 带指示器
+
+```tsx
+<UPSwiper circular indicator indicatorMode="line" list={list3} />
+```
+
+#### 加载中
+
+```tsx
+<UPSwiper list={list3} loading />
+```
+
+#### 嵌入视频
+
+```tsx
+<UPSwiper autoplay={false} keyName="url" list={list4} />
+```
+
+#### 卡片式
+
+```tsx
+<UPSwiper
+  autoplay={false}
+  circular
+  list={list3}
+  nextMargin="30"
+  previousMargin="30"
+  radius="5"
+/>
+```
+
 <small>示例来源 `ultra-ui-rn/example/pages/components/advanced/SwiperDemo.tsx`</small>
 
 </template>
 
 <template #taro>
 
-### 基础用法
+#### 基础用法
 
 list 传图片地址数组，默认自动播放
 
@@ -78,7 +219,7 @@ import { UPSwiper } from '@ultra-ui'
 <UPSwiper list={LIST} />
 ```
 
-### 指示器
+#### 指示器
 
 indicator 开启，indicatorMode：line / dot
 
@@ -86,7 +227,7 @@ indicator 开启，indicatorMode：line / dot
 <UPSwiper list={LIST} indicator indicatorMode='line' />
 ```
 
-### 指示器颜色与位置
+#### 指示器颜色与位置
 
 indicatorActiveColor / indicatorInactiveColor / indicatorStyle
 
@@ -101,7 +242,7 @@ indicatorActiveColor / indicatorInactiveColor / indicatorStyle
 />
 ```
 
-### 高度与圆角
+#### 高度与圆角
 
 height 控制高度，radius 控制圆角
 
@@ -109,7 +250,7 @@ height 控制高度，radius 控制圆角
 <UPSwiper list={LIST} height={180} radius={16} indicator />
 ```
 
-### 背景色
+#### 背景色
 
 bgColor 为图片未加载出来时的底色
 
@@ -117,7 +258,7 @@ bgColor 为图片未加载出来时的底色
 <UPSwiper list={LIST} bgColor='#1f2937' height={110} />
 ```
 
-### 左右留白
+#### 左右留白
 
 previousMargin / nextMargin 露出前后项，非当前项自动缩放
 
@@ -132,7 +273,7 @@ previousMargin / nextMargin 露出前后项，非当前项自动缩放
 />
 ```
 
-### 纵向滚动
+#### 纵向滚动
 
 vertical 为 true 时上下切换
 
@@ -140,43 +281,12 @@ vertical 为 true 时上下切换
 <UPSwiper list={LIST} vertical circular indicator height={150} />
 ```
 
-### 标题
+#### 标题
 
 showTitle 需要 list 元素带 title 字段
 
 ```tsx
 <UPSwiper list={TITLE_LIST} showTitle circular height={160} />
-```
-
-### 取值字段
-
-keyName 指定对象中作为图片地址的字段
-
-```tsx
-<UPSwiper list={KEY_LIST} keyName='image' indicator height={150} />
-```
-
-### 切换参数
-
-interval 间隔、duration 时长、circular 衔接、autoplay 自动播放
-
-```tsx
-<UPSwiper
-  list={LIST}
-  interval={1500}
-  duration={800}
-  circular
-  indicator
-  indicatorMode='dot'
-/>
-```
-
-### 加载中
-
-loading 为 true 时展示加载图标
-
-```tsx
-<UPSwiper list={LIST} loading />
 ```
 
 <small>示例来源 `ultra-ui-taro/src/pages/components/swiper/index.tsx`</small>
@@ -185,7 +295,7 @@ loading 为 true 时展示加载图标
 
 <template #uniapp>
 
-### 基础功能
+#### 基础功能
 
 ```vue
 <up-swiper
@@ -195,7 +305,7 @@ loading 为 true 时展示加载图标
 ></up-swiper>
 ```
 
-### 纵向滑动
+#### 纵向滑动
 
 ```vue
 <up-swiper
@@ -208,7 +318,7 @@ loading 为 true 时展示加载图标
 ></up-swiper>
 ```
 
-### 带标题
+#### 带标题
 
 ```vue
 <up-swiper
@@ -220,7 +330,7 @@ loading 为 true 时展示加载图标
 ></up-swiper>
 ```
 
-### 带指示器
+#### 带指示器
 
 ```vue
 <up-swiper
@@ -231,7 +341,7 @@ loading 为 true 时展示加载图标
 ></up-swiper>
 ```
 
-### 加载中
+#### 加载中
 
 ```vue
 <up-swiper
@@ -240,7 +350,7 @@ loading 为 true 时展示加载图标
 ></up-swiper>
 ```
 
-### 嵌入视频
+#### 嵌入视频
 
 ```vue
 <up-swiper
@@ -250,7 +360,7 @@ loading 为 true 时展示加载图标
 ></up-swiper>
 ```
 
-### 自定义指示器
+#### 自定义指示器
 
 ```vue
 <up-swiper
@@ -274,7 +384,7 @@ loading 为 true 时展示加载图标
 </up-swiper>
 ```
 
-### 卡片式
+#### 卡片式
 
 ```vue
 <up-swiper
@@ -294,7 +404,7 @@ loading 为 true 时展示加载图标
 
 <template #uniappx>
 
-### 基础功能
+#### 基础功能
 
 ```vue
 <up-swiper
@@ -304,7 +414,7 @@ loading 为 true 时展示加载图标
 ></up-swiper>
 ```
 
-### 纵向滑动
+#### 纵向滑动
 
 ```vue
 <up-swiper
@@ -317,7 +427,7 @@ loading 为 true 时展示加载图标
 ></up-swiper>
 ```
 
-### 带标题
+#### 带标题
 
 ```vue
 <up-swiper
@@ -329,7 +439,7 @@ loading 为 true 时展示加载图标
 ></up-swiper>
 ```
 
-### 带指示器
+#### 带指示器
 
 ```vue
 <up-swiper
@@ -340,7 +450,7 @@ loading 为 true 时展示加载图标
 ></up-swiper>
 ```
 
-### 加载中
+#### 加载中
 
 ```vue
 <up-swiper
@@ -349,7 +459,7 @@ loading 为 true 时展示加载图标
 ></up-swiper>
 ```
 
-### 嵌入视频
+#### 嵌入视频
 
 ```vue
 <up-swiper
@@ -359,7 +469,7 @@ loading 为 true 时展示加载图标
 ></up-swiper>
 ```
 
-### 自定义指示器
+#### 自定义指示器
 
 ```vue
 <up-swiper
@@ -383,7 +493,7 @@ loading 为 true 时展示加载图标
 </up-swiper>
 ```
 
-### 卡片式
+#### 卡片式
 
 ```vue
 <up-swiper

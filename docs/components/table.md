@@ -18,19 +18,58 @@ generated: true
 
 <template #flutter>
 
+#### 演示效果
+
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
+
+UPTable(
+  align: _align,
+  borderColor: _borderColor,
+  children: const <UPTr>[
+    UPTr(
+      children: <Widget>[
+        UPTh(child: Text('姓名')),
+        UPTh(child: Text('年龄')),
+        UPTh(child: Text('籍贯')),
+        UPTh(child: Text('性别')),
+      ],
+    ),
+    UPTr(
+      children: <Widget>[
+        UPTd(child: Text('吕布')),
+        UPTd(child: Text('22')),
+        UPTd(child: Text('楚河')),
+        UPTd(child: Text('男')),
+      ],
+    ),
+    UPTr(
+      children: <Widget>[
+        UPTd(child: Text('项羽')),
+        UPTd(child: Text('28')),
+        UPTd(child: Text('汉界')),
+        UPTd(child: Text('男')),
+      ],
+    ),
+    UPTr(
+      children: <Widget>[
+        UPTd(child: Text('木兰')),
+        UPTd(child: Text('24')),
+        UPTd(child: Text('南国')),
+        UPTd(child: Text('女')),
+      ],
+    ),
+  ],
+)
 ```
 
-::: tip
-暂无自动提取到的示例代码，请参考源码。
-:::
+<small>示例来源 `ultra-ui-flutter/example/lib/pages/components_b/table_page.dart`</small>
 
 </template>
 
 <template #reactnative>
 
-### 演示效果
+#### 演示效果
 
 ```tsx
 import { UPTable } from 'ultra-ui-rn';
@@ -58,7 +97,7 @@ import { UPTable } from 'ultra-ui-rn';
 
 <template #taro>
 
-### 基础用法
+#### 基础用法
 
 th 表头行 + td 数据行，列宽 flex 均分
 
@@ -81,7 +120,7 @@ import { UPTable } from '@ultra-ui'
 </UPTable>
 ```
 
-### 指定列宽
+#### 指定列宽
 
 width 传百分比，未指定的列按 flex 均分剩余空间
 
@@ -100,7 +139,7 @@ width 传百分比，未指定的列按 flex 均分剩余空间
 </UPTable>
 ```
 
-### 左对齐
+#### 左对齐
 
 align 控制全表对齐方式
 
@@ -119,7 +158,7 @@ align 控制全表对齐方式
 </UPTable>
 ```
 
-### 单元格覆盖表格样式
+#### 单元格覆盖表格样式
 
 td 的 textAlign / color / fontSize 优先于表格级配置
 
@@ -140,7 +179,7 @@ td 的 textAlign / color / fontSize 优先于表格级配置
 </UPTable>
 ```
 
-### 自定义表头与边框
+#### 自定义表头与边框
 
 thStyle 集中配置表头样式，borderColor 改变边框色
 
@@ -162,7 +201,7 @@ thStyle 集中配置表头样式，borderColor 改变边框色
 </UPTable>
 ```
 
-### 单元格内嵌组件
+#### 单元格内嵌组件
 
 td 内可放任意节点，如 Tag
 
@@ -189,7 +228,7 @@ td 内可放任意节点，如 Tag
 </UPTable>
 ```
 
-### 紧凑与宽松
+#### 紧凑与宽松
 
 padding 与 fontSize 控制疏密
 
@@ -214,7 +253,7 @@ padding 与 fontSize 控制疏密
 
 <template #uniapp>
 
-### 演示效果
+#### 演示效果
 
 ```vue
 <up-table :align="align" :borderColor="borderColor">
@@ -251,7 +290,7 @@ padding 与 fontSize 控制疏密
 
 <template #uniappx>
 
-### 演示效果
+#### 演示效果
 
 ```vue
 <up-table :align="align" :borderColor="borderColor">

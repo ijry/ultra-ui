@@ -18,6 +18,8 @@ Switch tabs to see the syntax for each platform. Every snippet is lifted verbati
 
 <template #flutter>
 
+#### 颜色选择器示例
+
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
 
@@ -31,6 +33,19 @@ UPColorPicker(
 )
 ```
 
+#### 带常用颜色的示例
+
+```dart
+UPColorPicker(
+  key: const ValueKey('color-picker-page-common'),
+  modelValue: _selectedColor2,
+  commonColors: _commonColors,
+  onConfirm: (color) =>
+      setState(() => _selectedColor2 = color),
+  child: _preview(_selectedColor2, tokens),
+)
+```
+
 <small>Snippet from `ultra-ui-flutter/example/lib/pages/components_d/color_picker_page.dart`</small>
 
 </template>
@@ -39,17 +54,42 @@ UPColorPicker(
 
 ```tsx
 import { UPColorPicker } from 'ultra-ui-rn';
+
+<UPColorPicker
+  onClose={() => setShowColorPicker(false)}
+  onConfirm={confirmColor}
+  show={showColorPicker}
+  value={selectedColor}
+>
+  <View style={s.colorPreview}>
+    <View style={[s.colorBlock, { backgroundColor: selectedColor }]} />
+    <Text style={s.colorText}>{selectedColor}</Text>
+  </View>
+</UPColorPicker>
 ```
 
-::: tip
-No snippet could be extracted automatically — please read the source.
-:::
+```tsx
+<UPColorPicker
+  commonColors={commonColors}
+  onClose={() => setShowColorPickerWithCommon(false)}
+  onConfirm={confirmColor2}
+  show={showColorPickerWithCommon}
+  value={selectedColor2}
+>
+  <View style={s.colorPreview}>
+    <View style={[s.colorBlock, { backgroundColor: selectedColor2 }]} />
+    <Text style={s.colorText}>{selectedColor2}</Text>
+  </View>
+</UPColorPicker>
+```
+
+<small>Snippet from `ultra-ui-rn/example/pages/components/advanced/ColorPickerDemo.tsx`</small>
 
 </template>
 
 <template #taro>
 
-### 基础用法
+#### 基础用法
 
 默认纯色选择器
 
@@ -59,7 +99,7 @@ import { UPColorPicker } from '@ultra-ui'
 <UPColorPicker value={solidColor} onChange={setSolidColor} />
 ```
 
-### 渐变色
+#### 渐变色
 
 支持线性渐变
 
@@ -67,7 +107,7 @@ import { UPColorPicker } from '@ultra-ui'
 <UPColorPicker value={gradientColor} onChange={setGradientColor} />
 ```
 
-### 常用颜色
+#### 常用颜色
 
 提供快速选择色板
 
@@ -79,7 +119,7 @@ import { UPColorPicker } from '@ultra-ui'
 />
 ```
 
-### 自定义触发器
+#### 自定义触发器
 
 ```tsx
 <UPColorPicker value={solidColor} onChange={setSolidColor}>
@@ -105,6 +145,19 @@ import { UPColorPicker } from '@ultra-ui'
 </up-color-picker>
 ```
 
+```vue
+<up-color-picker
+    v-model="selectedColor2"
+    :commonColors="commonColors"
+    @confirm="confirmColor2"
+>
+    <view class="color-preview">
+        <view class="color-block" :style="{ backgroundColor: selectedColor2 }"></view>
+        <text class="color-text">{{ selectedColor2 }}</text>
+    </view>
+    </up-color-picker>
+```
+
 <small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/colorPicker/colorPicker.uvue`</small>
 
 </template>
@@ -121,6 +174,19 @@ import { UPColorPicker } from '@ultra-ui'
         <text class="color-text">{{ selectedColor }}</text>
     </view>
 </up-color-picker>
+```
+
+```vue
+<up-color-picker
+    v-model="selectedColor2"
+    :commonColors="commonColors"
+    @confirm="confirmColor2"
+>
+    <view class="color-preview">
+        <view class="color-block" :style="{ backgroundColor: selectedColor2 }"></view>
+        <text class="color-text">{{ selectedColor2 }}</text>
+    </view>
+    </up-color-picker>
 ```
 
 <small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/colorPicker/colorPicker.uvue`</small>

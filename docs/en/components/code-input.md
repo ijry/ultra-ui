@@ -31,8 +31,6 @@ No snippet could be extracted automatically — please read the source.
 
 <template #android>
 
-### 验证码输入
-
 ```kotlin
 import net.lingyun.ultraui.android.components.UPCodeInput
 import net.lingyun.ultraui.android.components.UPCodeInputProps
@@ -67,11 +65,25 @@ UPCodeInput({ props: new UPCodeInputProps({
 }) })
 ```
 
+```typescript
+UPCodeInput({ props: new UPCodeInputProps({
+  value: '9527',
+  maxlength: 4,
+  mode: 'line',
+  dot: true,
+  bold: true,
+  disabledKeyboard: true,
+  space: 12
+}) })
+```
+
 <small>Snippet from `ultra-ui-hos/sample/entry/src/main/ets/demos/CodeInputDemo.ets`</small>
 
 </template>
 
 <template #flutter>
+
+#### 基础使用
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -84,13 +96,88 @@ UPCodeInput(
 )
 ```
 
+#### 横线模式
+
+```dart
+UPCodeInput(
+  mode: 'line',
+  maxlength: 4,
+  bold: true,
+)
+```
+
+#### 设置长度
+
+```dart
+UPCodeInput(maxlength: 6)
+```
+
+#### 设置间距
+
+```dart
+UPCodeInput(
+  mode: 'box',
+  space: 0,
+  maxlength: 4,
+)
+```
+
+#### 细边框
+
+```dart
+UPCodeInput(
+  mode: 'box',
+  space: 0,
+  maxlength: 4,
+  hairline: true,
+)
+```
+
+#### 调整颜色
+
+```dart
+UPCodeInput(
+  mode: 'box',
+  space: 0,
+  maxlength: 4,
+  hairline: true,
+  color: '#f56c6c',
+  borderColor: '#f56c6c',
+)
+```
+
+#### 点模式
+
+```dart
+UPCodeInput(
+  mode: 'box',
+  dot: true,
+  space: 0,
+  maxlength: 4,
+  hairline: true,
+)
+```
+
+#### 预置内容
+
+```dart
+UPCodeInput(
+  mode: 'box',
+  space: 0,
+  maxlength: 4,
+  hairline: true,
+  value: '123',
+  fontSize: 17,
+)
+```
+
 <small>Snippet from `ultra-ui-flutter/example/lib/pages/components_c/code_input_page.dart`</small>
 
 </template>
 
 <template #reactnative>
 
-### 横线模式
+#### 横线模式
 
 ```tsx
 import { UPCodeInput } from 'ultra-ui-rn';
@@ -98,19 +185,19 @@ import { UPCodeInput } from 'ultra-ui-rn';
 <UPCodeInput bold maxlength={4} mode="line" onChange={setValue2} value={value2} />
 ```
 
-### 设置长度
+#### 设置长度
 
 ```tsx
 <UPCodeInput maxlength={6} onChange={setValue3} value={value3} />
 ```
 
-### 设置间距
+#### 设置间距
 
 ```tsx
 <UPCodeInput maxlength={4} mode="box" onChange={setValue4} space={0} value={value4} />
 ```
 
-### 细边框
+#### 细边框
 
 ```tsx
 <UPCodeInput
@@ -123,7 +210,7 @@ import { UPCodeInput } from 'ultra-ui-rn';
 />
 ```
 
-### 调整颜色
+#### 调整颜色
 
 ```tsx
 <UPCodeInput
@@ -138,7 +225,7 @@ import { UPCodeInput } from 'ultra-ui-rn';
 />
 ```
 
-### 点模式
+#### 点模式
 
 ```tsx
 <UPCodeInput
@@ -152,7 +239,7 @@ import { UPCodeInput } from 'ultra-ui-rn';
 />
 ```
 
-### 预置内容
+#### 预置内容
 
 ```tsx
 <UPCodeInput
@@ -184,6 +271,8 @@ No snippet could be extracted automatically — please read the source.
 
 <template #uniapp>
 
+#### 基础使用
+
 ```vue
 <up-code-input
     v-model="value1"
@@ -193,11 +282,96 @@ No snippet could be extracted automatically — please read the source.
 ></up-code-input>
 ```
 
+#### 横线模式
+
+```vue
+<up-code-input
+    v-model="value2"
+    mode="line"
+    :maxlength="4"
+    :bold="true"
+></up-code-input>
+```
+
+#### 设置长度
+
+```vue
+<up-code-input
+    v-model="value3"
+    :maxlength="6"
+></up-code-input>
+```
+
+#### 设置间距
+
+```vue
+<up-code-input
+    v-model="value4"
+    mode="box"
+    :space="0"
+    :maxlength="4"
+></up-code-input>
+```
+
+#### 细边框
+
+```vue
+<up-code-input
+    v-model="value5"
+    mode="box"
+    :space="0"
+    :maxlength="4"
+    hairline
+></up-code-input>
+```
+
+#### 调整颜色
+
+```vue
+<up-code-input
+    v-model="value7"
+    mode="box"
+    :space="0"
+    :maxlength="4"
+    hairline
+    color="#f56c6c"
+    borderColor="#f56c6c"
+></up-code-input>
+```
+
+#### 点模式
+
+```vue
+<up-code-input
+    v-model="value8"
+    mode="box"
+    dot
+    :space="0"
+    :maxlength="4"
+    hairline
+></up-code-input>
+```
+
+#### 预置内容
+
+```vue
+<up-code-input
+    v-model="value9"
+    mode="box"
+    :space="0"
+    :maxlength="4"
+    hairline
+    fontSize="17"
+></up-code-input>
+```
+
 <small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/codeInput/codeInput.uvue`</small>
 
 </template>
 
 <template #uniappx>
+
+#### 基础使用
 
 ```vue
 <up-code-input
@@ -205,6 +379,89 @@ No snippet could be extracted automatically — please read the source.
     :maxlength="4"
     @change="change"
     @finish="finish"
+></up-code-input>
+```
+
+#### 横线模式
+
+```vue
+<up-code-input
+    v-model="value2"
+    mode="line"
+    :maxlength="4"
+    :bold="true"
+></up-code-input>
+```
+
+#### 设置长度
+
+```vue
+<up-code-input
+    v-model="value3"
+    :maxlength="6"
+></up-code-input>
+```
+
+#### 设置间距
+
+```vue
+<up-code-input
+    v-model="value4"
+    mode="box"
+    :space="0"
+    :maxlength="4"
+></up-code-input>
+```
+
+#### 细边框
+
+```vue
+<up-code-input
+    v-model="value5"
+    mode="box"
+    :space="0"
+    :maxlength="4"
+    hairline
+></up-code-input>
+```
+
+#### 调整颜色
+
+```vue
+<up-code-input
+    v-model="value7"
+    mode="box"
+    :space="0"
+    :maxlength="4"
+    hairline
+    color="#f56c6c"
+    borderColor="#f56c6c"
+></up-code-input>
+```
+
+#### 点模式
+
+```vue
+<up-code-input
+    v-model="value8"
+    mode="box"
+    dot
+    :space="0"
+    :maxlength="4"
+    hairline
+></up-code-input>
+```
+
+#### 预置内容
+
+```vue
+<up-code-input
+    v-model="value9"
+    mode="box"
+    :space="0"
+    :maxlength="4"
+    hairline
+    fontSize="17"
 ></up-code-input>
 ```
 

@@ -31,8 +31,6 @@ import UltraUI
 
 <template #android>
 
-### 折叠面板
-
 ```kotlin
 import net.lingyun.ultraui.android.components.UPCollapse
 import net.lingyun.ultraui.android.components.UPCollapseProps
@@ -60,6 +58,8 @@ UPCollapse(
 
 <template #harmony>
 
+#### 折叠面板
+
 ```typescript
 import { UPCollapse, UPCollapseProps } from '@lingyun/ultra-ui-hos';
 
@@ -75,7 +75,7 @@ UPCollapse({ props: new UPCollapseProps({ modelValue: this.value, onValueChange:
 
 <template #flutter>
 
-### 手风琴模式
+#### 手风琴模式
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -99,7 +99,7 @@ UPCollapse(
 )
 ```
 
-### 移除下划线
+#### 移除下划线
 
 ```dart
 UPCollapse(
@@ -148,13 +148,73 @@ import { UPCollapse } from 'ultra-ui-rn';
 </UPCollapse>
 ```
 
+```tsx
+<UPCollapse value={['2']}>
+  <UPCollapseItem title="文档指南">
+    <Text style={s.content}>{DOCS}</Text>
+  </UPCollapseItem>
+  <UPCollapseItem disabled title="组件全面">
+    <Text style={s.content}>{COMPONENTS}</Text>
+  </UPCollapseItem>
+  <UPCollapseItem name="2" title="众多利器">
+    <Text style={s.content}>{TOOLS}</Text>
+  </UPCollapseItem>
+</UPCollapse>
+```
+
+```tsx
+<UPCollapse accordion>
+  <UPCollapseItem title="文档指南">
+    <Text style={s.content}>{DOCS}</Text>
+  </UPCollapseItem>
+  <UPCollapseItem title="组件全面">
+    <Text style={s.content}>{COMPONENTS}</Text>
+  </UPCollapseItem>
+  <UPCollapseItem title="众多利器">
+    <Text style={s.content}>{TOOLS}</Text>
+  </UPCollapseItem>
+</UPCollapse>
+```
+
+```tsx
+<UPCollapse accordion border={false}>
+  <UPCollapseItem title="文档指南">
+    <Text style={s.content}>{DOCS}</Text>
+  </UPCollapseItem>
+  <UPCollapseItem title="组件全面">
+    <Text style={s.content}>{COMPONENTS}</Text>
+  </UPCollapseItem>
+  <UPCollapseItem title="众多利器">
+    <Text style={s.content}>{TOOLS}</Text>
+  </UPCollapseItem>
+</UPCollapse>
+```
+
+```tsx
+<UPCollapse accordion>
+  <UPCollapseItem titleNode={<Text style={s.slotTitle}>文档指南</Text>}>
+    <Text style={s.content}>{DOCS}</Text>
+  </UPCollapseItem>
+  <UPCollapseItem iconNode={<UPIcon name="tags-fill" size={20} />} title="组件全面">
+    <Text style={s.content}>{COMPONENTS}</Text>
+  </UPCollapseItem>
+  <UPCollapseItem
+    icon="tags-fill"
+    rightIconNode={<Text style={s.slotTitle}>10</Text>}
+    title="众多利器"
+  >
+    <Text style={s.content}>{TOOLS}</Text>
+  </UPCollapseItem>
+</UPCollapse>
+```
+
 <small>示例来源 `ultra-ui-rn/example/pages/components/display/CollapseDemo.tsx`</small>
 
 </template>
 
 <template #taro>
 
-### 基础手风琴
+#### 基础手风琴
 
 accordion，同时只展开一项，受控 value
 
@@ -178,7 +238,7 @@ import { UPCollapse } from '@ultra-ui'
 </UPCollapse>
 ```
 
-### 多项同时展开
+#### 多项同时展开
 
 非手风琴，可同时展开多项，受控 value
 
@@ -196,7 +256,7 @@ import { UPCollapse } from '@ultra-ui'
 </UPCollapse>
 ```
 
-### 自定义内容
+#### 自定义内容
 
 children 支持任意节点，自定义时长
 
@@ -237,6 +297,48 @@ children 支持任意节点，自定义时长
 </up-collapse>
 ```
 
+```vue
+<up-collapse :value="['2']">
+    <up-collapse-item title="文档指南">
+        <text class="u-collapse-content">涵盖uniapp各个方面，给开发者方向指导和设计理念，让您茅塞顿开，一马平川</text>
+    </up-collapse-item>
+    <up-collapse-item disabled title="组件全面">
+        <text class="u-collapse-content">众多组件覆盖开发过程的各个需求，组件功能丰富，多端兼容。让您快速集成，开箱即用</text>
+    </up-collapse-item>
+    <up-collapse-item name="2" title="众多利器">
+        <text class="u-collapse-content">众多的贴心小工具，是您开发过程中召之即来的利器，让您飞镖在手，百步穿杨</text>
+    </up-collapse-item>
+</up-collapse>
+```
+
+```vue
+<up-collapse accordion>
+    <up-collapse-item title="文档指南">
+        <text class="u-collapse-content">涵盖uniapp各个方面，给开发者方向指导和设计理念，让您茅塞顿开，一马平川</text>
+    </up-collapse-item>
+    <up-collapse-item title="组件全面">
+        <text class="u-collapse-content">众多组件覆盖开发过程的各个需求，组件功能丰富，多端兼容。让您快速集成，开箱即用</text>
+    </up-collapse-item>
+    <up-collapse-item title="众多利器">
+        <text class="u-collapse-content">众多的贴心小工具，是您开发过程中召之即来的利器，让您飞镖在手，百步穿杨</text>
+    </up-collapse-item>
+</up-collapse>
+```
+
+```vue
+<up-collapse accordion :border="false">
+    <up-collapse-item title="文档指南">
+        <text class="u-collapse-content">涵盖uniapp各个方面，给开发者方向指导和设计理念，让您茅塞顿开，一马平川</text>
+    </up-collapse-item>
+    <up-collapse-item title="组件全面">
+        <text class="u-collapse-content">众多组件覆盖开发过程的各个需求，组件功能丰富，多端兼容。让您快速集成，开箱即用</text>
+    </up-collapse-item>
+    <up-collapse-item title="众多利器">
+        <text class="u-collapse-content">众多的贴心小工具，是您开发过程中召之即来的利器，让您飞镖在手，百步穿杨</text>
+    </up-collapse-item>
+</up-collapse>
+```
+
 <small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsB/collapse/collapse.uvue`</small>
 
 </template>
@@ -252,6 +354,48 @@ children 支持任意节点，自定义时长
         <text class="u-collapse-content">众多组件覆盖开发过程的各个需求，组件功能丰富，多端兼容。让您快速集成，开箱即用</text>
     </up-collapse-item>
     <up-collapse-item title="众多利器" name="Numerous tools" :showRight="false">
+        <text class="u-collapse-content">众多的贴心小工具，是您开发过程中召之即来的利器，让您飞镖在手，百步穿杨</text>
+    </up-collapse-item>
+</up-collapse>
+```
+
+```vue
+<up-collapse :value="['2']">
+    <up-collapse-item title="文档指南">
+        <text class="u-collapse-content">涵盖uniapp各个方面，给开发者方向指导和设计理念，让您茅塞顿开，一马平川</text>
+    </up-collapse-item>
+    <up-collapse-item disabled title="组件全面">
+        <text class="u-collapse-content">众多组件覆盖开发过程的各个需求，组件功能丰富，多端兼容。让您快速集成，开箱即用</text>
+    </up-collapse-item>
+    <up-collapse-item name="2" title="众多利器">
+        <text class="u-collapse-content">众多的贴心小工具，是您开发过程中召之即来的利器，让您飞镖在手，百步穿杨</text>
+    </up-collapse-item>
+</up-collapse>
+```
+
+```vue
+<up-collapse accordion>
+    <up-collapse-item title="文档指南">
+        <text class="u-collapse-content">涵盖uniapp各个方面，给开发者方向指导和设计理念，让您茅塞顿开，一马平川</text>
+    </up-collapse-item>
+    <up-collapse-item title="组件全面">
+        <text class="u-collapse-content">众多组件覆盖开发过程的各个需求，组件功能丰富，多端兼容。让您快速集成，开箱即用</text>
+    </up-collapse-item>
+    <up-collapse-item title="众多利器">
+        <text class="u-collapse-content">众多的贴心小工具，是您开发过程中召之即来的利器，让您飞镖在手，百步穿杨</text>
+    </up-collapse-item>
+</up-collapse>
+```
+
+```vue
+<up-collapse accordion :border="false">
+    <up-collapse-item title="文档指南">
+        <text class="u-collapse-content">涵盖uniapp各个方面，给开发者方向指导和设计理念，让您茅塞顿开，一马平川</text>
+    </up-collapse-item>
+    <up-collapse-item title="组件全面">
+        <text class="u-collapse-content">众多组件覆盖开发过程的各个需求，组件功能丰富，多端兼容。让您快速集成，开箱即用</text>
+    </up-collapse-item>
+    <up-collapse-item title="众多利器">
         <text class="u-collapse-content">众多的贴心小工具，是您开发过程中召之即来的利器，让您飞镖在手，百步穿杨</text>
     </up-collapse-item>
 </up-collapse>

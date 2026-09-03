@@ -18,6 +18,8 @@ Switch tabs to see the syntax for each platform. Every snippet is lifted verbati
 
 <template #flutter>
 
+#### 点击文字复制
+
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
 
@@ -26,6 +28,22 @@ UPCopy(
   content: 'uview-plus is great !',
   onSuccess: _recordSuccess,
   child: const Text('点击复制'),
+)
+```
+
+#### 点击按钮复制
+
+```dart
+UPCopy(
+  key: const ValueKey('copy-page-button'),
+  content: 'uview-plus is great !',
+  onSuccess: _recordSuccess,
+  child: const IgnorePointer(
+    child: UPButton(
+      type: 'primary',
+      text: '点击复制',
+    ),
+  ),
 )
 ```
 
@@ -47,7 +65,7 @@ No snippet could be extracted automatically — please read the source.
 
 <template #taro>
 
-### 基础用法
+#### 基础用法
 
 点击整块区域把 text 复制到剪贴板
 
@@ -59,7 +77,7 @@ import { UPCopy } from '@ultra-ui'
 </UPCopy>
 ```
 
-### 自定义图标
+#### 自定义图标
 
 size / color 控制复制图标
 
@@ -69,7 +87,7 @@ size / color 控制复制图标
 </UPCopy>
 ```
 
-### 隐藏图标
+#### 隐藏图标
 
 icon=false 只保留文案
 
@@ -91,6 +109,12 @@ icon=false 只保留文案
 </up-copy>
 ```
 
+```vue
+<up-copy content="uview-plus is great !">
+    <up-button type="primary">点击复制</up-button>
+</up-copy>
+```
+
 <small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/copy/copy.uvue`</small>
 
 </template>
@@ -100,6 +124,12 @@ icon=false 只保留文案
 ```vue
 <up-copy content="uview-plus is great !">
     <text>点击复制</text>
+</up-copy>
+```
+
+```vue
+<up-copy content="uview-plus is great !">
+    <up-button type="primary">点击复制</up-button>
 </up-copy>
 ```
 

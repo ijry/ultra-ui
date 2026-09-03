@@ -18,6 +18,8 @@ Switch tabs to see the syntax for each platform. Every snippet is lifted verbati
 
 <template #flutter>
 
+#### 带子菜单模式
+
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
 
@@ -34,6 +36,21 @@ UPFloatButton(
   ),
   onItemClick: (item, _) => setState(
     () => _menuMessage = '菜单点击：${item['key']}',
+  ),
+)
+```
+
+#### 自定义插槽
+
+```dart
+UPFloatButton(
+  isMenu: true,
+  right: '150px',
+  top: '30px',
+  listSlot: _customMenu(),
+  child: const UPIcon(
+    name: 'plus',
+    color: Colors.white,
   ),
 )
 ```
@@ -73,6 +90,36 @@ No snippet could be extracted automatically — please read the source.
 </up-float-button>
 ```
 
+```vue
+<up-float-button :isMenu="true" top="220px" @item-click="itemClick"
+ :list="[
+   {key: 'plus', name: 'plus', color: '#fff', backgroundColor: 'red'},
+   {key: 'order', name: 'order', color: '#fff', backgroundColor: 'green'}
+ ]">
+</up-float-button>
+```
+
+```vue
+<up-float-button top="''" bottom="250px" :isMenu="true">
+   <template #list>
+      <view style="display: flex ;justify-content: center;align-items: center;margin: 5px 0px;background-color: blueviolet;border-radius: 50%; width: 50px;height:50px;">
+           <up-icon
+               name="arrow-left"
+               color='#fff'
+               size="19"
+           ></up-icon>
+       </view>
+       <view style="display: flex ;justify-content: center;align-items: center;margin: 5px 0px;background-color: chocolate;border-radius: 50%; width: 50px;height:50px;">
+           <up-icon
+               name="arrow-left"
+               color='#fff'
+               size="19"
+           ></up-icon>
+       </view>
+   </template>
+</up-float-button>
+```
+
 <small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/floatButton/floatButton.uvue`</small>
 
 </template>
@@ -81,6 +128,36 @@ No snippet could be extracted automatically — please read the source.
 
 ```vue
 <up-float-button :isMenu="false" top="90px">
+</up-float-button>
+```
+
+```vue
+<up-float-button :isMenu="true" top="220px" @item-click="itemClick"
+ :list="[
+   {key: 'plus', name: 'plus', color: '#fff', backgroundColor: 'red'},
+   {key: 'order', name: 'order', color: '#fff', backgroundColor: 'green'}
+ ]">
+</up-float-button>
+```
+
+```vue
+<up-float-button top="''" bottom="250px" :isMenu="true">
+   <template #list>
+      <view style="display: flex ;justify-content: center;align-items: center;margin: 5px 0px;background-color: blueviolet;border-radius: 50%; width: 50px;height:50px;">
+           <up-icon
+               name="arrow-left"
+               color='#fff'
+               size="19"
+           ></up-icon>
+       </view>
+       <view style="display: flex ;justify-content: center;align-items: center;margin: 5px 0px;background-color: chocolate;border-radius: 50%; width: 50px;height:50px;">
+           <up-icon
+               name="arrow-left"
+               color='#fff'
+               size="19"
+           ></up-icon>
+       </view>
+   </template>
 </up-float-button>
 ```
 

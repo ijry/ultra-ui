@@ -18,8 +18,6 @@ Switch tabs to see the syntax for each platform. Every snippet is lifted verbati
 
 <template #android>
 
-### 通知
-
 ```kotlin
 import net.lingyun.ultraui.android.components.UPNotify
 import net.lingyun.ultraui.android.components.UPNotifyProps
@@ -39,6 +37,8 @@ UPNotify(
 </template>
 
 <template #harmony>
+
+#### 顶部通知
 
 ```typescript
 import { UPNotify, UPNotifyProps } from '@lingyun/ultra-ui-hos';
@@ -75,6 +75,8 @@ import { UPNotify } from 'ultra-ui-rn';
 </template>
 
 <template #taro>
+
+#### 组件式用法
 
 ```tsx
 import { UPNotify } from '@ultra-ui'

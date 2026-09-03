@@ -18,6 +18,8 @@ Switch tabs to see the syntax for each platform. Every snippet is lifted verbati
 
 <template #flutter>
 
+#### 左右联动
+
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
 
@@ -31,6 +33,29 @@ UPCateTab(
   tabBuilder: _followTabBuilder,
   onChange: (index) => setState(() {
     _followIndex = index;
+  }),
+)
+```
+
+#### 左右独立
+
+```dart
+UPCateTab(
+  key: const ValueKey('cate-tab-page-tab'),
+  mode: 'tab',
+  height: '320px',
+  tabList: _categories,
+  current: _tabIndex,
+  itemBuilder: _itemBuilder,
+  onChange: (index) => setState(() {
+    if (index != _tabIndex) _tabChanges += 1;
+    _tabIndex = index;
+  }),
+  onUpdateCurrent: (index) => setState(() {
+    _tabIndex = index;
+  }),
+  onUpdateModelValue: (index) => setState(() {
+    _tabIndex = index;
   }),
 )
 ```
@@ -53,7 +78,7 @@ No snippet could be extracted automatically — please read the source.
 
 <template #taro>
 
-### 基础两栏
+#### 基础两栏
 
 follow 模式：滚动右侧自动联动左侧
 
@@ -63,7 +88,7 @@ import { UPCateTab } from '@ultra-ui'
 <UPCateTab height='70vh' tabList={basicTabs} />
 ```
 
-### 带图标
+#### 带图标
 
 子项通过 icon 字段渲染缩略图
 

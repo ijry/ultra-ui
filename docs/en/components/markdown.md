@@ -18,12 +18,44 @@ Switch tabs to see the syntax for each platform. Every snippet is lifted verbati
 
 <template #flutter>
 
+#### 基础用法
+
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
 
 UPMarkdown(
   key: ValueKey('markdown-page-basic'),
   content: _basicContent,
+)
+```
+
+#### 带代码块行号
+
+```dart
+UPMarkdown(
+  key: ValueKey('markdown-page-line-number'),
+  content: _codeContent,
+  showLineNumber: true,
+)
+```
+
+#### 深色主题
+
+```dart
+UPMarkdown(
+  key: ValueKey('markdown-page-dark'),
+  content: _basicContent,
+  theme: 'dark',
+)
+```
+
+#### AI流式内容显示
+
+```dart
+UPMarkdown(
+  key: const ValueKey('markdown-page-streaming'),
+  content: _streamingContent,
+  showLineNumber: true,
 )
 ```
 
@@ -39,13 +71,25 @@ import { UPMarkdown } from 'ultra-ui-rn';
 <UPMarkdown content={basicContent} />
 ```
 
+```tsx
+<UPMarkdown content={codeContent} showLineNumber />
+```
+
+```tsx
+<UPMarkdown content={basicContent} theme="dark" />
+```
+
+```tsx
+<UPMarkdown content={streamingContent} showLineNumber />
+```
+
 <small>Snippet from `ultra-ui-rn/example/pages/components/advanced/MarkdownDemo.tsx`</small>
 
 </template>
 
 <template #taro>
 
-### 基础用法
+#### 基础用法
 
 标题、正文、行内标记与链接
 
@@ -55,7 +99,7 @@ import { UPMarkdown } from '@ultra-ui'
 <UPMarkdown content={basicMd} />
 ```
 
-### 列表与引用
+#### 列表与引用
 
 有序、无序、嵌套与引用块
 
@@ -63,7 +107,7 @@ import { UPMarkdown } from '@ultra-ui'
 <UPMarkdown content={listMd} />
 ```
 
-### 代码块
+#### 代码块
 
 围栏代码块保留缩进，可切换行号显示
 
@@ -71,7 +115,7 @@ import { UPMarkdown } from '@ultra-ui'
 <UPMarkdown content={codeMd} showLineNumber={showLineNumber} />
 ```
 
-### 表格
+#### 表格
 
 GFM 表格语法
 
@@ -79,7 +123,15 @@ GFM 表格语法
 <UPMarkdown content={tableMd} />
 ```
 
-### 文本可选
+#### 深色主题
+
+theme='dark' 时改写代码块、引用与链接配色
+
+```tsx
+<UPMarkdown content={codeMd} theme={dark ? 'dark' : 'light'} />
+```
+
+#### 文本可选
 
 selectable 允许长按选中
 
@@ -87,7 +139,7 @@ selectable 允许长按选中
 <UPMarkdown content='可以长按选中这段 **markdown** 文字。' selectable />
 ```
 
-### 空内容
+#### 空内容
 
 content 为空时不渲染任何节点
 
@@ -105,6 +157,18 @@ content 为空时不渲染任何节点
 <up-markdown :content="basicContent"></up-markdown>
 ```
 
+```vue
+<up-markdown :content="codeContent" :show-line-number="true"></up-markdown>
+```
+
+```vue
+<up-markdown :content="basicContent" theme="dark"></up-markdown>
+```
+
+```vue
+<up-markdown :content="streamingContent" :show-line-number="true"></up-markdown>
+```
+
 <small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/markdown/markdown.uvue`</small>
 
 </template>
@@ -113,6 +177,18 @@ content 为空时不渲染任何节点
 
 ```vue
 <up-markdown :content="basicContent"></up-markdown>
+```
+
+```vue
+<up-markdown :content="codeContent" :show-line-number="true"></up-markdown>
+```
+
+```vue
+<up-markdown :content="basicContent" theme="dark"></up-markdown>
+```
+
+```vue
+<up-markdown :content="streamingContent" :show-line-number="true"></up-markdown>
 ```
 
 <small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/markdown/markdown.uvue`</small>

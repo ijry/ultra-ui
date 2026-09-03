@@ -18,6 +18,8 @@ Switch tabs to see the syntax for each platform. Every snippet is lifted verbati
 
 <template #flutter>
 
+#### 基本使用
+
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
 
@@ -35,13 +37,63 @@ UPGoodsSku(
 )
 ```
 
+#### 自定义最大购买数量
+
+```dart
+UPGoodsSku(
+  key: const ValueKey('goods-sku-page-max-buy'),
+  goodsInfo: _goodsInfo,
+  skuTree: _skuTree,
+  skuList: _skuList,
+  maxBuy: 10,
+  onConfirm: _confirmSku,
+  trigger: const UPButton(
+    stop: false,
+    type: 'error',
+    text: '打开SKU弹窗(最大购买10件)',
+  ),
+)
+```
+
+#### 自定义确认按钮文字
+
+```dart
+UPGoodsSku(
+  key: const ValueKey('goods-sku-page-confirm-text'),
+  goodsInfo: _goodsInfo,
+  skuTree: _skuTree,
+  skuList: _skuList,
+  confirmText: '立即购买',
+  onConfirm: _confirmSku,
+  trigger: const UPButton(
+    stop: false,
+    type: 'warning',
+    text: '打开SKU弹窗',
+  ),
+)
+```
+
+#### 无弹窗页面模式
+
+```dart
+UPGoodsSku(
+  key: const ValueKey('goods-sku-page-inline'),
+  goodsInfo: _goodsInfo,
+  skuTree: _skuTree,
+  skuList: _skuList,
+  pageInline: true,
+  confirmText: '立即购买',
+  onConfirm: _confirmSku,
+)
+```
+
 <small>Snippet from `ultra-ui-flutter/example/lib/pages/components_d/goods_sku_page.dart`</small>
 
 </template>
 
 <template #reactnative>
 
-### 无弹窗页面模式
+#### 无弹窗页面模式
 
 ```tsx
 import { UPGoodsSku } from 'ultra-ui-rn';
@@ -62,7 +114,7 @@ import { UPGoodsSku } from 'ultra-ui-rn';
 
 <template #taro>
 
-### 基础用法
+#### 基础用法
 
 点击按钮弹出规格面板。绿色仅有 L、蓝色无 S、红色 L 零库存，可观察联动禁用
 
@@ -76,7 +128,7 @@ import { UPGoodsSku } from '@ultra-ui'
   triggerSlot={<UPButton type='primary' text='选择规格' />
 ```
 
-### 三个维度
+#### 三个维度
 
 仅三种组合存在，选择过程中大量选项会被禁用
 
@@ -89,7 +141,7 @@ import { UPGoodsSku } from '@ultra-ui'
   triggerSlot={<UPButton text='选择配置' />
 ```
 
-### 限制购买数量
+#### 限制购买数量
 
 maxBuy 与库存取较小值作为步进器上限
 
@@ -102,7 +154,7 @@ maxBuy 与库存取较小值作为步进器上限
   triggerSlot={<UPButton text='最多买 2 件' />
 ```
 
-### 页面内联
+#### 页面内联
 
 pageInline 直接铺在页面里，不走弹层
 
@@ -123,6 +175,8 @@ pageInline 直接铺在页面里，不走弹层
 
 <template #uniapp>
 
+#### 基本使用
+
 ```vue
 <up-goods-sku
     :goodsInfo="goodsInfo"
@@ -136,11 +190,59 @@ pageInline 直接铺在页面里，不走弹层
 </up-goods-sku>
 ```
 
+#### 自定义最大购买数量
+
+```vue
+<up-goods-sku
+    :goodsInfo="goodsInfo"
+    :skuTree="skuTree"
+    :skuList="skuList"
+    :maxBuy="10"
+    @confirm="confirmSku"
+>
+    <template #trigger>
+        <up-button :stop="false" type="error">打开SKU弹窗(最大购买10件)</up-button>
+    </template>
+</up-goods-sku>
+```
+
+#### 自定义确认按钮文字
+
+```vue
+<up-goods-sku
+    :goodsInfo="goodsInfo"
+    :skuTree="skuTree"
+    :skuList="skuList"
+    confirmText="立即购买"
+    @confirm="confirmSku"
+>
+    <template #trigger>
+        <up-button :stop="false" type="warning">打开SKU弹窗</up-button>
+    </template>
+</up-goods-sku>
+```
+
+#### 无弹窗页面模式
+
+```vue
+<up-goods-sku
+    :goodsInfo="goodsInfo"
+    :skuTree="skuTree"
+    :skuList="skuList"
+    :pageInline="true"
+    confirmText="立即购买"
+    @confirm="confirmSku"
+>
+</up-goods-sku>
+```
+
 <small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/goodsSku/goodsSku.uvue`</small>
 
 </template>
 
 <template #uniappx>
+
+#### 基本使用
 
 ```vue
 <up-goods-sku
@@ -152,6 +254,52 @@ pageInline 直接铺在页面里，不走弹层
     <template #trigger>
         <up-button :stop="false" type="primary">打开SKU弹窗</up-button>
     </template>
+</up-goods-sku>
+```
+
+#### 自定义最大购买数量
+
+```vue
+<up-goods-sku
+    :goodsInfo="goodsInfo"
+    :skuTree="skuTree"
+    :skuList="skuList"
+    :maxBuy="10"
+    @confirm="confirmSku"
+>
+    <template #trigger>
+        <up-button :stop="false" type="error">打开SKU弹窗(最大购买10件)</up-button>
+    </template>
+</up-goods-sku>
+```
+
+#### 自定义确认按钮文字
+
+```vue
+<up-goods-sku
+    :goodsInfo="goodsInfo"
+    :skuTree="skuTree"
+    :skuList="skuList"
+    confirmText="立即购买"
+    @confirm="confirmSku"
+>
+    <template #trigger>
+        <up-button :stop="false" type="warning">打开SKU弹窗</up-button>
+    </template>
+</up-goods-sku>
+```
+
+#### 无弹窗页面模式
+
+```vue
+<up-goods-sku
+    :goodsInfo="goodsInfo"
+    :skuTree="skuTree"
+    :skuList="skuList"
+    :pageInline="true"
+    confirmText="立即购买"
+    @confirm="confirmSku"
+>
 </up-goods-sku>
 ```
 

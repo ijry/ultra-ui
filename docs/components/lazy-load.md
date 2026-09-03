@@ -49,7 +49,7 @@ import { UPLazyLoad } from 'ultra-ui-rn';
 
 <template #taro>
 
-### 自定义占位色
+#### 自定义占位色
 
 placeholder 传颜色字符串
 

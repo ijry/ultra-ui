@@ -31,6 +31,8 @@ DemoSection("展开阅读") { UPReadMore(UPReadMoreProps(showHeight = 48)) { Bas
 
 <template #flutter>
 
+#### 基础使用
+
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
 
@@ -68,7 +70,7 @@ import { UPReadMore } from 'ultra-ui-rn';
 
 <template #taro>
 
-### 基础用法
+#### 基础用法
 
 内容超出 400px 时显示「展开阅读全文」
 
@@ -85,7 +87,7 @@ import { UPReadMore } from '@ultra-ui'
 </UPReadMore>
 ```
 
-### 保留切换按钮
+#### 保留切换按钮
 
 toggle 为 true，展开后仍可收起
 
@@ -95,7 +97,7 @@ toggle 为 true，展开后仍可收起
 </UPReadMore>
 ```
 
-### 自定义文案
+#### 自定义文案
 
 closeText / openText / color
 
@@ -111,7 +113,7 @@ closeText / openText / color
 </UPReadMore>
 ```
 
-### 短内容
+#### 短内容
 
 未超过 showHeight 时不显示按钮
 

@@ -18,6 +18,8 @@ generated: true
 
 <template #flutter>
 
+#### 基础签名示例
+
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
 
@@ -30,6 +32,21 @@ UPSignature(
   bgColor: bgColor,
   showToolbar: false,
   onConfirm: (payload) => _capture(1),
+)
+```
+
+#### 自定义颜色和工具栏示例
+
+```dart
+UPSignature(
+  key: const ValueKey('signature-page-custom'),
+  controller: _signature2,
+  width: 700,
+  height: 200,
+  color: '#ff0000',
+  thickness: 6,
+  bgColor: bgColor,
+  onConfirm: (payload) => _capture(2),
 )
 ```
 
@@ -53,13 +70,26 @@ import { UPSignature } from 'ultra-ui-rn';
 />
 ```
 
+```tsx
+<UPSignature
+  bgColor="#f5f5f5"
+  color="#ff0000"
+  height={200}
+  onConfirm={onConfirm2}
+  onError={onError2}
+  ref={signature2}
+  thickness={6}
+  width={700}
+/>
+```
+
 <small>示例来源 `ultra-ui-rn/example/pages/components/advanced/SignatureDemo.tsx`</small>
 
 </template>
 
 <template #taro>
 
-### 自定义笔画
+#### 自定义笔画
 
 color 与 thickness 设置初始笔形
 
@@ -74,7 +104,7 @@ import { UPSignature } from '@ultra-ui'
 />
 ```
 
-### 自定义背景
+#### 自定义背景
 
 bgColor 改变画布底色
 
@@ -87,7 +117,7 @@ bgColor 改变画布底色
 />
 ```
 
-### 隐藏工具栏
+#### 隐藏工具栏
 
 showToolbar 为 false，改由外部通过 ref 控制
 
@@ -100,7 +130,7 @@ showToolbar 为 false，改由外部通过 ref 控制
 />
 ```
 
-### 尺寸
+#### 尺寸
 
 width / height 控制画布大小
 
@@ -126,6 +156,19 @@ width / height 控制画布大小
 ></up-signature>
 ```
 
+```vue
+<up-signature 
+    ref="signature2" 
+    :width="700" 
+    :height="200" 
+    color="#ff0000"
+    thickness="6"
+    bg-color="#f5f5f5"
+    @confirm="onConfirm2"
+    @error="onError2"
+></up-signature>
+```
+
 <small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/signature/signature.uvue`</small>
 
 </template>
@@ -141,6 +184,19 @@ width / height 控制画布大小
     :show-toolbar="false"
     @confirm="onConfirm1"
     @error="onError1"
+></up-signature>
+```
+
+```vue
+<up-signature 
+    ref="signature2" 
+    :width="700" 
+    :height="200" 
+    color="#ff0000"
+    thickness="6"
+    bg-color="#f5f5f5"
+    @confirm="onConfirm2"
+    @error="onError2"
 ></up-signature>
 ```
 

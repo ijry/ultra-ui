@@ -18,6 +18,8 @@ Switch tabs to see the syntax for each platform. Every snippet is lifted verbati
 
 <template #flutter>
 
+#### 滚动模式（源码默认）
+
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
 
@@ -46,6 +48,23 @@ UPNovelReader(
 )
 ```
 
+#### 翻页模式 + 夜间主题
+
+```dart
+UPNovelReader(
+  key: const ValueKey('novel-reader-page-paged'),
+  chapters: _chapters,
+  mode: 'page',
+  settings: const <String, dynamic>{
+    'theme': 'night',
+    'fontSize': 20,
+  },
+  onProgressChange: (progress) =>
+      _note('进度 ${progress['pageIndex']}/'
+          '${progress['pageCount']}'),
+)
+```
+
 <small>Snippet from `ultra-ui-flutter/example/lib/pages/components_d/novel_reader_page.dart`</small>
 
 </template>
@@ -54,25 +73,11 @@ UPNovelReader(
 
 ```tsx
 import { UPNovelReader } from 'ultra-ui-rn';
-
-<UPNovelReader
-  bookId="demo-novel"
-  chapters={CHAPTERS}
-  currentChapter={currentChapter}
-  error={error}
-  loading={loading}
-  mode="scroll"
-  progress={progress}
-  settings={settings}
-  onChapterPrefetch={handleChapterPrefetch}
-  onChapterRequest={handleChapterRequest}
-  onProgressChange={handleProgressChange}
-  onRetry={handleRetry}
-  onSettingsChange={handleSettingsChange}
-/>
 ```
 
-<small>Snippet from `ultra-ui-rn/example/pages/components/advanced/NovelReaderDemo.tsx`</small>
+::: tip
+No snippet could be extracted automatically — please read the source.
+:::
 
 </template>
 

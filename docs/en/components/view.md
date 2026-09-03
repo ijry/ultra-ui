@@ -30,7 +30,7 @@ No snippet could be extracted automatically — please read the source.
 
 <template #reactnative>
 
-### 基础视图
+#### 基础视图
 
 ```tsx
 import { UPView } from 'ultra-ui-rn';
@@ -40,7 +40,7 @@ import { UPView } from 'ultra-ui-rn';
 </UPView>
 ```
 
-### flex-direction: row
+#### flex-direction: row
 
 ```tsx
 <UPView backgroundColor="#f3e5f5" flexDirection="row" padding={12} justifyContent="space-around">
@@ -50,7 +50,7 @@ import { UPView } from 'ultra-ui-rn';
 </UPView>
 ```
 
-### 居中 + 边框
+#### 居中 + 边框
 
 ```tsx
 <UPView backgroundColor="#e8f5e9" justifyContent="center" alignItems="center" height={100} borderColor="#4caf50">
@@ -58,7 +58,7 @@ import { UPView } from 'ultra-ui-rn';
 </UPView>
 ```
 
-### flex1 等分
+#### flex1 等分
 
 ```tsx
 <UPView flexDirection="row" height={60}>
@@ -73,7 +73,7 @@ import { UPView } from 'ultra-ui-rn';
 
 <template #taro>
 
-### 基础用法
+#### 基础用法
 
 通用视图容器，可承载任意子节点
 
@@ -85,7 +85,7 @@ import { UPView } from '@ultra-ui'
 </UPView>
 ```
 
-### 布局
+#### 布局
 
 flexDirection / justifyContent / alignItems
 
@@ -104,7 +104,7 @@ flexDirection / justifyContent / alignItems
 </UPView>
 ```
 
-### 尺寸与圆角
+#### 尺寸与圆角
 
 width / height / radius / margin
 
@@ -124,7 +124,7 @@ width / height / radius / margin
 </UPView>
 ```
 
-### 占满剩余空间
+#### 占满剩余空间
 
 flex1 撑满父容器剩余高度
 
@@ -135,7 +135,7 @@ flex1 撑满父容器剩余高度
   </UPView>
 ```
 
-### 可点击
+#### 可点击
 
 onClick 触发，带按压反馈
 
@@ -153,7 +153,7 @@ onClick 触发，带按压反馈
 </UPView>
 ```
 
-### 边框与内边距
+#### 边框与内边距
 
 borderColor / padding 简写
 

@@ -18,8 +18,6 @@ generated: true
 
 <template #android>
 
-### 下拉菜单
-
 ```kotlin
 import net.lingyun.ultraui.android.components.UPDropdown
 import net.lingyun.ultraui.android.components.UPDropdownProps
@@ -51,6 +49,8 @@ UPDropdown(
 </template>
 
 <template #harmony>
+
+#### 下拉菜单
 
 ```typescript
 import { UPDropdown, UPDropdownProps } from '@lingyun/ultra-ui-hos';
@@ -104,23 +104,96 @@ UPDropdown(
 
 ```tsx
 import { UPDropdown } from 'ultra-ui-rn';
+
+<UPDropdown
+  activeColor={activeColor}
+  borderBottom={borderBottom}
+  closeOnClickMask={mask}
+  ref={dropdown}
+>
+  <UPDropdownItem
+    onChange={change}
+    onUpdateModelValue={setValue1}
+    options={options1}
+    title="距离"
+    value={value1}
+  />
+  <UPDropdownItem
+    onChange={change}
+    onUpdateModelValue={setValue2}
+    options={options2}
+    title="温度"
+    value={value2}
+  />
+  <UPDropdownItem title="属性">
+    <View style={s.slotContent}>
+      <View style={s.itemBox}>
+        {list.map((item, index) => (
+          <Pressable
+            key={item.label}
+            onPress={() => tagClick(index)}
+            style={[s.item, item.active ? s.itemActive : null]}
+          >
+            <Text style={item.active ? s.itemTextActive : s.itemText}>{item.label}</Text>
+          </Pressable>
+        ))}
+      </View>
+      <UPButton onClick={() => dropdown.current?.close()} text="确定" type="primary" />
+    </View>
+  </UPDropdownItem>
+</UPDropdown>
 ```
 
-::: tip
-暂无自动提取到的示例代码，请参考源码。
-:::
+<small>示例来源 `ultra-ui-rn/example/pages/components/navigation/DropdownDemo.tsx`</small>
 
 </template>
 
 <template #taro>
 
+#### 基础用法
+
+options 渲染可选列表，custom children 渲染自定义面板
+
 ```tsx
 import { UPDropdown } from '@ultra-ui'
+
+<UPDropdown closeOnClickMask borderBottom>
+  <UPDropdownItem
+    title='综合'
+    options={SORT_OPTIONS}
+    value={sort}
+    onChange={(value) => setSort(String(value))}
+  />
+  <UPDropdownItem
+    title='分类'
+    options={[
+      { label: '全部', value: 'all' },
+      { label: '数码', value: 'digital' },
+      { label: '服饰', value: 'clothes' },
+      { label: '食品', value: 'food' },
+    ]}
+    value={category}
+    onChange={(value) => setCategory(String(value))}
+  />
+  <UPDropdownItem title='筛选'>
+    <View className='dropdown-demo__filter'>
+      <View
+        className={`dropdown-demo__chip${filterOn ? ' dropdown-demo__chip--on' : ''}`}
+        hoverClass='up-hover'
+        onClick={() => setFilterOn((prev) => !prev)}
+      >
+        {filterOn ? '仅看有货' : '仅看有货'}
+      </View>
+      <View className='dropdown-demo__hint'>
+        当前筛选：{filterOn ? '仅看有货' : '全部商品'}
+      </View>
+    </View>
+  </UPDropdownItem>
+  <UPDropdownItem title='禁用' disabled options={SORT_OPTIONS} />
+</UPDropdown>
 ```
 
-::: tip
-暂无自动提取到的示例代码，请参考源码。
-:::
+<small>示例来源 `ultra-ui-taro/src/pages/components/dropdown/index.tsx`</small>
 
 </template>
 

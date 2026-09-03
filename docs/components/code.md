@@ -31,7 +31,7 @@ import UltraUI
 
 <template #flutter>
 
-### 基础功能
+#### 基础功能
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -46,21 +46,7 @@ UPCode(
 )
 ```
 
-### 保持倒计时(开始后，左上角返退出此页面再进入，会发现倒计时还在继续)
-
-```dart
-UPCode(
-  controller: _keepController,
-  keepRunning: true,
-  uniqueKey: 'code-page-keep',
-  changeText: '倒计时XS',
-  onChange: (text) => _setStateSafely(() => _tips1 = text),
-  onStart: () => _setStateSafely(() => _disabled2 = true),
-  onEnd: () => _setStateSafely(() => _disabled2 = false),
-)
-```
-
-### 文本样式
+#### 文本样式
 
 ```dart
 UPCode(
@@ -77,6 +63,8 @@ UPCode(
 </template>
 
 <template #reactnative>
+
+#### 文本样式
 
 ```tsx
 import { UPCode } from 'ultra-ui-rn';
@@ -96,7 +84,7 @@ import { UPCode } from 'ultra-ui-rn';
 
 <template #taro>
 
-### 重置（reset）
+#### 重置（reset）
 
 通过 ref.reset() 立即结束倒计时并回到 endText
 
@@ -112,7 +100,7 @@ import { UPCode } from '@ultra-ui'
 
 <template #uniapp>
 
-### 基础功能
+#### 基础功能
 
 ```vue
 <up-code
@@ -125,20 +113,7 @@ import { UPCode } from '@ultra-ui'
 ></up-code>
 ```
 
-### 保持倒计时(开始后，左上角返退出此页面再进入，会发现倒计时还在继续)
-
-```vue
-<up-code
-    ref="uCode1"
-    @change="codeChange1"
-    keep-running
-    change-text="倒计时XS"
-    @start="disabled2 = true"
-    @end="disabled2 = false"
-></up-code>
-```
-
-### 文本样式
+#### 文本样式
 
 ```vue
 <up-code
@@ -155,7 +130,7 @@ import { UPCode } from '@ultra-ui'
 
 <template #uniappx>
 
-### 基础功能
+#### 基础功能
 
 ```vue
 <up-code
@@ -168,20 +143,7 @@ import { UPCode } from '@ultra-ui'
 ></up-code>
 ```
 
-### 保持倒计时(开始后，左上角返退出此页面再进入，会发现倒计时还在继续)
-
-```vue
-<up-code
-    ref="uCode1"
-    @change="codeChange1"
-    keep-running
-    change-text="倒计时XS"
-    @start="disabled2 = true"
-    @end="disabled2 = false"
-></up-code>
-```
-
-### 文本样式
+#### 文本样式
 
 ```vue
 <up-code

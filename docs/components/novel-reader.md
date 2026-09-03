@@ -18,6 +18,8 @@ generated: true
 
 <template #flutter>
 
+#### 滚动模式（源码默认）
+
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
 
@@ -46,6 +48,23 @@ UPNovelReader(
 )
 ```
 
+#### 翻页模式 + 夜间主题
+
+```dart
+UPNovelReader(
+  key: const ValueKey('novel-reader-page-paged'),
+  chapters: _chapters,
+  mode: 'page',
+  settings: const <String, dynamic>{
+    'theme': 'night',
+    'fontSize': 20,
+  },
+  onProgressChange: (progress) =>
+      _note('进度 ${progress['pageIndex']}/'
+          '${progress['pageCount']}'),
+)
+```
+
 <small>示例来源 `ultra-ui-flutter/example/lib/pages/components_d/novel_reader_page.dart`</small>
 
 </template>
@@ -54,25 +73,11 @@ UPNovelReader(
 
 ```tsx
 import { UPNovelReader } from 'ultra-ui-rn';
-
-<UPNovelReader
-  bookId="demo-novel"
-  chapters={CHAPTERS}
-  currentChapter={currentChapter}
-  error={error}
-  loading={loading}
-  mode="scroll"
-  progress={progress}
-  settings={settings}
-  onChapterPrefetch={handleChapterPrefetch}
-  onChapterRequest={handleChapterRequest}
-  onProgressChange={handleProgressChange}
-  onRetry={handleRetry}
-  onSettingsChange={handleSettingsChange}
-/>
 ```
 
-<small>示例来源 `ultra-ui-rn/example/pages/components/advanced/NovelReaderDemo.tsx`</small>
+::: tip
+暂无自动提取到的示例代码，请参考源码。
+:::
 
 </template>
 

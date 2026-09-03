@@ -18,6 +18,8 @@ generated: true
 
 <template #flutter>
 
+#### 基础示例
+
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
 
@@ -45,7 +47,7 @@ import { UPPoster } from 'ultra-ui-rn';
 
 <template #taro>
 
-### 基础用法
+#### 基础用法
 
 view 色块 + text 多行截断 + qrcode 二维码
 
@@ -55,7 +57,7 @@ import { UPPoster } from '@ultra-ui'
 <UPPoster ref={basicRef} json={basicJson} />
 ```
 
-### 渐变与圆角
+#### 渐变与圆角
 
 linear-gradient 背景、圆角卡片、圆角图片裁剪
 

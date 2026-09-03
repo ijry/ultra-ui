@@ -44,10 +44,18 @@ DemoSection("骨架屏") { UPSkeleton(UPSkeletonProps(rows = 3, avatar = true))
 
 <template #harmony>
 
+#### 基础骨架
+
 ```typescript
 import { UPSkeleton, UPSkeletonProps } from '@lingyun/ultra-ui-hos';
 
 UPSkeleton({ props: new UPSkeletonProps({ rows: 3, title: true }) })
+```
+
+#### 头像骨架
+
+```typescript
+UPSkeleton({ props: new UPSkeletonProps({ avatar: true, rows: 4, titleWidth: '55%', rowWidth: ['100%', '92%', '80%', '64%'] }) })
 ```
 
 <small>Snippet from `ultra-ui-hos/sample/entry/src/main/ets/demos/SkeletonDemo.ets`</small>
@@ -62,13 +70,66 @@ import 'package:ultra_ui/ultra_ui.dart';
 UPSkeleton(rows: 3, title: true, loading: true)
 ```
 
+```dart
+UPSkeleton(rows: 2, title: true, loading: true)
+```
+
+```dart
+UPSkeleton(
+  rows: 2,
+  title: true,
+  rowsWidth: <dynamic>['100%', '35%'],
+  loading: true,
+)
+```
+
+```dart
+UPSkeleton(
+  rows: 3,
+  title: true,
+  rowsWidth: <dynamic>['100%', '100%', '100%'],
+  rowsHeight: <dynamic>['18px', '18px', '80px'],
+  loading: true,
+)
+```
+
+```dart
+UPSkeleton(
+  animate: _animate,
+  rows: 3,
+  title: true,
+  loading: true,
+)
+```
+
+```dart
+UPSkeleton(
+  animate: _animate,
+  rows: 3,
+  title: true,
+  loading: true,
+  avatar: true,
+)
+```
+
+```dart
+UPSkeleton(
+  rows: 2,
+  title: true,
+  loading: !_loading,
+  avatar: true,
+  rowsHeight: 14,
+  child: _contentSlot(),
+)
+```
+
 <small>Snippet from `ultra-ui-flutter/example/lib/pages/components_c/skeleton_page.dart`</small>
 
 </template>
 
 <template #reactnative>
 
-### 基础使用
+#### 基础使用
 
 ```tsx
 import { UPSkeleton } from 'ultra-ui-rn';
@@ -76,19 +137,19 @@ import { UPSkeleton } from 'ultra-ui-rn';
 <UPSkeleton loading rows="3" title />
 ```
 
-### 自定义段落行数
+#### 自定义段落行数
 
 ```tsx
 <UPSkeleton loading rows="2" title />
 ```
 
-### 设置段落宽度
+#### 设置段落宽度
 
 ```tsx
 <UPSkeleton loading rows="2" rowsWidth={['100%', '35%']} title />
 ```
 
-### 设置段落高度
+#### 设置段落高度
 
 ```tsx
 <UPSkeleton
@@ -100,13 +161,46 @@ import { UPSkeleton } from 'ultra-ui-rn';
 />
 ```
 
+#### 是否开启动画
+
+```tsx
+<UPSkeleton animate={switch1} loading rows="3" title />
+```
+
+#### 展示头像
+
+```tsx
+<UPSkeleton animate={switch1} avatar loading rows="3" title />
+```
+
+#### 切换状态
+
+```tsx
+<UPSkeleton avatar loading={switch2} rows="2" rowsHeight="14" title>
+  <View>
+    <View style={s.slot}>
+      <Image source={{ uri: LOGO }} style={s.slotImage} />
+      <View style={s.slotContent}>
+        <UPText size="16" text="利剑出鞘,一统江湖" type="main" />
+        <UPText
+          customStyle={s.slotDesc}
+          size="14"
+          text="众多组件覆盖开发过程的各个需求，组件功能丰富，多端兼容。让您快速集成，开箱即用"
+          type="tips"
+        />
+      </View>
+    </View>
+  </View>
+</UPSkeleton>
+```
+
 <small>Snippet from `ultra-ui-rn/example/pages/components/display/SkeletonDemo.tsx`</small>
 
 </template>
 
 <template #taro>
 
-### 基础用法
+#### 基础用法
 
 loading=true 显示骨架，false 显示实际内容
 
@@ -126,7 +220,7 @@ import { UPSkeleton } from '@ultra-ui'
 </UPSkeleton>
 ```
 
-### 显示头像
+#### 显示头像
 
 avatar / avatarShape / avatarSize
 
@@ -134,7 +228,7 @@ avatar / avatarShape / avatarSize
 <UPSkeleton loading avatar avatarShape='circle' title rows={3} animate={animate} />
 ```
 
-### 显示标题
+#### 显示标题
 
 title / titleWidth / titleHeight
 
@@ -142,7 +236,7 @@ title / titleWidth / titleHeight
 <UPSkeleton loading title titleWidth='50%' titleHeight={20} rows={3} animate={animate} />
 ```
 
-### 自定义行数
+#### 自定义行数
 
 rows / rowsWidth（数组逐行）/ rowsHeight
 
@@ -150,7 +244,7 @@ rows / rowsWidth（数组逐行）/ rowsHeight
 <UPSkeleton loading rows={5} animate={animate} />
 ```
 
-### 微光动画
+#### 微光动画
 
 animate 控制扫描高光效果
 
@@ -164,7 +258,7 @@ animate 控制扫描高光效果
 
 <template #uniapp>
 
-### 基础使用
+#### 基础使用
 
 ```vue
 <up-skeleton
@@ -174,7 +268,7 @@ animate 控制扫描高光效果
 ></up-skeleton>
 ```
 
-### 自定义段落行数
+#### 自定义段落行数
 
 ```vue
 <up-skeleton
@@ -184,7 +278,7 @@ animate 控制扫描高光效果
 ></up-skeleton>
 ```
 
-### 设置段落宽度
+#### 设置段落宽度
 
 ```vue
 <up-skeleton
@@ -195,7 +289,7 @@ animate 控制扫描高光效果
 ></up-skeleton>
 ```
 
-### 设置段落高度
+#### 设置段落高度
 
 ```vue
 <up-skeleton
@@ -207,7 +301,7 @@ animate 控制扫描高光效果
 ></up-skeleton>
 ```
 
-### 是否开启动画
+#### 是否开启动画
 
 ```vue
 <up-skeleton
@@ -218,7 +312,7 @@ animate 控制扫描高光效果
 ></up-skeleton>
 ```
 
-### 展示头像
+#### 展示头像
 
 ```vue
 <up-skeleton
@@ -236,7 +330,7 @@ animate 控制扫描高光效果
 
 <template #uniappx>
 
-### 基础使用
+#### 基础使用
 
 ```vue
 <up-skeleton
@@ -246,7 +340,7 @@ animate 控制扫描高光效果
 ></up-skeleton>
 ```
 
-### 自定义段落行数
+#### 自定义段落行数
 
 ```vue
 <up-skeleton
@@ -256,7 +350,7 @@ animate 控制扫描高光效果
 ></up-skeleton>
 ```
 
-### 设置段落宽度
+#### 设置段落宽度
 
 ```vue
 <up-skeleton
@@ -267,7 +361,7 @@ animate 控制扫描高光效果
 ></up-skeleton>
 ```
 
-### 设置段落高度
+#### 设置段落高度
 
 ```vue
 <up-skeleton
@@ -279,7 +373,7 @@ animate 控制扫描高光效果
 ></up-skeleton>
 ```
 
-### 是否开启动画
+#### 是否开启动画
 
 ```vue
 <up-skeleton
@@ -290,7 +384,7 @@ animate 控制扫描高光效果
 ></up-skeleton>
 ```
 
-### 展示头像
+#### 展示头像
 
 ```vue
 <up-skeleton

@@ -31,6 +31,8 @@ DemoSection("分页") { UPPagination(UPPaginationProps(total = 42))
 
 <template #flutter>
 
+#### 基础
+
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
 
@@ -46,13 +48,45 @@ UPPagination(
 )
 ```
 
+#### 上一页下一页文案
+
+```dart
+UPPagination(
+  key: const ValueKey('pagination-page-text'),
+  prevText: '上一页',
+  nextText: '下一页',
+  currentPage: _currentPage,
+  pageSize: _pageSize,
+  total: _total,
+  pageSizes: _pageSizes,
+  layout: 'prev, total, next',
+  onCurrentChange: _handleCurrentChange,
+  onSizeChange: _handleSizeChange,
+)
+```
+
+#### 显示分页切换
+
+```dart
+UPPagination(
+  key: const ValueKey('pagination-page-pager'),
+  currentPage: _currentPage,
+  pageSize: _pageSize,
+  total: _total,
+  pageSizes: _pageSizes,
+  layout: 'prev, pager, next',
+  onCurrentChange: _handleCurrentChange,
+  onSizeChange: _handleSizeChange,
+)
+```
+
 <small>Snippet from `ultra-ui-flutter/example/lib/pages/components_d/pagination_page.dart`</small>
 
 </template>
 
 <template #reactnative>
 
-### 基础
+#### 基础
 
 ```tsx
 import { UPPagination } from 'ultra-ui-rn';
@@ -68,7 +102,7 @@ import { UPPagination } from 'ultra-ui-rn';
 />
 ```
 
-### 上一页下一页文案
+#### 上一页下一页文案
 
 ```tsx
 <UPPagination
@@ -84,7 +118,7 @@ import { UPPagination } from 'ultra-ui-rn';
 />
 ```
 
-### 显示分页切换
+#### 显示分页切换
 
 ```tsx
 <UPPagination
@@ -104,7 +138,7 @@ import { UPPagination } from 'ultra-ui-rn';
 
 <template #taro>
 
-### 基础用法
+#### 基础用法
 
 total / pageSize / current 受控
 
@@ -119,7 +153,7 @@ import { UPPagination } from '@ultra-ui'
 />
 ```
 
-### 图标箭头
+#### 图标箭头
 
 icon 开启 prev/next 箭头
 
@@ -133,7 +167,7 @@ icon 开启 prev/next 箭头
 />
 ```
 
-### 禁用
+#### 禁用
 
 disabled 整体禁止交互
 
@@ -147,6 +181,8 @@ disabled 整体禁止交互
 
 <template #uniapp>
 
+#### 基础
+
 ```vue
 <up-pagination
     :current-page="currentPage"
@@ -159,11 +195,43 @@ disabled 整体禁止交互
   />
 ```
 
+#### 上一页下一页文案
+
+```vue
+<up-pagination
+    prevText="上一页"
+    nextText="下一页"
+    :current-page="currentPage"
+    :page-size="pageSize"
+    :total="total"
+    :page-sizes="pageSizes"
+    layout="prev, total, next"
+    @current-change="handleCurrentChange"
+    @size-change="handleSizeChange"
+  />
+```
+
+#### 显示分页切换
+
+```vue
+<up-pagination
+    :current-page="currentPage"
+    :page-size="pageSize"
+    :total="total"
+    :page-sizes="pageSizes"
+    layout="prev, pager, next"
+    @current-change="handleCurrentChange"
+    @size-change="handleSizeChange"
+  />
+```
+
 <small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/pagination/pagination.uvue`</small>
 
 </template>
 
 <template #uniappx>
+
+#### 基础
 
 ```vue
 <up-pagination
@@ -172,6 +240,36 @@ disabled 整体禁止交互
     :total="total"
     :page-sizes="pageSizes"
     layout="prev, total, next"
+    @current-change="handleCurrentChange"
+    @size-change="handleSizeChange"
+  />
+```
+
+#### 上一页下一页文案
+
+```vue
+<up-pagination
+    prevText="上一页"
+    nextText="下一页"
+    :current-page="currentPage"
+    :page-size="pageSize"
+    :total="total"
+    :page-sizes="pageSizes"
+    layout="prev, total, next"
+    @current-change="handleCurrentChange"
+    @size-change="handleSizeChange"
+  />
+```
+
+#### 显示分页切换
+
+```vue
+<up-pagination
+    :current-page="currentPage"
+    :page-size="pageSize"
+    :total="total"
+    :page-sizes="pageSizes"
+    layout="prev, pager, next"
     @current-change="handleCurrentChange"
     @size-change="handleSizeChange"
   />

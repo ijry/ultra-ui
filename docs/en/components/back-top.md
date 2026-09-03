@@ -31,8 +31,6 @@ No snippet could be extracted automatically — please read the source.
 
 <template #android>
 
-### 返回顶部
-
 ```kotlin
 import net.lingyun.ultraui.android.components.UPBackTop
 import net.lingyun.ultraui.android.components.UPBackTopProps
@@ -49,6 +47,8 @@ UPBackTop(
 
 <template #harmony>
 
+#### 返回顶部
+
 ```typescript
 import { UPBackTop, UPBackTopProps } from '@lingyun/ultra-ui-hos';
 
@@ -60,6 +60,8 @@ UPBackTop({ props: new UPBackTopProps({ scrollTop: this.scrollTop, top: 400, bot
 </template>
 
 <template #flutter>
+
+#### 自定义backTop(滚动页面即可在右下角看到图标)
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -99,6 +101,10 @@ No snippet could be extracted automatically — please read the source.
 
 <template #taro>
 
+#### 滚动内容
+
+本页使用页面原生滚动，右下角浮动返回顶部按钮
+
 ```tsx
 import { UPBackTop } from '@ultra-ui'
 
@@ -111,7 +117,7 @@ import { UPBackTop } from '@ultra-ui'
 
 <template #uniapp>
 
-### 自定义backTop(滚动页面即可在右下角看到图标)
+#### 自定义backTop(滚动页面即可在右下角看到图标)
 
 ```vue
 <up-back-top
@@ -133,7 +139,7 @@ import { UPBackTop } from '@ultra-ui'
 
 <template #uniappx>
 
-### 自定义backTop(滚动页面即可在右下角看到图标)
+#### 自定义backTop(滚动页面即可在右下角看到图标)
 
 ```vue
 <up-back-top

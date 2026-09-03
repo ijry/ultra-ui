@@ -31,8 +31,6 @@ No snippet could be extracted automatically — please read the source.
 
 <template #android>
 
-### 线性进度
-
 ```kotlin
 import net.lingyun.ultraui.android.components.UPLineProgress
 
@@ -49,6 +47,18 @@ UPLineProgress(percentage = percentage, showText = true, height = 18)
 import { UPLineProgress, UPLineProgressProps } from '@lingyun/ultra-ui-hos';
 
 UPLineProgress({ props: new UPLineProgressProps({ percentage: 20 }) })
+```
+
+```typescript
+UPLineProgress({ props: new UPLineProgressProps({ percentage: 55, activeColor: 'success', height: 14 }) })
+```
+
+```typescript
+UPLineProgress({ props: new UPLineProgressProps({ percentage: 85, activeColor: 'warning', striped: true }) })
+```
+
+```typescript
+UPLineProgress({ props: new UPLineProgressProps({ percentage: 100, activeColor: 'error', showText: false }) })
 ```
 
 <small>Snippet from `ultra-ui-hos/sample/entry/src/main/ets/demos/LineProgressDemo.ets`</small>
@@ -69,10 +79,74 @@ No snippet could be extracted automatically — please read the source.
 
 <template #reactnative>
 
+#### 默认配置
+
 ```tsx
 import { UPLineProgress } from 'ultra-ui-rn';
 
 <UPLineProgress />
+```
+
+#### 基础功能
+
+```tsx
+<UPLineProgress percentage={percentage1} />
+```
+
+#### 不显示百分比
+
+```tsx
+<UPLineProgress percentage={40} showText={false} />
+```
+
+#### 从右往左
+
+```tsx
+<UPLineProgress fromRight percentage={40} showText={false} />
+```
+
+#### 自定义高度
+
+```tsx
+<UPLineProgress height="8" percentage={50} showText={false} />
+```
+
+#### 自定义颜色
+
+```tsx
+<UPLineProgress
+  activeColor="#3c9cff"
+  height="8"
+  inactiveColor="#f3f4f6"
+  percentage={60}
+  showText={false}
+/>
+```
+
+#### 自定义样式
+
+```tsx
+<UPLineProgress
+  activeColor="#3c9cff"
+  height="8"
+  inactiveColor="#f3f4f6"
+  percentage={70}
+  showText={false}
+>
+  <Text style={s.percentageSlot}>70%</Text>
+</UPLineProgress>
+```
+
+#### 手动加减
+
+```tsx
+<UPLineProgress
+  activeColor="#3c9cff"
+  height="8"
+  inactiveColor="#f3f4f6"
+  percentage={percentage6}
+  showText={false}
+/>
 ```
 
 <small>Snippet from `ultra-ui-rn/example/pages/components/display/LineProgressDemo.tsx`</small>
@@ -81,7 +155,7 @@ import { UPLineProgress } from 'ultra-ui-rn';
 
 <template #taro>
 
-### 基础用法
+#### 基础用法
 
 percentage 控制进度，默认显示在右侧外部
 
@@ -91,7 +165,7 @@ import { UPLineProgress } from '@ultra-ui'
 <UPLineProgress percentage={30} customClass='line-progress-demo__item' />
 ```
 
-### 文字内显
+#### 文字内显
 
 textInside，百分比文字显示在进度条内部
 
@@ -99,7 +173,7 @@ textInside，百分比文字显示在进度条内部
 <UPLineProgress percentage={45} textInside customClass='line-progress-demo__item' />
 ```
 
-### 圆角与斑马纹
+#### 圆角与斑马纹
 
 round 胶囊形，striped 动态条纹
 
@@ -107,7 +181,7 @@ round 胶囊形，striped 动态条纹
 <UPLineProgress percentage={70} round striped customClass='line-progress-demo__item' />
 ```
 
-### 自定义高度
+#### 自定义高度
 
 height
 
@@ -115,7 +189,7 @@ height
 <UPLineProgress percentage={40} height={24} customClass='line-progress-demo__item' />
 ```
 
-### 受控动画
+#### 受控动画
 
 定时器驱动 percentage 自动增长
 
@@ -134,8 +208,71 @@ height
 
 <template #uniapp>
 
+#### 基础功能
+
 ```vue
 <up-line-progress :percentage="percentage1">
+</up-line-progress>
+```
+
+#### 不显示百分比
+
+```vue
+<up-line-progress
+    :showText="false"
+    :percentage="percentage2"
+>
+</up-line-progress>
+```
+
+#### 自定义高度
+
+```vue
+<up-line-progress
+    height="8"
+    :showText="false"
+    :percentage="percentage3"
+>
+</up-line-progress>
+```
+
+#### 自定义颜色
+
+```vue
+<up-line-progress
+    height="8"
+    :showText="false"
+    :percentage="percentage4"
+    activeColor="#3c9cff"
+    inactiveColor="#f3f4f6"
+>
+</up-line-progress>
+```
+
+#### 自定义样式(不支持安卓环境的nvue)
+
+```vue
+<up-line-progress
+    height="8"
+    :showText="false"
+    :percentage="percentage5"
+    activeColor="#3c9cff"
+    inactiveColor="#f3f4f6"
+>
+    <text class="u-percentage-slot">{{percentage4}}%</text>
+</up-line-progress>
+```
+
+#### 手动加减
+
+```vue
+<up-line-progress
+    height="8"
+    :showText="false"
+    :percentage="percentage6"
+    activeColor="#3c9cff"
+    inactiveColor="#f3f4f6"
+>
 </up-line-progress>
 ```
 
@@ -145,8 +282,71 @@ height
 
 <template #uniappx>
 
+#### 基础功能
+
 ```vue
 <up-line-progress :percentage="percentage1">
+</up-line-progress>
+```
+
+#### 不显示百分比
+
+```vue
+<up-line-progress
+    :showText="false"
+    :percentage="percentage2"
+>
+</up-line-progress>
+```
+
+#### 自定义高度
+
+```vue
+<up-line-progress
+    height="8"
+    :showText="false"
+    :percentage="percentage3"
+>
+</up-line-progress>
+```
+
+#### 自定义颜色
+
+```vue
+<up-line-progress
+    height="8"
+    :showText="false"
+    :percentage="percentage4"
+    activeColor="#3c9cff"
+    inactiveColor="#f3f4f6"
+>
+</up-line-progress>
+```
+
+#### 自定义样式(不支持安卓环境的nvue)
+
+```vue
+<up-line-progress
+    height="8"
+    :showText="false"
+    :percentage="percentage5"
+    activeColor="#3c9cff"
+    inactiveColor="#f3f4f6"
+>
+    <text class="u-percentage-slot">{{percentage4}}%</text>
+</up-line-progress>
+```
+
+#### 手动加减
+
+```vue
+<up-line-progress
+    height="8"
+    :showText="false"
+    :percentage="percentage6"
+    activeColor="#3c9cff"
+    inactiveColor="#f3f4f6"
+>
 </up-line-progress>
 ```
 

@@ -44,7 +44,7 @@ DemoSection("倒计时") { UPCountDown(UPCountDownProps(time = 61000, autoStart 
 
 <template #flutter>
 
-### 基础用法
+#### 基础用法
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -58,7 +58,7 @@ UPCountDown(
 )
 ```
 
-### 自定义格式
+#### 自定义格式
 
 ```dart
 UPCountDown(
@@ -70,7 +70,7 @@ UPCountDown(
 )
 ```
 
-### 毫秒级渲染
+#### 毫秒级渲染
 
 ```dart
 const UPCountDown(
@@ -81,7 +81,7 @@ const UPCountDown(
 )
 ```
 
-### 自定义样式
+#### 自定义样式
 
 ```dart
 UPCountDown(
@@ -93,7 +93,7 @@ UPCountDown(
 )
 ```
 
-### 手动控制
+#### 手动控制
 
 ```dart
 UPCountDown(
@@ -111,7 +111,7 @@ UPCountDown(
 
 <template #reactnative>
 
-### 自定义格式
+#### 自定义格式
 
 ```tsx
 import { UPCountDown } from 'ultra-ui-rn';
@@ -130,13 +130,13 @@ import { UPCountDown } from 'ultra-ui-rn';
 </UPCountDown>
 ```
 
-### 毫秒级渲染
+#### 毫秒级渲染
 
 ```tsx
 <UPCountDown autoStart format="HH:mm:ss:SSS" millisecond time={TIME} />
 ```
 
-### 自定义样式
+#### 自定义样式
 
 ```tsx
 <UPCountDown autoStart format="HH:mm:ss" millisecond time={TIME}>
@@ -160,13 +160,25 @@ import { UPCountDown } from 'ultra-ui-rn';
 </UPCountDown>
 ```
 
+#### 手动控制
+
+```tsx
+<UPCountDown
+  autoStart={false}
+  format="ss:SSS"
+  millisecond
+  ref={countDown}
+  time={3 * 1000}
+/>
+```
+
 <small>示例来源 `ultra-ui-rn/example/pages/components/display/CountDownDemo.tsx`</small>
 
 </template>
 
 <template #taro>
 
-### 基础用法
+#### 基础用法
 
 time 设置总时长，autoStart 自动开始
 
@@ -176,7 +188,7 @@ import { UPCountDown } from '@ultra-ui'
 <UPCountDown time={60 * 60 * 1000} format='HH:mm:ss' />
 ```
 
-### 显示毫秒
+#### 显示毫秒
 
 millisecond 开启毫秒级刷新
 
@@ -184,7 +196,7 @@ millisecond 开启毫秒级刷新
 <UPCountDown time={30 * 1000} format='ss:SSS' millisecond />
 ```
 
-### 命令式控制
+#### 命令式控制
 
 通过 ref 调用 start / pause / reset
 
@@ -198,7 +210,7 @@ millisecond 开启毫秒级刷新
 
 <template #uniapp>
 
-### 基础用法
+#### 基础用法
 
 ```vue
 <up-count-down
@@ -211,7 +223,7 @@ millisecond 开启毫秒级刷新
 </up-count-down>
 ```
 
-### 自定义格式
+#### 自定义格式
 
 ```vue
 <up-count-down
@@ -230,7 +242,7 @@ millisecond 开启毫秒级刷新
 </up-count-down>
 ```
 
-### 毫秒级渲染
+#### 毫秒级渲染
 
 ```vue
 <up-count-down
@@ -242,7 +254,7 @@ millisecond 开启毫秒级刷新
 </up-count-down>
 ```
 
-### 自定义样式
+#### 自定义样式
 
 ```vue
 <up-count-down
@@ -268,7 +280,7 @@ millisecond 开启毫秒级刷新
 </up-count-down>
 ```
 
-### 手动控制
+#### 手动控制
 
 ```vue
 <up-count-down
@@ -287,7 +299,7 @@ millisecond 开启毫秒级刷新
 
 <template #uniappx>
 
-### 基础用法
+#### 基础用法
 
 ```vue
 <up-count-down
@@ -300,7 +312,7 @@ millisecond 开启毫秒级刷新
 </up-count-down>
 ```
 
-### 自定义格式
+#### 自定义格式
 
 ```vue
 <up-count-down
@@ -319,7 +331,7 @@ millisecond 开启毫秒级刷新
 </up-count-down>
 ```
 
-### 毫秒级渲染
+#### 毫秒级渲染
 
 ```vue
 <up-count-down
@@ -331,7 +343,7 @@ millisecond 开启毫秒级刷新
 </up-count-down>
 ```
 
-### 自定义样式
+#### 自定义样式
 
 ```vue
 <up-count-down
@@ -357,7 +369,7 @@ millisecond 开启毫秒级刷新
 </up-count-down>
 ```
 
-### 手动控制
+#### 手动控制
 
 ```vue
 <up-count-down

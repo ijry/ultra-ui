@@ -30,7 +30,7 @@ import 'package:ultra_ui/ultra_ui.dart';
 
 <template #reactnative>
 
-### 加粗 + 自定义颜色
+#### 加粗 + 自定义颜色
 
 ```tsx
 import { UPMessageInput } from 'ultra-ui-rn';
@@ -51,7 +51,7 @@ breathe={false}
 
 <template #taro>
 
-### 禁用状态
+#### 禁用状态
 
 disabled 同时禁用输入框与按钮
 
@@ -77,6 +77,16 @@ import { UPMessageInput } from '@ultra-ui'
 ></up-message-input>
 ```
 
+```vue
+<up-message-input
+    v-model="lineValue"
+    :maxlength="6"
+    mode="bottomLine"
+    :dot-fill="true"
+    @finish="onFinish"
+></up-message-input>
+```
+
 <small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsC/messageInput/messageInput.uvue`</small>
 
 </template>
@@ -89,6 +99,16 @@ import { UPMessageInput } from '@ultra-ui'
     :maxlength="4"
     mode="box"
     @change="onChange"
+    @finish="onFinish"
+></up-message-input>
+```
+
+```vue
+<up-message-input
+    v-model="lineValue"
+    :maxlength="6"
+    mode="bottomLine"
+    :dot-fill="true"
     @finish="onFinish"
 ></up-message-input>
 ```

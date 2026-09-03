@@ -34,6 +34,8 @@ UPCascader(
 
 <template #flutter>
 
+#### 基础用法
+
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
 
@@ -46,6 +48,47 @@ UPCascader(
   onUpdateShow: (value) => setState(() => _show1 = value),
   onUpdateModelValue: (value) =>
       setState(() => _result1 = value),
+)
+```
+
+#### 带默认值
+
+```dart
+UPCascader(
+  show: _show2,
+  data: _categoryData,
+  headerDirection: 'column',
+  value: _defaultCategory,
+  onUpdateShow: (value) => setState(() => _show2 = value),
+  onConfirm: (value) => setState(() => _result2 = value),
+)
+```
+
+#### 自定义字段名
+
+```dart
+UPCascader(
+  show: _show3,
+  data: _orgData,
+  valueKey: 'id',
+  labelKey: 'name',
+  childrenKey: 'childs',
+  onUpdateShow: (value) => setState(() => _show3 = value),
+  onConfirm: (value) => setState(() => _result3 = value),
+)
+```
+
+#### 垂直头部及单列选项
+
+```dart
+UPCascader(
+  show: _show4,
+  data: _categoryData,
+  headerDirection: 'column',
+  optionsCols: 1,
+  value: _defaultCategory,
+  onUpdateShow: (value) => setState(() => _show4 = value),
+  onConfirm: (value) => setState(() => _result4 = value),
 )
 ```
 
@@ -88,6 +131,39 @@ No snippet could be extracted automatically — please read the source.
 ></up-cascader>
 ```
 
+```vue
+<up-cascader 
+  v-model:show="show2" 
+  v-model="result2"
+  :data="categoryData"
+  headerDirection="column"
+  @confirm="confirm2"
+></up-cascader>
+```
+
+```vue
+<up-cascader 
+  v-model:show="show3" 
+  v-model="result3"
+  :data="orgData" 
+  value-key="id"
+  label-key="name"
+  children-key="childs"
+  @confirm="confirm3"
+></up-cascader>
+```
+
+```vue
+<up-cascader 
+  v-model:show="show2" 
+  v-model="result2"
+  :data="categoryData"
+  headerDirection="column"
+  :optionsCols="1"
+  @confirm="confirm2"
+></up-cascader>
+```
+
 <small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/cascader/cascader.uvue`</small>
 
 </template>
@@ -100,6 +176,39 @@ No snippet could be extracted automatically — please read the source.
   v-model="result1"
   valueKey="label"
   :data="areaData" 
+></up-cascader>
+```
+
+```vue
+<up-cascader 
+  v-model:show="show2" 
+  v-model="result2"
+  :data="categoryData"
+  headerDirection="column"
+  @confirm="confirm2"
+></up-cascader>
+```
+
+```vue
+<up-cascader 
+  v-model:show="show3" 
+  v-model="result3"
+  :data="orgData" 
+  value-key="id"
+  label-key="name"
+  children-key="childs"
+  @confirm="confirm3"
+></up-cascader>
+```
+
+```vue
+<up-cascader 
+  v-model:show="show2" 
+  v-model="result2"
+  :data="categoryData"
+  headerDirection="column"
+  :optionsCols="1"
+  @confirm="confirm2"
 ></up-cascader>
 ```
 

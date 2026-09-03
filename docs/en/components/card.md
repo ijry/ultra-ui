@@ -31,8 +31,6 @@ No snippet could be extracted automatically — please read the source.
 
 <template #android>
 
-### 卡片
-
 ```kotlin
 import net.lingyun.ultraui.android.components.UPCard
 import net.lingyun.ultraui.android.components.UPCardProps
@@ -50,6 +48,8 @@ UPCard(
 </template>
 
 <template #harmony>
+
+#### 默认头部与本地缩略图
 
 ```typescript
 import { UPCard, UPCardProps } from '@lingyun/ultra-ui-hos';
@@ -78,6 +78,28 @@ UPCard({ props: new UPCardProps({
 }
 ```
 
+#### 命名头部与底部 Builder
+
+```typescript
+UPCard({
+  props: new UPCardProps({
+    index: 2,
+    showHead: this.showHead,
+    showFoot: this.showFoot,
+    onClick: (event: UPCardClickEvent): void => {
+      this.selected(event, '通用点击');
+    },
+    onFootClick: (event: UPCardClickEvent): void => {
+      this.selected(event, '底部点击');
+    },
+    headBuilder: this.customHead,
+    footBuilder: this.customFoot
+  })
+}) {
+  this.customBody()
+}
+```
+
 <small>Snippet from `ultra-ui-hos/sample/entry/src/main/ets/demos/CardDemo.ets`</small>
 
 </template>
@@ -97,6 +119,28 @@ const UPCard(
       fontSize: 14,
       fontWeight: FontWeight.w500,
       height: 1.8,
+    ),
+  ),
+)
+```
+
+```dart
+UPCard(
+  full: true,
+  title: _title,
+  subTitle: _subTitle,
+  thumb: _thumbVisible ? _thumbUrl : '',
+  padding: _paddingValue,
+  border: _borderVisible,
+  showFoot: _bottomVisible,
+  body: const _AdvancedCardBody(imageUrl: _thumbUrl),
+  foot: const Padding(
+    padding: EdgeInsets.symmetric(vertical: 2),
+    child: UPIcon(
+      name: 'chat-fill',
+      size: 16,
+      label: '30评论',
+      labelSize: 13,
     ),
   ),
 )
@@ -124,6 +168,10 @@ import { UPCard } from 'ultra-ui-rn';
 
 <template #taro>
 
+#### 基础用法
+
+title / subTitle / 主体 / footSlot
+
 ```tsx
 import { UPCard } from '@ultra-ui'
 
@@ -133,6 +181,100 @@ import { UPCard } from '@ultra-ui'
   footSlot={<Text className='card-demo__foot'>2026-08-03</Text>}
 >
   <Body />
+</UPCard>
+```
+
+#### 无边框
+
+border=false
+
+```tsx
+<UPCard title='无边框卡片' subTitle='border=false' border={false}>
+  <Body text='去掉外层描边，适合放在浅色背景上。' />
+</UPCard>
+```
+
+#### 通栏
+
+full=true，与屏幕两侧不留空隙
+
+```tsx
+<UPCard full title='通栏卡片' subTitle='full'>
+  <Body text='左右贴边显示，常用于列表项。' />
+</UPCard>
+```
+
+#### 隐藏头部 / 底部
+
+showHead、showFoot
+
+```tsx
+<UPCard showHead={false} footSlot={<Text className='card-demo__foot'>只有底部</Text>}>
+  <Body text='showHead=false，卡片没有头部。' />
+</UPCard>
+```
+
+#### 头尾分割线
+
+headBorderBottom / footBorderTop
+
+```tsx
+<UPCard
+  title='无分割线'
+  subTitle='都为 false'
+  headBorderBottom={false}
+  footBorderTop={false}
+  footSlot={<Text className='card-demo__foot'>底部内容</Text>}
+>
+  <Body text='头部下边框与底部上边框都被关闭。' />
+</UPCard>
+```
+
+#### 标题样式
+
+titleColor / titleSize / subTitleColor / subTitleSize
+
+```tsx
+<UPCard
+  title='加大的标题'
+  titleColor='#3c9cff'
+  titleSize={18}
+  subTitle='更小的副标题'
+  subTitleColor='#f9ae3d'
+  subTitleSize={11}
+>
+  <Body text='标题与副标题的颜色、字号均可单独配置。' />
+</UPCard>
+```
+
+#### 间距与圆角
+
+margin='20px 30px'、padding='20px'、borderRadius=16
+
+```tsx
+<UPCard
+  title='自定义间距'
+  margin='20px 30px'
+  padding='20px'
+  borderRadius={16}
+>
+  <Body text='margin 控制卡片与外部的距离，padding 控制头/体/尾的内边距。' />
+</UPCard>
+```
+
+#### 分区内边距
+
+paddingHead / paddingBody / paddingFoot 优先于 padding
+
+```tsx
+<UPCard
+  title='分区内边距'
+  paddingHead='10px 15px'
+  paddingBody='24px 15px'
+  paddingFoot='10px 15px'
+  footSlot={<Text className='card-demo__foot'>底部内边距 10px 15px</Text>}
+>
+  <Body text='主体的内边距被单独放大到 24px。' />
 </UPCard>
 ```
 
@@ -152,6 +294,29 @@ import { UPCard } from '@ultra-ui'
 </up-card>
 ```
 
+```vue
+<up-card @click="click" @head-click="headClick" :title="title" :showFoot="bottomSlot"
+    :sub-title="subTitle" subTitleSize="12px" :thumb="thumb" :padding="padding" :border="border">
+    <template #body>
+        <view>
+            <view class="up-body-item up-flex up-flex-items-start up-border-bottom up-col-between up-p-t-0">
+                <view class="up-body-item-title up-line-2">瓶身描绘的牡丹一如你初妆，冉冉檀香透过窗心事我了然，宣纸上走笔至此搁一半</view>
+                <image class="image" src="https://uview-plus.jiangruyi.com/uview/ext/59c256f85a8c3757.jpg" mode="aspectFill"></image>
+            </view>
+            <view class="up-body-item up-flex up-row-between up-p-b-0">
+                <view class="up-body-item-title up-line-2">釉色渲染仕女图韵味被私藏，而你嫣然的一笑如含苞待放</view>
+                <image class="image" src="https://uview-plus.jiangruyi.com/uview/ext/59c256f85a8c3757.jpg" mode="aspectFill"></image>
+            </view>
+        </view>
+    </template>
+    <template #foot>
+        <view>
+            <up-icon name="chat-fill" size="16" color="" label="30评论"></up-icon>
+        </view>
+    </template>
+</up-card>
+```
+
 <small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsB/card/card.uvue`</small>
 
 </template>
@@ -163,6 +328,29 @@ import { UPCard } from '@ultra-ui'
     <template #body>
         <view class="ts-14 tw5 lh-1-8" >
             尊敬的客户您好，您有来自的开票。如果有疑问请联系您的客户经理。
+        </view>
+    </template>
+</up-card>
+```
+
+```vue
+<up-card @click="click" @head-click="headClick" :title="title" :showFoot="bottomSlot"
+    :sub-title="subTitle" subTitleSize="12px" :thumb="thumb" :padding="padding" :border="border">
+    <template #body>
+        <view>
+            <view class="up-body-item up-flex up-flex-items-start up-border-bottom up-col-between up-p-t-0">
+                <view class="up-body-item-title up-line-2">瓶身描绘的牡丹一如你初妆，冉冉檀香透过窗心事我了然，宣纸上走笔至此搁一半</view>
+                <image class="image" src="https://uview-plus.jiangruyi.com/uview/ext/59c256f85a8c3757.jpg" mode="aspectFill"></image>
+            </view>
+            <view class="up-body-item up-flex up-row-between up-p-b-0">
+                <view class="up-body-item-title up-line-2">釉色渲染仕女图韵味被私藏，而你嫣然的一笑如含苞待放</view>
+                <image class="image" src="https://uview-plus.jiangruyi.com/uview/ext/59c256f85a8c3757.jpg" mode="aspectFill"></image>
+            </view>
+        </view>
+    </template>
+    <template #foot>
+        <view>
+            <up-icon name="chat-fill" size="16" color="" label="30评论"></up-icon>
         </view>
     </template>
 </up-card>

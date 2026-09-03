@@ -18,6 +18,8 @@ Switch tabs to see the syntax for each platform. Every snippet is lifted verbati
 
 <template #flutter>
 
+#### 默认
+
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
 
@@ -49,7 +51,7 @@ No snippet could be extracted automatically — please read the source.
 
 <template #taro>
 
-### 自定义地址
+#### 自定义地址
 
 输入其他 PDF 链接后重新加载
 
@@ -59,7 +61,7 @@ import { UPPdfReader } from '@ultra-ui'
 <UPPdfReader src={src} height='360px' />
 ```
 
-### 自定义高度
+#### 自定义高度
 
 height 控制容器高度
 

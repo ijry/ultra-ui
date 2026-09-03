@@ -31,8 +31,6 @@ No snippet could be extracted automatically — please read the source.
 
 <template #android>
 
-### 分割线
-
 ```kotlin
 import net.lingyun.ultraui.android.components.UPDivider
 import net.lingyun.ultraui.android.components.UPDividerProps
@@ -52,6 +50,23 @@ import { UPDivider, UPDividerProps } from '@lingyun/ultra-ui-hos';
 UPDivider({ props: new UPDividerProps() })
 ```
 
+```typescript
+UPDivider({ props: new UPDividerProps({
+  text: '居中文本',
+  onClick: (event: UPDividerClickEvent): void => {
+    this.select(event);
+  }
+}) })
+```
+
+```typescript
+UPDivider({ props: new UPDividerProps({ text: '靠左文本', textPosition: 'left', lineColor: 'primary' }) })
+```
+
+```typescript
+UPDivider({ props: new UPDividerProps({ dot: true, textColor: 'warning', dashed: true }) })
+```
+
 <small>Snippet from `ultra-ui-hos/sample/entry/src/main/ets/demos/DividerDemo.ets`</small>
 
 </template>
@@ -64,13 +79,38 @@ import 'package:ultra_ui/ultra_ui.dart';
 _DividerBlock('基本案例', UPDivider(text: '分割线')
 ```
 
+```dart
+_DividerBlock('是否虚线', UPDivider(text: '分割线', dashed: true)
+```
+
+```dart
+_DividerBlock('是否细线', UPDivider(text: '分割线', hairline: true)
+```
+
+```dart
+_DividerBlock('是否以点代替文字', UPDivider(text: '分割线', dot: true)
+```
+
+```dart
+'文本内容靠左', UPDivider(text: '分割线', textPosition: 'left')
+```
+
+```dart
+'文本内容靠右', UPDivider(text: '分割线', textPosition: 'right')
+```
+
+```dart
+UPDivider(
+    text: '分割线', textColor: '#2979ff', lineColor: '#2979ff')
+```
+
 <small>Snippet from `ultra-ui-flutter/example/lib/pages/components_a/divider_page.dart`</small>
 
 </template>
 
 <template #reactnative>
 
-### 基本案例
+#### 基本案例
 
 ```tsx
 import { UPDivider } from 'ultra-ui-rn';
@@ -78,37 +118,37 @@ import { UPDivider } from 'ultra-ui-rn';
 <UPDivider text="分割线" />
 ```
 
-### 是否虚线
+#### 是否虚线
 
 ```tsx
 <UPDivider dashed text="分割线" />
 ```
 
-### 是否细线
+#### 是否细线
 
 ```tsx
 <UPDivider hairline text="分割线" />
 ```
 
-### 是否以点代替文字
+#### 是否以点代替文字
 
 ```tsx
 <UPDivider dot text="分割线" />
 ```
 
-### 文本内容靠左
+#### 文本内容靠左
 
 ```tsx
 <UPDivider text="分割线" textPosition="left" />
 ```
 
-### 文本内容靠右
+#### 文本内容靠右
 
 ```tsx
 <UPDivider text="分割线" textPosition="right" />
 ```
 
-### 自定义文本颜色
+#### 自定义文本颜色
 
 ```tsx
 <UPDivider lineColor="#2979ff" text="分割线" textColor="#2979ff" />
@@ -120,7 +160,7 @@ import { UPDivider } from 'ultra-ui-rn';
 
 <template #taro>
 
-### 基础用法
+#### 基础用法
 
 不传 text 时是一条纯分割线
 
@@ -130,7 +170,7 @@ import { UPDivider } from '@ultra-ui'
 <UPDivider />
 ```
 
-### 文字位置
+#### 文字位置
 
 textPosition：left / center / right
 
@@ -138,7 +178,7 @@ textPosition：left / center / right
 <UPDivider text='左侧' textPosition='left' />
 ```
 
-### 虚线
+#### 虚线
 
 dashed=true
 
@@ -146,7 +186,7 @@ dashed=true
 <UPDivider dashed />
 ```
 
-### 线条粗细
+#### 线条粗细
 
 hairline=false 时使用 1px 实线
 
@@ -154,7 +194,7 @@ hairline=false 时使用 1px 实线
 <UPDivider text='hairline（默认）' />
 ```
 
-### 圆点
+#### 圆点
 
 dot=true，优先级高于 text
 
@@ -162,7 +202,7 @@ dot=true，优先级高于 text
 <UPDivider dot />
 ```
 
-### 文字样式
+#### 文字样式
 
 textColor / textSize
 
@@ -170,7 +210,7 @@ textColor / textSize
 <UPDivider text='蓝色 16px' textColor='#3c9cff' textSize={16} />
 ```
 
-### 线条颜色
+#### 线条颜色
 
 lineColor
 
@@ -178,7 +218,7 @@ lineColor
 <UPDivider text='蓝色线条' lineColor='#3c9cff' textColor='#3c9cff' />
 ```
 
-### 自定义内容
+#### 自定义内容
 
 children 会替换默认文字
 
@@ -191,30 +231,19 @@ children 会替换默认文字
 </UPDivider>
 ```
 
-### 自定义样式
-
-customStyle 透传到根节点
-
-```tsx
-<UPDivider
-  text='上下留白 20px'
-  customStyle={{ marginTop: '20px', marginBottom: '20px' }}
-/>
-```
-
 <small>Snippet from `ultra-ui-taro/src/pages/components/divider/index.tsx`</small>
 
 </template>
 
 <template #uniapp>
 
-### 基本案例
+#### 基本案例
 
 ```vue
 <up-divider text="分割线"></up-divider>
 ```
 
-### 是否虚线
+#### 是否虚线
 
 ```vue
 <up-divider
@@ -223,7 +252,7 @@ customStyle 透传到根节点
 ></up-divider>
 ```
 
-### 是否细线
+#### 是否细线
 
 ```vue
 <up-divider
@@ -232,7 +261,7 @@ customStyle 透传到根节点
 ></up-divider>
 ```
 
-### 是否以点代替文字
+#### 是否以点代替文字
 
 ```vue
 <up-divider
@@ -241,7 +270,7 @@ customStyle 透传到根节点
 ></up-divider>
 ```
 
-### 文本内容靠左
+#### 文本内容靠左
 
 ```vue
 <up-divider
@@ -250,7 +279,7 @@ customStyle 透传到根节点
 ></up-divider>
 ```
 
-### 文本内容靠右
+#### 文本内容靠右
 
 ```vue
 <up-divider
@@ -259,7 +288,7 @@ customStyle 透传到根节点
 ></up-divider>
 ```
 
-### 自定义文本颜色
+#### 自定义文本颜色
 
 ```vue
 <up-divider
@@ -275,13 +304,13 @@ customStyle 透传到根节点
 
 <template #uniappx>
 
-### 基本案例
+#### 基本案例
 
 ```vue
 <up-divider text="分割线"></up-divider>
 ```
 
-### 是否虚线
+#### 是否虚线
 
 ```vue
 <up-divider
@@ -290,7 +319,7 @@ customStyle 透传到根节点
 ></up-divider>
 ```
 
-### 是否细线
+#### 是否细线
 
 ```vue
 <up-divider
@@ -299,7 +328,7 @@ customStyle 透传到根节点
 ></up-divider>
 ```
 
-### 是否以点代替文字
+#### 是否以点代替文字
 
 ```vue
 <up-divider
@@ -308,7 +337,7 @@ customStyle 透传到根节点
 ></up-divider>
 ```
 
-### 文本内容靠左
+#### 文本内容靠左
 
 ```vue
 <up-divider
@@ -317,7 +346,7 @@ customStyle 透传到根节点
 ></up-divider>
 ```
 
-### 文本内容靠右
+#### 文本内容靠右
 
 ```vue
 <up-divider
@@ -326,7 +355,7 @@ customStyle 透传到根节点
 ></up-divider>
 ```
 
-### 自定义文本颜色
+#### 自定义文本颜色
 
 ```vue
 <up-divider

@@ -31,6 +31,8 @@ DemoSection("文字提示") { UPTooltip(UPTooltipProps(text = "提示内容", tr
 
 <template #flutter>
 
+#### 基础使用
+
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
 
@@ -40,13 +42,113 @@ UPTooltip(
 )
 ```
 
+#### 下方显示
+
+```dart
+UPTooltip(
+  text: '长按文本，下方提示',
+  direction: 'bottom',
+)
+```
+
+#### 扩展按钮
+
+```dart
+UPTooltip(
+  key: const ValueKey('tooltip-page-extension'),
+  text: '显示多个扩展按钮',
+  buttons: const <String>['扩展'],
+  showCopy: false,
+  onClick: (_) => setState(() => _extensionClicks += 1),
+)
+```
+
+#### 自动调整位置
+
+```dart
+UPTooltip(
+  text: '自动调整气泡位置',
+  buttons: <String>['扩展', '搜索', '翻译'],
+)
+```
+
+#### 高亮选中文本背景色
+
+```dart
+UPTooltip(
+  text: '长按文本，显示背景色',
+  buttons: <String>['扩展', '搜索', '翻译'],
+  bgColor: '#e3e4e6',
+  triggerMode: 'click',
+  direction: 'top',
+)
+```
+
+#### 单例打开
+
+```dart
+const UPTooltip(
+  text: '第一个',
+  triggerMode: 'click',
+  singleton: true,
+)
+```
+
+#### 自定义触发器
+
+```dart
+UPTooltip(
+  key: _customTooltipKey,
+  text: '长按文本，显示背景色',
+  color: '#333',
+  bgColor: '#e3e4e6',
+  popupBgColor: '#f7f7f7',
+  triggerMode: 'click',
+  direction: 'right',
+  child: _button(
+    key: const ValueKey('tooltip-page-custom-trigger'),
+    text: '点击',
+    onClick: _openCustomTooltip,
+  ),
+  content: const Padding(
+    padding: EdgeInsets.symmetric(horizontal: 6, vertical: 12),
+    child: Text('自定义内容'),
+  ),
+)
+```
+
+#### 左侧弹出
+
+```dart
+UPTooltip(
+  text: '长按文本，显示背景色',
+  color: '#fff',
+  bgColor: '#333',
+  popupBgColor: '#333',
+  triggerMode: 'click',
+  forcePosition: const <String, String>{
+    'right': '108px',
+    'top': '0px',
+  },
+  direction: 'left',
+  child: _button(
+    text: '点击',
+    onClick: () {},
+  ),
+  content: const Padding(
+    padding: EdgeInsets.symmetric(horizontal: 6, vertical: 12),
+    child: Text('自定义内容'),
+  ),
+)
+```
+
 <small>示例来源 `ultra-ui-flutter/example/lib/pages/components_c/tooltip_page.dart`</small>
 
 </template>
 
 <template #reactnative>
 
-### 基础使用
+#### 基础使用
 
 ```tsx
 import { UPTooltip } from 'ultra-ui-rn';
@@ -54,19 +156,25 @@ import { UPTooltip } from 'ultra-ui-rn';
 <UPTooltip overlay text="长按文本，上方提示" />
 ```
 
-### 扩展按钮
+#### 下方显示
+
+```tsx
+<UPTooltip direction="bottom" text="长按文本，下方提示" />
+```
+
+#### 扩展按钮
 
 ```tsx
 <UPTooltip buttons={['扩展']} onClick={click} text="显示多个扩展按钮" />
 ```
 
-### 自动调整位置
+#### 自动调整位置
 
 ```tsx
 <UPTooltip buttons={['扩展', '搜索', '翻译']} text="自动调整气泡位置" />
 ```
 
-### 高亮选中文本背景色
+#### 高亮选中文本背景色
 
 ```tsx
 <UPTooltip
@@ -78,19 +186,55 @@ import { UPTooltip } from 'ultra-ui-rn';
 />
 ```
 
+#### 单例打开
+
+```tsx
+<UPTooltip singleton text="第一个" triggerMode="click" />
+```
+
 <small>示例来源 `ultra-ui-rn/example/pages/components/feedback/TooltipDemo.tsx`</small>
 
 </template>
 
 <template #taro>
 
-### 自定义颜色 / 禁用
+#### 上方提示
 
-color / bgColor / disabled
+placement="top"（默认），点击文字弹出气泡
 
 ```tsx
 import { UPTooltip } from '@ultra-ui'
 
+<UPTooltip text='这是一条上方的文字提示' placement='top'>
+  <Text className='tooltip-demo__trigger'>点我查看提示</Text>
+</UPTooltip>
+```
+
+#### 下方提示
+
+placement="bottom"
+
+```tsx
+<UPTooltip text='这是一条下方的文字提示' placement='bottom'>
+  <Text className='tooltip-demo__trigger'>点我查看提示</Text>
+</UPTooltip>
+```
+
+#### 左右提示
+
+placement="left" / "right"
+
+```tsx
+<UPTooltip text='我在左边' placement='left'>
+  <UPButton size='small' text='左侧' />
+</UPTooltip>
+```
+
+#### 自定义颜色 / 禁用
+
+color / bgColor / disabled
+
+```tsx
 <UPTooltip
   text='自定义文字与背景色'
   placement='top'
@@ -107,7 +251,7 @@ import { UPTooltip } from '@ultra-ui'
 
 <template #uniapp>
 
-### 基础使用
+#### 基础使用
 
 ```vue
 <up-tooltip
@@ -116,7 +260,7 @@ import { UPTooltip } from '@ultra-ui'
 ></up-tooltip>
 ```
 
-### 下方显示
+#### 下方显示
 
 ```vue
 <up-tooltip
@@ -125,7 +269,7 @@ import { UPTooltip } from '@ultra-ui'
 ></up-tooltip>
 ```
 
-### 扩展按钮
+#### 扩展按钮
 
 ```vue
 <up-tooltip
@@ -135,7 +279,7 @@ import { UPTooltip } from '@ultra-ui'
 ></up-tooltip>
 ```
 
-### 自动调整位置
+#### 自动调整位置
 
 ```vue
 <up-tooltip
@@ -144,7 +288,7 @@ import { UPTooltip } from '@ultra-ui'
 ></up-tooltip>
 ```
 
-### 高亮选中文本背景色
+#### 高亮选中文本背景色
 
 ```vue
 <up-tooltip
@@ -160,7 +304,7 @@ import { UPTooltip } from '@ultra-ui'
 
 <template #uniappx>
 
-### 基础使用
+#### 基础使用
 
 ```vue
 <up-tooltip
@@ -169,7 +313,7 @@ import { UPTooltip } from '@ultra-ui'
 ></up-tooltip>
 ```
 
-### 下方显示
+#### 下方显示
 
 ```vue
 <up-tooltip
@@ -178,7 +322,7 @@ import { UPTooltip } from '@ultra-ui'
 ></up-tooltip>
 ```
 
-### 扩展按钮
+#### 扩展按钮
 
 ```vue
 <up-tooltip
@@ -188,7 +332,7 @@ import { UPTooltip } from '@ultra-ui'
 ></up-tooltip>
 ```
 
-### 自动调整位置
+#### 自动调整位置
 
 ```vue
 <up-tooltip
@@ -197,7 +341,7 @@ import { UPTooltip } from '@ultra-ui'
 ></up-tooltip>
 ```
 
-### 高亮选中文本背景色
+#### 高亮选中文本背景色
 
 ```vue
 <up-tooltip

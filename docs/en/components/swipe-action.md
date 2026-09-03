@@ -30,6 +30,8 @@ No snippet could be extracted automatically — please read the source.
 
 <template #flutter>
 
+#### 演示案例
+
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
 
@@ -52,11 +54,73 @@ UPSwipeAction(
 )
 ```
 
+#### 按钮组
+
+```dart
+UPSwipeAction(
+  children: <Widget>[
+    UPSwipeActionItem(
+      options: const <Map<String, dynamic>>[
+        <String, dynamic>{
+          'text': '收藏',
+          'style': <String, dynamic>{
+            'backgroundColor': '#3c9cff',
+          },
+        },
+        <String, dynamic>{
+          'text': '删除',
+          'style': <String, dynamic>{
+            'backgroundColor': '#f56c6c',
+          },
+        },
+      ],
+      child: const _SwipeRow('两个按钮并列'),
+    ),
+  ],
+)
+```
+
+#### 带图标
+
+```dart
+UPSwipeAction(
+  children: <Widget>[
+    UPSwipeActionItem(
+      options: const <Map<String, dynamic>>[
+        <String, dynamic>{
+          'text': '收藏',
+          'icon': 'star-fill',
+          'iconSize': '20',
+          'style': <String, dynamic>{
+            'backgroundColor': '#f9ae3d',
+          },
+        },
+      ],
+      child: const _SwipeRow('自定义图标'),
+    ),
+  ],
+)
+```
+
+#### 组合使用
+
+```dart
+UPSwipeAction(
+  children: <Widget>[
+    _combinationRow('禁用状态', disabled: true),
+    _combinationRow('正常状态'),
+    _combinationRow('自动关闭', closeOnClick: true),
+  ],
+)
+```
+
 <small>Snippet from `ultra-ui-flutter/example/lib/pages/components_a/swipe_action_page.dart`</small>
 
 </template>
 
 <template #reactnative>
+
+#### 演示案例
 
 ```tsx
 import { UPSwipeAction } from 'ultra-ui-rn';
@@ -78,13 +142,63 @@ import { UPSwipeAction } from 'ultra-ui-rn';
 </UPSwipeAction>
 ```
 
+#### 按钮组
+
+```tsx
+<UPSwipeAction>
+  <UPSwipeActionItem closeOnClick options={options2}>
+    <View style={s.row}>
+      <Text style={s.rowText}>两个按钮并列</Text>
+    </View>
+  </UPSwipeActionItem>
+</UPSwipeAction>
+```
+
+#### 带图标
+
+```tsx
+<UPSwipeAction>
+  <UPSwipeActionItem options={options3}>
+    <View style={s.row}>
+      <Text style={s.rowText}>自定义图标</Text>
+    </View>
+  </UPSwipeActionItem>
+</UPSwipeAction>
+```
+
+#### 组合使用
+
+```tsx
+<UPSwipeAction>
+  {options4.map((item) => (
+    <UPSwipeActionItem disabled={item.disabled} key={item.text} options={item.options}>
+      <View style={s.row}>
+        <Text style={s.rowText}>{item.text}</Text>
+      </View>
+    </UPSwipeActionItem>
+  ))}
+</UPSwipeAction>
+```
+
+#### 自定义按钮形状
+
+```tsx
+<UPSwipeAction>
+  <UPSwipeActionItem options={options5}>
+    <View style={s.row}>
+      <Text style={s.rowText}>圆形按钮</Text>
+    </View>
+  </UPSwipeActionItem>
+</UPSwipeAction>
+```
+
 <small>Snippet from `ultra-ui-rn/example/pages/components/feedback/SwipeActionDemo.tsx`</small>
 
 </template>
 
 <template #taro>
 
-### 基础用法
+#### 基础用法
 
 向左滑动行露出操作按钮，最多同时展开一行
 
@@ -106,7 +220,7 @@ import { UPSwipeAction } from '@ultra-ui'
 </UPSwipeAction>
 ```
 
-### 多行列表
+#### 多行列表
 
 每行独立，展开一行会自动收起其它行
 
@@ -129,7 +243,7 @@ import { UPSwipeAction } from '@ultra-ui'
 </UPSwipeAction>
 ```
 
-### 禁用滑动
+#### 禁用滑动
 
 disabled 时不可滑动展开
 
@@ -152,7 +266,7 @@ disabled 时不可滑动展开
 
 <template #uniapp>
 
-### 演示案例
+#### 演示案例
 
 ```vue
 <up-swipe-action>
@@ -172,7 +286,7 @@ disabled 时不可滑动展开
 </up-swipe-action>
 ```
 
-### 按钮组
+#### 按钮组
 
 ```vue
 <up-swipe-action>
@@ -186,7 +300,7 @@ disabled 时不可滑动展开
 </up-swipe-action>
 ```
 
-### 带图标
+#### 带图标
 
 ```vue
 <up-swipe-action>
@@ -200,7 +314,7 @@ disabled 时不可滑动展开
 </up-swipe-action>
 ```
 
-### 组合使用
+#### 组合使用
 
 ```vue
 <up-swipe-action>
@@ -222,7 +336,7 @@ disabled 时不可滑动展开
 </up-swipe-action>
 ```
 
-### 自定义按钮形状
+#### 自定义按钮形状
 
 ```vue
 <up-swipe-action>
@@ -242,7 +356,7 @@ disabled 时不可滑动展开
 
 <template #uniappx>
 
-### 演示案例
+#### 演示案例
 
 ```vue
 <up-swipe-action>
@@ -262,7 +376,7 @@ disabled 时不可滑动展开
 </up-swipe-action>
 ```
 
-### 按钮组
+#### 按钮组
 
 ```vue
 <up-swipe-action>
@@ -276,7 +390,7 @@ disabled 时不可滑动展开
 </up-swipe-action>
 ```
 
-### 带图标
+#### 带图标
 
 ```vue
 <up-swipe-action>
@@ -290,7 +404,7 @@ disabled 时不可滑动展开
 </up-swipe-action>
 ```
 
-### 组合使用
+#### 组合使用
 
 ```vue
 <up-swipe-action>
@@ -312,7 +426,7 @@ disabled 时不可滑动展开
 </up-swipe-action>
 ```
 
-### 自定义按钮形状
+#### 自定义按钮形状
 
 ```vue
 <up-swipe-action>

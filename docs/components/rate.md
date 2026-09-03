@@ -31,8 +31,6 @@ import UltraUI
 
 <template #android>
 
-### 评分
-
 ```kotlin
 import net.lingyun.ultraui.android.components.UPRate
 import net.lingyun.ultraui.android.components.UPRateProps
@@ -59,13 +57,21 @@ import { UPRate, UPRateProps } from '@lingyun/ultra-ui-hos';
 UPRate({ props: new UPRateProps({ modelValue: this.value, onChange: (event: UPRateChangeEvent): void => { this.change(event); } }) })
 ```
 
+```typescript
+UPRate({ props: new UPRateProps({ value: 4, count: 6, activeColor: 'warning', size: 24 }) })
+```
+
+```typescript
+UPRate({ props: new UPRateProps({ value: 2, disabled: true }) })
+```
+
 <small>示例来源 `ultra-ui-hos/sample/entry/src/main/ets/demos/RateDemo.ets`</small>
 
 </template>
 
 <template #flutter>
 
-### 是否禁用评分
+#### 是否禁用评分
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -73,19 +79,19 @@ import 'package:ultra_ui/ultra_ui.dart';
 const UPRate(size: 20, disabled: true)
 ```
 
-### 是否只读评分
+#### 是否只读评分
 
 ```dart
 const UPRate(size: 20, readonly: true)
 ```
 
-### 禁止触摸选择
+#### 禁止触摸选择
 
 ```dart
 const UPRate(size: 20, touchable: false)
 ```
 
-### 自定义选中的图标
+#### 自定义选中的图标
 
 ```dart
 UPRate(
@@ -109,7 +115,7 @@ UPRate(
 
 <template #reactnative>
 
-### 基本案例
+#### 基本案例
 
 ```tsx
 import { UPRate } from 'ultra-ui-rn';
@@ -117,25 +123,25 @@ import { UPRate } from 'ultra-ui-rn';
 <UPRate size="20" />
 ```
 
-### 自定义星星大小
+#### 自定义星星大小
 
 ```tsx
 <UPRate count="4" size="30" />
 ```
 
-### 是否禁用评分
+#### 是否禁用评分
 
 ```tsx
 <UPRate disabled size="20" />
 ```
 
-### 是否只读评分
+#### 是否只读评分
 
 ```tsx
 <UPRate readonly size="20" />
 ```
 
-### 自定义选中星星颜色
+#### 自定义选中星星颜色
 
 ```tsx
 <UPRate
@@ -146,7 +152,7 @@ import { UPRate } from 'ultra-ui-rn';
 />
 ```
 
-### 自定义未选中星星颜色
+#### 自定义未选中星星颜色
 
 ```tsx
 <UPRate
@@ -157,28 +163,16 @@ import { UPRate } from 'ultra-ui-rn';
 />
 ```
 
-### 禁止触摸选择
+#### 禁止触摸选择
 
 ```tsx
 <UPRate size="20" touchable={false} />
 ```
 
-### 允许触摸选择
+#### 允许触摸选择
 
 ```tsx
 <UPRate size="20" touchable />
-```
-
-### 自定义选中的图标
-
-```tsx
-<UPRate
-  activeIcon="heart-fill"
-  inactiveIcon="heart"
-  onChange={setActiveIconValue}
-  size="20"
-  value={activeIconValue}
-/>
 ```
 
 <small>示例来源 `ultra-ui-rn/example/pages/components/form/RateDemo.tsx`</small>
@@ -187,7 +181,7 @@ import { UPRate } from 'ultra-ui-rn';
 
 <template #taro>
 
-### 基础用法
+#### 基础用法
 
 value + onChange 受控绑定，默认 5 颗星
 
@@ -197,7 +191,7 @@ import { UPRate } from '@ultra-ui'
 <UPRate value={basic} onChange={setBasic} />
 ```
 
-### 星星数量
+#### 星星数量
 
 count 指定总数
 
@@ -205,7 +199,7 @@ count 指定总数
 <UPRate count={3} value={count3} onChange={setCount3} />
 ```
 
-### 尺寸
+#### 尺寸
 
 size 单位 px，默认 18
 
@@ -213,7 +207,7 @@ size 单位 px，默认 18
 <UPRate size={14} value={small} onChange={setSmall} />
 ```
 
-### 间距
+#### 间距
 
 gutter 控制星星之间的距离，默认 4
 
@@ -221,7 +215,7 @@ gutter 控制星星之间的距离，默认 4
 <UPRate gutter={0} value={gutter0} onChange={setGutter0} />
 ```
 
-### 自定义颜色
+#### 自定义颜色
 
 activeColor / inactiveColor
 
@@ -234,7 +228,7 @@ activeColor / inactiveColor
 />
 ```
 
-### 自定义图标
+#### 自定义图标
 
 activeIcon / inactiveIcon 换成爱心
 
@@ -249,7 +243,7 @@ activeIcon / inactiveIcon 换成爱心
 />
 ```
 
-### 半星
+#### 半星
 
 allowHalf，需要滑动到星星左半边
 
@@ -257,24 +251,12 @@ allowHalf，需要滑动到星星左半边
 <UPRate allowHalf size={26} value={half} onChange={setHalf} />
 ```
 
-### 最少选择数
+#### 最少选择数
 
 minCount=0 时允许取消到 0 分
 
 ```tsx
 <UPRate minCount={0} value={zero} onChange={setZero} />
-```
-
-### 禁止滑动
-
-touchable=false，只能逐颗点击，不能拖动选择
-
-```tsx
-<UPRate
-  touchable={false}
-  value={untouchable}
-  onChange={setUntouchable}
-/>
 ```
 
 <small>示例来源 `ultra-ui-taro/src/pages/components/rate/index.tsx`</small>
@@ -283,13 +265,13 @@ touchable=false，只能逐颗点击，不能拖动选择
 
 <template #uniapp>
 
-### 基本案例
+#### 基本案例
 
 ```vue
 <up-rate size="20"></up-rate>
 ```
 
-### 自定义选中星星数量
+#### 自定义选中星星数量
 
 ```vue
 <up-rate
@@ -299,25 +281,25 @@ touchable=false，只能逐颗点击，不能拖动选择
 ></up-rate>
 ```
 
-### 自定义星星大小
+#### 自定义星星大小
 
 ```vue
 <up-rate size="30" count="4"></up-rate>
 ```
 
-### 是否禁用评分
+#### 是否禁用评分
 
 ```vue
 <up-rate size="20" disabled></up-rate>
 ```
 
-### 是否只读评分
+#### 是否只读评分
 
 ```vue
 <up-rate size="20" readonly></up-rate>
 ```
 
-### 自定义选中星星颜色
+#### 自定义选中星星颜色
 
 ```vue
 <up-rate
@@ -327,7 +309,7 @@ touchable=false，只能逐颗点击，不能拖动选择
 ></up-rate>
 ```
 
-### 自定义未选中星星颜色
+#### 自定义未选中星星颜色
 
 ```vue
 <up-rate
@@ -337,38 +319,10 @@ touchable=false，只能逐颗点击，不能拖动选择
 ></up-rate>
 ```
 
-### 禁止触摸选择
+#### 禁止触摸选择
 
 ```vue
 <up-rate size="20" :touchable="false"></up-rate>
-```
-
-### 允许触摸选择
-
-```vue
-<up-rate size="20" :touchable="true"></up-rate>
-```
-
-### 是否允许半星
-
-```vue
-<up-rate
-    size="20"
-    v-model="HalfValue"
-    :allowHalf="true"
-    @change="change"
-></up-rate>
-```
-
-### 自定义选中的图标
-
-```vue
-<up-rate
-    size="20"
-    v-model="activeIconValue"
-    inactiveIcon="heart"
-    activeIcon="heart-fill"
-></up-rate>
 ```
 
 <small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsA/rate/rate.uvue`</small>
@@ -377,13 +331,13 @@ touchable=false，只能逐颗点击，不能拖动选择
 
 <template #uniappx>
 
-### 基本案例
+#### 基本案例
 
 ```vue
 <up-rate size="20"></up-rate>
 ```
 
-### 自定义选中星星数量
+#### 自定义选中星星数量
 
 ```vue
 <up-rate
@@ -393,25 +347,25 @@ touchable=false，只能逐颗点击，不能拖动选择
 ></up-rate>
 ```
 
-### 自定义星星大小
+#### 自定义星星大小
 
 ```vue
 <up-rate size="30" count="4"></up-rate>
 ```
 
-### 是否禁用评分
+#### 是否禁用评分
 
 ```vue
 <up-rate size="20" disabled></up-rate>
 ```
 
-### 是否只读评分
+#### 是否只读评分
 
 ```vue
 <up-rate size="20" readonly></up-rate>
 ```
 
-### 自定义选中星星颜色
+#### 自定义选中星星颜色
 
 ```vue
 <up-rate
@@ -421,7 +375,7 @@ touchable=false，只能逐颗点击，不能拖动选择
 ></up-rate>
 ```
 
-### 自定义未选中星星颜色
+#### 自定义未选中星星颜色
 
 ```vue
 <up-rate
@@ -431,38 +385,10 @@ touchable=false，只能逐颗点击，不能拖动选择
 ></up-rate>
 ```
 
-### 禁止触摸选择
+#### 禁止触摸选择
 
 ```vue
 <up-rate size="20" :touchable="false"></up-rate>
-```
-
-### 允许触摸选择
-
-```vue
-<up-rate size="20" :touchable="true"></up-rate>
-```
-
-### 是否允许半星
-
-```vue
-<up-rate
-    size="20"
-    v-model="HalfValue"
-    :allowHalf="true"
-    @change="change"
-></up-rate>
-```
-
-### 自定义选中的图标
-
-```vue
-<up-rate
-    size="20"
-    v-model="activeIconValue"
-    inactiveIcon="heart"
-    activeIcon="heart-fill"
-></up-rate>
 ```
 
 <small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsA/rate/rate.uvue`</small>

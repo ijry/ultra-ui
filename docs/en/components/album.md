@@ -30,13 +30,69 @@ album: UPAlbum(
 )
 ```
 
+```dart
+album: const UPAlbum(
+  key: ValueKey('album-page-multiple'),
+  urls: _urls2,
+  maxCount: 9,
+)
+```
+
+```dart
+album: UPAlbum(
+  urls: _urls2,
+  multipleSize: 68,
+  onAlbumWidth: _setAlbumWidth,
+)
+```
+
+```dart
+album: const UPAlbum(
+  urls: _urls3,
+  rowCount: 2,
+  maxCount: 4,
+  multipleMode: 'scaleToFill',
+)
+```
+
+```dart
+album: const UPAlbum(
+  urls: _urls4,
+  rowCount: 2,
+  maxCount: 4,
+  multipleSize: 50,
+)
+```
+
+```dart
+album: const UPAlbum(
+  urls: _urls2,
+  radius: 10,
+)
+```
+
+```dart
+album: const UPAlbum(
+  urls: _urls2,
+  shape: 'circle',
+)
+```
+
+```dart
+album: const UPAlbum(
+  urls: _urls2,
+  maxCount: 9,
+  autoWrap: true,
+)
+```
+
 <small>Snippet from `ultra-ui-flutter/example/lib/pages/components_c/album_page.dart`</small>
 
 </template>
 
 <template #reactnative>
 
-### 多图模式
+#### 多图模式
 
 ```tsx
 import { UPAlbum } from 'ultra-ui-rn';
@@ -44,37 +100,37 @@ import { UPAlbum } from 'ultra-ui-rn';
 <UPAlbum urls={urls2} />
 ```
 
-### 图文对齐
+#### 图文对齐
 
 ```tsx
 <UPAlbum multipleSize="68" onAlbumWidth={setAlbumWidth} urls={urls2} />
 ```
 
-### 更改裁剪模式
+#### 更改裁剪模式
 
 ```tsx
 <UPAlbum maxCount="4" multipleMode="scaleToFill" rowCount="2" urls={urls3} />
 ```
 
-### 更改图片大小
+#### 更改图片大小
 
 ```tsx
 <UPAlbum maxCount="4" multipleSize="50" rowCount="2" urls={urls4} />
 ```
 
-### 自定义圆角
+#### 自定义圆角
 
 ```tsx
 <UPAlbum radius="10" urls={urls2} />
 ```
 
-### 自定义形状
+#### 自定义形状
 
 ```tsx
 <UPAlbum shape="circle" urls={urls2} />
 ```
 
-### 自适应自动换行
+#### 自适应自动换行
 
 ```tsx
 <UPAlbum autoWrap maxCount={9} urls={urls2} />
@@ -86,7 +142,7 @@ import { UPAlbum } from 'ultra-ui-rn';
 
 <template #taro>
 
-### 自定义列数
+#### 自定义列数
 
 rowCount 控制每行数量；autoWrap 自适应换行
 
@@ -96,7 +152,7 @@ import { UPAlbum } from '@ultra-ui'
 <UPAlbum urls={urls1} rowCount={4} />
 ```
 
-### 更多遮罩 (showMore)
+#### 更多遮罩 (showMore)
 
 urls 数量超过 maxCount 时，末位显示「+N」
 
@@ -104,7 +160,7 @@ urls 数量超过 maxCount 时，末位显示「+N」
 <UPAlbum urls={urls2} maxCount={9} />
 ```
 
-### 对象数组 (keyName)
+#### 对象数组 (keyName)
 
 urls 为对象数组时，用 keyName 指定图片字段
 
@@ -112,7 +168,7 @@ urls 为对象数组时，用 keyName 指定图片字段
 <UPAlbum urls={urls3} keyName='url' />
 ```
 
-### 单图与形状
+#### 单图与形状
 
 单图按原始比例展示；shape / radius 控制圆角
 
@@ -120,7 +176,7 @@ urls 为对象数组时，用 keyName 指定图片字段
 <UPAlbum urls={[singleUrl]} />
 ```
 
-### albumWidth 事件
+#### albumWidth 事件
 
 相册渲染宽度（px）：
 
@@ -134,10 +190,50 @@ urls 为对象数组时，用 keyName 指定图片字段
 
 <template #uniapp>
 
+#### 基础使用
+
 ```vue
 <up-album
     :urls="urls1"
     keyName="src2"
+></up-album>
+```
+
+#### 多图模式
+
+```vue
+<up-album :urls="urls2"></up-album>
+```
+
+#### 图文对齐
+
+```vue
+<up-album
+    :urls="urls2"
+    @albumWidth="getAlbumWidth"
+    multipleSize="68"
+></up-album>
+```
+
+#### 更改裁剪模式
+
+```vue
+<up-album
+    :urls="urls3"
+    rowCount="2"
+    maxCount="4"
+    multipleMode="scaleToFill"
+></up-album>
+```
+
+#### 更改图片大小
+
+```vue
+<up-album
+    :urls="urls4"
+    rowCount="2"
+    maxCount="4"
+    multipleSize="50"
 ></up-album>
 ```
 
@@ -147,10 +243,50 @@ urls 为对象数组时，用 keyName 指定图片字段
 
 <template #uniappx>
 
+#### 基础使用
+
 ```vue
 <up-album
     :urls="urls1"
     keyName="src2"
+></up-album>
+```
+
+#### 多图模式
+
+```vue
+<up-album :urls="urls2"></up-album>
+```
+
+#### 图文对齐
+
+```vue
+<up-album
+    :urls="urls2"
+    @albumWidth="getAlbumWidth"
+    multipleSize="68"
+></up-album>
+```
+
+#### 更改裁剪模式
+
+```vue
+<up-album
+    :urls="urls3"
+    rowCount="2"
+    maxCount="4"
+    multipleMode="scaleToFill"
+></up-album>
+```
+
+#### 更改图片大小
+
+```vue
+<up-album
+    :urls="urls4"
+    rowCount="2"
+    maxCount="4"
+    multipleSize="50"
 ></up-album>
 ```
 

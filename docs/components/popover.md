@@ -31,6 +31,8 @@ DemoSection("气泡弹出") { UPPopover(UPPopoverProps(text = "气泡内容"))
 
 <template #flutter>
 
+#### 右侧弹出
+
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
 
@@ -44,6 +46,29 @@ UPPopover(
   onClose: _recordClose,
   trigger: UPButton(
     key: const ValueKey('popover-page-right-trigger'),
+    type: 'primary',
+    size: 'small',
+    text: '点击打开',
+    stop: false,
+  ),
+  content: _content(),
+)
+```
+
+#### 左侧弹出及强制定位
+
+```dart
+UPPopover(
+  key: const ValueKey('popover-page-left'),
+  color: '#fff',
+  bgColor: '#333',
+  popupBgColor: '#333',
+  direction: 'left',
+  forcePosition: const <String, String>{
+    'right': '108px',
+    'top': '0px',
+  },
+  trigger: UPButton(
     type: 'primary',
     size: 'small',
     text: '点击打开',
@@ -71,19 +96,59 @@ import { UPPopover } from 'ultra-ui-rn';
 
 <template #taro>
 
-### 对齐变体
+#### 顶部弹出
 
-top-start / bottom-end 等
+placement="top"
 
 ```tsx
 import { UPPopover } from '@ultra-ui'
 
+<UPPopover placement='top' content='这是顶部弹出的气泡内容'>
+  <View className='popover-demo__trigger'>上</View>
+</UPPopover>
+```
+
+#### 底部弹出
+
+placement="bottom"
+
+```tsx
+<UPPopover placement='bottom' content='这是底部弹出的气泡内容'>
+  <View className='popover-demo__trigger'>下</View>
+</UPPopover>
+```
+
+#### 左侧弹出
+
+placement="left"
+
+```tsx
+<UPPopover placement='left' content='这是左侧弹出的气泡内容'>
+  <View className='popover-demo__trigger'>左</View>
+</UPPopover>
+```
+
+#### 右侧弹出
+
+placement="right"
+
+```tsx
+<UPPopover placement='right' content='这是右侧弹出的气泡内容'>
+  <View className='popover-demo__trigger'>右</View>
+</UPPopover>
+```
+
+#### 对齐变体
+
+top-start / bottom-end 等
+
+```tsx
 <UPPopover placement='top-start' content='top-start 对齐触发元素左缘'>
   <View className='popover-demo__trigger'>左上</View>
 </UPPopover>
 ```
 
-### 自定义样式
+#### 自定义样式
 
 bgColor / color / offset
 
@@ -99,7 +164,7 @@ bgColor / color / offset
 </UPPopover>
 ```
 
-### 禁用
+#### 禁用
 
 disabled 不响应点击
 
@@ -109,7 +174,7 @@ disabled 不响应点击
 </UPPopover>
 ```
 
-### 回调
+#### 回调
 
 onOpen / onClose
 
@@ -130,6 +195,8 @@ onOpen / onClose
 
 <template #uniapp>
 
+#### 右侧弹出
+
 ```vue
 <up-popover
     color="#333"
@@ -146,11 +213,32 @@ onOpen / onClose
 </up-popover>
 ```
 
+#### 左侧弹出及强制定位
+
+```vue
+<up-popover
+    color="#fff"
+    bgColor="#333"
+    popupBgColor="#333"
+    :forcePosition="{right: '108px', top: '0px'}"
+    direction="left"
+>
+    <template #trigger>
+        <up-button style="width: 100px" :stop="false" type="primary">点击</up-button>
+    </template>
+    <template #content>
+        <view style="padding: 6px 12px;">自定义内容</view>
+    </template>
+</up-popover>
+```
+
 <small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsC/popover/popover.uvue`</small>
 
 </template>
 
 <template #uniappx>
+
+#### 右侧弹出
 
 ```vue
 <up-popover
@@ -158,6 +246,25 @@ onOpen / onClose
     bgColor="#e3e4e6"
     popupBgColor="#f7f7f7"
     direction="right"
+>
+    <template #trigger>
+        <up-button style="width: 100px" :stop="false" type="primary">点击</up-button>
+    </template>
+    <template #content>
+        <view style="padding: 6px 12px;">自定义内容</view>
+    </template>
+</up-popover>
+```
+
+#### 左侧弹出及强制定位
+
+```vue
+<up-popover
+    color="#fff"
+    bgColor="#333"
+    popupBgColor="#333"
+    :forcePosition="{right: '108px', top: '0px'}"
+    direction="left"
 >
     <template #trigger>
         <up-button style="width: 100px" :stop="false" type="primary">点击</up-button>

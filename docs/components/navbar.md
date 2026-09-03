@@ -37,6 +37,10 @@ import { UPNavbar, UPNavbarProps } from '@lingyun/ultra-ui-hos';
 UPNavbar({ props: new UPNavbarProps({ title: '订单详情', leftText: '返回', rightText: '更多', border: true, autoBack: true, navigationAdapter: this.adapter(), onLeftClick: (): void => { this.message = '先收到左侧点击回调'; }, onRightClick: (): void => { this.message = '右侧点击'; } }) })
 ```
 
+```typescript
+UPNavbar({ props: new UPNavbarProps({ title: '占位导航', safeAreaInsetTop: false, placeholder: true, bgColor: '#ecf5ff' }) })
+```
+
 <small>示例来源 `ultra-ui-hos/sample/entry/src/main/ets/demos/NavbarDemo.ets`</small>
 
 </template>
@@ -82,7 +86,7 @@ import { UPNavbar } from 'ultra-ui-rn';
 
 <template #taro>
 
-### 基础用法
+#### 基础用法
 
 仅设置 title，默认 fixed={false}
 
@@ -92,7 +96,7 @@ import { UPNavbar } from '@ultra-ui'
 <UPNavbar safeAreaInsetTop={false} title='个人中心' />
 ```
 
-### 下边框
+#### 下边框
 
 border 属性
 
@@ -100,7 +104,7 @@ border 属性
 <UPNavbar safeAreaInsetTop={false} border title='带下边框' />
 ```
 
-### 自定义颜色
+#### 自定义颜色
 
 bgColor / titleColor，bgColor 支持渐变
 
@@ -114,7 +118,7 @@ bgColor / titleColor，bgColor 支持渐变
 />
 ```
 
-### 高度与标题样式
+#### 高度与标题样式
 
 height / titleStyle
 
@@ -128,7 +132,7 @@ height / titleStyle
 />
 ```
 
-### 标题宽度
+#### 标题宽度
 
 titleWidth 限制宽度，超出以省略号显示
 
@@ -141,7 +145,7 @@ titleWidth 限制宽度，超出以省略号显示
 />
 ```
 
-### 状态栏背景色
+#### 状态栏背景色
 
 safeAreaInsetTop 开启后，statusBarBgColor 可单独设置状态栏背景
 
@@ -172,6 +176,28 @@ safeAreaInsetTop 开启后，statusBarBgColor 可单独设置状态栏背景
 </up-navbar>
 ```
 
+```vue
+<up-navbar
+    title="个人中心"
+    :safeAreaInsetTop="false"
+    :fixed="false"
+    @rightClick="rightClick"
+    @leftClick="leftClick"
+>
+</up-navbar>
+```
+
+```vue
+<up-navbar
+    :safeAreaInsetTop="false"
+    title="个人中心"
+    :fixed="false"
+    left-text="返回"
+    rightIcon="map"
+>
+</up-navbar>
+```
+
 <small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsC/navbar/navbar.uvue`</small>
 
 </template>
@@ -185,6 +211,28 @@ safeAreaInsetTop 开启后，statusBarBgColor 可单独设置状态栏背景
     fixed
     placeholder
     :autoBack="true"
+>
+</up-navbar>
+```
+
+```vue
+<up-navbar
+    title="个人中心"
+    :safeAreaInsetTop="false"
+    :fixed="false"
+    @rightClick="rightClick"
+    @leftClick="leftClick"
+>
+</up-navbar>
+```
+
+```vue
+<up-navbar
+    :safeAreaInsetTop="false"
+    title="个人中心"
+    :fixed="false"
+    left-text="返回"
+    rightIcon="map"
 >
 </up-navbar>
 ```

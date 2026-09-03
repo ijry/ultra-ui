@@ -36,6 +36,10 @@ import { UPSafeBottom, UPSafeBottomProps } from '@lingyun/ultra-ui-hos';
 UPSafeBottom({ props: new UPSafeBottomProps({ safeAreaInsetBottom: true }) }) { Text('safeAreaInsetBottom=true').fontSize(12).fontColor('#909399') }
 ```
 
+```typescript
+UPSafeBottom({ props: new UPSafeBottomProps({ safeAreaInsetBottom: false, customStyle: { backgroundColor: '#ecf5ff', padding: { bottom: 10 } } }) }) { Text('关闭安全区并指定 padding').fontSize(12).fontColor('#2979ff') }
+```
+
 <small>示例来源 `ultra-ui-hos/sample/entry/src/main/ets/demos/SafeBottomDemo.ets`</small>
 
 </template>
@@ -54,7 +58,7 @@ import 'package:ultra_ui/ultra_ui.dart';
 
 <template #reactnative>
 
-### 底部安全区域占位
+#### 底部安全区域占位
 
 ```tsx
 import { UPSafeBottom } from 'ultra-ui-rn';
@@ -62,7 +66,7 @@ import { UPSafeBottom } from 'ultra-ui-rn';
 <UPSafeBottom />
 ```
 
-### 自定义背景色
+#### 自定义背景色
 
 ```tsx
 <UPSafeBottom customStyle={{ backgroundColor: '#333' }} />

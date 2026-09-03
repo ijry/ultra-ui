@@ -18,6 +18,8 @@ Switch tabs to see the syntax for each platform. Every snippet is lifted verbati
 
 <template #flutter>
 
+#### 头像裁剪
+
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
 
@@ -34,6 +36,63 @@ UPCropper(
   child: Align(
     alignment: Alignment.centerLeft,
     child: UPAvatar(src: _urls[0] ?? '', size: 120),
+  ),
+)
+```
+
+#### 可变大小
+
+```dart
+UPCropper(
+  key: const ValueKey('cropper-page-resizable'),
+  index: 1,
+  canChangeSize: true,
+  areaWidth: '300rpx',
+  areaHeight: '180rpx',
+  exportWidth: '260rpx',
+  exportHeight: '160rpx',
+  onConfirm: _cutImage,
+  child: SizedBox(
+    height: 160,
+    child: UPImage(src: _urls[1] ?? '', height: 160),
+  ),
+)
+```
+
+#### 限制在图片内
+
+```dart
+UPCropper(
+  key: const ValueKey('cropper-page-inner'),
+  index: 2,
+  inner: true,
+  canChangeSize: false,
+  areaWidth: '300rpx',
+  areaHeight: '300rpx',
+  exportWidth: '260rpx',
+  exportHeight: '260rpx',
+  onConfirm: _cutImage,
+  child: Align(
+    alignment: Alignment.centerLeft,
+    child: UPAvatar(src: _urls[2] ?? '', size: 120),
+  ),
+)
+```
+
+#### 裁剪已有临时图片
+
+```dart
+UPCropper(
+  key: const ValueKey('cropper-page-external'),
+  index: 3,
+  areaWidth: '300rpx',
+  areaHeight: '300rpx',
+  exportWidth: '260rpx',
+  exportHeight: '260rpx',
+  onConfirm: _cutImage,
+  child: Align(
+    alignment: Alignment.centerLeft,
+    child: UPAvatar(src: _urls[3] ?? '', size: 120),
   ),
 )
 ```
@@ -70,6 +129,74 @@ import { UPCropper } from '@ultra-ui'
 </UPCropper>
 ```
 
+```tsx
+<UPCropper
+  areaWidth="400rpx"
+  areaHeight="400rpx"
+  exportWidth="400"
+  exportHeight="400"
+  onConfirm={handleSquareCrop}
+>
+  <View className="cropper-demo__btn">选择图片（正方形）</View>
+</UPCropper>
+```
+
+```tsx
+<UPCropper
+  areaWidth="500rpx"
+  areaHeight="300rpx"
+  exportWidth="500"
+  exportHeight="300"
+  onConfirm={handleRectCrop}
+>
+  <View className="cropper-demo__btn">选择图片（矩形）</View>
+</UPCropper>
+```
+
+```tsx
+<UPCropper
+  canChangeSize
+  areaWidth="400rpx"
+  areaHeight="400rpx"
+  onConfirm={handleResizeCrop}
+>
+  <View className="cropper-demo__btn">选择图片（可调整）</View>
+</UPCropper>
+```
+
+```tsx
+<UPCropper
+  canRotate={false}
+  areaWidth="400rpx"
+  areaHeight="400rpx"
+  onConfirm={handleNoRotateCrop}
+>
+  <View className="cropper-demo__btn">选择图片（禁用旋转）</View>
+</UPCropper>
+```
+
+```tsx
+<UPCropper
+  canScale={false}
+  areaWidth="400rpx"
+  areaHeight="400rpx"
+  onConfirm={handleNoScaleCrop}
+>
+  <View className="cropper-demo__btn">选择图片（禁用缩放）</View>
+</UPCropper>
+```
+
+```tsx
+<UPCropper
+  inner
+  areaWidth="400rpx"
+  areaHeight="400rpx"
+  onConfirm={handleInnerCrop}
+>
+  <View className="cropper-demo__btn">选择图片（内嵌模式）</View>
+</UPCropper>
+```
+
 <small>Snippet from `ultra-ui-taro/src/pages/components/cropper/index.tsx`</small>
 
 </template>
@@ -92,6 +219,18 @@ import { UPCropper } from '@ultra-ui'
 </up-cropper>
 ```
 
+```vue
+<up-cropper ref="wideRef" @confirm="cutImage"></up-cropper>
+```
+
+```vue
+<up-cropper ref="innerRef" @confirm="cutImage"></up-cropper>
+```
+
+```vue
+<up-cropper ref="existingRef" @confirm="cutImage"></up-cropper>
+```
+
 <small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/cropper/cropper.uvue`</small>
 
 </template>
@@ -112,6 +251,18 @@ import { UPCropper } from '@ultra-ui'
         <up-avatar :src="avatarUrl" size="120px"></up-avatar>
     </view>
 </up-cropper>
+```
+
+```vue
+<up-cropper ref="wideRef" @confirm="cutImage"></up-cropper>
+```
+
+```vue
+<up-cropper ref="innerRef" @confirm="cutImage"></up-cropper>
+```
+
+```vue
+<up-cropper ref="existingRef" @confirm="cutImage"></up-cropper>
 ```
 
 <small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/cropper/cropper.uvue`</small>

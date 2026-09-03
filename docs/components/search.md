@@ -31,8 +31,6 @@ import UltraUI
 
 <template #android>
 
-### 搜索框
-
 ```kotlin
 import net.lingyun.ultraui.android.components.UPSearch
 import net.lingyun.ultraui.android.components.UPSearchProps
@@ -75,13 +73,22 @@ UPSearch({ props: new UPSearchProps({
 }) })
 ```
 
+```typescript
+UPSearch({ props: new UPSearchProps({
+  value: '不可编辑',
+  disabled: true,
+  showAction: false,
+  shape: 'square'
+}) })
+```
+
 <small>示例来源 `ultra-ui-hos/sample/entry/src/main/ets/demos/SearchDemo.ets`</small>
 
 </template>
 
 <template #flutter>
 
-### 基础功能
+#### 基础功能
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -93,7 +100,7 @@ UPSearch(
 )
 ```
 
-### 设置初始值
+#### 设置初始值
 
 ```dart
 UPSearch(
@@ -103,7 +110,7 @@ UPSearch(
 )
 ```
 
-### 搜索框形状
+#### 搜索框形状
 
 ```dart
 UPSearch(
@@ -114,7 +121,7 @@ UPSearch(
 )
 ```
 
-### 右侧控件
+#### 右侧控件
 
 ```dart
 UPSearch(
@@ -124,7 +131,7 @@ UPSearch(
 )
 ```
 
-### 可清空内容(仅focus时显示清除图标)
+#### 可清空内容(仅focus时显示清除图标)
 
 ```dart
 UPSearch(
@@ -135,7 +142,7 @@ UPSearch(
 )
 ```
 
-### 可清空内容(始终显示清除图标)
+#### 可清空内容(始终显示清除图标)
 
 ```dart
 UPSearch(
@@ -147,7 +154,7 @@ UPSearch(
 )
 ```
 
-### 禁用输入框
+#### 禁用输入框
 
 ```dart
 UPSearch(
@@ -157,7 +164,7 @@ UPSearch(
 )
 ```
 
-### 点击左侧图标
+#### 点击左侧图标
 
 ```dart
 UPSearch(
@@ -168,35 +175,13 @@ UPSearch(
 )
 ```
 
-### 搜索框内容水平对齐
-
-```dart
-UPSearch(
-  value: _value7,
-  showAction: false,
-  inputAlign: 'left',
-  onChange: (value) => setState(() => _value7 = value),
-)
-```
-
-### 自定义
-
-```dart
-UPSearch(
-  value: _value10,
-  showAction: false,
-  borderColor: 'rgb(230, 230, 230)',
-  onChange: (value) => setState(() => _value10 = value),
-)
-```
-
 <small>示例来源 `ultra-ui-flutter/example/lib/pages/components_b/search_page.dart`</small>
 
 </template>
 
 <template #reactnative>
 
-### 设置初始值
+#### 设置初始值
 
 ```tsx
 import { UPSearch } from 'ultra-ui-rn';
@@ -204,25 +189,25 @@ import { UPSearch } from 'ultra-ui-rn';
 <UPSearch onChange={setValue2} showAction={false} value={value2} />
 ```
 
-### 搜索框形状
+#### 搜索框形状
 
 ```tsx
 <UPSearch onChange={setValue3} shape="round" showAction={false} value={value3} />
 ```
 
-### 右侧控件
+#### 右侧控件
 
 ```tsx
 <UPSearch animation onChange={setValue5} value={value5} />
 ```
 
-### 可清空内容(仅focus时显示清除图标)
+#### 可清空内容(仅focus时显示清除图标)
 
 ```tsx
 <UPSearch clearabled onChange={setValue2} showAction={false} value={value2} />
 ```
 
-### 可清空内容(始终显示清除图标)
+#### 可清空内容(始终显示清除图标)
 
 ```tsx
 <UPSearch
@@ -234,7 +219,7 @@ import { UPSearch } from 'ultra-ui-rn';
 />
 ```
 
-### 禁用输入框
+#### 禁用输入框
 
 ```tsx
 <UPSearch
@@ -244,27 +229,16 @@ import { UPSearch } from 'ultra-ui-rn';
 />
 ```
 
-### 点击左侧图标
+#### 点击左侧图标
 
 ```tsx
 <UPSearch onChange={setValue6} onClickIcon={clickIcon} showAction={false} value={value6} />
 ```
 
-### 搜索框内容水平对齐
+#### 搜索框内容水平对齐
 
 ```tsx
 <UPSearch inputAlign="left" onChange={setValue7} showAction={false} value={value7} />
-```
-
-### 自定义
-
-```tsx
-<UPSearch
-  borderColor="rgb(230, 230, 230)"
-  onChange={setValue10}
-  showAction={false}
-  value={value10}
-/>
 ```
 
 <small>示例来源 `ultra-ui-rn/example/pages/components/form/SearchDemo.tsx`</small>
@@ -273,7 +247,7 @@ import { UPSearch } from 'ultra-ui-rn';
 
 <template #taro>
 
-### 基础用法
+#### 基础用法
 
 value + onChange 受控绑定
 
@@ -283,7 +257,7 @@ import { UPSearch } from '@ultra-ui'
 <UPSearch value={basic} onChange={setBasic} />
 ```
 
-### 形状
+#### 形状
 
 shape：round（默认圆角） / square 方角
 
@@ -296,7 +270,7 @@ shape：round（默认圆角） / square 方角
 />
 ```
 
-### 隐藏搜索按钮
+#### 隐藏搜索按钮
 
 showAction=false
 
@@ -309,7 +283,7 @@ showAction=false
 />
 ```
 
-### 背景色
+#### 背景色
 
 bgColor 自定义输入区背景
 
@@ -322,7 +296,7 @@ bgColor 自定义输入区背景
 />
 ```
 
-### 边框
+#### 边框
 
 borderColor 给输入区加一圈描边
 
@@ -336,7 +310,7 @@ borderColor 给输入区加一圈描边
 />
 ```
 
-### 图标位置
+#### 图标位置
 
 iconPosition：left（默认） / right
 
@@ -349,7 +323,7 @@ iconPosition：left（默认） / right
 />
 ```
 
-### 自定义图标
+#### 自定义图标
 
 searchIcon / searchIconColor / searchIconSize
 
@@ -364,7 +338,7 @@ searchIcon / searchIconColor / searchIconSize
 />
 ```
 
-### 文字对齐
+#### 文字对齐
 
 inputAlign：left / center / right
 
@@ -377,54 +351,13 @@ inputAlign：left / center / right
 />
 ```
 
-### 尺寸与外边距
-
-height / margin
-
-```tsx
-<UPSearch
-  height={44}
-  margin='0 0 10px 0'
-  placeholder='高度 44px'
-  color='#7232dd'
-  value={sized}
-  onChange={setSized}
-/>
-```
-
-### 左侧标签
-
-label 在输入框左侧插入一段文字
-
-```tsx
-<UPSearch
-  label='深圳'
-  placeholder='搜索深圳的商家'
-  value={labeled}
-  onChange={setLabeled}
-/>
-```
-
-### 禁用与长度限制
-
-disabled 不可输入；maxlength 限制字数
-
-```tsx
-<UPSearch
-  maxlength={8}
-  placeholder='最多 8 个字'
-  value={limited}
-  onChange={setLimited}
-/>
-```
-
 <small>示例来源 `ultra-ui-taro/src/pages/components/search/index.tsx`</small>
 
 </template>
 
 <template #uniapp>
 
-### 基础功能
+#### 基础功能
 
 ```vue
 <up-search
@@ -434,7 +367,7 @@ disabled 不可输入；maxlength 限制字数
 ></up-search>
 ```
 
-### 设置初始值
+#### 设置初始值
 
 ```vue
 <up-search
@@ -443,7 +376,7 @@ disabled 不可输入；maxlength 限制字数
 ></up-search>
 ```
 
-### 搜索框形状
+#### 搜索框形状
 
 ```vue
 <up-search
@@ -453,13 +386,13 @@ disabled 不可输入；maxlength 限制字数
 ></up-search>
 ```
 
-### 右侧控件
+#### 右侧控件
 
 ```vue
 <up-search v-model="value5"></up-search>
 ```
 
-### 禁用输入框
+#### 禁用输入框
 
 ```vue
 <up-search
@@ -469,7 +402,7 @@ disabled 不可输入；maxlength 限制字数
 ></up-search>
 ```
 
-### 点击左侧图标
+#### 点击左侧图标
 
 ```vue
 <up-search
@@ -479,7 +412,7 @@ disabled 不可输入；maxlength 限制字数
 ></up-search>
 ```
 
-### 搜索框内容水平对齐
+#### 搜索框内容水平对齐
 
 ```vue
 <up-search
@@ -489,7 +422,7 @@ disabled 不可输入；maxlength 限制字数
 ></up-search>
 ```
 
-### 自定义
+#### 自定义
 
 ```vue
 <up-search
@@ -506,7 +439,7 @@ disabled 不可输入；maxlength 限制字数
 
 <template #uniappx>
 
-### 基础功能
+#### 基础功能
 
 ```vue
 <up-search
@@ -516,7 +449,7 @@ disabled 不可输入；maxlength 限制字数
 ></up-search>
 ```
 
-### 设置初始值
+#### 设置初始值
 
 ```vue
 <up-search
@@ -525,7 +458,7 @@ disabled 不可输入；maxlength 限制字数
 ></up-search>
 ```
 
-### 搜索框形状
+#### 搜索框形状
 
 ```vue
 <up-search
@@ -535,13 +468,13 @@ disabled 不可输入；maxlength 限制字数
 ></up-search>
 ```
 
-### 右侧控件
+#### 右侧控件
 
 ```vue
 <up-search v-model="value5"></up-search>
 ```
 
-### 禁用输入框
+#### 禁用输入框
 
 ```vue
 <up-search
@@ -551,7 +484,7 @@ disabled 不可输入；maxlength 限制字数
 ></up-search>
 ```
 
-### 点击左侧图标
+#### 点击左侧图标
 
 ```vue
 <up-search
@@ -561,7 +494,7 @@ disabled 不可输入；maxlength 限制字数
 ></up-search>
 ```
 
-### 搜索框内容水平对齐
+#### 搜索框内容水平对齐
 
 ```vue
 <up-search
@@ -571,7 +504,7 @@ disabled 不可输入；maxlength 限制字数
 ></up-search>
 ```
 
-### 自定义
+#### 自定义
 
 ```vue
 <up-search

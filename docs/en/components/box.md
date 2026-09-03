@@ -31,6 +31,8 @@ No snippet could be extracted automatically — please read the source.
 
 <template #flutter>
 
+#### 基础功能
+
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
 
@@ -38,6 +40,19 @@ const UPBox(
   key: ValueKey('box-page-basic'),
   height: '160px',
   gap: '12px',
+)
+```
+
+#### 自定义插槽
+
+```dart
+const UPBox(
+  key: ValueKey('box-page-custom'),
+  height: '180px',
+  gap: '12px',
+  left: UPIcon(name: 'arrow-left', size: 19),
+  rightTop: UPIcon(name: 'arrow-left', size: 19),
+  rightBottom: UPIcon(name: 'arrow-left', size: 19),
 )
 ```
 
@@ -62,7 +77,7 @@ import { UPBox } from 'ultra-ui-rn';
 
 <template #taro>
 
-### 基础用法
+#### 基础用法
 
 带内边距/背景/圆角的 2x2 布局容器
 
@@ -83,7 +98,7 @@ import { UPBox } from '@ultra-ui'
 />
 ```
 
-### 纯标题（无图标）
+#### 纯标题（无图标）
 
 只传 title，图标留空
 
@@ -99,7 +114,7 @@ import { UPBox } from '@ultra-ui'
 />
 ```
 
-### 渐变背景
+#### 渐变背景
 
 bgColors 支持任意 CSS 颜色（含渐变）
 
@@ -119,7 +134,7 @@ bgColors 支持任意 CSS 颜色（含渐变）
 />
 ```
 
-### 尺寸与间距
+#### 尺寸与间距
 
 通过 height / gap / borderRadius 调整
 
@@ -155,6 +170,31 @@ bgColors 支持任意 CSS 颜色（含渐变）
 </up-box>
 ```
 
+```vue
+<up-box
+    height="180px" gap="12px"
+>
+    <template #left>
+        <up-icon
+            name="arrow-left"
+            size="19"
+        ></up-icon>
+    </template>
+    <template #rightTop>
+        <up-icon
+            name="arrow-left"
+            size="19"
+        ></up-icon>
+    </template>
+    <template #rightBottom>
+        <up-icon
+            name="arrow-left"
+            size="19"
+        ></up-icon>
+    </template>
+</up-box>
+```
+
 <small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/box/box.uvue`</small>
 
 </template>
@@ -171,6 +211,31 @@ bgColors 支持任意 CSS 颜色（含渐变）
     </template>
     <template #rightBottom>
         右下
+    </template>
+</up-box>
+```
+
+```vue
+<up-box
+    height="180px" gap="12px"
+>
+    <template #left>
+        <up-icon
+            name="arrow-left"
+            size="19"
+        ></up-icon>
+    </template>
+    <template #rightTop>
+        <up-icon
+            name="arrow-left"
+            size="19"
+        ></up-icon>
+    </template>
+    <template #rightBottom>
+        <up-icon
+            name="arrow-left"
+            size="19"
+        ></up-icon>
     </template>
 </up-box>
 ```

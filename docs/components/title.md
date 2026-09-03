@@ -31,8 +31,6 @@ import UltraUI
 
 <template #android>
 
-### 标题
-
 ```kotlin
 import net.lingyun.ultraui.android.components.UPTitle
 
@@ -51,11 +49,25 @@ import { UPTitle, UPTitleProps } from '@lingyun/ultra-ui-hos';
 UPTitle({ props: new UPTitleProps({ title: '基础标题', subTitle: '默认主要色前缀' }) })
 ```
 
+```typescript
+UPTitle({ props: new UPTitleProps({ title: '成功状态', subTitle: 'type 控制前缀颜色', type: 'success' }) })
+```
+
+```typescript
+UPTitle({ props: new UPTitleProps({ title: '居中标题', subTitle: '隐藏前缀并居中', prefix: false, align: 'center', color: 'primary' }) })
+```
+
+```typescript
+UPTitle({ props: new UPTitleProps({ title: '自定义尺寸', subTitle: '更大字号与警告色前缀', type: 'warning', size: 20 }) })
+```
+
 <small>示例来源 `ultra-ui-hos/sample/entry/src/main/ets/demos/TitleDemo.ets`</small>
 
 </template>
 
 <template #flutter>
+
+#### 默认
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -63,6 +75,16 @@ import 'package:ultra_ui/ultra_ui.dart';
 UPTitle(
   key: ValueKey('title-page-default'),
   text: '默认标题',
+)
+```
+
+#### 自定义前缀
+
+```dart
+UPTitle(
+  key: ValueKey('title-page-prefix'),
+  prefix: UPIcon(name: 'level', color: 'red', size: 16),
+  text: '等级3',
 )
 ```
 
@@ -78,13 +100,17 @@ import { UPTitle } from 'ultra-ui-rn';
 <UPTitle>默认标题</UPTitle>
 ```
 
+```tsx
+<UPTitle prefix={<UPIcon color="red" name="level" size="16px" />
+```
+
 <small>示例来源 `ultra-ui-rn/example/pages/components/display/TitleDemo.tsx`</small>
 
 </template>
 
 <template #taro>
 
-### 基础用法
+#### 基础用法
 
 带左 accent 条的标题
 
@@ -94,7 +120,7 @@ import { UPTitle } from '@ultra-ui'
 <UPTitle text='标题文字' />
 ```
 
-### 副标题
+#### 副标题
 
 sub 属性，显示一行更小的说明文字
 
@@ -102,7 +128,7 @@ sub 属性，显示一行更小的说明文字
 <UPTitle text='订单详情' sub='查看你本月的消费明细' />
 ```
 
-### 右侧插槽
+#### 右侧插槽
 
 rightSlot 自动靠右，常用于放置操作按钮
 
@@ -114,7 +140,7 @@ rightSlot 自动靠右，常用于放置操作按钮
     <UPButton size='mini' type='primary' text='全部已读' />
 ```
 
-### 自定义 accent 条
+#### 自定义 accent 条
 
 prefixColor / prefixWidth / prefixHeight / prefix={false}
 
@@ -122,7 +148,7 @@ prefixColor / prefixWidth / prefixHeight / prefix={false}
 <UPTitle text='红色强调' prefixColor='error' prefixWidth={6} prefixHeight={28} />
 ```
 
-### 对齐方式
+#### 对齐方式
 
 align：left / center / right
 
@@ -130,7 +156,7 @@ align：left / center / right
 <UPTitle text='左对齐（默认）' />
 ```
 
-### 自定义内容
+#### 自定义内容
 
 textSlot / subSlot / children 组合
 
@@ -158,6 +184,15 @@ textSlot / subSlot / children 组合
 </up-title>
 ```
 
+```vue
+<up-title>
+    <template #prefix>
+        <up-icon name="level" color="red" size="16px"></up-icon>
+    </template>
+    等级3
+</up-title>
+```
+
 <small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/title/title.uvue`</small>
 
 </template>
@@ -167,6 +202,15 @@ textSlot / subSlot / children 组合
 ```vue
 <up-title>
     默认标题
+</up-title>
+```
+
+```vue
+<up-title>
+    <template #prefix>
+        <up-icon name="level" color="red" size="16px"></up-icon>
+    </template>
+    等级3
 </up-title>
 ```
 

@@ -53,7 +53,7 @@ No snippet could be extracted automatically — please read the source.
 
 <template #taro>
 
-### 三列
+#### 三列
 
 columns 指定列数，数据在三列间按最矮优先分配
 
@@ -63,6 +63,21 @@ import { UPWaterfall } from '@ultra-ui'
 <UPWaterfall
   value={autoList}
   columns={3}
+  addTime={50}
+  renderItem={renderCard}
+/>
+```
+
+#### 自动列数
+
+columns='auto' 时按屏宽与 minColumnWidth 计算列数
+
+```tsx
+<UPWaterfall
+  value={autoList}
+  columns='auto'
+  minColumnWidth={120}
+  columnsMin={2}
   addTime={50}
   renderItem={renderCard}
 />

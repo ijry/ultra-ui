@@ -38,8 +38,6 @@ UPTabbar(
 
 <template #flutter>
 
-### 固定在底部(固定在屏幕最下方)
-
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
 
@@ -83,13 +81,128 @@ import { UPTabbar } from 'ultra-ui-rn';
 </UPTabbar>
 ```
 
+```tsx
+<UPTabbar
+  fixed={false}
+  onChange={setValue2}
+  placeholder={false}
+  safeAreaInsetBottom={false}
+  value={value2}
+>
+  <UPTabbarItem dot icon="home" text="首页" />
+  <UPTabbarItem badge="3" icon="photo" text="放映厅" />
+  <UPTabbarItem icon="play-right" text="直播" />
+  <UPTabbarItem icon="account" text="我的" />
+</UPTabbar>
+```
+
+```tsx
+<UPTabbar
+  fixed={false}
+  onChange={setValue3}
+  placeholder={false}
+  safeAreaInsetBottom={false}
+  value={value3}
+>
+  <UPTabbarItem icon="home" name="home" text="首页" />
+  <UPTabbarItem icon="photo" name="photo" text="放映厅" />
+  <UPTabbarItem icon="play-right" name="play-right" text="直播" />
+  <UPTabbarItem icon="account" name="account" text="我的" />
+</UPTabbar>
+```
+
+```tsx
+<UPTabbar
+  activeColor="#d81e06"
+  fixed={false}
+  onChange={setValue4}
+  placeholder={false}
+  safeAreaInsetBottom={false}
+  value={value4}
+>
+  <UPTabbarItem
+    activeIconNode={<Image source={{ uri: BELL_ACTIVE }} style={s.slotIcon} />}
+    inactiveIconNode={<Image source={{ uri: BELL }} style={s.slotIcon} />}
+    text="首页"
+  />
+  <UPTabbarItem icon="photo" text="放映厅" />
+  <UPTabbarItem icon="play-right" text="直播" />
+  <UPTabbarItem icon="account" text="我的" />
+</UPTabbar>
+```
+
+```tsx
+<UPTabbar
+  fixed={false}
+  onChange={change5}
+  placeholder={false}
+  safeAreaInsetBottom={false}
+  value={value5}
+>
+  <UPTabbarItem icon="home" text="首页" />
+  <UPTabbarItem icon="photo" text="放映厅" />
+  <UPTabbarItem icon="play-right" text="直播" />
+  <UPTabbarItem icon="account" text="我的" />
+</UPTabbar>
+```
+
+```tsx
+<UPTabbar
+  border={false}
+  fixed={false}
+  onChange={setValue7}
+  placeholder={false}
+  safeAreaInsetBottom={false}
+  value={value7}
+>
+  <UPTabbarItem icon="home" text="首页" />
+  <UPTabbarItem icon="photo" text="放映厅" />
+  <UPTabbarItem icon="play-right" text="直播" />
+  <UPTabbarItem icon="account" text="我的" />
+</UPTabbar>
+```
+
+```tsx
+<UPTabbar
+  activeBackgroundColor="rgba(59, 130, 246, 0.10)"
+  animationType="scale"
+  fixed={false}
+  onChange={setValue8}
+  placeholder={false}
+  safeAreaInsetBottom={false}
+  styleType="pill"
+  value={value8}
+>
+  {STYLE_ITEMS.map((item) => (
+    <UPTabbarItem icon={item.icon} key={item.text} text={item.text} />
+  ))}
+</UPTabbar>
+```
+
+```tsx
+<UPTabbar
+  animationType="lift"
+  fixed={false}
+  onChange={setValue9}
+  placeholder={false}
+  safeAreaInsetBottom={false}
+  styleType="lift"
+  textMode="active"
+  value={value9}
+>
+  {STYLE_ITEMS.map((item) => (
+    <UPTabbarItem icon={item.icon} key={item.text} text={item.text} />
+  ))}
+</UPTabbar>
+```
+
 <small>Snippet from `ultra-ui-rn/example/pages/components/navigation/TabbarDemo.tsx`</small>
 
 </template>
 
 <template #taro>
 
-### 基础用法
+#### 基础用法
 
 UPTabbar 的 value 与 UPTabbarItem 的 name 匹配；onChange 回传被点击项的 name
 
@@ -101,7 +214,7 @@ import { UPTabbar } from '@ultra-ui'
 </UPTabbar>
 ```
 
-### activeIcon / inactiveIcon
+#### activeIcon / inactiveIcon
 
 子项自带选中态图标，无需外部判断
 
@@ -119,7 +232,7 @@ import { UPTabbar } from '@ultra-ui'
 </UPTabbar>
 ```
 
-### 徽标
+#### 徽标
 
 badge 数字角标 / dot 圆点
 
@@ -132,7 +245,7 @@ badge 数字角标 / dot 圆点
 </UPTabbar>
 ```
 
-### 自定义颜色
+#### 自定义颜色
 
 activeColor / inactiveColor / backgroundColor / border
 
@@ -150,7 +263,7 @@ activeColor / inactiveColor / backgroundColor / border
 </UPTabbar>
 ```
 
-### 选中项背景色
+#### 选中项背景色
 
 activeBackgroundColor / inactiveBackgroundColor + itemShape
 
@@ -168,7 +281,39 @@ activeBackgroundColor / inactiveBackgroundColor + itemShape
 </UPTabbar>
 ```
 
-### 整体风格
+#### 文字显示模式
+
+textMode='active' 时未选中项文字弱化
+
+```tsx
+<UPTabbar {...INLINE} value={textMode} textMode='active' onChange={setTextMode}>
+  {renderItems(textMode)}
+</UPTabbar>
+```
+
+#### 中间凸起按钮
+
+子项 mode='midButton'
+
+```tsx
+<UPTabbar {...INLINE} value={mid} onChange={setMid}>
+  <UPTabbarItem name='home' text='首页' icon='home' />
+  <UPTabbarItem name='cart' text='购物车' icon='bag' />
+  <UPTabbarItem
+    name='publish'
+    mode='midButton'
+    text='发布'
+    icon='plus'
+    midButtonBgColor='#ffffff'
+    midButtonIconColor='#3c9cff'
+    midButtonIconSize={26}
+  />
+  <UPTabbarItem name='chat' text='消息' icon='chat' />
+  <UPTabbarItem name='mine' text='我的' icon='account' />
+</UPTabbar>
+```
+
+#### 整体风格
 
 styleType 共 9 种
 
@@ -180,55 +325,6 @@ styleType 共 9 种
   onChange={(name) => setStyleValue((prev) => ({ ...prev, [type]: name }))}
 >
   {renderItems(styleValue[type] ?? 'home')}
-</UPTabbar>
-```
-
-### 选中动画
-
-animationType + iconScale，点上面的按钮切换动画类型后再点标签
-
-```tsx
-<UPTabbar
-  {...INLINE}
-  value={animation}
-  animationType={animationType}
-  iconScale={1.3}
-  onChange={setAnimation}
->
-  {renderItems(animation)}
-</UPTabbar>
-```
-
-### 不设置 name
-
-子项未设置 name 时，以自身在 Tabbar 中的序号作为标识
-
-```tsx
-<UPTabbar {...INLINE} value={noName} onChange={setNoName}>
-  <UPTabbarItem text='第一项' icon='home' />
-  <UPTabbarItem text='第二项' icon='bag' />
-  <UPTabbarItem text='第三项' icon='account' />
-</UPTabbar>
-```
-
-### 自定义图标插槽
-
-activeIconSlot / inactiveIconSlot / textSlot
-
-```tsx
-<UPTabbar {...INLINE} value={basic} onChange={setBasic}>
-  <UPTabbarItem
-    name='home'
-    text='首页'
-    activeIconSlot={<UPIcon name='home-fill' size={24} color='#7232dd' />}
-    inactiveIconSlot={<UPIcon name='home' size={24} color='#c0c4cc' />}
-  />
-  <UPTabbarItem
-    name='cart'
-    icon='bag'
-    textSlot={<Text className='tabbar-demo__slot-text'>购物车</Text>}
-  />
-  <UPTabbarItem name='mine' text='我的' icon='account' />
 </UPTabbar>
 ```
 
@@ -267,6 +363,90 @@ activeIconSlot / inactiveIconSlot / textSlot
 </up-tabbar>
 ```
 
+```vue
+<up-tabbar
+    :value="value5"
+    :fixed="false"
+    @change="change5"
+    :safeAreaInsetBottom="false"
+    :placeholder="false"
+>
+    <up-tabbar-item
+        text="首页"
+        icon="home"
+    >
+    </up-tabbar-item>
+    <up-tabbar-item
+        text="放映厅"
+        icon="photo"
+    ></up-tabbar-item>
+    <up-tabbar-item
+        text="直播"
+        icon="play-right"
+    ></up-tabbar-item>
+    <up-tabbar-item
+        text="我的"
+        icon="account"
+    ></up-tabbar-item>
+</up-tabbar>
+```
+
+```vue
+<up-tabbar
+    :value="value7"
+    :placeholder="false"
+    :border="false"
+    @change="(name: string | number | null) => {value7 = name}"
+    :fixed="false"
+    :safeAreaInsetBottom="false"
+>
+    <up-tabbar-item
+        text="首页"
+        icon="home"
+    ></up-tabbar-item>
+    <up-tabbar-item
+        text="放映厅"
+        icon="photo"
+    ></up-tabbar-item>
+    <up-tabbar-item
+        text="直播"
+        icon="play-right"
+    ></up-tabbar-item>
+    <up-tabbar-item
+        text="我的"
+        icon="account"
+    ></up-tabbar-item>
+</up-tabbar>
+```
+
+```vue
+<up-tabbar
+    :value="value6"
+    @change="(name: string | number | null) => {value6 = name}"
+    :fixed="true"
+    :placeholder="true"
+    :safeAreaInsetBottom="true"
+>
+    <up-tabbar-item
+        text="首页"
+        icon="home"
+    >
+    </up-tabbar-item>
+    <up-tabbar-item
+        text="放映厅"
+        icon="photo"
+    ></up-tabbar-item>
+    <up-tabbar-item
+        text="直播"
+        icon="play-right"
+    ></up-tabbar-item>
+    <up-tabbar-item
+        text="我的"
+        icon="account"
+    ></up-tabbar-item>
+</up-tabbar>
+```
+
 <small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsB/tabbar/tabbar.uvue`</small>
 
 </template>
@@ -290,6 +470,90 @@ activeIconSlot / inactiveIconSlot / textSlot
         text="放映厅"
         icon="photo"
         badge="3"
+    ></up-tabbar-item>
+    <up-tabbar-item
+        text="直播"
+        icon="play-right"
+    ></up-tabbar-item>
+    <up-tabbar-item
+        text="我的"
+        icon="account"
+    ></up-tabbar-item>
+</up-tabbar>
+```
+
+```vue
+<up-tabbar
+    :value="value5"
+    :fixed="false"
+    @change="change5"
+    :safeAreaInsetBottom="false"
+    :placeholder="false"
+>
+    <up-tabbar-item
+        text="首页"
+        icon="home"
+    >
+    </up-tabbar-item>
+    <up-tabbar-item
+        text="放映厅"
+        icon="photo"
+    ></up-tabbar-item>
+    <up-tabbar-item
+        text="直播"
+        icon="play-right"
+    ></up-tabbar-item>
+    <up-tabbar-item
+        text="我的"
+        icon="account"
+    ></up-tabbar-item>
+</up-tabbar>
+```
+
+```vue
+<up-tabbar
+    :value="value7"
+    :placeholder="false"
+    :border="false"
+    @change="(name: string | number | null) => {value7 = name}"
+    :fixed="false"
+    :safeAreaInsetBottom="false"
+>
+    <up-tabbar-item
+        text="首页"
+        icon="home"
+    ></up-tabbar-item>
+    <up-tabbar-item
+        text="放映厅"
+        icon="photo"
+    ></up-tabbar-item>
+    <up-tabbar-item
+        text="直播"
+        icon="play-right"
+    ></up-tabbar-item>
+    <up-tabbar-item
+        text="我的"
+        icon="account"
+    ></up-tabbar-item>
+</up-tabbar>
+```
+
+```vue
+<up-tabbar
+    :value="value6"
+    @change="(name: string | number | null) => {value6 = name}"
+    :fixed="true"
+    :placeholder="true"
+    :safeAreaInsetBottom="true"
+>
+    <up-tabbar-item
+        text="首页"
+        icon="home"
+    >
+    </up-tabbar-item>
+    <up-tabbar-item
+        text="放映厅"
+        icon="photo"
     ></up-tabbar-item>
     <up-tabbar-item
         text="直播"

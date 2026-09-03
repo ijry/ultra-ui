@@ -34,13 +34,26 @@ UPModal(show: $showConfirm,
         })
 ```
 
+```swift
+UPModal(show: $showAsync,
+        title: "异步操作",
+        content: "确认后按钮进入 loading 状态，请在回调完成后手动修改 show。",
+        showCancelButton: true,
+        asyncClose: true,
+        onConfirm: {
+            Task { @MainActor in
+                try? await Task.sleep(nanoseconds: 1_200_000_000)
+                showAsync = false
+                UPToast.show(message: "异步操作完成", type: "success")
+            }
+        })
+```
+
 <small>Snippet from `ultra-ui-ios/Demo/ModalDemoView.swift`</small>
 
 </template>
 
 <template #android>
-
-### 加载更多
 
 ```kotlin
 import net.lingyun.ultraui.android.components.UPModal
@@ -65,6 +78,8 @@ UPModal(
 </template>
 
 <template #harmony>
+
+#### 确认与取消
 
 ```typescript
 import { UPModal, UPModalProps } from '@lingyun/ultra-ui-hos';
@@ -105,6 +120,102 @@ UPModal(
 )
 ```
 
+```dart
+UPModal(
+  key: const ValueKey('modal-page-untitled'),
+  show: _shows[1],
+  content: _content,
+  onUpdateShow: (show) => _setShow(1, show),
+)
+```
+
+```dart
+UPModal(
+  key: const ValueKey('modal-page-cancel'),
+  show: _shows[2],
+  content: _content,
+  showCancelButton: true,
+  closeOnClickOverlay: true,
+  onConfirm: _recordConfirm,
+  onCancel: _recordCancel,
+  onClose: _recordClose,
+  onUpdateShow: (show) => _setShow(2, show),
+)
+```
+
+```dart
+UPModal(
+  key: const ValueKey('modal-page-async'),
+  show: _shows[3],
+  content: _content,
+  showCancelButton: true,
+  asyncClose: true,
+  onConfirm: _confirmAsync,
+  onCancel: () => _setShow(3, false),
+  onUpdateShow: (show) => _setShow(3, show),
+)
+```
+
+```dart
+UPModal(
+  key: const ValueKey('modal-page-reverse'),
+  show: _shows[4],
+  content: _content,
+  showCancelButton: true,
+  buttonReverse: true,
+  onConfirm: _recordConfirm,
+  onCancel: _recordCancel,
+  onUpdateShow: (show) => _setShow(4, show),
+)
+```
+
+```dart
+UPModal(
+  key: const ValueKey('modal-page-overlay'),
+  show: _shows[5],
+  title: '标题',
+  content: _content,
+  closeOnClickOverlay: true,
+  onConfirm: _recordConfirm,
+  onClose: _recordClose,
+  onUpdateShow: (show) => _setShow(5, show),
+)
+```
+
+```dart
+UPModal(
+  key: const ValueKey('modal-page-slot'),
+  show: _shows[6],
+  title: '利剑出鞘,一统江湖',
+  closeOnClickOverlay: true,
+  child: Image.asset(
+    'assets/uview/common/logo.png',
+    width: 80,
+    height: 80,
+  ),
+  onUpdateShow: (show) => _setShow(6, show),
+)
+```
+
+```dart
+UPModal(
+  key: const ValueKey('modal-page-custom-button'),
+  show: _shows[7],
+  title: '标题',
+  content: _content,
+  closeOnClickOverlay: true,
+  showCancelButton: true,
+  confirmButton: UPButton(
+    type: 'success',
+    shape: 'circle',
+    text: '确定',
+    stop: false,
+    onClick: () => _setShow(7, false),
+  ),
+  onUpdateShow: (show) => _setShow(7, show),
+)
+```
+
 <small>Snippet from `ultra-ui-flutter/example/lib/pages/components_c/modal_page.dart`</small>
 
 </template>
@@ -120,6 +231,71 @@ import { UPModal } from 'ultra-ui-rn';
   onConfirm={close}
   show={active === 1}
   title="标题"
+/>
+```
+
+```tsx
+<UPModal content={content} onConfirm={close} show={active === 2} />
+```
+
+```tsx
+<UPModal
+  asyncClose
+  content={content}
+  onCancel={close}
+  onConfirm={confirm4}
+  show={active === 4}
+  showCancelButton
+/>
+```
+
+```tsx
+<UPModal
+  buttonReverse
+  content={content}
+  onCancel={close}
+  onConfirm={close}
+  show={active === 5}
+  showCancelButton
+/>
+```
+
+```tsx
+<UPModal
+  closeOnClickOverlay
+  content={content}
+  onClose={close}
+  onConfirm={close}
+  show={active === 6}
+  title="标题"
+/>
+```
+
+```tsx
+<UPModal
+  closeOnClickOverlay
+  onConfirm={close}
+  show={active === 7}
+  title="利剑出鞘,一统江湖"
+>
+  <Image source={{ uri: LOGO }} style={s.logo} />
+</UPModal>
+```
+
+```tsx
+<UPModal
+  closeOnClickOverlay
+  confirmButtonNode={
+    <UPButton onClick={close} shape="circle" text="确定" type="success" />
+```
+
+```tsx
+<UPModal
+  content={content}
+  onConfirm={close}
+  show={active === 9}
+  title="标题"
+  zoom={false}
 />
 ```
 
@@ -139,6 +315,83 @@ import { UPModal } from '@ultra-ui'
 />
 ```
 
+```tsx
+<UPModal
+  show={current === 'onlyCancel'}
+  title='仅取消按钮'
+  content='showConfirmButton=false，只保留一个取消按钮。'
+  showCancelButton
+  showConfirmButton={false}
+  onChangeShow={close}
+/>
+```
+
+```tsx
+<UPModal
+  show={current === 'text'}
+  title='自定义按钮文案'
+  content='confirmText / cancelText 可以换成任意文字。'
+  showCancelButton
+  confirmText='立即开通'
+  cancelText='再想想'
+  onChangeShow={close}
+/>
+```
+
+```tsx
+<UPModal
+  show={current === 'color'}
+  title='自定义按钮颜色'
+  content="confirmColor='#f56c6c'，cancelColor='#909399'。"
+  showCancelButton
+  confirmColor='#f56c6c'
+  cancelColor='#909399'
+  confirmText='确认删除'
+  onChangeShow={close}
+/>
+```
+
+```tsx
+<UPModal
+  show={current === 'reverse'}
+  title='按钮换位'
+  content='buttonReverse=true 时，确认按钮排在左侧。'
+  showCancelButton
+  buttonReverse
+  onChangeShow={close}
+/>
+```
+
+```tsx
+<UPModal
+  show={current === 'narrow'}
+  title='窄一点'
+  content="width='500rpx'"
+  width='500rpx'
+  onChangeShow={close}
+/>
+```
+
+```tsx
+<UPModal
+  show={current === 'wide'}
+  title='宽一点'
+  content="width='700rpx'"
+  width='700rpx'
+  onChangeShow={close}
+/>
+```
+
+```tsx
+<UPModal
+  show={current === 'alignLeft'}
+  title='左对齐'
+  content={CONTENT}
+  contentTextAlign='left'
+  onChangeShow={close}
+/>
+```
+
 <small>Snippet from `ultra-ui-taro/src/pages/components/modal/index.tsx`</small>
 
 </template>
@@ -154,6 +407,92 @@ import { UPModal } from '@ultra-ui'
 ></up-modal>
 ```
 
+```vue
+<up-modal
+    :content="content"
+    :show="show2"
+    @confirm="() => {show2 = false}"
+></up-modal>
+```
+
+```vue
+<up-modal
+    :content="content"
+    :show="show3"
+    showCancelButton
+    closeOnClickOverlay
+    @confirm="confirm"
+    @cancel="cancel"
+    @close="close"
+></up-modal>
+```
+
+```vue
+<up-modal
+    :content="content"
+    :show="show4"
+    showCancelButton
+    asyncClose
+    @confirm="confirm4"
+    @cancel="() => {show4 = false}"
+></up-modal>
+```
+
+```vue
+<up-modal
+    :content="content"
+    :show="show5"
+    showCancelButton
+    buttonReverse
+    @confirm="() => {show5 = false}"
+    @cancel="() => {show5 = false}"
+></up-modal>
+```
+
+```vue
+<up-modal
+    :content="content"
+    title="标题"
+    :show="show6"
+    closeOnClickOverlay
+    @confirm="() => {show6 = false}"
+    @close="() => {show6 = false}"
+></up-modal>
+```
+
+```vue
+<up-modal
+    title="利剑出鞘,一统江湖"
+    :show="show7"
+    closeOnClickOverlay
+    @confirm="() => {show7 = false}"
+>
+    <image
+        style="width: 80px;height: 80px;"
+        src="/static/uview/common/logo.png"
+    ></image>
+</up-modal>
+```
+
+```vue
+<up-modal
+    title="标题"
+    :show="show8"
+    :content="content"
+    closeOnClickOverlay
+    showCancelButton
+>
+    <template #confirmButton>
+        <up-button
+            text="确定"
+            type="success"
+            shape="circle"
+            @click="show8 = false"
+        ></up-button>
+    </template>
+</up-modal>
+```
+
 <small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/modal/modal.uvue`</small>
 
 </template>
@@ -167,6 +506,92 @@ import { UPModal } from '@ultra-ui'
     :show="show1"
     @confirm="() => {show1 = false}"
 ></up-modal>
+```
+
+```vue
+<up-modal
+    :content="content"
+    :show="show2"
+    @confirm="() => {show2 = false}"
+></up-modal>
+```
+
+```vue
+<up-modal
+    :content="content"
+    :show="show3"
+    showCancelButton
+    closeOnClickOverlay
+    @confirm="confirm"
+    @cancel="cancel"
+    @close="close"
+></up-modal>
+```
+
+```vue
+<up-modal
+    :content="content"
+    :show="show4"
+    showCancelButton
+    asyncClose
+    @confirm="confirm4"
+    @cancel="() => {show4 = false}"
+></up-modal>
+```
+
+```vue
+<up-modal
+    :content="content"
+    :show="show5"
+    showCancelButton
+    buttonReverse
+    @confirm="() => {show5 = false}"
+    @cancel="() => {show5 = false}"
+></up-modal>
+```
+
+```vue
+<up-modal
+    :content="content"
+    title="标题"
+    :show="show6"
+    closeOnClickOverlay
+    @confirm="() => {show6 = false}"
+    @close="() => {show6 = false}"
+></up-modal>
+```
+
+```vue
+<up-modal
+    title="利剑出鞘,一统江湖"
+    :show="show7"
+    closeOnClickOverlay
+    @confirm="() => {show7 = false}"
+>
+    <image
+        style="width: 80px;height: 80px;"
+        src="/static/uview/common/logo.png"
+    ></image>
+</up-modal>
+```
+
+```vue
+<up-modal
+    title="标题"
+    :show="show8"
+    :content="content"
+    closeOnClickOverlay
+    showCancelButton
+>
+    <template #confirmButton>
+        <up-button
+            text="确定"
+            type="success"
+            shape="circle"
+            @click="show8 = false"
+        ></up-button>
+    </template>
+</up-modal>
 ```
 
 <small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/modal/modal.uvue`</small>

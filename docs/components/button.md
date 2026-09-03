@@ -18,7 +18,7 @@ generated: true
 
 <template #ios>
 
-### 主题类型
+#### 主题类型
 
 ```swift
 import SwiftUI
@@ -27,13 +27,13 @@ import UltraUI
 UPButton(type: "primary", size: "large", text: "主按钮")
 ```
 
-### 形状和状态
+#### 形状和状态
 
 ```swift
 UPButton(type: "primary", shape: "circle", text: "胶囊按钮")
 ```
 
-### 尺寸和图标
+#### 尺寸和图标
 
 ```swift
 UPButton(type: "primary", size: "small", text: "Small")
@@ -44,8 +44,6 @@ UPButton(type: "primary", size: "small", text: "Small")
 </template>
 
 <template #android>
-
-### 按钮
 
 ```kotlin
 import net.lingyun.ultraui.android.components.UPButton
@@ -63,6 +61,8 @@ UPButton(
 
 <template #harmony>
 
+#### 基础类型
+
 ```typescript
 import { UPButton, UPButtonProps } from '@lingyun/ultra-ui-hos';
 
@@ -75,13 +75,27 @@ UPButton({ props: new UPButtonProps({
 }) })
 ```
 
+#### 加载与禁用
+
+```typescript
+UPButton({ props: new UPButtonProps({
+  text: '切换加载状态',
+  loading: this.loading,
+  loadingText: '处理中',
+  type: 'primary',
+  onClick: (): void => {
+    this.loading = !this.loading;
+  }
+}) })
+```
+
 <small>示例来源 `ultra-ui-hos/sample/entry/src/main/ets/demos/ButtonDemo.ets`</small>
 
 </template>
 
 <template #flutter>
 
-### 按钮类型
+#### 按钮类型
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -93,26 +107,26 @@ UPButton(
 )
 ```
 
-### 镂空按钮
+#### 镂空按钮
 
 ```dart
 UPButton(text: '镂空按钮', type: 'info', plain: true)
 ```
 
-### 细边按钮
+#### 细边按钮
 
 ```dart
 UPButton(
     text: '细边按钮', type: 'info', plain: true, hairline: true)
 ```
 
-### 禁用按钮
+#### 禁用按钮
 
 ```dart
 UPButton(text: '禁用按钮', type: 'info', disabled: true)
 ```
 
-### 加载中
+#### 加载中
 
 ```dart
 UPButton(
@@ -123,7 +137,7 @@ UPButton(
 )
 ```
 
-### 按钮图标&按钮形状
+#### 按钮图标&按钮形状
 
 ```dart
 UPButton(
@@ -134,7 +148,7 @@ UPButton(
 )
 ```
 
-### 自定义颜色
+#### 自定义颜色
 
 ```dart
 UPButton(
@@ -147,7 +161,7 @@ UPButton(
 )
 ```
 
-### 自定义大小
+#### 自定义大小
 
 ```dart
 UPButton(text: '超大尺寸', size: 'large', type: 'success')
@@ -159,7 +173,7 @@ UPButton(text: '超大尺寸', size: 'large', type: 'success')
 
 <template #reactnative>
 
-### 按钮类型
+#### 按钮类型
 
 ```tsx
 import { UPButton } from 'ultra-ui-rn';
@@ -167,37 +181,37 @@ import { UPButton } from 'ultra-ui-rn';
 <UPButton text="成功按钮" size="normal" type="success" />
 ```
 
-### 镂空按钮
+#### 镂空按钮
 
 ```tsx
 <UPButton text="镂空按钮" size="normal" type="info" plain />
 ```
 
-### 细边按钮
+#### 细边按钮
 
 ```tsx
 <UPButton text="细边按钮" size="normal" type="info" plain hairline />
 ```
 
-### 禁用按钮
+#### 禁用按钮
 
 ```tsx
 <UPButton disabled text="禁用按钮" size="normal" type="info" />
 ```
 
-### 加载中
+#### 加载中
 
 ```tsx
 <UPButton loadingText="加载中" size="normal" loading loadingMode="circle" type="success" />
 ```
 
-### 按钮图标&按钮形状
+#### 按钮图标&按钮形状
 
 ```tsx
 <UPButton text="按钮图标" size="normal" icon="map" plain type="warning" />
 ```
 
-### 自定义颜色
+#### 自定义颜色
 
 ```tsx
 <UPButton
@@ -207,7 +221,7 @@ import { UPButton } from 'ultra-ui-rn';
 />
 ```
 
-### 自定义大小
+#### 自定义大小
 
 ```tsx
 <UPButton text="超大尺寸" size="large" type="success" />
@@ -219,34 +233,66 @@ import { UPButton } from 'ultra-ui-rn';
 
 <template #taro>
 
-### 尺寸
+#### 主题
 
-size：large / normal / small / mini
+type 属性，共 5 种
 
 ```tsx
 import { UPButton } from '@ultra-ui'
 
+<UPButton text='info' />
+```
+
+#### 镂空
+
+plain 属性，背景透明
+
+```tsx
+<UPButton plain text='info' />
+```
+
+#### 细边框
+
+hairline 配合 plain 使用
+
+```tsx
+<UPButton plain hairline type='primary' text='primary' />
+```
+
+#### 禁用
+
+```tsx
+<UPButton disabled text='info' />
+```
+
+#### 形状
+
+shape=circle 圆角 / square 方角
+
+```tsx
+<UPButton shape='circle' type='primary' text='circle' />
+```
+
+#### 尺寸
+
+size：large / normal / small / mini
+
+```tsx
 <UPButton size='large' type='primary' text='large' />
 ```
 
-### 加载中
+#### 图标
+
+```tsx
+<UPButton icon='star' type='primary' text='收藏' />
+```
+
+#### 加载中
 
 loading / loadingText / loadingMode
 
 ```tsx
 <UPButton loading loadingMode='circle' loadingText='加载中' />
-```
-
-### 块级
-
-通过 customStyle 撑满宽度
-
-```tsx
-<UPButton
-  type='primary'
-  text='占满整行'
-  customStyle={{ width: '100%' }}
-/>
 ```
 
 <small>示例来源 `ultra-ui-taro/src/pages/components/button/index.tsx`</small>
@@ -255,7 +301,7 @@ loading / loadingText / loadingMode
 
 <template #uniapp>
 
-### 按钮类型
+#### 按钮类型
 
 ```vue
 <up-button
@@ -266,7 +312,7 @@ loading / loadingText / loadingMode
 ></up-button>
 ```
 
-### 镂空按钮
+#### 镂空按钮
 
 ```vue
 <up-button
@@ -277,7 +323,7 @@ loading / loadingText / loadingMode
 ></up-button>
 ```
 
-### 细边按钮
+#### 细边按钮
 
 ```vue
 <up-button
@@ -289,7 +335,7 @@ loading / loadingText / loadingMode
 ></up-button>
 ```
 
-### 禁用按钮
+#### 禁用按钮
 
 ```vue
 <up-button
@@ -300,7 +346,7 @@ loading / loadingText / loadingMode
 ></up-button>
 ```
 
-### 加载中
+#### 加载中
 
 ```vue
 <up-button
@@ -312,7 +358,7 @@ loading / loadingText / loadingMode
 ></up-button>
 ```
 
-### 按钮图标&按钮形状
+#### 按钮图标&按钮形状
 
 ```vue
 <up-button
@@ -324,7 +370,7 @@ loading / loadingText / loadingMode
 ></up-button>
 ```
 
-### 自定义颜色
+#### 自定义颜色
 
 ```vue
 <up-button
@@ -334,7 +380,7 @@ loading / loadingText / loadingMode
 ></up-button>
 ```
 
-### 自定义大小
+#### 自定义大小
 
 ```vue
 <up-button
@@ -350,7 +396,7 @@ loading / loadingText / loadingMode
 
 <template #uniappx>
 
-### 按钮类型
+#### 按钮类型
 
 ```vue
 <up-button
@@ -361,7 +407,7 @@ loading / loadingText / loadingMode
 ></up-button>
 ```
 
-### 镂空按钮
+#### 镂空按钮
 
 ```vue
 <up-button
@@ -372,7 +418,7 @@ loading / loadingText / loadingMode
 ></up-button>
 ```
 
-### 细边按钮
+#### 细边按钮
 
 ```vue
 <up-button
@@ -384,7 +430,7 @@ loading / loadingText / loadingMode
 ></up-button>
 ```
 
-### 禁用按钮
+#### 禁用按钮
 
 ```vue
 <up-button
@@ -395,7 +441,7 @@ loading / loadingText / loadingMode
 ></up-button>
 ```
 
-### 加载中
+#### 加载中
 
 ```vue
 <up-button
@@ -407,7 +453,7 @@ loading / loadingText / loadingMode
 ></up-button>
 ```
 
-### 按钮图标&按钮形状
+#### 按钮图标&按钮形状
 
 ```vue
 <up-button
@@ -419,7 +465,7 @@ loading / loadingText / loadingMode
 ></up-button>
 ```
 
-### 自定义颜色
+#### 自定义颜色
 
 ```vue
 <up-button
@@ -429,7 +475,7 @@ loading / loadingText / loadingMode
 ></up-button>
 ```
 
-### 自定义大小
+#### 自定义大小
 
 ```vue
 <up-button

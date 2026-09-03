@@ -25,13 +25,19 @@ import UltraUI
 UPLine()
 ```
 
+```swift
+UPLine(color: "primary", dashed: true)
+```
+
+```swift
+UPLine(color: "error", direction: "col")
+```
+
 <small>示例来源 `ultra-ui-ios/Demo/MiscDemoView.swift`</small>
 
 </template>
 
 <template #android>
-
-### 线条
 
 ```kotlin
 import net.lingyun.ultraui.android.components.UPLine
@@ -46,10 +52,18 @@ UPLine(props = UPLineProps(color = "#2979ff", length = "100%", margin = "8px"))
 
 <template #harmony>
 
+#### 基础线条
+
 ```typescript
 import { UPLine, UPLineProps } from '@lingyun/ultra-ui-hos';
 
 UPLine({ props: new UPLineProps() })
+```
+
+#### 竖向线条与虚线兼容
+
+```typescript
+UPLine({ props: new UPLineProps({ direction: 'col', length: 48, color: 'success' }) })
 ```
 
 <small>示例来源 `ultra-ui-hos/sample/entry/src/main/ets/demos/LineDemo.ets`</small>
@@ -64,16 +78,79 @@ import 'package:ultra_ui/ultra_ui.dart';
 _LineBlock('基本案例', UPLine()
 ```
 
+```dart
+_LineBlock('自定义颜色', UPLine(color: '#2979ff')
+```
+
+```dart
+_LineBlock('自定义长度', UPLine(length: 200)
+```
+
+```dart
+UPLine(
+    length: 30, color: '#2979ff', direction: 'col')
+```
+
+```dart
+_LineBlock('是否显示1px粗线条', UPLine(hairline: false)
+```
+
+```dart
+_LineBlock('线条与上下左右元素的间距', UPLine(margin: 20)
+```
+
+```dart
+_LineBlock('是否虚线', UPLine(color: '#2979ff', dashed: true)
+```
+
 <small>示例来源 `ultra-ui-flutter/example/lib/pages/components_a/line_page.dart`</small>
 
 </template>
 
 <template #reactnative>
 
+#### 基本案例
+
 ```tsx
 import { UPLine } from 'ultra-ui-rn';
 
 <UPLine />
+```
+
+#### 自定义颜色
+
+```tsx
+<UPLine color="#2979ff" />
+```
+
+#### 自定义长度
+
+```tsx
+<UPLine length="200" />
+```
+
+#### 自定义方向
+
+```tsx
+<UPLine color="#2979ff" direction="col" length="30" />
+```
+
+#### 是否显示1px粗线条
+
+```tsx
+<UPLine hairline={false} />
+```
+
+#### 线条与上下左右元素的间距
+
+```tsx
+<UPLine margin="20" />
+```
+
+#### 是否虚线
+
+```tsx
+<UPLine color="#2979ff" dashed />
 ```
 
 <small>示例来源 `ultra-ui-rn/example/pages/components/layout/LineDemo.tsx`</small>
@@ -82,7 +159,7 @@ import { UPLine } from 'ultra-ui-rn';
 
 <template #taro>
 
-### 基础用法
+#### 基础用法
 
 默认横向、100% 长度、0.5px 细线
 
@@ -92,7 +169,7 @@ import { UPLine } from '@ultra-ui'
 <UPLine />
 ```
 
-### 长度
+#### 长度
 
 length 支持百分比与带单位的值
 
@@ -100,7 +177,7 @@ length 支持百分比与带单位的值
 <UPLine length='100%' />
 ```
 
-### 颜色
+#### 颜色
 
 color 支持主题 token 与任意 CSS 颜色
 
@@ -108,7 +185,7 @@ color 支持主题 token 与任意 CSS 颜色
 <UPLine />
 ```
 
-### 虚线
+#### 虚线
 
 dashed 属性
 
@@ -116,7 +193,7 @@ dashed 属性
 <UPLine />
 ```
 
-### 线条粗细
+#### 线条粗细
 
 hairline=true 为 0.5px 细线，false 为 1px
 
@@ -124,7 +201,7 @@ hairline=true 为 0.5px 细线，false 为 1px
 <UPLine hairline />
 ```
 
-### 间距
+#### 间距
 
 margin 支持 CSS margin 简写
 
@@ -132,7 +209,7 @@ margin 支持 CSS margin 简写
 <UPLine />
 ```
 
-### 竖向线条
+#### 竖向线条
 
 direction=col，length 表现为高度
 
@@ -140,7 +217,7 @@ direction=col，length 表现为高度
 <UPLine direction='col' length='24px' />
 ```
 
-### 应用场景
+#### 应用场景
 
 作为列表项之间的分割线
 
@@ -154,25 +231,25 @@ direction=col，length 表现为高度
 
 <template #uniapp>
 
-### 基本案例
+#### 基本案例
 
 ```vue
 <up-line></up-line>
 ```
 
-### 自定义颜色
+#### 自定义颜色
 
 ```vue
 <up-line color="#2979ff"></up-line>
 ```
 
-### 自定义长度
+#### 自定义长度
 
 ```vue
 <up-line length="200"></up-line>
 ```
 
-### 自定义方向
+#### 自定义方向
 
 ```vue
 <up-line
@@ -182,19 +259,19 @@ direction=col，length 表现为高度
 ></up-line>
 ```
 
-### 是否显示1px粗线条
+#### 是否显示1px粗线条
 
 ```vue
 <up-line :hairline="false"></up-line>
 ```
 
-### 线条与上下左右元素的间距
+#### 线条与上下左右元素的间距
 
 ```vue
 <up-line margin="20"></up-line>
 ```
 
-### 是否虚线
+#### 是否虚线
 
 ```vue
 <up-line
@@ -209,25 +286,25 @@ direction=col，length 表现为高度
 
 <template #uniappx>
 
-### 基本案例
+#### 基本案例
 
 ```vue
 <up-line></up-line>
 ```
 
-### 自定义颜色
+#### 自定义颜色
 
 ```vue
 <up-line color="#2979ff"></up-line>
 ```
 
-### 自定义长度
+#### 自定义长度
 
 ```vue
 <up-line length="200"></up-line>
 ```
 
-### 自定义方向
+#### 自定义方向
 
 ```vue
 <up-line
@@ -237,19 +314,19 @@ direction=col，length 表现为高度
 ></up-line>
 ```
 
-### 是否显示1px粗线条
+#### 是否显示1px粗线条
 
 ```vue
 <up-line :hairline="false"></up-line>
 ```
 
-### 线条与上下左右元素的间距
+#### 线条与上下左右元素的间距
 
 ```vue
 <up-line margin="20"></up-line>
 ```
 
-### 是否虚线
+#### 是否虚线
 
 ```vue
 <up-line

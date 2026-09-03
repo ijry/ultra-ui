@@ -25,6 +25,30 @@ import UltraUI
 UPToast.show(message: "这是一条默认消息")
 ```
 
+```swift
+UPToast.show(message: "操作成功", type: "success")
+```
+
+```swift
+UPToast.show(message: "操作失败", type: "error")
+```
+
+```swift
+UPToast.show(message: "请检查输入内容", type: "warning")
+```
+
+```swift
+UPToast.show(message: "正在加载…", type: "loading", duration: 1_800)
+```
+
+```swift
+UPToast.show(message: "顶部提示", type: "success", position: "top")
+```
+
+```swift
+UPToast.show(message: "底部提示", type: "success", position: "bottom")
+```
+
 <small>示例来源 `ultra-ui-ios/Demo/ToastDemoView.swift`</small>
 
 </template>
@@ -70,6 +94,10 @@ UPToast.show(
 )
 ```
 
+```dart
+UPToast.show(context, message: 'Tag 页面尚未迁移')
+```
+
 <small>示例来源 `ultra-ui-flutter/example/lib/pages/components_b/toast_page.dart`</small>
 
 </template>
@@ -87,6 +115,8 @@ import { UPToast } from 'ultra-ui-rn';
 </template>
 
 <template #taro>
+
+#### 组件式用法
 
 ```tsx
 import { UPToast } from '@ultra-ui'

@@ -42,20 +42,33 @@ UPDatetimePicker(
 
 <template #flutter>
 
+#### 输入模式
+
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
 
 UPDatetimePicker(
-  key: const ValueKey('datetime-picker-page-widget-0'),
-  show: _activeIndex == index,
-  mode: 'datetime',
+  key: const ValueKey('datetime-picker-page-input'),
+  hasInput: true,
   value: _fixedDatetime,
-  closeOnClickOverlay: true,
-  toolbarRightSlot: true,
-  toolbarRight: const Text('右侧'),
-  onConfirm: _confirm,
-  onCancel: () => _close(index),
-  onClose: () => _close(index),
+  placeholder: '请选择日期',
+  inputProps: const <String, dynamic>{
+    'border': 'surround',
+    'suffixIcon': 'calendar',
+  },
+)
+```
+
+#### 页面内联
+
+```dart
+UPDatetimePicker(
+  key: const ValueKey('datetime-picker-page-inline'),
+  pageInline: true,
+  show: true,
+  mode: 'datetime',
+  showToolbar: false,
+  value: _fixedDatetime,
 )
 ```
 
@@ -79,6 +92,97 @@ import { UPDatetimePicker } from 'ultra-ui-rn';
   mode="datetime"
   modelValue={1714266792000}
   placeholder="请选择日期"
+/>
+```
+
+```tsx
+<UPDatetimePicker
+  mode="datetime"
+  modelValue={1714266792000}
+  pageInline
+  showToolbar={false}
+/>
+```
+
+```tsx
+<UPDatetimePicker
+  closeOnClickOverlay
+  mode="date"
+  modelValue={value2}
+  onCancel={close}
+  onClose={close}
+  onConfirm={confirm}
+  onUpdateModelValue={setValue2}
+  show={active === 2}
+/>
+```
+
+```tsx
+<UPDatetimePicker
+  closeOnClickOverlay
+  mode="year-month"
+  modelValue={value3}
+  onCancel={close}
+  onClose={close}
+  onConfirm={confirm}
+  onUpdateModelValue={setValue3}
+  show={active === 3}
+/>
+```
+
+```tsx
+<UPDatetimePicker
+  closeOnClickOverlay
+  mode="time"
+  modelValue={value4}
+  onCancel={close}
+  onClose={close}
+  onConfirm={confirm}
+  onUpdateModelValue={setValue4}
+  show={active === 4}
+/>
+```
+
+```tsx
+<UPDatetimePicker
+  closeOnClickOverlay
+  filter={filter}
+  mode="date"
+  modelValue={value5}
+  onCancel={close}
+  onClose={close}
+  onConfirm={confirm}
+  onUpdateModelValue={setValue5}
+  show={active === 5}
+/>
+```
+
+```tsx
+<UPDatetimePicker
+  closeOnClickOverlay
+  formatter={formatter}
+  mode="date"
+  modelValue={value6}
+  onCancel={close}
+  onClose={close}
+  onConfirm={confirm}
+  onUpdateModelValue={setValue6}
+  show={active === 6}
+/>
+```
+
+```tsx
+<UPDatetimePicker
+  closeOnClickOverlay
+  maxDate={1786778555000}
+  minDate={875635200}
+  mode="datetime"
+  modelValue={value7}
+  onCancel={close}
+  onClose={close}
+  onConfirm={confirm}
+  onUpdateModelValue={setValue7}
+  show={active === 7}
 />
 ```
 
@@ -113,6 +217,103 @@ No snippet could be extracted automatically — please read the source.
 ></up-datetime-picker>
 ```
 
+```vue
+<up-datetime-picker
+    :show="show2"
+    v-model="value2"
+    mode="date"
+    closeOnClickOverlay
+    @confirm="confirm"
+    @cancel="cancel"
+    @change="change"
+    @close="close"
+></up-datetime-picker>
+```
+
+```vue
+<up-datetime-picker
+    :show="show3"
+    v-model="value3"
+    mode="year-month"
+    closeOnClickOverlay
+    @confirm="confirm"
+    @cancel="cancel"
+    @change="change"
+    @close="close"
+></up-datetime-picker>
+```
+
+```vue
+<up-datetime-picker
+    :show="show4"
+    v-model="value4"
+    mode="time"
+    closeOnClickOverlay
+    @confirm="confirm"
+    @cancel="cancel"
+    @change="change"
+    @close="close"
+></up-datetime-picker>
+```
+
+```vue
+<up-datetime-picker
+    :show="show5"
+    v-model="value5"
+    :filter="filter"
+    mode="date"
+    closeOnClickOverlay
+    @confirm="confirm"
+    @cancel="cancel"
+    @change="change"
+    @close="close"
+></up-datetime-picker>
+```
+
+```vue
+<up-datetime-picker
+    :show="show6"
+    v-model="value6"
+    mode="date"
+    :formatter="formatter"
+    closeOnClickOverlay
+    @confirm="confirm"
+    @cancel="cancel"
+    @change="change"
+    @close="close"
+></up-datetime-picker>
+```
+
+```vue
+<up-datetime-picker
+    :show="show7"
+    v-model="value7"
+    mode="datetime"
+    :minDate="1587524800000"
+    :maxDate="1786778555000"
+    closeOnClickOverlay
+    @confirm="confirm"
+    @cancel="cancel"
+    @change="change"
+    @close="close"
+></up-datetime-picker>
+```
+
+```vue
+<up-datetime-picker
+    :show="show8"
+    v-model="value8"
+    mode="time"
+    :minHour="minHour8"
+    :minMinute="minMinute8"
+    closeOnClickOverlay
+    @confirm="confirm"
+    @cancel="cancel"
+    @change="changeTime8"
+    @close="close"
+></up-datetime-picker>
+```
+
 <small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/datetimePicker/datetimePicker.uvue`</small>
 
 </template>
@@ -128,6 +329,103 @@ No snippet could be extracted automatically — please read the source.
     @confirm="confirm"
     @cancel="cancel"
     @change="change"
+    @close="close"
+></up-datetime-picker>
+```
+
+```vue
+<up-datetime-picker
+    :show="show2"
+    v-model="value2"
+    mode="date"
+    closeOnClickOverlay
+    @confirm="confirm"
+    @cancel="cancel"
+    @change="change"
+    @close="close"
+></up-datetime-picker>
+```
+
+```vue
+<up-datetime-picker
+    :show="show3"
+    v-model="value3"
+    mode="year-month"
+    closeOnClickOverlay
+    @confirm="confirm"
+    @cancel="cancel"
+    @change="change"
+    @close="close"
+></up-datetime-picker>
+```
+
+```vue
+<up-datetime-picker
+    :show="show4"
+    v-model="value4"
+    mode="time"
+    closeOnClickOverlay
+    @confirm="confirm"
+    @cancel="cancel"
+    @change="change"
+    @close="close"
+></up-datetime-picker>
+```
+
+```vue
+<up-datetime-picker
+    :show="show5"
+    v-model="value5"
+    :filter="filter"
+    mode="date"
+    closeOnClickOverlay
+    @confirm="confirm"
+    @cancel="cancel"
+    @change="change"
+    @close="close"
+></up-datetime-picker>
+```
+
+```vue
+<up-datetime-picker
+    :show="show6"
+    v-model="value6"
+    mode="date"
+    :formatter="formatter"
+    closeOnClickOverlay
+    @confirm="confirm"
+    @cancel="cancel"
+    @change="change"
+    @close="close"
+></up-datetime-picker>
+```
+
+```vue
+<up-datetime-picker
+    :show="show7"
+    v-model="value7"
+    mode="datetime"
+    :minDate="1587524800000"
+    :maxDate="1786778555000"
+    closeOnClickOverlay
+    @confirm="confirm"
+    @cancel="cancel"
+    @change="change"
+    @close="close"
+></up-datetime-picker>
+```
+
+```vue
+<up-datetime-picker
+    :show="show8"
+    v-model="value8"
+    mode="time"
+    :minHour="minHour8"
+    :minMinute="minMinute8"
+    closeOnClickOverlay
+    @confirm="confirm"
+    @cancel="cancel"
+    @change="changeTime8"
     @close="close"
 ></up-datetime-picker>
 ```

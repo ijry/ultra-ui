@@ -31,8 +31,6 @@ No snippet could be extracted automatically — please read the source.
 
 <template #android>
 
-### 加载更多
-
 ```kotlin
 import net.lingyun.ultraui.android.components.UPLoadmore
 import net.lingyun.ultraui.android.components.UPLoadmoreProps
@@ -58,13 +56,21 @@ import { UPLoadmore, UPLoadmoreProps } from '@lingyun/ultra-ui-hos';
 UPLoadmore({ props: new UPLoadmoreProps({ status: 'loadmore', line: true }) })
 ```
 
+```typescript
+UPLoadmore({ props: new UPLoadmoreProps({ status: 'loading', loadingText: '努力加载中', icon: true }) })
+```
+
+```typescript
+UPLoadmore({ props: new UPLoadmoreProps({ status: 'nomore', nomoreText: '到底了', line: true, dashed: true }) })
+```
+
 <small>Snippet from `ultra-ui-hos/sample/entry/src/main/ets/demos/LoadmoreDemo.ets`</small>
 
 </template>
 
 <template #flutter>
 
-### 基础使用
+#### 基础使用
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -72,19 +78,19 @@ import 'package:ultra_ui/ultra_ui.dart';
 UPLoadmore(status: 'loading', isDot: true, iconSize: 17)
 ```
 
-### 无更多数据
+#### 无更多数据
 
 ```dart
 UPLoadmore(line: true, status: 'nomore')
 ```
 
-### 自定义图标
+#### 自定义图标
 
 ```dart
 UPLoadmore(status: 'loading', loadingIcon: 'circle')
 ```
 
-### 显示点
+#### 显示点
 
 ```dart
 UPLoadmore(
@@ -95,7 +101,7 @@ UPLoadmore(
 )
 ```
 
-### 自定义提示语
+#### 自定义提示语
 
 ```dart
 UPLoadmore(
@@ -105,7 +111,7 @@ UPLoadmore(
 )
 ```
 
-### 自定义线条颜色
+#### 自定义线条颜色
 
 ```dart
 UPLoadmore(
@@ -135,7 +141,7 @@ import { UPLoadmore } from 'ultra-ui-rn';
 
 <template #taro>
 
-### 加载图标
+#### 加载图标
 
 icon / iconSize / loadingIcon
 
@@ -145,7 +151,7 @@ import { UPLoadmore } from '@ultra-ui'
 <UPLoadmore status='loading' icon loadingText='加载中' />
 ```
 
-### 分割线
+#### 分割线
 
 line / dashed / lineColor
 
@@ -153,7 +159,7 @@ line / dashed / lineColor
 <UPLoadmore status='nomore' nomoreText='没有更多了' line />
 ```
 
-### 点状结尾
+#### 点状结尾
 
 isDot，nomore 时以粗点替代文字
 
@@ -161,7 +167,7 @@ isDot，nomore 时以粗点替代文字
 <UPLoadmore status='nomore' isDot />
 ```
 
-### 自定义颜色
+#### 自定义颜色
 
 color / bgColor
 
@@ -175,7 +181,7 @@ color / bgColor
 
 <template #uniapp>
 
-### 基础使用
+#### 基础使用
 
 ```vue
 <up-loadmore
@@ -185,7 +191,7 @@ color / bgColor
 ></up-loadmore>
 ```
 
-### 无更多数据
+#### 无更多数据
 
 ```vue
 <up-loadmore
@@ -194,7 +200,7 @@ color / bgColor
 ></up-loadmore>
 ```
 
-### 加载更多(点击触发事件)
+#### 加载更多(点击触发事件)
 
 ```vue
 <up-loadmore
@@ -204,7 +210,7 @@ color / bgColor
 ></up-loadmore>
 ```
 
-### 自定义图标
+#### 自定义图标
 
 ```vue
 <up-loadmore
@@ -213,7 +219,7 @@ color / bgColor
 ></up-loadmore>
 ```
 
-### 显示点
+#### 显示点
 
 ```vue
 <up-loadmore
@@ -224,7 +230,7 @@ color / bgColor
 ></up-loadmore>
 ```
 
-### 自定义提示语
+#### 自定义提示语
 
 ```vue
 <up-loadmore
@@ -234,7 +240,7 @@ color / bgColor
 ></up-loadmore>
 ```
 
-### 自定义线条颜色
+#### 自定义线条颜色
 
 ```vue
 <up-loadmore
@@ -252,7 +258,7 @@ color / bgColor
 
 <template #uniappx>
 
-### 基础使用
+#### 基础使用
 
 ```vue
 <up-loadmore
@@ -262,7 +268,7 @@ color / bgColor
 ></up-loadmore>
 ```
 
-### 无更多数据
+#### 无更多数据
 
 ```vue
 <up-loadmore
@@ -271,7 +277,7 @@ color / bgColor
 ></up-loadmore>
 ```
 
-### 加载更多(点击触发事件)
+#### 加载更多(点击触发事件)
 
 ```vue
 <up-loadmore
@@ -281,7 +287,7 @@ color / bgColor
 ></up-loadmore>
 ```
 
-### 自定义图标
+#### 自定义图标
 
 ```vue
 <up-loadmore
@@ -290,7 +296,7 @@ color / bgColor
 ></up-loadmore>
 ```
 
-### 显示点
+#### 显示点
 
 ```vue
 <up-loadmore
@@ -301,7 +307,7 @@ color / bgColor
 ></up-loadmore>
 ```
 
-### 自定义提示语
+#### 自定义提示语
 
 ```vue
 <up-loadmore
@@ -311,7 +317,7 @@ color / bgColor
 ></up-loadmore>
 ```
 
-### 自定义线条颜色
+#### 自定义线条颜色
 
 ```vue
 <up-loadmore

@@ -31,8 +31,6 @@ No snippet could be extracted automatically — please read the source.
 
 <template #android>
 
-### 栅格
-
 ```kotlin
 import net.lingyun.ultraui.android.components.UPGrid
 
@@ -46,8 +44,6 @@ UPGrid(col = 3, border = true, gap = 8) {
     }
 }
 ```
-
-### 栅格项
 
 ```kotlin
 UPGrid(col = 2, border = true, gap = 8) {
@@ -65,6 +61,8 @@ UPGrid(col = 2, border = true, gap = 8) {
 </template>
 
 <template #harmony>
+
+#### 末行对齐
 
 ```typescript
 import { UPGrid, UPGridProps } from '@lingyun/ultra-ui-hos';
@@ -122,13 +120,40 @@ UPGrid(
 )
 ```
 
+```dart
+UPGrid(
+  border: border,
+  col: col,
+  align: 'center',
+  children: List<Widget>.generate(_icons.length, (index) {
+    final number = index + 1;
+    return UPGridItem(
+      name: number,
+      onClick: (_) => UPToast.show(context, message: '点击了宫格$number'),
+      child: AspectRatio(
+        aspectRatio: square ? 1 : 1.35,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            UPIcon(name: _icons[index], size: iconSize),
+            const SizedBox(height: 8),
+            Text('宫格$number',
+                style: const TextStyle(color: Color(0xFF909399))),
+          ],
+        ),
+      ),
+    );
+  }),
+)
+```
+
 <small>Snippet from `ultra-ui-flutter/example/lib/pages/components_a/grid_page.dart`</small>
 
 </template>
 
 <template #reactnative>
 
-### 自定义背景色
+#### 自定义背景色
 
 ```tsx
 import { UPGrid } from 'ultra-ui-rn';
@@ -146,7 +171,7 @@ import { UPGrid } from 'ultra-ui-rn';
 </UPGrid>
 ```
 
-### 点击事件
+#### 点击事件
 
 ```tsx
 <UPGrid col={2} onClick={(name) => console.log('clicked:', name)}>
@@ -166,7 +191,7 @@ import { UPGrid } from 'ultra-ui-rn';
 
 <template #taro>
 
-### 基础用法
+#### 基础用法
 
 默认 col=3，三列排列
 
@@ -182,7 +207,7 @@ import { UPGrid } from '@ultra-ui'
 </UPGrid>
 ```
 
-### 自定义列数
+#### 自定义列数
 
 col=4
 
@@ -196,7 +221,7 @@ col=4
 </UPGrid>
 ```
 
-### 自定义列数
+#### 自定义列数
 
 col=5
 
@@ -210,7 +235,7 @@ col=5
 </UPGrid>
 ```
 
-### 显示边框
+#### 显示边框
 
 border=true，最后一行/列不画线
 
@@ -224,7 +249,35 @@ border=true，最后一行/列不画线
 </UPGrid>
 ```
 
-### 对齐方式
+#### 宫格间隔
+
+gap='10px'，行列同间距
+
+```tsx
+<UPGrid col={3} gap='10px'>
+  {ITEMS.map((item) => (
+    <UPGridItem key={item.name} name={item.name} bgColor='#f3f4f6'>
+      <ItemBody icon={item.icon} text={item.text} />
+    </UPGridItem>
+  ))}
+</UPGrid>
+```
+
+#### 宫格间隔
+
+gap='20px 8px'，先行后列
+
+```tsx
+<UPGrid col={3} gap='20px 8px'>
+  {ITEMS.map((item) => (
+    <UPGridItem key={item.name} name={item.name} bgColor='#f3f4f6'>
+      <ItemBody icon={item.icon} text={item.text} />
+    </UPGridItem>
+  ))}
+</UPGrid>
+```
+
+#### 对齐方式
 
 align：left / center / right
 
@@ -238,7 +291,7 @@ align：left / center / right
 </UPGrid>
 ```
 
-### 自定义背景色
+#### 自定义背景色
 
 grid-item 的 bgColor
 
@@ -256,60 +309,13 @@ grid-item 的 bgColor
 </UPGrid>
 ```
 
-### 自定义样式
-
-grid 的 customStyle 与 grid-item 的 customStyle
-
-```tsx
-<UPGrid col={3} gap='8px' customStyle={{ padding: '6px 0' }}>
-  {ITEMS.slice(0, 3).map((item) => (
-    <UPGridItem
-      key={item.name}
-      name={item.name}
-      customStyle={{ borderRadius: '8px', backgroundColor: '#f3f4f6' }}
-    >
-      <ItemBody icon={item.icon} text={item.text} />
-    </UPGridItem>
-  ))}
-</UPGrid>
-```
-
-### 点击事件
-
-grid 的 onClick 回传 name，未设置 name 时回传索引
-
-```tsx
-<UPGrid
-  col={3}
-  border
-  onClick={(name) => toast.show({ message: `点击了 ${name}` })}
->
-  {ITEMS.slice(0, 3).map((item) => (
-    <UPGridItem key={item.name} name={item.name}>
-      <ItemBody icon={item.icon} text={item.text} />
-    </UPGridItem>
-  ))}
-  <UPGridItem>
-    <ItemBody icon='question-circle' text='无 name' />
-  </UPGridItem>
-  <UPGridItem
-    name='self'
-    onClick={(name) =>
-      toast.show({ message: `item 自己的 onClick：${name}` })
-    }
-  >
-    <ItemBody icon='setting' text='自带回调' />
-  </UPGridItem>
-</UPGrid>
-```
-
 <small>Snippet from `ultra-ui-taro/src/pages/components/grid/index.tsx`</small>
 
 </template>
 
 <template #uniapp>
 
-### 基本案例
+#### 基本案例
 
 ```vue
 <up-grid
@@ -332,7 +338,7 @@ grid 的 onClick 回传 name，未设置 name 时回传索引
 </up-grid>
 ```
 
-### 显示边框
+#### 显示边框
 
 ```vue
 <up-grid :border="true">
@@ -351,7 +357,7 @@ grid 的 onClick 回传 name，未设置 name 时回传索引
 </up-grid>
 ```
 
-### 绑定点击事件&自定义列数
+#### 绑定点击事件&自定义列数
 
 ```vue
 <up-grid
@@ -373,7 +379,7 @@ grid 的 onClick 回传 name，未设置 name 时回传索引
 </up-grid>
 ```
 
-### 可滑动
+#### 可滑动
 
 ```vue
 <up-grid :border="true">
@@ -398,7 +404,7 @@ grid 的 onClick 回传 name，未设置 name 时回传索引
 
 <template #uniappx>
 
-### 基本案例
+#### 基本案例
 
 ```vue
 <up-grid
@@ -421,7 +427,7 @@ grid 的 onClick 回传 name，未设置 name 时回传索引
 </up-grid>
 ```
 
-### 显示边框
+#### 显示边框
 
 ```vue
 <up-grid :border="true">
@@ -440,7 +446,7 @@ grid 的 onClick 回传 name，未设置 name 时回传索引
 </up-grid>
 ```
 
-### 绑定点击事件&自定义列数
+#### 绑定点击事件&自定义列数
 
 ```vue
 <up-grid
@@ -462,7 +468,7 @@ grid 的 onClick 回传 name，未设置 name 时回传索引
 </up-grid>
 ```
 
-### 可滑动
+#### 可滑动
 
 ```vue
 <up-grid :border="true">

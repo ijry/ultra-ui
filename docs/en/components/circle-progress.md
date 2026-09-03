@@ -31,8 +31,6 @@ No snippet could be extracted automatically — please read the source.
 
 <template #android>
 
-### 环形进度
-
 ```kotlin
 import net.lingyun.ultraui.android.components.UPCircleProgress
 
@@ -49,6 +47,14 @@ UPCircleProgress(percentage = percentage)
 import { UPCircleProgress, UPCircleProgressProps } from '@lingyun/ultra-ui-hos';
 
 UPCircleProgress({ props: new UPCircleProgressProps({ percentage: 30 }) })
+```
+
+```typescript
+UPCircleProgress({ props: new UPCircleProgressProps({ percentage: 0, activeColor: 'primary', width: 112 }) })
+```
+
+```typescript
+UPCircleProgress({ props: new UPCircleProgressProps({ percentage: 100, activeColor: 'success' }) })
 ```
 
 <small>Snippet from `ultra-ui-hos/sample/entry/src/main/ets/demos/CircleProgressDemo.ets`</small>
@@ -69,7 +75,7 @@ No snippet could be extracted automatically — please read the source.
 
 <template #reactnative>
 
-### 基础用法
+#### 基础用法
 
 ```tsx
 import { UPCircleProgress } from 'ultra-ui-rn';
@@ -79,7 +85,7 @@ import { UPCircleProgress } from 'ultra-ui-rn';
 </UPCircleProgress>
 ```
 
-### 不同进度
+#### 不同进度
 
 ```tsx
 <UPCircleProgress percentage={25}>
@@ -87,7 +93,7 @@ import { UPCircleProgress } from 'ultra-ui-rn';
 </UPCircleProgress>
 ```
 
-### 自定义内容
+#### 自定义内容
 
 ```tsx
 <UPCircleProgress percentage={80}>
@@ -104,7 +110,7 @@ import { UPCircleProgress } from 'ultra-ui-rn';
 
 <template #taro>
 
-### 基础用法
+#### 基础用法
 
 percentage 控制进度，中心默认显示百分比
 
@@ -114,7 +120,7 @@ import { UPCircleProgress } from '@ultra-ui'
 <UPCircleProgress percentage={25} />
 ```
 
-### 自定义颜色
+#### 自定义颜色
 
 activeColor / inactiveColor
 
@@ -122,7 +128,7 @@ activeColor / inactiveColor
 <UPCircleProgress percentage={60} activeColor='#19be6b' />
 ```
 
-### 尺寸与线宽
+#### 尺寸与线宽
 
 width 控制直径，borderWidth 控制线宽
 
@@ -130,7 +136,7 @@ width 控制直径，borderWidth 控制线宽
 <UPCircleProgress percentage={70} width={70} borderWidth={4} />
 ```
 
-### 端点样式
+#### 端点样式
 
 round 为 false 时为平头
 
@@ -138,7 +144,7 @@ round 为 false 时为平头
 <UPCircleProgress percentage={45} round />
 ```
 
-### 起始角度
+#### 起始角度
 
 startAngle，0 为 12 点方向顺时针
 
@@ -146,7 +152,7 @@ startAngle，0 为 12 点方向顺时针
 <UPCircleProgress percentage={30} startAngle={0} />
 ```
 
-### 自定义中心内容
+#### 自定义中心内容
 
 children 替换默认百分比文字
 
@@ -159,7 +165,7 @@ children 替换默认百分比文字
 </UPCircleProgress>
 ```
 
-### 动态改变
+#### 动态改变
 
 进度变化时从当前值平滑过渡
 
@@ -167,7 +173,7 @@ children 替换默认百分比文字
 <UPCircleProgress percentage={percentage} activeColor='#19be6b' />
 ```
 
-### 关闭动画
+#### 关闭动画
 
 duration 为 0 时直接跳变
 

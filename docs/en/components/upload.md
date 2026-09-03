@@ -18,7 +18,7 @@ Switch tabs to see the syntax for each platform. Every snippet is lifted verbati
 
 <template #flutter>
 
-### 基础用法
+#### 基础用法
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -38,7 +38,7 @@ UPUpload(
 )
 ```
 
-### 上传视频
+#### 上传视频
 
 ```dart
 UPUpload(
@@ -54,7 +54,7 @@ UPUpload(
 )
 ```
 
-### 文件预览
+#### 文件预览
 
 ```dart
 UPUpload(
@@ -70,7 +70,7 @@ UPUpload(
 )
 ```
 
-### 隐藏上传按钮
+#### 隐藏上传按钮
 
 ```dart
 UPUpload(
@@ -85,7 +85,7 @@ UPUpload(
 )
 ```
 
-### 限制上传数量
+#### 限制上传数量
 
 ```dart
 UPUpload(
@@ -100,7 +100,7 @@ UPUpload(
 )
 ```
 
-### 自定义上传样式
+#### 自定义上传样式
 
 ```dart
 UPUpload(
@@ -141,7 +141,7 @@ No snippet could be extracted automatically — please read the source.
 
 <template #taro>
 
-### 基础用法
+#### 基础用法
 
 点击加号选择图片，deletable 默认开启可删除
 
@@ -155,7 +155,7 @@ import { UPUpload } from '@ultra-ui'
 />
 ```
 
-### 多选与数量限制
+#### 多选与数量限制
 
 multiple 开启多选，maxCount=4 达到上限后隐藏选择区
 
@@ -169,7 +169,7 @@ multiple 开启多选，maxCount=4 达到上限后隐藏选择区
 />
 ```
 
-### 上传状态
+#### 上传状态
 
 status 为 uploading / failed / success 时的三种呈现
 
@@ -177,7 +177,7 @@ status 为 uploading / failed / success 时的三种呈现
 <UPUpload fileList={status} deletable={false} previewFullImage={false} />
 ```
 
-### 自定义选择区
+#### 自定义选择区
 
 triggerSlot 替换默认加号方块
 
@@ -188,7 +188,7 @@ triggerSlot 替换默认加号方块
   triggerSlot={<UPButton type='primary' size='small' text='选择图片' />
 ```
 
-### 选择视频
+#### 选择视频
 
 accept=video，点击预览图会内嵌播放
 
@@ -201,7 +201,7 @@ accept=video，点击预览图会内嵌播放
 />
 ```
 
-### 选择文件
+#### 选择文件
 
 accept=file，非图片以图标 + 文件名呈现（微信小程序 / H5 支持）
 
@@ -214,7 +214,7 @@ accept=file，非图片以图标 + 文件名呈现（微信小程序 / H5 支持
 />
 ```
 
-### 禁用
+#### 禁用
 
 disabled 后不响应点击
 
@@ -222,7 +222,7 @@ disabled 后不响应点击
 <UPUpload fileList={[]} disabled />
 ```
 
-### 自定义尺寸与文字
+#### 自定义尺寸与文字
 
 width / height 控制方块大小，uploadText 显示提示语
 
@@ -242,7 +242,7 @@ width / height 控制方块大小，uploadText 显示提示语
 
 <template #uniapp>
 
-### 基础用法
+#### 基础用法
 
 ```vue
 <up-upload
@@ -257,7 +257,7 @@ width / height 控制方块大小，uploadText 显示提示语
 ></up-upload>
 ```
 
-### 上传视频
+#### 上传视频
 
 ```vue
 <up-upload
@@ -271,7 +271,7 @@ width / height 控制方块大小，uploadText 显示提示语
 ></up-upload>
 ```
 
-### 文件预览
+#### 文件预览
 
 ```vue
 <up-upload
@@ -285,7 +285,7 @@ width / height 控制方块大小，uploadText 显示提示语
 ></up-upload>
 ```
 
-### 隐藏上传按钮
+#### 隐藏上传按钮
 
 ```vue
 <up-upload
@@ -298,7 +298,7 @@ width / height 控制方块大小，uploadText 显示提示语
 ></up-upload>
 ```
 
-### 限制上传数量
+#### 限制上传数量
 
 ```vue
 <up-upload
@@ -311,7 +311,7 @@ width / height 控制方块大小，uploadText 显示提示语
 ></up-upload>
 ```
 
-### 自定义上传样式
+#### 自定义上传样式
 
 ```vue
 <up-upload
@@ -334,7 +334,7 @@ width / height 控制方块大小，uploadText 显示提示语
 
 <template #uniappx>
 
-### 基础用法
+#### 基础用法
 
 ```vue
 <up-upload
@@ -349,7 +349,7 @@ width / height 控制方块大小，uploadText 显示提示语
 ></up-upload>
 ```
 
-### 上传视频
+#### 上传视频
 
 ```vue
 <up-upload
@@ -363,7 +363,7 @@ width / height 控制方块大小，uploadText 显示提示语
 ></up-upload>
 ```
 
-### 文件预览
+#### 文件预览
 
 ```vue
 <up-upload
@@ -377,7 +377,7 @@ width / height 控制方块大小，uploadText 显示提示语
 ></up-upload>
 ```
 
-### 隐藏上传按钮
+#### 隐藏上传按钮
 
 ```vue
 <up-upload
@@ -390,7 +390,7 @@ width / height 控制方块大小，uploadText 显示提示语
 ></up-upload>
 ```
 
-### 限制上传数量
+#### 限制上传数量
 
 ```vue
 <up-upload
@@ -403,7 +403,7 @@ width / height 控制方块大小，uploadText 显示提示语
 ></up-upload>
 ```
 
-### 自定义上传样式
+#### 自定义上传样式
 
 ```vue
 <up-upload

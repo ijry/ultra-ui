@@ -30,7 +30,7 @@ import 'package:ultra_ui/ultra_ui.dart';
 
 <template #reactnative>
 
-### 隐藏状态
+#### 隐藏状态
 
 ```tsx
 import { UPToolbar } from 'ultra-ui-rn';
@@ -44,7 +44,7 @@ import { UPToolbar } from 'ultra-ui-rn';
 
 <template #taro>
 
-### 基础用法
+#### 基础用法
 
 三个等宽子项，每个 flex:1；默认主色强调
 
@@ -58,7 +58,7 @@ import { UPToolbar } from '@ultra-ui'
 </UPToolbar>
 ```
 
-### 更多子项
+#### 更多子项
 
 子项数量自适应均分，超出自动压缩
 
@@ -72,7 +72,7 @@ import { UPToolbar } from '@ultra-ui'
 </UPToolbar>
 ```
 
-### 自定义强调色
+#### 自定义强调色
 
 activeColor 控制子项文字 / 图标颜色
 

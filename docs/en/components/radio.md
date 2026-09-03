@@ -31,8 +31,6 @@ No snippet could be extracted automatically — please read the source.
 
 <template #android>
 
-### 单选框
-
 ```kotlin
 import net.lingyun.ultraui.android.components.UPRadio
 import net.lingyun.ultraui.android.components.UPRadioProps
@@ -40,10 +38,8 @@ import net.lingyun.ultraui.android.components.UPRadioProps
 UPRadio(props = UPRadioProps(name = "android", label = "Android"))
 ```
 
-### 单选框组
-
 ```kotlin
-UPRadio(props = UPRadioProps(name = "android", label = "Android"))
+UPRadio(props = UPRadioProps(name = "ios", label = "iOS"))
 ```
 
 <small>Snippet from `ultra-ui-android/sample/src/main/kotlin/net/lingyun/ultraui/android/sample/pages/InputSelectionDemoPage.kt`</small>
@@ -58,13 +54,17 @@ import { UPRadio, UPRadioProps } from '@lingyun/ultra-ui-hos';
 UPRadio({ props: new UPRadioProps({ name: 'A', label: '选项 A', checked: this.selected === 'A', onChange: (event: UPRadioChangeEvent): void => { this.change(event); } }) })
 ```
 
+```typescript
+UPRadio({ props: new UPRadioProps({ name: 'B', label: '选项 B', checked: this.selected === 'B', onChange: (event: UPRadioChangeEvent): void => { this.change(event); } }) })
+```
+
 <small>Snippet from `ultra-ui-hos/sample/entry/src/main/ets/demos/RadioDemo.ets`</small>
 
 </template>
 
 <template #flutter>
 
-### 横向两端排列形式
+#### 横向两端排列形式
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -82,6 +82,8 @@ import 'package:ultra_ui/ultra_ui.dart';
 
 <template #reactnative>
 
+#### 基本案例
+
 ```tsx
 import { UPRadio } from 'ultra-ui-rn';
 
@@ -94,13 +96,55 @@ import { UPRadio } from 'ultra-ui-rn';
 />
 ```
 
+#### 自定义形状
+
+```tsx
+<UPRadio customStyle={s.stacked} key={name} label={name} name={name} />
+```
+
+#### 是否禁用
+
+```tsx
+<UPRadio
+  customStyle={s.stacked}
+  disabled={index === 0}
+  key={name}
+  label={name}
+  name={name}
+/>
+```
+
+#### 纵向排列
+
+```tsx
+<UPRadio customStyle={s.stacked} key={name} label={name} name={name} />
+```
+
+#### 自定义颜色？
+
+```tsx
+<UPRadio customStyle={s.stacked} key={name} label={name} name={name} />
+```
+
+#### 横向排列形式？
+
+```tsx
+<UPRadio customStyle={s.inline} key={name} label={name} name={name} />
+```
+
+#### 横向两端排列形式？
+
+```tsx
+<UPRadio customStyle={s.stackedWide} key={name} label={name} name={name} />
+```
+
 <small>Snippet from `ultra-ui-rn/example/pages/components/form/RadioDemo.tsx`</small>
 
 </template>
 
 <template #taro>
 
-### 基础用法
+#### 基础用法
 
 Group 持有单个值，onChange 回传选中的 name
 
@@ -110,7 +154,7 @@ import { UPRadio } from '@ultra-ui'
 <UPRadio key={item} name={item} label={item} />
 ```
 
-### 形状
+#### 形状
 
 shape：circle（默认） / square
 
@@ -118,7 +162,7 @@ shape：circle（默认） / square
 <UPRadio name='circle' label='圆形' />
 ```
 
-### 禁用
+#### 禁用
 
 Group 整体禁用 / 单项禁用
 
@@ -126,7 +170,7 @@ Group 整体禁用 / 单项禁用
 <UPRadio name='已选中' label='已选中' />
 ```
 
-### 自定义颜色
+#### 自定义颜色
 
 activeColor / inactiveColor / iconColor
 
@@ -134,7 +178,7 @@ activeColor / inactiveColor / iconColor
 <UPRadio name='红色' label='Group 红色' />
 ```
 
-### 尺寸与文字
+#### 尺寸与文字
 
 size / iconSize / labelSize / labelColor
 
@@ -142,7 +186,7 @@ size / iconSize / labelSize / labelColor
 <UPRadio name='小号' label='小号' size={16} iconSize={10} labelSize={12} />
 ```
 
-### 竖向排列
+#### 竖向排列
 
 placement=column，配合 borderBottom 显示分割线
 
@@ -150,7 +194,7 @@ placement=column，配合 borderBottom 显示分割线
 <UPRadio key={item} name={item} label={item} />
 ```
 
-### 图标靠右
+#### 图标靠右
 
 iconPlacement=right，整行两端对齐，点击整行即可选中
 
@@ -158,20 +202,12 @@ iconPlacement=right，整行两端对齐，点击整行即可选中
 <UPRadio key={item} name={item} label={item} />
 ```
 
-### 禁止点击文字
+#### 禁止点击文字
 
 labelDisabled 时只有图标可点
 
 ```tsx
 <UPRadio name='只能点图标' label='只能点图标' />
-```
-
-### 子项间距
-
-placement=row 时用 gap 控制横向间距
-
-```tsx
-<UPRadio name='A' label='选项 A' />
 ```
 
 <small>Snippet from `ultra-ui-taro/src/pages/components/radio/index.tsx`</small>
@@ -180,7 +216,7 @@ placement=row 时用 gap 控制横向间距
 
 <template #uniapp>
 
-### 基本案例
+#### 基本案例
 
 ```vue
 <up-radio
@@ -194,7 +230,7 @@ placement=row 时用 gap 控制横向间距
 </up-radio>
 ```
 
-### 自定义形状
+#### 自定义形状
 
 ```vue
 <up-radio
@@ -207,7 +243,7 @@ placement=row 时用 gap 控制横向间距
 </up-radio>
 ```
 
-### 是否禁用
+#### 是否禁用
 
 ```vue
 <up-radio
@@ -221,7 +257,7 @@ placement=row 时用 gap 控制横向间距
 </up-radio>
 ```
 
-### 纵向排列
+#### 纵向排列
 
 ```vue
 <up-radio
@@ -234,7 +270,7 @@ placement=row 时用 gap 控制横向间距
 </up-radio>
 ```
 
-### 自定义颜色？
+#### 自定义颜色？
 
 ```vue
 <up-radio
@@ -247,7 +283,7 @@ placement=row 时用 gap 控制横向间距
 </up-radio>
 ```
 
-### 横向排列形式？
+#### 横向排列形式？
 
 ```vue
 <up-radio
@@ -260,7 +296,7 @@ placement=row 时用 gap 控制横向间距
 </up-radio>
 ```
 
-### 横向两端排列形式？
+#### 横向两端排列形式？
 
 ```vue
 <up-radio
@@ -279,7 +315,7 @@ placement=row 时用 gap 控制横向间距
 
 <template #uniappx>
 
-### 基本案例
+#### 基本案例
 
 ```vue
 <up-radio
@@ -293,7 +329,7 @@ placement=row 时用 gap 控制横向间距
 </up-radio>
 ```
 
-### 自定义形状
+#### 自定义形状
 
 ```vue
 <up-radio
@@ -306,7 +342,7 @@ placement=row 时用 gap 控制横向间距
 </up-radio>
 ```
 
-### 是否禁用
+#### 是否禁用
 
 ```vue
 <up-radio
@@ -320,7 +356,7 @@ placement=row 时用 gap 控制横向间距
 </up-radio>
 ```
 
-### 纵向排列
+#### 纵向排列
 
 ```vue
 <up-radio
@@ -333,7 +369,7 @@ placement=row 时用 gap 控制横向间距
 </up-radio>
 ```
 
-### 自定义颜色？
+#### 自定义颜色？
 
 ```vue
 <up-radio
@@ -346,7 +382,7 @@ placement=row 时用 gap 控制横向间距
 </up-radio>
 ```
 
-### 横向排列形式？
+#### 横向排列形式？
 
 ```vue
 <up-radio
@@ -359,7 +395,7 @@ placement=row 时用 gap 控制横向间距
 </up-radio>
 ```
 
-### 横向两端排列形式？
+#### 横向两端排列形式？
 
 ```vue
 <up-radio

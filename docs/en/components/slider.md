@@ -34,7 +34,7 @@ UPSlider(
 
 <template #flutter>
 
-### 基本案例
+#### 基本案例
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -47,7 +47,7 @@ UPSlider(
 )
 ```
 
-### 自定义范围(10—50)
+#### 自定义范围(10—50)
 
 ```dart
 UPSlider(
@@ -61,7 +61,7 @@ UPSlider(
 )
 ```
 
-### 指定步长(每次步进5)
+#### 指定步长(每次步进5)
 
 ```dart
 UPSlider(
@@ -73,7 +73,7 @@ UPSlider(
 )
 ```
 
-### 小数步长(每次步进0.1)
+#### 小数步长(每次步进0.1)
 
 ```dart
 UPSlider(
@@ -88,7 +88,7 @@ UPSlider(
 )
 ```
 
-### 自定义样式
+#### 自定义样式
 
 ```dart
 UPSlider(
@@ -102,7 +102,7 @@ UPSlider(
 )
 ```
 
-### 自定义样式(图片)
+#### 自定义样式(图片)
 
 ```dart
 UPSlider(
@@ -116,7 +116,7 @@ UPSlider(
 )
 ```
 
-### 区间选择(双滑块)
+#### 区间选择(双滑块)
 
 ```dart
 UPSlider(
@@ -131,7 +131,7 @@ UPSlider(
 )
 ```
 
-### 垂直方向
+#### 垂直方向
 
 ```dart
 UPSlider(
@@ -145,42 +145,13 @@ UPSlider(
 )
 ```
 
-### 垂直方向区间选择
-
-```dart
-UPSlider(
-  rangeValue: _value8,
-  isRange: true,
-  vertical: true,
-  size: '2px',
-  length: '200px',
-  onUpdateValue: (value) {
-    setState(() => _value8 = _asRange(value));
-  },
-)
-```
-
-### 在popup弹窗中使用
-
-```dart
-UPSlider(
-  value: _sliderValue,
-  min: 1,
-  max: 4,
-  showValue: true,
-  onUpdateValue: (value) {
-    setState(() => _sliderValue = (value as num).toDouble());
-  },
-)
-```
-
 <small>Snippet from `ultra-ui-flutter/example/lib/pages/components_b/slider_page.dart`</small>
 
 </template>
 
 <template #reactnative>
 
-### 基本案例
+#### 基本案例
 
 ```tsx
 import { UPSlider } from 'ultra-ui-rn';
@@ -188,25 +159,25 @@ import { UPSlider } from 'ultra-ui-rn';
 <UPSlider onChange={setValue1} useNative={false} value={value1} />
 ```
 
-### 自定义范围(10—50)
+#### 自定义范围(10—50)
 
 ```tsx
 <UPSlider max="50" min="10" onChange={setValue2} showValue useNative={false} value={value2} />
 ```
 
-### 指定步长(每次步进5)
+#### 指定步长(每次步进5)
 
 ```tsx
 <UPSlider onChange={setValue4} step={5} useNative={false} value={value4} />
 ```
 
-### 小数步长(每次步进0.1)
+#### 小数步长(每次步进0.1)
 
 ```tsx
 <UPSlider max={1} min={0} onChange={setValue3} showValue step={0.1} value={value3} />
 ```
 
-### 自定义样式
+#### 自定义样式
 
 ```tsx
 <UPSlider
@@ -218,25 +189,19 @@ import { UPSlider } from 'ultra-ui-rn';
 />
 ```
 
-### 垂直方向
+#### 垂直方向
 
 ```tsx
 <UPSlider length="200px" onChange={setValue7} size="2px" value={value7} vertical />
 ```
 
-### 垂直方向区间选择
+#### 垂直方向区间选择
 
 ```tsx
 <UPSlider isRange length="200px" rangeValue={value8} size="2px" vertical />
 ```
 
-### 在Modal弹窗中使用
-
-```tsx
-<UPSlider max="4" min="1" onChange={setSliderValue} showValue value={sliderValue} />
-```
-
-### 在popup弹窗中使用
+#### 在Modal弹窗中使用
 
 ```tsx
 <UPSlider max="4" min="1" onChange={setSliderValue} showValue value={sliderValue} />
@@ -248,7 +213,7 @@ import { UPSlider } from 'ultra-ui-rn';
 
 <template #taro>
 
-### 基础用法
+#### 基础用法
 
 受控 value + onChange
 
@@ -258,7 +223,7 @@ import { UPSlider } from '@ultra-ui'
 <UPSlider value={basic} onChange={setBasic} />
 ```
 
-### 自定义范围与步长
+#### 自定义范围与步长
 
 min=20 / max=80 / step=5
 
@@ -272,7 +237,7 @@ min=20 / max=80 / step=5
 />
 ```
 
-### 显示数值
+#### 显示数值
 
 showValue 显示气泡
 
@@ -280,7 +245,7 @@ showValue 显示气泡
 <UPSlider value={withValue} showValue onChange={setWithValue} />
 ```
 
-### 禁用
+#### 禁用
 
 disabled 阻止交互
 
@@ -288,7 +253,7 @@ disabled 阻止交互
 <UPSlider value={45} disabled />
 ```
 
-### 竖向
+#### 竖向
 
 vertical + length
 
@@ -307,7 +272,7 @@ vertical + length
 
 <template #uniapp>
 
-### 基本案例
+#### 基本案例
 
 ```vue
 <up-slider
@@ -316,7 +281,7 @@ vertical + length
 ></up-slider>
 ```
 
-### 自定义范围(10—50)
+#### 自定义范围(10—50)
 
 ```vue
 <up-slider
@@ -328,7 +293,7 @@ vertical + length
 ></up-slider>
 ```
 
-### 指定步长(每次步进5)
+#### 指定步长(每次步进5)
 
 ```vue
 <up-slider
@@ -338,7 +303,7 @@ vertical + length
 ></up-slider>
 ```
 
-### 小数步长(每次步进0.1)
+#### 小数步长(每次步进0.1)
 
 ```vue
 <up-slider
@@ -350,7 +315,7 @@ vertical + length
 ></up-slider>
 ```
 
-### 自定义样式
+#### 自定义样式
 
 ```vue
 <up-slider
@@ -361,7 +326,7 @@ vertical + length
 ></up-slider>
 ```
 
-### 自定义样式(图片)
+#### 自定义样式(图片)
 
 ```vue
 <up-slider
@@ -378,7 +343,7 @@ vertical + length
 </up-slider>
 ```
 
-### 区间选择(双滑块)
+#### 区间选择(双滑块)
 
 ```vue
 <up-slider
@@ -390,16 +355,10 @@ vertical + length
 ></up-slider>
 ```
 
-### 在Modal弹窗中使用
+#### 在Modal弹窗中使用
 
 ```vue
 <up-slider v-if="modelShow" v-model="sliderValue" min="1" max="4" showValue></up-slider>
-```
-
-### 在popup弹窗中使用
-
-```vue
-<up-slider v-if="popupShow" v-model="sliderValue" min="1" max="4" showValue></up-slider>
 ```
 
 <small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsB/slider/slider.uvue`</small>
@@ -408,7 +367,7 @@ vertical + length
 
 <template #uniappx>
 
-### 基本案例
+#### 基本案例
 
 ```vue
 <up-slider
@@ -417,7 +376,7 @@ vertical + length
 ></up-slider>
 ```
 
-### 自定义范围(10—50)
+#### 自定义范围(10—50)
 
 ```vue
 <up-slider
@@ -429,7 +388,7 @@ vertical + length
 ></up-slider>
 ```
 
-### 指定步长(每次步进5)
+#### 指定步长(每次步进5)
 
 ```vue
 <up-slider
@@ -439,7 +398,7 @@ vertical + length
 ></up-slider>
 ```
 
-### 小数步长(每次步进0.1)
+#### 小数步长(每次步进0.1)
 
 ```vue
 <up-slider
@@ -451,7 +410,7 @@ vertical + length
 ></up-slider>
 ```
 
-### 自定义样式
+#### 自定义样式
 
 ```vue
 <up-slider
@@ -462,7 +421,7 @@ vertical + length
 ></up-slider>
 ```
 
-### 自定义样式(图片)
+#### 自定义样式(图片)
 
 ```vue
 <up-slider
@@ -479,7 +438,7 @@ vertical + length
 </up-slider>
 ```
 
-### 区间选择(双滑块)
+#### 区间选择(双滑块)
 
 ```vue
 <up-slider
@@ -491,16 +450,10 @@ vertical + length
 ></up-slider>
 ```
 
-### 在Modal弹窗中使用
+#### 在Modal弹窗中使用
 
 ```vue
 <up-slider v-if="modelShow" v-model="sliderValue" min="1" max="4" showValue></up-slider>
-```
-
-### 在popup弹窗中使用
-
-```vue
-<up-slider v-if="popupShow" v-model="sliderValue" min="1" max="4" showValue></up-slider>
 ```
 
 <small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsB/slider/slider.uvue`</small>

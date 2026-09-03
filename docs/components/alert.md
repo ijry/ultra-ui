@@ -31,8 +31,6 @@ import UltraUI
 
 <template #android>
 
-### 警告提示
-
 ```kotlin
 import net.lingyun.ultraui.android.components.UPAlert
 import net.lingyun.ultraui.android.components.UPAlertProps
@@ -60,6 +58,8 @@ UPAlert(
 
 <template #harmony>
 
+#### 提示条
+
 ```typescript
 import { UPAlert, UPAlertProps } from '@lingyun/ultra-ui-hos';
 
@@ -72,7 +72,7 @@ UPAlert({ props: new UPAlertProps({ title: '操作成功', description: '页面�
 
 <template #flutter>
 
-### 基础功能
+#### 基础功能
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -80,7 +80,7 @@ import 'package:ultra_ui/ultra_ui.dart';
 const UPAlert(description: '山不在于高，有了神仙就出名')
 ```
 
-### 深浅色
+#### 深浅色
 
 ```dart
 const UPAlert(
@@ -89,7 +89,7 @@ const UPAlert(
 )
 ```
 
-### 显示图标
+#### 显示图标
 
 ```dart
 const UPAlert(
@@ -99,7 +99,7 @@ const UPAlert(
 )
 ```
 
-### 可关闭
+#### 可关闭
 
 ```dart
 UPAlert(
@@ -111,7 +111,7 @@ UPAlert(
 )
 ```
 
-### 带标题
+#### 带标题
 
 ```dart
 const UPAlert(
@@ -129,10 +129,47 @@ const UPAlert(
 
 <template #reactnative>
 
+#### 基础功能
+
 ```tsx
 import { UPAlert } from 'ultra-ui-rn';
 
 <UPAlert description="山不在于高，有了神仙就出名" />
+```
+
+#### 深浅色
+
+```tsx
+<UPAlert description="无丝竹之乱耳，无案牍之劳形" type="warning" />
+```
+
+#### 显示图标
+
+```tsx
+<UPAlert description="六王毕，四海一；蜀山兀，阿房出" showIcon type="error" />
+```
+
+#### 可关闭
+
+```tsx
+<UPAlert
+  closable
+  description="五步一楼，十步一阁；廊腰缦回，檐牙高啄；各抱地势，钩心斗角"
+  showIcon
+  type="success"
+/>
+```
+
+#### 带标题
+
+```tsx
+<UPAlert
+  closable
+  description="长桥卧波，未云何龙？复道行空，不霁何虹"
+  showIcon
+  title="妃嫔媵嫱，王子皇孙，辞楼下殿"
+  type="info"
+/>
 ```
 
 <small>示例来源 `ultra-ui-rn/example/pages/components/display/AlertDemo.tsx`</small>
@@ -141,7 +178,7 @@ import { UPAlert } from 'ultra-ui-rn';
 
 <template #taro>
 
-### 基础用法
+#### 基础用法
 
 title 为主文字，type 决定配色
 
@@ -151,7 +188,15 @@ import { UPAlert } from '@ultra-ui'
 <UPAlert type='primary' title='primary 主要提示' />
 ```
 
-### 辅助描述
+#### 深色主题
+
+effect='dark'，背景填充为主题色
+
+```tsx
+<UPAlert effect='dark' type='primary' title='primary 主要提示' />
+```
+
+#### 辅助描述
 
 description 字号更小、颜色更浅
 
@@ -163,7 +208,7 @@ description 字号更小、颜色更浅
 />
 ```
 
-### 显示图标
+#### 显示图标
 
 showIcon，图标由 type 自动推导
 
@@ -171,7 +216,7 @@ showIcon，图标由 type 自动推导
 <UPAlert showIcon type='primary' title='primary 主要提示' />
 ```
 
-### 自定义图标
+#### 自定义图标
 
 icon 优先级高于 type 的默认图标
 
@@ -179,7 +224,7 @@ icon 优先级高于 type 的默认图标
 <UPAlert showIcon icon='bell' type='primary' title='使用 bell 图标' />
 ```
 
-### 文字居中
+#### 文字居中
 
 center=true
 
@@ -187,7 +232,7 @@ center=true
 <UPAlert center type='primary' title='这是一条居中的提示' />
 ```
 
-### 字体大小
+#### 字体大小
 
 fontSize，单位默认 px
 
@@ -195,7 +240,7 @@ fontSize，单位默认 px
 <UPAlert type='primary' fontSize={12} title='fontSize = 12' />
 ```
 
-### 自定义关闭区域
+#### 自定义关闭区域
 
 closeSlot 替换默认叉号
 
@@ -207,39 +252,13 @@ closeSlot 替换默认叉号
   closeSlot={<UPIcon name='trash' size={15} color='primary' />
 ```
 
-### 过渡动画
-
-transitionMode 控制显示/隐藏动画
-
-```tsx
-<UPAlert
-  closable
-  transitionMode='fade'
-  type='primary'
-  title="transitionMode='fade'（默认）"
-/>
-```
-
-### 自定义样式
-
-customStyle / customClass
-
-```tsx
-<UPAlert
-  showIcon
-  type='primary'
-  title='通过 customStyle 加大圆角'
-  customStyle={{ borderRadius: '12px' }}
-/>
-```
-
 <small>示例来源 `ultra-ui-taro/src/pages/components/alert/index.tsx`</small>
 
 </template>
 
 <template #uniapp>
 
-### 基础功能
+#### 基础功能
 
 ```vue
 <up-alert
@@ -248,7 +267,7 @@ customStyle / customClass
 ></up-alert>
 ```
 
-### 深浅色
+#### 深浅色
 
 ```vue
 <up-alert
@@ -257,7 +276,7 @@ customStyle / customClass
 ></up-alert>
 ```
 
-### 显示图标
+#### 显示图标
 
 ```vue
 <up-alert
@@ -267,7 +286,7 @@ customStyle / customClass
 ></up-alert>
 ```
 
-### 可关闭
+#### 可关闭
 
 ```vue
 <up-alert
@@ -278,7 +297,7 @@ customStyle / customClass
 ></up-alert>
 ```
 
-### 带标题
+#### 带标题
 
 ```vue
 <up-alert
@@ -296,7 +315,7 @@ customStyle / customClass
 
 <template #uniappx>
 
-### 基础功能
+#### 基础功能
 
 ```vue
 <up-alert
@@ -305,7 +324,7 @@ customStyle / customClass
 ></up-alert>
 ```
 
-### 深浅色
+#### 深浅色
 
 ```vue
 <up-alert
@@ -314,7 +333,7 @@ customStyle / customClass
 ></up-alert>
 ```
 
-### 显示图标
+#### 显示图标
 
 ```vue
 <up-alert
@@ -324,7 +343,7 @@ customStyle / customClass
 ></up-alert>
 ```
 
-### 可关闭
+#### 可关闭
 
 ```vue
 <up-alert
@@ -335,7 +354,7 @@ customStyle / customClass
 ></up-alert>
 ```
 
-### 带标题
+#### 带标题
 
 ```vue
 <up-alert

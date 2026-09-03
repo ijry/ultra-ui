@@ -31,8 +31,6 @@ import UltraUI
 
 <template #android>
 
-### 空状态
-
 ```kotlin
 import net.lingyun.ultraui.android.components.UPEmpty
 import net.lingyun.ultraui.android.components.UPEmptyProps
@@ -55,6 +53,17 @@ UPEmpty({ props: new UPEmptyProps({
   iconSize: 72,
   width: '100%',
   height: 148
+}) })
+```
+
+```typescript
+UPEmpty({ props: new UPEmptyProps({
+  mode: 'unrecognized',
+  text: '未知模式会安全回退为数据空状态',
+  iconColor: '#909399',
+  iconSize: 56,
+  width: '100%',
+  height: 120
 }) })
 ```
 
@@ -106,17 +115,25 @@ import { UPEmpty } from 'ultra-ui-rn';
 
 <template #taro>
 
-### 自定义文案
+#### 内置模式
 
-text 覆盖默认文案
+mode 切换不同场景图标与默认文案
 
 ```tsx
 import { UPEmpty } from '@ultra-ui'
 
+<UPEmpty mode='list' />
+```
+
+#### 自定义文案
+
+text 覆盖默认文案
+
+```tsx
 <UPEmpty mode='car' text='购物车里还没有商品' />
 ```
 
-### 自定义图标 / 尺寸
+#### 自定义图标 / 尺寸
 
 icon 传图片地址，iconSize 控制大小
 
@@ -130,7 +147,7 @@ icon 传图片地址，iconSize 控制大小
 />
 ```
 
-### 带操作按钮
+#### 带操作按钮
 
 children 作为底部操作区
 
@@ -151,7 +168,7 @@ children 作为底部操作区
 
 <template #uniapp>
 
-### 演示效果
+#### 演示效果
 
 ```vue
 <up-empty
@@ -175,7 +192,7 @@ children 作为底部操作区
 
 <template #uniappx>
 
-### 演示效果
+#### 演示效果
 
 ```vue
 <up-empty

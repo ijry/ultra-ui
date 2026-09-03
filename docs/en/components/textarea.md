@@ -32,13 +32,15 @@ UPTextarea(
 )
 ```
 
+```swift
+UPTextarea(text: $readonlyBio, readonly: true, height: 100)
+```
+
 <small>Snippet from `ultra-ui-ios/Demo/FormDemoView.swift`</small>
 
 </template>
 
 <template #android>
-
-### 文本域
 
 ```kotlin
 import net.lingyun.ultraui.android.components.UPTextarea
@@ -73,13 +75,17 @@ UPTextarea({ props: new UPTextareaProps({
 }) })
 ```
 
+```typescript
+UPTextarea({ props: new UPTextareaProps({ value: '禁用态文本域', disabled: true, height: 70 }) })
+```
+
 <small>Snippet from `ultra-ui-hos/sample/entry/src/main/ets/demos/TextareaDemo.ets`</small>
 
 </template>
 
 <template #flutter>
 
-### 字数统计
+#### 字数统计
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -92,7 +98,7 @@ UPTextarea(
 )
 ```
 
-### 自动增高
+#### 自动增高
 
 ```dart
 UPTextarea(
@@ -103,7 +109,7 @@ UPTextarea(
 )
 ```
 
-### 禁用状态
+#### 禁用状态
 
 ```dart
 UPTextarea(
@@ -115,7 +121,7 @@ UPTextarea(
 )
 ```
 
-### 下划线模式
+#### 下划线模式
 
 ```dart
 UPTextarea(
@@ -132,7 +138,7 @@ UPTextarea(
 
 <template #reactnative>
 
-### 基础使用
+#### 基础使用
 
 ```tsx
 import { UPTextarea } from 'ultra-ui-rn';
@@ -140,25 +146,25 @@ import { UPTextarea } from 'ultra-ui-rn';
 <UPTextarea onChange={setValue1} placeholder="请输入内容" value={value1} />
 ```
 
-### 字数统计
+#### 字数统计
 
 ```tsx
 <UPTextarea count onChange={setValue2} placeholder="请输入内容" value={value2} />
 ```
 
-### 自动增高
+#### 自动增高
 
 ```tsx
 <UPTextarea autoHeight onChange={setValue3} placeholder="请输入内容" value={value3} />
 ```
 
-### 禁用状态
+#### 禁用状态
 
 ```tsx
 <UPTextarea count disabled onChange={setValue4} placeholder="文本域已被禁用" value={value4} />
 ```
 
-### 下划线模式
+#### 下划线模式
 
 ```tsx
 <UPTextarea border="bottom" onChange={setValue5} placeholder="请输入内容" value={value5} />
@@ -170,7 +176,7 @@ import { UPTextarea } from 'ultra-ui-rn';
 
 <template #taro>
 
-### 基础用法
+#### 基础用法
 
 value + onChange 受控绑定
 
@@ -184,7 +190,7 @@ import { UPTextarea } from '@ultra-ui'
 />
 ```
 
-### 字数统计
+#### 字数统计
 
 count 显示右下角计数，配合 maxlength
 
@@ -198,7 +204,7 @@ count 显示右下角计数，配合 maxlength
 />
 ```
 
-### 自定义高度
+#### 自定义高度
 
 height 指定固定高度，单位 px
 
@@ -206,7 +212,7 @@ height 指定固定高度，单位 px
 <UPTextarea height={140} value={tall} onChange={setTall} />
 ```
 
-### 自动增高
+#### 自动增高
 
 autoHeight：内容变多时高度自动撑开，height 变为最小高度
 
@@ -220,7 +226,7 @@ autoHeight：内容变多时高度自动撑开，height 变为最小高度
 />
 ```
 
-### 边框
+#### 边框
 
 border：surround（默认） / bottom / none
 
@@ -228,7 +234,7 @@ border：surround（默认） / bottom / none
 <UPTextarea border='bottom' value={bottom} onChange={setBottom} />
 ```
 
-### 禁用
+#### 禁用
 
 disabled 不可编辑且背景置灰
 
@@ -236,7 +242,7 @@ disabled 不可编辑且背景置灰
 <UPTextarea disabled value={disabled} onChange={setDisabled} />
 ```
 
-### 占位符样式
+#### 占位符样式
 
 placeholderStyle 支持对象或字符串
 
@@ -255,7 +261,7 @@ placeholderStyle 支持对象或字符串
 
 <template #uniapp>
 
-### 基础使用
+#### 基础使用
 
 ```vue
 <up-textarea
@@ -264,7 +270,7 @@ placeholderStyle 支持对象或字符串
 ></up-textarea>
 ```
 
-### 字数统计
+#### 字数统计
 
 ```vue
 <up-textarea
@@ -274,7 +280,7 @@ placeholderStyle 支持对象或字符串
 ></up-textarea>
 ```
 
-### 自动增高
+#### 自动增高
 
 ```vue
 <up-textarea
@@ -284,7 +290,7 @@ placeholderStyle 支持对象或字符串
 ></up-textarea>
 ```
 
-### 禁用状态
+#### 禁用状态
 
 ```vue
 <up-textarea
@@ -295,7 +301,7 @@ placeholderStyle 支持对象或字符串
 ></up-textarea>
 ```
 
-### 下划线模式
+#### 下划线模式
 
 ```vue
 <up-textarea
@@ -311,7 +317,7 @@ placeholderStyle 支持对象或字符串
 
 <template #uniappx>
 
-### 基础使用
+#### 基础使用
 
 ```vue
 <up-textarea
@@ -320,7 +326,7 @@ placeholderStyle 支持对象或字符串
 ></up-textarea>
 ```
 
-### 字数统计
+#### 字数统计
 
 ```vue
 <up-textarea
@@ -330,7 +336,7 @@ placeholderStyle 支持对象或字符串
 ></up-textarea>
 ```
 
-### 自动增高
+#### 自动增高
 
 ```vue
 <up-textarea
@@ -340,7 +346,7 @@ placeholderStyle 支持对象或字符串
 ></up-textarea>
 ```
 
-### 禁用状态
+#### 禁用状态
 
 ```vue
 <up-textarea
@@ -351,7 +357,7 @@ placeholderStyle 支持对象或字符串
 ></up-textarea>
 ```
 
-### 下划线模式
+#### 下划线模式
 
 ```vue
 <up-textarea

@@ -296,15 +296,15 @@ function renderPage(component, locale) {
           const code = section.code || ''
           const imports = i === 0 ? importLines(platform.id, entry.symbol, code) : null
 
-          // 如果有标题，添加三级标题
+          // h4, not h3: the outline is configured for levels 2-3, and every
+          // platform tab repeats these labels — h3 would list all eight.
           if (section.title) {
-            out.push(`### ${section.title}`)
+            out.push(`#### ${section.title}`)
             out.push('')
           }
 
-          // 如果有说明文字，添加说明
           if (section.desc) {
-            out.push(section.desc)
+            out.push(prose(section.desc))
             out.push('')
           }
 

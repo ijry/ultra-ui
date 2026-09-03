@@ -31,8 +31,6 @@ No snippet could be extracted automatically — please read the source.
 
 <template #android>
 
-### 行布局
-
 ```kotlin
 import net.lingyun.ultraui.android.components.UPRow
 
@@ -42,8 +40,6 @@ UPRow(gutter = 8, justify = "between", onClick = { eventText = "行布局：点�
     UPCol(span = 4) { DemoTile("span 4") }
 }
 ```
-
-### 列布局
 
 ```kotlin
 UPRow(gutter = 8) {
@@ -57,6 +53,8 @@ UPRow(gutter = 8) {
 </template>
 
 <template #harmony>
+
+#### 12 栅格基础行
 
 ```typescript
 import { UPRow, UPRowProps } from '@lingyun/ultra-ui-hos';
@@ -75,6 +73,50 @@ UPRow({ props: new UPRowProps({ gutter: 12 }) }) {
 }
 ```
 
+#### 偏移与换行
+
+```typescript
+UPRow({ props: new UPRowProps({ gutter: 8 }) }) {
+  UPCol({ props: new UPColProps({ span: 4, offset: 2 }) }) {
+    Column() { Text('span=4 offset=2').fontSize(12).fontColor('#ffffff') }
+    .width('100%').height(40).justifyContent(FlexAlign.Center).alignItems(HorizontalAlign.Center)
+    .backgroundColor('#5cdbd3').borderRadius(4)
+  }
+  UPCol({ props: new UPColProps({ span: 4 }) }) {
+    Column() { Text('span=4').fontSize(12).fontColor('#ffffff') }
+    .width('100%').height(40).justifyContent(FlexAlign.Center).alignItems(HorizontalAlign.Center)
+    .backgroundColor('#5cdbd3').borderRadius(4)
+  }
+  UPCol({ props: new UPColProps({ span: 8 }) }) {
+    Column() { Text('span=8 换行').fontSize(12).fontColor('#ffffff') }
+    .width('100%').height(40).justifyContent(FlexAlign.Center).alignItems(HorizontalAlign.Center)
+    .backgroundColor('#ff9900').borderRadius(4)
+  }
+}
+```
+
+#### 对齐方式
+
+```typescript
+UPRow({ props: new UPRowProps({ justify: 'space-between', align: 'center' }) }) {
+  UPCol({ props: new UPColProps({ span: 3 }) }) {
+    Column() { Text('A').fontSize(13).fontColor('#ffffff') }
+    .width('100%').height(36).justifyContent(FlexAlign.Center).alignItems(HorizontalAlign.Center)
+    .backgroundColor('#909399').borderRadius(4)
+  }
+  UPCol({ props: new UPColProps({ span: 3 }) }) {
+    Column() { Text('B').fontSize(13).fontColor('#ffffff') }
+    .width('100%').height(36).justifyContent(FlexAlign.Center).alignItems(HorizontalAlign.Center)
+    .backgroundColor('#909399').borderRadius(4)
+  }
+  UPCol({ props: new UPColProps({ span: 3 }) }) {
+    Column() { Text('C').fontSize(13).fontColor('#ffffff') }
+    .width('100%').height(36).justifyContent(FlexAlign.Center).alignItems(HorizontalAlign.Center)
+    .backgroundColor('#909399').borderRadius(4)
+  }
+}
+```
+
 <small>Snippet from `ultra-ui-hos/sample/entry/src/main/ets/demos/RowDemo.ets`</small>
 
 </template>
@@ -89,6 +131,99 @@ UPRow(
   children: <Widget>[
     UPCol(span: 6, child: _demoLayout('#e5e9f2')),
     UPCol(span: 6, child: _demoLayout('#ced7e1')),
+  ],
+)
+```
+
+```dart
+UPRow(
+  children: <Widget>[
+    UPCol(span: 4, child: _demoLayout('#ced7e1')),
+    UPCol(span: 4, child: _demoLayout('#e5e9f2')),
+    UPCol(span: 4, child: _demoLayout('#99a9bf')),
+  ],
+)
+```
+
+```dart
+UPRow(
+  justify: 'space-between',
+  children: <Widget>[
+    UPCol(span: 3, child: _demoLayout('#ced7e1')),
+    UPCol(span: 3, child: _demoLayout('#e5e9f2')),
+    UPCol(span: 3, child: _demoLayout('#ced7e1')),
+    UPCol(span: 3, child: _demoLayout('#e5e9f2')),
+  ],
+)
+```
+
+```dart
+UPRow(
+  key: const ValueKey('layout-page-gutter-row'),
+  justify: 'space-between',
+  gutter: 10,
+  children: <Widget>[
+    UPCol(span: 3, child: _demoLayout('#ced7e1')),
+    UPCol(span: 3, child: _demoLayout('#e5e9f2')),
+    UPCol(span: 3, child: _demoLayout('#ced7e1')),
+    UPCol(span: 3, child: _demoLayout('#e5e9f2')),
+  ],
+)
+```
+
+```dart
+UPRow(
+  key: const ValueKey('layout-page-mixed-row'),
+  justify: 'space-between',
+  gutter: 10,
+  children: <Widget>[
+    UPCol(span: 2, child: _demoLayout('#e5e9f2')),
+    UPCol(span: 4, child: _demoLayout('#ced7e1')),
+    UPCol(span: 6, child: _demoLayout('#99a9bf')),
+  ],
+)
+```
+
+```dart
+UPRow(
+  key: const ValueKey('layout-page-offset-row'),
+  justify: 'space-between',
+  children: <Widget>[
+    UPCol(
+      span: 3,
+      offset: 3,
+      child: _demoLayout('#e5e9f2'),
+    ),
+    UPCol(
+      span: 3,
+      offset: 3,
+      child: _demoLayout('#ced7e1'),
+    ),
+  ],
+)
+```
+
+```dart
+UPRow(
+  children: <Widget>[
+    UPCol(span: 3, child: _demoLayout('#e5e9f2')),
+    UPCol(
+      key: const ValueKey('layout-page-offset-col'),
+      span: 3,
+      offset: 3,
+      child: _demoLayout('#ced7e1'),
+    ),
+  ],
+)
+```
+
+```dart
+UPRow(
+  key: const ValueKey('layout-page-alignment-row'),
+  justify: 'space-between',
+  children: <Widget>[
+    UPCol(span: 3, child: _demoLayout('#e5e9f2')),
+    UPCol(span: 3, child: _demoLayout('#ced7e1')),
   ],
 )
 ```
@@ -123,7 +258,7 @@ No snippet could be extracted automatically — please read the source.
 
 <template #uniapp>
 
-### 基础使用
+#### 基础使用
 
 ```vue
 <up-row :customStyle="{marginBottom: '10px'}">
@@ -136,7 +271,7 @@ No snippet could be extracted automatically — please read the source.
 </up-row>
 ```
 
-### 分栏间隔
+#### 分栏间隔
 
 ```vue
 <up-row justify="space-between" gutter="10">
@@ -155,7 +290,7 @@ No snippet could be extracted automatically — please read the source.
 </up-row>
 ```
 
-### 混合布局
+#### 混合布局
 
 ```vue
 <up-row justify="space-between" gutter="10">
@@ -171,7 +306,7 @@ No snippet could be extracted automatically — please read the source.
 </up-row>
 ```
 
-### 分栏偏移
+#### 分栏偏移
 
 ```vue
 <up-row
@@ -187,7 +322,7 @@ No snippet could be extracted automatically — please read the source.
 </up-row>
 ```
 
-### 对齐方式
+#### 对齐方式
 
 ```vue
 <up-row
@@ -209,7 +344,7 @@ No snippet could be extracted automatically — please read the source.
 
 <template #uniappx>
 
-### 基础使用
+#### 基础使用
 
 ```vue
 <up-row :customStyle="{marginBottom: '10px'}">
@@ -222,7 +357,7 @@ No snippet could be extracted automatically — please read the source.
 </up-row>
 ```
 
-### 分栏间隔
+#### 分栏间隔
 
 ```vue
 <up-row justify="space-between" gutter="10">
@@ -241,7 +376,7 @@ No snippet could be extracted automatically — please read the source.
 </up-row>
 ```
 
-### 混合布局
+#### 混合布局
 
 ```vue
 <up-row justify="space-between" gutter="10">
@@ -257,7 +392,7 @@ No snippet could be extracted automatically — please read the source.
 </up-row>
 ```
 
-### 分栏偏移
+#### 分栏偏移
 
 ```vue
 <up-row
@@ -273,7 +408,7 @@ No snippet could be extracted automatically — please read the source.
 </up-row>
 ```
 
-### 对齐方式
+#### 对齐方式
 
 ```vue
 <up-row

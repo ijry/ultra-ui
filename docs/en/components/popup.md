@@ -46,8 +46,6 @@ UPPopup(show: $showPopup,
 
 <template #android>
 
-### 弹窗
-
 ```kotlin
 import net.lingyun.ultraui.android.components.UPPopup
 import net.lingyun.ultraui.android.components.UPPopupProps
@@ -66,6 +64,8 @@ UPPopup(
 </template>
 
 <template #harmony>
+
+#### 不同方向
 
 ```typescript
 import { UPPopup, UPPopupProps } from '@lingyun/ultra-ui-hos';
@@ -124,11 +124,54 @@ UPPopup(
 
 ```tsx
 import { UPPopup } from 'ultra-ui-rn';
+
+<UPPopup
+  bottom={
+    popupData.mode === 'center' ? (
+      <View style={s.rounded}>
+        <UPIcon color="#fff" name="close" />
+      </View>
+    ) : undefined
+  }
+  closeable={popupData.closeable}
+  closeOnClickOverlay={popupData.closeOnClickOverlay}
+  maxHeight={popupData.maxHeight}
+  minHeight={popupData.minHeight}
+  mode={popupData.mode}
+  onChangeShow={setShow}
+  onClose={() => setShow(false)}
+  overlay={popupData.overlay}
+  round={popupData.round}
+  safeAreaInsetBottom
+  safeAreaInsetTop
+  show={show}
+  touchable={popupData.touchable}
+>
+  <View
+    style={[
+      s.slot,
+      { marginTop: horizontal ? 240 : 0, width: vertical ? '100%' : 200 },
+    ]}
+  >
+    <ScrollView style={[s.scroll, { height: popupData.height ? 160 : 80 }]}>
+      {Array.from({ length: 30 }, (_, index) => (
+        <Text key={index}>列表滚动{index + 1}</Text>
+      ))}
+    </ScrollView>
+    <View>
+      <UPButton
+        customStyle={s.closeButton}
+        onClick={() => setShow(false)}
+        size="small"
+        text="点我关闭"
+        type="success"
+      />
+    </View>
+  </View>
+</UPPopup>
 ```
 
-::: tip
-No snippet could be extracted automatically — please read the source.
-:::
+<small>Snippet from `ultra-ui-rn/example/pages/components/feedback/PopupDemo.tsx`</small>
 
 </template>
 
@@ -142,27 +185,123 @@ import { UPPopup } from '@ultra-ui'
 </UPPopup>
 ```
 
+```tsx
+<UPPopup show={current === 'bottom'} mode='bottom' onClose={close}>
+  <Panel title='底部弹出' tips='mode="bottom"，最常用的弹出方式' />
+</UPPopup>
+```
+
+```tsx
+<UPPopup show={current === 'left'} mode='left' onClose={close}>
+  <Panel variant='side' title='左侧弹出' tips='mode="left"' />
+</UPPopup>
+```
+
+```tsx
+<UPPopup show={current === 'right'} mode='right' onClose={close}>
+  <Panel variant='side' title='右侧弹出' tips='mode="right"' />
+</UPPopup>
+```
+
+```tsx
+<UPPopup show={current === 'center'} mode='center' onClose={close}>
+  <Panel variant='center' title='居中弹出' tips='mode="center"' />
+</UPPopup>
+```
+
+```tsx
+<UPPopup show={current === 'round0'} mode='bottom' round={0} onClose={close}>
+  <Panel title='没有圆角' tips='round = 0' />
+</UPPopup>
+```
+
+```tsx
+<UPPopup show={current === 'round40'} mode='bottom' round='40px' onClose={close}>
+  <Panel title='大圆角' tips="round = '40px'" />
+</UPPopup>
+```
+
+```tsx
+<UPPopup show={current === 'roundCenter'} mode='center' round={16} onClose={close}>
+  <Panel variant='center' title='居中圆角' tips='round = 16' />
+</UPPopup>
+```
+
 <small>Snippet from `ultra-ui-taro/src/pages/components/popup/index.tsx`</small>
 
 </template>
 
 <template #uniapp>
 
-::: tip
-No snippet could be extracted automatically — please read the source.
-:::
+```vue
+<up-popup
+    :safeAreaInsetBottom="true"
+    :safeAreaInsetTop="true"
+    :mode="popupData?.['mode']"
+    :show="show"
+    :round="popupData?.['round']"
+    :overlay="popupData?.['overlay']"
+    :borderRadius="popupData?.['borderRadius']"
+    :closeable="popupData?.['closeable']"
+    :closeOnClickOverlay="popupData?.['closeOnClickOverlay']"
+    @close="close"
+    @open="open"
+>
+    <view
+        class="u-popup-slot"
+        :style="{
+            width: ['bottom', 'top'].includes(getMode(popupData)) ? '750rpx' : '200px',
+            marginTop: ['left', 'right'].includes(getMode(popupData)) ? '480rpx' : '0',
+        }"
+    >
+        <up-tag
+            type="success"
+            text="点我关闭"
+            customStyle="width: 200rpx"
+            @click="close"
+        ></up-tag>
+    </view>
+</up-popup>
+```
 
-<small>Auto-imported through easycom — no import statement needed.</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsA/popup/popup.uvue`</small>
 
 </template>
 
 <template #uniappx>
 
-::: tip
-No snippet could be extracted automatically — please read the source.
-:::
+```vue
+<up-popup
+    :safeAreaInsetBottom="true"
+    :safeAreaInsetTop="true"
+    :mode="popupData?.['mode']"
+    :show="show"
+    :round="popupData?.['round']"
+    :overlay="popupData?.['overlay']"
+    :borderRadius="popupData?.['borderRadius']"
+    :closeable="popupData?.['closeable']"
+    :closeOnClickOverlay="popupData?.['closeOnClickOverlay']"
+    @close="close"
+    @open="open"
+>
+    <view
+        class="u-popup-slot"
+        :style="{
+            width: ['bottom', 'top'].includes(getMode(popupData)) ? '750rpx' : '200px',
+            marginTop: ['left', 'right'].includes(getMode(popupData)) ? '480rpx' : '0',
+        }"
+    >
+        <up-tag
+            type="success"
+            text="点我关闭"
+            customStyle="width: 200rpx"
+            @click="close"
+        ></up-tag>
+    </view>
+</up-popup>
+```
 
-<small>Auto-imported through easycom — no import statement needed.</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsA/popup/popup.uvue`</small>
 
 </template>
 

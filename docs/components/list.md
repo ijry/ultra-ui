@@ -30,6 +30,8 @@ import net.lingyun.ultraui.android.components.UPList
 
 <template #harmony>
 
+#### 原生 ListItem 分组
+
 ```typescript
 import { UPList, UPListProps } from '@lingyun/ultra-ui-hos';
 
@@ -92,7 +94,7 @@ import { UPList } from 'ultra-ui-rn';
 
 <template #taro>
 
-### 基础用法
+#### 基础用法
 
 列表容器 + 列表项（标题与说明）
 
@@ -106,7 +108,7 @@ import { UPList } from '@ultra-ui'
 </UPList>
 ```
 
-### 带图标 / 头像
+#### 带图标 / 头像
 
 左侧 thumb 缩略图或 icon 图标
 
@@ -118,7 +120,7 @@ import { UPList } from '@ultra-ui'
 </UPList>
 ```
 
-### 右侧内容与点击
+#### 右侧内容与点击
 
 value 文本、箭头、可点击反馈
 
@@ -132,7 +134,7 @@ value 文本、箭头、可点击反馈
 </UPList>
 ```
 
-### 分组吸顶
+#### 分组吸顶
 
 UPList sticky + UPListItem group，滚动时分组头吸顶
 
@@ -149,7 +151,7 @@ UPList sticky + UPListItem group，滚动时分组头吸顶
 </UPList>
 ```
 
-### 滚动与锚点
+#### 滚动与锚点
 
 scrollIntoView 定位到指定 anchor
 

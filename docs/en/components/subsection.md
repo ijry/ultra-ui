@@ -37,13 +37,17 @@ import { UPSubsection, UPSubsectionProps } from '@lingyun/ultra-ui-hos';
 UPSubsection({ props: new UPSubsectionProps({ list: this.list, current: this.current, onCurrentChange: (index: number): void => { this.current = index; }, onChange: (index: number): void => { this.message = 'button 选择：' + String(index); } }) })
 ```
 
+```typescript
+UPSubsection({ props: new UPSubsectionProps({ list: this.list, current: this.current, mode: 'subsection', bold: false, onChange: (index: number): void => { this.message = 'subsection 选择：' + String(index); } }) })
+```
+
 <small>Snippet from `ultra-ui-hos/sample/entry/src/main/ets/demos/SubsectionDemo.ets`</small>
 
 </template>
 
 <template #flutter>
 
-### 基础使用
+#### 基础使用
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -57,7 +61,7 @@ subsection: UPSubsection(
 )
 ```
 
-### 按钮模式
+#### 按钮模式
 
 ```dart
 subsection: UPSubsection(
@@ -69,7 +73,7 @@ subsection: UPSubsection(
 )
 ```
 
-### 更换主题
+#### 更换主题
 
 ```dart
 subsection: UPSubsection(
@@ -82,7 +86,7 @@ subsection: UPSubsection(
 )
 ```
 
-### 默认位置
+#### 默认位置
 
 ```dart
 subsection: UPSubsection(
@@ -95,7 +99,7 @@ subsection: UPSubsection(
 )
 ```
 
-### 按钮模式通过list自定义颜色
+#### 按钮模式通过list自定义颜色
 
 ```dart
 subsection: UPSubsection(
@@ -108,13 +112,25 @@ subsection: UPSubsection(
 )
 ```
 
+#### 禁用
+
+```dart
+UPSubsection(
+  key: const ValueKey('subsection-page-disabled-button'),
+  list: _customItems,
+  mode: 'button',
+  disabled: true,
+  activeColorKeyName: 'textColor',
+)
+```
+
 <small>Snippet from `ultra-ui-flutter/example/lib/pages/components_c/subsection_page.dart`</small>
 
 </template>
 
 <template #reactnative>
 
-### 基础使用
+#### 基础使用
 
 ```tsx
 import { UPSubsection } from 'ultra-ui-rn';
@@ -122,13 +138,13 @@ import { UPSubsection } from 'ultra-ui-rn';
 <UPSubsection current={current1} list={list} mode="subsection" onChange={setCurrent1} />
 ```
 
-### 按钮模式
+#### 按钮模式
 
 ```tsx
 <UPSubsection current={current2} list={list} mode="button" onChange={setCurrent2} />
 ```
 
-### 更换主题
+#### 更换主题
 
 ```tsx
 <UPSubsection
@@ -140,7 +156,7 @@ import { UPSubsection } from 'ultra-ui-rn';
 />
 ```
 
-### 默认位置
+#### 默认位置
 
 ```tsx
 <UPSubsection
@@ -152,7 +168,7 @@ import { UPSubsection } from 'ultra-ui-rn';
 />
 ```
 
-### 按钮模式通过list自定义颜色
+#### 按钮模式通过list自定义颜色
 
 ```tsx
 <UPSubsection
@@ -164,7 +180,7 @@ import { UPSubsection } from 'ultra-ui-rn';
 />
 ```
 
-### 禁用
+#### 禁用
 
 ```tsx
 <UPSubsection
@@ -183,13 +199,21 @@ import { UPSubsection } from 'ultra-ui-rn';
 
 <template #taro>
 
-### 自定义颜色
+#### 基础用法
 
-activeColor / inactiveColor
+mode 默认为 'button'，list 可直接传字符串数组
 
 ```tsx
 import { UPSubsection } from '@ultra-ui'
 
+<UPSubsection list={SIMPLE_LIST} current={basic} onChange={setBasic} />
+```
+
+#### 自定义颜色
+
+activeColor / inactiveColor
+
+```tsx
 <UPSubsection
   list={SIMPLE_LIST}
   current={color}
@@ -199,7 +223,7 @@ import { UPSubsection } from '@ultra-ui'
 />
 ```
 
-### 背景颜色
+#### 背景颜色
 
 bgColor，仅 button 模式生效
 
@@ -213,7 +237,7 @@ bgColor，仅 button 模式生效
 />
 ```
 
-### 字体大小
+#### 字体大小
 
 fontSize，默认 12
 
@@ -226,7 +250,7 @@ fontSize，默认 12
 />
 ```
 
-### 激活项加粗
+#### 激活项加粗
 
 bold 默认为 true，可关闭
 
@@ -234,7 +258,20 @@ bold 默认为 true，可关闭
 <UPSubsection list={SIMPLE_LIST} current={bold} bold onChange={setBold} />
 ```
 
-### 逐项配色
+#### 自定义读取字段
+
+keyName='title'
+
+```tsx
+<UPSubsection
+  list={KEY_NAME_LIST}
+  keyName='title'
+  current={keyName}
+  onChange={setKeyName}
+/>
+```
+
+#### 逐项配色
 
 元素上的 activeColorKey / inactiveColorKey 字段优先级更高
 
@@ -246,20 +283,12 @@ bold 默认为 true，可关闭
 />
 ```
 
-### 项数自适应
+#### 项数自适应
 
 滑块宽度按 list 长度等分
 
 ```tsx
 <UPSubsection list={TWO_LIST} current={two} onChange={setTwo} />
-```
-
-### 禁用
-
-disabled，点击不再响应
-
-```tsx
-<UPSubsection list={SIMPLE_LIST} current={disabledButton} disabled />
 ```
 
 <small>Snippet from `ultra-ui-taro/src/pages/components/subsection/index.tsx`</small>
@@ -268,7 +297,7 @@ disabled，点击不再响应
 
 <template #uniapp>
 
-### 基础使用
+#### 基础使用
 
 ```vue
 <up-subsection
@@ -279,7 +308,7 @@ disabled，点击不再响应
 ></up-subsection>
 ```
 
-### 按钮模式
+#### 按钮模式
 
 ```vue
 <up-subsection
@@ -290,7 +319,7 @@ disabled，点击不再响应
 ></up-subsection>
 ```
 
-### 更换主题
+#### 更换主题
 
 ```vue
 <up-subsection
@@ -302,7 +331,7 @@ disabled，点击不再响应
 ></up-subsection>
 ```
 
-### 默认位置
+#### 默认位置
 
 ```vue
 <up-subsection
@@ -320,7 +349,7 @@ disabled，点击不再响应
 
 <template #uniappx>
 
-### 基础使用
+#### 基础使用
 
 ```vue
 <up-subsection
@@ -331,7 +360,7 @@ disabled，点击不再响应
 ></up-subsection>
 ```
 
-### 按钮模式
+#### 按钮模式
 
 ```vue
 <up-subsection
@@ -342,7 +371,7 @@ disabled，点击不再响应
 ></up-subsection>
 ```
 
-### 更换主题
+#### 更换主题
 
 ```vue
 <up-subsection
@@ -354,7 +383,7 @@ disabled，点击不再响应
 ></up-subsection>
 ```
 
-### 默认位置
+#### 默认位置
 
 ```vue
 <up-subsection

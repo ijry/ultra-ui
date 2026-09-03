@@ -18,6 +18,8 @@ generated: true
 
 <template #flutter>
 
+#### 基础用法
+
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
 
@@ -47,7 +49,7 @@ import { UPAgreement } from 'ultra-ui-rn';
 
 <template #taro>
 
-### 基础用法
+#### 基础用法
 
 受控选中态 + onChange
 
@@ -61,7 +63,7 @@ import { UPAgreement } from '@ultra-ui'
 />
 ```
 
-### 禁用状态
+#### 禁用状态
 
 disabled 时不可交互
 
@@ -86,6 +88,31 @@ disabled 时不可交互
     url-privacy="/pages/user_agreement/agreement/info?title=隐私政策"></up-agreement>
 ```
 
+```vue
+<up-agreement ref="agreement2" @confirm="change2"
+    url-protocol="/pages/user_agreement/agreement/info?title=用户协议"
+    url-privacy="/pages/user_agreement/agreement/info?title=隐私政策">
+  <view class="custom-content">
+    <text class="title">请仔细阅读并同意以下协议：</text>
+    <view class="agreement-item">
+        <text>《</text>
+        <navigator class="inline-link" :url="urlProtocol">用户服务协议</navigator>
+        <text>》</text>
+    </view>
+    <view class="agreement-item">
+        <text>《</text>
+        <navigator class="inline-link" :url="urlPrivacy">隐私保护政策</navigator>
+        <text>》</text>
+    </view>
+    <view class="agreement-item">
+        <text>《</text>
+        <navigator class="inline-link" :url="urlThird">第三方信息共享清单</navigator>
+        <text>》</text>
+    </view>
+ </view>
+</up-agreement>
+```
+
 <small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/agreement/agreement.uvue`</small>
 
 </template>
@@ -96,6 +123,31 @@ disabled 时不可交互
 <up-agreement ref="agreement1" @confirm="change1"
     url-protocol="/pages/user_agreement/agreement/info?title=用户协议"
     url-privacy="/pages/user_agreement/agreement/info?title=隐私政策"></up-agreement>
+```
+
+```vue
+<up-agreement ref="agreement2" @confirm="change2"
+    url-protocol="/pages/user_agreement/agreement/info?title=用户协议"
+    url-privacy="/pages/user_agreement/agreement/info?title=隐私政策">
+  <view class="custom-content">
+    <text class="title">请仔细阅读并同意以下协议：</text>
+    <view class="agreement-item">
+        <text>《</text>
+        <navigator class="inline-link" :url="urlProtocol">用户服务协议</navigator>
+        <text>》</text>
+    </view>
+    <view class="agreement-item">
+        <text>《</text>
+        <navigator class="inline-link" :url="urlPrivacy">隐私保护政策</navigator>
+        <text>》</text>
+    </view>
+    <view class="agreement-item">
+        <text>《</text>
+        <navigator class="inline-link" :url="urlThird">第三方信息共享清单</navigator>
+        <text>》</text>
+    </view>
+ </view>
+</up-agreement>
 ```
 
 <small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/agreement/agreement.uvue`</small>

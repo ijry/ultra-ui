@@ -54,21 +54,129 @@ No snippet could be extracted automatically — please read the source.
 
 <template #uniapp>
 
-::: tip
-No snippet could be extracted automatically — please read the source.
-:::
+```vue
+<up-short-video 
+    :tabs-list="tabsList"
+    :video-list="videoList"
+    :current-tab="currentTab"
+    :current-video="currentVideo"
+    @tabChange="onTabChange"
+    @videoChange="onVideoChange"
+    @like="onLike"
+    @comment="onComment"
+    @share="onShare"
+    @collect="onCollect"
+>
+    <!-- 自定义菜单按钮 -->
+    <template #menu>
+        <view class="custom-menu">
+            <up-icon name="grid" size="22px" color="#ddd"></up-icon>
+        </view>
+    </template>
+    
+    <!-- 自定义搜索按钮 -->
+    <template #search>
+        <view class="custom-search">
+            <up-icon name="search" size="22px" color="#ddd"></up-icon>
+        </view>
+    </template>
+    
+    <template #tabbar> 
+        <up-tabbar
+            :fixed="true"
+            :placeholder="true"
+            :safeAreaInsetBottom="true"
+            borderColor="rgba(255,255,255,0.25) !important"
+            backgroundColor="rgba(255,255,255,0.05)"
+        >
+            <up-tabbar-item
+                @click="goNext"
+                text="首页"
+                icon="home"
+            >
+            </up-tabbar-item>
+            <up-tabbar-item
+                text="放映厅"
+                icon="photo"
+            ></up-tabbar-item>
+            <up-tabbar-item
+                text="直播"
+                icon="play-right"
+            ></up-tabbar-item>
+            <up-tabbar-item
+                text="我的"
+                icon="account"
+            ></up-tabbar-item>
+        </up-tabbar>
+    </template>
+</up-short-video>
+```
 
-<small>Auto-imported through easycom — no import statement needed.</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/shortVideo/shortVideo.uvue`</small>
 
 </template>
 
 <template #uniappx>
 
-::: tip
-No snippet could be extracted automatically — please read the source.
-:::
+```vue
+<up-short-video 
+    :tabs-list="tabsList"
+    :video-list="videoList"
+    :current-tab="currentTab"
+    :current-video="currentVideo"
+    @tabChange="onTabChange"
+    @videoChange="onVideoChange"
+    @like="onLike"
+    @comment="onComment"
+    @share="onShare"
+    @collect="onCollect"
+>
+    <!-- 自定义菜单按钮 -->
+    <template #menu>
+        <view class="custom-menu">
+            <up-icon name="grid" size="22px" color="#ddd"></up-icon>
+        </view>
+    </template>
+    
+    <!-- 自定义搜索按钮 -->
+    <template #search>
+        <view class="custom-search">
+            <up-icon name="search" size="22px" color="#ddd"></up-icon>
+        </view>
+    </template>
+    
+    <template #tabbar> 
+        <up-tabbar
+            :fixed="true"
+            :placeholder="true"
+            :safeAreaInsetBottom="true"
+            borderColor="rgba(255,255,255,0.25) !important"
+            backgroundColor="rgba(255,255,255,0.05)"
+        >
+            <up-tabbar-item
+                @click="goNext"
+                text="首页"
+                icon="home"
+            >
+            </up-tabbar-item>
+            <up-tabbar-item
+                text="放映厅"
+                icon="photo"
+            ></up-tabbar-item>
+            <up-tabbar-item
+                text="直播"
+                icon="play-right"
+            ></up-tabbar-item>
+            <up-tabbar-item
+                text="我的"
+                icon="account"
+            ></up-tabbar-item>
+        </up-tabbar>
+    </template>
+</up-short-video>
+```
 
-<small>Auto-imported through easycom — no import statement needed.</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/shortVideo/shortVideo.uvue`</small>
 
 </template>
 

@@ -25,6 +25,14 @@ import UltraUI
 UPLoadingIcon(color: "primary", text: "spinner")
 ```
 
+```swift
+UPLoadingIcon(color: "success", mode: "circle", text: "circle")
+```
+
+```swift
+UPLoadingIcon(color: "warning", vertical: true, text: "vertical")
+```
+
 <small>示例来源 `ultra-ui-ios/Demo/MiscDemoView.swift`</small>
 
 </template>
@@ -49,6 +57,14 @@ import { UPLoadingIcon, UPLoadingIconProps } from '@lingyun/ultra-ui-hos';
 UPLoadingIcon({ props: new UPLoadingIconProps({ mode: 'spinner', color: 'primary', text: 'spinner 模式' }) })
 ```
 
+```typescript
+UPLoadingIcon({ props: new UPLoadingIconProps({ mode: 'semicircle', color: 'warning', text: 'semicircle 模式' }) })
+```
+
+```typescript
+UPLoadingIcon({ props: new UPLoadingIconProps({ mode: 'circle', color: 'success', text: 'circle 模式', vertical: true }) })
+```
+
 <small>示例来源 `ultra-ui-hos/sample/entry/src/main/ets/demos/LoadingIconDemo.ets`</small>
 
 </template>
@@ -61,13 +77,37 @@ import 'package:ultra_ui/ultra_ui.dart';
 _LoadingBlock('基本案例', UPLoadingIcon()
 ```
 
+```dart
+_LoadingBlock('半圆loading', UPLoadingIcon(mode: 'semicircle')
+```
+
+```dart
+_LoadingBlock('圆形loading', UPLoadingIcon(mode: 'circle')
+```
+
+```dart
+UPLoadingIcon(mode: 'circle', timingFunction: 'linear')
+```
+
+```dart
+_LoadingBlock('自定义颜色', UPLoadingIcon(color: '#19be6b')
+```
+
+```dart
+_LoadingBlock('自定义大小', UPLoadingIcon(size: 36, color: '#2979ff')
+```
+
+```dart
+_LoadingBlock('自定义文字', UPLoadingIcon(vertical: true, text: '加载中')
+```
+
 <small>示例来源 `ultra-ui-flutter/example/lib/pages/components_a/loading_icon_page.dart`</small>
 
 </template>
 
 <template #reactnative>
 
-### 自定义图片加载插槽
+#### 自定义图片加载插槽
 
 ```tsx
 import { UPLoadingIcon } from 'ultra-ui-rn';
@@ -81,7 +121,7 @@ loading={<UPLoadingIcon color="red" />
 
 <template #taro>
 
-### 模式
+#### 模式
 
 mode：spinner（默认）/ circle / semicircle
 
@@ -91,7 +131,31 @@ import { UPLoadingIcon } from '@ultra-ui'
 <UPLoadingIcon mode='spinner' />
 ```
 
-### 文字
+#### 颜色
+
+color 控制活动区域颜色
+
+```tsx
+<UPLoadingIcon mode='circle' color='#3c9cff' />
+```
+
+#### 暗边颜色
+
+inactiveColor，仅 mode=circle 生效
+
+```tsx
+<UPLoadingIcon mode='circle' color='#3c9cff' />
+```
+
+#### 尺寸
+
+size，单位默认 px
+
+```tsx
+<UPLoadingIcon mode='circle' size={18} color='#3c9cff' />
+```
+
+#### 文字
 
 text / textSize / textColor
 
@@ -99,7 +163,15 @@ text / textSize / textColor
 <UPLoadingIcon text='加载中' />
 ```
 
-### 动画速度
+#### 垂直排列
+
+vertical=true，文字排在图标下方
+
+```tsx
+<UPLoadingIcon vertical text='加载中' />
+```
+
+#### 动画速度
 
 duration，单位 ms，值越小转得越快
 
@@ -107,35 +179,12 @@ duration，单位 ms，值越小转得越快
 <UPLoadingIcon mode='circle' color='#3c9cff' duration={400} />
 ```
 
-### 动画曲线
+#### 动画曲线
 
 timingFunction，仅 circle / semicircle 生效
 
 ```tsx
 <UPLoadingIcon mode='semicircle' color='#3c9cff' timingFunction='ease-in-out' />
-```
-
-### 深色背景
-
-customStyle / customClass 自定义外层容器
-
-```tsx
-<UPLoadingIcon
-  mode='circle'
-  color='#ffffff'
-  inactiveColor='rgb(120, 120, 120)'
-  text='加载中'
-  textColor='#ffffff'
-  customStyle={{ padding: '4px' }}
-/>
-```
-
-### 显示与隐藏
-
-show=false 时组件不渲染
-
-```tsx
-<UPLoadingIcon show={show} mode='circle' color='#3c9cff' text='正在加载' />
 ```
 
 <small>示例来源 `ultra-ui-taro/src/pages/components/loading-icon/index.tsx`</small>
@@ -144,37 +193,37 @@ show=false 时组件不渲染
 
 <template #uniapp>
 
-### 基本案列
+#### 基本案列
 
 ```vue
 <up-loading-icon></up-loading-icon>
 ```
 
-### 半圆loading
+#### 半圆loading
 
 ```vue
 <up-loading-icon mode="semicircle"></up-loading-icon>
 ```
 
-### 圆形loading
+#### 圆形loading
 
 ```vue
 <up-loading-icon mode="circle"></up-loading-icon>
 ```
 
-### 自定义动画
+#### 自定义动画
 
 ```vue
 <up-loading-icon mode="circle" timingFunction="linear"></up-loading-icon>
 ```
 
-### 自定义颜色
+#### 自定义颜色
 
 ```vue
 <up-loading-icon color="#19be6b"></up-loading-icon>
 ```
 
-### 自定义文字
+#### 自定义文字
 
 ```vue
 <up-loading-icon
@@ -189,37 +238,37 @@ show=false 时组件不渲染
 
 <template #uniappx>
 
-### 基本案列
+#### 基本案列
 
 ```vue
 <up-loading-icon></up-loading-icon>
 ```
 
-### 半圆loading
+#### 半圆loading
 
 ```vue
 <up-loading-icon mode="semicircle"></up-loading-icon>
 ```
 
-### 圆形loading
+#### 圆形loading
 
 ```vue
 <up-loading-icon mode="circle"></up-loading-icon>
 ```
 
-### 自定义动画
+#### 自定义动画
 
 ```vue
 <up-loading-icon mode="circle" timingFunction="linear"></up-loading-icon>
 ```
 
-### 自定义颜色
+#### 自定义颜色
 
 ```vue
 <up-loading-icon color="#19be6b"></up-loading-icon>
 ```
 
-### 自定义文字
+#### 自定义文字
 
 ```vue
 <up-loading-icon

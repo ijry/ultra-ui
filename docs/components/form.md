@@ -21,15 +21,48 @@ generated: true
 ```swift
 import SwiftUI
 import UltraUI
+
+UPForm(model: $model, rules: rules, controller: form) {
+    VStack(alignment: .leading, spacing: 16) {
+        UPFormItem(label: "邮箱", prop: "account.email", required: true) {
+            UPInput(
+                prop: "account.email",
+                placeholder: "name@example.com",
+                clearable: true
+            )
+        }
+
+        UPFormItem(label: "密码", prop: "account.password", required: true) {
+            UPInput(
+                prop: "account.password",
+                type: "password",
+                placeholder: "至少 6 位",
+                maxlength: 32,
+                count: true
+            )
+        }
+
+        UPFormItem(label: "个人简介", prop: "bio", labelPosition: "top") {
+            UPTextarea(
+                prop: "bio",
+                placeholder: "介绍一下自己",
+                maxlength: 200,
+                count: true,
+                height: 100,
+                autoHeight: true
+            )
+        }
+    }
+}
 ```
 
-::: tip
-暂无自动提取到的示例代码，请参考源码。
-:::
+<small>示例来源 `ultra-ui-ios/Demo/FormDemoView.swift`</small>
 
 </template>
 
 <template #harmony>
+
+#### 基础表单
 
 ```typescript
 import { UPForm, UPFormProps } from '@lingyun/ultra-ui-hos';
@@ -67,17 +100,43 @@ import 'package:ultra_ui/ultra_ui.dart';
 
 ```tsx
 import { UPForm } from 'ultra-ui-rn';
+
+<UPForm labelPosition="left">
+  <UPFormItem borderBottom label="姓名" prop="userInfo.name">
+    <UPInput />
+  </UPFormItem>
+  <UPFormItem borderBottom label="页面">
+    <UPDatetimePicker
+      hasInput
+      inputProps={{
+        border: 'surround',
+        inputAlign: 'center',
+        shape: 'square',
+        suffixIcon: 'calendar',
+      }}
+      mode="datetime"
+      modelValue={1714266792000}
+      placeholder="请选择日期"
+    />
+  </UPFormItem>
+  <UPFormItem borderBottom label="日期">
+    <UPDatetimePicker
+      mode="datetime"
+      modelValue={1714266792000}
+      pageInline
+      showToolbar={false}
+    />
+  </UPFormItem>
+</UPForm>
 ```
 
-::: tip
-暂无自动提取到的示例代码，请参考源码。
-:::
+<small>示例来源 `ultra-ui-rn/example/pages/components/form/DatetimePickerDemo.tsx`</small>
 
 </template>
 
 <template #taro>
 
-### label 布局
+#### label 布局
 
 labelPosition 控制上下排列，labelAlign 控制对齐
 
@@ -96,7 +155,7 @@ import { UPForm } from '@ultra-ui'
 </UPForm>
 ```
 
-### 左侧图标与必填星号
+#### 左侧图标与必填星号
 
 leftIcon / required
 

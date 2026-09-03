@@ -31,6 +31,8 @@ DemoSection("下拉选择") { UPSelect(UPSelectProps(options = listOf(mapOf("id"
 
 <template #flutter>
 
+#### 默认
+
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
 
@@ -42,6 +44,41 @@ UPSelect(
   current: _cateId,
   onUpdateCurrent: (value) =>
       setState(() => _cateId = '$value'),
+)
+```
+
+#### 插槽
+
+```dart
+UPSelect(
+  key: const ValueKey('select-page-slot'),
+  label: '分类',
+  showOptionsLabel: true,
+  options: _scenesList,
+  current: _cateId,
+  onUpdateCurrent: (value) =>
+      setState(() => _cateId = '$value'),
+  // Source `optionItem` slot renders just the name as text.
+  optionItemBuilder: (item) => Text(
+    '${item['name'] ?? ''}',
+    style: TextStyle(color: tokens.mainColor, fontSize: 14),
+  ),
+)
+```
+
+#### 边框与下拉宽度
+
+```dart
+UPSelect(
+  key: const ValueKey('select-page-border'),
+  label: '请选择分类',
+  showOptionsLabel: true,
+  options: _scenesList,
+  border: true,
+  optionsWidth: '100%',
+  current: _pcSelectId,
+  onUpdateCurrent: (value) =>
+      setState(() => _pcSelectId = '$value'),
 )
 ```
 
@@ -80,6 +117,17 @@ No snippet could be extracted automatically — please read the source.
     :options="scenesList"></up-select>
 ```
 
+```vue
+<up-select v-model:current="cateId" label="分类"
+    :options="scenesList">
+    <template #optionItem="{item}">
+        <text class="up-select__item-text">
+            自定义选项
+        </text>
+    </template>
+</up-select>
+```
+
 <small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/select/select.uvue`</small>
 
 </template>
@@ -89,6 +137,17 @@ No snippet could be extracted automatically — please read the source.
 ```vue
 <up-select v-model:current="cateId" label="分类"
     :options="scenesList"></up-select>
+```
+
+```vue
+<up-select v-model:current="cateId" label="分类"
+    :options="scenesList">
+    <template #optionItem="{item}">
+        <text class="up-select__item-text">
+            自定义选项
+        </text>
+    </template>
+</up-select>
 ```
 
 <small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/select/select.uvue`</small>

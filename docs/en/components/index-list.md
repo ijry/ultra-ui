@@ -72,17 +72,63 @@ UPIndexList(
 
 ```tsx
 import { UPIndexList } from 'ultra-ui-rn';
+
+<UPIndexList indexList={indexList}>
+  {/* header slot */}
+  <View style={s.list}>
+    <View style={s.listItem}>
+      <UPAvatar fontSize={26} icon="man-add-fill" randomBgColor shape="square" size={35} />
+      <Text style={s.listItemUserName}>新的朋友</Text>
+    </View>
+    <UPLine />
+    <View style={s.listItem}>
+      <UPAvatar fontSize={26} icon="tags-fill" randomBgColor shape="square" size={35} />
+      <Text style={s.listItemUserName}>标签</Text>
+    </View>
+    <UPLine />
+    <View style={s.listItem}>
+      <UPAvatar fontSize={26} icon="chrome-circle-fill" randomBgColor shape="square" size={35} />
+      <Text style={s.listItemUserName}>朋友圈</Text>
+    </View>
+    <UPLine />
+    <View style={s.listItem}>
+      <UPAvatar fontSize={26} icon="qq-fill" randomBgColor shape="square" size={35} />
+      <Text style={s.listItemUserName}>QQ</Text>
+    </View>
+    <UPLine />
+  </View>
+
+  {indexList.map((letter, index) => (
+    <UPIndexItem key={index}>
+      <UPIndexAnchor text={letter} />
+      <View style={s.list}>
+        {itemArr[index].map((item1, index1) => (
+          <View key={index1}>
+            <View style={s.listItem}>
+              <Image source={{ uri: item1.url }} style={s.listItemAvatar} />
+              <Text style={s.listItemUserName}>{item1.name}</Text>
+            </View>
+            <UPLine />
+          </View>
+        ))}
+      </View>
+    </UPIndexItem>
+  ))}
+
+  {/* footer slot */}
+  <View>
+    <Text style={s.listFooter}>共305位好友</Text>
+  </View>
+</UPIndexList>
 ```
 
-::: tip
-No snippet could be extracted automatically — please read the source.
-:::
+<small>Snippet from `ultra-ui-rn/example/pages/components/advanced/IndexListDemo.tsx`</small>
 
 </template>
 
 <template #taro>
 
-### 基础用法
+#### 基础用法
 
 右侧字母栏点击滚动定位，锚点吸顶（sticky）
 
@@ -117,21 +163,105 @@ import { UPIndexList } from '@ultra-ui'
 
 <template #uniapp>
 
-::: tip
-No snippet could be extracted automatically — please read the source.
-:::
+```vue
+<up-index-list :indexList="indexList" style="height: 100%">
+    <template #header>
+        <view class="list">
+            <view class="list__item" @click="goNext">
+                <up-avatar shape="square" size="35" icon="man-add-fill" fontSize="26" randomBgColor></up-avatar>
+                <text class="list__item__user-name">新的朋友</text>
+            </view>
+            <up-line></up-line>
+            <view class="list__item">
+                <up-avatar shape="square" size="35" icon="tags-fill" fontSize="26" randomBgColor></up-avatar>
+                <text class="list__item__user-name">标签</text>
+            </view>
+            <up-line></up-line>
+            <view class="list__item">
+                <up-avatar shape="square" size="35" icon="chrome-circle-fill" fontSize="26" randomBgColor></up-avatar>
+                <text class="list__item__user-name">朋友圈</text>
+            </view>
+            <up-line></up-line>
+            <view class="list__item">
+                <up-avatar shape="square" size="35" icon="qq-fill" fontSize="26" randomBgColor></up-avatar>
+                <text class="list__item__user-name">QQ</text>
+            </view>
+            <up-line></up-line>
+        </view>
+    </template>
+    <template :key="index" v-for="(item, index) in itemArr">
+        <up-index-item>
+            <up-index-anchor :text="indexList[index]"></up-index-anchor>
+            <view class="list" v-for="(item1, index1) in item" :key="index1">
+                <view class="list__item">
+                    <image class="list__item__avatar" :src="item1['url']"></image>
+                    <text class="list__item__user-name">{{item1['name']}}</text>
+                </view>
+                <up-line></up-line>
+            </view>
+        </up-index-item>
+    </template>
+    <template #footer>
+        <view class="u-safe-area-inset--bottom">
+            <text class="list__footer">共305位好友</text>
+        </view>
+    </template>
+</up-index-list>
+```
 
-<small>Auto-imported through easycom — no import statement needed.</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/indexList/indexList.uvue`</small>
 
 </template>
 
 <template #uniappx>
 
-::: tip
-No snippet could be extracted automatically — please read the source.
-:::
+```vue
+<up-index-list :indexList="indexList" style="height: 100%">
+    <template #header>
+        <view class="list">
+            <view class="list__item" @click="goNext">
+                <up-avatar shape="square" size="35" icon="man-add-fill" fontSize="26" randomBgColor></up-avatar>
+                <text class="list__item__user-name">新的朋友</text>
+            </view>
+            <up-line></up-line>
+            <view class="list__item">
+                <up-avatar shape="square" size="35" icon="tags-fill" fontSize="26" randomBgColor></up-avatar>
+                <text class="list__item__user-name">标签</text>
+            </view>
+            <up-line></up-line>
+            <view class="list__item">
+                <up-avatar shape="square" size="35" icon="chrome-circle-fill" fontSize="26" randomBgColor></up-avatar>
+                <text class="list__item__user-name">朋友圈</text>
+            </view>
+            <up-line></up-line>
+            <view class="list__item">
+                <up-avatar shape="square" size="35" icon="qq-fill" fontSize="26" randomBgColor></up-avatar>
+                <text class="list__item__user-name">QQ</text>
+            </view>
+            <up-line></up-line>
+        </view>
+    </template>
+    <template :key="index" v-for="(item, index) in itemArr">
+        <up-index-item>
+            <up-index-anchor :text="indexList[index]"></up-index-anchor>
+            <view class="list" v-for="(item1, index1) in item" :key="index1">
+                <view class="list__item">
+                    <image class="list__item__avatar" :src="item1['url']"></image>
+                    <text class="list__item__user-name">{{item1['name']}}</text>
+                </view>
+                <up-line></up-line>
+            </view>
+        </up-index-item>
+    </template>
+    <template #footer>
+        <view class="u-safe-area-inset--bottom">
+            <text class="list__footer">共305位好友</text>
+        </view>
+    </template>
+</up-index-list>
+```
 
-<small>Auto-imported through easycom — no import statement needed.</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/indexList/indexList.uvue`</small>
 
 </template>
 

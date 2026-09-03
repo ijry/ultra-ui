@@ -31,8 +31,6 @@ No snippet could be extracted automatically — please read the source.
 
 <template #android>
 
-### 头像
-
 ```kotlin
 import net.lingyun.ultraui.android.components.UPAvatar
 import net.lingyun.ultraui.android.components.UPAvatarProps
@@ -40,6 +38,10 @@ import net.lingyun.ultraui.android.components.UPAvatarProps
 UPAvatar(props = UPAvatarProps(text = "U", randomBgColor = true, name = "avatar-u"), onClick = {
     eventText = "头像：$it"
 })
+```
+
+```kotlin
+UPAvatar(props = UPAvatarProps(text = "A", shape = "square", bgColor = "#2979ff", color = "#ffffff"))
 ```
 
 <small>Snippet from `ultra-ui-android/sample/src/main/kotlin/net/lingyun/ultraui/android/sample/pages/LayerContentDemoPage.kt`</small>
@@ -52,6 +54,14 @@ UPAvatar(props = UPAvatarProps(text = "U", randomBgColor = true, name = "avatar-
 import { UPAvatar, UPAvatarProps } from '@lingyun/ultra-ui-hos';
 
 UPAvatar({ props: new UPAvatarProps({ text: '林', name: 'lingyun', randomBgColor: true, onClick: (event: UPAvatarClickEvent): void => { this.select(event); } }) })
+```
+
+```typescript
+UPAvatar({ props: new UPAvatarProps({ text: 'UI', shape: 'square', bgColor: 'primary', size: 48, onClick: (event: UPAvatarClickEvent): void => { this.select(event); } }) })
+```
+
+```typescript
+UPAvatar({ props: new UPAvatarProps({ icon: 'account', bgColor: 'success', size: 56, onClick: (event: UPAvatarClickEvent): void => { this.select(event); } }) })
 ```
 
 <small>Snippet from `ultra-ui-hos/sample/entry/src/main/ets/demos/AvatarDemo.ets`</small>
@@ -69,13 +79,55 @@ const UPAvatar(
 )
 ```
 
+```dart
+UPAvatar(
+  key: const ValueKey('avatar-page-clickable'),
+  src: '${_base}2.jpg',
+  shape: 'circle',
+  onClick: (_) => setState(() => _clickCount += 1),
+)
+```
+
+```dart
+const UPAvatar(
+  src: '${_base}3.jpg',
+  shape: 'square',
+)
+```
+
+```dart
+_avatarItem(const UPAvatar(src: '${_base}4.jpg', size: 30)
+```
+
+```dart
+_avatarItem(const UPAvatar(src: '${_base}5.jpg', size: 40)
+```
+
+```dart
+const UPAvatar(src: '${_base}6.jpg', size: 50)
+```
+
+```dart
+_avatarItem(const UPAvatar(
+  icon: 'red-packet-fill',
+  fontSize: 22,
+)
+```
+
+```dart
+const UPAvatar(
+  icon: 'star-fill',
+  fontSize: 22,
+)
+```
+
 <small>Snippet from `ultra-ui-flutter/example/lib/pages/components_c/avatar_page.dart`</small>
 
 </template>
 
 <template #reactnative>
 
-### 基础演示
+#### 基础演示
 
 ```tsx
 import { UPAvatar } from 'ultra-ui-rn';
@@ -83,31 +135,31 @@ import { UPAvatar } from 'ultra-ui-rn';
 <UPAvatar src={src1} />
 ```
 
-### 头像形状
+#### 头像形状
 
 ```tsx
 <UPAvatar src={src3} shape="square" />
 ```
 
-### 头像尺寸
+#### 头像尺寸
 
 ```tsx
 <UPAvatar src={src4} size="30" />
 ```
 
-### 图标头像
+#### 图标头像
 
 ```tsx
 <UPAvatar icon="red-packet-fill" fontSize="22" />
 ```
 
-### 文字头像(自动背景色)
+#### 文字头像(自动背景色)
 
 ```tsx
 <UPAvatar text="U" fontSize="20" randomBgColor colorIndex={0} />
 ```
 
-### 图片加载失败(显示默认头像)
+#### 图片加载失败(显示默认头像)
 
 ```tsx
 <UPAvatar src={src7} />
@@ -119,14 +171,70 @@ import { UPAvatar } from 'ultra-ui-rn';
 
 <template #taro>
 
-### 裁剪模式
+#### 基础用法
 
-mode 取值同 Taro Image
+src 传图片地址，默认 40px 圆形
 
 ```tsx
 import { UPAvatar } from '@ultra-ui'
 
+<UPAvatar src={PIC} />
+```
+
+#### 形状
+
+shape：circle 圆形 / square 方形
+
+```tsx
+<UPAvatar src={PIC} shape='circle' />
+```
+
+#### 尺寸
+
+size 支持数字（px）与带单位字符串
+
+```tsx
+<UPAvatar src={PIC} size={24} />
+```
+
+#### 文字头像
+
+text 优先级高于 src，可配 bgColor / color / fontSize
+
+```tsx
+<UPAvatar text='张' />
+```
+
+#### 随机背景色
+
+randomBgColor 随机取色，colorIndex 可锁定 0-19 号色
+
+```tsx
+<UPAvatar text='随' randomBgColor />
+```
+
+#### 图标头像
+
+icon 优先级高于 src
+
+```tsx
+<UPAvatar icon='camera' bgColor='#ebedf0' color='#909399' />
+```
+
+#### 裁剪模式
+
+mode 取值同 Taro Image
+
+```tsx
 <UPAvatar src={PIC} size={56} shape='square' mode={mode} />
+```
+
+#### 加载失败
+
+src 无效时回退 defaultUrl，未配置则用内置兜底头像
+
+```tsx
+<UPAvatar src={BROKEN} />
 ```
 
 <small>Snippet from `ultra-ui-taro/src/pages/components/avatar/index.tsx`</small>
@@ -135,13 +243,13 @@ import { UPAvatar } from '@ultra-ui'
 
 <template #uniapp>
 
-### 基础演示
+#### 基础演示
 
 ```vue
 <up-avatar :src="src1"></up-avatar>
 ```
 
-### 头像形状
+#### 头像形状
 
 ```vue
 <up-avatar
@@ -151,7 +259,7 @@ import { UPAvatar } from '@ultra-ui'
 ></up-avatar>
 ```
 
-### 头像尺寸
+#### 头像尺寸
 
 ```vue
 <up-avatar
@@ -160,7 +268,7 @@ import { UPAvatar } from '@ultra-ui'
 ></up-avatar>
 ```
 
-### 图标头像
+#### 图标头像
 
 ```vue
 <up-avatar
@@ -169,7 +277,7 @@ import { UPAvatar } from '@ultra-ui'
 ></up-avatar>
 ```
 
-### 文字头像(自动背景色)
+#### 文字头像(自动背景色)
 
 ```vue
 <up-avatar
@@ -180,13 +288,13 @@ import { UPAvatar } from '@ultra-ui'
 ></up-avatar>
 ```
 
-### 图片加载失败(显示默认头像)
+#### 图片加载失败(显示默认头像)
 
 ```vue
 <up-avatar :src="src7"></up-avatar>
 ```
 
-### 小程序开放能力
+#### 小程序开放能力
 
 ```vue
 <up-avatar
@@ -201,13 +309,13 @@ import { UPAvatar } from '@ultra-ui'
 
 <template #uniappx>
 
-### 基础演示
+#### 基础演示
 
 ```vue
 <up-avatar :src="src1"></up-avatar>
 ```
 
-### 头像形状
+#### 头像形状
 
 ```vue
 <up-avatar
@@ -217,7 +325,7 @@ import { UPAvatar } from '@ultra-ui'
 ></up-avatar>
 ```
 
-### 头像尺寸
+#### 头像尺寸
 
 ```vue
 <up-avatar
@@ -226,7 +334,7 @@ import { UPAvatar } from '@ultra-ui'
 ></up-avatar>
 ```
 
-### 图标头像
+#### 图标头像
 
 ```vue
 <up-avatar
@@ -235,7 +343,7 @@ import { UPAvatar } from '@ultra-ui'
 ></up-avatar>
 ```
 
-### 文字头像(自动背景色)
+#### 文字头像(自动背景色)
 
 ```vue
 <up-avatar
@@ -246,13 +354,13 @@ import { UPAvatar } from '@ultra-ui'
 ></up-avatar>
 ```
 
-### 图片加载失败(显示默认头像)
+#### 图片加载失败(显示默认头像)
 
 ```vue
 <up-avatar :src="src7"></up-avatar>
 ```
 
-### 小程序开放能力
+#### 小程序开放能力
 
 ```vue
 <up-avatar

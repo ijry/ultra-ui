@@ -49,7 +49,7 @@ No snippet could be extracted automatically — please read the source.
 
 <template #taro>
 
-### 自定义占位色
+#### 自定义占位色
 
 placeholder 传颜色字符串
 

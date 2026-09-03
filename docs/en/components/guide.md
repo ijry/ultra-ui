@@ -42,7 +42,7 @@ No snippet could be extracted automatically — please read the source.
 
 <template #taro>
 
-### 基础用法
+#### 基础用法
 
 点击按钮高亮指定元素并弹出引导气泡
 
@@ -62,7 +62,7 @@ import { UPGuide } from '@ultra-ui'
 />
 ```
 
-### 带图片
+#### 带图片
 
 引导内容支持配图
 
@@ -81,7 +81,7 @@ import { UPGuide } from '@ultra-ui'
 />
 ```
 
-### 可跳过
+#### 可跳过
 
 showSkip 显示右上角跳过入口
 

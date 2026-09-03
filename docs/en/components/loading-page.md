@@ -31,8 +31,6 @@ No snippet could be extracted automatically — please read the source.
 
 <template #android>
 
-### 加载页
-
 ```kotlin
 import net.lingyun.ultraui.android.components.UPLoadingPage
 import net.lingyun.ultraui.android.components.UPLoadingPageProps
@@ -48,6 +46,8 @@ UPLoadingPage(
 </template>
 
 <template #harmony>
+
+#### 加载页
 
 ```typescript
 import { UPLoadingPage, UPLoadingPageProps } from '@lingyun/ultra-ui-hos';
@@ -108,7 +108,7 @@ import { UPLoadingPage } from 'ultra-ui-rn';
 
 <template #taro>
 
-### 基础用法
+#### 基础用法
 
 loading 为 true 时展示全屏遮罩
 
@@ -118,7 +118,7 @@ import { UPLoadingPage } from '@ultra-ui'
 <UPLoadingPage loading={loading} text='加载中...' />
 ```
 
-### 自定义颜色
+#### 自定义颜色
 
 color / bgColor
 
@@ -131,7 +131,7 @@ color / bgColor
 />
 ```
 
-### 自定义内容
+#### 自定义内容
 
 children 覆盖默认图标 + 文本
 

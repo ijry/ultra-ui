@@ -18,8 +18,6 @@ Switch tabs to see the syntax for each platform. Every snippet is lifted verbati
 
 <template #android>
 
-### 滚动通知
-
 ```kotlin
 import net.lingyun.ultraui.android.components.UPNoticeBar
 import net.lingyun.ultraui.android.components.UPNoticeBarProps
@@ -40,6 +38,8 @@ UPNoticeBar(
 
 <template #harmony>
 
+#### 公告栏
+
 ```typescript
 import { UPNoticeBar, UPNoticeBarProps } from '@lingyun/ultra-ui-hos';
 
@@ -52,7 +52,7 @@ UPNoticeBar({ props: new UPNoticeBarProps({ show: this.show, text: ['HarmonyOS N
 
 <template #flutter>
 
-### 基础功能
+#### 基础功能
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -63,7 +63,7 @@ UPNoticeBar(
 )
 ```
 
-### 自定义横向滚动速度
+#### 自定义横向滚动速度
 
 ```dart
 UPNoticeBar(
@@ -73,7 +73,7 @@ UPNoticeBar(
 )
 ```
 
-### 可跳转(点击右箭头)
+#### 可跳转(点击右箭头)
 
 ```dart
 UPNoticeBar(
@@ -84,7 +84,7 @@ UPNoticeBar(
 )
 ```
 
-### 横向步进滚动
+#### 横向步进滚动
 
 ```dart
 UPNoticeBar(
@@ -94,7 +94,7 @@ UPNoticeBar(
 )
 ```
 
-### 纵向滚动
+#### 纵向滚动
 
 ```dart
 UPNoticeBar(
@@ -104,7 +104,7 @@ UPNoticeBar(
 )
 ```
 
-### 纵向滚动(文字居中)
+#### 纵向滚动(文字居中)
 
 ```dart
 UPNoticeBar(
@@ -115,7 +115,7 @@ UPNoticeBar(
 )
 ```
 
-### 自定义样式
+#### 自定义样式
 
 ```dart
 UPNoticeBar(
@@ -143,13 +143,36 @@ No snippet could be extracted automatically — please read the source.
 
 <template #taro>
 
-### 自定义样式
+#### 横向滚动
 
-color / bgColor / fontSize / speed
+mode="horizontal"（默认），内容超出时自动跑马灯
 
 ```tsx
 import { UPNoticeBar } from '@ultra-ui'
 
+<UPNoticeBar
+  text='ultra-ui 是 uview-plus 的 Taro + React 复刻版，前缀 up-，全端兼容。'
+  mode='horizontal'
+  icon
+/>
+```
+
+#### 纵向轮播
+
+mode="vertical"，text 传数组逐条切换
+
+```tsx
+<UPNoticeBar
+  mode='vertical'
+  text={['第一条通知：组件库已支持 40+ 组件', '第二条通知：全端构建已跑通', '第三条通知：欢迎提 Issue 与 PR']}
+/>
+```
+
+#### 自定义样式
+
+color / bgColor / fontSize / speed
+
+```tsx
 <UPNoticeBar
   text='自定义颜色与滚动速度的通知栏示例。'
   mode='horizontal'
@@ -167,7 +190,7 @@ import { UPNoticeBar } from '@ultra-ui'
 
 <template #uniapp>
 
-### 基础功能
+#### 基础功能
 
 ```vue
 <up-notice-bar
@@ -175,7 +198,7 @@ import { UPNoticeBar } from '@ultra-ui'
 ></up-notice-bar>
 ```
 
-### 可关闭
+#### 可关闭
 
 ```vue
 <up-notice-bar
@@ -184,7 +207,7 @@ import { UPNoticeBar } from '@ultra-ui'
 ></up-notice-bar>
 ```
 
-### 自定义横向滚动速度
+#### 自定义横向滚动速度
 
 ```vue
 <up-notice-bar
@@ -194,7 +217,7 @@ import { UPNoticeBar } from '@ultra-ui'
 ></up-notice-bar>
 ```
 
-### 可跳转(点击右箭头)
+#### 可跳转(点击右箭头)
 
 ```vue
 <up-notice-bar
@@ -204,7 +227,7 @@ import { UPNoticeBar } from '@ultra-ui'
 ></up-notice-bar>
 ```
 
-### 横向步进滚动
+#### 横向步进滚动
 
 ```vue
 <up-notice-bar
@@ -214,7 +237,7 @@ import { UPNoticeBar } from '@ultra-ui'
 ></up-notice-bar>
 ```
 
-### 纵向滚动
+#### 纵向滚动
 
 ```vue
 <up-notice-bar
@@ -224,7 +247,7 @@ import { UPNoticeBar } from '@ultra-ui'
 ></up-notice-bar>
 ```
 
-### 自定义样式
+#### 自定义样式
 
 ```vue
 <up-notice-bar
@@ -240,7 +263,7 @@ import { UPNoticeBar } from '@ultra-ui'
 
 <template #uniappx>
 
-### 基础功能
+#### 基础功能
 
 ```vue
 <up-notice-bar
@@ -248,7 +271,7 @@ import { UPNoticeBar } from '@ultra-ui'
 ></up-notice-bar>
 ```
 
-### 可关闭
+#### 可关闭
 
 ```vue
 <up-notice-bar
@@ -257,7 +280,7 @@ import { UPNoticeBar } from '@ultra-ui'
 ></up-notice-bar>
 ```
 
-### 自定义横向滚动速度
+#### 自定义横向滚动速度
 
 ```vue
 <up-notice-bar
@@ -267,7 +290,7 @@ import { UPNoticeBar } from '@ultra-ui'
 ></up-notice-bar>
 ```
 
-### 可跳转(点击右箭头)
+#### 可跳转(点击右箭头)
 
 ```vue
 <up-notice-bar
@@ -277,7 +300,7 @@ import { UPNoticeBar } from '@ultra-ui'
 ></up-notice-bar>
 ```
 
-### 横向步进滚动
+#### 横向步进滚动
 
 ```vue
 <up-notice-bar
@@ -287,7 +310,7 @@ import { UPNoticeBar } from '@ultra-ui'
 ></up-notice-bar>
 ```
 
-### 纵向滚动
+#### 纵向滚动
 
 ```vue
 <up-notice-bar
@@ -297,7 +320,7 @@ import { UPNoticeBar } from '@ultra-ui'
 ></up-notice-bar>
 ```
 
-### 自定义样式
+#### 自定义样式
 
 ```vue
 <up-notice-bar

@@ -30,7 +30,7 @@ import 'package:ultra_ui/ultra_ui.dart';
 
 <template #reactnative>
 
-### 基础用法
+#### 基础用法
 
 ```tsx
 import { UPSection } from 'ultra-ui-rn';
@@ -42,7 +42,7 @@ import { UPSection } from 'ultra-ui-rn';
 </UPSection>
 ```
 
-### 副标题 + 右箭头
+#### 副标题 + 右箭头
 
 ```tsx
 <UPSection title="我的订单" subTitle="查看全部" arrow>
@@ -52,7 +52,7 @@ import { UPSection } from 'ultra-ui-rn';
 </UPSection>
 ```
 
-### 标题靠右
+#### 标题靠右
 
 ```tsx
 <UPSection title="右侧标题" right>
@@ -62,7 +62,7 @@ import { UPSection } from 'ultra-ui-rn';
 </UPSection>
 ```
 
-### 自定义颜色和字号
+#### 自定义颜色和字号
 
 ```tsx
 <UPSection title="自定义样式" color="#3c9cff" fontSize={18} lineColor="#3c9cff">
@@ -72,7 +72,7 @@ import { UPSection } from 'ultra-ui-rn';
 </UPSection>
 ```
 
-### 无左侧线条
+#### 无左侧线条
 
 ```tsx
 <UPSection title="无线条" showLine={false}>
@@ -88,7 +88,7 @@ import { UPSection } from 'ultra-ui-rn';
 
 <template #taro>
 
-### 基础用法
+#### 基础用法
 
 带标题的分节卡片
 
@@ -98,7 +98,7 @@ import { UPSection } from '@ultra-ui'
 <UPSection title='标题'>内容区</UPSection>
 ```
 
-### 隐藏右侧入口
+#### 隐藏右侧入口
 
 right=false 只保留标题与内容
 

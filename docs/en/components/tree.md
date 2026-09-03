@@ -18,6 +18,8 @@ Switch tabs to see the syntax for each platform. Every snippet is lifted verbati
 
 <template #flutter>
 
+#### 基础用法
+
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
 
@@ -28,6 +30,33 @@ UPTree(
   defaultExpandedKeys: <String>['1'],
   highlightCurrent: true,
   currentNodeKey: '1',
+)
+```
+
+#### 复选框
+
+```dart
+UPTree(
+  key: _checkTree,
+  data: _checkTreeData,
+  props: _defaultProps,
+  showCheckbox: true,
+  defaultExpandAll: true,
+  checkOnClickNode: true,
+  defaultCheckedKeys: const <String>['2-1-1'],
+  onCheck: _handleCheck,
+)
+```
+
+#### 手风琴模式
+
+```dart
+UPTree(
+  key: ValueKey('tree-page-accordion'),
+  data: _accordionTreeData,
+  props: _defaultProps,
+  accordion: true,
+  expandOnClickNode: true,
 )
 ```
 
@@ -49,7 +78,7 @@ No snippet could be extracted automatically — please read the source.
 
 <template #taro>
 
-### 手风琴 + 严格模式
+#### 手风琴 + 严格模式
 
 accordion（同级只展开一项）+ checkStrictly（父子不级联）
 
@@ -85,6 +114,50 @@ import { UPTree } from '@ultra-ui'
 />
 ```
 
+```vue
+<up-tree
+  :data="customTreeData"
+  :props="defaultProps"
+  default-expand-all
+  :indent="40"
+  @node-click="handleNodeClick"
+>
+  <template #default="{ node, level, expanded }">
+    <view class="custom-tree-node">
+      <text class="custom-tree-node__label">{{ getTreeNodeLabel(node) }}</text>
+      <text v-if="hasTreeNodeTag(node)" class="custom-tree-node__tag">{{ getTreeNodeTag(node) }}</text>
+      <text v-if="hasTreeNodeChildren(node)" class="custom-tree-node__state">
+        {{ getExpandedText(expanded) }} · {{ getTreeLevel(level) }}级
+      </text>
+    </view>
+  </template>
+</up-tree>
+```
+
+```vue
+<up-tree
+  ref="checkTree"
+  :data="checkTreeData"
+  :props="defaultProps"
+  show-checkbox
+  default-expand-all
+  check-on-click-node
+  :default-checked-keys="defaultCheckedKeys"
+  @check-change="handleCheckChange"
+  @check="handleCheck"
+/>
+```
+
+```vue
+<up-tree
+  :data="accordionTreeData"
+  :props="defaultProps"
+  accordion
+  expand-on-click-node
+  @node-click="handleNodeClick"
+/>
+```
+
 <small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/tree/tree.uvue`</small>
 
 </template>
@@ -100,6 +173,50 @@ import { UPTree } from '@ultra-ui'
   current-node-key="1"
   @node-click="handleNodeClick"
   @node-expand="handleNodeExpand"
+/>
+```
+
+```vue
+<up-tree
+  :data="customTreeData"
+  :props="defaultProps"
+  default-expand-all
+  :indent="40"
+  @node-click="handleNodeClick"
+>
+  <template #default="{ node, level, expanded }">
+    <view class="custom-tree-node">
+      <text class="custom-tree-node__label">{{ getTreeNodeLabel(node) }}</text>
+      <text v-if="hasTreeNodeTag(node)" class="custom-tree-node__tag">{{ getTreeNodeTag(node) }}</text>
+      <text v-if="hasTreeNodeChildren(node)" class="custom-tree-node__state">
+        {{ getExpandedText(expanded) }} · {{ getTreeLevel(level) }}级
+      </text>
+    </view>
+  </template>
+</up-tree>
+```
+
+```vue
+<up-tree
+  ref="checkTree"
+  :data="checkTreeData"
+  :props="defaultProps"
+  show-checkbox
+  default-expand-all
+  check-on-click-node
+  :default-checked-keys="defaultCheckedKeys"
+  @check-change="handleCheckChange"
+  @check="handleCheck"
+/>
+```
+
+```vue
+<up-tree
+  :data="accordionTreeData"
+  :props="defaultProps"
+  accordion
+  expand-on-click-node
+  @node-click="handleNodeClick"
 />
 ```
 

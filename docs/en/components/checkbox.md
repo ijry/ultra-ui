@@ -31,8 +31,6 @@ No snippet could be extracted automatically — please read the source.
 
 <template #android>
 
-### 复选框
-
 ```kotlin
 import net.lingyun.ultraui.android.components.UPCheckbox
 
@@ -47,10 +45,12 @@ UPCheckbox(
 )
 ```
 
-### 复选框组
-
 ```kotlin
 UPCheckbox(props = UPCheckboxProps(name = "apple", label = "苹果"))
+```
+
+```kotlin
+UPCheckbox(props = UPCheckboxProps(name = "banana", label = "香蕉"))
 ```
 
 <small>Snippet from `ultra-ui-android/sample/src/main/kotlin/net/lingyun/ultraui/android/sample/pages/InputSelectionDemoPage.kt`</small>
@@ -65,13 +65,17 @@ import { UPCheckbox, UPCheckboxProps } from '@lingyun/ultra-ui-hos';
 UPCheckbox({ props: new UPCheckboxProps({ name: 'alone', label: '同意服务条款', checked: this.checked, onChange: (event: UPCheckboxChangeEvent): void => { this.change(event); } }) })
 ```
 
+```typescript
+UPCheckbox({ props: new UPCheckboxProps({ label: '禁用项', checked: true, disabled: true }) })
+```
+
 <small>Snippet from `ultra-ui-hos/sample/entry/src/main/ets/demos/CheckboxDemo.ets`</small>
 
 </template>
 
 <template #flutter>
 
-### 单独使用checkbox
+#### 单独使用checkbox
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -85,7 +89,7 @@ UPCheckbox(
 )
 ```
 
-### 横向两端排列形式
+#### 横向两端排列形式
 
 ```dart
 (option) => UPCheckbox(
@@ -101,10 +105,67 @@ UPCheckbox(
 
 <template #reactnative>
 
+#### 基本案例
+
 ```tsx
 import { UPCheckbox } from 'ultra-ui-rn';
 
 <UPCheckbox customStyle={s.stacked} key={name} label={name} name={name} />
+```
+
+#### 单独使用checkbox
+
+```tsx
+<UPCheckbox
+  checked={aloneChecked}
+  customStyle={s.stacked}
+  label="同意用户协议与隐私条款"
+  name="agree"
+  onChange={setAloneChecked}
+  usedAlone
+/>
+```
+
+#### 自定义形状
+
+```tsx
+<UPCheckbox customStyle={s.stacked} key={name} label={name} name={name} />
+```
+
+#### 是否禁用
+
+```tsx
+<UPCheckbox
+  customStyle={s.stacked}
+  disabled={index === 0}
+  key={name}
+  label={name}
+  name={name}
+/>
+```
+
+#### 是否禁止点击提示语选中复选框
+
+```tsx
+<UPCheckbox customStyle={s.stacked} key={name} label={name} name={name} />
+```
+
+#### 自定义颜色
+
+```tsx
+<UPCheckbox customStyle={s.stacked} key={name} label={name} name={name} />
+```
+
+#### 横向排列形式
+
+```tsx
+<UPCheckbox customStyle={s.inline} key={name} label={name} name={name} />
+```
+
+#### 横向两端排列形式
+
+```tsx
+<UPCheckbox customStyle={s.stackedWide} key={name} label={name} name={name} />
 ```
 
 <small>Snippet from `ultra-ui-rn/example/pages/components/form/CheckboxDemo.tsx`</small>
@@ -113,7 +174,7 @@ import { UPCheckbox } from 'ultra-ui-rn';
 
 <template #taro>
 
-### 基础用法
+#### 基础用法
 
 Group 持有选中数组，onChange 回传最新数组
 
@@ -123,7 +184,7 @@ import { UPCheckbox } from '@ultra-ui'
 <UPCheckbox key={item} name={item} label={item} />
 ```
 
-### 形状
+#### 形状
 
 shape：square（默认） / circle
 
@@ -131,7 +192,7 @@ shape：square（默认） / circle
 <UPCheckbox name='square' label='方形' />
 ```
 
-### 禁用
+#### 禁用
 
 Group 整体禁用 / 单项禁用
 
@@ -139,7 +200,7 @@ Group 整体禁用 / 单项禁用
 <UPCheckbox name='已选中' label='已选中' />
 ```
 
-### 自定义颜色
+#### 自定义颜色
 
 activeColor / inactiveColor / iconColor
 
@@ -147,7 +208,7 @@ activeColor / inactiveColor / iconColor
 <UPCheckbox name='红色' label='Group 红色' />
 ```
 
-### 尺寸与文字
+#### 尺寸与文字
 
 size / iconSize / labelSize / labelColor
 
@@ -155,7 +216,7 @@ size / iconSize / labelSize / labelColor
 <UPCheckbox name='小号' label='小号' size={16} iconSize={10} labelSize={12} />
 ```
 
-### 竖向排列
+#### 竖向排列
 
 placement=column，配合 borderBottom 显示分割线
 
@@ -163,7 +224,7 @@ placement=column，配合 borderBottom 显示分割线
 <UPCheckbox key={item} name={item} label={item} />
 ```
 
-### 图标靠右
+#### 图标靠右
 
 iconPlacement=right，整行两端对齐，点击整行即可切换
 
@@ -171,20 +232,12 @@ iconPlacement=right，整行两端对齐，点击整行即可切换
 <UPCheckbox key={item} name={item} label={item} />
 ```
 
-### 禁止点击文字
+#### 禁止点击文字
 
 labelDisabled 时只有图标可点
 
 ```tsx
 <UPCheckbox name='只能点图标' label='只能点图标' />
-```
-
-### 全选
-
-用一个 usedAlone 的 checkbox 控制整个 Group
-
-```tsx
-<UPCheckbox key={item} name={item} label={item} />
 ```
 
 <small>Snippet from `ultra-ui-taro/src/pages/components/checkbox/index.tsx`</small>
@@ -193,7 +246,7 @@ labelDisabled 时只有图标可点
 
 <template #uniapp>
 
-### 基本案例
+#### 基本案例
 
 ```vue
 <up-checkbox
@@ -206,7 +259,7 @@ labelDisabled 时只有图标可点
 </up-checkbox>
 ```
 
-### 自定义形状
+#### 自定义形状
 
 ```vue
 <up-checkbox
@@ -219,7 +272,7 @@ labelDisabled 时只有图标可点
 </up-checkbox>
 ```
 
-### 是否禁用
+#### 是否禁用
 
 ```vue
 <up-checkbox
@@ -233,7 +286,7 @@ labelDisabled 时只有图标可点
 </up-checkbox>
 ```
 
-### 是否禁止点击提示语选中复选框
+#### 是否禁止点击提示语选中复选框
 
 ```vue
 <up-checkbox
@@ -246,7 +299,7 @@ labelDisabled 时只有图标可点
 </up-checkbox>
 ```
 
-### 自定义颜色
+#### 自定义颜色
 
 ```vue
 <up-checkbox
@@ -259,7 +312,7 @@ labelDisabled 时只有图标可点
 </up-checkbox>
 ```
 
-### 横向排列形式
+#### 横向排列形式
 
 ```vue
 <up-checkbox
@@ -272,7 +325,7 @@ labelDisabled 时只有图标可点
 </up-checkbox>
 ```
 
-### 横向两端排列形式
+#### 横向两端排列形式
 
 ```vue
 <up-checkbox
@@ -291,7 +344,7 @@ labelDisabled 时只有图标可点
 
 <template #uniappx>
 
-### 基本案例
+#### 基本案例
 
 ```vue
 <up-checkbox
@@ -304,7 +357,7 @@ labelDisabled 时只有图标可点
 </up-checkbox>
 ```
 
-### 自定义形状
+#### 自定义形状
 
 ```vue
 <up-checkbox
@@ -317,7 +370,7 @@ labelDisabled 时只有图标可点
 </up-checkbox>
 ```
 
-### 是否禁用
+#### 是否禁用
 
 ```vue
 <up-checkbox
@@ -331,7 +384,7 @@ labelDisabled 时只有图标可点
 </up-checkbox>
 ```
 
-### 是否禁止点击提示语选中复选框
+#### 是否禁止点击提示语选中复选框
 
 ```vue
 <up-checkbox
@@ -344,7 +397,7 @@ labelDisabled 时只有图标可点
 </up-checkbox>
 ```
 
-### 自定义颜色
+#### 自定义颜色
 
 ```vue
 <up-checkbox
@@ -357,7 +410,7 @@ labelDisabled 时只有图标可点
 </up-checkbox>
 ```
 
-### 横向排列形式
+#### 横向排列形式
 
 ```vue
 <up-checkbox
@@ -370,7 +423,7 @@ labelDisabled 时只有图标可点
 </up-checkbox>
 ```
 
-### 横向两端排列形式
+#### 横向两端排列形式
 
 ```vue
 <up-checkbox

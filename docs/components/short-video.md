@@ -54,21 +54,129 @@ import { UPShortVideo } from '@ultra-ui'
 
 <template #uniapp>
 
-::: tip
-暂无自动提取到的示例代码，请参考源码。
-:::
+```vue
+<up-short-video 
+    :tabs-list="tabsList"
+    :video-list="videoList"
+    :current-tab="currentTab"
+    :current-video="currentVideo"
+    @tabChange="onTabChange"
+    @videoChange="onVideoChange"
+    @like="onLike"
+    @comment="onComment"
+    @share="onShare"
+    @collect="onCollect"
+>
+    <!-- 自定义菜单按钮 -->
+    <template #menu>
+        <view class="custom-menu">
+            <up-icon name="grid" size="22px" color="#ddd"></up-icon>
+        </view>
+    </template>
+    
+    <!-- 自定义搜索按钮 -->
+    <template #search>
+        <view class="custom-search">
+            <up-icon name="search" size="22px" color="#ddd"></up-icon>
+        </view>
+    </template>
+    
+    <template #tabbar> 
+        <up-tabbar
+            :fixed="true"
+            :placeholder="true"
+            :safeAreaInsetBottom="true"
+            borderColor="rgba(255,255,255,0.25) !important"
+            backgroundColor="rgba(255,255,255,0.05)"
+        >
+            <up-tabbar-item
+                @click="goNext"
+                text="首页"
+                icon="home"
+            >
+            </up-tabbar-item>
+            <up-tabbar-item
+                text="放映厅"
+                icon="photo"
+            ></up-tabbar-item>
+            <up-tabbar-item
+                text="直播"
+                icon="play-right"
+            ></up-tabbar-item>
+            <up-tabbar-item
+                text="我的"
+                icon="account"
+            ></up-tabbar-item>
+        </up-tabbar>
+    </template>
+</up-short-video>
+```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/shortVideo/shortVideo.uvue`</small>
 
 </template>
 
 <template #uniappx>
 
-::: tip
-暂无自动提取到的示例代码，请参考源码。
-:::
+```vue
+<up-short-video 
+    :tabs-list="tabsList"
+    :video-list="videoList"
+    :current-tab="currentTab"
+    :current-video="currentVideo"
+    @tabChange="onTabChange"
+    @videoChange="onVideoChange"
+    @like="onLike"
+    @comment="onComment"
+    @share="onShare"
+    @collect="onCollect"
+>
+    <!-- 自定义菜单按钮 -->
+    <template #menu>
+        <view class="custom-menu">
+            <up-icon name="grid" size="22px" color="#ddd"></up-icon>
+        </view>
+    </template>
+    
+    <!-- 自定义搜索按钮 -->
+    <template #search>
+        <view class="custom-search">
+            <up-icon name="search" size="22px" color="#ddd"></up-icon>
+        </view>
+    </template>
+    
+    <template #tabbar> 
+        <up-tabbar
+            :fixed="true"
+            :placeholder="true"
+            :safeAreaInsetBottom="true"
+            borderColor="rgba(255,255,255,0.25) !important"
+            backgroundColor="rgba(255,255,255,0.05)"
+        >
+            <up-tabbar-item
+                @click="goNext"
+                text="首页"
+                icon="home"
+            >
+            </up-tabbar-item>
+            <up-tabbar-item
+                text="放映厅"
+                icon="photo"
+            ></up-tabbar-item>
+            <up-tabbar-item
+                text="直播"
+                icon="play-right"
+            ></up-tabbar-item>
+            <up-tabbar-item
+                text="我的"
+                icon="account"
+            ></up-tabbar-item>
+        </up-tabbar>
+    </template>
+</up-short-video>
+```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/shortVideo/shortVideo.uvue`</small>
 
 </template>
 

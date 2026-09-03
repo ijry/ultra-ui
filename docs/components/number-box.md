@@ -31,8 +31,6 @@ import UltraUI
 
 <template #android>
 
-### 步进器
-
 ```kotlin
 import net.lingyun.ultraui.android.components.UPNumberBox
 import net.lingyun.ultraui.android.components.UPNumberBoxProps
@@ -59,6 +57,14 @@ import { UPNumberBox, UPNumberBoxProps } from '@lingyun/ultra-ui-hos';
 UPNumberBox({ props: new UPNumberBoxProps({ modelValue: this.value, min: 1, max: 5, onChange: (event: UPNumberBoxChangeEvent): void => { this.change(event); } }) })
 ```
 
+```typescript
+UPNumberBox({ props: new UPNumberBoxProps({ value: 1.5, step: 0.5, min: 0, max: 3, decimalLength: 1, inputWidth: 48 }) })
+```
+
+```typescript
+UPNumberBox({ props: new UPNumberBoxProps({ value: 3, disabled: true }) })
+```
+
 <small>示例来源 `ultra-ui-hos/sample/entry/src/main/ets/demos/NumberBoxDemo.ets`</small>
 
 </template>
@@ -76,6 +82,76 @@ numberBox: UPNumberBox(
 )
 ```
 
+```dart
+numberBox: UPNumberBox(
+  value: _value2,
+  step: 2,
+  onChange: (value, {name}) =>
+      setState(() => _value2 = value),
+)
+```
+
+```dart
+numberBox: UPNumberBox(
+  value: _value3,
+  step: 1,
+  min: 5,
+  max: 8,
+  onChange: (value, {name}) =>
+      setState(() => _value3 = value),
+)
+```
+
+```dart
+numberBox: UPNumberBox(
+  value: _value4,
+  step: 1,
+  integer: true,
+  onChange: (value, {name}) =>
+      setState(() => _value4 = value),
+)
+```
+
+```dart
+numberBox: UPNumberBox(
+  value: _value5,
+  step: 1,
+  disabled: true,
+  onChange: (value, {name}) =>
+      setState(() => _value5 = value),
+)
+```
+
+```dart
+numberBox: UPNumberBox(
+  value: _value6,
+  step: 1,
+  disabledInput: true,
+  onChange: (value, {name}) =>
+      setState(() => _value6 = value),
+)
+```
+
+```dart
+numberBox: UPNumberBox(
+  value: _value7,
+  step: 1,
+  longPress: false,
+  onChange: (value, {name}) =>
+      setState(() => _value7 = value),
+)
+```
+
+```dart
+numberBox: UPNumberBox(
+  value: _value8,
+  step: 0.2,
+  decimalLength: 1,
+  onChange: (value, {name}) =>
+      setState(() => _value8 = value),
+)
+```
+
 <small>示例来源 `ultra-ui-flutter/example/lib/pages/components_b/number_box_page.dart`</small>
 
 </template>
@@ -88,13 +164,22 @@ import { UPNumberBox } from 'ultra-ui-rn';
 rightIconNode={<UPNumberBox disabled onChange={change} step="1" value={value5} />
 ```
 
+```tsx
+<UPNumberBox
+  asyncChange={asyncChange}
+  onChange={myAsyncChange}
+  step="1"
+  value={value9}
+/>
+```
+
 <small>示例来源 `ultra-ui-rn/example/pages/components/form/NumberBoxDemo.tsx`</small>
 
 </template>
 
 <template #taro>
 
-### 基础用法
+#### 基础用法
 
 value + onChange 受控绑定，默认最小值为 1
 
@@ -104,7 +189,7 @@ import { UPNumberBox } from '@ultra-ui'
 <UPNumberBox value={basic} onChange={setBasic} />
 ```
 
-### 步长
+#### 步长
 
 step 控制每次加减的幅度
 
@@ -112,7 +197,7 @@ step 控制每次加减的幅度
 <UPNumberBox step={2} value={step} onChange={setStep} />
 ```
 
-### 取值范围
+#### 取值范围
 
 min=3 / max=8，到边界时按钮自动置灰
 
@@ -120,7 +205,7 @@ min=3 / max=8，到边界时按钮自动置灰
 <UPNumberBox min={3} max={8} value={range} onChange={setRange} />
 ```
 
-### 小数与整数
+#### 小数与整数
 
 decimalLength 保留小数位；integer 只允许整数
 
@@ -134,7 +219,7 @@ decimalLength 保留小数位；integer 只允许整数
 />
 ```
 
-### 禁用
+#### 禁用
 
 disabled 整体禁用；disabledInput 只锁输入框
 
@@ -146,7 +231,7 @@ disabled 整体禁用；disabledInput 只锁输入框
 />
 ```
 
-### 单独禁用按钮
+#### 单独禁用按钮
 
 disableMinus / disablePlus
 
@@ -158,7 +243,7 @@ disableMinus / disablePlus
 />
 ```
 
-### 颜色
+#### 颜色
 
 color 图标色 / bgColor 按钮背景 / inputBgColor 输入框背景
 
@@ -172,7 +257,7 @@ color 图标色 / bgColor 按钮背景 / inputBgColor 输入框背景
 />
 ```
 
-### 尺寸
+#### 尺寸
 
 buttonWidth / buttonSize / inputWidth，单位 px
 
@@ -183,39 +268,6 @@ buttonWidth / buttonSize / inputWidth，单位 px
   inputWidth={50}
   value={sized}
   onChange={setSized}
-/>
-```
-
-### 迷你模式
-
-miniMode 收紧整体尺寸
-
-```tsx
-<UPNumberBox miniMode value={mini} onChange={setMini} />
-```
-
-### 隐藏按钮
-
-showMinus / showPlus
-
-```tsx
-<UPNumberBox
-  showMinus={false}
-  value={onlyPlus}
-  onChange={setOnlyPlus}
-/>
-```
-
-### 长按连续加减
-
-longPress 默认开启，按住加号别松手试试
-
-```tsx
-<UPNumberBox
-  longPress
-  max={99}
-  value={longPress}
-  onChange={setLongPress}
 />
 ```
 
@@ -234,6 +286,76 @@ longPress 默认开启，按住加号别松手试试
 </up-number-box>
 ```
 
+```vue
+<up-number-box
+    v-model="value2"
+    :step="step1"
+    @change="change"
+>
+</up-number-box>
+```
+
+```vue
+<up-number-box
+    v-model="value3"
+    step="1"
+    :min="min1"
+    :max="max1"
+    @change="change"
+>
+</up-number-box>
+```
+
+```vue
+<up-number-box
+    v-model="value4"
+    step="1"
+    integer
+    @change="change"
+>
+</up-number-box>
+```
+
+```vue
+<up-number-box
+    v-model="value5"
+    step="1"
+    :disabled="true"
+    @change="change"
+>
+</up-number-box>
+```
+
+```vue
+<up-number-box
+    v-model="value6"
+    step="1"
+    :disabledInput="true"
+    @change="change"
+>
+</up-number-box>
+```
+
+```vue
+<up-number-box
+    v-model="value7"
+    step="1"
+    :longPress="false"
+    @change="change"
+>
+</up-number-box>
+```
+
+```vue
+<up-number-box
+    v-model="value8"
+    step="0.2"
+    decimalLength="1"
+    @change="change"
+>
+</up-number-box>
+```
+
 <small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsB/numberBox/numberBox.uvue`</small>
 
 </template>
@@ -244,6 +366,76 @@ longPress 默认开启，按住加号别松手试试
 <up-number-box
     v-model="value1"
     step="1"
+    @change="change"
+>
+</up-number-box>
+```
+
+```vue
+<up-number-box
+    v-model="value2"
+    :step="step1"
+    @change="change"
+>
+</up-number-box>
+```
+
+```vue
+<up-number-box
+    v-model="value3"
+    step="1"
+    :min="min1"
+    :max="max1"
+    @change="change"
+>
+</up-number-box>
+```
+
+```vue
+<up-number-box
+    v-model="value4"
+    step="1"
+    integer
+    @change="change"
+>
+</up-number-box>
+```
+
+```vue
+<up-number-box
+    v-model="value5"
+    step="1"
+    :disabled="true"
+    @change="change"
+>
+</up-number-box>
+```
+
+```vue
+<up-number-box
+    v-model="value6"
+    step="1"
+    :disabledInput="true"
+    @change="change"
+>
+</up-number-box>
+```
+
+```vue
+<up-number-box
+    v-model="value7"
+    step="1"
+    :longPress="false"
+    @change="change"
+>
+</up-number-box>
+```
+
+```vue
+<up-number-box
+    v-model="value8"
+    step="0.2"
+    decimalLength="1"
     @change="change"
 >
 </up-number-box>

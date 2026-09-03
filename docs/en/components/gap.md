@@ -31,8 +31,6 @@ UPGap(bgColor: "bg", height: 30)
 
 <template #android>
 
-### 间隔
-
 ```kotlin
 import net.lingyun.ultraui.android.components.UPGap
 import net.lingyun.ultraui.android.components.UPGapProps
@@ -52,6 +50,10 @@ import { UPGap, UPGapProps } from '@lingyun/ultra-ui-hos';
 UPGap({ props: new UPGapProps({ height: 16, bgColor: '#f2f3f5' }) })
 ```
 
+```typescript
+UPGap({ props: new UPGapProps({ height: 28, bgColor: 'primary', marginTop: 10, marginBottom: 10 }) })
+```
+
 <small>Snippet from `ultra-ui-hos/sample/entry/src/main/ets/demos/GapDemo.ets`</small>
 
 </template>
@@ -64,16 +66,48 @@ import 'package:ultra_ui/ultra_ui.dart';
 _GapBlock('基本案例', UPGap(bgColor: '#f3f4f6')
 ```
 
+```dart
+_GapBlock('自定义颜色', UPGap(bgColor: '#2979ff')
+```
+
+```dart
+_GapBlock('自定义高度', UPGap(bgColor: '#f3f4f6', height: 40)
+```
+
+```dart
+UPGap(bgColor: '#f3f4f6', marginTop: 20, marginBottom: 20)
+```
+
 <small>Snippet from `ultra-ui-flutter/example/lib/pages/components_a/gap_page.dart`</small>
 
 </template>
 
 <template #reactnative>
 
+#### 基本案列
+
 ```tsx
 import { UPGap } from 'ultra-ui-rn';
 
 <UPGap bgColor="#f3f4f6" />
+```
+
+#### 自定义颜色
+
+```tsx
+<UPGap bgColor="#2979ff" />
+```
+
+#### 自定义高度
+
+```tsx
+<UPGap bgColor="#f3f4f6" height="40" />
+```
+
+#### 自定义上下边距
+
+```tsx
+<UPGap bgColor="#f3f4f6" marginBottom="20" marginTop="20" />
 ```
 
 <small>Snippet from `ultra-ui-rn/example/pages/components/layout/GapDemo.tsx`</small>
@@ -82,7 +116,7 @@ import { UPGap } from 'ultra-ui-rn';
 
 <template #taro>
 
-### 基础用法
+#### 基础用法
 
 默认高度 20px，背景透明
 
@@ -92,7 +126,7 @@ import { UPGap } from '@ultra-ui'
 <UPGap />
 ```
 
-### 自定义高度
+#### 自定义高度
 
 height 单位 px
 
@@ -100,7 +134,7 @@ height 单位 px
 <UPGap height={10} bgColor='#ecf5ff' />
 ```
 
-### 背景颜色
+#### 背景颜色
 
 bgColor 支持任意 CSS 颜色
 
@@ -108,7 +142,7 @@ bgColor 支持任意 CSS 颜色
 <UPGap height={24} bgColor='#3c9cff' />
 ```
 
-### 上下外边距
+#### 上下外边距
 
 marginTop / marginBottom，与背景色区分开
 
@@ -116,7 +150,7 @@ marginTop / marginBottom，与背景色区分开
 <UPGap height={20} marginTop={10} marginBottom={10} bgColor='#fdf6ec' />
 ```
 
-### 自定义样式
+#### 自定义样式
 
 customStyle 透传到根节点
 
@@ -134,25 +168,25 @@ customStyle 透传到根节点
 
 <template #uniapp>
 
-### 基本案列
+#### 基本案列
 
 ```vue
 <up-gap bgColor="#f3f4f6"></up-gap>
 ```
 
-### 自定义颜色
+#### 自定义颜色
 
 ```vue
 <up-gap bgColor="#2979ff"></up-gap>
 ```
 
-### 自定义高度
+#### 自定义高度
 
 ```vue
 <up-gap bgColor="#f3f4f6" height="40"></up-gap>
 ```
 
-### 自定义上下边距
+#### 自定义上下边距
 
 ```vue
 <up-gap
@@ -168,25 +202,25 @@ customStyle 透传到根节点
 
 <template #uniappx>
 
-### 基本案列
+#### 基本案列
 
 ```vue
 <up-gap bgColor="#f3f4f6"></up-gap>
 ```
 
-### 自定义颜色
+#### 自定义颜色
 
 ```vue
 <up-gap bgColor="#2979ff"></up-gap>
 ```
 
-### 自定义高度
+#### 自定义高度
 
 ```vue
 <up-gap bgColor="#f3f4f6" height="40"></up-gap>
 ```
 
-### 自定义上下边距
+#### 自定义上下边距
 
 ```vue
 <up-gap

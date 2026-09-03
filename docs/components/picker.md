@@ -51,6 +51,50 @@ UPPicker(
 )
 ```
 
+```dart
+UPPicker(
+  key: const ValueKey('picker-page-default'),
+  show: _activePicker == 1,
+  columns: <List<dynamic>>[_countries],
+  defaultIndex: const <int>[1],
+  onConfirm: _confirmDefault,
+  onCancel: () => _close(1),
+  onClose: () => _close(1),
+  onUpdateShow: (show) => _updateShow(1, show),
+)
+```
+
+```dart
+UPPicker(
+  key: const ValueKey('picker-page-title'),
+  show: _activePicker == 4,
+  title: '标题太长就会显示省略号',
+  value: const <dynamic>['日本'],
+  columns: <List<dynamic>>[_countries],
+  toolbarBottom: Padding(
+    padding: const EdgeInsets.only(bottom: 8),
+    child: Text('对象值示例：${_fruitOptions.first['label']}'),
+  ),
+  onConfirm: (_, __) => _close(4),
+  onCancel: () => _close(4),
+  onClose: () => _close(4),
+  onUpdateShow: (show) => _updateShow(4, show),
+)
+```
+
+```dart
+UPPicker(
+  key: const ValueKey('picker-page-overlay'),
+  show: _activePicker == 5,
+  columns: <List<dynamic>>[_countries],
+  closeOnClickOverlay: true,
+  onConfirm: (_, __) => _close(5),
+  onCancel: () => _close(5),
+  onClose: () => _close(5),
+  onUpdateShow: (show) => _updateShow(5, show),
+)
+```
+
 <small>示例来源 `ultra-ui-flutter/example/lib/pages/components_c/picker_page.dart`</small>
 
 </template>
@@ -67,6 +111,29 @@ import { UPPicker } from 'ultra-ui-rn';
   onChange={change}
   onConfirm={close}
   show={active === 2}
+/>
+```
+
+```tsx
+<UPPicker
+  columns={[['中国', '美国'], ['深圳', '厦门', '上海', '拉萨']]}
+  onCancel={close}
+  onChange={changeHandler1}
+  onConfirm={close}
+  ref={picker3}
+  show={active === 3}
+/>
+```
+
+```tsx
+<UPPicker
+  columns={[['中国', '美国'], ['深圳', '厦门', '上海', '拉萨']]}
+  loading={loading}
+  onCancel={close}
+  onChange={changeHandler2}
+  onConfirm={close}
+  ref={picker4}
+  show={active === 4}
 />
 ```
 
@@ -98,6 +165,63 @@ import { UPPicker } from '@ultra-ui'
 ></up-picker>
 ```
 
+```vue
+<up-picker
+    :show="show2"
+    :columns="columns2"
+    :defaultIndex="[1]"
+    @cancel="cancel"
+    @confirm="confirm"
+    @change="change"
+></up-picker>
+```
+
+```vue
+<up-picker
+    :show="show3"
+    :columns="columns3"
+    ref="uPicker3"
+    @cancel="cancel"
+    @confirm="confirm"
+    @change="changeHandler1"
+></up-picker>
+```
+
+```vue
+<up-picker
+    :show="show4"
+    :columns="columns4"
+    @cancel="cancel"
+    @confirm="confirm"
+    :loading="loading"
+    @change="changeHandler2"
+    ref="uPicker4"
+></up-picker>
+```
+
+```vue
+<up-picker
+    :show="show5"
+    :columns="columns5"
+    title="标题太长就会显示省略号"
+    @cancel="cancel"
+    @confirm="confirm"
+    @change="change"
+></up-picker>
+```
+
+```vue
+<up-picker
+    :show="show6"
+    :columns="columns6"
+    closeOnClickOverlay
+    @cancel="cancel"
+    @confirm="confirm"
+    @close="close"
+    @change="change"
+></up-picker>
+```
+
 <small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsC/picker/picker.uvue`</small>
 
 </template>
@@ -111,6 +235,63 @@ import { UPPicker } from '@ultra-ui'
     @change="change"
     @cancel="cancel"
     @confirm="confirm"
+></up-picker>
+```
+
+```vue
+<up-picker
+    :show="show2"
+    :columns="columns2"
+    :defaultIndex="[1]"
+    @cancel="cancel"
+    @confirm="confirm"
+    @change="change"
+></up-picker>
+```
+
+```vue
+<up-picker
+    :show="show3"
+    :columns="columns3"
+    ref="uPicker3"
+    @cancel="cancel"
+    @confirm="confirm"
+    @change="changeHandler1"
+></up-picker>
+```
+
+```vue
+<up-picker
+    :show="show4"
+    :columns="columns4"
+    @cancel="cancel"
+    @confirm="confirm"
+    :loading="loading"
+    @change="changeHandler2"
+    ref="uPicker4"
+></up-picker>
+```
+
+```vue
+<up-picker
+    :show="show5"
+    :columns="columns5"
+    title="标题太长就会显示省略号"
+    @cancel="cancel"
+    @confirm="confirm"
+    @change="change"
+></up-picker>
+```
+
+```vue
+<up-picker
+    :show="show6"
+    :columns="columns6"
+    closeOnClickOverlay
+    @cancel="cancel"
+    @confirm="confirm"
+    @close="close"
+    @change="change"
 ></up-picker>
 ```
 

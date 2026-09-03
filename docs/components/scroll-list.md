@@ -30,6 +30,8 @@ import net.lingyun.ultraui.android.components.UPScrollList
 
 <template #harmony>
 
+#### 横向滚动与比例指示器
+
 ```typescript
 import { UPScrollList, UPScrollListProps } from '@lingyun/ultra-ui-hos';
 
@@ -55,6 +57,8 @@ UPScrollList({
 
 <template #flutter>
 
+#### 基础使用
+
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
 
@@ -65,6 +69,26 @@ UPScrollList(
   onLeft: _onLeft,
   onRight: _onRight,
   children: goodsChildren,
+)
+```
+
+#### 多菜单扩展
+
+```dart
+UPScrollList(
+  key: const ValueKey('scroll-list-page-menu'),
+  children: <Widget>[
+    for (final row in _menuRows)
+      Padding(
+        padding: const EdgeInsets.only(top: 10),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            for (final item in row) _menuCard(item),
+          ],
+        ),
+      ),
+  ],
 )
 ```
 
@@ -86,13 +110,21 @@ import { UPScrollList } from 'ultra-ui-rn';
 
 <template #taro>
 
-### 固定宽度条目
+#### 胶囊指示点
 
-itemWidth 统一每条宽度
+mode="round"，当前指示点拉成胶囊
 
 ```tsx
 import { UPScrollList } from '@ultra-ui'
 
+<UPScrollList list={LIST} indicator mode='round' indicatorActiveColor='#ff6b6b' />
+```
+
+#### 固定宽度条目
+
+itemWidth 统一每条宽度
+
+```tsx
 <UPScrollList list={LIST} indicator itemWidth={120} indicatorActiveColor='#34c759' />
 ```
 
@@ -102,7 +134,7 @@ import { UPScrollList } from '@ultra-ui'
 
 <template #uniapp>
 
-### 多菜单扩展
+#### 多菜单扩展
 
 ```vue
 <up-scroll-list>
@@ -136,7 +168,7 @@ import { UPScrollList } from '@ultra-ui'
 
 <template #uniappx>
 
-### 多菜单扩展
+#### 多菜单扩展
 
 ```vue
 <up-scroll-list>

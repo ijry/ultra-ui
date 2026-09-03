@@ -31,8 +31,6 @@ No snippet could be extracted automatically — please read the source.
 
 <template #android>
 
-### 操作菜单
-
 ```kotlin
 import net.lingyun.ultraui.android.components.UPActionSheet
 import net.lingyun.ultraui.android.components.UPActionSheetProps
@@ -61,6 +59,8 @@ UPActionSheet(
 </template>
 
 <template #harmony>
+
+#### 操作面板
 
 ```typescript
 import { UPActionSheet, UPActionSheetProps } from '@lingyun/ultra-ui-hos';
@@ -121,6 +121,69 @@ import { UPActionSheet } from 'ultra-ui-rn';
 />
 ```
 
+```tsx
+<UPActionSheet actions={actions1} onClose={() => setActive(-1)} show={active === 1} />
+<UPActionSheet
+  actions={actions2}
+  cancelText="取消"
+  onClose={() => setActive(-1)}
+  show={active === 2}
+/>
+<UPActionSheet
+  actions={actions3}
+  description="这是一段描述文本,字号偏小,颜色偏淡"
+  onClose={() => setActive(-1)}
+  show={active === 3}
+/>
+<UPActionSheet onClose={() => setActive(-1)} round={10} show={active === 4} title="标题位置">
+  <Text style={s.slotText}>
+    这是一段通过slot传入的内容,您可以在此自定义操作面板
+  </Text>
+</UPActionSheet>
+```
+
+```tsx
+<UPActionSheet
+  actions={actions2}
+  cancelText="取消"
+  onClose={() => setActive(-1)}
+  show={active === 2}
+/>
+<UPActionSheet
+  actions={actions3}
+  description="这是一段描述文本,字号偏小,颜色偏淡"
+  onClose={() => setActive(-1)}
+  show={active === 3}
+/>
+<UPActionSheet onClose={() => setActive(-1)} round={10} show={active === 4} title="标题位置">
+  <Text style={s.slotText}>
+    这是一段通过slot传入的内容,您可以在此自定义操作面板
+  </Text>
+</UPActionSheet>
+```
+
+```tsx
+<UPActionSheet
+  actions={actions3}
+  description="这是一段描述文本,字号偏小,颜色偏淡"
+  onClose={() => setActive(-1)}
+  show={active === 3}
+/>
+<UPActionSheet onClose={() => setActive(-1)} round={10} show={active === 4} title="标题位置">
+  <Text style={s.slotText}>
+    这是一段通过slot传入的内容,您可以在此自定义操作面板
+  </Text>
+</UPActionSheet>
+```
+
+```tsx
+<UPActionSheet onClose={() => setActive(-1)} round={10} show={active === 4} title="标题位置">
+  <Text style={s.slotText}>
+    这是一段通过slot传入的内容,您可以在此自定义操作面板
+  </Text>
+</UPActionSheet>
+```
+
 <small>Snippet from `ultra-ui-rn/example/pages/components/feedback/ActionSheetDemo.tsx`</small>
 
 </template>
@@ -132,6 +195,84 @@ import { UPActionSheet } from '@ultra-ui'
 
 <UPActionSheet
   show={current === 'base'}
+  actions={BASE_ACTIONS}
+  onSelect={onSelect}
+  onChangeShow={close}
+/>
+```
+
+```tsx
+<UPActionSheet
+  show={current === 'title'}
+  title='分享到'
+  actions={BASE_ACTIONS}
+  onSelect={onSelect}
+  onChangeShow={close}
+/>
+```
+
+```tsx
+<UPActionSheet
+  show={current === 'desc'}
+  description='请选择一种分享方式，分享后对方即可查看内容'
+  actions={BASE_ACTIONS}
+  onSelect={onSelect}
+  onChangeShow={close}
+/>
+```
+
+```tsx
+<UPActionSheet
+  show={current === 'titleDesc'}
+  title='分享到'
+  description='请选择一种分享方式'
+  actions={BASE_ACTIONS}
+  onSelect={onSelect}
+  onChangeShow={close}
+/>
+```
+
+```tsx
+<UPActionSheet
+  show={current === 'state'}
+  title='选项状态'
+  cancelText='取消'
+  actions={STATE_ACTIONS}
+  onSelect={onSelect}
+  onChangeShow={close}
+/>
+```
+
+```tsx
+<UPActionSheet
+  show={current === 'subname'}
+  title='分享到'
+  subnameKey='subname'
+  actions={SUBNAME_ACTIONS}
+  onSelect={onSelect}
+  onChangeShow={close}
+/>
+```
+
+```tsx
+<UPActionSheet
+  show={current === 'customKey'}
+  title='导出方式'
+  nameKey='label'
+  subnameKey='tips'
+  cancelText='取消'
+  actions={CUSTOM_KEY_ACTIONS}
+  onSelect={onSelect}
+  onChangeShow={close}
+/>
+```
+
+```tsx
+<UPActionSheet
+  show={current === 'round'}
+  title='圆角菜单'
+  round={12}
+  cancelText='取消'
   actions={BASE_ACTIONS}
   onSelect={onSelect}
   onChangeShow={close}
@@ -155,6 +296,56 @@ import { UPActionSheet } from '@ultra-ui'
 </up-action-sheet>
 ```
 
+```vue
+<up-action-sheet
+    :show="show1"
+    @close="show1 = false"
+    :actions="actions1"
+>
+</up-action-sheet>
+```
+
+```vue
+<up-action-sheet
+    :show="show2"
+    @close="show2 = false"
+    :actions="actions2"
+    cancelText="取消"
+>
+</up-action-sheet>
+```
+
+```vue
+<up-action-sheet
+    :show="show3"
+    @close="show3 = false"
+    :actions="actions3"
+    description="这是一段描述文本,字号偏小,颜色偏淡"
+>
+</up-action-sheet>
+```
+
+```vue
+<up-action-sheet
+    :show="show4"
+    @close="show4 = false"
+    title="标题位置"
+    :round="10"
+>
+    <text style="margin: 10px 20px 30px 20px; color: #303133; font-size: 15px;">这是一段通过slot传入的内容,您可以在此自定义操作面板</text>
+</up-action-sheet>
+```
+
+```vue
+<up-action-sheet
+    :show="show5"
+    @close="show5 = false"
+    title="微信开放能力"
+    :actions="actions5"
+    @getuserinfo="getuserinfo"
+></up-action-sheet>
+```
+
 <small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsB/actionSheet/actionSheet.uvue`</small>
 
 </template>
@@ -170,6 +361,56 @@ import { UPActionSheet } from '@ultra-ui'
     :closeOnClickOverlay="false"
 >
 </up-action-sheet>
+```
+
+```vue
+<up-action-sheet
+    :show="show1"
+    @close="show1 = false"
+    :actions="actions1"
+>
+</up-action-sheet>
+```
+
+```vue
+<up-action-sheet
+    :show="show2"
+    @close="show2 = false"
+    :actions="actions2"
+    cancelText="取消"
+>
+</up-action-sheet>
+```
+
+```vue
+<up-action-sheet
+    :show="show3"
+    @close="show3 = false"
+    :actions="actions3"
+    description="这是一段描述文本,字号偏小,颜色偏淡"
+>
+</up-action-sheet>
+```
+
+```vue
+<up-action-sheet
+    :show="show4"
+    @close="show4 = false"
+    title="标题位置"
+    :round="10"
+>
+    <text style="margin: 10px 20px 30px 20px; color: #303133; font-size: 15px;">这是一段通过slot传入的内容,您可以在此自定义操作面板</text>
+</up-action-sheet>
+```
+
+```vue
+<up-action-sheet
+    :show="show5"
+    @close="show5 = false"
+    title="微信开放能力"
+    :actions="actions5"
+    @getuserinfo="getuserinfo"
+></up-action-sheet>
 ```
 
 <small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsB/actionSheet/actionSheet.uvue`</small>

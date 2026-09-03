@@ -33,8 +33,6 @@ UPOverlay(show: true) {
 
 <template #android>
 
-### 遮罩
-
 ```kotlin
 import net.lingyun.ultraui.android.components.UPOverlay
 import net.lingyun.ultraui.android.components.UPOverlayProps
@@ -47,6 +45,8 @@ UPOverlay(props = UPOverlayProps(show = true, opacity = 0.35), onClick = { event
 </template>
 
 <template #harmony>
+
+#### 点击按钮显示遮罩层
 
 ```typescript
 import { UPOverlay, UPOverlayProps } from '@lingyun/ultra-ui-hos';
@@ -79,6 +79,33 @@ UPOverlay(
 )
 ```
 
+```dart
+UPOverlay(
+  show: true,
+  rootOverlay: false,
+  onClick: () => setState(() => _showContent = false),
+  child: Center(
+    child: IgnorePointer(
+      child: Container(
+        key: const ValueKey('overlay-content-box'),
+        width: 100,
+        height: 100,
+        color: const Color(0xFF70E1F5),
+      ),
+    ),
+  ),
+)
+```
+
+```dart
+UPOverlay(
+  show: true,
+  rootOverlay: false,
+  opacity: .85,
+  onClick: () => setState(() => _showTransparency = false),
+)
+```
+
 <small>示例来源 `ultra-ui-flutter/example/lib/pages/components_a/overlay_page.dart`</small>
 
 </template>
@@ -103,6 +130,49 @@ import { UPOverlay } from '@ultra-ui'
 <UPOverlay show={current === 'basic'} onClick={close} />
 ```
 
+```tsx
+<UPOverlay show={current === 'light'} opacity={0.2} onClick={close} />
+```
+
+```tsx
+<UPOverlay show={current === 'normal'} onClick={close} />
+```
+
+```tsx
+<UPOverlay show={current === 'dark'} opacity={0.9} onClick={close} />
+```
+
+```tsx
+<UPOverlay show={current === 'fast'} duration={100} onClick={close} />
+```
+
+```tsx
+<UPOverlay show={current === 'slow'} duration={1500} onClick={close} />
+```
+
+```tsx
+<UPOverlay show={current === 'zIndex'} zIndex={12000} onClick={close} />
+```
+
+```tsx
+<UPOverlay show={current === 'content'} onClick={close}>
+  <View className='overlay-demo__wrap'>
+    {/* 阻止冒泡，点内容区不关闭 */}
+    <View
+      className='overlay-demo__card'
+      onClick={(event) => event.stopPropagation()}
+    >
+      <UPIcon name='checkmark-circle' size={40} color='#19be6b' />
+      <Text className='overlay-demo__title'>操作成功</Text>
+      <Text className='overlay-demo__tips'>点击遮罩空白处关闭</Text>
+      <View className='overlay-demo__action'>
+        <UPButton size='small' type='primary' text='我知道了' onClick={close} />
+      </View>
+    </View>
+  </View>
+</UPOverlay>
+```
+
 <small>示例来源 `ultra-ui-taro/src/pages/components/overlay/index.tsx`</small>
 
 </template>
@@ -116,6 +186,44 @@ import { UPOverlay } from '@ultra-ui'
 ></up-overlay>
 ```
 
+```vue
+<up-overlay
+    :show="showSlot"
+    @click="showSlot = !showSlot"
+>
+    <view class="overlay-wrap">
+        <view class="overlay-wrap__box"></view>
+    </view>
+</up-overlay>
+```
+
+```vue
+<up-overlay
+    opacity=".85"
+    :show="showOpcatiy"
+    @click="showOpcatiy = !showOpcatiy"
+>
+</up-overlay>
+```
+
+```vue
+<up-overlay
+    :show="showQrcode"
+    @click="showQrcode = false"
+>
+    <view class="overlay-wrap">
+        <view class="overlay-wrap__qrcode">
+            <up-qrcode
+                cid="overlay-qrcode"
+                :size="180"
+                :showLoading="false"
+                val="https://click.meituan.com/t?t=1&c=2&p=WhaD2b5zGU-h"
+            ></up-qrcode>
+        </view>
+    </view>
+</up-overlay>
+```
+
 <small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsA/overlay/overlay.uvue`</small>
 
 </template>
@@ -127,6 +235,44 @@ import { UPOverlay } from '@ultra-ui'
     :show="show"
     @click="show = !show"
 ></up-overlay>
+```
+
+```vue
+<up-overlay
+    :show="showSlot"
+    @click="showSlot = !showSlot"
+>
+    <view class="overlay-wrap">
+        <view class="overlay-wrap__box"></view>
+    </view>
+</up-overlay>
+```
+
+```vue
+<up-overlay
+    opacity=".85"
+    :show="showOpcatiy"
+    @click="showOpcatiy = !showOpcatiy"
+>
+</up-overlay>
+```
+
+```vue
+<up-overlay
+    :show="showQrcode"
+    @click="showQrcode = false"
+>
+    <view class="overlay-wrap">
+        <view class="overlay-wrap__qrcode">
+            <up-qrcode
+                cid="overlay-qrcode"
+                :size="180"
+                :showLoading="false"
+                val="https://click.meituan.com/t?t=1&c=2&p=WhaD2b5zGU-h"
+            ></up-qrcode>
+        </view>
+    </view>
+</up-overlay>
 ```
 
 <small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsA/overlay/overlay.uvue`</small>

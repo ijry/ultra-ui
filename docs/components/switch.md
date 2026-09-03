@@ -31,8 +31,6 @@ import UltraUI
 
 <template #android>
 
-### 开关
-
 ```kotlin
 import net.lingyun.ultraui.android.components.UPSwitch
 
@@ -54,13 +52,25 @@ import { UPSwitch, UPSwitchProps } from '@lingyun/ultra-ui-hos';
 UPSwitch({ props: new UPSwitchProps({ modelValue: this.switchEnabled, onChange: (event: UPSwitchChangeEvent): void => { this.change(event); } }) })
 ```
 
+```typescript
+UPSwitch({ props: new UPSwitchProps({ value: true, activeColor: 'success', size: 30 }) })
+```
+
+```typescript
+UPSwitch({ props: new UPSwitchProps({ value: false, disabled: true }) })
+```
+
+```typescript
+UPSwitch({ props: new UPSwitchProps({ value: true, loading: true }) })
+```
+
 <small>示例来源 `ultra-ui-hos/sample/entry/src/main/ets/demos/SwitchDemo.ets`</small>
 
 </template>
 
 <template #flutter>
 
-### 异步控制
+#### 异步控制
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -84,10 +94,18 @@ UPSwitch(
 
 <template #reactnative>
 
+#### 禁用状态
+
 ```tsx
 import { UPSwitch } from 'ultra-ui-rn';
 
 <UPSwitch disabled value={value5} />
+```
+
+#### 异步控制
+
+```tsx
+<UPSwitch asyncChange onChange={asyncChange} value={value13} />
 ```
 
 <small>示例来源 `ultra-ui-rn/example/pages/components/form/SwitchDemo.tsx`</small>
@@ -96,7 +114,7 @@ import { UPSwitch } from 'ultra-ui-rn';
 
 <template #taro>
 
-### 基础用法
+#### 基础用法
 
 value + onChange 受控绑定
 
@@ -106,7 +124,7 @@ import { UPSwitch } from '@ultra-ui'
 <UPSwitch value={basic} onChange={setBasic} />
 ```
 
-### 尺寸
+#### 尺寸
 
 size 单位 px，默认 25
 
@@ -114,7 +132,7 @@ size 单位 px，默认 25
 <UPSwitch size={18} value={small} onChange={setSmall} />
 ```
 
-### 加载中
+#### 加载中
 
 loading 时圆点显示 loading 图标且不可点
 
@@ -122,7 +140,7 @@ loading 时圆点显示 loading 图标且不可点
 <UPSwitch loading value={loading} onChange={setLoading} />
 ```
 
-### 自定义颜色
+#### 自定义颜色
 
 activeColor / inactiveColor
 
@@ -134,7 +152,7 @@ activeColor / inactiveColor
 />
 ```
 
-### 圆点颜色
+#### 圆点颜色
 
 dotActiveColor / dotInactiveColor 单独设置圆点
 
@@ -149,7 +167,7 @@ dotActiveColor / dotInactiveColor 单独设置圆点
 />
 ```
 
-### 圆点间距
+#### 圆点间距
 
 space 拉开圆点与外框的距离
 
@@ -157,7 +175,20 @@ space 拉开圆点与外框的距离
 <UPSwitch space={3} value={spaced} onChange={setSpaced} />
 ```
 
-### 异步变更
+#### 自定义绑定值
+
+activeValue='开' / inactiveValue='关'，onChange 回传的是它们
+
+```tsx
+<UPSwitch
+  activeValue='开'
+  inactiveValue='关'
+  value={custom}
+  onChange={setCustom}
+/>
+```
+
+#### 异步变更
 
 asyncChange 时组件不自动切换，等外部请求成功后再更新 value
 
@@ -176,7 +207,7 @@ asyncChange 时组件不自动切换，等外部请求成功后再更新 value
 
 <template #uniapp>
 
-### 基础功能
+#### 基础功能
 
 ```vue
 <up-switch
@@ -185,7 +216,7 @@ asyncChange 时组件不自动切换，等外部请求成功后再更新 value
 ></up-switch>
 ```
 
-### 加载中
+#### 加载中
 
 ```vue
 <up-switch
@@ -194,7 +225,7 @@ asyncChange 时组件不自动切换，等外部请求成功后再更新 value
 ></up-switch>
 ```
 
-### 禁用状态
+#### 禁用状态
 
 ```vue
 <up-switch
@@ -203,7 +234,7 @@ asyncChange 时组件不自动切换，等外部请求成功后再更新 value
 ></up-switch>
 ```
 
-### 自定义尺寸
+#### 自定义尺寸
 
 ```vue
 <up-switch
@@ -212,7 +243,7 @@ asyncChange 时组件不自动切换，等外部请求成功后再更新 value
 ></up-switch>
 ```
 
-### 自定义颜色
+#### 自定义颜色
 
 ```vue
 <up-switch
@@ -222,7 +253,7 @@ asyncChange 时组件不自动切换，等外部请求成功后再更新 value
 ></up-switch>
 ```
 
-### 自定义样式
+#### 自定义样式
 
 ```vue
 <up-switch
@@ -233,7 +264,7 @@ asyncChange 时组件不自动切换，等外部请求成功后再更新 value
 ></up-switch>
 ```
 
-### 异步控制
+#### 异步控制
 
 ```vue
 <up-switch
@@ -249,7 +280,7 @@ asyncChange 时组件不自动切换，等外部请求成功后再更新 value
 
 <template #uniappx>
 
-### 基础功能
+#### 基础功能
 
 ```vue
 <up-switch
@@ -258,7 +289,7 @@ asyncChange 时组件不自动切换，等外部请求成功后再更新 value
 ></up-switch>
 ```
 
-### 加载中
+#### 加载中
 
 ```vue
 <up-switch
@@ -267,7 +298,7 @@ asyncChange 时组件不自动切换，等外部请求成功后再更新 value
 ></up-switch>
 ```
 
-### 禁用状态
+#### 禁用状态
 
 ```vue
 <up-switch
@@ -276,7 +307,7 @@ asyncChange 时组件不自动切换，等外部请求成功后再更新 value
 ></up-switch>
 ```
 
-### 自定义尺寸
+#### 自定义尺寸
 
 ```vue
 <up-switch
@@ -285,7 +316,7 @@ asyncChange 时组件不自动切换，等外部请求成功后再更新 value
 ></up-switch>
 ```
 
-### 自定义颜色
+#### 自定义颜色
 
 ```vue
 <up-switch
@@ -295,7 +326,7 @@ asyncChange 时组件不自动切换，等外部请求成功后再更新 value
 ></up-switch>
 ```
 
-### 自定义样式
+#### 自定义样式
 
 ```vue
 <up-switch
@@ -306,7 +337,7 @@ asyncChange 时组件不自动切换，等外部请求成功后再更新 value
 ></up-switch>
 ```
 
-### 异步控制
+#### 异步控制
 
 ```vue
 <up-switch

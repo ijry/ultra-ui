@@ -40,6 +40,13 @@ UPSteps({ props: new UPStepsProps({ current: this.current, contentBuilder: (): v
 }
 ```
 
+```typescript
+UPSteps({ props: new UPStepsProps({ direction: 'column', current: 0, dot: true, activeColor: '#67c23a' }) }) {
+  UPStepsItem({ props: new UPStepsItemProps({ title: '纵向步骤', desc: '点状连接线' }) })
+  UPStepsItem({ props: new UPStepsItemProps({ title: '下一步', desc: '等待处理' }) })
+}
+```
+
 <small>Snippet from `ultra-ui-hos/sample/entry/src/main/ets/demos/StepsDemo.ets`</small>
 
 </template>
@@ -57,13 +64,77 @@ UPSteps(
 )
 ```
 
+```dart
+UPSteps(
+  current: 1,
+  dot: true,
+  children: [
+    UPStepsItem(title: '已下单', desc: '10:30'),
+    UPStepsItem(title: '已出库', desc: '10:35'),
+    UPStepsItem(title: '运输中', desc: '11:40'),
+  ],
+)
+```
+
+```dart
+UPSteps(
+  current: 1,
+  dot: true,
+  direction: 'column',
+  children: [
+    UPStepsItem(title: '已下单', desc: '10:30'),
+    UPStepsItem(title: '已出库', desc: '10:35'),
+    UPStepsItem(title: '运输中', desc: '11:40'),
+  ],
+)
+```
+
+```dart
+UPSteps(
+  current: 1,
+  children: _threeItems(error: true),
+)
+```
+
+```dart
+UPSteps(
+  current: 1,
+  activeIcon: 'checkmark',
+  inactiveIcon: 'arrow-right',
+  children: _threeItems(),
+)
+```
+
+```dart
+UPSteps(
+  current: 1,
+  children: _threeItems(customIcon: customSlot),
+)
+```
+
+```dart
+UPSteps(
+  current: 1,
+  activeColor: '#3c9cff',
+  children: _threeItems(),
+)
+```
+
+```dart
+UPSteps(
+  current: 1,
+  direction: 'column',
+  children: _threeItems(),
+)
+```
+
 <small>Snippet from `ultra-ui-flutter/example/lib/pages/components_c/steps_page.dart`</small>
 
 </template>
 
 <template #reactnative>
 
-### 基础演示
+#### 基础演示
 
 ```tsx
 import { UPSteps } from 'ultra-ui-rn';
@@ -78,7 +149,7 @@ import { UPSteps } from 'ultra-ui-rn';
 </UPSteps>
 ```
 
-### 显示点类型
+#### 显示点类型
 
 ```tsx
 <UPSteps current={1} dot>
@@ -88,7 +159,7 @@ import { UPSteps } from 'ultra-ui-rn';
 </UPSteps>
 ```
 
-### 错误状态
+#### 错误状态
 
 ```tsx
 <UPSteps current={1}>
@@ -98,7 +169,7 @@ import { UPSteps } from 'ultra-ui-rn';
 </UPSteps>
 ```
 
-### 自定义图标
+#### 自定义图标
 
 ```tsx
 <UPSteps activeIcon="checkmark" current={1} inactiveIcon="arrow-right">
@@ -108,7 +179,7 @@ import { UPSteps } from 'ultra-ui-rn';
 </UPSteps>
 ```
 
-### 自定义插槽
+#### 自定义插槽
 
 ```tsx
 <UPSteps current={1}>
@@ -118,7 +189,7 @@ import { UPSteps } from 'ultra-ui-rn';
 </UPSteps>
 ```
 
-### 自定义颜色
+#### 自定义颜色
 
 ```tsx
 <UPSteps activeColor="#3c9cff" current={1}>
@@ -128,7 +199,7 @@ import { UPSteps } from 'ultra-ui-rn';
 </UPSteps>
 ```
 
-### 竖向展示
+#### 竖向展示
 
 ```tsx
 <UPSteps current={1} direction="column">
@@ -144,13 +215,39 @@ import { UPSteps } from 'ultra-ui-rn';
 
 <template #taro>
 
-### 圆点模式
+#### 横向步骤
 
-dot，以圆点代替数字
+direction="row"（默认），点击步骤可切换当前项
 
 ```tsx
 import { UPSteps } from '@ultra-ui'
 
+<UPSteps current={current} onClick={setCurrent}>
+  <UPStepsItem title='买家下单' desc='2024-01-01' />
+  <UPStepsItem title='商家发货' desc='2024-01-02' />
+  <UPStepsItem title='买家签收' desc='2024-01-03' />
+  <UPStepsItem title='完成' desc='2024-01-04' />
+</UPSteps>
+```
+
+#### 纵向步骤
+
+direction="column"，error 标记异常项
+
+```tsx
+<UPSteps direction='column' current={2}>
+  <UPStepsItem title='提交申请' desc='已提交退款申请' />
+  <UPStepsItem title='审核中' desc='客服正在审核' />
+  <UPStepsItem title='审核失败' desc='商品影响二次销售' error />
+  <UPStepsItem title='重新提交' desc='请补充凭证' />
+</UPSteps>
+```
+
+#### 圆点模式
+
+dot，以圆点代替数字
+
+```tsx
 <UPSteps current={1} dot activeColor='#19be6b'>
   <UPStepsItem title='待付款' />
   <UPStepsItem title='待发货' />
@@ -159,7 +256,7 @@ import { UPSteps } from '@ultra-ui'
 </UPSteps>
 ```
 
-### 自定义图标
+#### 自定义图标
 
 activeIcon / inactiveIcon
 
@@ -171,7 +268,7 @@ activeIcon / inactiveIcon
 </UPSteps>
 ```
 
-### 纵向 + 自定义内容
+#### 纵向 + 自定义内容
 
 content 插槽
 
@@ -189,7 +286,7 @@ content 插槽
 
 <template #uniapp>
 
-### 基础演示
+#### 基础演示
 
 ```vue
 <up-steps :current="current1">
@@ -211,7 +308,7 @@ content 插槽
 </up-steps>
 ```
 
-### 显示点类型
+#### 显示点类型
 
 ```vue
 <up-steps
@@ -236,7 +333,7 @@ content 插槽
 </up-steps>
 ```
 
-### 错误状态
+#### 错误状态
 
 ```vue
 <up-steps :current="1">
@@ -259,7 +356,7 @@ content 插槽
 </up-steps>
 ```
 
-### 自定义图标
+#### 自定义图标
 
 ```vue
 <up-steps
@@ -285,7 +382,7 @@ content 插槽
 </up-steps>
 ```
 
-### 自定义插槽
+#### 自定义插槽
 
 ```vue
 <up-steps :current="1">
@@ -310,7 +407,7 @@ content 插槽
 </up-steps>
 ```
 
-### 自定义颜色
+#### 自定义颜色
 
 ```vue
 <up-steps :current="1" activeColor="#3c9cff">
@@ -332,7 +429,7 @@ content 插槽
 </up-steps>
 ```
 
-### 竖向展示
+#### 竖向展示
 
 ```vue
 <up-steps
@@ -363,7 +460,7 @@ content 插槽
 
 <template #uniappx>
 
-### 基础演示
+#### 基础演示
 
 ```vue
 <up-steps :current="current1">
@@ -385,7 +482,7 @@ content 插槽
 </up-steps>
 ```
 
-### 显示点类型
+#### 显示点类型
 
 ```vue
 <up-steps
@@ -410,7 +507,7 @@ content 插槽
 </up-steps>
 ```
 
-### 错误状态
+#### 错误状态
 
 ```vue
 <up-steps :current="1">
@@ -433,7 +530,7 @@ content 插槽
 </up-steps>
 ```
 
-### 自定义图标
+#### 自定义图标
 
 ```vue
 <up-steps
@@ -459,7 +556,7 @@ content 插槽
 </up-steps>
 ```
 
-### 自定义插槽
+#### 自定义插槽
 
 ```vue
 <up-steps :current="1">
@@ -484,7 +581,7 @@ content 插槽
 </up-steps>
 ```
 
-### 自定义颜色
+#### 自定义颜色
 
 ```vue
 <up-steps :current="1" activeColor="#3c9cff">
@@ -506,7 +603,7 @@ content 插槽
 </up-steps>
 ```
 
-### 竖向展示
+#### 竖向展示
 
 ```vue
 <up-steps

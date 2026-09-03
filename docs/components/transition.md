@@ -64,7 +64,7 @@ import { UPTransition } from 'ultra-ui-rn';
 
 <template #taro>
 
-### 基础用法
+#### 基础用法
 
 show 控制显隐，默认 fade 模式
 
@@ -76,7 +76,7 @@ import { UPTransition } from '@ultra-ui'
 </UPTransition>
 ```
 
-### 动画模式
+#### 动画模式
 
 点击按钮播放对应 mode，再次点击同一按钮切换显隐
 
@@ -86,7 +86,7 @@ import { UPTransition } from '@ultra-ui'
 </UPTransition>
 ```
 
-### 执行时间
+#### 执行时间
 
 duration 单位 ms，默认 300
 
@@ -96,7 +96,7 @@ duration 单位 ms，默认 300
 </UPTransition>
 ```
 
-### 过渡函数
+#### 过渡函数
 
 timingFunction 对应 CSS transition-timing-function
 
@@ -111,7 +111,7 @@ timingFunction 对应 CSS transition-timing-function
 </UPTransition>
 ```
 
-### 生命周期
+#### 生命周期
 
 6 个钩子按进场 / 离场顺序触发
 

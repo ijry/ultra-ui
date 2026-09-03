@@ -46,11 +46,25 @@ UPIcon(
 )
 ```
 
+```kotlin
+UPIcon(
+    props = UPIconProps(
+        name = "map",
+        size = 24,
+        color = "primary",
+        label = label,
+        labelPos = position,
+    ),
+)
+```
+
 <small>示例来源 `ultra-ui-android/sample/src/main/kotlin/net/lingyun/ultraui/android/sample/pages/IconDemoPage.kt`</small>
 
 </template>
 
 <template #harmony>
+
+#### 常用图标
 
 ```typescript
 import { UPIcon, UPIconProps } from '@lingyun/ultra-ui-hos';
@@ -61,6 +75,12 @@ UPIcon({ props: new UPIconProps({
     this.select(String(index));
   }
 }) })
+```
+
+#### 标签方向
+
+```typescript
+UPIcon({ props: new UPIconProps({ name: 'info', color: 'primary', label: '标签在左侧', labelPos: 'left', size: 22 }) })
 ```
 
 <small>示例来源 `ultra-ui-hos/sample/entry/src/main/ets/demos/IconDemo.ets`</small>
@@ -93,17 +113,49 @@ import { UPIcon } from 'ultra-ui-rn';
 
 <template #taro>
 
-### 文字标签
+#### 基础用法
 
-label + labelPos 控制文字位置
+name 指定内置图标名
 
 ```tsx
 import { UPIcon } from '@ultra-ui'
 
+<UPIcon name='home' />
+```
+
+#### 尺寸
+
+size 支持数字（px 语义）与带单位字符串
+
+```tsx
+<UPIcon name='star-fill' size={14} />
+```
+
+#### 颜色
+
+color 支持主题 token 与任意 CSS 颜色
+
+```tsx
+<UPIcon name='heart-fill' size='26px' color='primary' />
+```
+
+#### 加粗
+
+bold 属性
+
+```tsx
+<UPIcon name='checkmark' size='28px' />
+```
+
+#### 文字标签
+
+label + labelPos 控制文字位置
+
+```tsx
 <UPIcon name='photo' size='22px' label='右侧' labelPos='right' />
 ```
 
-### 标签样式
+#### 标签样式
 
 labelSize / labelColor / space
 
@@ -111,7 +163,15 @@ labelSize / labelColor / space
 <UPIcon name='bell' size='20px' label='通知' />
 ```
 
-### 图片图标
+#### 垂直微调
+
+top 让图标相对基线上下偏移
+
+```tsx
+<UPIcon name='clock' size='24px' label='top=0' />
+```
+
+#### 图片图标
 
 name 含 / 时按图片渲染，用 width / height / imgMode 控制
 

@@ -18,6 +18,8 @@ Switch tabs to see the syntax for each platform. Every snippet is lifted verbati
 
 <template #flutter>
 
+#### 基本使用
+
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
 
@@ -27,6 +29,69 @@ UPPullRefresh(
   refreshing: _basicRefreshing,
   onRefresh: _refreshBasic,
   child: _buildRows(_items),
+)
+```
+
+#### 自定义下拉动画
+
+```dart
+UPPullRefresh(
+  key: const ValueKey('pull-refresh-page-custom'),
+  refreshing: _customRefreshing,
+  onRefresh: _refreshCustom,
+  pullSlot: const _RefreshStatus(
+    icon: 'arrow-downward',
+    text: '下拉刷新',
+  ),
+  releaseSlot: const _RefreshStatus(
+    icon: 'arrow-upward',
+    text: '释放刷新',
+  ),
+  refreshingSlot: const _RefreshStatus(
+    icon: 'loading',
+    text: '正在刷新...',
+    loading: true,
+  ),
+  child: _buildRows(_items),
+)
+```
+
+#### 结合虚拟列表
+
+```dart
+UPPullRefresh(
+  key: const ValueKey('pull-refresh-page-virtual'),
+  useScrollView: false,
+  refreshing: _virtualRefreshing,
+  onRefresh: _refreshVirtual,
+  child: UPVirtualList(
+    listData: _items,
+    itemHeight: 32,
+    height: 180,
+    itemBuilder: (context, item, index) => Text(
+      'Item ${item['id']}: ${item['name']}',
+    ),
+  ),
+)
+```
+
+#### 上拉加载
+
+```dart
+UPPullRefresh(
+  key: const ValueKey('pull-refresh-page-loadmore'),
+  showLoadmore: true,
+  refreshing: _loadmoreRefreshing,
+  onRefresh: _refreshLoadmore,
+  onLoadmore: _loadMore,
+  loadmoreProps: <String, dynamic>{
+    'status': _loadmoreStatus,
+    'loadmoreText': '上拉加载更多',
+    'loadingText': '努力加载中...',
+    'nomoreText': '我们是有底线的',
+    'iconSize': 18,
+  },
+  child: _buildRows(_loadmoreItems),
 )
 ```
 
@@ -56,13 +121,52 @@ import { UPPullRefresh } from 'ultra-ui-rn';
 </UPPullRefresh>
 ```
 
+```tsx
+<UPPullRefresh
+  height={200}
+  pull={PullContent}
+  refreshing={refreshing1}
+  refreshingNode={RefreshingContent}
+  release={ReleaseContent}
+  threshold={60}
+  useScrollView
+  onRefresh={onRefresh1}
+>
+  <View style={s.listContent}>
+    {listData.map((item) => (
+      <View key={item.id} style={s.listItem}>
+        <Text style={s.listItemText}>{item.name}</Text>
+      </View>
+    ))}
+  </View>
+</UPPullRefresh>
+```
+
+```tsx
+<UPPullRefresh
+  height={150}
+  refreshing={refreshing3}
+  useScrollView
+  onRefresh={onRefresh3}
+>
+  {/* // 上游结合 up-virtual-list，本地无该组件，用普通 ScrollView 替代 */}
+  <View style={s.listContent}>
+    {listData3.map((item) => (
+      <View key={item.id} style={s.listItem}>
+        <Text style={s.listItemText}>Item {item.id}: {item.name}</Text>
+      </View>
+    ))}
+  </View>
+</UPPullRefresh>
+```
+
 <small>Snippet from `ultra-ui-rn/example/pages/components/advanced/PullRefreshDemo.tsx`</small>
 
 </template>
 
 <template #taro>
 
-### 基础用法
+#### 基础用法
 
 下拉到阈值松手触发 onRefresh；高度固定，内部可滚动
 
@@ -87,7 +191,7 @@ import { UPPullRefresh } from '@ultra-ui'
 </UPPullRefresh>
 ```
 
-### 自定义文案
+#### 自定义文案
 
 通过 pullSlot / releaseSlot 自定义下拉文案
 
@@ -108,7 +212,7 @@ import { UPPullRefresh } from '@ultra-ui'
 </UPPullRefresh>
 ```
 
-### 触底加载
+#### 触底加载
 
 showLoadmore + onLoadmore 组合上拉加载更多
 
@@ -153,6 +257,54 @@ showLoadmore + onLoadmore 组合上拉加载更多
   </up-pull-refresh>
 ```
 
+```vue
+<up-pull-refresh
+  :refreshing="refreshing3"
+  @refresh="onRefresh3"
+>
+  <up-virtual-list
+    :list-data="listData3"
+    :item-height="32"
+    height="150px"
+    @scroll="onScroll3"
+  >
+    <template #default="{ item, index }">
+      <view class="list-item">
+        <text>Item {{ getAnyItemId(item) }}: {{ getAnyItemName(item) }}</text>
+      </view>
+    </template>
+  </up-virtual-list>
+</up-pull-refresh>
+```
+
+```vue
+<up-pull-refresh
+        :refreshing="refreshing2"
+        :showLoadmore="true"
+        :loadmoreProps="loadmoreConfig"
+        @refresh="onRefresh2"
+        @loadmore="onLoadmore"
+      >
+          <!-- 使用外部 scroll-view 或其他可滚动组件 -->
+          <scroll-view
+            class="scroll-area"
+            style="height: 100px;"
+            :scroll-y="true"
+            @scrolltolower="onScrollToLower"
+          >
+            <view class="list-content">
+              <view 
+                v-for="item in listData2" 
+                :key="getItemId(item)"
+                class="list-item"
+              >
+                <text>{{ getItemName(item) }}</text>
+              </view>
+            </view>
+          </scroll-view>
+      </up-pull-refresh>
+```
+
 <small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/pullRefresh/pullRefresh.uvue`</small>
 
 </template>
@@ -176,6 +328,54 @@ showLoadmore + onLoadmore 组合上拉加载更多
           </view>
       </view>
   </up-pull-refresh>
+```
+
+```vue
+<up-pull-refresh
+  :refreshing="refreshing3"
+  @refresh="onRefresh3"
+>
+  <up-virtual-list
+    :list-data="listData3"
+    :item-height="32"
+    height="150px"
+    @scroll="onScroll3"
+  >
+    <template #default="{ item, index }">
+      <view class="list-item">
+        <text>Item {{ getAnyItemId(item) }}: {{ getAnyItemName(item) }}</text>
+      </view>
+    </template>
+  </up-virtual-list>
+</up-pull-refresh>
+```
+
+```vue
+<up-pull-refresh
+        :refreshing="refreshing2"
+        :showLoadmore="true"
+        :loadmoreProps="loadmoreConfig"
+        @refresh="onRefresh2"
+        @loadmore="onLoadmore"
+      >
+          <!-- 使用外部 scroll-view 或其他可滚动组件 -->
+          <scroll-view
+            class="scroll-area"
+            style="height: 100px;"
+            :scroll-y="true"
+            @scrolltolower="onScrollToLower"
+          >
+            <view class="list-content">
+              <view 
+                v-for="item in listData2" 
+                :key="getItemId(item)"
+                class="list-item"
+              >
+                <text>{{ getItemName(item) }}</text>
+              </view>
+            </view>
+          </scroll-view>
+      </up-pull-refresh>
 ```
 
 <small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/pullRefresh/pullRefresh.uvue`</small>
