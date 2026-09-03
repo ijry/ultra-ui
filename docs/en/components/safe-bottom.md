@@ -1,0 +1,120 @@
+---
+title: Safe bottom
+description: Reserves the bottom safe-area inset on devices with a home indicator.
+generated: true
+---
+
+# Safe bottom
+
+Reserves the bottom safe-area inset on devices with a home indicator.
+
+<PlatformBadges component="safe-bottom" show-missing />
+
+## Usage by platform
+
+Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+
+<PlatformTabs>
+
+<template #android>
+
+```kotlin
+import net.lingyun.ultraui.android.components.UPSafeBottom
+
+DemoSection("底部安全区") { BasicText("内容"); UPSafeBottom()
+```
+
+<small>Snippet from `ultra-ui-android/sample/src/main/kotlin/net/lingyun/ultraui/android/sample/pages/NavigationMoreDemoPage.kt`</small>
+
+</template>
+
+<template #harmony>
+
+```typescript
+import { UPSafeBottom, UPSafeBottomProps } from '@lingyun/ultra-ui-hos';
+
+UPSafeBottom({ props: new UPSafeBottomProps({ safeAreaInsetBottom: true }) }) { Text('safeAreaInsetBottom=true').fontSize(12).fontColor('#909399') }
+```
+
+<small>Snippet from `ultra-ui-hos/sample/entry/src/main/ets/demos/SafeBottomDemo.ets`</small>
+
+</template>
+
+<template #flutter>
+
+```dart
+import 'package:ultra_ui/ultra_ui.dart';
+```
+
+::: tip
+No snippet could be extracted automatically — please read the source.
+:::
+
+</template>
+
+<template #reactnative>
+
+```tsx
+import { UPSafeBottom } from 'ultra-ui-rn';
+
+<UPSafeBottom />
+```
+
+<small>Snippet from `ultra-ui-rn/example/pages/components/layout/SafeBottomDemo.tsx`</small>
+
+</template>
+
+<template #taro>
+
+```tsx
+import { UPSafeBottom } from '@ultra-ui'
+```
+
+::: tip
+No snippet could be extracted automatically — please read the source.
+:::
+
+</template>
+
+<template #uniapp>
+
+::: tip
+No snippet could be extracted automatically — please read the source.
+:::
+
+<small>Auto-imported through easycom — no import statement needed.</small>
+
+</template>
+
+<template #uniappx>
+
+::: tip
+No snippet could be extracted automatically — please read the source.
+:::
+
+<small>Auto-imported through easycom — no import statement needed.</small>
+
+</template>
+
+</PlatformTabs>
+
+## API
+
+The reference below is extracted from the uview-plus source, whose property names the other ports keep. For per-platform differences, compare the tabs above.
+
+::: tip
+This component is driven by imperative method calls rather than declarative props; see the snippets and source above for its parameters.
+:::
+
+## Source on each platform
+
+| Platform | Component / type | Source file |
+| --- | --- | --- |
+| Android · Jetpack Compose | `UPSafeBottom` | `ultra-ui/src/main/kotlin/net/lingyun/ultraui/android/components/UPNavigationComponents.kt` |
+| HarmonyOS Next · ArkTS / ArkUI | `UPSafeBottom` | `ultra-ui/src/main/ets/components/UPSafeBottom.ets` |
+| Flutter · Dart | `UPSafeBottom` | `packages/ultra_ui/lib/src/widgets/up_safe_bottom.dart` |
+| React Native · TypeScript | `UPSafeBottom` | `src/components/safe-bottom` |
+| Taro · React + TypeScript | `UPSafeBottom` | `src/ultra-ui/components/up-safe-bottom` |
+| uni-app · Vue 3 | `up-safe-bottom` | `src/uni_modules/uview-plus/components/u-safe-bottom` |
+| uni-app-x · UTS / UVUE | `up-safe-bottom` | `uni_modules/uview-ultra/components/up-safe-bottom` |
+

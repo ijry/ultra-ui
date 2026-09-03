@@ -1,0 +1,73 @@
+/* ------------------------------------------------------------------
+   ultra-ui brand tokens
+   Indigo → violet, with a cyan accent for "ultra" highlights.
+   ------------------------------------------------------------------ */
+
+:root {
+  --vp-c-brand-1: #4a56e2;
+  --vp-c-brand-2: #5b6cff;
+  --vp-c-brand-3: #4f5bff;
+  --vp-c-brand-soft: rgb(79 91 255 / 0.14);
+
+  --vp-c-tip-1: var(--vp-c-brand-1);
+  --vp-c-tip-2: var(--vp-c-brand-2);
+  --vp-c-tip-3: var(--vp-c-brand-3);
+  --vp-c-tip-soft: var(--vp-c-brand-soft);
+
+  /* shared gradients */
+  --uui-grad: linear-gradient(120deg, #4f5bff 0%, #8b5cf6 48%, #22d3ee 100%);
+  --uui-grad-soft: linear-gradient(
+    120deg,
+    rgb(79 91 255 / 0.12) 0%,
+    rgb(139 92 246 / 0.12) 48%,
+    rgb(34 211 238 / 0.12) 100%
+  );
+
+  --uui-radius: 14px;
+  --uui-shadow: 0 1px 2px rgb(15 23 42 / 0.04), 0 8px 24px -12px rgb(15 23 42 / 0.12);
+  --uui-shadow-lg: 0 2px 4px rgb(15 23 42 / 0.04), 0 24px 56px -24px rgb(15 23 42 / 0.24);
+
+  --uui-section-max: 1216px;
+}
+
+.dark {
+  --vp-c-brand-1: #8b95ff;
+  --vp-c-brand-2: #a5adff;
+  --vp-c-brand-3: #4f5bff;
+  --vp-c-brand-soft: rgb(139 149 255 / 0.16);
+
+  --uui-shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 8px 24px -12px rgb(0 0 0 / 0.5);
+  --uui-shadow-lg: 0 2px 4px rgb(0 0 0 / 0.3), 0 24px 56px -24px rgb(0 0 0 / 0.7);
+}
+
+/* Default-theme hero gradient (used if a locale ever falls back to the
+   built-in home layout). */
+:root {
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: var(--uui-grad);
+  --vp-home-hero-image-background-image: var(--uui-grad);
+  --vp-home-hero-image-filter: blur(56px);
+}
+
+/* Slightly tighter, more "product" typography than the VitePress default. */
+:root {
+  --vp-font-family-base:
+    'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto,
+    'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC',
+    sans-serif;
+  --vp-font-family-mono:
+    'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, Monaco, Consolas,
+    'Liberation Mono', monospace;
+}
+
+/* Buttons on the landing page get the brand gradient. */
+.VPButton.brand {
+  background: var(--uui-grad);
+  border-color: transparent;
+  color: #fff;
+}
+.VPButton.brand:hover {
+  background: var(--uui-grad);
+  filter: brightness(1.08);
+  border-color: transparent;
+}

@@ -1,0 +1,4341 @@
+{
+  "generatedAt": "2026-09-02T18:28:45.480Z",
+  "components": [
+    {
+      "id": "button",
+      "group": "basic",
+      "name": {
+        "zh": "Button 按钮",
+        "en": "Button"
+      },
+      "desc": {
+        "zh": "最基础的操作单元，内置六种主题、四种尺寸，支持镂空、加载态与渐变色。",
+        "en": "The most basic action unit: six themes, four sizes, plus plain, loading and gradient variants."
+      },
+      "platforms": {
+        "ios": {
+          "symbol": "UPButton",
+          "file": "UPButton.swift"
+        },
+        "android": {
+          "symbol": "UPButton",
+          "file": "UPButton.kt"
+        },
+        "harmony": {
+          "symbol": "UPButton",
+          "file": "UPButton.ets"
+        },
+        "flutter": {
+          "symbol": "UPButton",
+          "file": "up_button.dart"
+        },
+        "reactnative": {
+          "symbol": "UPButton",
+          "file": "button"
+        },
+        "taro": {
+          "symbol": "UPButton",
+          "file": "up-button"
+        },
+        "uniapp": {
+          "symbol": "up-button",
+          "file": "u-button"
+        },
+        "uniappx": {
+          "symbol": "up-button",
+          "file": "up-button"
+        }
+      }
+    },
+    {
+      "id": "icon",
+      "group": "basic",
+      "name": {
+        "zh": "Icon 图标",
+        "en": "Icon"
+      },
+      "desc": {
+        "zh": "内置字体图标库，同时支持传入图片路径作为图标使用。",
+        "en": "A built-in icon font, which also accepts an image path in place of a glyph."
+      },
+      "platforms": {
+        "ios": {
+          "symbol": "UPIcon",
+          "file": "UPIcon.swift"
+        },
+        "android": {
+          "symbol": "UPIcon",
+          "file": "UPIcon.kt"
+        },
+        "harmony": {
+          "symbol": "UPIcon",
+          "file": "UPIcon.ets"
+        },
+        "flutter": {
+          "symbol": "UPIcon",
+          "file": "up_icon.dart"
+        },
+        "reactnative": {
+          "symbol": "UPIcon",
+          "file": "icon"
+        },
+        "taro": {
+          "symbol": "UPIcon",
+          "file": "up-icon"
+        },
+        "uniapp": {
+          "symbol": "up-icon",
+          "file": "u-icon"
+        },
+        "uniappx": {
+          "symbol": "up-icon",
+          "file": "up-icon"
+        }
+      }
+    },
+    {
+      "id": "image",
+      "group": "basic",
+      "name": {
+        "zh": "Image 图片",
+        "en": "Image"
+      },
+      "desc": {
+        "zh": "增强版图片组件，提供加载中、加载失败占位与淡入动画。",
+        "en": "An enhanced image with loading and error placeholders plus a fade-in transition."
+      },
+      "platforms": {
+        "ios": {
+          "symbol": "UPImage",
+          "file": "UPImage.swift"
+        },
+        "android": {
+          "symbol": "UPImage",
+          "file": "UPImage.kt"
+        },
+        "harmony": {
+          "symbol": "UPImage",
+          "file": "UPImage.ets"
+        },
+        "flutter": {
+          "symbol": "UPImage",
+          "file": "up_image.dart"
+        },
+        "reactnative": {
+          "symbol": "UPImage",
+          "file": "image"
+        },
+        "taro": {
+          "symbol": "UPImage",
+          "file": "up-image"
+        },
+        "uniapp": {
+          "symbol": "up-image",
+          "file": "u-image"
+        },
+        "uniappx": {
+          "symbol": "up-image",
+          "file": "up-image"
+        }
+      }
+    },
+    {
+      "id": "text",
+      "group": "basic",
+      "name": {
+        "zh": "Text 文本",
+        "en": "Text"
+      },
+      "desc": {
+        "zh": "对文本做了主题、省略、脱敏与格式化封装，适合手机号、金额、日期等场景。",
+        "en": "Text with theming, truncation, masking and formatting for phone numbers, money and dates."
+      },
+      "platforms": {
+        "ios": {
+          "symbol": "UPText",
+          "file": "UPText.swift"
+        },
+        "android": {
+          "symbol": "UPText",
+          "file": "UPText.kt"
+        },
+        "harmony": {
+          "symbol": "UPText",
+          "file": "UPText.ets"
+        },
+        "flutter": {
+          "symbol": "UPText",
+          "file": "up_text.dart"
+        },
+        "reactnative": {
+          "symbol": "UPText",
+          "file": "text"
+        },
+        "taro": {
+          "symbol": "UPText",
+          "file": "up-text"
+        },
+        "uniapp": {
+          "symbol": "up-text",
+          "file": "u-text"
+        },
+        "uniappx": {
+          "symbol": "up-text",
+          "file": "up-text"
+        }
+      }
+    },
+    {
+      "id": "tag",
+      "group": "basic",
+      "name": {
+        "zh": "Tag 标签",
+        "en": "Tag"
+      },
+      "desc": {
+        "zh": "用于标记关键字或分类，支持镂空、圆角与可关闭样式。",
+        "en": "Marks keywords or categories; supports plain, rounded and closable styles."
+      },
+      "platforms": {
+        "ios": {
+          "symbol": "UPTag",
+          "file": "UPTag.swift"
+        },
+        "android": {
+          "symbol": "UPTag",
+          "file": "UPTag.kt"
+        },
+        "harmony": {
+          "symbol": "UPTag",
+          "file": "UPTag.ets"
+        },
+        "flutter": {
+          "symbol": "UPTag",
+          "file": "up_tag.dart"
+        },
+        "reactnative": {
+          "symbol": "UPTag",
+          "file": "tag"
+        },
+        "taro": {
+          "symbol": "UPTag",
+          "file": "up-tag"
+        },
+        "uniapp": {
+          "symbol": "up-tag",
+          "file": "u-tag"
+        },
+        "uniappx": {
+          "symbol": "up-tag",
+          "file": "up-tag"
+        }
+      }
+    },
+    {
+      "id": "badge",
+      "group": "basic",
+      "name": {
+        "zh": "Badge 徽标数",
+        "en": "Badge"
+      },
+      "desc": {
+        "zh": "出现在图标或文字右上角的数字或圆点，用于提示未读数量。",
+        "en": "A number or dot pinned to the corner of an icon to signal unread items."
+      },
+      "platforms": {
+        "ios": {
+          "symbol": "UPBadge",
+          "file": "UPBadge.swift"
+        },
+        "android": {
+          "symbol": "UPBadge",
+          "file": "UPBadge.kt"
+        },
+        "harmony": {
+          "symbol": "UPBadge",
+          "file": "UPBadge.ets"
+        },
+        "flutter": {
+          "symbol": "UPBadge",
+          "file": "up_badge.dart"
+        },
+        "reactnative": {
+          "symbol": "UPBadge",
+          "file": "badge"
+        },
+        "taro": {
+          "symbol": "UPBadge",
+          "file": "up-badge"
+        },
+        "uniapp": {
+          "symbol": "up-badge",
+          "file": "u-badge"
+        },
+        "uniappx": {
+          "symbol": "up-badge",
+          "file": "up-badge"
+        }
+      }
+    },
+    {
+      "id": "avatar",
+      "group": "basic",
+      "name": {
+        "zh": "Avatar 头像",
+        "en": "Avatar"
+      },
+      "desc": {
+        "zh": "展示用户头像，支持图片、文字、图标三种内容与头像组堆叠。",
+        "en": "Shows a user avatar from an image, text or icon, and can stack into a group."
+      },
+      "platforms": {
+        "ios": {
+          "symbol": "UPAvatar",
+          "file": "UPAvatar.swift"
+        },
+        "android": {
+          "symbol": "UPAvatar",
+          "file": "UPAvatar.kt"
+        },
+        "harmony": {
+          "symbol": "UPAvatar",
+          "file": "UPAvatar.ets"
+        },
+        "flutter": {
+          "symbol": "UPAvatar",
+          "file": "up_avatar.dart"
+        },
+        "reactnative": {
+          "symbol": "UPAvatar",
+          "file": "avatar"
+        },
+        "taro": {
+          "symbol": "UPAvatar",
+          "file": "up-avatar"
+        },
+        "uniapp": {
+          "symbol": "up-avatar",
+          "file": "u-avatar"
+        },
+        "uniappx": {
+          "symbol": "up-avatar",
+          "file": "up-avatar"
+        }
+      }
+    },
+    {
+      "id": "link",
+      "group": "basic",
+      "name": {
+        "zh": "Link 超链接",
+        "en": "Link"
+      },
+      "desc": {
+        "zh": "点击后跳转外部链接或复制到剪贴板，自动处理各端差异。",
+        "en": "Opens an external URL or copies it to the clipboard, smoothing over platform gaps."
+      },
+      "platforms": {
+        "ios": {
+          "symbol": "UPLink",
+          "file": "UPLink.swift"
+        },
+        "android": {
+          "symbol": "UPLink",
+          "file": "UPLink.kt"
+        },
+        "harmony": {
+          "symbol": "UPLink",
+          "file": "UPLink.ets"
+        },
+        "flutter": {
+          "symbol": "UPLink",
+          "file": "up_link.dart"
+        },
+        "reactnative": {
+          "symbol": "UPLink",
+          "file": "link"
+        },
+        "taro": {
+          "symbol": "UPLink",
+          "file": "up-link"
+        },
+        "uniapp": {
+          "symbol": "up-link",
+          "file": "u-link"
+        },
+        "uniappx": {
+          "symbol": "up-link",
+          "file": "up-link"
+        }
+      }
+    },
+    {
+      "id": "title",
+      "group": "basic",
+      "name": {
+        "zh": "Title 标题",
+        "en": "Title"
+      },
+      "desc": {
+        "zh": "统一的标题排版，提供多级字号与前缀装饰。",
+        "en": "Consistent heading typography with several levels and an optional prefix accent."
+      },
+      "platforms": {
+        "ios": {
+          "symbol": "UPTitle",
+          "file": "UPTitle.swift"
+        },
+        "android": {
+          "symbol": "UPTitle",
+          "file": "UPTitle.kt"
+        },
+        "harmony": {
+          "symbol": "UPTitle",
+          "file": "UPTitle.ets"
+        },
+        "flutter": {
+          "symbol": "UPTitle",
+          "file": "up_title.dart"
+        },
+        "reactnative": {
+          "symbol": "UPTitle",
+          "file": "title"
+        },
+        "taro": {
+          "symbol": "UPTitle",
+          "file": "up-title"
+        },
+        "uniapp": {
+          "symbol": "up-title",
+          "file": "u-title"
+        },
+        "uniappx": {
+          "symbol": "up-title",
+          "file": "up-title"
+        }
+      }
+    },
+    {
+      "id": "loading-icon",
+      "group": "basic",
+      "name": {
+        "zh": "Loading icon 加载动画",
+        "en": "Loading icon"
+      },
+      "desc": {
+        "zh": "纯 CSS/原生绘制的加载指示器，提供圆环、花朵、半圆三种形态。",
+        "en": "A loading indicator drawn natively, in circle, flower or semicircle form."
+      },
+      "platforms": {
+        "ios": {
+          "symbol": "UPLoadingIcon",
+          "file": "UPLoadingIcon.swift"
+        },
+        "android": {
+          "symbol": "UPLoadingIcon",
+          "file": "UPLoadingIcon.kt"
+        },
+        "harmony": {
+          "symbol": "UPLoadingIcon",
+          "file": "UPLoadingIcon.ets"
+        },
+        "flutter": {
+          "symbol": "UPLoadingIcon",
+          "file": "up_loading_icon.dart"
+        },
+        "reactnative": {
+          "symbol": "UPLoadingIcon",
+          "file": "loading-icon"
+        },
+        "taro": {
+          "symbol": "UPLoadingIcon",
+          "file": "up-loading-icon"
+        },
+        "uniapp": {
+          "symbol": "up-loading-icon",
+          "file": "u-loading-icon"
+        },
+        "uniappx": {
+          "symbol": "up-loading-icon",
+          "file": "up-loading-icon"
+        }
+      }
+    },
+    {
+      "id": "loading-page",
+      "group": "basic",
+      "name": {
+        "zh": "Loading page 加载页",
+        "en": "Loading page"
+      },
+      "desc": {
+        "zh": "覆盖整个页面的加载遮罩，适合首屏或路由切换时使用。",
+        "en": "A full-page loading cover for first paint or route transitions."
+      },
+      "platforms": {
+        "ios": {
+          "symbol": "UPLoadingPage",
+          "file": "UPLoadingPage.swift"
+        },
+        "android": {
+          "symbol": "UPLoadingPage",
+          "file": "UPLoadingPage.kt"
+        },
+        "harmony": {
+          "symbol": "UPLoadingPage",
+          "file": "UPLoadingPage.ets"
+        },
+        "flutter": {
+          "symbol": "UPLoadingPage",
+          "file": "up_loading_page.dart"
+        },
+        "reactnative": {
+          "symbol": "UPLoadingPage",
+          "file": "loading-page"
+        },
+        "taro": {
+          "symbol": "UPLoadingPage",
+          "file": "up-loading-page"
+        },
+        "uniapp": {
+          "symbol": "up-loading-page",
+          "file": "u-loading-page"
+        },
+        "uniappx": {
+          "symbol": "up-loading-page",
+          "file": "up-loading-page"
+        }
+      }
+    },
+    {
+      "id": "transition",
+      "group": "basic",
+      "name": {
+        "zh": "Transition 过渡动画",
+        "en": "Transition"
+      },
+      "desc": {
+        "zh": "为元素的进入与离开提供淡入、缩放、滑动等预设动画。",
+        "en": "Fade, zoom and slide presets for element enter and leave."
+      },
+      "platforms": {
+        "ios": {
+          "symbol": "UPTransition",
+          "file": "UPTransition.swift"
+        },
+        "flutter": {
+          "symbol": "UPTransition",
+          "file": "up_transition.dart"
+        },
+        "reactnative": {
+          "symbol": "UPTransition",
+          "file": "transition"
+        },
+        "taro": {
+          "symbol": "UPTransition",
+          "file": "up-transition"
+        },
+        "uniapp": {
+          "symbol": "up-transition",
+          "file": "u-transition"
+        },
+        "uniappx": {
+          "symbol": "up-transition",
+          "file": "up-transition"
+        }
+      }
+    },
+    {
+      "id": "copy",
+      "group": "basic",
+      "name": {
+        "zh": "Copy 复制",
+        "en": "Copy"
+      },
+      "desc": {
+        "zh": "一键将文本写入系统剪贴板，并给出统一的成功反馈。",
+        "en": "Writes text to the system clipboard with consistent success feedback."
+      },
+      "platforms": {
+        "flutter": {
+          "symbol": "UPCopy",
+          "file": "up_copy.dart"
+        },
+        "reactnative": {
+          "symbol": "UPCopy",
+          "file": "copy"
+        },
+        "taro": {
+          "symbol": "UPCopy",
+          "file": "up-copy"
+        },
+        "uniapp": {
+          "symbol": "up-copy",
+          "file": "u-copy"
+        },
+        "uniappx": {
+          "symbol": "up-copy",
+          "file": "up-copy"
+        }
+      }
+    },
+    {
+      "id": "layout",
+      "group": "layout",
+      "name": {
+        "zh": "Layout 栅格布局",
+        "en": "Layout"
+      },
+      "desc": {
+        "zh": "24 等分的行列栅格，用于快速搭建等宽或按比例分栏的结构。",
+        "en": "A 24-column row/col grid for equal-width or proportional layouts."
+      },
+      "platforms": {
+        "ios": {
+          "symbol": "UPRow",
+          "file": "UPRow.swift"
+        },
+        "android": {
+          "symbol": "UPRow",
+          "file": "UPRow.kt"
+        },
+        "harmony": {
+          "symbol": "UPRow",
+          "file": "UPRow.ets"
+        },
+        "flutter": {
+          "symbol": "UPRow",
+          "file": "up_layout.dart"
+        },
+        "reactnative": {
+          "symbol": "UPLayout",
+          "file": "row"
+        },
+        "taro": {
+          "symbol": "UPLayout",
+          "file": "up-row"
+        },
+        "uniapp": {
+          "symbol": "up-row",
+          "file": "u-row"
+        },
+        "uniappx": {
+          "symbol": "up-row",
+          "file": "up-row"
+        }
+      }
+    },
+    {
+      "id": "cell",
+      "group": "layout",
+      "name": {
+        "zh": "Cell 单元格",
+        "en": "Cell"
+      },
+      "desc": {
+        "zh": "列表项的通用容器，可组合标题、描述、图标、右侧箭头与自定义内容。",
+        "en": "The general-purpose list row: title, label, icon, arrow and custom content."
+      },
+      "platforms": {
+        "ios": {
+          "symbol": "UPCell",
+          "file": "UPCell.swift"
+        },
+        "android": {
+          "symbol": "UPCell",
+          "file": "UPCell.kt"
+        },
+        "harmony": {
+          "symbol": "UPCell",
+          "file": "UPCell.ets"
+        },
+        "flutter": {
+          "symbol": "UPCell",
+          "file": "up_cell.dart"
+        },
+        "reactnative": {
+          "symbol": "UPCell",
+          "file": "cell"
+        },
+        "taro": {
+          "symbol": "UPCell",
+          "file": "up-cell"
+        },
+        "uniapp": {
+          "symbol": "up-cell",
+          "file": "u-cell"
+        },
+        "uniappx": {
+          "symbol": "up-cell",
+          "file": "up-cell"
+        }
+      }
+    },
+    {
+      "id": "card",
+      "group": "layout",
+      "name": {
+        "zh": "Card 卡片",
+        "en": "Card"
+      },
+      "desc": {
+        "zh": "带头部、内容与底部三段结构的卡片容器。",
+        "en": "A card container with head, body and foot sections."
+      },
+      "platforms": {
+        "ios": {
+          "symbol": "UPCard",
+          "file": "UPCard.swift"
+        },
+        "android": {
+          "symbol": "UPCard",
+          "file": "UPCard.kt"
+        },
+        "harmony": {
+          "symbol": "UPCard",
+          "file": "UPCard.ets"
+        },
+        "flutter": {
+          "symbol": "UPCard",
+          "file": "up_card.dart"
+        },
+        "reactnative": {
+          "symbol": "UPCard",
+          "file": "card"
+        },
+        "taro": {
+          "symbol": "UPCard",
+          "file": "up-card"
+        },
+        "uniapp": {
+          "symbol": "up-card",
+          "file": "u-card"
+        },
+        "uniappx": {
+          "symbol": "up-card",
+          "file": "up-card"
+        }
+      }
+    },
+    {
+      "id": "grid",
+      "group": "layout",
+      "name": {
+        "zh": "Grid 宫格",
+        "en": "Grid"
+      },
+      "desc": {
+        "zh": "等分的宫格布局，常用于首页金刚区与功能入口。",
+        "en": "An evenly divided grid, typically used for home-screen shortcuts."
+      },
+      "platforms": {
+        "ios": {
+          "symbol": "UPGrid",
+          "file": "UPGrid.swift"
+        },
+        "android": {
+          "symbol": "UPGrid",
+          "file": "UPGrid.kt"
+        },
+        "harmony": {
+          "symbol": "UPGrid",
+          "file": "UPGrid.ets"
+        },
+        "flutter": {
+          "symbol": "UPGrid",
+          "file": "up_grid.dart"
+        },
+        "reactnative": {
+          "symbol": "UPGrid",
+          "file": "grid"
+        },
+        "taro": {
+          "symbol": "UPGrid",
+          "file": "up-grid"
+        },
+        "uniapp": {
+          "symbol": "up-grid",
+          "file": "u-grid"
+        },
+        "uniappx": {
+          "symbol": "up-grid",
+          "file": "up-grid"
+        }
+      }
+    },
+    {
+      "id": "line",
+      "group": "layout",
+      "name": {
+        "zh": "Line 线条",
+        "en": "Line"
+      },
+      "desc": {
+        "zh": "可控制方向、长度、颜色与虚实的一根线。",
+        "en": "A single line with configurable direction, length, colour and dash style."
+      },
+      "platforms": {
+        "ios": {
+          "symbol": "UPLine",
+          "file": "UPLine.swift"
+        },
+        "android": {
+          "symbol": "UPLine",
+          "file": "UPLine.kt"
+        },
+        "harmony": {
+          "symbol": "UPLine",
+          "file": "UPLine.ets"
+        },
+        "flutter": {
+          "symbol": "UPLine",
+          "file": "up_layout.dart"
+        },
+        "reactnative": {
+          "symbol": "UPLine",
+          "file": "line"
+        },
+        "taro": {
+          "symbol": "UPLine",
+          "file": "up-line"
+        },
+        "uniapp": {
+          "symbol": "up-line",
+          "file": "u-line"
+        },
+        "uniappx": {
+          "symbol": "up-line",
+          "file": "up-line"
+        }
+      }
+    },
+    {
+      "id": "divider",
+      "group": "layout",
+      "name": {
+        "zh": "Divider 分割线",
+        "en": "Divider"
+      },
+      "desc": {
+        "zh": "区隔内容的分割线，支持居中或靠边的文字说明。",
+        "en": "A content separator that can carry centred or aligned text."
+      },
+      "platforms": {
+        "ios": {
+          "symbol": "UPDivider",
+          "file": "UPDivider.swift"
+        },
+        "android": {
+          "symbol": "UPDivider",
+          "file": "UPDivider.kt"
+        },
+        "harmony": {
+          "symbol": "UPDivider",
+          "file": "UPDivider.ets"
+        },
+        "flutter": {
+          "symbol": "UPDivider",
+          "file": "up_layout.dart"
+        },
+        "reactnative": {
+          "symbol": "UPDivider",
+          "file": "divider"
+        },
+        "taro": {
+          "symbol": "UPDivider",
+          "file": "up-divider"
+        },
+        "uniapp": {
+          "symbol": "up-divider",
+          "file": "u-divider"
+        },
+        "uniappx": {
+          "symbol": "up-divider",
+          "file": "up-divider"
+        }
+      }
+    },
+    {
+      "id": "gap",
+      "group": "layout",
+      "name": {
+        "zh": "Gap 间隔槽",
+        "en": "Gap"
+      },
+      "desc": {
+        "zh": "用于制造区块之间的留白，可设置高度与背景色。",
+        "en": "Whitespace between blocks, with configurable height and background."
+      },
+      "platforms": {
+        "ios": {
+          "symbol": "UPGap",
+          "file": "UPGap.swift"
+        },
+        "android": {
+          "symbol": "UPGap",
+          "file": "UPGap.kt"
+        },
+        "harmony": {
+          "symbol": "UPGap",
+          "file": "UPGap.ets"
+        },
+        "flutter": {
+          "symbol": "UPGap",
+          "file": "up_layout.dart"
+        },
+        "reactnative": {
+          "symbol": "UPGap",
+          "file": "gap"
+        },
+        "taro": {
+          "symbol": "UPGap",
+          "file": "up-gap"
+        },
+        "uniapp": {
+          "symbol": "up-gap",
+          "file": "u-gap"
+        },
+        "uniappx": {
+          "symbol": "up-gap",
+          "file": "up-gap"
+        }
+      }
+    },
+    {
+      "id": "box",
+      "group": "layout",
+      "name": {
+        "zh": "Box 盒子",
+        "en": "Box"
+      },
+      "desc": {
+        "zh": "带内边距、圆角与阴影的基础容器，替代手写 view 样式。",
+        "en": "A basic container with padding, radius and shadow, so you write less CSS."
+      },
+      "platforms": {
+        "ios": {
+          "symbol": "UPBox",
+          "file": "UPBox.swift"
+        },
+        "flutter": {
+          "symbol": "UPBox",
+          "file": "up_box.dart"
+        },
+        "reactnative": {
+          "symbol": "UPBox",
+          "file": "box"
+        },
+        "taro": {
+          "symbol": "UPBox",
+          "file": "up-box"
+        },
+        "uniapp": {
+          "symbol": "up-box",
+          "file": "u-box"
+        },
+        "uniappx": {
+          "symbol": "up-box",
+          "file": "up-box"
+        }
+      }
+    },
+    {
+      "id": "sticky",
+      "group": "layout",
+      "name": {
+        "zh": "Sticky 吸顶",
+        "en": "Sticky"
+      },
+      "desc": {
+        "zh": "滚动到指定位置时将内容固定在顶部。",
+        "en": "Pins content to the top once scrolling passes a threshold."
+      },
+      "platforms": {
+        "android": {
+          "symbol": "UPSticky",
+          "file": "UPPopupGestureComponents.kt"
+        },
+        "flutter": {
+          "symbol": "UPSticky",
+          "file": "up_sticky.dart"
+        },
+        "reactnative": {
+          "symbol": "UPSticky",
+          "file": "sticky"
+        },
+        "taro": {
+          "symbol": "UPSticky",
+          "file": "up-sticky"
+        },
+        "uniapp": {
+          "symbol": "up-sticky",
+          "file": "u-sticky"
+        },
+        "uniappx": {
+          "symbol": "up-sticky",
+          "file": "up-sticky"
+        }
+      }
+    },
+    {
+      "id": "swiper",
+      "group": "layout",
+      "name": {
+        "zh": "Swiper 轮播图",
+        "en": "Swiper"
+      },
+      "desc": {
+        "zh": "图片或自定义内容的轮播容器，内置多种指示器样式。",
+        "en": "A carousel for images or custom content, with several indicator styles."
+      },
+      "platforms": {
+        "android": {
+          "symbol": "UPSwiper",
+          "file": "UPStatusNumericComponents.kt"
+        },
+        "flutter": {
+          "symbol": "UPSwiper",
+          "file": "up_swiper.dart"
+        },
+        "reactnative": {
+          "symbol": "UPSwiper",
+          "file": "swiper"
+        },
+        "taro": {
+          "symbol": "UPSwiper",
+          "file": "up-swiper"
+        },
+        "uniapp": {
+          "symbol": "up-swiper",
+          "file": "u-swiper"
+        },
+        "uniappx": {
+          "symbol": "up-swiper",
+          "file": "up-swiper"
+        }
+      }
+    },
+    {
+      "id": "scroll-list",
+      "group": "layout",
+      "name": {
+        "zh": "Scroll list 横向滚动",
+        "en": "Scroll list"
+      },
+      "desc": {
+        "zh": "横向滚动的列表容器，附带自定义滚动条指示。",
+        "en": "A horizontally scrolling list with its own scrollbar indicator."
+      },
+      "platforms": {
+        "android": {
+          "symbol": "UPScrollList",
+          "file": "UPListIndexComponents.kt"
+        },
+        "harmony": {
+          "symbol": "UPScrollList",
+          "file": "UPScrollList.ets"
+        },
+        "flutter": {
+          "symbol": "UPScrollList",
+          "file": "up_scroll_list.dart"
+        },
+        "reactnative": {
+          "symbol": "UPScrollList",
+          "file": "scroll-list"
+        },
+        "taro": {
+          "symbol": "UPScrollList",
+          "file": "up-scroll-list"
+        },
+        "uniapp": {
+          "symbol": "up-scroll-list",
+          "file": "u-scroll-list"
+        },
+        "uniappx": {
+          "symbol": "up-scroll-list",
+          "file": "up-scroll-list"
+        }
+      }
+    },
+    {
+      "id": "waterfall",
+      "group": "layout",
+      "name": {
+        "zh": "Waterfall 瀑布流",
+        "en": "Waterfall"
+      },
+      "desc": {
+        "zh": "双列不等高瀑布流布局，自动把新内容放进较短的一列。",
+        "en": "A two-column masonry layout that always fills the shorter column next."
+      },
+      "platforms": {
+        "flutter": {
+          "symbol": "UPWaterfall",
+          "file": "up_waterfall.dart"
+        },
+        "reactnative": {
+          "symbol": "UPWaterfall",
+          "file": "waterfall"
+        },
+        "taro": {
+          "symbol": "UPWaterfall",
+          "file": "up-waterfall"
+        },
+        "uniapp": {
+          "symbol": "up-waterfall",
+          "file": "u-waterfall"
+        },
+        "uniappx": {
+          "symbol": "up-waterfall",
+          "file": "up-waterfall"
+        }
+      }
+    },
+    {
+      "id": "safe-bottom",
+      "group": "layout",
+      "name": {
+        "zh": "Safe bottom 底部安全区",
+        "en": "Safe bottom"
+      },
+      "desc": {
+        "zh": "为 iPhone 等带 Home 指示条的机型撑出底部安全距离。",
+        "en": "Reserves the bottom safe-area inset on devices with a home indicator."
+      },
+      "platforms": {
+        "android": {
+          "symbol": "UPSafeBottom",
+          "file": "UPNavigationComponents.kt"
+        },
+        "harmony": {
+          "symbol": "UPSafeBottom",
+          "file": "UPSafeBottom.ets"
+        },
+        "flutter": {
+          "symbol": "UPSafeBottom",
+          "file": "up_safe_bottom.dart"
+        },
+        "reactnative": {
+          "symbol": "UPSafeBottom",
+          "file": "safe-bottom"
+        },
+        "taro": {
+          "symbol": "UPSafeBottom",
+          "file": "up-safe-bottom"
+        },
+        "uniapp": {
+          "symbol": "up-safe-bottom",
+          "file": "u-safe-bottom"
+        },
+        "uniappx": {
+          "symbol": "up-safe-bottom",
+          "file": "up-safe-bottom"
+        }
+      }
+    },
+    {
+      "id": "status-bar",
+      "group": "layout",
+      "name": {
+        "zh": "Status bar 状态栏占位",
+        "en": "Status bar"
+      },
+      "desc": {
+        "zh": "撑出与系统状态栏等高的占位空间，配合自定义导航栏使用。",
+        "en": "A spacer as tall as the system status bar, for custom nav bars."
+      },
+      "platforms": {
+        "android": {
+          "symbol": "UPStatusBar",
+          "file": "UPNavigationComponents.kt"
+        },
+        "harmony": {
+          "symbol": "UPStatusBar",
+          "file": "UPStatusBar.ets"
+        },
+        "flutter": {
+          "symbol": "UPStatusBar",
+          "file": "up_status_bar.dart"
+        },
+        "reactnative": {
+          "symbol": "UPStatusBar",
+          "file": "status-bar"
+        },
+        "taro": {
+          "symbol": "UPStatusBar",
+          "file": "up-status-bar"
+        },
+        "uniapp": {
+          "symbol": "up-status-bar",
+          "file": "u-status-bar"
+        },
+        "uniappx": {
+          "symbol": "up-status-bar",
+          "file": "up-status-bar"
+        }
+      }
+    },
+    {
+      "id": "form",
+      "group": "form",
+      "name": {
+        "zh": "Form 表单",
+        "en": "Form"
+      },
+      "desc": {
+        "zh": "表单容器与校验器，配合 form-item 完成规则校验与错误提示。",
+        "en": "A form container and validator that pairs with form-item for rules and errors."
+      },
+      "platforms": {
+        "ios": {
+          "symbol": "UPForm",
+          "file": "UPForm.swift"
+        },
+        "harmony": {
+          "symbol": "UPForm",
+          "file": "UPForm.ets"
+        },
+        "flutter": {
+          "symbol": "UPForm",
+          "file": "up_form.dart"
+        },
+        "reactnative": {
+          "symbol": "UPForm",
+          "file": "form"
+        },
+        "taro": {
+          "symbol": "UPForm",
+          "file": "up-form"
+        },
+        "uniapp": {
+          "symbol": "up-form",
+          "file": "u-form"
+        },
+        "uniappx": {
+          "symbol": "up-form",
+          "file": "up-form"
+        }
+      }
+    },
+    {
+      "id": "input",
+      "group": "form",
+      "name": {
+        "zh": "Input 输入框",
+        "en": "Input"
+      },
+      "desc": {
+        "zh": "单行输入框，支持前后插槽、清除按钮、密码显隐与字数统计。",
+        "en": "A single-line input with prefix/suffix slots, clear button, password toggle and counter."
+      },
+      "platforms": {
+        "ios": {
+          "symbol": "UPInput",
+          "file": "UPInput.swift"
+        },
+        "android": {
+          "symbol": "UPInput",
+          "file": "UPInput.kt"
+        },
+        "harmony": {
+          "symbol": "UPInput",
+          "file": "UPInput.ets"
+        },
+        "flutter": {
+          "symbol": "UPInput",
+          "file": "up_input.dart"
+        },
+        "reactnative": {
+          "symbol": "UPInput",
+          "file": "input"
+        },
+        "taro": {
+          "symbol": "UPInput",
+          "file": "up-input"
+        },
+        "uniapp": {
+          "symbol": "up-input",
+          "file": "u-input"
+        },
+        "uniappx": {
+          "symbol": "up-input",
+          "file": "up-input"
+        }
+      }
+    },
+    {
+      "id": "textarea",
+      "group": "form",
+      "name": {
+        "zh": "Textarea 文本域",
+        "en": "Textarea"
+      },
+      "desc": {
+        "zh": "多行输入框，支持自动增高与字数限制。",
+        "en": "A multi-line input that grows with content and can enforce a length limit."
+      },
+      "platforms": {
+        "ios": {
+          "symbol": "UPTextarea",
+          "file": "UPTextarea.swift"
+        },
+        "android": {
+          "symbol": "UPTextarea",
+          "file": "UPTextarea.kt"
+        },
+        "harmony": {
+          "symbol": "UPTextarea",
+          "file": "UPTextarea.ets"
+        },
+        "flutter": {
+          "symbol": "UPTextarea",
+          "file": "up_textarea.dart"
+        },
+        "reactnative": {
+          "symbol": "UPTextarea",
+          "file": "textarea"
+        },
+        "taro": {
+          "symbol": "UPTextarea",
+          "file": "up-textarea"
+        },
+        "uniapp": {
+          "symbol": "up-textarea",
+          "file": "u-textarea"
+        },
+        "uniappx": {
+          "symbol": "up-textarea",
+          "file": "up-textarea"
+        }
+      }
+    },
+    {
+      "id": "checkbox",
+      "group": "form",
+      "name": {
+        "zh": "Checkbox 复选框",
+        "en": "Checkbox"
+      },
+      "desc": {
+        "zh": "多选控件，支持组合校验、横竖排列与自定义图标。",
+        "en": "Multi-select control with group validation, layout options and custom icons."
+      },
+      "platforms": {
+        "ios": {
+          "symbol": "UPCheckbox",
+          "file": "UPCheckbox.swift"
+        },
+        "android": {
+          "symbol": "UPCheckbox",
+          "file": "UPCheckbox.kt"
+        },
+        "harmony": {
+          "symbol": "UPCheckbox",
+          "file": "UPCheckbox.ets"
+        },
+        "flutter": {
+          "symbol": "UPCheckbox",
+          "file": "up_checkbox.dart"
+        },
+        "reactnative": {
+          "symbol": "UPCheckbox",
+          "file": "checkbox"
+        },
+        "taro": {
+          "symbol": "UPCheckbox",
+          "file": "up-checkbox"
+        },
+        "uniapp": {
+          "symbol": "up-checkbox",
+          "file": "u-checkbox"
+        },
+        "uniappx": {
+          "symbol": "up-checkbox",
+          "file": "up-checkbox"
+        }
+      }
+    },
+    {
+      "id": "radio",
+      "group": "form",
+      "name": {
+        "zh": "Radio 单选框",
+        "en": "Radio"
+      },
+      "desc": {
+        "zh": "单选控件，支持组合校验、横竖排列与自定义图标。",
+        "en": "Single-select control with group validation, layout options and custom icons."
+      },
+      "platforms": {
+        "ios": {
+          "symbol": "UPRadio",
+          "file": "UPRadio.swift"
+        },
+        "android": {
+          "symbol": "UPRadio",
+          "file": "UPRadio.kt"
+        },
+        "harmony": {
+          "symbol": "UPRadio",
+          "file": "UPRadio.ets"
+        },
+        "flutter": {
+          "symbol": "UPRadio",
+          "file": "up_radio.dart"
+        },
+        "reactnative": {
+          "symbol": "UPRadio",
+          "file": "radio"
+        },
+        "taro": {
+          "symbol": "UPRadio",
+          "file": "up-radio"
+        },
+        "uniapp": {
+          "symbol": "up-radio",
+          "file": "u-radio"
+        },
+        "uniappx": {
+          "symbol": "up-radio",
+          "file": "up-radio"
+        }
+      }
+    },
+    {
+      "id": "switch",
+      "group": "form",
+      "name": {
+        "zh": "Switch 开关",
+        "en": "Switch"
+      },
+      "desc": {
+        "zh": "两种状态之间的切换控件，支持异步确认后再改变状态。",
+        "en": "Toggles between two states, optionally awaiting async confirmation first."
+      },
+      "platforms": {
+        "ios": {
+          "symbol": "UPSwitch",
+          "file": "UPSwitch.swift"
+        },
+        "android": {
+          "symbol": "UPSwitch",
+          "file": "UPSwitch.kt"
+        },
+        "harmony": {
+          "symbol": "UPSwitch",
+          "file": "UPSwitch.ets"
+        },
+        "flutter": {
+          "symbol": "UPSwitch",
+          "file": "up_switch.dart"
+        },
+        "reactnative": {
+          "symbol": "UPSwitch",
+          "file": "switch"
+        },
+        "taro": {
+          "symbol": "UPSwitch",
+          "file": "up-switch"
+        },
+        "uniapp": {
+          "symbol": "up-switch",
+          "file": "u-switch"
+        },
+        "uniappx": {
+          "symbol": "up-switch",
+          "file": "up-switch"
+        }
+      }
+    },
+    {
+      "id": "slider",
+      "group": "form",
+      "name": {
+        "zh": "Slider 滑动选择器",
+        "en": "Slider"
+      },
+      "desc": {
+        "zh": "通过拖动滑块在连续或离散区间内取值。",
+        "en": "Pick a value from a continuous or stepped range by dragging."
+      },
+      "platforms": {
+        "android": {
+          "symbol": "UPSlider",
+          "file": "UPSliderComponents.kt"
+        },
+        "flutter": {
+          "symbol": "UPSlider",
+          "file": "up_slider.dart"
+        },
+        "reactnative": {
+          "symbol": "UPSlider",
+          "file": "slider"
+        },
+        "taro": {
+          "symbol": "UPSlider",
+          "file": "up-slider"
+        },
+        "uniapp": {
+          "symbol": "up-slider",
+          "file": "u-slider"
+        },
+        "uniappx": {
+          "symbol": "up-slider",
+          "file": "up-slider"
+        }
+      }
+    },
+    {
+      "id": "rate",
+      "group": "form",
+      "name": {
+        "zh": "Rate 评分",
+        "en": "Rate"
+      },
+      "desc": {
+        "zh": "星级评分控件，支持半星、只读与自定义图标。",
+        "en": "A star rating control with half stars, read-only mode and custom icons."
+      },
+      "platforms": {
+        "ios": {
+          "symbol": "UPRate",
+          "file": "UPRate.swift"
+        },
+        "android": {
+          "symbol": "UPRate",
+          "file": "UPRate.kt"
+        },
+        "harmony": {
+          "symbol": "UPRate",
+          "file": "UPRate.ets"
+        },
+        "flutter": {
+          "symbol": "UPRate",
+          "file": "up_rate.dart"
+        },
+        "reactnative": {
+          "symbol": "UPRate",
+          "file": "rate"
+        },
+        "taro": {
+          "symbol": "UPRate",
+          "file": "up-rate"
+        },
+        "uniapp": {
+          "symbol": "up-rate",
+          "file": "u-rate"
+        },
+        "uniappx": {
+          "symbol": "up-rate",
+          "file": "up-rate"
+        }
+      }
+    },
+    {
+      "id": "search",
+      "group": "form",
+      "name": {
+        "zh": "Search 搜索",
+        "en": "Search"
+      },
+      "desc": {
+        "zh": "搜索输入框，内置搜索按钮、清除按钮与历史提示接口。",
+        "en": "A search field with built-in search and clear buttons."
+      },
+      "platforms": {
+        "ios": {
+          "symbol": "UPSearch",
+          "file": "UPSearch.swift"
+        },
+        "android": {
+          "symbol": "UPSearch",
+          "file": "UPSearch.kt"
+        },
+        "harmony": {
+          "symbol": "UPSearch",
+          "file": "UPSearch.ets"
+        },
+        "flutter": {
+          "symbol": "UPSearch",
+          "file": "up_search.dart"
+        },
+        "reactnative": {
+          "symbol": "UPSearch",
+          "file": "search"
+        },
+        "taro": {
+          "symbol": "UPSearch",
+          "file": "up-search"
+        },
+        "uniapp": {
+          "symbol": "up-search",
+          "file": "u-search"
+        },
+        "uniappx": {
+          "symbol": "up-search",
+          "file": "up-search"
+        }
+      }
+    },
+    {
+      "id": "number-box",
+      "group": "form",
+      "name": {
+        "zh": "Number box 步进器",
+        "en": "Number box"
+      },
+      "desc": {
+        "zh": "数字加减控件，支持步长、上下限与长按连加。",
+        "en": "A numeric stepper with step size, bounds and press-and-hold repetition."
+      },
+      "platforms": {
+        "ios": {
+          "symbol": "UPNumberBox",
+          "file": "UPNumberBox.swift"
+        },
+        "android": {
+          "symbol": "UPNumberBox",
+          "file": "UPNumberBox.kt"
+        },
+        "harmony": {
+          "symbol": "UPNumberBox",
+          "file": "UPNumberBox.ets"
+        },
+        "flutter": {
+          "symbol": "UPNumberBox",
+          "file": "up_number_box.dart"
+        },
+        "reactnative": {
+          "symbol": "UPNumberBox",
+          "file": "number-box"
+        },
+        "taro": {
+          "symbol": "UPNumberBox",
+          "file": "up-number-box"
+        },
+        "uniapp": {
+          "symbol": "up-number-box",
+          "file": "u-number-box"
+        },
+        "uniappx": {
+          "symbol": "up-number-box",
+          "file": "up-number-box"
+        }
+      }
+    },
+    {
+      "id": "upload",
+      "group": "form",
+      "name": {
+        "zh": "Upload 上传",
+        "en": "Upload"
+      },
+      "desc": {
+        "zh": "图片与文件上传，内置选择、预览、删除与进度展示。",
+        "en": "Image and file upload with selection, preview, removal and progress."
+      },
+      "platforms": {
+        "flutter": {
+          "symbol": "UPUpload",
+          "file": "up_upload.dart"
+        },
+        "reactnative": {
+          "symbol": "UPUpload",
+          "file": "upload"
+        },
+        "taro": {
+          "symbol": "UPUpload",
+          "file": "up-upload"
+        },
+        "uniapp": {
+          "symbol": "up-upload",
+          "file": "u-upload"
+        },
+        "uniappx": {
+          "symbol": "up-upload",
+          "file": "up-upload"
+        }
+      }
+    },
+    {
+      "id": "picker",
+      "group": "form",
+      "name": {
+        "zh": "Picker 选择器",
+        "en": "Picker"
+      },
+      "desc": {
+        "zh": "单列或多列的滚动选择器，支持联动数据。",
+        "en": "A single- or multi-column scroll picker, including cascading data."
+      },
+      "platforms": {
+        "android": {
+          "symbol": "UPPicker",
+          "file": "UPPickerComponents.kt"
+        },
+        "flutter": {
+          "symbol": "UPPicker",
+          "file": "up_picker.dart"
+        },
+        "reactnative": {
+          "symbol": "UPPicker",
+          "file": "picker"
+        },
+        "taro": {
+          "symbol": "UPPicker",
+          "file": "up-picker"
+        },
+        "uniapp": {
+          "symbol": "up-picker",
+          "file": "u-picker"
+        },
+        "uniappx": {
+          "symbol": "up-picker",
+          "file": "up-picker"
+        }
+      }
+    },
+    {
+      "id": "datetime-picker",
+      "group": "form",
+      "name": {
+        "zh": "Datetime picker 时间选择器",
+        "en": "Datetime picker"
+      },
+      "desc": {
+        "zh": "日期与时间选择器，可自由组合年月日时分秒。",
+        "en": "A date and time picker; compose year, month, day, hour, minute and second freely."
+      },
+      "platforms": {
+        "android": {
+          "symbol": "UPDatetimePicker",
+          "file": "UPDatetimePickerComponents.kt"
+        },
+        "flutter": {
+          "symbol": "UPDatetimePicker",
+          "file": "up_datetime_picker.dart"
+        },
+        "reactnative": {
+          "symbol": "UPDatetimePicker",
+          "file": "datetime-picker"
+        },
+        "taro": {
+          "symbol": "UPDatetimePicker",
+          "file": "up-datetime-picker"
+        },
+        "uniapp": {
+          "symbol": "up-datetime-picker",
+          "file": "u-datetime-picker"
+        },
+        "uniappx": {
+          "symbol": "up-datetime-picker",
+          "file": "up-datetime-picker"
+        }
+      }
+    },
+    {
+      "id": "calendar",
+      "group": "form",
+      "name": {
+        "zh": "Calendar 日历",
+        "en": "Calendar"
+      },
+      "desc": {
+        "zh": "日历选择器，支持单日、多日与区间选择。",
+        "en": "A calendar picker supporting single, multiple and range selection."
+      },
+      "platforms": {
+        "android": {
+          "symbol": "UPCalendar",
+          "file": "UPCalendarComponents.kt"
+        },
+        "flutter": {
+          "symbol": "UPCalendar",
+          "file": "up_calendar.dart"
+        },
+        "reactnative": {
+          "symbol": "UPCalendar",
+          "file": "calendar"
+        },
+        "taro": {
+          "symbol": "UPCalendar",
+          "file": "up-calendar"
+        },
+        "uniapp": {
+          "symbol": "up-calendar",
+          "file": "u-calendar"
+        },
+        "uniappx": {
+          "symbol": "up-calendar",
+          "file": "up-calendar"
+        }
+      }
+    },
+    {
+      "id": "keyboard",
+      "group": "form",
+      "name": {
+        "zh": "Keyboard 键盘",
+        "en": "Keyboard"
+      },
+      "desc": {
+        "zh": "自定义键盘，提供数字、身份证与车牌号三种布局。",
+        "en": "Custom keyboards: numeric, ID-card and licence-plate layouts."
+      },
+      "platforms": {
+        "flutter": {
+          "symbol": "UPKeyboard",
+          "file": "up_keyboard.dart"
+        },
+        "reactnative": {
+          "symbol": "UPKeyboard",
+          "file": "keyboard"
+        },
+        "taro": {
+          "symbol": "UPKeyboard",
+          "file": "up-keyboard"
+        },
+        "uniapp": {
+          "symbol": "up-keyboard",
+          "file": "u-keyboard"
+        },
+        "uniappx": {
+          "symbol": "up-keyboard",
+          "file": "up-keyboard"
+        }
+      }
+    },
+    {
+      "id": "code",
+      "group": "form",
+      "name": {
+        "zh": "Code 验证码倒计时",
+        "en": "Code"
+      },
+      "desc": {
+        "zh": "无 UI 的倒计时逻辑组件，配合按钮实现\"重新获取验证码\"。",
+        "en": "A headless countdown that drives a \"resend verification code\" button."
+      },
+      "platforms": {
+        "ios": {
+          "symbol": "UPCode",
+          "file": "UPCode.swift"
+        },
+        "flutter": {
+          "symbol": "UPCode",
+          "file": "up_code.dart"
+        },
+        "reactnative": {
+          "symbol": "UPCode",
+          "file": "code"
+        },
+        "taro": {
+          "symbol": "UPCode",
+          "file": "up-code"
+        },
+        "uniapp": {
+          "symbol": "up-code",
+          "file": "u-code"
+        },
+        "uniappx": {
+          "symbol": "up-code",
+          "file": "up-code"
+        }
+      }
+    },
+    {
+      "id": "code-input",
+      "group": "form",
+      "name": {
+        "zh": "Code input 验证码输入",
+        "en": "Code input"
+      },
+      "desc": {
+        "zh": "格子式验证码输入框，支持下划线、方框与横线三种样式。",
+        "en": "A boxed verification-code field, in box, underline or dash style."
+      },
+      "platforms": {
+        "ios": {
+          "symbol": "UPCodeInput",
+          "file": "UPCodeInput.swift"
+        },
+        "android": {
+          "symbol": "UPCodeInput",
+          "file": "UPCodeInput.kt"
+        },
+        "harmony": {
+          "symbol": "UPCodeInput",
+          "file": "UPCodeInput.ets"
+        },
+        "flutter": {
+          "symbol": "UPCodeInput",
+          "file": "up_code_input.dart"
+        },
+        "reactnative": {
+          "symbol": "UPCodeInput",
+          "file": "code-input"
+        },
+        "taro": {
+          "symbol": "UPCodeInput",
+          "file": "up-code-input"
+        },
+        "uniapp": {
+          "symbol": "up-code-input",
+          "file": "u-code-input"
+        },
+        "uniappx": {
+          "symbol": "up-code-input",
+          "file": "up-code-input"
+        }
+      }
+    },
+    {
+      "id": "message-input",
+      "group": "form",
+      "name": {
+        "zh": "Message input 验证码输入框",
+        "en": "Message input"
+      },
+      "desc": {
+        "zh": "与 code-input 类似的短信验证码输入，可自动聚焦与自动提交。",
+        "en": "An SMS-code field similar to code-input, with autofocus and auto-submit."
+      },
+      "platforms": {
+        "flutter": {
+          "symbol": "UPMessageInput",
+          "file": "up_message_input.dart"
+        },
+        "reactnative": {
+          "symbol": "UPMessageInput",
+          "file": "message-input"
+        },
+        "taro": {
+          "symbol": "UPMessageInput",
+          "file": "up-message-input"
+        },
+        "uniapp": {
+          "symbol": "up-message-input",
+          "file": "u-message-input"
+        },
+        "uniappx": {
+          "symbol": "up-message-input",
+          "file": "up-message-input"
+        }
+      }
+    },
+    {
+      "id": "select",
+      "group": "form",
+      "name": {
+        "zh": "Select 列选择器",
+        "en": "Select"
+      },
+      "desc": {
+        "zh": "从底部弹出的列表选择器，适合选项较少的场景。",
+        "en": "A bottom-sheet list picker, ideal when there are few options."
+      },
+      "platforms": {
+        "android": {
+          "symbol": "UPSelect",
+          "file": "UPPickerComponents.kt"
+        },
+        "flutter": {
+          "symbol": "UPSelect",
+          "file": "up_select.dart"
+        },
+        "reactnative": {
+          "symbol": "UPSelect",
+          "file": "select"
+        },
+        "taro": {
+          "symbol": "UPSelect",
+          "file": "up-select"
+        },
+        "uniapp": {
+          "symbol": "up-select",
+          "file": "u-select"
+        },
+        "uniappx": {
+          "symbol": "up-select",
+          "file": "up-select"
+        }
+      }
+    },
+    {
+      "id": "cascader",
+      "group": "form",
+      "name": {
+        "zh": "Cascader 级联选择",
+        "en": "Cascader"
+      },
+      "desc": {
+        "zh": "多级联动选择器，常用于省市区、分类等树形数据。",
+        "en": "A cascading picker for tree data such as regions or categories."
+      },
+      "platforms": {
+        "android": {
+          "symbol": "UPCascader",
+          "file": "UPCascaderComponents.kt"
+        },
+        "flutter": {
+          "symbol": "UPCascader",
+          "file": "up_cascader.dart"
+        },
+        "reactnative": {
+          "symbol": "UPCascader",
+          "file": "cascader"
+        },
+        "taro": {
+          "symbol": "UPCascader",
+          "file": "up-cascader"
+        },
+        "uniapp": {
+          "symbol": "up-cascader",
+          "file": "u-cascader"
+        },
+        "uniappx": {
+          "symbol": "up-cascader",
+          "file": "up-cascader"
+        }
+      }
+    },
+    {
+      "id": "choose",
+      "group": "form",
+      "name": {
+        "zh": "Choose 通用选择器",
+        "en": "Choose"
+      },
+      "desc": {
+        "zh": "数据驱动的通用选择器，一个组件覆盖单选、多选与搜索。",
+        "en": "A data-driven picker covering single select, multi select and search in one."
+      },
+      "platforms": {
+        "flutter": {
+          "symbol": "UPChoose",
+          "file": "up_choose.dart"
+        },
+        "reactnative": {
+          "symbol": "UPChoose",
+          "file": "choose"
+        },
+        "taro": {
+          "symbol": "UPChoose",
+          "file": "up-choose"
+        },
+        "uniapp": {
+          "symbol": "up-choose",
+          "file": "u-choose"
+        },
+        "uniappx": {
+          "symbol": "up-choose",
+          "file": "up-choose"
+        }
+      }
+    },
+    {
+      "id": "color-picker",
+      "group": "form",
+      "name": {
+        "zh": "Color picker 颜色选择器",
+        "en": "Color picker"
+      },
+      "desc": {
+        "zh": "取色面板，支持色相、饱和度与透明度调节。",
+        "en": "A colour panel with hue, saturation and alpha controls."
+      },
+      "platforms": {
+        "flutter": {
+          "symbol": "UPColorPicker",
+          "file": "up_color_picker.dart"
+        },
+        "reactnative": {
+          "symbol": "UPColorPicker",
+          "file": "color-picker"
+        },
+        "taro": {
+          "symbol": "UPColorPicker",
+          "file": "up-color-picker"
+        },
+        "uniapp": {
+          "symbol": "up-color-picker",
+          "file": "u-color-picker"
+        },
+        "uniappx": {
+          "symbol": "up-color-picker",
+          "file": "up-color-picker"
+        }
+      }
+    },
+    {
+      "id": "album",
+      "group": "form",
+      "name": {
+        "zh": "Album 相册",
+        "en": "Album"
+      },
+      "desc": {
+        "zh": "按九宫格排布的图片集合，点击可全屏预览。",
+        "en": "A grid of images with full-screen preview on tap."
+      },
+      "platforms": {
+        "flutter": {
+          "symbol": "UPAlbum",
+          "file": "up_album.dart"
+        },
+        "reactnative": {
+          "symbol": "UPAlbum",
+          "file": "album"
+        },
+        "taro": {
+          "symbol": "UPAlbum",
+          "file": "up-album"
+        },
+        "uniapp": {
+          "symbol": "up-album",
+          "file": "u-album"
+        },
+        "uniappx": {
+          "symbol": "up-album",
+          "file": "up-album"
+        }
+      }
+    },
+    {
+      "id": "signature",
+      "group": "form",
+      "name": {
+        "zh": "Signature 签名",
+        "en": "Signature"
+      },
+      "desc": {
+        "zh": "手写签名画板，可导出为图片。",
+        "en": "A handwriting signature pad that exports to an image."
+      },
+      "platforms": {
+        "flutter": {
+          "symbol": "UPSignature",
+          "file": "up_signature.dart"
+        },
+        "reactnative": {
+          "symbol": "UPSignature",
+          "file": "signature"
+        },
+        "taro": {
+          "symbol": "UPSignature",
+          "file": "up-signature"
+        },
+        "uniapp": {
+          "symbol": "up-signature",
+          "file": "u-signature"
+        },
+        "uniappx": {
+          "symbol": "up-signature",
+          "file": "up-signature"
+        }
+      }
+    },
+    {
+      "id": "cropper",
+      "group": "form",
+      "name": {
+        "zh": "Cropper 图片裁剪",
+        "en": "Cropper"
+      },
+      "desc": {
+        "zh": "图片裁剪器，支持缩放、旋转与固定比例。",
+        "en": "An image cropper with zoom, rotation and fixed aspect ratios."
+      },
+      "platforms": {
+        "flutter": {
+          "symbol": "UPCropper",
+          "file": "up_cropper.dart"
+        },
+        "reactnative": {
+          "symbol": "UPCropper",
+          "file": "cropper"
+        },
+        "uniapp": {
+          "symbol": "up-cropper",
+          "file": "u-cropper"
+        },
+        "uniappx": {
+          "symbol": "up-cropper",
+          "file": "up-cropper"
+        }
+      }
+    },
+    {
+      "id": "city-locate",
+      "group": "form",
+      "name": {
+        "zh": "City locate 城市选择",
+        "en": "City locate"
+      },
+      "desc": {
+        "zh": "城市列表选择器，带索引与定位当前城市能力。",
+        "en": "A city list picker with an index bar and current-location support."
+      },
+      "platforms": {
+        "flutter": {
+          "symbol": "UPCityLocate",
+          "file": "up_city_locate.dart"
+        },
+        "reactnative": {
+          "symbol": "UPCityLocate",
+          "file": "city-locate"
+        },
+        "taro": {
+          "symbol": "UPCityLocate",
+          "file": "up-city-locate"
+        },
+        "uniapp": {
+          "symbol": "up-city-locate",
+          "file": "u-city-locate"
+        },
+        "uniappx": {
+          "symbol": "up-city-locate",
+          "file": "up-city-locate"
+        }
+      }
+    },
+    {
+      "id": "agreement",
+      "group": "form",
+      "name": {
+        "zh": "Agreement 协议勾选",
+        "en": "Agreement"
+      },
+      "desc": {
+        "zh": "用户协议勾选控件，内置未勾选时的抖动提示。",
+        "en": "A terms-of-service checkbox that shakes when unchecked."
+      },
+      "platforms": {
+        "flutter": {
+          "symbol": "UPAgreement",
+          "file": "up_agreement.dart"
+        },
+        "reactnative": {
+          "symbol": "UPAgreement",
+          "file": "agreement"
+        },
+        "taro": {
+          "symbol": "UPAgreement",
+          "file": "up-agreement"
+        },
+        "uniapp": {
+          "symbol": "up-agreement",
+          "file": "u-agreement"
+        },
+        "uniappx": {
+          "symbol": "up-agreement",
+          "file": "up-agreement"
+        }
+      }
+    },
+    {
+      "id": "toast",
+      "group": "feedback",
+      "name": {
+        "zh": "Toast 消息提示",
+        "en": "Toast"
+      },
+      "desc": {
+        "zh": "轻量的全局提示，支持成功、失败、加载等主题与完成回调。",
+        "en": "A lightweight global message with success, error and loading themes plus a completion callback."
+      },
+      "platforms": {
+        "ios": {
+          "symbol": "UPToast",
+          "file": "UPToast.swift"
+        },
+        "android": {
+          "symbol": "UPToast",
+          "file": "UPToast.kt"
+        },
+        "harmony": {
+          "symbol": "UPToastHost",
+          "file": "UPToastHost.ets"
+        },
+        "flutter": {
+          "symbol": "UPToast",
+          "file": "up_toast.dart"
+        },
+        "reactnative": {
+          "symbol": "UPToast",
+          "file": "toast"
+        },
+        "taro": {
+          "symbol": "UPToast",
+          "file": "up-toast"
+        },
+        "uniapp": {
+          "symbol": "up-toast",
+          "file": "u-toast"
+        },
+        "uniappx": {
+          "symbol": "up-toast",
+          "file": "up-toast"
+        }
+      }
+    },
+    {
+      "id": "notify",
+      "group": "feedback",
+      "name": {
+        "zh": "Notify 顶部通知",
+        "en": "Notify"
+      },
+      "desc": {
+        "zh": "从屏幕顶部滑入的通知条，适合非阻塞的结果反馈。",
+        "en": "A banner sliding in from the top for non-blocking feedback."
+      },
+      "platforms": {
+        "android": {
+          "symbol": "UPNotify",
+          "file": "UPNotify.kt"
+        },
+        "harmony": {
+          "symbol": "UPNotify",
+          "file": "UPNotify.ets"
+        },
+        "flutter": {
+          "symbol": "UPNotify",
+          "file": "up_notify.dart"
+        },
+        "reactnative": {
+          "symbol": "UPNotify",
+          "file": "notify"
+        },
+        "taro": {
+          "symbol": "UPNotify",
+          "file": "up-notify"
+        },
+        "uniapp": {
+          "symbol": "up-notify",
+          "file": "u-notify"
+        },
+        "uniappx": {
+          "symbol": "up-notify",
+          "file": "up-notify"
+        }
+      }
+    },
+    {
+      "id": "modal",
+      "group": "feedback",
+      "name": {
+        "zh": "Modal 模态框",
+        "en": "Modal"
+      },
+      "desc": {
+        "zh": "居中弹出的对话框，支持确认/取消、异步关闭与自定义内容。",
+        "en": "A centred dialog with confirm/cancel, async close and custom content."
+      },
+      "platforms": {
+        "ios": {
+          "symbol": "UPModal",
+          "file": "UPModal.swift"
+        },
+        "android": {
+          "symbol": "UPModal",
+          "file": "UPModal.kt"
+        },
+        "harmony": {
+          "symbol": "UPModal",
+          "file": "UPModal.ets"
+        },
+        "flutter": {
+          "symbol": "UPModal",
+          "file": "up_modal.dart"
+        },
+        "reactnative": {
+          "symbol": "UPModal",
+          "file": "modal"
+        },
+        "taro": {
+          "symbol": "UPModal",
+          "file": "up-modal"
+        },
+        "uniapp": {
+          "symbol": "up-modal",
+          "file": "u-modal"
+        },
+        "uniappx": {
+          "symbol": "up-modal",
+          "file": "up-modal"
+        }
+      }
+    },
+    {
+      "id": "popup",
+      "group": "feedback",
+      "name": {
+        "zh": "Popup 弹出层",
+        "en": "Popup"
+      },
+      "desc": {
+        "zh": "从上下左右或中间弹出的通用容器，是许多组件的底座。",
+        "en": "A generic container popping from any edge or the centre; the base of many components."
+      },
+      "platforms": {
+        "ios": {
+          "symbol": "UPPopup",
+          "file": "UPPopup.swift"
+        },
+        "android": {
+          "symbol": "UPPopup",
+          "file": "UPPopup.kt"
+        },
+        "harmony": {
+          "symbol": "UPPopup",
+          "file": "UPPopup.ets"
+        },
+        "flutter": {
+          "symbol": "UPPopup",
+          "file": "up_popup.dart"
+        },
+        "reactnative": {
+          "symbol": "UPPopup",
+          "file": "popup"
+        },
+        "taro": {
+          "symbol": "UPPopup",
+          "file": "up-popup"
+        },
+        "uniapp": {
+          "symbol": "up-popup",
+          "file": "u-popup"
+        },
+        "uniappx": {
+          "symbol": "up-popup",
+          "file": "up-popup"
+        }
+      }
+    },
+    {
+      "id": "overlay",
+      "group": "feedback",
+      "name": {
+        "zh": "Overlay 遮罩层",
+        "en": "Overlay"
+      },
+      "desc": {
+        "zh": "半透明遮罩，用于突出弹出内容并拦截背景交互。",
+        "en": "A translucent scrim that highlights a layer and blocks background interaction."
+      },
+      "platforms": {
+        "ios": {
+          "symbol": "UPOverlay",
+          "file": "UPOverlay.swift"
+        },
+        "android": {
+          "symbol": "UPOverlay",
+          "file": "UPOverlay.kt"
+        },
+        "harmony": {
+          "symbol": "UPOverlay",
+          "file": "UPOverlay.ets"
+        },
+        "flutter": {
+          "symbol": "UPOverlay",
+          "file": "up_overlay.dart"
+        },
+        "reactnative": {
+          "symbol": "UPOverlay",
+          "file": "overlay"
+        },
+        "taro": {
+          "symbol": "UPOverlay",
+          "file": "up-overlay"
+        },
+        "uniapp": {
+          "symbol": "up-overlay",
+          "file": "u-overlay"
+        },
+        "uniappx": {
+          "symbol": "up-overlay",
+          "file": "up-overlay"
+        }
+      }
+    },
+    {
+      "id": "action-sheet",
+      "group": "feedback",
+      "name": {
+        "zh": "Action sheet 操作菜单",
+        "en": "Action sheet"
+      },
+      "desc": {
+        "zh": "从底部弹起的操作列表，支持标题、描述与危险操作样式。",
+        "en": "A bottom action list with title, description and destructive styling."
+      },
+      "platforms": {
+        "ios": {
+          "symbol": "UPActionSheet",
+          "file": "UPActionSheet.swift"
+        },
+        "android": {
+          "symbol": "UPActionSheet",
+          "file": "UPActionSheet.kt"
+        },
+        "harmony": {
+          "symbol": "UPActionSheet",
+          "file": "UPActionSheet.ets"
+        },
+        "flutter": {
+          "symbol": "UPActionSheet",
+          "file": "up_action_sheet.dart"
+        },
+        "reactnative": {
+          "symbol": "UPActionSheet",
+          "file": "action-sheet"
+        },
+        "taro": {
+          "symbol": "UPActionSheet",
+          "file": "up-action-sheet"
+        },
+        "uniapp": {
+          "symbol": "up-action-sheet",
+          "file": "u-action-sheet"
+        },
+        "uniappx": {
+          "symbol": "up-action-sheet",
+          "file": "up-action-sheet"
+        }
+      }
+    },
+    {
+      "id": "alert",
+      "group": "feedback",
+      "name": {
+        "zh": "Alert 警告提示",
+        "en": "Alert"
+      },
+      "desc": {
+        "zh": "常驻页面的提示条，用于说明需要关注但不打断流程的信息。",
+        "en": "An inline banner for information that matters but should not interrupt."
+      },
+      "platforms": {
+        "ios": {
+          "symbol": "UPAlert",
+          "file": "UPAlert.swift"
+        },
+        "android": {
+          "symbol": "UPAlert",
+          "file": "UPAlert.kt"
+        },
+        "harmony": {
+          "symbol": "UPAlert",
+          "file": "UPAlert.ets"
+        },
+        "flutter": {
+          "symbol": "UPAlert",
+          "file": "up_alert.dart"
+        },
+        "reactnative": {
+          "symbol": "UPAlert",
+          "file": "alert"
+        },
+        "taro": {
+          "symbol": "UPAlert",
+          "file": "up-alert"
+        },
+        "uniapp": {
+          "symbol": "up-alert",
+          "file": "u-alert"
+        },
+        "uniappx": {
+          "symbol": "up-alert",
+          "file": "up-alert"
+        }
+      }
+    },
+    {
+      "id": "notice-bar",
+      "group": "feedback",
+      "name": {
+        "zh": "Notice bar 滚动通知",
+        "en": "Notice bar"
+      },
+      "desc": {
+        "zh": "横向滚动或纵向轮播的公告栏。",
+        "en": "An announcement bar that scrolls horizontally or rotates vertically."
+      },
+      "platforms": {
+        "android": {
+          "symbol": "UPNoticeBar",
+          "file": "UPNoticeBar.kt"
+        },
+        "harmony": {
+          "symbol": "UPNoticeBar",
+          "file": "UPNoticeBar.ets"
+        },
+        "flutter": {
+          "symbol": "UPNoticeBar",
+          "file": "up_notice_bar.dart"
+        },
+        "reactnative": {
+          "symbol": "UPNoticeBar",
+          "file": "notice-bar"
+        },
+        "taro": {
+          "symbol": "UPNoticeBar",
+          "file": "up-notice-bar"
+        },
+        "uniapp": {
+          "symbol": "up-notice-bar",
+          "file": "u-notice-bar"
+        },
+        "uniappx": {
+          "symbol": "up-notice-bar",
+          "file": "up-notice-bar"
+        }
+      }
+    },
+    {
+      "id": "tooltip",
+      "group": "feedback",
+      "name": {
+        "zh": "Tooltip 文字提示",
+        "en": "Tooltip"
+      },
+      "desc": {
+        "zh": "长按或点击后出现的气泡文字，可附带复制操作。",
+        "en": "A text bubble on tap or long press, optionally with a copy action."
+      },
+      "platforms": {
+        "android": {
+          "symbol": "UPTooltip",
+          "file": "UPPopupGestureComponents.kt"
+        },
+        "flutter": {
+          "symbol": "UPTooltip",
+          "file": "up_tooltip.dart"
+        },
+        "reactnative": {
+          "symbol": "UPTooltip",
+          "file": "tooltip"
+        },
+        "taro": {
+          "symbol": "UPTooltip",
+          "file": "up-tooltip"
+        },
+        "uniapp": {
+          "symbol": "up-tooltip",
+          "file": "u-tooltip"
+        },
+        "uniappx": {
+          "symbol": "up-tooltip",
+          "file": "up-tooltip"
+        }
+      }
+    },
+    {
+      "id": "popover",
+      "group": "feedback",
+      "name": {
+        "zh": "Popover 气泡卡片",
+        "en": "Popover"
+      },
+      "desc": {
+        "zh": "锚定在元素旁的气泡面板，可放入菜单或任意内容。",
+        "en": "A bubble panel anchored to an element, holding a menu or any content."
+      },
+      "platforms": {
+        "android": {
+          "symbol": "UPPopover",
+          "file": "UPPopupGestureComponents.kt"
+        },
+        "flutter": {
+          "symbol": "UPPopover",
+          "file": "up_popover.dart"
+        },
+        "reactnative": {
+          "symbol": "UPPopover",
+          "file": "popover"
+        },
+        "taro": {
+          "symbol": "UPPopover",
+          "file": "up-popover"
+        },
+        "uniapp": {
+          "symbol": "up-popover",
+          "file": "u-popover"
+        },
+        "uniappx": {
+          "symbol": "up-popover",
+          "file": "up-popover"
+        }
+      }
+    },
+    {
+      "id": "swipe-action",
+      "group": "feedback",
+      "name": {
+        "zh": "Swipe action 滑动操作",
+        "en": "Swipe action"
+      },
+      "desc": {
+        "zh": "左滑或右滑露出操作按钮，常用于列表项删除。",
+        "en": "Swipe a row to reveal action buttons, typically delete."
+      },
+      "platforms": {
+        "android": {
+          "symbol": "UPSwipeAction",
+          "file": "UPPopupGestureComponents.kt"
+        },
+        "flutter": {
+          "symbol": "UPSwipeAction",
+          "file": "up_swipe_action.dart"
+        },
+        "reactnative": {
+          "symbol": "UPSwipeAction",
+          "file": "swipe-action"
+        },
+        "taro": {
+          "symbol": "UPSwipeAction",
+          "file": "up-swipe-action"
+        },
+        "uniapp": {
+          "symbol": "up-swipe-action",
+          "file": "u-swipe-action"
+        },
+        "uniappx": {
+          "symbol": "up-swipe-action",
+          "file": "up-swipe-action"
+        }
+      }
+    },
+    {
+      "id": "collapse",
+      "group": "feedback",
+      "name": {
+        "zh": "Collapse 折叠面板",
+        "en": "Collapse"
+      },
+      "desc": {
+        "zh": "可展开收起的内容面板，支持手风琴模式。",
+        "en": "Expandable panels, with an optional accordion mode."
+      },
+      "platforms": {
+        "ios": {
+          "symbol": "UPCollapse",
+          "file": "UPCollapse.swift"
+        },
+        "android": {
+          "symbol": "UPCollapse",
+          "file": "UPCollapse.kt"
+        },
+        "harmony": {
+          "symbol": "UPCollapse",
+          "file": "UPCollapse.ets"
+        },
+        "flutter": {
+          "symbol": "UPCollapse",
+          "file": "up_collapse.dart"
+        },
+        "reactnative": {
+          "symbol": "UPCollapse",
+          "file": "collapse"
+        },
+        "taro": {
+          "symbol": "UPCollapse",
+          "file": "up-collapse"
+        },
+        "uniapp": {
+          "symbol": "up-collapse",
+          "file": "u-collapse"
+        },
+        "uniappx": {
+          "symbol": "up-collapse",
+          "file": "up-collapse"
+        }
+      }
+    },
+    {
+      "id": "guide",
+      "group": "feedback",
+      "name": {
+        "zh": "Guide 引导蒙层",
+        "en": "Guide"
+      },
+      "desc": {
+        "zh": "高亮页面局部并配以说明的新手引导蒙层。",
+        "en": "An onboarding overlay that spotlights part of the screen and explains it."
+      },
+      "platforms": {
+        "flutter": {
+          "symbol": "UPGuide",
+          "file": "up_guide.dart"
+        },
+        "reactnative": {
+          "symbol": "UPGuide",
+          "file": "guide"
+        },
+        "taro": {
+          "symbol": "UPGuide",
+          "file": "up-guide"
+        },
+        "uniapp": {
+          "symbol": "up-guide",
+          "file": "u-guide"
+        },
+        "uniappx": {
+          "symbol": "up-guide",
+          "file": "up-guide"
+        }
+      }
+    },
+    {
+      "id": "float-button",
+      "group": "feedback",
+      "name": {
+        "zh": "Float button 悬浮按钮",
+        "en": "Float button"
+      },
+      "desc": {
+        "zh": "悬浮在页面之上的操作按钮，可展开为多个子操作。",
+        "en": "A floating action button that can fan out into several sub-actions."
+      },
+      "platforms": {
+        "flutter": {
+          "symbol": "UPFloatButton",
+          "file": "up_float_button.dart"
+        },
+        "reactnative": {
+          "symbol": "UPFloatButton",
+          "file": "float-button"
+        },
+        "taro": {
+          "symbol": "UPFloatButton",
+          "file": "up-float-button"
+        },
+        "uniapp": {
+          "symbol": "up-float-button",
+          "file": "u-float-button"
+        },
+        "uniappx": {
+          "symbol": "up-float-button",
+          "file": "up-float-button"
+        }
+      }
+    },
+    {
+      "id": "toolbar",
+      "group": "feedback",
+      "name": {
+        "zh": "Toolbar 工具条",
+        "en": "Toolbar"
+      },
+      "desc": {
+        "zh": "弹出层顶部的取消/确认工具条，选择器类组件的公共部件。",
+        "en": "The cancel/confirm bar at the top of a popup; shared by picker components."
+      },
+      "platforms": {
+        "flutter": {
+          "symbol": "UPToolbar",
+          "file": "up_toolbar.dart"
+        },
+        "reactnative": {
+          "symbol": "UPToolbar",
+          "file": "toolbar"
+        },
+        "taro": {
+          "symbol": "UPToolbar",
+          "file": "up-toolbar"
+        },
+        "uniapp": {
+          "symbol": "up-toolbar",
+          "file": "u-toolbar"
+        },
+        "uniappx": {
+          "symbol": "up-toolbar",
+          "file": "up-toolbar"
+        }
+      }
+    },
+    {
+      "id": "goods-sku",
+      "group": "feedback",
+      "name": {
+        "zh": "Goods SKU 商品规格",
+        "en": "Goods SKU"
+      },
+      "desc": {
+        "zh": "电商商品规格选择弹层，处理规格组合与库存联动。",
+        "en": "An e-commerce SKU sheet handling attribute combinations and stock."
+      },
+      "platforms": {
+        "flutter": {
+          "symbol": "UPGoodsSku",
+          "file": "up_goods_sku.dart"
+        },
+        "reactnative": {
+          "symbol": "UPGoodsSku",
+          "file": "goods-sku"
+        },
+        "taro": {
+          "symbol": "UPGoodsSku",
+          "file": "up-goods-sku"
+        },
+        "uniapp": {
+          "symbol": "up-goods-sku",
+          "file": "u-goods-sku"
+        },
+        "uniappx": {
+          "symbol": "up-goods-sku",
+          "file": "up-goods-sku"
+        }
+      }
+    },
+    {
+      "id": "navbar",
+      "group": "nav",
+      "name": {
+        "zh": "Navbar 自定义导航栏",
+        "en": "Navbar"
+      },
+      "desc": {
+        "zh": "替代系统导航栏，自动处理状态栏高度与返回逻辑。",
+        "en": "Replaces the system nav bar, handling status-bar height and back navigation."
+      },
+      "platforms": {
+        "android": {
+          "symbol": "UPNavbar",
+          "file": "UPNavigationComponents.kt"
+        },
+        "harmony": {
+          "symbol": "UPNavbar",
+          "file": "UPNavbar.ets"
+        },
+        "flutter": {
+          "symbol": "UPNavbar",
+          "file": "up_navbar.dart"
+        },
+        "reactnative": {
+          "symbol": "UPNavbar",
+          "file": "navbar"
+        },
+        "taro": {
+          "symbol": "UPNavbar",
+          "file": "up-navbar"
+        },
+        "uniapp": {
+          "symbol": "up-navbar",
+          "file": "u-navbar"
+        },
+        "uniappx": {
+          "symbol": "up-navbar",
+          "file": "up-navbar"
+        }
+      }
+    },
+    {
+      "id": "tabbar",
+      "group": "nav",
+      "name": {
+        "zh": "Tabbar 底部导航栏",
+        "en": "Tabbar"
+      },
+      "desc": {
+        "zh": "底部标签栏，支持徽标、凸起中间项与安全区适配。",
+        "en": "A bottom tab bar with badges, a raised centre item and safe-area handling."
+      },
+      "platforms": {
+        "android": {
+          "symbol": "UPTabbar",
+          "file": "UPTabbarComponents.kt"
+        },
+        "flutter": {
+          "symbol": "UPTabbar",
+          "file": "up_tabbar.dart"
+        },
+        "reactnative": {
+          "symbol": "UPTabbar",
+          "file": "tabbar"
+        },
+        "taro": {
+          "symbol": "UPTabbar",
+          "file": "up-tabbar"
+        },
+        "uniapp": {
+          "symbol": "up-tabbar",
+          "file": "u-tabbar"
+        },
+        "uniappx": {
+          "symbol": "up-tabbar",
+          "file": "up-tabbar"
+        }
+      }
+    },
+    {
+      "id": "tabs",
+      "group": "nav",
+      "name": {
+        "zh": "Tabs 标签选项卡",
+        "en": "Tabs"
+      },
+      "desc": {
+        "zh": "横向标签页，支持滚动、徽标与自定义滑块。",
+        "en": "Horizontal tabs with scrolling, badges and a customisable indicator."
+      },
+      "platforms": {
+        "android": {
+          "symbol": "UPTabs",
+          "file": "UPTabsStepsComponents.kt"
+        },
+        "harmony": {
+          "symbol": "UPTabs",
+          "file": "UPTabs.ets"
+        },
+        "flutter": {
+          "symbol": "UPTabs",
+          "file": "up_tabs.dart"
+        },
+        "reactnative": {
+          "symbol": "UPTabs",
+          "file": "tabs"
+        },
+        "taro": {
+          "symbol": "UPTabs",
+          "file": "up-tabs"
+        },
+        "uniapp": {
+          "symbol": "up-tabs",
+          "file": "u-tabs"
+        },
+        "uniappx": {
+          "symbol": "up-tabs",
+          "file": "up-tabs"
+        }
+      }
+    },
+    {
+      "id": "subsection",
+      "group": "nav",
+      "name": {
+        "zh": "Subsection 分段器",
+        "en": "Subsection"
+      },
+      "desc": {
+        "zh": "两到多个选项之间的分段切换控件。",
+        "en": "A segmented control for switching between a few options."
+      },
+      "platforms": {
+        "android": {
+          "symbol": "UPSubsection",
+          "file": "UPTabsStepsComponents.kt"
+        },
+        "harmony": {
+          "symbol": "UPSubsection",
+          "file": "UPSubsection.ets"
+        },
+        "flutter": {
+          "symbol": "UPSubsection",
+          "file": "up_subsection.dart"
+        },
+        "reactnative": {
+          "symbol": "UPSubsection",
+          "file": "subsection"
+        },
+        "taro": {
+          "symbol": "UPSubsection",
+          "file": "up-subsection"
+        },
+        "uniapp": {
+          "symbol": "up-subsection",
+          "file": "u-subsection"
+        },
+        "uniappx": {
+          "symbol": "up-subsection",
+          "file": "up-subsection"
+        }
+      }
+    },
+    {
+      "id": "steps",
+      "group": "nav",
+      "name": {
+        "zh": "Steps 步骤条",
+        "en": "Steps"
+      },
+      "desc": {
+        "zh": "展示流程进度，支持横向、纵向与自定义节点。",
+        "en": "Shows progress through a flow, horizontally or vertically, with custom nodes."
+      },
+      "platforms": {
+        "android": {
+          "symbol": "UPSteps",
+          "file": "UPTabsStepsComponents.kt"
+        },
+        "harmony": {
+          "symbol": "UPSteps",
+          "file": "UPSteps.ets"
+        },
+        "flutter": {
+          "symbol": "UPSteps",
+          "file": "up_steps.dart"
+        },
+        "reactnative": {
+          "symbol": "UPSteps",
+          "file": "steps"
+        },
+        "taro": {
+          "symbol": "UPSteps",
+          "file": "up-steps"
+        },
+        "uniapp": {
+          "symbol": "up-steps",
+          "file": "u-steps"
+        },
+        "uniappx": {
+          "symbol": "up-steps",
+          "file": "up-steps"
+        }
+      }
+    },
+    {
+      "id": "dropdown",
+      "group": "nav",
+      "name": {
+        "zh": "Dropdown 下拉菜单",
+        "en": "Dropdown"
+      },
+      "desc": {
+        "zh": "从导航区域展开的筛选菜单，常用于列表页排序与过滤。",
+        "en": "A filter menu dropping from a nav area, for sorting and filtering lists."
+      },
+      "platforms": {
+        "android": {
+          "symbol": "UPDropdown",
+          "file": "UPDropdown.kt"
+        },
+        "harmony": {
+          "symbol": "UPDropdown",
+          "file": "UPDropdown.ets"
+        },
+        "flutter": {
+          "symbol": "UPDropdown",
+          "file": "up_dropdown.dart"
+        },
+        "reactnative": {
+          "symbol": "UPDropdown",
+          "file": "dropdown"
+        },
+        "taro": {
+          "symbol": "UPDropdown",
+          "file": "up-dropdown"
+        },
+        "uniapp": {
+          "symbol": "up-dropdown",
+          "file": "u-dropdown"
+        },
+        "uniappx": {
+          "symbol": "up-dropdown",
+          "file": "up-dropdown"
+        }
+      }
+    },
+    {
+      "id": "index-list",
+      "group": "nav",
+      "name": {
+        "zh": "Index list 索引列表",
+        "en": "Index list"
+      },
+      "desc": {
+        "zh": "带右侧字母索引的长列表，滚动时自动吸顶分组标题。",
+        "en": "A long list with an alphabet index and sticky group headers."
+      },
+      "platforms": {
+        "android": {
+          "symbol": "UPIndexList",
+          "file": "UPListIndexComponents.kt"
+        },
+        "harmony": {
+          "symbol": "UPIndexList",
+          "file": "UPIndexList.ets"
+        },
+        "flutter": {
+          "symbol": "UPIndexList",
+          "file": "up_index_list.dart"
+        },
+        "reactnative": {
+          "symbol": "UPIndexList",
+          "file": "index-list"
+        },
+        "taro": {
+          "symbol": "UPIndexList",
+          "file": "up-index-list"
+        },
+        "uniapp": {
+          "symbol": "up-index-list",
+          "file": "u-index-list"
+        },
+        "uniappx": {
+          "symbol": "up-index-list",
+          "file": "up-index-list"
+        }
+      }
+    },
+    {
+      "id": "back-top",
+      "group": "nav",
+      "name": {
+        "zh": "Back to top 返回顶部",
+        "en": "Back to top"
+      },
+      "desc": {
+        "zh": "滚动一段距离后出现的回到顶部按钮。",
+        "en": "A back-to-top button that appears after scrolling far enough."
+      },
+      "platforms": {
+        "ios": {
+          "symbol": "UPBackTop",
+          "file": "UPBackTop.swift"
+        },
+        "android": {
+          "symbol": "UPBackTop",
+          "file": "UPBackTop.kt"
+        },
+        "harmony": {
+          "symbol": "UPBackTop",
+          "file": "UPBackTop.ets"
+        },
+        "flutter": {
+          "symbol": "UPBackTop",
+          "file": "up_back_top.dart"
+        },
+        "reactnative": {
+          "symbol": "UPBackTop",
+          "file": "back-top"
+        },
+        "taro": {
+          "symbol": "UPBackTop",
+          "file": "up-back-top"
+        },
+        "uniapp": {
+          "symbol": "up-back-top",
+          "file": "u-back-top"
+        },
+        "uniappx": {
+          "symbol": "up-back-top",
+          "file": "up-back-top"
+        }
+      }
+    },
+    {
+      "id": "pagination",
+      "group": "nav",
+      "name": {
+        "zh": "Pagination 分页器",
+        "en": "Pagination"
+      },
+      "desc": {
+        "zh": "分页导航控件，支持上下页与页码跳转。",
+        "en": "Page navigation with prev/next and direct page jumps."
+      },
+      "platforms": {
+        "android": {
+          "symbol": "UPPagination",
+          "file": "UPPickerComponents.kt"
+        },
+        "flutter": {
+          "symbol": "UPPagination",
+          "file": "up_pagination.dart"
+        },
+        "reactnative": {
+          "symbol": "UPPagination",
+          "file": "pagination"
+        },
+        "taro": {
+          "symbol": "UPPagination",
+          "file": "up-pagination"
+        },
+        "uniapp": {
+          "symbol": "up-pagination",
+          "file": "u-pagination"
+        },
+        "uniappx": {
+          "symbol": "up-pagination",
+          "file": "up-pagination"
+        }
+      }
+    },
+    {
+      "id": "empty",
+      "group": "nav",
+      "name": {
+        "zh": "Empty 内容为空",
+        "en": "Empty"
+      },
+      "desc": {
+        "zh": "空状态占位图，内置多种语义化插画。",
+        "en": "An empty-state placeholder with several built-in illustrations."
+      },
+      "platforms": {
+        "ios": {
+          "symbol": "UPEmpty",
+          "file": "UPEmpty.swift"
+        },
+        "android": {
+          "symbol": "UPEmpty",
+          "file": "UPEmpty.kt"
+        },
+        "harmony": {
+          "symbol": "UPEmpty",
+          "file": "UPEmpty.ets"
+        },
+        "flutter": {
+          "symbol": "UPEmpty",
+          "file": "up_empty.dart"
+        },
+        "reactnative": {
+          "symbol": "UPEmpty",
+          "file": "empty"
+        },
+        "taro": {
+          "symbol": "UPEmpty",
+          "file": "up-empty"
+        },
+        "uniapp": {
+          "symbol": "up-empty",
+          "file": "u-empty"
+        },
+        "uniappx": {
+          "symbol": "up-empty",
+          "file": "up-empty"
+        }
+      }
+    },
+    {
+      "id": "no-network",
+      "group": "nav",
+      "name": {
+        "zh": "No network 无网络提示",
+        "en": "No network"
+      },
+      "desc": {
+        "zh": "断网时的全屏提示，提供重试与跳转系统设置入口。",
+        "en": "A full-screen offline notice with retry and system-settings shortcuts."
+      },
+      "platforms": {
+        "flutter": {
+          "symbol": "UPNoNetwork",
+          "file": "up_no_network.dart"
+        },
+        "reactnative": {
+          "symbol": "UPNoNetwork",
+          "file": "no-network"
+        },
+        "taro": {
+          "symbol": "UPNoNetwork",
+          "file": "up-no-network"
+        },
+        "uniapp": {
+          "symbol": "up-no-network",
+          "file": "u-no-network"
+        },
+        "uniappx": {
+          "symbol": "up-no-network",
+          "file": "up-no-network"
+        }
+      }
+    },
+    {
+      "id": "cate-tab",
+      "group": "nav",
+      "name": {
+        "zh": "Category tab 分类选项卡",
+        "en": "Category tab"
+      },
+      "desc": {
+        "zh": "左侧分类、右侧内容的二级联动导航。",
+        "en": "Two-level navigation with categories on the left and content on the right."
+      },
+      "platforms": {
+        "flutter": {
+          "symbol": "UPCateTab",
+          "file": "up_cate_tab.dart"
+        },
+        "reactnative": {
+          "symbol": "UPCateTab",
+          "file": "cate-tab"
+        },
+        "taro": {
+          "symbol": "UPCateTab",
+          "file": "up-cate-tab"
+        },
+        "uniapp": {
+          "symbol": "up-cate-tab",
+          "file": "u-cate-tab"
+        },
+        "uniappx": {
+          "symbol": "up-cate-tab",
+          "file": "up-cate-tab"
+        }
+      }
+    },
+    {
+      "id": "section",
+      "group": "nav",
+      "name": {
+        "zh": "Section 章节标题",
+        "en": "Section"
+      },
+      "desc": {
+        "zh": "带右侧\"更多\"入口的区块标题。",
+        "en": "A block heading with an optional \"more\" affordance on the right."
+      },
+      "platforms": {
+        "flutter": {
+          "symbol": "UPSection",
+          "file": "up_section.dart"
+        },
+        "reactnative": {
+          "symbol": "UPSection",
+          "file": "section"
+        },
+        "taro": {
+          "symbol": "UPSection",
+          "file": "up-section"
+        },
+        "uniapp": {
+          "symbol": "up-section",
+          "file": "u-section"
+        },
+        "uniappx": {
+          "symbol": "up-section",
+          "file": "up-section"
+        }
+      }
+    },
+    {
+      "id": "tree",
+      "group": "nav",
+      "name": {
+        "zh": "Tree 树形控件",
+        "en": "Tree"
+      },
+      "desc": {
+        "zh": "可展开收起的层级数据展示，支持复选与懒加载。",
+        "en": "Hierarchical data with expand/collapse, checkboxes and lazy loading."
+      },
+      "platforms": {
+        "flutter": {
+          "symbol": "UPTree",
+          "file": "up_tree.dart"
+        },
+        "reactnative": {
+          "symbol": "UPTree",
+          "file": "tree"
+        },
+        "taro": {
+          "symbol": "UPTree",
+          "file": "up-tree"
+        },
+        "uniapp": {
+          "symbol": "up-tree",
+          "file": "u-tree"
+        },
+        "uniappx": {
+          "symbol": "up-tree",
+          "file": "up-tree"
+        }
+      }
+    },
+    {
+      "id": "list",
+      "group": "data",
+      "name": {
+        "zh": "List 长列表",
+        "en": "List"
+      },
+      "desc": {
+        "zh": "为长列表做了回收优化的容器，配合 list-item 使用。",
+        "en": "A recycling container for long lists, used with list-item."
+      },
+      "platforms": {
+        "android": {
+          "symbol": "UPList",
+          "file": "UPListIndexComponents.kt"
+        },
+        "harmony": {
+          "symbol": "UPList",
+          "file": "UPList.ets"
+        },
+        "flutter": {
+          "symbol": "UPList",
+          "file": "up_list.dart"
+        },
+        "reactnative": {
+          "symbol": "UPList",
+          "file": "list"
+        },
+        "taro": {
+          "symbol": "UPList",
+          "file": "up-list"
+        },
+        "uniapp": {
+          "symbol": "up-list",
+          "file": "u-list"
+        },
+        "uniappx": {
+          "symbol": "up-list",
+          "file": "up-list"
+        }
+      }
+    },
+    {
+      "id": "virtual-list",
+      "group": "data",
+      "name": {
+        "zh": "Virtual list 虚拟列表",
+        "en": "Virtual list"
+      },
+      "desc": {
+        "zh": "只渲染可视区域的虚拟滚动列表，可承载上万条数据。",
+        "en": "Renders only the visible window, so it scales to tens of thousands of rows."
+      },
+      "platforms": {
+        "flutter": {
+          "symbol": "UPVirtualList",
+          "file": "up_virtual_list.dart"
+        },
+        "reactnative": {
+          "symbol": "UPVirtualList",
+          "file": "virtual-list"
+        },
+        "taro": {
+          "symbol": "UPVirtualList",
+          "file": "up-virtual-list"
+        },
+        "uniapp": {
+          "symbol": "up-virtual-list",
+          "file": "u-virtual-list"
+        },
+        "uniappx": {
+          "symbol": "up-virtual-list",
+          "file": "up-virtual-list"
+        }
+      }
+    },
+    {
+      "id": "table",
+      "group": "data",
+      "name": {
+        "zh": "Table 表格",
+        "en": "Table"
+      },
+      "desc": {
+        "zh": "数据表格，支持固定表头、自定义列与单元格插槽。",
+        "en": "A data table with a fixed header, custom columns and cell slots."
+      },
+      "platforms": {
+        "flutter": {
+          "symbol": "UPTable",
+          "file": "up_table.dart"
+        },
+        "reactnative": {
+          "symbol": "UPTable",
+          "file": "table"
+        },
+        "taro": {
+          "symbol": "UPTable",
+          "file": "up-table"
+        },
+        "uniapp": {
+          "symbol": "up-table",
+          "file": "u-table"
+        },
+        "uniappx": {
+          "symbol": "up-table",
+          "file": "up-table"
+        }
+      }
+    },
+    {
+      "id": "skeleton",
+      "group": "data",
+      "name": {
+        "zh": "Skeleton 骨架屏",
+        "en": "Skeleton"
+      },
+      "desc": {
+        "zh": "加载中的占位骨架，支持段落、头像与图片形状。",
+        "en": "Loading placeholders in paragraph, avatar and image shapes."
+      },
+      "platforms": {
+        "ios": {
+          "symbol": "UPSkeleton",
+          "file": "UPSkeleton.swift"
+        },
+        "android": {
+          "symbol": "UPSkeleton",
+          "file": "UPStatusNumericComponents.kt"
+        },
+        "harmony": {
+          "symbol": "UPSkeleton",
+          "file": "UPSkeleton.ets"
+        },
+        "flutter": {
+          "symbol": "UPSkeleton",
+          "file": "up_skeleton.dart"
+        },
+        "reactnative": {
+          "symbol": "UPSkeleton",
+          "file": "skeleton"
+        },
+        "taro": {
+          "symbol": "UPSkeleton",
+          "file": "up-skeleton"
+        },
+        "uniapp": {
+          "symbol": "up-skeleton",
+          "file": "u-skeleton"
+        },
+        "uniappx": {
+          "symbol": "up-skeleton",
+          "file": "up-skeleton"
+        }
+      }
+    },
+    {
+      "id": "line-progress",
+      "group": "data",
+      "name": {
+        "zh": "Line progress 线形进度条",
+        "en": "Line progress"
+      },
+      "desc": {
+        "zh": "横向进度条，可在条内显示百分比。",
+        "en": "A horizontal progress bar that can show its percentage inline."
+      },
+      "platforms": {
+        "ios": {
+          "symbol": "UPLineProgress",
+          "file": "UPLineProgress.swift"
+        },
+        "android": {
+          "symbol": "UPLineProgress",
+          "file": "UPLineProgress.kt"
+        },
+        "harmony": {
+          "symbol": "UPLineProgress",
+          "file": "UPLineProgress.ets"
+        },
+        "flutter": {
+          "symbol": "UPLineProgress",
+          "file": "up_line_progress.dart"
+        },
+        "reactnative": {
+          "symbol": "UPLineProgress",
+          "file": "line-progress"
+        },
+        "taro": {
+          "symbol": "UPLineProgress",
+          "file": "up-line-progress"
+        },
+        "uniapp": {
+          "symbol": "up-line-progress",
+          "file": "u-line-progress"
+        },
+        "uniappx": {
+          "symbol": "up-line-progress",
+          "file": "up-line-progress"
+        }
+      }
+    },
+    {
+      "id": "circle-progress",
+      "group": "data",
+      "name": {
+        "zh": "Circle progress 圆形进度条",
+        "en": "Circle progress"
+      },
+      "desc": {
+        "zh": "环形进度指示器，适合展示完成度与得分。",
+        "en": "A ring progress indicator for completion rates and scores."
+      },
+      "platforms": {
+        "ios": {
+          "symbol": "UPCircleProgress",
+          "file": "UPCircleProgress.swift"
+        },
+        "android": {
+          "symbol": "UPCircleProgress",
+          "file": "UPCircleProgress.kt"
+        },
+        "harmony": {
+          "symbol": "UPCircleProgress",
+          "file": "UPCircleProgress.ets"
+        },
+        "flutter": {
+          "symbol": "UPCircleProgress",
+          "file": "up_circle_progress.dart"
+        },
+        "reactnative": {
+          "symbol": "UPCircleProgress",
+          "file": "circle-progress"
+        },
+        "taro": {
+          "symbol": "UPCircleProgress",
+          "file": "up-circle-progress"
+        },
+        "uniapp": {
+          "symbol": "up-circle-progress",
+          "file": "u-circle-progress"
+        },
+        "uniappx": {
+          "symbol": "up-circle-progress",
+          "file": "up-circle-progress"
+        }
+      }
+    },
+    {
+      "id": "count-down",
+      "group": "data",
+      "name": {
+        "zh": "Count down 倒计时",
+        "en": "Count down"
+      },
+      "desc": {
+        "zh": "毫秒级倒计时，支持自定义时间格式与插槽渲染。",
+        "en": "A millisecond countdown with custom formats and slot rendering."
+      },
+      "platforms": {
+        "ios": {
+          "symbol": "UPCountDown",
+          "file": "UPCountDown.swift"
+        },
+        "android": {
+          "symbol": "UPCountDown",
+          "file": "UPStatusNumericComponents.kt"
+        },
+        "flutter": {
+          "symbol": "UPCountDown",
+          "file": "up_count_down.dart"
+        },
+        "reactnative": {
+          "symbol": "UPCountDown",
+          "file": "count-down"
+        },
+        "taro": {
+          "symbol": "UPCountDown",
+          "file": "up-count-down"
+        },
+        "uniapp": {
+          "symbol": "up-count-down",
+          "file": "u-count-down"
+        },
+        "uniappx": {
+          "symbol": "up-count-down",
+          "file": "up-count-down"
+        }
+      }
+    },
+    {
+      "id": "count-to",
+      "group": "data",
+      "name": {
+        "zh": "Count to 数字滚动",
+        "en": "Count to"
+      },
+      "desc": {
+        "zh": "数字从起始值滚动到目标值的动画。",
+        "en": "Animates a number from a start value to a target value."
+      },
+      "platforms": {
+        "ios": {
+          "symbol": "UPCountTo",
+          "file": "UPCountTo.swift"
+        },
+        "android": {
+          "symbol": "UPCountTo",
+          "file": "UPStatusNumericComponents.kt"
+        },
+        "flutter": {
+          "symbol": "UPCountTo",
+          "file": "up_count_to.dart"
+        },
+        "reactnative": {
+          "symbol": "UPCountTo",
+          "file": "count-to"
+        },
+        "taro": {
+          "symbol": "UPCountTo",
+          "file": "up-count-to"
+        },
+        "uniapp": {
+          "symbol": "up-count-to",
+          "file": "u-count-to"
+        },
+        "uniappx": {
+          "symbol": "up-count-to",
+          "file": "up-count-to"
+        }
+      }
+    },
+    {
+      "id": "loadmore",
+      "group": "data",
+      "name": {
+        "zh": "Load more 加载更多",
+        "en": "Load more"
+      },
+      "desc": {
+        "zh": "列表底部的加载状态提示，包含加载中、加载完成与没有更多三态。",
+        "en": "A list footer with loading, loaded and no-more states."
+      },
+      "platforms": {
+        "ios": {
+          "symbol": "UPLoadmore",
+          "file": "UPLoadmore.swift"
+        },
+        "android": {
+          "symbol": "UPLoadmore",
+          "file": "UPLoadmore.kt"
+        },
+        "harmony": {
+          "symbol": "UPLoadmore",
+          "file": "UPLoadmore.ets"
+        },
+        "flutter": {
+          "symbol": "UPLoadmore",
+          "file": "up_loadmore.dart"
+        },
+        "reactnative": {
+          "symbol": "UPLoadmore",
+          "file": "loadmore"
+        },
+        "taro": {
+          "symbol": "UPLoadmore",
+          "file": "up-loadmore"
+        },
+        "uniapp": {
+          "symbol": "up-loadmore",
+          "file": "u-loadmore"
+        },
+        "uniappx": {
+          "symbol": "up-loadmore",
+          "file": "up-loadmore"
+        }
+      }
+    },
+    {
+      "id": "read-more",
+      "group": "data",
+      "name": {
+        "zh": "Read more 展开阅读更多",
+        "en": "Read more"
+      },
+      "desc": {
+        "zh": "超出指定高度时折叠内容并给出展开按钮。",
+        "en": "Collapses content past a height threshold and offers an expand button."
+      },
+      "platforms": {
+        "android": {
+          "symbol": "UPReadMore",
+          "file": "UPStatusNumericComponents.kt"
+        },
+        "flutter": {
+          "symbol": "UPReadMore",
+          "file": "up_read_more.dart"
+        },
+        "reactnative": {
+          "symbol": "UPReadMore",
+          "file": "read-more"
+        },
+        "taro": {
+          "symbol": "UPReadMore",
+          "file": "up-read-more"
+        },
+        "uniapp": {
+          "symbol": "up-read-more",
+          "file": "u-read-more"
+        },
+        "uniappx": {
+          "symbol": "up-read-more",
+          "file": "up-read-more"
+        }
+      }
+    },
+    {
+      "id": "lazy-load",
+      "group": "data",
+      "name": {
+        "zh": "Lazy load 图片懒加载",
+        "en": "Lazy load"
+      },
+      "desc": {
+        "zh": "进入视口后才真正加载图片，减少首屏请求。",
+        "en": "Defers image loading until it enters the viewport."
+      },
+      "platforms": {
+        "flutter": {
+          "symbol": "UPLazyLoad",
+          "file": "up_lazy_load.dart"
+        },
+        "reactnative": {
+          "symbol": "UPLazyLoad",
+          "file": "lazy-load"
+        },
+        "taro": {
+          "symbol": "UPLazyLoad",
+          "file": "up-lazy-load"
+        },
+        "uniapp": {
+          "symbol": "up-lazy-load",
+          "file": "u-lazy-load"
+        },
+        "uniappx": {
+          "symbol": "up-lazy-load",
+          "file": "up-lazy-load"
+        }
+      }
+    },
+    {
+      "id": "pull-refresh",
+      "group": "data",
+      "name": {
+        "zh": "Pull refresh 下拉刷新",
+        "en": "Pull refresh"
+      },
+      "desc": {
+        "zh": "下拉触发刷新的容器，支持自定义下拉区域内容。",
+        "en": "A pull-to-refresh container with a customisable pull area."
+      },
+      "platforms": {
+        "flutter": {
+          "symbol": "UPPullRefresh",
+          "file": "up_pull_refresh.dart"
+        },
+        "reactnative": {
+          "symbol": "UPPullRefresh",
+          "file": "pull-refresh"
+        },
+        "taro": {
+          "symbol": "UPPullRefresh",
+          "file": "up-pull-refresh"
+        },
+        "uniapp": {
+          "symbol": "up-pull-refresh",
+          "file": "u-pull-refresh"
+        },
+        "uniappx": {
+          "symbol": "up-pull-refresh",
+          "file": "up-pull-refresh"
+        }
+      }
+    },
+    {
+      "id": "dragsort",
+      "group": "data",
+      "name": {
+        "zh": "Drag sort 拖拽排序",
+        "en": "Drag sort"
+      },
+      "desc": {
+        "zh": "长按拖动重新排序的列表或宫格。",
+        "en": "A list or grid reordered by long-press and drag."
+      },
+      "platforms": {
+        "flutter": {
+          "symbol": "UPDragSort",
+          "file": "up_drag_sort.dart"
+        },
+        "reactnative": {
+          "symbol": "UPDragsort",
+          "file": "dragsort"
+        },
+        "taro": {
+          "symbol": "UPDragsort",
+          "file": "up-dragsort"
+        },
+        "uniapp": {
+          "symbol": "up-dragsort",
+          "file": "u-dragsort"
+        },
+        "uniappx": {
+          "symbol": "up-dragsort",
+          "file": "up-dragsort"
+        }
+      }
+    },
+    {
+      "id": "coupon",
+      "group": "data",
+      "name": {
+        "zh": "Coupon 优惠券",
+        "en": "Coupon"
+      },
+      "desc": {
+        "zh": "优惠券卡片样式，含票根缺口与可用/失效状态。",
+        "en": "A coupon card with ticket notches and available/expired states."
+      },
+      "platforms": {
+        "flutter": {
+          "symbol": "UPCoupon",
+          "file": "up_coupon.dart"
+        },
+        "reactnative": {
+          "symbol": "UPCoupon",
+          "file": "coupon"
+        },
+        "taro": {
+          "symbol": "UPCoupon",
+          "file": "up-coupon"
+        },
+        "uniapp": {
+          "symbol": "up-coupon",
+          "file": "u-coupon"
+        },
+        "uniappx": {
+          "symbol": "up-coupon",
+          "file": "up-coupon"
+        }
+      }
+    },
+    {
+      "id": "parse",
+      "group": "other",
+      "name": {
+        "zh": "Rich text 富文本解析",
+        "en": "Rich text"
+      },
+      "desc": {
+        "zh": "把 HTML 字符串解析为各端原生节点渲染。",
+        "en": "Parses an HTML string into native nodes on every platform."
+      },
+      "platforms": {
+        "flutter": {
+          "symbol": "UPParse",
+          "file": "up_parse.dart"
+        },
+        "reactnative": {
+          "symbol": "UPParse",
+          "file": "parse"
+        },
+        "taro": {
+          "symbol": "UPParse",
+          "file": "up-parse"
+        },
+        "uniapp": {
+          "symbol": "up-parse",
+          "file": "u-parse"
+        },
+        "uniappx": {
+          "symbol": "up-parse",
+          "file": "up-parse"
+        }
+      }
+    },
+    {
+      "id": "markdown",
+      "group": "other",
+      "name": {
+        "zh": "Markdown Markdown 渲染",
+        "en": "Markdown"
+      },
+      "desc": {
+        "zh": "渲染 Markdown 文本，支持代码块与表格。",
+        "en": "Renders Markdown text, including code blocks and tables."
+      },
+      "platforms": {
+        "flutter": {
+          "symbol": "UPMarkdown",
+          "file": "up_markdown.dart"
+        },
+        "reactnative": {
+          "symbol": "UPMarkdown",
+          "file": "markdown"
+        },
+        "taro": {
+          "symbol": "UPMarkdown",
+          "file": "up-markdown"
+        },
+        "uniapp": {
+          "symbol": "up-markdown",
+          "file": "u-markdown"
+        },
+        "uniappx": {
+          "symbol": "up-markdown",
+          "file": "up-markdown"
+        }
+      }
+    },
+    {
+      "id": "qrcode",
+      "group": "other",
+      "name": {
+        "zh": "QR code 二维码",
+        "en": "QR code"
+      },
+      "desc": {
+        "zh": "在本地生成二维码，无需服务端参与。",
+        "en": "Generates a QR code locally, with no server round trip."
+      },
+      "platforms": {
+        "flutter": {
+          "symbol": "UPQrcode",
+          "file": "up_qrcode.dart"
+        },
+        "reactnative": {
+          "symbol": "UPQrcode",
+          "file": "qrcode"
+        },
+        "taro": {
+          "symbol": "UPQrcode",
+          "file": "up-qrcode"
+        },
+        "uniapp": {
+          "symbol": "up-qrcode",
+          "file": "u-qrcode"
+        },
+        "uniappx": {
+          "symbol": "up-qrcode",
+          "file": "up-qrcode"
+        }
+      }
+    },
+    {
+      "id": "barcode",
+      "group": "other",
+      "name": {
+        "zh": "Barcode 条形码",
+        "en": "Barcode"
+      },
+      "desc": {
+        "zh": "在本地生成一维条形码。",
+        "en": "Generates a one-dimensional barcode locally."
+      },
+      "platforms": {
+        "flutter": {
+          "symbol": "UPBarcode",
+          "file": "up_barcode.dart"
+        },
+        "reactnative": {
+          "symbol": "UPBarcode",
+          "file": "barcode"
+        },
+        "taro": {
+          "symbol": "UPBarcode",
+          "file": "up-barcode"
+        },
+        "uniapp": {
+          "symbol": "up-barcode",
+          "file": "u-barcode"
+        },
+        "uniappx": {
+          "symbol": "up-barcode",
+          "file": "up-barcode"
+        }
+      }
+    },
+    {
+      "id": "poster",
+      "group": "other",
+      "name": {
+        "zh": "Poster 海报生成",
+        "en": "Poster"
+      },
+      "desc": {
+        "zh": "将图文合成为一张可保存分享的海报图片。",
+        "en": "Composites text and images into a shareable poster."
+      },
+      "platforms": {
+        "flutter": {
+          "symbol": "UPPoster",
+          "file": "up_poster.dart"
+        },
+        "reactnative": {
+          "symbol": "UPPoster",
+          "file": "poster"
+        },
+        "taro": {
+          "symbol": "UPPoster",
+          "file": "up-poster"
+        },
+        "uniapp": {
+          "symbol": "up-poster",
+          "file": "u-poster"
+        },
+        "uniappx": {
+          "symbol": "up-poster",
+          "file": "up-poster"
+        }
+      }
+    },
+    {
+      "id": "canvas",
+      "group": "other",
+      "name": {
+        "zh": "Canvas 画布",
+        "en": "Canvas"
+      },
+      "desc": {
+        "zh": "统一各端差异的画布封装，是二维码、海报等组件的底层。",
+        "en": "A canvas wrapper that hides platform differences; the base for QR codes and posters."
+      },
+      "platforms": {
+        "flutter": {
+          "symbol": "UPCanvas",
+          "file": "up_canvas.dart"
+        },
+        "reactnative": {
+          "symbol": "UPCanvas",
+          "file": "canvas"
+        },
+        "taro": {
+          "symbol": "UPCanvas",
+          "file": "up-canvas"
+        },
+        "uniapp": {
+          "symbol": "up-canvas",
+          "file": "u-canvas"
+        },
+        "uniappx": {
+          "symbol": "up-canvas",
+          "file": "up-canvas"
+        }
+      }
+    },
+    {
+      "id": "pdf-reader",
+      "group": "other",
+      "name": {
+        "zh": "PDF reader PDF 阅读器",
+        "en": "PDF reader"
+      },
+      "desc": {
+        "zh": "内嵌 PDF 浏览器，支持翻页与缩放。",
+        "en": "An embedded PDF viewer with paging and zoom."
+      },
+      "platforms": {
+        "flutter": {
+          "symbol": "UPPdfReader",
+          "file": "up_pdf_reader.dart"
+        },
+        "reactnative": {
+          "symbol": "UPPdfReader",
+          "file": "pdf-reader"
+        },
+        "taro": {
+          "symbol": "UPPdfReader",
+          "file": "up-pdf-reader"
+        },
+        "uniapp": {
+          "symbol": "up-pdf-reader",
+          "file": "u-pdf-reader"
+        },
+        "uniappx": {
+          "symbol": "up-pdf-reader",
+          "file": "up-pdf-reader"
+        }
+      }
+    },
+    {
+      "id": "short-video",
+      "group": "other",
+      "name": {
+        "zh": "Short video 短视频",
+        "en": "Short video"
+      },
+      "desc": {
+        "zh": "全屏上下滑动的短视频播放容器。",
+        "en": "A full-screen, vertically swipeable short-video player."
+      },
+      "platforms": {
+        "flutter": {
+          "symbol": "UPShortVideo",
+          "file": "up_short_video.dart"
+        },
+        "reactnative": {
+          "symbol": "UPShortVideo",
+          "file": "short-video"
+        },
+        "taro": {
+          "symbol": "UPShortVideo",
+          "file": "up-short-video"
+        },
+        "uniapp": {
+          "symbol": "up-short-video",
+          "file": "u-short-video"
+        },
+        "uniappx": {
+          "symbol": "up-short-video",
+          "file": "up-short-video"
+        }
+      }
+    },
+    {
+      "id": "novel-reader",
+      "group": "other",
+      "name": {
+        "zh": "Novel reader 小说阅读器",
+        "en": "Novel reader"
+      },
+      "desc": {
+        "zh": "带目录、翻页与阅读设置的长文阅读器。",
+        "en": "A long-form reader with catalogue, paging and reading settings."
+      },
+      "platforms": {
+        "flutter": {
+          "symbol": "UPNovelReader",
+          "file": "up_novel_reader.dart"
+        },
+        "reactnative": {
+          "symbol": "UPNovelReader",
+          "file": "novel-reader"
+        },
+        "taro": {
+          "symbol": "UPNovelReader",
+          "file": "up-novel-reader"
+        },
+        "uniapp": {
+          "symbol": "up-novel-reader",
+          "file": "u-novel-reader"
+        },
+        "uniappx": {
+          "symbol": "up-novel-reader",
+          "file": "up-novel-reader"
+        }
+      }
+    },
+    {
+      "id": "view",
+      "group": "other",
+      "name": {
+        "zh": "View 视图容器",
+        "en": "View"
+      },
+      "desc": {
+        "zh": "最底层的视图容器，统一各端的盒模型与样式写法。",
+        "en": "The lowest-level view container, unifying the box model across platforms."
+      },
+      "platforms": {
+        "flutter": {
+          "symbol": "UPView",
+          "file": "up_view.dart"
+        },
+        "reactnative": {
+          "symbol": "UPView",
+          "file": "view"
+        },
+        "taro": {
+          "symbol": "UPView",
+          "file": "up-view"
+        },
+        "uniapp": {
+          "symbol": "up-view",
+          "file": "u-view"
+        },
+        "uniappx": {
+          "symbol": "up-view",
+          "file": "up-view"
+        }
+      }
+    }
+  ]
+}

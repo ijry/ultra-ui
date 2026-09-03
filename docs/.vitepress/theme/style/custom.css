@@ -1,0 +1,116 @@
+/* ------------------------------------------------------------------
+   Documentation page refinements
+   ------------------------------------------------------------------ */
+
+/* --- API tables ------------------------------------------------- */
+
+/* Keep VitePress's `display: block` + `overflow-x: auto`: that is what makes a
+   wide table scroll inside the page instead of widening the whole document.
+   Only the cosmetics are overridden here. */
+.vp-doc table {
+  margin: 20px 0;
+  font-size: 14px;
+}
+
+.vp-doc th {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--vp-c-text-2);
+  text-transform: none;
+  background: var(--vp-c-bg-soft);
+  white-space: nowrap;
+}
+
+.vp-doc td code,
+.vp-doc th code {
+  font-size: 12.5px;
+  padding: 2px 5px;
+}
+
+/* First column of an API table is always the prop/event/slot name. */
+.vp-doc table td:first-child {
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+/* --- Component page header -------------------------------------- */
+
+.uui-comp-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: -8px 0 24px;
+}
+
+/* --- Inline platform chips -------------------------------------- */
+
+.uui-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 24px;
+  padding: 0 9px 0 3px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--vp-c-text-2);
+  background: var(--vp-c-bg);
+  transition: opacity 0.2s;
+}
+.uui-chip.is-off {
+  opacity: 0.4;
+}
+.uui-chip-dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 18px;
+  padding: 0 4px;
+  border-radius: 999px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: #fff;
+}
+
+/* --- Section separators inside a component doc ------------------- */
+
+.vp-doc h2 {
+  margin-top: 40px;
+  padding-top: 22px;
+}
+
+/* --- Custom blocks get a slightly softer look ------------------- */
+
+.vp-doc .custom-block {
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+/* --- Sidebar: group the long component list a little tighter ----- */
+
+.VPSidebarItem.level-1 .items {
+  padding-left: 14px;
+}
+
+/* --- Landing page: remove the default bottom padding ------------- */
+
+.VPContent.is-home {
+  padding-bottom: 0;
+}
+.VPHome {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+/* --- Nav bar platform picker ------------------------------------- */
+
+@media (max-width: 1200px) {
+  .uui-picker {
+    display: none !important;
+  }
+}

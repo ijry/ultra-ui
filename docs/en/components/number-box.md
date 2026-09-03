@@ -1,0 +1,205 @@
+---
+title: Number box
+description: A numeric stepper with step size, bounds and press-and-hold repetition.
+generated: true
+---
+
+# Number box
+
+A numeric stepper with step size, bounds and press-and-hold repetition.
+
+<PlatformBadges component="number-box" show-missing />
+
+## Usage by platform
+
+Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+
+<PlatformTabs>
+
+<template #ios>
+
+```swift
+import SwiftUI
+import UltraUI
+```
+
+::: tip
+No snippet could be extracted automatically — please read the source.
+:::
+
+</template>
+
+<template #android>
+
+```kotlin
+import net.lingyun.ultraui.android.components.UPNumberBox
+import net.lingyun.ultraui.android.components.UPNumberBoxProps
+
+UPNumberBox(
+    props = UPNumberBoxProps(modelValue = numberValue, value = numberValue, min = 0, max = 9),
+    onInput = {
+        numberValue = it
+        eventText = "步进器：$it"
+    },
+    onOverlimit = { eventText = "步进器：超出范围" },
+)
+```
+
+<small>Snippet from `ultra-ui-android/sample/src/main/kotlin/net/lingyun/ultraui/android/sample/pages/InputSelectionDemoPage.kt`</small>
+
+</template>
+
+<template #harmony>
+
+```typescript
+import { UPNumberBox, UPNumberBoxProps } from '@lingyun/ultra-ui-hos';
+
+UPNumberBox({ props: new UPNumberBoxProps({ modelValue: this.value, min: 1, max: 5, onChange: (event: UPNumberBoxChangeEvent): void => { this.change(event); } }) })
+```
+
+<small>Snippet from `ultra-ui-hos/sample/entry/src/main/ets/demos/NumberBoxDemo.ets`</small>
+
+</template>
+
+<template #flutter>
+
+```dart
+import 'package:ultra_ui/ultra_ui.dart';
+
+numberBox: UPNumberBox(
+  value: _value1,
+  step: 1,
+  onChange: (value, {name}) =>
+      setState(() => _value1 = value),
+)
+```
+
+<small>Snippet from `ultra-ui-flutter/example/lib/pages/components_b/number_box_page.dart`</small>
+
+</template>
+
+<template #reactnative>
+
+```tsx
+import { UPNumberBox } from 'ultra-ui-rn';
+
+rightIconNode={<UPNumberBox disabled onChange={change} step="1" value={value5} />
+```
+
+<small>Snippet from `ultra-ui-rn/example/pages/components/form/NumberBoxDemo.tsx`</small>
+
+</template>
+
+<template #taro>
+
+```tsx
+import { UPNumberBox } from '@ultra-ui'
+
+<UPNumberBox value={basic} onChange={setBasic} />
+```
+
+<small>Snippet from `ultra-ui-taro/src/pages/components/number-box/index.tsx`</small>
+
+</template>
+
+<template #uniapp>
+
+```vue
+<up-number-box
+    v-model="value1"
+    step="1"
+    @change="change"
+>
+</up-number-box>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus/src/pages/componentsB/numberBox/numberBox.nvue`</small>
+
+</template>
+
+<template #uniappx>
+
+```vue
+<up-number-box
+    v-model="value1"
+    step="1"
+    @change="change"
+>
+</up-number-box>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsB/numberBox/numberBox.uvue`</small>
+
+</template>
+
+</PlatformTabs>
+
+## API
+
+The reference below is extracted from the uview-plus source, whose property names the other ports keep. For per-platform differences, compare the tabs above.
+
+### Props
+
+| Prop | Description | Type | Default |
+| --- | --- | --- | --- |
+| `name` | 步进器标识符，在change回调返回 | `String / Number` | `''` |
+| `value` | 用于双向绑定的值，初始化时设置设为默认min值(最小值) | `String / Number` | `0` |
+| `modelValue` | 用于双向绑定的值，初始化时设置设为默认min值(最小值) | `String / Number` | `—` |
+| `min` | 最小值 | `String / Number` | `1` |
+| `max` | 最大值 | `String / Number` | `Number.MAX_SAFE_INTEGER` |
+| `step` | 加减的步长，可为小数 | `String / Number` | `1` |
+| `integer` | 是否只允许输入整数 | `Boolean` | `false` |
+| `disabled` | 是否禁用，包括输入框，加减按钮 | `Boolean` | `false` |
+| `disabledInput` | 是否禁用输入框 | `Boolean` | `false` |
+| `asyncChange` | 是否开启异步变更，开启后需要手动控制输入值 | `Boolean` | `false` |
+| `inputWidth` | 输入框宽度，单位为px | `String / Number` | `35` |
+| `showMinus` | 是否显示减少按钮 | `Boolean` | `true` |
+| `showPlus` | 是否显示增加按钮 | `Boolean` | `true` |
+| `decimalLength` | 显示的小数位数 | `String / Number / null` | `null` |
+| `longPress` | 是否开启长按加减手势 | `Boolean` | `true` |
+| `color` | 输入框文字和加减按钮图标的颜色 | `String` | `''` |
+| `buttonWidth` | 按钮宽度 | `String / Number` | `30` |
+| `buttonSize` | 按钮大小，宽高等于此值，单位px，输入框高度和此值保持一致 | `String / Number` | `30` |
+| `buttonRadius` | 按钮圆角 | `String` | `'0px'` |
+| `bgColor` | 输入框和按钮的背景颜色 | `String` | `''` |
+| `disabledBgColor` | 按钮禁用背景色 | `String` | `''` |
+| `inputBgColor` | 输入框背景颜色 | `String` | `''` |
+| `cursorSpacing` | 指定光标于键盘的距离，避免键盘遮挡输入框，单位px | `String / Number` | `100` |
+| `disablePlus` | 是否禁用增加按钮 | `Boolean` | `false` |
+| `disableMinus` | 是否禁用减少按钮 | `Boolean` | `false` |
+| `iconStyle` | 加减按钮图标的样式 | `Object / String` | `''` |
+| `miniMode` | 迷你模式 | `Boolean` | `false` |
+
+### Events
+
+| Event |
+| --- |
+| `blur` |
+| `change` |
+| `focus` |
+| `input` |
+| `minus` |
+| `overlimit` |
+| `plus` |
+
+### Slots
+
+| Slot |
+| --- |
+| `input` |
+| `minus` |
+| `plus` |
+
+## Source on each platform
+
+| Platform | Component / type | Source file |
+| --- | --- | --- |
+| iOS · SwiftUI | `UPNumberBox` | `UltraUI/Sources/UltraUI/Components/UPNumberBox.swift` |
+| Android · Jetpack Compose | `UPNumberBox` | `ultra-ui/src/main/kotlin/net/lingyun/ultraui/android/components/UPNumberBox.kt` |
+| HarmonyOS Next · ArkTS / ArkUI | `UPNumberBox` | `ultra-ui/src/main/ets/components/UPNumberBox.ets` |
+| Flutter · Dart | `UPNumberBox` | `packages/ultra_ui/lib/src/widgets/up_number_box.dart` |
+| React Native · TypeScript | `UPNumberBox` | `src/components/number-box` |
+| Taro · React + TypeScript | `UPNumberBox` | `src/ultra-ui/components/up-number-box` |
+| uni-app · Vue 3 | `up-number-box` | `src/uni_modules/uview-plus/components/u-number-box` |
+| uni-app-x · UTS / UVUE | `up-number-box` | `uni_modules/uview-ultra/components/up-number-box` |
+

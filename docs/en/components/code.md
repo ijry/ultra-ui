@@ -1,0 +1,150 @@
+---
+title: Code
+description: A headless countdown that drives a "resend verification code" button.
+generated: true
+---
+
+# Code
+
+A headless countdown that drives a "resend verification code" button.
+
+<PlatformBadges component="code" show-missing />
+
+## Usage by platform
+
+Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+
+<PlatformTabs>
+
+<template #ios>
+
+```swift
+import SwiftUI
+import UltraUI
+```
+
+::: tip
+No snippet could be extracted automatically — please read the source.
+:::
+
+</template>
+
+<template #flutter>
+
+```dart
+import 'package:ultra_ui/ultra_ui.dart';
+
+UPCode(
+  controller: _basicController,
+  seconds: 20,
+  changeText: 'XS获取',
+  onChange: (text) => _setStateSafely(() => _tips = text),
+  onStart: () => _setStateSafely(() => _disabled1 = true),
+  onEnd: () => _setStateSafely(() => _disabled1 = false),
+)
+```
+
+<small>Snippet from `ultra-ui-flutter/example/lib/pages/components_b/code_page.dart`</small>
+
+</template>
+
+<template #reactnative>
+
+```tsx
+import { UPCode } from 'ultra-ui-rn';
+
+<UPCode
+  keepRunning
+  onChange={setTips2}
+  ref={code2}
+  startText="点我获取验证码"
+  uniqueKey="code-demo-text-style"
+/>
+```
+
+<small>Snippet from `ultra-ui-rn/example/pages/components/form/CodeDemo.tsx`</small>
+
+</template>
+
+<template #taro>
+
+```tsx
+import { UPCode } from '@ultra-ui'
+
+<UPCode ref={resetRef} seconds={20} />
+```
+
+<small>Snippet from `ultra-ui-taro/src/pages/components/code/index.tsx`</small>
+
+</template>
+
+<template #uniapp>
+
+```vue
+<up-code
+    ref="uCode"
+    @change="codeChange"
+    seconds="20"
+    change-text="XS获取"
+    @start="disabled1 = true"
+    @end="disabled1 = false"
+></up-code>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus/src/pages/componentsB/code/code.nvue`</small>
+
+</template>
+
+<template #uniappx>
+
+```vue
+<up-code
+    ref="uCode"
+    @change="codeChange"
+    seconds="20"
+    change-text="XS获取"
+    @start="disabled1 = true"
+    @end="disabled1 = false"
+></up-code>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsB/code/code.uvue`</small>
+
+</template>
+
+</PlatformTabs>
+
+## API
+
+The reference below is extracted from the uview-plus source, whose property names the other ports keep. For per-platform differences, compare the tabs above.
+
+### Props
+
+| Prop | Description | Type | Default |
+| --- | --- | --- | --- |
+| `seconds` | 倒计时总秒数 | `String / Number` | `60` |
+| `startText` | 尚未开始时提示 | `String` | `t("up.code.send")` |
+| `changeText` | 正在倒计时中的提示 | `String` | `t("up.code.resendAfter")` |
+| `endText` | 倒计时结束时的提示 | `String` | `t("up.code.resend")` |
+| `keepRunning` | 是否在H5刷新或各端返回再进入时继续倒计时 | `Boolean` | `false` |
+| `uniqueKey` | 为了区分多个页面，或者一个页面多个倒计时组件本地存储的继续倒计时变了 | `String` | `''` |
+
+### Events
+
+| Event |
+| --- |
+| `change` |
+| `end` |
+| `start` |
+
+## Source on each platform
+
+| Platform | Component / type | Source file |
+| --- | --- | --- |
+| iOS · SwiftUI | `UPCode` | `UltraUI/Sources/UltraUI/Components/UPCode.swift` |
+| Flutter · Dart | `UPCode` | `packages/ultra_ui/lib/src/widgets/up_code.dart` |
+| React Native · TypeScript | `UPCode` | `src/components/code` |
+| Taro · React + TypeScript | `UPCode` | `src/ultra-ui/components/up-code` |
+| uni-app · Vue 3 | `up-code` | `src/uni_modules/uview-plus/components/u-code` |
+| uni-app-x · UTS / UVUE | `up-code` | `uni_modules/uview-ultra/components/up-code` |
+

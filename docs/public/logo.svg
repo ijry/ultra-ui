@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" role="img" aria-label="ultra-ui">
+  <defs>
+    <linearGradient id="ug" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#4f5bff" />
+      <stop offset=".5" stop-color="#8b5cf6" />
+      <stop offset="1" stop-color="#22d3ee" />
+    </linearGradient>
+  </defs>
+  <rect x="1" y="1" width="30" height="30" rx="8" fill="url(#ug)" />
+  <path
+    d="M10.5 9v8.4a5.5 5.5 0 0 0 11 0V9"
+    fill="none"
+    stroke="#fff"
+    stroke-width="2.9"
+    stroke-linecap="round"
+  />
+  <circle cx="16" cy="25.2" r="1.7" fill="#fff" opacity=".9" />
+</svg>
