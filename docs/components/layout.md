@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -258,173 +258,497 @@ import { UPLayout } from '@ultra-ui'
 
 <template #uniapp>
 
-#### 基础使用
+#### 基本使用
+
+通过`col`组件的`span`设置需要分栏的比例
 
 ```vue
-<up-row :customStyle="{marginBottom: '10px'}">
-    <up-col span="6">
-        <view class="demo-layout bg-purple-light"></view>
-    </up-col>
-    <up-col span="6">
-        <view class="demo-layout bg-purple"></view>
-    </up-col>
-</up-row>
+<template>
+    <view class="u-page">
+        <view class="u-demo-block">
+            <text class="u-demo-block__title">基础使用</text>
+            <view class="u-demo-block__content">
+                <up-row customStyle="margin-bottom: 10px">
+                    <up-col span="6">
+                        <view class="demo-layout bg-purple-light"></view>
+                    </up-col>
+                    <up-col span="6">
+                        <view class="demo-layout bg-purple"></view>
+                    </up-col>
+                </up-row>
+                <up-row customStyle="margin-bottom: 10px">
+                    <up-col span="4">
+                        <view class="demo-layout bg-purple"></view>
+                    </up-col>
+                    <up-col span="4">
+                        <view class="demo-layout bg-purple-light"></view>
+                    </up-col>
+                    <up-col span="4">
+                        <view class="demo-layout bg-purple-dark"></view>
+                    </up-col>
+                </up-row>
+                <up-row justify="space-between">
+                    <up-col span="3">
+                        <view class="demo-layout bg-purple"></view>
+                    </up-col>
+                    <up-col span="3">
+                        <view class="demo-layout bg-purple-light"></view>
+                    </up-col>
+                    <up-col span="3">
+                        <view class="demo-layout bg-purple"></view>
+                    </up-col>
+                    <up-col span="3">
+                        <view class="demo-layout bg-purple-light"></view>
+                    </up-col>
+                </up-row>
+            </view>
+        </view>
+    </view>
+</template>
+
+<style lang="scss">
+    .wrap {
+        padding: 12px;
+    }
+
+    .demo-layout {
+        height: 25px;
+        border-radius: 4px;
+    }
+
+    .bg-purple {
+        background: #CED7E1;
+    }
+
+    .bg-purple-light {
+        background: #e5e9f2;
+    }
+
+    .bg-purple-dark {
+        background: #99a9bf;
+    }
+</style>
 ```
 
 #### 分栏间隔
 
+通过设置`row`组件的`gutter`参数，来指定每一栏之间的间隔(最终表现为左边内边距各为gutter/2)，默认间隔为0
+
 ```vue
-<up-row justify="space-between" gutter="10">
-    <up-col span="3">
-        <view class="demo-layout bg-purple"></view>
-    </up-col>
-    <up-col span="3">
-        <view class="demo-layout bg-purple-light"></view>
-    </up-col>
-    <up-col span="3">
-        <view class="demo-layout bg-purple"></view>
-    </up-col>
-    <up-col span="3">
-        <view class="demo-layout bg-purple-light"></view>
-    </up-col>
-</up-row>
+<view class="u-demo-block__content">
+    <up-row
+            justify="space-between"
+            gutter="10"
+    >
+        <up-col span="3">
+            <view class="demo-layout bg-purple"></view>
+        </up-col>
+        <up-col span="3">
+            <view class="demo-layout bg-purple-light"></view>
+        </up-col>
+        <up-col span="3">
+            <view class="demo-layout bg-purple"></view>
+        </up-col>
+        <up-col span="3">
+            <view class="demo-layout bg-purple-light"></view>
+        </up-col>
+    </up-row>
+</view>
+
+<style lang="scss">
+    .wrap {
+        padding: 12px;
+    }
+
+    .demo-layout {
+        height: 25px;
+        border-radius: 4px;
+    }
+
+    .bg-purple {
+        background: #CED7E1;
+    }
+
+    .bg-purple-light {
+        background: #e5e9f2;
+    }
+
+    .bg-purple-dark {
+        background: #99a9bf;
+    }
+</style>
 ```
 
 #### 混合布局
 
+通过指定`col`组件的`span`属性，指定不同的值，达到不同的比例
+
 ```vue
-<up-row justify="space-between" gutter="10">
-    <up-col span="2">
-        <view class="demo-layout bg-purple-light"></view>
-    </up-col>
-    <up-col span="4">
-        <view class="demo-layout bg-purple"></view>
-    </up-col>
-    <up-col span="6">
-        <view class="demo-layout bg-purple-dark"></view>
-    </up-col>
-</up-row>
+<view class="u-demo-block__content">
+    <up-row
+        justify="space-between"
+        gutter="10"
+    >
+        <up-col span="2">
+            <view class="demo-layout bg-purple-light"></view>
+        </up-col>
+        <up-col span="4">
+            <view class="demo-layout bg-purple"></view>
+        </up-col>
+        <up-col span="6">
+            <view class="demo-layout bg-purple-dark"></view>
+        </up-col>
+    </up-row>
+</view>
+
+<style lang="scss">
+    .wrap {
+        padding: 12px;
+    }
+
+    .demo-layout {
+        height: 25px;
+        border-radius: 4px;
+    }
+
+    .bg-purple {
+        background: #CED7E1;
+    }
+
+    .bg-purple-light {
+        background: #e5e9f2;
+    }
+
+    .bg-purple-dark {
+        background: #99a9bf;
+    }
+</style>
 ```
 
 #### 分栏偏移
 
+通过指定`col`组件的`offset`属性可以指定分栏偏移的栏数。
+
 ```vue
-<up-row
-    justify="space-between"
-    :customStyle="{marginBottom: '10px'}"
->
-    <up-col span="3" offset="3">
-        <view class="demo-layout bg-purple-light"></view>
-    </up-col>
-    <up-col span="3" offset="3">
-        <view class="demo-layout bg-purple"></view>
-    </up-col>
-</up-row>
+<view class="u-demo-block__content">
+    <up-row
+            justify="space-between"
+            customStyle="margin-bottom: 10px"
+    >
+        <up-col
+                span="3"
+                offset="3"
+        >
+            <view class="demo-layout bg-purple-light"></view>
+        </up-col>
+        <up-col
+                span="3"
+                offset="3"
+        >
+            <view class="demo-layout bg-purple"></view>
+        </up-col>
+    </up-row>
+    <up-row>
+        <up-col span="3">
+            <view class="demo-layout bg-purple-light"></view>
+        </up-col>
+        <up-col
+                span="3"
+                offset="3"
+        >
+            <view class="demo-layout bg-purple"></view>
+        </up-col>
+    </up-row>
+</view>
 ```
 
 #### 对齐方式
 
+通过`row`组件的`justify`来对分栏进行灵活的对齐，
+可选值为`start`(或`flex-start`)、`end`(或`flex-end`)、`center`、`around`(或`space-around`)、`between`(或`space-between`)，
+其最终的表现类似于css的`justify-content`属性。
+
+**注意**：由于持微信小程序编译后的特殊结构，此方式不支持微信小程序。
+
 ```vue
-<up-row
-    justify="space-between"
-    :customStyle="{marginBottom: '10px'}"
->
-    <up-col span="3">
-        <view class="demo-layout bg-purple-light"></view>
-    </up-col>
-    <up-col span="3">
-        <view class="demo-layout bg-purple"></view>
-    </up-col>
-</up-row>
+<view class="u-demo-block__content">
+    <up-row
+            justify="space-between"
+            customStyle="margin-bottom: 10px"
+    >
+        <up-col
+                span="3"
+        >
+            <view class="demo-layout bg-purple-light"></view>
+        </up-col>
+        <up-col
+                span="3"
+        >
+            <view class="demo-layout bg-purple"></view>
+        </up-col>
+    </up-row>
+    <up-row>
+        <up-col span="3">
+            <view class="demo-layout bg-purple-light"></view>
+        </up-col>
+        <up-col
+                span="3"
+        >
+            <view class="demo-layout bg-purple"></view>
+        </up-col>
+    </up-row>
+</view>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsC/layout/layout.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/layout.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 基础使用
+#### 基本使用
+
+通过`col`组件的`span`设置需要分栏的比例
 
 ```vue
-<up-row :customStyle="{marginBottom: '10px'}">
-    <up-col span="6">
-        <view class="demo-layout bg-purple-light"></view>
-    </up-col>
-    <up-col span="6">
-        <view class="demo-layout bg-purple"></view>
-    </up-col>
-</up-row>
+<template>
+    <view class="u-page">
+        <view class="u-demo-block">
+            <text class="u-demo-block__title">基础使用</text>
+            <view class="u-demo-block__content">
+                <up-row customStyle="margin-bottom: 10px">
+                    <up-col span="6">
+                        <view class="demo-layout bg-purple-light"></view>
+                    </up-col>
+                    <up-col span="6">
+                        <view class="demo-layout bg-purple"></view>
+                    </up-col>
+                </up-row>
+                <up-row customStyle="margin-bottom: 10px">
+                    <up-col span="4">
+                        <view class="demo-layout bg-purple"></view>
+                    </up-col>
+                    <up-col span="4">
+                        <view class="demo-layout bg-purple-light"></view>
+                    </up-col>
+                    <up-col span="4">
+                        <view class="demo-layout bg-purple-dark"></view>
+                    </up-col>
+                </up-row>
+                <up-row justify="space-between">
+                    <up-col span="3">
+                        <view class="demo-layout bg-purple"></view>
+                    </up-col>
+                    <up-col span="3">
+                        <view class="demo-layout bg-purple-light"></view>
+                    </up-col>
+                    <up-col span="3">
+                        <view class="demo-layout bg-purple"></view>
+                    </up-col>
+                    <up-col span="3">
+                        <view class="demo-layout bg-purple-light"></view>
+                    </up-col>
+                </up-row>
+            </view>
+        </view>
+    </view>
+</template>
+
+<style lang="scss">
+    .wrap {
+        padding: 12px;
+    }
+
+    .demo-layout {
+        height: 25px;
+        border-radius: 4px;
+    }
+
+    .bg-purple {
+        background: #CED7E1;
+    }
+
+    .bg-purple-light {
+        background: #e5e9f2;
+    }
+
+    .bg-purple-dark {
+        background: #99a9bf;
+    }
+</style>
 ```
 
 #### 分栏间隔
 
+通过设置`row`组件的`gutter`参数，来指定每一栏之间的间隔(最终表现为左边内边距各为gutter/2)，默认间隔为0
+
 ```vue
-<up-row justify="space-between" gutter="10">
-    <up-col span="3">
-        <view class="demo-layout bg-purple"></view>
-    </up-col>
-    <up-col span="3">
-        <view class="demo-layout bg-purple-light"></view>
-    </up-col>
-    <up-col span="3">
-        <view class="demo-layout bg-purple"></view>
-    </up-col>
-    <up-col span="3">
-        <view class="demo-layout bg-purple-light"></view>
-    </up-col>
-</up-row>
+<view class="u-demo-block__content">
+    <up-row
+            justify="space-between"
+            gutter="10"
+    >
+        <up-col span="3">
+            <view class="demo-layout bg-purple"></view>
+        </up-col>
+        <up-col span="3">
+            <view class="demo-layout bg-purple-light"></view>
+        </up-col>
+        <up-col span="3">
+            <view class="demo-layout bg-purple"></view>
+        </up-col>
+        <up-col span="3">
+            <view class="demo-layout bg-purple-light"></view>
+        </up-col>
+    </up-row>
+</view>
+
+<style lang="scss">
+    .wrap {
+        padding: 12px;
+    }
+
+    .demo-layout {
+        height: 25px;
+        border-radius: 4px;
+    }
+
+    .bg-purple {
+        background: #CED7E1;
+    }
+
+    .bg-purple-light {
+        background: #e5e9f2;
+    }
+
+    .bg-purple-dark {
+        background: #99a9bf;
+    }
+</style>
 ```
 
 #### 混合布局
 
+通过指定`col`组件的`span`属性，指定不同的值，达到不同的比例
+
 ```vue
-<up-row justify="space-between" gutter="10">
-    <up-col span="2">
-        <view class="demo-layout bg-purple-light"></view>
-    </up-col>
-    <up-col span="4">
-        <view class="demo-layout bg-purple"></view>
-    </up-col>
-    <up-col span="6">
-        <view class="demo-layout bg-purple-dark"></view>
-    </up-col>
-</up-row>
+<view class="u-demo-block__content">
+    <up-row
+        justify="space-between"
+        gutter="10"
+    >
+        <up-col span="2">
+            <view class="demo-layout bg-purple-light"></view>
+        </up-col>
+        <up-col span="4">
+            <view class="demo-layout bg-purple"></view>
+        </up-col>
+        <up-col span="6">
+            <view class="demo-layout bg-purple-dark"></view>
+        </up-col>
+    </up-row>
+</view>
+
+<style lang="scss">
+    .wrap {
+        padding: 12px;
+    }
+
+    .demo-layout {
+        height: 25px;
+        border-radius: 4px;
+    }
+
+    .bg-purple {
+        background: #CED7E1;
+    }
+
+    .bg-purple-light {
+        background: #e5e9f2;
+    }
+
+    .bg-purple-dark {
+        background: #99a9bf;
+    }
+</style>
 ```
 
 #### 分栏偏移
 
+通过指定`col`组件的`offset`属性可以指定分栏偏移的栏数。
+
 ```vue
-<up-row
-    justify="space-between"
-    :customStyle="{marginBottom: '10px'}"
->
-    <up-col span="3" offset="3">
-        <view class="demo-layout bg-purple-light"></view>
-    </up-col>
-    <up-col span="3" offset="3">
-        <view class="demo-layout bg-purple"></view>
-    </up-col>
-</up-row>
+<view class="u-demo-block__content">
+    <up-row
+            justify="space-between"
+            customStyle="margin-bottom: 10px"
+    >
+        <up-col
+                span="3"
+                offset="3"
+        >
+            <view class="demo-layout bg-purple-light"></view>
+        </up-col>
+        <up-col
+                span="3"
+                offset="3"
+        >
+            <view class="demo-layout bg-purple"></view>
+        </up-col>
+    </up-row>
+    <up-row>
+        <up-col span="3">
+            <view class="demo-layout bg-purple-light"></view>
+        </up-col>
+        <up-col
+                span="3"
+                offset="3"
+        >
+            <view class="demo-layout bg-purple"></view>
+        </up-col>
+    </up-row>
+</view>
 ```
 
 #### 对齐方式
 
+通过`row`组件的`justify`来对分栏进行灵活的对齐，
+可选值为`start`(或`flex-start`)、`end`(或`flex-end`)、`center`、`around`(或`space-around`)、`between`(或`space-between`)，
+其最终的表现类似于css的`justify-content`属性。
+
+**注意**：由于持微信小程序编译后的特殊结构，此方式不支持微信小程序。
+
 ```vue
-<up-row
-    justify="space-between"
-    :customStyle="{marginBottom: '10px'}"
->
-    <up-col span="3">
-        <view class="demo-layout bg-purple-light"></view>
-    </up-col>
-    <up-col span="3">
-        <view class="demo-layout bg-purple"></view>
-    </up-col>
-</up-row>
+<view class="u-demo-block__content">
+    <up-row
+            justify="space-between"
+            customStyle="margin-bottom: 10px"
+    >
+        <up-col
+                span="3"
+        >
+            <view class="demo-layout bg-purple-light"></view>
+        </up-col>
+        <up-col
+                span="3"
+        >
+            <view class="demo-layout bg-purple"></view>
+        </up-col>
+    </up-row>
+    <up-row>
+        <up-col span="3">
+            <view class="demo-layout bg-purple-light"></view>
+        </up-col>
+        <up-col
+                span="3"
+        >
+            <view class="demo-layout bg-purple"></view>
+        </up-col>
+    </up-row>
+</view>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsC/layout/layout.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/layout.md`</small>
 
 </template>
 

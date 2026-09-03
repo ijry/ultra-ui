@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -286,169 +286,175 @@ textPosition / textAlign
 
 <template #uniapp>
 
-```vue
-<up-barcode 
-    value="1234567890" 
-    format="CODE128"
-    :height="70"
-    :font-size="16">
-</up-barcode>
-```
+#### 设置条形码尺寸
+
+通过`width`和`height`设置条形码尺寸。
 
 ```vue
-<up-barcode 
-    value="5901234123457" 
-    format="EAN13"
-    :height="70"
-    :font-size="16">
-</up-barcode>
+<template>
+  <view>
+    <u-barcode 
+      value="1234567890" 
+      :width="300"
+      :height="100"
+    />
+  </view>
+</template>
+
+<script>
+  export default {
+    
+  }
+</script>
 ```
+
+#### 设置条形码颜色
+
+通过`lineColor`设置条形码线条颜色，通过[background]设置背景色。
 
 ```vue
-<up-barcode 
-    value="96385074" 
-    format="EAN8"
-    :height="70"
-    :font-size="11">
-</up-barcode>
+<template>
+  <view>
+    <u-barcode 
+      value="1234567890" 
+      line-color="#ff0000"
+      background="#f5f5f5"
+    />
+  </view>
+</template>
+
+<script>
+  export default {
+    
+  }
+</script>
 ```
+
+#### 显示文本
+
+通过`displayValue`控制是否显示文本，通过`text`设置文本内容。
 
 ```vue
-<up-barcode 
-    value="123456789012" 
-    format="UPCA"
-    :height="70"
-    :font-size="16">
-</up-barcode>
+<template>
+  <view>
+    <u-barcode 
+      value="1234567890" 
+      :display-value="true"
+      text="商品条码"
+    />
+  </view>
+</template>
+
+<script>
+  export default {
+    
+  }
+</script>
 ```
+
+#### 禁用Canvas渲染
+
+通过`useCanvas`控制是否使用Canvas渲染，默认为true。
 
 ```vue
-<up-barcode 
-    value="CODE39" 
-    format="CODE39"
-    :height="70"
-    :font-size="16">
-</up-barcode>
+<template>
+  <view>
+    <u-barcode 
+      value="1234567890" 
+      :use-canvas="false"
+    />
+  </view>
+</template>
+
+<script>
+  export default {
+    
+  }
+</script>
 ```
 
-```vue
-<up-barcode 
-    value="12345" 
-    format="EAN5"
-    :width="100"
-    :height="60"
-    :font-size="14">
-</up-barcode>
-```
-
-```vue
-<up-barcode 
-    value="12" 
-    format="EAN2"
-    :width="100"
-    :height="60"
-    :font-size="14">
-</up-barcode>
-```
-
-```vue
-<up-barcode 
-    value="CUSTOM123" 
-    format="CODE128"
-    :height="70"
-    :width="200"
-    :font-size="14"
-    line-color="#FF0000"
-    background="#F0F0F0"
-    text-position="top">
-</up-barcode>
-```
-
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/barcode/barcode.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/barcode.md`</small>
 
 </template>
 
 <template #uniappx>
 
-```vue
-<up-barcode 
-    value="1234567890" 
-    format="CODE128"
-    :height="70"
-    :font-size="16">
-</up-barcode>
-```
+#### 设置条形码尺寸
+
+通过`width`和`height`设置条形码尺寸。
 
 ```vue
-<up-barcode 
-    value="5901234123457" 
-    format="EAN13"
-    :height="70"
-    :font-size="16">
-</up-barcode>
+<template>
+  <view>
+    <up-barcode 
+      value="1234567890" 
+      :width="300"
+      :height="100"
+    />
+  </view>
+</template>
+
+<script setup>
+</script>
 ```
+
+#### 设置条形码颜色
+
+通过`lineColor`设置条形码线条颜色，通过[background]设置背景色。
 
 ```vue
-<up-barcode 
-    value="96385074" 
-    format="EAN8"
-    :height="70"
-    :font-size="11">
-</up-barcode>
+<template>
+  <view>
+    <up-barcode 
+      value="1234567890" 
+      line-color="#ff0000"
+      background="#f5f5f5"
+    />
+  </view>
+</template>
+
+<script setup>
+</script>
 ```
+
+#### 显示文本
+
+通过`displayValue`控制是否显示文本，通过`text`设置文本内容。
 
 ```vue
-<up-barcode 
-    value="123456789012" 
-    format="UPCA"
-    :height="70"
-    :font-size="16">
-</up-barcode>
+<template>
+  <view>
+    <up-barcode 
+      value="1234567890" 
+      :display-value="true"
+      text="商品条码"
+    />
+  </view>
+</template>
+
+<script setup>
+</script>
 ```
+
+#### 禁用Canvas渲染
+
+通过`useCanvas`控制是否使用Canvas渲染，默认为true。
 
 ```vue
-<up-barcode 
-    value="CODE39" 
-    format="CODE39"
-    :height="70"
-    :font-size="16">
-</up-barcode>
+<template>
+  <view>
+    <up-barcode 
+      value="1234567890" 
+      :use-canvas="false"
+    />
+  </view>
+</template>
+
+<script setup>
+</script>
 ```
 
-```vue
-<up-barcode 
-    value="12345" 
-    format="EAN5"
-    :width="100"
-    :height="60"
-    :font-size="14">
-</up-barcode>
-```
-
-```vue
-<up-barcode 
-    value="12" 
-    format="EAN2"
-    :width="100"
-    :height="60"
-    :font-size="14">
-</up-barcode>
-```
-
-```vue
-<up-barcode 
-    value="CUSTOM123" 
-    format="CODE128"
-    :height="70"
-    :width="200"
-    :font-size="14"
-    line-color="#FF0000"
-    background="#F0F0F0"
-    text-position="top">
-</up-barcode>
-```
-
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/barcode/barcode.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/barcode.md`</small>
 
 </template>
 

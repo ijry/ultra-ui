@@ -12,7 +12,7 @@ A carousel for images or custom content, with several indicator styles.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -295,219 +295,635 @@ showTitle 需要 list 元素带 title 字段
 
 <template #uniapp>
 
-#### 基础功能
+#### 基本使用
 
 ```vue
-<up-swiper
-    :list="list1"
-    @change="change"
-    @click="click"
-></up-swiper>
+<template>
+    <up-swiper
+            :list="list1"
+            @change="change"
+            @click="click"
+    ></up-swiper>
+</template>
 ```
 
-#### 纵向滑动
-
 ```vue
-<up-swiper
-    :list="list1"
-    vertical
-    indicator
-    indicatorMode="dot"
-    :autoplay="false"
-    height="200"
-></up-swiper>
+<script setup>  
+import { reactive } from 'vue';  
+  
+// 使用 reactive 创建响应式数组  
+const list1 = reactive([  
+    'https://cdn.uviewui.com/uview/swiper/swiper1.png',  
+    'https://cdn.uviewui.com/uview/swiper/swiper2.png',  
+    'https://cdn.uviewui.com/uview/swiper/swiper3.png',  
+]);  
+</script>
 ```
 
 #### 带标题
 
 ```vue
-<up-swiper
-    :list="list2"
-    keyName="image"
-    showTitle
-    :autoplay="false"
-    circular
-></up-swiper>
+<template>
+    <up-swiper
+            :list="list2"
+            keyName="image"
+            showTitle
+            :autoplay="false"
+            circular
+    ></up-swiper>
+</template>
+```
+
+```vue
+<script setup>  
+import { reactive } from 'vue';  
+  
+// 使用 reactive 创建响应式对象数组  
+const list2 = reactive([  
+    {  
+        image: 'https://cdn.uviewui.com/uview/swiper/swiper2.png',  
+        title: '昨夜星辰昨夜风，画楼西畔桂堂东',  
+    },  
+    {  
+        image: 'https://cdn.uviewui.com/uview/swiper/swiper1.png',  
+        title: '身无彩凤双飞翼，心有灵犀一点通',  
+    },  
+    {  
+        image: 'https://cdn.uviewui.com/uview/swiper/swiper3.png',  
+        title: '谁念西风独自凉，萧萧黄叶闭疏窗，沉思往事立残阳',  
+    },  
+]);  
+</script>
 ```
 
 #### 带指示器
 
 ```vue
-<up-swiper
-    :list="list3"
-    indicator
-    indicatorMode="line"
-    circular
-></up-swiper>
+<template>
+    <up-swiper
+            :list="list3"
+            indicator
+            indicatorMode="line"
+            circular
+    ></up-swiper>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 使用 ref 创建响应式引用  
+const list3 = ref([  
+    'https://cdn.uviewui.com/uview/swiper/swiper3.png',  
+    'https://cdn.uviewui.com/uview/swiper/swiper2.png',  
+    'https://cdn.uviewui.com/uview/swiper/swiper1.png',  
+]);  
+</script>
 ```
 
 #### 加载中
 
 ```vue
-<up-swiper
-    :list="list3"
-    loading
-></up-swiper>
+<template>
+    <up-swiper
+            :list="list3"
+            loading
+    ></up-swiper>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 使用 ref 创建响应式引用  
+const list3 = ref([  
+    'https://cdn.uviewui.com/uview/swiper/swiper3.png',  
+    'https://cdn.uviewui.com/uview/swiper/swiper2.png',  
+    'https://cdn.uviewui.com/uview/swiper/swiper1.png',  
+]);  
+</script>
+```
+
+#### 插槽自定义内容
+
+```vue
+<template>
+    <up-swiper
+            :list="list1"
+            @change="change"
+            @click="click"
+    >
+      <template v-slot:default="{item}">
+        <image :src=item></image>
+      </template>
+    </up-swiper>
+</template>
+```
+
+```vue
+<script setup>  
+import { reactive } from 'vue';  
+  
+// 使用 reactive 创建响应式数组  
+const list1 = reactive([  
+    'https://cdn.uviewui.com/uview/swiper/swiper1.png',  
+    'https://cdn.uviewui.com/uview/swiper/swiper2.png',  
+    'https://cdn.uviewui.com/uview/swiper/swiper3.png',  
+]);  
+</script>
 ```
 
 #### 嵌入视频
 
 ```vue
-<up-swiper
-    :list="list4"
-    keyName="url"
-    :autoplay="false"
-></up-swiper>
+<template>
+    <up-swiper
+            :list="list4"
+            keyName="url"
+            :autoplay="false"
+    ></up-swiper>
+</template>
+```
+
+```vue
+<script setup>  
+import { reactive } from 'vue';  
+  
+// 使用 reactive 创建响应式对象数组  
+const list4 = reactive([  
+    {  
+        url: 'https://cdn.uviewui.com/uview/resources/video.mp4',  
+        title: '昨夜星辰昨夜风，画楼西畔桂堂东',  
+        poster: 'https://cdn.uviewui.com/uview/swiper/swiper1.png'  
+    },  
+    {  
+        url: 'https://cdn.uviewui.com/uview/swiper/swiper2.png',  
+        title: '身无彩凤双飞翼，心有灵犀一点通',  
+        // 注意：这里看起来有个错误，url 应该是一个视频或图片的URL，但这里却给了一个图片URL  
+        // 如果这是一个视频对象，你需要确保 url 是正确的视频文件URL  
+    },  
+    {  
+        url: 'https://cdn.uviewui.com/uview/swiper/swiper3.png',  
+        title: '谁念西风独自凉，萧萧黄叶闭疏窗，沉思往事立残阳',  
+        // 同样，这里看起来 url 应该是一个视频或图片的URL，但给的是一个图片URL  
+        // 需要根据实际需求修正这个值  
+    },  
+]);  
+</script>
+```
+
+#### 指定类型
+
+```vue
+<template>
+    <up-swiper
+            :list="list4"
+            keyName="url"
+            :autoplay="false"
+    ></up-swiper>
+</template>
+```
+
+```vue
+<script setup>  
+import { reactive } from 'vue';  
+  
+const list4 = reactive([  
+    {  
+        url: 'https://cdn.uviewui.com/uview/resources/video.mp4',  
+        title: '昨夜星辰昨夜风，画楼西畔桂堂东',  
+        poster: 'https://cdn.uviewui.com/uview/swiper/swiper1.png',  
+        type: 'video'  
+    },  
+    {  
+        url: 'https://cdn.uviewui.com/uview/swiper/swiper2.png',  
+        title: '身无彩凤双飞翼，心有灵犀一点通',  
+        type: 'image'  
+    },  
+    {  
+        url: 'https://cdn.uviewui.com/uview/swiper/swiper3.png',  
+        title: '谁念西风独自凉，萧萧黄叶闭疏窗，沉思往事立残阳',  
+        // 注意：这里缺少 type 属性，你可能需要添加它以便在模板中区分视频和图片  
+        // 例如：type: 'image'  
+    }  
+]);  
+</script>
 ```
 
 #### 自定义指示器
 
 ```vue
-<up-swiper
-    :list="list5"
-    @change="(e: UniSwiperChangeEventDetail) => {current = e.current}"
-    :autoplay="false"
->
-    <template #indicator>
-        <view
-            class="indicator"
+<template>
+    <view class="u-demo-block">
+        <text class="u-demo-block__title">自定义指示器</text>
+        <up-swiper
+                :list="list5"
+                @change="e => current = e.current"
+                :autoplay="false"
         >
-            <view
-                class="indicator__dot"
-                v-for="(item, index) in list5"
-                :key="index"
-                :class="[index === current ? 'indicator__dot--active' : '']"
-            >
-            </view>
-        </view>
-    </template>
-</up-swiper>
+            <template #indicator>
+                <view
+                    class="indicator"
+                >
+                    <view
+                            class="indicator__dot"
+                            v-for="(item, index) in list5"
+                            :key="index"
+                            :class="[index === current && 'indicator__dot--active']"
+                    >
+                    </view>
+                </view>
+            </template>
+        </up-swiper>
+        <up-gap
+                bgColor="transparent"
+                height="15"
+        ></up-gap>
+        <up-swiper
+                :list="list6"
+                @change="e => currentNum = e.current"
+                :autoplay="false"
+                indicatorStyle="right: 20px"
+        >
+            <template #indicator>
+                <view
+                    class="indicator-num"
+                >
+                    <text class="indicator-num__text">{{ currentNum + 1 }}/{{ list6.length }}</text>
+                </view>
+            </template>
+        </up-swiper>
+    </view>
+</template>
 ```
-
-#### 卡片式
 
 ```vue
-<up-swiper
-    :list="list3"
-    previousMargin="30"
-    nextMargin="30"
-    circular
-    :autoplay="false"
-    radius="5"
-    bgColor="#ffffff"
-></up-swiper>
+<script setup>  
+import { reactive } from 'vue';  
+  
+const list5 = reactive([  
+    'https://cdn.uviewui.com/uview/swiper/swiper3.png',  
+    'https://cdn.uviewui.com/uview/swiper/swiper2.png',  
+    'https://cdn.uviewui.com/uview/swiper/swiper1.png',  
+]);  
+  
+const list6 = reactive([  
+    'https://cdn.uviewui.com/uview/swiper/swiper2.png',  
+    'https://cdn.uviewui.com/uview/swiper/swiper3.png',  
+    'https://cdn.uviewui.com/uview/swiper/swiper1.png',  
+]);  
+</script>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/swiper/swiper.uvue`</small>
+```vue
+<style lang="scss">
+    .indicator {
+        @include flex(row);
+        justify-content: center;
+
+        &__dot {
+             height: 6px;
+             width: 6px;
+             border-radius: 100px;
+             background-color: rgba(255, 255, 255, 0.35);
+             margin: 0 5px;
+             transition: background-color 0.3s;
+    
+            &--active {
+                 background-color: #ffffff;
+             }
+        }
+    }
+
+    .indicator-num {
+        padding: 2px 0;
+        background-color: rgba(0, 0, 0, 0.35);
+        border-radius: 100px;
+        width: 35px;
+        @include flex;
+        justify-content: center;
+
+        &__text {
+             color: #FFFFFF;
+             font-size: 12px;
+         }
+    }
+</style>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/swiper.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 基础功能
+#### 基本使用
 
 ```vue
-<up-swiper
-    :list="list1"
-    @change="change"
-    @click="click"
-></up-swiper>
+<template>
+    <up-swiper
+            :list="list1"
+            @change="change"
+            @click="click"
+    ></up-swiper>
+</template>
+```
+
+```vue
+<script setup>  
+import { reactive } from 'vue';  
+  
+// 使用 reactive 创建响应式数组  
+const list1 = reactive([  
+    'https://cdn.uviewui.com/uview/swiper/swiper1.png',  
+    'https://cdn.uviewui.com/uview/swiper/swiper2.png',  
+    'https://cdn.uviewui.com/uview/swiper/swiper3.png',  
+]);  
+</script>
 ```
 
 #### 纵向滑动
 
 ```vue
-<up-swiper
-    :list="list1"
-    vertical
-    indicator
-    indicatorMode="dot"
-    :autoplay="false"
-    height="200"
-></up-swiper>
+<template>
+    <up-swiper
+            :list="list1"
+            vertical
+            indicator
+            indicatorMode="dot"
+            :autoplay="false"
+            height="200"
+    ></up-swiper>
+</template>
 ```
 
 #### 带标题
 
 ```vue
-<up-swiper
-    :list="list2"
-    keyName="image"
-    showTitle
-    :autoplay="false"
-    circular
-></up-swiper>
+<template>
+    <up-swiper
+            :list="list2"
+            keyName="image"
+            showTitle
+            :autoplay="false"
+            circular
+    ></up-swiper>
+</template>
+```
+
+```vue
+<script setup>  
+import { reactive } from 'vue';  
+  
+// 使用 reactive 创建响应式对象数组  
+const list2 = reactive([  
+    {  
+        image: 'https://cdn.uviewui.com/uview/swiper/swiper2.png',  
+        title: '昨夜星辰昨夜风，画楼西畔桂堂东',  
+    },  
+    {  
+        image: 'https://cdn.uviewui.com/uview/swiper/swiper1.png',  
+        title: '身无彩凤双飞翼，心有灵犀一点通',  
+    },  
+    {  
+        image: 'https://cdn.uviewui.com/uview/swiper/swiper3.png',  
+        title: '谁念西风独自凉，萧萧黄叶闭疏窗，沉思往事立残阳',  
+    },  
+]);  
+</script>
 ```
 
 #### 带指示器
 
 ```vue
-<up-swiper
-    :list="list3"
-    indicator
-    indicatorMode="line"
-    circular
-></up-swiper>
+<template>
+    <up-swiper
+            :list="list3"
+            indicator
+            indicatorMode="line"
+            circular
+    ></up-swiper>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 使用 ref 创建响应式引用  
+const list3 = ref([  
+    'https://cdn.uviewui.com/uview/swiper/swiper3.png',  
+    'https://cdn.uviewui.com/uview/swiper/swiper2.png',  
+    'https://cdn.uviewui.com/uview/swiper/swiper1.png',  
+]);  
+</script>
 ```
 
 #### 加载中
 
 ```vue
-<up-swiper
-    :list="list3"
-    loading
-></up-swiper>
+<template>
+    <up-swiper
+            :list="list3"
+            loading
+    ></up-swiper>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 使用 ref 创建响应式引用  
+const list3 = ref([  
+    'https://cdn.uviewui.com/uview/swiper/swiper3.png',  
+    'https://cdn.uviewui.com/uview/swiper/swiper2.png',  
+    'https://cdn.uviewui.com/uview/swiper/swiper1.png',  
+]);  
+</script>
 ```
 
 #### 嵌入视频
 
 ```vue
-<up-swiper
-    :list="list4"
-    keyName="url"
-    :autoplay="false"
-></up-swiper>
+<template>
+    <up-swiper
+            :list="list4"
+            keyName="url"
+            :autoplay="false"
+    ></up-swiper>
+</template>
+```
+
+```vue
+<script setup>  
+import { reactive } from 'vue';  
+  
+// 使用 reactive 创建响应式对象数组  
+const list4 = reactive([  
+    {  
+        url: 'https://cdn.uviewui.com/uview/resources/video.mp4',  
+        title: '昨夜星辰昨夜风，画楼西畔桂堂东',  
+        poster: 'https://cdn.uviewui.com/uview/swiper/swiper1.png'  
+    },  
+    {  
+        url: 'https://cdn.uviewui.com/uview/swiper/swiper2.png',  
+        title: '身无彩凤双飞翼，心有灵犀一点通',  
+        // 注意：这里看起来有个错误，url 应该是一个视频或图片的URL，但这里却给了一个图片URL  
+        // 如果这是一个视频对象，你需要确保 url 是正确的视频文件URL  
+    },  
+    {  
+        url: 'https://cdn.uviewui.com/uview/swiper/swiper3.png',  
+        title: '谁念西风独自凉，萧萧黄叶闭疏窗，沉思往事立残阳',  
+        // 同样，这里看起来 url 应该是一个视频或图片的URL，但给的是一个图片URL  
+        // 需要根据实际需求修正这个值  
+    },  
+]);  
+</script>
+```
+
+#### 指定类型
+
+```vue
+<template>
+    <up-swiper
+            :list="list4"
+            keyName="url"
+            :autoplay="false"
+    ></up-swiper>
+</template>
+```
+
+```vue
+<script setup>  
+import { reactive } from 'vue';  
+  
+const list4 = reactive([  
+    {  
+        url: 'https://cdn.uviewui.com/uview/resources/video.mp4',  
+        title: '昨夜星辰昨夜风，画楼西畔桂堂东',  
+        poster: 'https://cdn.uviewui.com/uview/swiper/swiper1.png',  
+        type: 'video'  
+    },  
+    {  
+        url: 'https://cdn.uviewui.com/uview/swiper/swiper2.png',  
+        title: '身无彩凤双飞翼，心有灵犀一点通',  
+        type: 'image'  
+    },  
+    {  
+        url: 'https://cdn.uviewui.com/uview/swiper/swiper3.png',  
+        title: '谁念西风独自凉，萧萧黄叶闭疏窗，沉思往事立残阳',  
+        // 注意：这里缺少 type 属性，你可能需要添加它以便在模板中区分视频和图片  
+        // 例如：type: 'image'  
+    }  
+]);  
+</script>
 ```
 
 #### 自定义指示器
 
 ```vue
-<up-swiper
-    :list="list5"
-    @change="(e: UniSwiperChangeEventDetail) => {current = e.current}"
-    :autoplay="false"
->
-    <template #indicator>
-        <view
-            class="indicator"
+<template>
+    <view class="u-demo-block">
+        <text class="u-demo-block__title">自定义指示器</text>
+        <up-swiper
+                :list="list5"
+                @change="e => current = e.current"
+                :autoplay="false"
         >
-            <view
-                class="indicator__dot"
-                v-for="(item, index) in list5"
-                :key="index"
-                :class="[index === current ? 'indicator__dot--active' : '']"
-            >
-            </view>
-        </view>
-    </template>
-</up-swiper>
+            <template #indicator>
+                <view
+                    class="indicator"
+                >
+                    <view
+                            class="indicator__dot"
+                            v-for="(item, index) in list5"
+                            :key="index"
+                            :class="[index === current && 'indicator__dot--active']"
+                    >
+                    </view>
+                </view>
+            </template>
+        </up-swiper>
+        <up-gap
+                bgColor="transparent"
+                height="15"
+        ></up-gap>
+        <up-swiper
+                :list="list6"
+                @change="e => currentNum = e.current"
+                :autoplay="false"
+                indicatorStyle="right: 20px"
+        >
+            <template #indicator>
+                <view
+                    class="indicator-num"
+                >
+                    <text class="indicator-num__text">{{ currentNum + 1 }}/{{ list6.length }}</text>
+                </view>
+            </template>
+        </up-swiper>
+    </view>
+</template>
 ```
-
-#### 卡片式
 
 ```vue
-<up-swiper
-    :list="list3"
-    previousMargin="30"
-    nextMargin="30"
-    circular
-    :autoplay="false"
-    radius="5"
-    bgColor="#ffffff"
-></up-swiper>
+<script setup>  
+import { reactive } from 'vue';  
+  
+const list5 = reactive([  
+    'https://cdn.uviewui.com/uview/swiper/swiper3.png',  
+    'https://cdn.uviewui.com/uview/swiper/swiper2.png',  
+    'https://cdn.uviewui.com/uview/swiper/swiper1.png',  
+]);  
+  
+const list6 = reactive([  
+    'https://cdn.uviewui.com/uview/swiper/swiper2.png',  
+    'https://cdn.uviewui.com/uview/swiper/swiper3.png',  
+    'https://cdn.uviewui.com/uview/swiper/swiper1.png',  
+]);  
+</script>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/swiper/swiper.uvue`</small>
+```vue
+<style lang="scss">
+    .indicator {
+        @include flex(row);
+        justify-content: center;
+
+        &__dot {
+             height: 6px;
+             width: 6px;
+             border-radius: 100px;
+             background-color: rgba(255, 255, 255, 0.35);
+             margin: 0 5px;
+             transition: background-color 0.3s;
+    
+            &--active {
+                 background-color: #ffffff;
+             }
+        }
+    }
+
+    .indicator-num {
+        padding: 2px 0;
+        background-color: rgba(0, 0, 0, 0.35);
+        border-radius: 100px;
+        width: 35px;
+        @include flex;
+        justify-content: center;
+
+        &__text {
+             color: #FFFFFF;
+             font-size: 12px;
+         }
+    }
+</style>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/swiper.md`</small>
 
 </template>
 

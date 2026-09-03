@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -285,135 +285,245 @@ import { UPActionSheet } from '@ultra-ui'
 
 <template #uniapp>
 
+#### 基本使用
+
+- 通过`title`(设置标题)，`cancelText`(取消按钮的文字，不为空时显示按钮)，`description`(选项上方的描述信息)
+- 通过`actions`设置需要显示的菜单，该值为一个数组，元素为对象，对象至少要提供`name`属性，另外可选的有`subname`(描述)，`disabled`(是否禁用)，`loading`(加载动画)，
+`color`(字体颜色)，`fontSize`(字体大小)，
+- 通过`show`绑定一个值为布尔值的变量控制组件的弹出与收起，`show`的值是双向绑定的
+
 ```vue
-<up-action-sheet
-    :show="show0"
-    @close="close"
-    @select="select"
-    :actions="actions0"
-    :closeOnClickOverlay="false"
->
-</up-action-sheet>
+<template>
+	<view>
+		<up-action-sheet :actions="list" :title="title" :show="show"></up-action-sheet>
+		<up-button @click="show = true">打开ActionSheet</up-button>
+	</view>
+</template>
 ```
 
 ```vue
-<up-action-sheet
-    :show="show1"
-    @close="show1 = false"
-    :actions="actions1"
->
-</up-action-sheet>
+<script setup>  
+import { ref } from 'vue';  
+  
+// 使用 ref 创建响应式数据  
+const title = ref('标题');  
+const list = ref([  
+  {  
+    name: '选项一',  
+    subname: "选项一描述",  
+    color: '#ffaa7f',  
+    fontSize: '20'  
+  },  
+  {  
+    name: '选项二禁用',  
+    disabled: true  
+  },  
+  {  
+    name: '开启load加载', // 开启后文字不显示  
+    loading: true  
+  }  
+]);  
+const show = ref(false);  
+</script>
+```
+
+#### 配置点击遮罩关闭和点击某个菜单项时关闭弹窗
+
+- 通过`closeOnClickAction`参数来配置点击某个菜单项时是否关闭弹窗。
+- 通过`closeOnClickOverlay`参数配置点击遮罩是否允许关闭（注意：关闭事件需要自行处理，只会在开启closeOnClickOverlay后点击遮罩层执行close回调）
+
+```vue
+<template>
+	<view>
+		<up-action-sheet :actions="list" :closeOnClickOverlay="true" :closeOnClickAction="true"  :title="title" :show="show"></up-action-sheet>
+		<up-button @click="show = true">打开ActionSheet</up-button>
+	</view>
+</template>
 ```
 
 ```vue
-<up-action-sheet
-    :show="show2"
-    @close="show2 = false"
-    :actions="actions2"
-    cancelText="取消"
->
-</up-action-sheet>
+<script setup>  
+import { ref, onMounted } from 'vue';  
+  
+const title = ref('标题');  
+const list = ref([  
+  { name: '选项一' },  
+  { name: '选项二' }  
+]);  
+const show = ref(false);  
+  
+</script>
+```
+
+#### 点击获取所点击选项name
+
+`select`回调事件带有一个`object`值，这个索引值为传递的`select`数组的name值，根据回调事件，能获得点击了
+该项的内容
+
+```vue
+<template>
+	<view>
+		<up-action-sheet :actions="list" @select="selectClick" :title="title" :show="show"></up-action-sheet>
+		<up-button @click="show = true">打开ActionSheet</up-button>
+	</view>
+</template>
 ```
 
 ```vue
-<up-action-sheet
-    :show="show3"
-    @close="show3 = false"
-    :actions="actions3"
-    description="这是一段描述文本,字号偏小,颜色偏淡"
->
-</up-action-sheet>
+<script setup>  
+import { ref, onMounted } from 'vue';  
+  
+// 响应式数据  
+const title = ref('标题');  
+const list = ref([  
+  { name: '选项一' },  
+  { name: '选项二' }  
+]);  
+const show = ref(false);
+  
+// 方法  
+const selectClick = (index) => {  
+  console.log(index);  
+};  
+</script>
 ```
+
+#### 快捷组件使用
+
+为了在up-form表单等场景下更方便的使用，减少代码量，可以使用up-action-sheet-data快捷组件，快捷组件由数据驱动，更贴近Vue组件的使用方式。
+<Badge text="3.4.6" />以上版本
 
 ```vue
-<up-action-sheet
-    :show="show4"
-    @close="show4 = false"
-    title="标题位置"
-    :round="10"
->
-    <text style="margin: 10px 20px 30px 20px; color: #303133; font-size: 15px;">这是一段通过slot传入的内容,您可以在此自定义操作面板</text>
-</up-action-sheet>
+<template>
+	<view>
+		<up-action-sheet-data
+			v-model="info.gender"
+			title="请选择性别"
+			:options="[
+				{
+					name: '男',
+					value: 1,
+				},
+				{
+					name: '女',
+					value: 2,
+				},
+			]">
+		</up-action-sheet-data>
+	</view>
+</template>
 ```
 
-```vue
-<up-action-sheet
-    :show="show5"
-    @close="show5 = false"
-    title="微信开放能力"
-    :actions="actions5"
-    @getuserinfo="getuserinfo"
-></up-action-sheet>
-```
-
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsB/actionSheet/actionSheet.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/actionSheet.md`</small>
 
 </template>
 
 <template #uniappx>
 
+#### 基本使用
+
+- 通过`title`(设置标题)，`cancelText`(取消按钮的文字，不为空时显示按钮)，`description`(选项上方的描述信息)
+- 通过`actions`设置需要显示的菜单，该值为一个数组，元素为对象，对象至少要提供`name`属性，另外可选的有`subname`(描述)，`disabled`(是否禁用)，`loading`(加载动画)，
+`color`(字体颜色)，`fontSize`(字体大小)，
+- 通过`show`绑定一个值为布尔值的变量控制组件的弹出与收起，`show`的值是双向绑定的
+
 ```vue
-<up-action-sheet
-    :show="show0"
-    @close="close"
-    @select="select"
-    :actions="actions0"
-    :closeOnClickOverlay="false"
->
-</up-action-sheet>
+<template>
+	<view>
+		<up-action-sheet :actions="list" :title="title" :show="show"></up-action-sheet>
+		<up-button @click="show = true">打开ActionSheet</up-button>
+	</view>
+</template>
 ```
 
 ```vue
-<up-action-sheet
-    :show="show1"
-    @close="show1 = false"
-    :actions="actions1"
->
-</up-action-sheet>
+<script setup>  
+import { ref } from 'vue';  
+  
+// 使用 ref 创建响应式数据  
+const title = ref('标题');  
+const list = ref([  
+  {  
+    name: '选项一',  
+    subname: "选项一描述",  
+    color: '#ffaa7f',  
+    fontSize: '20'  
+  },  
+  {  
+    name: '选项二禁用',  
+    disabled: true  
+  },  
+  {  
+    name: '开启load加载', // 开启后文字不显示  
+    loading: true  
+  }  
+]);  
+const show = ref(false);  
+</script>
+```
+
+#### 配置点击遮罩关闭和点击某个菜单项时关闭弹窗
+
+- 通过`closeOnClickAction`参数来配置点击某个菜单项时是否关闭弹窗。
+- 通过`closeOnClickOverlay`参数配置点击遮罩是否允许关闭（注意：关闭事件需要自行处理，只会在开启closeOnClickOverlay后点击遮罩层执行close回调）
+
+```vue
+<template>
+	<view>
+		<up-action-sheet :actions="list" :closeOnClickOverlay="true" :closeOnClickAction="true"  :title="title" :show="show"></up-action-sheet>
+		<up-button @click="show = true">打开ActionSheet</up-button>
+	</view>
+</template>
 ```
 
 ```vue
-<up-action-sheet
-    :show="show2"
-    @close="show2 = false"
-    :actions="actions2"
-    cancelText="取消"
->
-</up-action-sheet>
+<script setup>  
+import { ref, onMounted } from 'vue';  
+  
+const title = ref('标题');  
+const list = ref([  
+  { name: '选项一' },  
+  { name: '选项二' }  
+]);  
+const show = ref(false);  
+  
+</script>
+```
+
+#### 点击获取所点击选项name
+
+`select`回调事件带有一个`object`值，这个索引值为传递的`select`数组的name值，根据回调事件，能获得点击了
+该项的内容
+
+```vue
+<template>
+	<view>
+		<up-action-sheet :actions="list" @select="selectClick" :title="title" :show="show"></up-action-sheet>
+		<up-button @click="show = true">打开ActionSheet</up-button>
+	</view>
+</template>
 ```
 
 ```vue
-<up-action-sheet
-    :show="show3"
-    @close="show3 = false"
-    :actions="actions3"
-    description="这是一段描述文本,字号偏小,颜色偏淡"
->
-</up-action-sheet>
+<script setup>  
+import { ref, onMounted } from 'vue';  
+  
+// 响应式数据  
+const title = ref('标题');  
+const list = ref([  
+  { name: '选项一' },  
+  { name: '选项二' }  
+]);  
+const show = ref(false);
+  
+// 方法  
+const selectClick = (index) => {  
+  console.log(index);  
+};  
+</script>
 ```
 
-```vue
-<up-action-sheet
-    :show="show4"
-    @close="show4 = false"
-    title="标题位置"
-    :round="10"
->
-    <text style="margin: 10px 20px 30px 20px; color: #303133; font-size: 15px;">这是一段通过slot传入的内容,您可以在此自定义操作面板</text>
-</up-action-sheet>
-```
-
-```vue
-<up-action-sheet
-    :show="show5"
-    @close="show5 = false"
-    title="微信开放能力"
-    :actions="actions5"
-    @getuserinfo="getuserinfo"
-></up-action-sheet>
-```
-
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsB/actionSheet/actionSheet.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/actionSheet.md`</small>
 
 </template>
 

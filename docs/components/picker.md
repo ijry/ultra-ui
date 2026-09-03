@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -155,147 +155,337 @@ import { UPPicker } from '@ultra-ui'
 
 <template #uniapp>
 
-```vue
-<up-picker
-    :show="show1"
-    :columns="columns1"
-    @change="change"
-    @cancel="cancel"
-    @confirm="confirm"
-></up-picker>
-```
+#### 基本使用
+
+- 通过`show`绑定一个布尔值变量，用于控制组件的弹出与收起。
+- 都通过传入数组`columns`配置选择项。
 
 ```vue
-<up-picker
-    :show="show2"
-    :columns="columns2"
-    :defaultIndex="[1]"
-    @cancel="cancel"
-    @confirm="confirm"
-    @change="change"
-></up-picker>
+<template>
+	<view>
+		<up-picker :show="show" :columns="columns"></up-picker>
+		<up-button @click="show = true">打开</up-button>
+	</view>
+</template>
+
+<script setup>
+import { ref, reactive } from 'vue';
+
+const show = ref(false);
+const columns = reactive([
+  ['中国', '美国', '日本']
+]);
+</script>
 ```
+
+#### 单选快捷组件使用
+
+为了在up-form表单等场景下更方便的使用，减少代码量，可以使用up-picker-data快捷组件(目前适用于单选，类似下拉框的功能)，快捷组件由数据驱动，更贴近Vue组件的使用方式。
+<Badge text="3.4.6" />以上版本
 
 ```vue
-<up-picker
-    :show="show3"
-    :columns="columns3"
-    ref="uPicker3"
-    @cancel="cancel"
-    @confirm="confirm"
-    @change="changeHandler1"
-></up-picker>
+<template>
+	<view>
+		<up-picker-data
+        v-model="info.cate"
+        title="请选择文章分类"
+        :options="cateList"
+        valueKey="id"
+        labelKey="name">
+    </up-picker-data>
+	</view>
+</template>
+<script setup>
+import {ref} from 'vue'
+// 注意这里只需要一层数组，与基础用法不一样，基础用法是两层数组。
+const cateList = ref([
+  {
+    'id' => 1,
+    'name' => '分类1'
+  },
+  {
+    'id' => 2,
+    'name' => '分类2'
+  }
+
+])
+</script
 ```
+
+#### 多列模式与多列联动
+
+此模式通过传入`columns`参数，此参数为二维数组，通过`change`事件完成联动操作。
 
 ```vue
-<up-picker
-    :show="show4"
-    :columns="columns4"
-    @cancel="cancel"
-    @confirm="confirm"
-    :loading="loading"
-    @change="changeHandler2"
-    ref="uPicker4"
-></up-picker>
+<template>
+    <up-picker :show="show" ref="uPickerRef" :columns="columns" @confirm="confirm" @change="changeHandler"></up-picker>
+</template>
+
+<script setup>
+import { ref, reactive } from 'vue';
+
+const show = ref(true);
+const columns = reactive([
+  ['中国', '美国'],
+  ['深圳', '厦门', '上海', '拉萨']
+]);
+const columnData = reactive([
+  ['深圳', '厦门', '上海', '拉萨'],
+  ['得州', '华盛顿', '纽约', '阿拉斯加']
+]);
+
+const uPickerRef = ref(null)
+const changeHandler = (e) => {
+  const {
+    columnIndex,
+    value,
+    values,
+    index,
+  } = e;
+
+  if (columnIndex === 0) {
+    uPickerRef.value.setColumnValues(1, columnData[index]);
+  }
+};
+
+const confirm = (e) => {
+  console.log('confirm', e);
+  show.value = false;
+};
+</script>
 ```
+
+#### 加载状态
+
+由于需要多列联动，此模式和上面的"多列模式"基本相同，在加载之前将`loading`设置为`true`，数据获取完成之后再置为`false`即可。
 
 ```vue
-<up-picker
-    :show="show5"
-    :columns="columns5"
-    title="标题太长就会显示省略号"
-    @cancel="cancel"
-    @confirm="confirm"
-    @change="change"
-></up-picker>
+<template>
+    <up-picker :show="show" ref="uPickerRef" :loading="loading" :columns="columns" @change="changeHandler"></up-picker>
+</template>
+
+<script setup>
+import { ref, reactive } from 'vue';
+
+const show = ref(true);
+const loading = ref(false);
+const columns = reactive([
+  ['中国', '美国'],
+  ['深圳', '厦门', '上海', '拉萨']
+]);
+const columnData = reactive([
+  ['深圳', '厦门', '上海', '拉萨'],
+  ['得州', '华盛顿', '纽约', '阿拉斯加']
+]);
+
+const uPickerRef = ref(null)
+const changeHandler = (e) => {
+  const {
+    columnIndex,
+    index,
+    picker
+  } = e;
+
+  if (columnIndex === 0) {
+    loading.value = true;
+    // 模拟网络请求
+    setTimeout(() => {
+      uPickerRef.value.setColumnValues(1, columnData[index]);
+      loading.value = false;
+    }, 1500);
+  }
+};
+</script>
 ```
+
+#### 自定义选项值
+
+参数`columns`可以传入自定义选项值，可以通过`keyName`和`valueName`参数控制对应的显示属性及双向绑定值属性。
 
 ```vue
-<up-picker
-    :show="show6"
-    :columns="columns6"
-    closeOnClickOverlay
-    @cancel="cancel"
-    @confirm="confirm"
-    @close="close"
-    @change="change"
-></up-picker>
+<template>
+    <up-cell
+				@click="show = true"
+				title="双向绑定"
+				isLink
+			>
+				<template #value>
+					<view>
+						{{selected.join('|')}}
+					</view>
+				</template>
+		</up-cell>
+    <up-picker v-model:show="show" v-model="selected" :columns="columns" keyName="label" valueName="id"></up-picker>
+</template>
+
+<script setup>
+import { ref, reactive } from 'vue';
+
+const show = ref(true);
+const selected = ref([804]);
+const columns = reactive([
+  [
+    {
+      label: '雪月夜',
+      // 其他属性值
+      id: 2021
+      // ...
+    },
+    {
+      label: '冷夜雨',
+      id: 804
+    }
+  ]
+]);
+</script>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsC/picker/picker.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/picker.md`</small>
 
 </template>
 
 <template #uniappx>
 
-```vue
-<up-picker
-    :show="show1"
-    :columns="columns1"
-    @change="change"
-    @cancel="cancel"
-    @confirm="confirm"
-></up-picker>
-```
+#### 基本使用
+
+- 通过`show`绑定一个布尔值变量，用于控制组件的弹出与收起。
+- 都通过传入数组`columns`配置选择项。
 
 ```vue
-<up-picker
-    :show="show2"
-    :columns="columns2"
-    :defaultIndex="[1]"
-    @cancel="cancel"
-    @confirm="confirm"
-    @change="change"
-></up-picker>
+<template>
+	<view>
+		<up-picker :show="show" :columns="columns"></up-picker>
+		<up-button @click="show = true">打开</up-button>
+	</view>
+</template>
+
+<script setup>
+import { ref, reactive } from 'vue';
+
+const show = ref(false);
+const columns = reactive([
+  ['中国', '美国', '日本']
+]);
+</script>
 ```
+
+#### 多列模式与多列联动
+
+此模式通过传入`columns`参数，此参数为二维数组，通过`change`事件完成联动操作。
 
 ```vue
-<up-picker
-    :show="show3"
-    :columns="columns3"
-    ref="uPicker3"
-    @cancel="cancel"
-    @confirm="confirm"
-    @change="changeHandler1"
-></up-picker>
+<template>
+    <up-picker :show="show" ref="uPickerRef" :columns="columns" @confirm="confirm" @change="changeHandler"></up-picker>
+</template>
+
+<script setup>
+import { ref, reactive } from 'vue';
+
+const show = ref(true);
+const columns = reactive([
+  ['中国', '美国'],
+  ['深圳', '厦门', '上海', '拉萨']
+]);
+const columnData = reactive([
+  ['深圳', '厦门', '上海', '拉萨'],
+  ['得州', '华盛顿', '纽约', '阿拉斯加']
+]);
+
+const uPickerRef = ref(null)
+const changeHandler = (e) => {
+  const {
+    columnIndex,
+    value,
+    values,
+    index,
+  } = e;
+
+  if (columnIndex === 0) {
+    uPickerRef.value.setColumnValues(1, columnData[index]);
+  }
+};
+
+const confirm = (e) => {
+  console.log('confirm', e);
+  show.value = false;
+};
+</script>
 ```
+
+#### 加载状态
+
+由于需要多列联动，此模式和上面的"多列模式"基本相同，在加载之前将`loading`设置为`true`，数据获取完成之后再置为`false`即可。
 
 ```vue
-<up-picker
-    :show="show4"
-    :columns="columns4"
-    @cancel="cancel"
-    @confirm="confirm"
-    :loading="loading"
-    @change="changeHandler2"
-    ref="uPicker4"
-></up-picker>
+<template>
+    <up-picker :show="show" ref="uPickerRef" :loading="loading" :columns="columns" @change="changeHandler"></up-picker>
+</template>
+
+<script setup>
+import { ref, reactive } from 'vue';
+
+const show = ref(true);
+const loading = ref(false);
+const columns = reactive([
+  ['中国', '美国'],
+  ['深圳', '厦门', '上海', '拉萨']
+]);
+const columnData = reactive([
+  ['深圳', '厦门', '上海', '拉萨'],
+  ['得州', '华盛顿', '纽约', '阿拉斯加']
+]);
+
+const uPickerRef = ref(null)
+const changeHandler = (e) => {
+  const {
+    columnIndex,
+    index,
+    picker
+  } = e;
+
+  if (columnIndex === 0) {
+    loading.value = true;
+    // 模拟网络请求
+    setTimeout(() => {
+      uPickerRef.value.setColumnValues(1, columnData[index]);
+      loading.value = false;
+    }, 1500);
+  }
+};
+</script>
 ```
+
+#### 自定义选项值
+
+参数`columns`可以传入自定义选项值，可以通过`keyName`参数控制对应的显示属性。
 
 ```vue
-<up-picker
-    :show="show5"
-    :columns="columns5"
-    title="标题太长就会显示省略号"
-    @cancel="cancel"
-    @confirm="confirm"
-    @change="change"
-></up-picker>
+<template>
+    <up-picker :show="show" :columns="columns" keyName="label"></up-picker>
+</template>
+
+<script setup>
+import { ref, reactive } from 'vue';
+
+const show = ref(true);
+const columns = reactive([
+  [
+    {
+      label: '雪月夜',
+      // 其他属性值
+      id: 2021
+      // ...
+    },
+    {
+      label: '冷夜雨',
+      id: 804
+    }
+  ]
+]);
+</script>
 ```
 
-```vue
-<up-picker
-    :show="show6"
-    :columns="columns6"
-    closeOnClickOverlay
-    @cancel="cancel"
-    @confirm="confirm"
-    @close="close"
-    @change="change"
-></up-picker>
-```
-
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsC/picker/picker.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/picker.md`</small>
 
 </template>
 

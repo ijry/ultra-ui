@@ -12,7 +12,7 @@ A 24-column row/col grid for equal-width or proportional layouts.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -258,173 +258,469 @@ No snippet could be extracted automatically — please read the source.
 
 <template #uniapp>
 
-#### 基础使用
+#### 基本使用
 
 ```vue
-<up-row :customStyle="{marginBottom: '10px'}">
-    <up-col span="6">
-        <view class="demo-layout bg-purple-light"></view>
-    </up-col>
-    <up-col span="6">
-        <view class="demo-layout bg-purple"></view>
-    </up-col>
-</up-row>
+<template>
+    <view class="u-page">
+        <view class="u-demo-block">
+            <text class="u-demo-block__title">基础使用</text>
+            <view class="u-demo-block__content">
+                <up-row customStyle="margin-bottom: 10px">
+                    <up-col span="6">
+                        <view class="demo-layout bg-purple-light"></view>
+                    </up-col>
+                    <up-col span="6">
+                        <view class="demo-layout bg-purple"></view>
+                    </up-col>
+                </up-row>
+                <up-row customStyle="margin-bottom: 10px">
+                    <up-col span="4">
+                        <view class="demo-layout bg-purple"></view>
+                    </up-col>
+                    <up-col span="4">
+                        <view class="demo-layout bg-purple-light"></view>
+                    </up-col>
+                    <up-col span="4">
+                        <view class="demo-layout bg-purple-dark"></view>
+                    </up-col>
+                </up-row>
+                <up-row justify="space-between">
+                    <up-col span="3">
+                        <view class="demo-layout bg-purple"></view>
+                    </up-col>
+                    <up-col span="3">
+                        <view class="demo-layout bg-purple-light"></view>
+                    </up-col>
+                    <up-col span="3">
+                        <view class="demo-layout bg-purple"></view>
+                    </up-col>
+                    <up-col span="3">
+                        <view class="demo-layout bg-purple-light"></view>
+                    </up-col>
+                </up-row>
+            </view>
+        </view>
+    </view>
+</template>
+
+<style lang="scss">
+    .wrap {
+        padding: 12px;
+    }
+
+    .demo-layout {
+        height: 25px;
+        border-radius: 4px;
+    }
+
+    .bg-purple {
+        background: #CED7E1;
+    }
+
+    .bg-purple-light {
+        background: #e5e9f2;
+    }
+
+    .bg-purple-dark {
+        background: #99a9bf;
+    }
+</style>
 ```
 
 #### 分栏间隔
 
 ```vue
-<up-row justify="space-between" gutter="10">
-    <up-col span="3">
-        <view class="demo-layout bg-purple"></view>
-    </up-col>
-    <up-col span="3">
-        <view class="demo-layout bg-purple-light"></view>
-    </up-col>
-    <up-col span="3">
-        <view class="demo-layout bg-purple"></view>
-    </up-col>
-    <up-col span="3">
-        <view class="demo-layout bg-purple-light"></view>
-    </up-col>
-</up-row>
+<view class="u-demo-block__content">
+    <up-row
+            justify="space-between"
+            gutter="10"
+    >
+        <up-col span="3">
+            <view class="demo-layout bg-purple"></view>
+        </up-col>
+        <up-col span="3">
+            <view class="demo-layout bg-purple-light"></view>
+        </up-col>
+        <up-col span="3">
+            <view class="demo-layout bg-purple"></view>
+        </up-col>
+        <up-col span="3">
+            <view class="demo-layout bg-purple-light"></view>
+        </up-col>
+    </up-row>
+</view>
+
+<style lang="scss">
+    .wrap {
+        padding: 12px;
+    }
+
+    .demo-layout {
+        height: 25px;
+        border-radius: 4px;
+    }
+
+    .bg-purple {
+        background: #CED7E1;
+    }
+
+    .bg-purple-light {
+        background: #e5e9f2;
+    }
+
+    .bg-purple-dark {
+        background: #99a9bf;
+    }
+</style>
 ```
 
 #### 混合布局
 
 ```vue
-<up-row justify="space-between" gutter="10">
-    <up-col span="2">
-        <view class="demo-layout bg-purple-light"></view>
-    </up-col>
-    <up-col span="4">
-        <view class="demo-layout bg-purple"></view>
-    </up-col>
-    <up-col span="6">
-        <view class="demo-layout bg-purple-dark"></view>
-    </up-col>
-</up-row>
+<view class="u-demo-block__content">
+    <up-row
+        justify="space-between"
+        gutter="10"
+    >
+        <up-col span="2">
+            <view class="demo-layout bg-purple-light"></view>
+        </up-col>
+        <up-col span="4">
+            <view class="demo-layout bg-purple"></view>
+        </up-col>
+        <up-col span="6">
+            <view class="demo-layout bg-purple-dark"></view>
+        </up-col>
+    </up-row>
+</view>
+
+<style lang="scss">
+    .wrap {
+        padding: 12px;
+    }
+
+    .demo-layout {
+        height: 25px;
+        border-radius: 4px;
+    }
+
+    .bg-purple {
+        background: #CED7E1;
+    }
+
+    .bg-purple-light {
+        background: #e5e9f2;
+    }
+
+    .bg-purple-dark {
+        background: #99a9bf;
+    }
+</style>
 ```
 
 #### 分栏偏移
 
 ```vue
-<up-row
-    justify="space-between"
-    :customStyle="{marginBottom: '10px'}"
->
-    <up-col span="3" offset="3">
-        <view class="demo-layout bg-purple-light"></view>
-    </up-col>
-    <up-col span="3" offset="3">
-        <view class="demo-layout bg-purple"></view>
-    </up-col>
-</up-row>
+<view class="u-demo-block__content">
+    <up-row
+            justify="space-between"
+            customStyle="margin-bottom: 10px"
+    >
+        <up-col
+                span="3"
+                offset="3"
+        >
+            <view class="demo-layout bg-purple-light"></view>
+        </up-col>
+        <up-col
+                span="3"
+                offset="3"
+        >
+            <view class="demo-layout bg-purple"></view>
+        </up-col>
+    </up-row>
+    <up-row>
+        <up-col span="3">
+            <view class="demo-layout bg-purple-light"></view>
+        </up-col>
+        <up-col
+                span="3"
+                offset="3"
+        >
+            <view class="demo-layout bg-purple"></view>
+        </up-col>
+    </up-row>
+</view>
 ```
 
 #### 对齐方式
 
 ```vue
-<up-row
-    justify="space-between"
-    :customStyle="{marginBottom: '10px'}"
->
-    <up-col span="3">
-        <view class="demo-layout bg-purple-light"></view>
-    </up-col>
-    <up-col span="3">
-        <view class="demo-layout bg-purple"></view>
-    </up-col>
-</up-row>
+<view class="u-demo-block__content">
+    <up-row
+            justify="space-between"
+            customStyle="margin-bottom: 10px"
+    >
+        <up-col
+                span="3"
+        >
+            <view class="demo-layout bg-purple-light"></view>
+        </up-col>
+        <up-col
+                span="3"
+        >
+            <view class="demo-layout bg-purple"></view>
+        </up-col>
+    </up-row>
+    <up-row>
+        <up-col span="3">
+            <view class="demo-layout bg-purple-light"></view>
+        </up-col>
+        <up-col
+                span="3"
+        >
+            <view class="demo-layout bg-purple"></view>
+        </up-col>
+    </up-row>
+</view>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/layout/layout.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/layout.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 基础使用
+#### 基本使用
 
 ```vue
-<up-row :customStyle="{marginBottom: '10px'}">
-    <up-col span="6">
-        <view class="demo-layout bg-purple-light"></view>
-    </up-col>
-    <up-col span="6">
-        <view class="demo-layout bg-purple"></view>
-    </up-col>
-</up-row>
+<template>
+    <view class="u-page">
+        <view class="u-demo-block">
+            <text class="u-demo-block__title">基础使用</text>
+            <view class="u-demo-block__content">
+                <up-row customStyle="margin-bottom: 10px">
+                    <up-col span="6">
+                        <view class="demo-layout bg-purple-light"></view>
+                    </up-col>
+                    <up-col span="6">
+                        <view class="demo-layout bg-purple"></view>
+                    </up-col>
+                </up-row>
+                <up-row customStyle="margin-bottom: 10px">
+                    <up-col span="4">
+                        <view class="demo-layout bg-purple"></view>
+                    </up-col>
+                    <up-col span="4">
+                        <view class="demo-layout bg-purple-light"></view>
+                    </up-col>
+                    <up-col span="4">
+                        <view class="demo-layout bg-purple-dark"></view>
+                    </up-col>
+                </up-row>
+                <up-row justify="space-between">
+                    <up-col span="3">
+                        <view class="demo-layout bg-purple"></view>
+                    </up-col>
+                    <up-col span="3">
+                        <view class="demo-layout bg-purple-light"></view>
+                    </up-col>
+                    <up-col span="3">
+                        <view class="demo-layout bg-purple"></view>
+                    </up-col>
+                    <up-col span="3">
+                        <view class="demo-layout bg-purple-light"></view>
+                    </up-col>
+                </up-row>
+            </view>
+        </view>
+    </view>
+</template>
+
+<style lang="scss">
+    .wrap {
+        padding: 12px;
+    }
+
+    .demo-layout {
+        height: 25px;
+        border-radius: 4px;
+    }
+
+    .bg-purple {
+        background: #CED7E1;
+    }
+
+    .bg-purple-light {
+        background: #e5e9f2;
+    }
+
+    .bg-purple-dark {
+        background: #99a9bf;
+    }
+</style>
 ```
 
 #### 分栏间隔
 
 ```vue
-<up-row justify="space-between" gutter="10">
-    <up-col span="3">
-        <view class="demo-layout bg-purple"></view>
-    </up-col>
-    <up-col span="3">
-        <view class="demo-layout bg-purple-light"></view>
-    </up-col>
-    <up-col span="3">
-        <view class="demo-layout bg-purple"></view>
-    </up-col>
-    <up-col span="3">
-        <view class="demo-layout bg-purple-light"></view>
-    </up-col>
-</up-row>
+<view class="u-demo-block__content">
+    <up-row
+            justify="space-between"
+            gutter="10"
+    >
+        <up-col span="3">
+            <view class="demo-layout bg-purple"></view>
+        </up-col>
+        <up-col span="3">
+            <view class="demo-layout bg-purple-light"></view>
+        </up-col>
+        <up-col span="3">
+            <view class="demo-layout bg-purple"></view>
+        </up-col>
+        <up-col span="3">
+            <view class="demo-layout bg-purple-light"></view>
+        </up-col>
+    </up-row>
+</view>
+
+<style lang="scss">
+    .wrap {
+        padding: 12px;
+    }
+
+    .demo-layout {
+        height: 25px;
+        border-radius: 4px;
+    }
+
+    .bg-purple {
+        background: #CED7E1;
+    }
+
+    .bg-purple-light {
+        background: #e5e9f2;
+    }
+
+    .bg-purple-dark {
+        background: #99a9bf;
+    }
+</style>
 ```
 
 #### 混合布局
 
 ```vue
-<up-row justify="space-between" gutter="10">
-    <up-col span="2">
-        <view class="demo-layout bg-purple-light"></view>
-    </up-col>
-    <up-col span="4">
-        <view class="demo-layout bg-purple"></view>
-    </up-col>
-    <up-col span="6">
-        <view class="demo-layout bg-purple-dark"></view>
-    </up-col>
-</up-row>
+<view class="u-demo-block__content">
+    <up-row
+        justify="space-between"
+        gutter="10"
+    >
+        <up-col span="2">
+            <view class="demo-layout bg-purple-light"></view>
+        </up-col>
+        <up-col span="4">
+            <view class="demo-layout bg-purple"></view>
+        </up-col>
+        <up-col span="6">
+            <view class="demo-layout bg-purple-dark"></view>
+        </up-col>
+    </up-row>
+</view>
+
+<style lang="scss">
+    .wrap {
+        padding: 12px;
+    }
+
+    .demo-layout {
+        height: 25px;
+        border-radius: 4px;
+    }
+
+    .bg-purple {
+        background: #CED7E1;
+    }
+
+    .bg-purple-light {
+        background: #e5e9f2;
+    }
+
+    .bg-purple-dark {
+        background: #99a9bf;
+    }
+</style>
 ```
 
 #### 分栏偏移
 
 ```vue
-<up-row
-    justify="space-between"
-    :customStyle="{marginBottom: '10px'}"
->
-    <up-col span="3" offset="3">
-        <view class="demo-layout bg-purple-light"></view>
-    </up-col>
-    <up-col span="3" offset="3">
-        <view class="demo-layout bg-purple"></view>
-    </up-col>
-</up-row>
+<view class="u-demo-block__content">
+    <up-row
+            justify="space-between"
+            customStyle="margin-bottom: 10px"
+    >
+        <up-col
+                span="3"
+                offset="3"
+        >
+            <view class="demo-layout bg-purple-light"></view>
+        </up-col>
+        <up-col
+                span="3"
+                offset="3"
+        >
+            <view class="demo-layout bg-purple"></view>
+        </up-col>
+    </up-row>
+    <up-row>
+        <up-col span="3">
+            <view class="demo-layout bg-purple-light"></view>
+        </up-col>
+        <up-col
+                span="3"
+                offset="3"
+        >
+            <view class="demo-layout bg-purple"></view>
+        </up-col>
+    </up-row>
+</view>
 ```
 
 #### 对齐方式
 
 ```vue
-<up-row
-    justify="space-between"
-    :customStyle="{marginBottom: '10px'}"
->
-    <up-col span="3">
-        <view class="demo-layout bg-purple-light"></view>
-    </up-col>
-    <up-col span="3">
-        <view class="demo-layout bg-purple"></view>
-    </up-col>
-</up-row>
+<view class="u-demo-block__content">
+    <up-row
+            justify="space-between"
+            customStyle="margin-bottom: 10px"
+    >
+        <up-col
+                span="3"
+        >
+            <view class="demo-layout bg-purple-light"></view>
+        </up-col>
+        <up-col
+                span="3"
+        >
+            <view class="demo-layout bg-purple"></view>
+        </up-col>
+    </up-row>
+    <up-row>
+        <up-col span="3">
+            <view class="demo-layout bg-purple-light"></view>
+        </up-col>
+        <up-col
+                span="3"
+        >
+            <view class="demo-layout bg-purple"></view>
+        </up-col>
+    </up-row>
+</view>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/layout/layout.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/layout.md`</small>
 
 </template>
 

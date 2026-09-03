@@ -12,7 +12,7 @@ A star rating control with half stars, read-only mode and custom icons.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -265,133 +265,107 @@ minCount=0 时允许取消到 0 分
 
 <template #uniapp>
 
-#### 基本案例
+#### 基本使用
 
 ```vue
-<up-rate size="20"></up-rate>
+<template>
+	<up-rate :count="count" v-model="value"></up-rate>
+</template>
 ```
-
-#### 自定义选中星星数量
 
 ```vue
-<up-rate
-    size="20"
-    v-model="value"
-    @change="change"
-></up-rate>
+<script setup>  
+import { ref } from 'vue';  
+  
+const count = ref(4);  
+const value = ref(2);  
+</script>
 ```
 
-#### 自定义星星大小
+#### 自定义样式
 
 ```vue
-<up-rate size="30" count="4"></up-rate>
+<up-rate active-color="#FA3534" inactive-color="#b2b2b2" gutter="20"></up-rate>
 ```
 
-#### 是否禁用评分
+#### 自定义图标
 
 ```vue
-<up-rate size="20" disabled></up-rate>
+<up-rate activeIcon="heart-fill" inactiveIcon="heart"></up-rate>
 ```
 
-#### 是否只读评分
+#### 最少选中的数量
 
 ```vue
-<up-rate size="20" readonly></up-rate>
+<up-rate :minCount="5"></up-rate>
 ```
 
-#### 自定义选中星星颜色
+#### 禁用状态
 
 ```vue
-<up-rate
-    size="20"
-    v-model="activeColorValue"
-    activeColor="#2979ff"
-></up-rate>
+<up-rate :value="3.7" disabled></up-rate>
 ```
 
-#### 自定义未选中星星颜色
+#### 只读状态
 
 ```vue
-<up-rate
-    size="20"
-    v-model="value1"
-    inactiveColor="#2979ff"
-></up-rate>
+<up-rate :value="3.7" readonly></up-rate>
 ```
 
-#### 禁止触摸选择
-
-```vue
-<up-rate size="20" :touchable="false"></up-rate>
-```
-
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsA/rate/rate.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/rate.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 基本案例
+#### 基本使用
 
 ```vue
-<up-rate size="20"></up-rate>
+<template>
+	<up-rate :count="count" v-model="value"></up-rate>
+</template>
 ```
-
-#### 自定义选中星星数量
 
 ```vue
-<up-rate
-    size="20"
-    v-model="value"
-    @change="change"
-></up-rate>
+<script setup>  
+import { ref } from 'vue';  
+  
+const count = ref(4);  
+const value = ref(2);  
+</script>
 ```
 
-#### 自定义星星大小
+#### 自定义样式
 
 ```vue
-<up-rate size="30" count="4"></up-rate>
+<up-rate active-color="#FA3534" inactive-color="#b2b2b2" gutter="20"></up-rate>
 ```
 
-#### 是否禁用评分
+#### 自定义图标
 
 ```vue
-<up-rate size="20" disabled></up-rate>
+<up-rate activeIcon="heart-fill" inactiveIcon="heart"></up-rate>
 ```
 
-#### 是否只读评分
+#### 最少选中的数量
 
 ```vue
-<up-rate size="20" readonly></up-rate>
+<up-rate :minCount="5"></up-rate>
 ```
 
-#### 自定义选中星星颜色
+#### 禁用状态
 
 ```vue
-<up-rate
-    size="20"
-    v-model="activeColorValue"
-    activeColor="#2979ff"
-></up-rate>
+<up-rate :value="3.7" disabled></up-rate>
 ```
 
-#### 自定义未选中星星颜色
+#### 只读状态
 
 ```vue
-<up-rate
-    size="20"
-    v-model="value1"
-    inactiveColor="#2979ff"
-></up-rate>
+<up-rate :value="3.7" readonly></up-rate>
 ```
 
-#### 禁止触摸选择
-
-```vue
-<up-rate size="20" :touchable="false"></up-rate>
-```
-
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsA/rate/rate.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/rate.md`</small>
 
 </template>
 

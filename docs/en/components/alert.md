@@ -12,7 +12,7 @@ An inline banner for information that matters but should not interrupt.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -258,115 +258,139 @@ closeSlot 替换默认叉号
 
 <template #uniapp>
 
-#### 基础功能
+#### 基本使用
 
 ```vue
-<up-alert
-    description="山不在于高，有了神仙就出名"
-    type="warning"
-></up-alert>
+<template>
+	<view>
+		<up-alert :title="title" type = "warning" :description = "description"></up-alert>
+		<up-alert :title="title" type = "warning" effect="dark" :description = "description"></up-alert>
+	</view>
+</template>
 ```
-
-#### 深浅色
 
 ```vue
-<up-alert
-    description="无丝竹之乱耳，无案牍之劳形"
-    type="warning"
-></up-alert>
+<script setup>  
+import { ref } from 'vue';  
+  
+// 响应式数据  
+const title = ref('uview-plus的目标是成为uni-app生态最优秀的UI框架');  
+const description = ref('uview-plus是uni-app生态专用的UI框架');  
+
+</script>
 ```
 
-#### 显示图标
+#### 图标
 
 ```vue
-<up-alert
-    description="六王毕，四海一；蜀山兀，阿房出"
-    type="error"
-    showIcon
-></up-alert>
+<up-alert type="warning" :show-icon="true"></up-alert>
 ```
 
-#### 可关闭
+#### 可关闭的警告提示
 
 ```vue
-<up-alert
-    description="五步一楼，十步一阁；廊腰缦回，檐牙高啄；各抱地势，钩心斗角"
-    type="success"
-    showIcon
-    closable
-></up-alert>
+<template>
+	<view>
+		<up-alert :title="title"  type = "warning" :closable="closable" :description = "description"></up-alert>
+	
+	</view>
+</template>
 ```
-
-#### 带标题
 
 ```vue
-<up-alert
-    title="妃嫔媵嫱，王子皇孙，辞楼下殿"
-    description="长桥卧波，未云何龙？复道行空，不霁何虹"
-    type="info"
-    showIcon
-    closable
-></up-alert>
+<script setup>  
+import { ref } from 'vue';  
+import { onLoad, onShow } from '@dcloudio/uni-app';  
+  
+// 定义响应式数据  
+const title = ref('uview-plus的目标是成为uni-app生态最优秀的UI框架');  
+const description = ref('uview-plus是uni-app生态专用的UI框架');  
+const closable = ref(true);  
+  
+// 使用 uni-app 的 onLoad 生命周期钩子  
+onLoad(() => {  
+  // 组件加载时执行的逻辑  
+  console.log('组件加载了');  
+});  
+  
+// 使用 uni-app 的 onShow 生命周期钩子  
+onShow(() => {  
+  // 组件显示时执行的逻辑  
+  console.log('组件显示了');  
+});  
+</script>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsB/alert/alert.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/alert.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 基础功能
+#### 基本使用
 
 ```vue
-<up-alert
-    description="山不在于高，有了神仙就出名"
-    type="warning"
-></up-alert>
+<template>
+	<view>
+		<up-alert :title="title" type = "warning" :description = "description"></up-alert>
+		<up-alert :title="title" type = "warning" effect="dark" :description = "description"></up-alert>
+	</view>
+</template>
 ```
-
-#### 深浅色
 
 ```vue
-<up-alert
-    description="无丝竹之乱耳，无案牍之劳形"
-    type="warning"
-></up-alert>
+<script setup>  
+import { ref } from 'vue';  
+  
+// 响应式数据  
+const title = ref('uview-ultra的目标是成为uni-app生态最优秀的UI框架');  
+const description = ref('uview-ultra是uni-app生态专用的UI框架');  
+
+</script>
 ```
 
-#### 显示图标
+#### 图标
 
 ```vue
-<up-alert
-    description="六王毕，四海一；蜀山兀，阿房出"
-    type="error"
-    showIcon
-></up-alert>
+<up-alert type="warning" :show-icon="true"></up-alert>
 ```
 
-#### 可关闭
+#### 可关闭的警告提示
 
 ```vue
-<up-alert
-    description="五步一楼，十步一阁；廊腰缦回，檐牙高啄；各抱地势，钩心斗角"
-    type="success"
-    showIcon
-    closable
-></up-alert>
+<template>
+	<view>
+		<up-alert :title="title"  type = "warning" :closable="closable" :description = "description"></up-alert>
+	
+	</view>
+</template>
 ```
-
-#### 带标题
 
 ```vue
-<up-alert
-    title="妃嫔媵嫱，王子皇孙，辞楼下殿"
-    description="长桥卧波，未云何龙？复道行空，不霁何虹"
-    type="info"
-    showIcon
-    closable
-></up-alert>
+<script setup>  
+import { ref } from 'vue';  
+import { onLoad, onShow } from '@dcloudio/uni-app';  
+  
+// 定义响应式数据  
+const title = ref('uview-ultra的目标是成为uni-app生态最优秀的UI框架');  
+const description = ref('uview-ultra是uni-app生态专用的UI框架');  
+const closable = ref(true);  
+  
+// 使用 uni-app 的 onLoad 生命周期钩子  
+onLoad(() => {  
+  // 组件加载时执行的逻辑  
+  console.log('组件加载了');  
+});  
+  
+// 使用 uni-app 的 onShow 生命周期钩子  
+onShow(() => {  
+  // 组件显示时执行的逻辑  
+  console.log('组件显示了');  
+});  
+</script>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsB/alert/alert.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/alert.md`</small>
 
 </template>
 

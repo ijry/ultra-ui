@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -301,191 +301,170 @@ loading / loadingText / loadingMode
 
 <template #uniapp>
 
-#### 按钮类型
+#### 基本使用
+
+文字内容通过`text`传入
 
 ```vue
-<up-button
-    text="默认按钮"
-    size="normal"
-    type="info"
-    @click="click"
-></up-button>
+<up-button text="月落"></up-button>
 ```
 
-#### 镂空按钮
+#### 设置按钮的多种形态
+
+- `type`值可选的有`default`(默认)、`primary`、`success`、`info`、`warning`、`error`
+- 通过`plain`值设置是否镂空
+- 通过`hairline`值设置是否细边
+- 通过`disabled`值设置是否禁用
+- 通过`loading`值设置是否开启加载图标，`loadingText`设置加载中文字
+- 通过`icon`值设置是否显示图标
+- 通过`shape`值设置按钮形状，circle为圆角
+- 通过`color`值设置按钮渐变颜色
+- 通过`size`值设置按钮的大小
 
 ```vue
-<up-button
-    text="镂空按钮"
-    size="normal"
-    type="info"
-    plain
-></up-button>
+<template>
+	<view style="padding: 20px;">
+		<up-button type="primary" text="确定"></up-button>
+		<up-button type="primary" :plain="true" text="镂空"></up-button>
+		<up-button type="primary" :plain="true" :hairline="true" text="细边"></up-button>
+		<up-button type="primary" :disabled="disabled" text="禁用"></up-button>
+		<up-button type="primary" loading loadingText="加载中"></up-button>
+		<up-button type="primary" icon="map" text="图标按钮"></up-button>
+		<up-button type="primary" shape="circle" text="按钮形状"></up-button>
+		<up-button text="渐变色按钮" color="linear-gradient(to right, rgb(66, 83, 216), rgb(213, 51, 186))"></up-button>
+		<up-button type="primary" size="small" text="大小尺寸"></up-button>
+	</view>
+</template>
 ```
-
-#### 细边按钮
 
 ```vue
-<up-button
-    text="细边按钮"
-    size="normal"
-    type="info"
-    plain
-    hairline
-></up-button>
+<script setup>
+import { ref } from 'vue';
+
+const disabled = ref(true);
+</script>
 ```
 
-#### 禁用按钮
+#### 定义需要用到的外部样式
+
+1. 针对非微信小程序平台，组件的根元素就是uni-app`button`组件，所以修改按钮的样式很容易，直接给组件定义`类名`或者嵌入`内联样式`即可。
+2. 如果是微信小程序，编译后页面会有组件同名的元素存在，导致样式传递有问题。
+3. 如果是为了修改按钮与其他元素之间的距离或者宽度等，可以给按钮外面套一个`view`元素，控制这个`view`与其他元素的距离或者宽度，即可达到同等效果。
+4. `3.8.75`起，`up-button`基础宽度遵循`auto`语义；普通按钮在`flex`横排中通常按内容参与布局，`size="large"`仍保持全宽。旧版本依赖普通按钮默认铺满父容器的页面，请显式设置`:custom-style="{ width: '100%' }"`或控制外层容器宽度。
+
+所以：我们提供了一个`custom-style`参数，推荐用户可以用对象形式传递样式给组件内部，注意驼峰命名。
 
 ```vue
-<up-button
-    disabled
-    text="禁用按钮"
-    size="normal"
-    type="info"
-></up-button>
+<template>
+	<view style="padding: 20px;">
+		 <!-- 以下形式在微信小程序会无效，APP和H5有效  -->
+		<up-button class="custom-style" text="雪月夜"></up-button>
+	</view>
+</template>
+
+<script setup>
+import { ref, reactive } from 'vue';
+
+const disabled = ref(true);
+const customStyle = reactive({
+  marginTop: '20px',
+  color: 'red'
+});
+</script>
+
+<style lang="scss" scoped>
+	.custom-style {
+		color: #ff0000;
+		width: 400rpx;
+	}
+</style>
 ```
 
-#### 加载中
-
-```vue
-<up-button
-    loadingText="加载中"
-    size="normal"
-    loading
-    loadingMode="circle"
-    type="success"
-></up-button>
-```
-
-#### 按钮图标&按钮形状
-
-```vue
-<up-button
-    text="按钮图标"
-    size="normal"
-    icon="map"
-    plain
-    type="warning"
-></up-button>
-```
-
-#### 自定义颜色
-
-```vue
-<up-button
-    text="渐变色按钮"
-    size="normal"
-    color="linear-gradient(to right, rgb(66, 83, 216), rgb(213, 51, 186))"
-></up-button>
-```
-
-#### 自定义大小
-
-```vue
-<up-button
-    text="超大尺寸"
-    size="large"
-    type="success"
-></up-button>
-```
-
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsA/button/button.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/button.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 按钮类型
+#### 基本使用
+
+文字内容通过`text`传入
 
 ```vue
-<up-button
-    text="默认按钮"
-    size="normal"
-    type="info"
-    @click="click"
-></up-button>
+<up-button text="月落"></up-button>
 ```
 
-#### 镂空按钮
+#### 设置按钮的多种形态
+
+- `type`值可选的有`default`(默认)、`primary`、`success`、`info`、`warning`、`error`
+- 通过`plain`值设置是否镂空
+- 通过`hairline`值设置是否细边
+- 通过`disabled`值设置是否禁用
+- 通过`loading`值设置是否开启加载图标，`loadingText`设置加载中文字
+- 通过`icon`值设置是否显示图标
+- 通过`shape`值设置按钮形状，circle为圆角
+- 通过`color`值设置按钮渐变颜色
+- 通过`size`值设置按钮的大小
 
 ```vue
-<up-button
-    text="镂空按钮"
-    size="normal"
-    type="info"
-    plain
-></up-button>
+<template>
+	<view style="padding: 20px;">
+		<up-button type="primary" text="确定"></up-button>
+		<up-button type="primary" :plain="true" text="镂空"></up-button>
+		<up-button type="primary" :plain="true" :hairline="true" text="细边"></up-button>
+		<up-button type="primary" :disabled="disabled" text="禁用"></up-button>
+		<up-button type="primary" loading loadingText="加载中"></up-button>
+		<up-button type="primary" icon="map" text="图标按钮"></up-button>
+		<up-button type="primary" shape="circle" text="按钮形状"></up-button>
+		<up-button text="渐变色按钮" color="linear-gradient(to right, rgb(66, 83, 216), rgb(213, 51, 186))"></up-button>
+		<up-button type="primary" size="small" text="大小尺寸"></up-button>
+	</view>
+</template>
 ```
-
-#### 细边按钮
 
 ```vue
-<up-button
-    text="细边按钮"
-    size="normal"
-    type="info"
-    plain
-    hairline
-></up-button>
+<script setup>
+import { ref } from 'vue';
+
+const disabled = ref(true);
+</script>
 ```
 
-#### 禁用按钮
+#### 定义需要用到的外部样式
+
+1. 针对非微信小程序平台，组件的根元素就是uni-app`button`组件，所以修改按钮的样式很容易，直接给组件定义`类名`或者嵌入`内联样式`即可。  
+2. 如果是微信小程序，编译后页面会有组件同名的元素存在，导致样式传递有问题。 
+3. 如果是为了修改按钮与其他元素之间的距离或者宽度等，可以给按钮外面套一个`view`元素，控制这个`view`与其他元素的距离或者宽度，即可达到同等效果。  
+
+所以：我们提供了一个`custom-style`参数，推荐用户可以用对象形式传递样式给组件内部，注意驼峰命名。
 
 ```vue
-<up-button
-    disabled
-    text="禁用按钮"
-    size="normal"
-    type="info"
-></up-button>
+<template>
+	<view style="padding: 20px;">
+		 <!-- 以下形式在微信小程序会无效，APP和H5有效  -->
+		<up-button class="custom-style" text="雪月夜"></up-button>
+	</view>
+</template>
+
+<script setup>
+import { ref, reactive } from 'vue';
+
+const disabled = ref(true);
+const customStyle = reactive({
+  marginTop: '20px',
+  color: 'red'
+});
+</script>
+
+<style lang="scss" scoped>
+	.custom-style {
+		color: #ff0000;
+		width: 400rpx;
+	}
+</style>
 ```
 
-#### 加载中
-
-```vue
-<up-button
-    loadingText="加载中"
-    size="normal"
-    loading
-    loadingMode="circle"
-    type="success"
-></up-button>
-```
-
-#### 按钮图标&按钮形状
-
-```vue
-<up-button
-    text="按钮图标"
-    size="normal"
-    icon="map"
-    plain
-    type="warning"
-></up-button>
-```
-
-#### 自定义颜色
-
-```vue
-<up-button
-    text="渐变色按钮"
-    size="normal"
-    color="linear-gradient(to right, rgb(66, 83, 216), rgb(213, 51, 186))"
-></up-button>
-```
-
-#### 自定义大小
-
-```vue
-<up-button
-    text="超大尺寸"
-    size="large"
-    type="success"
-></up-button>
-```
-
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsA/button/button.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/button.md`</small>
 
 </template>
 

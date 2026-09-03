@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -277,187 +277,189 @@ bgColor / color / borderColor
 
 <template #uniapp>
 
-#### 基础功能
+#### 基本使用
+
+- 通过`type`参数设置主题类型，默认为`primary`
+- 属性`text`设置标签内容
 
 ```vue
-<up-tag
-    text="标签"
-    plain
-    size="mini"
-    type="warning"
->
-</up-tag>
+<up-tag text="标签" plain size="mini" type="warning"></up-tag>
 ```
 
 #### 自定义主题
 
 ```vue
-<up-tag text="标签">
-</up-tag>
+<up-tag text="标签"></up-tag>
+<up-tag text="标签" type="warning"></up-tag>
+<up-tag text="标签" type="success"></up-tag>
+<up-tag text="标签" type="error"></up-tag>
 ```
 
 #### 圆形标签
 
+- 类似胶囊形状
+
 ```vue
-<up-tag
-    text="标签"
-    plain
-    shape="circle"
->
-</up-tag>
+<up-tag text="标签" plain shape="circle"></up-tag>
+<up-tag text="标签" type="warning" shape="circle"></up-tag>
 ```
 
 #### 镂空标签
 
 ```vue
-<up-tag
-    text="标签"
-    plain
->
-</up-tag>
+<up-tag text="标签" plain > </up-tag>
+<up-tag text="标签" type="warning" plain></up-tag>
+<up-tag text="标签" type="success" plain></up-tag>
+<up-tag text="标签" type="error" plain></up-tag>
 ```
 
 #### 镂空带背景色
 
+- 添加`plainFill`属性镂空带背景色
+
 ```vue
-<up-tag
-    text="标签"
-    plain
-    plainFill
->
-</up-tag>
+<up-tag text="标签" plain > </up-tag>
+<up-tag text="标签" type="warning" plain plainFill></up-tag>
+<up-tag text="标签" type="success" plain plainFill></up-tag>
+<up-tag text="标签" type="error" plain plainFill></up-tag>
+```
+
+#### 镂空带背景色不带边框
+
+- 添加`plainFill`属性镂空带背景色
+
+```vue
+<up-tag text="标签" plain > </up-tag>
+<up-tag text="标签" type="warning" plain plainFill borderColor="transparent"></up-tag>
+<up-tag text="标签" type="success" plain plainFill borderColor="transparent"></up-tag>
+<up-tag text="标签" type="error" plain plainFill borderColor="transparent"></up-tag>
+```
+
+#### 镂空自动计算背景色
+
+<Badge text="3.4.5" /> 以上
+
+- 添加`plainFill`属性镂空带背景色
+
+```vue
+<up-tag text="标签" plain > </up-tag>
+<up-tag text="标签" type="warning" plain plainFill borderColor="transparent" color="#209D59" :autoBgColor="95"></up-tag>
+<up-tag text="标签" type="success" plain plainFill borderColor="transparent" color="#4E60DC" :autoBgColor="90"></up-tag>
+<up-tag text="标签" type="error" plain plainFill borderColor="transparent" color="#D56E14" :autoBgColor="85"></up-tag>
 ```
 
 #### 自定义尺寸
 
-```vue
-<up-tag
-    text="标签"
-    plain
-    size="mini"
->
-</up-tag>
-```
-
-#### 可关闭标签
+- `size`属性为您提供了三种规格的标签大小，默认中等。
 
 ```vue
-<up-tag
-    text="标签"
-    size="mini"
-    closable
-    :show="close1"
-    @close="close1 = false"
->
-</up-tag>
+<up-tag text="标签" plain size="mini"></up-tag>
+<up-tag text="标签" type="warning"></up-tag>
+<up-tag text="标签" type="success" plain size="large"></up-tag>
 ```
 
-#### 带图片和图标
-
-```vue
-<up-tag
-    text="标签"
-    size="mini"
-    icon="map"
-    plain
->
-</up-tag>
-```
-
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsB/tag/tag.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/tag.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 基础功能
+#### 基本使用
+
+- 通过`type`参数设置主题类型，默认为`primary`
+- 属性`text`设置标签内容
 
 ```vue
-<up-tag
-    text="标签"
-    plain
-    size="mini"
-    type="warning"
->
-</up-tag>
+<up-tag text="标签" plain size="mini" type="warning"></up-tag>
 ```
 
 #### 自定义主题
 
 ```vue
-<up-tag text="标签">
-</up-tag>
+<up-tag text="标签"></up-tag>
+<up-tag text="标签" type="warning"></up-tag>
+<up-tag text="标签" type="success"></up-tag>
+<up-tag text="标签" type="error"></up-tag>
 ```
 
 #### 圆形标签
 
+- 类似胶囊形状
+
 ```vue
-<up-tag
-    text="标签"
-    plain
-    shape="circle"
->
-</up-tag>
+<up-tag text="标签" plain shape="circle"></up-tag>
+<up-tag text="标签" type="warning" shape="circle"></up-tag>
 ```
 
 #### 镂空标签
 
 ```vue
-<up-tag
-    text="标签"
-    plain
->
-</up-tag>
+<up-tag text="标签" plain > </up-tag>
+<up-tag text="标签" type="warning" plain></up-tag>
+<up-tag text="标签" type="success" plain></up-tag>
+<up-tag text="标签" type="error" plain></up-tag>
 ```
 
 #### 镂空带背景色
 
+- 添加`plainFill`属性镂空带背景色
+
 ```vue
-<up-tag
-    text="标签"
-    plain
-    plainFill
->
-</up-tag>
+<up-tag text="标签" plain > </up-tag>
+<up-tag text="标签" type="warning" plain plainFill></up-tag>
+<up-tag text="标签" type="success" plain plainFill></up-tag>
+<up-tag text="标签" type="error" plain plainFill></up-tag>
 ```
 
 #### 自定义尺寸
 
+- `size`属性为您提供了三种规格的标签大小，默认中等。
+
 ```vue
-<up-tag
-    text="标签"
-    plain
-    size="mini"
->
-</up-tag>
+<up-tag text="标签" plain size="mini"></up-tag>
+<up-tag text="标签" type="warning"></up-tag>
+<up-tag text="标签" type="success" plain size="large"></up-tag>
 ```
 
 #### 可关闭标签
 
+- `tag`在右上角提供了删除标签的样式
+
 ```vue
-<up-tag
-    text="标签"
-    size="mini"
-    closable
-    :show="close1"
-    @close="close1 = false"
->
-</up-tag>
+<up-tag text="标签" size="mini" closable :show="close1" @close="close1 = false"></up-tag>
+<up-tag text="标签" type="warning" closable :show="close2" @close="close2 = false"></up-tag>
+<up-tag text="标签" type="success" plain size="large" 
+closable :show="close3" @close="close3 = false"></up-tag>
+
+<script setup>
+import { ref, reactive } from 'vue';
+
+const close1 = ref(true);
+const close2 = ref(true);
+const close3 = ref(true);
+const radios = reactive ([
+  { checked: true },
+  { checked: false },
+  { checked: false }
+]);
+const checkboxs = reactive ([
+  { checked: true },
+  { checked: false },
+  { checked: false }
+]);
+</script>
 ```
 
 #### 带图片和图标
 
 ```vue
-<up-tag
-    text="标签"
-    size="mini"
-    icon="map"
-    plain
->
-</up-tag>
+<up-tag text="标签" size="mini" icon="map" plain></up-tag>
+<up-tag text="标签" type="warning" icon="tags-fill"></up-tag>
+<up-tag text="标签" type="success" plain size="large"
+icon="https://cdn.uviewui.com/uview/example/tag.png"></up-tag>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsB/tag/tag.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/tag.md`</small>
 
 </template>
 

@@ -12,7 +12,7 @@ A long-form reader with catalogue, paging and reading settings.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -95,61 +95,160 @@ No snippet could be extracted automatically — please read the source.
 
 <template #uniapp>
 
-```vue
-<up-novel-reader
-    :chapters="chapters"
-    :current-chapter="currentChapter"
-    book-id="demo-novel"
-    :mode="mode"
-    :initial-bookmarks="bookmarks"
-    @chapter-request="handleChapterRequest"
-    @chapter-prefetch="handleChapterPrefetch"
-    @progress-change="handleProgressChange"
-    @settings-change="handleSettingsChange"
-    @bookmark-change="handleBookmarkChange"
-    @reading-time-change="handleReadingTimeChange"
-    @mode-change="handleModeChange"
-    @back="handleBack"
->
-    <template #toolbar-extra>
-        <view class="novel-reader-demo__mode" @tap.stop="toggleMode">
-            <up-icon name="order" size="18" color="#2979ff"></up-icon>
-        </view>
-    </template>
-</up-novel-reader>
+#### 基本使用
+
+```js
+const chapters = [
+    {
+        id: 'chapter-1',
+        index: 0,
+        title: '第一章 初见',
+        isLocked: false,
+        progress: 0
+    }
+]
+
+const currentChapter = {
+    id: 'chapter-1',
+    index: 0,
+    title: '第一章 初见',
+    content: [
+        '这是第一段正文。',
+        '这是第二段正文。'
+    ]
+}
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/novelReader/novelReader.uvue`</small>
+```vue
+<template>
+    <view class="reader-page">
+        <up-novel-reader
+            book-id="book-1"
+            :chapters="chapters"
+            :current-chapter="currentChapter"
+            @chapter-request="loadChapter"
+        />
+    </view>
+</template>
+```
+
+#### 受控章节加载
+
+```vue
+<script setup>
+import { ref } from 'vue'
+
+const currentChapter = ref(chapters[0])
+const loading = ref(false)
+const error = ref(null)
+
+function loadChapter({ targetIndex }) {
+    const target = chapters[targetIndex]
+    if (!target || target.isLocked) return
+
+    loading.value = true
+    error.value = null
+    loadChapterContent(target.id)
+        .then((content) => {
+            currentChapter.value = { ...target, content }
+        })
+        .catch((requestError) => {
+            error.value = requestError
+        })
+        .finally(() => {
+            loading.value = false
+        })
+}
+</script>
+```
+
+#### 阅读设置与主题
+
+```js
+{
+    theme: 'day',
+    fontSize: 18,
+    lineHeight: 1.8,
+    paragraphSpacing: 16,
+    contentWidth: '92%',
+    fontFamily: 'system',
+    fontWeight: 400,
+    animation: true
+}
+```
+
+#### 持久化
+
+```txt
+uview-plus:novel-reader:${bookId}
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/novelReader.md`</small>
 
 </template>
 
 <template #uniappx>
 
+#### 基础使用
+
 ```vue
-<up-novel-reader
-    :chapters="chapters"
-    :current-chapter="currentChapter"
-    book-id="demo-novel"
-    :mode="mode"
-    :initial-bookmarks="bookmarks"
-    @chapter-request="handleChapterRequest"
-    @chapter-prefetch="handleChapterPrefetch"
-    @progress-change="handleProgressChange"
-    @settings-change="handleSettingsChange"
-    @bookmark-change="handleBookmarkChange"
-    @reading-time-change="handleReadingTimeChange"
-    @mode-change="handleModeChange"
-    @back="handleBack"
->
-    <template #toolbar-extra>
-        <view class="novel-reader-demo__mode" @tap.stop="toggleMode">
-            <up-icon name="order" size="18" color="#2979ff"></up-icon>
-        </view>
-    </template>
-</up-novel-reader>
+<template>
+	<up-novel-reader
+		:chapters="chapters"
+		:current-chapter="currentChapter"
+		book-id="demo-novel"
+		@chapter-request="handleChapterRequest"
+	/>
+</template>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/novelReader/novelReader.uvue`</small>
+```ts
+const chapters = ref([
+	{ id: 'chapter-1', index: 0, title: '第一章', isLocked: false },
+	{ id: 'chapter-2', index: 1, title: '第二章', isLocked: false }
+])
+
+const currentChapter = ref({
+	id: 'chapter-1',
+	index: 0,
+	title: '第一章',
+	content: ['第一段正文', '第二段正文']
+})
+
+function handleChapterRequest(payload) {
+	// 由业务层请求或切换章节，完成后更新 currentChapter
+	console.log(payload.targetId, payload.targetIndex)
+}
+```
+
+#### 阅读设置
+
+```js
+{
+	theme: 'day',
+	fontSize: 18,
+	lineHeight: 1.8,
+	paragraphSpacing: 16,
+	contentWidth: '92%',
+	fontFamily: 'system',
+	fontWeight: 400,
+	animation: true
+}
+```
+
+#### 纵向滚动与横向分页
+
+```vue
+<up-novel-reader
+	:chapters="chapters"
+	:current-chapter="currentChapter"
+	mode="page"
+	:page-animation="true"
+	:preload-threshold="2"
+/>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/novelReader.md`</small>
 
 </template>
 

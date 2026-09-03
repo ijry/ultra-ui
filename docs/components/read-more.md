@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -131,47 +131,363 @@ closeText / openText / color
 
 <template #uniapp>
 
+#### 基本使用
+
+通过slot传入正文内容
+
 ```vue
-<up-read-more
-    ref="uReadMore"
-    :showHeight="showHeight"
-    toggle
-    @open="open"
-    @close="close"
->
+<template>
+	<up-read-more>
+		<rich-text :nodes="content"></rich-text>
+	</up-read-more>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+const content = ref(`山不在高，有仙则名。水不在深，有龙则灵。斯是陋室，惟吾德馨。  
+苔痕上阶绿，草色入帘青。谈笑有鸿儒，往来无白丁。可以调素琴，阅金经。  
+无丝竹之乱耳，无案牍之劳形。南阳诸葛庐，西蜀子云亭。孔子云：何陋之有？`);  
+</script>
+```
+
+#### 兼容性
+
+由于一些微信小程序平台的渲染能力的问题，在解析up-parse组件内容时会比较耗时，导致`read-more`组件内部无法准确得知
+内容的高度，而出现计算错误，这种情况下，我们需要借助`up-parse`组件的`@load`(内容多为文字时)或者`@ready`(内容多为图片时，可能会有较大延时)事件，通过`ref`
+重新初始化`read-more`组件的高度，如下：
+
+```vue
+<template>
+	<up-read-more ref="uReadMoreRef">
+		<up-parse :content="content" @load="load"></up-parse>
+	</up-read-more>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref, onMounted } from 'vue';  
+  
+// 创建响应式数据  
+const content = ref(`山不在高，有仙则名。水不在深，有龙则灵。斯是陋室，惟吾德馨。  
+苔痕上阶绿，草色入帘青。谈笑有鸿儒，往来无白丁。可以调素琴，阅金经。  
+无丝竹之乱耳，无案牍之劳形。南阳诸葛庐，西蜀子云亭。孔子云：何陋之有？`);  
+  
+// 创建组件引用  
+const uReadMoreRef = ref(null);  
+  
+// 定义方法  
+function load() {  
+    if (uReadMoreRef.value) {  
+        uReadMoreRef.value.init();  
+    }  
+}  
+  
+// 如果需要在组件挂载后调用 load 方法，可以使用 onMounted 钩子  
+onMounted(() => {  
+    load();  
+});  
+</script>
+```
+
+#### 展开收起
+
+配置`toggle`为`true`，展开后可以收起，否则展开后没有收起的按钮
+
+```vue
+<up-read-more :toggle="true">
     <rich-text :nodes="content"></rich-text>
-    <!-- <up-parse
-        :content="content"
-        @load="load"
-        :tag-style="tagStyle"
-    ></up-parse> -->
 </up-read-more>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsC/readMore/readMore.uvue`</small>
+#### 配置展开高度
+
+可以配置一个高度，单位rpx，只有slot传入的内容高度超出这个值，才会出现"展开阅读全文"字样的按钮
+
+```vue
+<up-read-more showHeight="600">
+    <rich-text :nodes="content"></rich-text>
+</up-read-more>
+```
+
+#### 异步初始化
+
+有时候需要展示的内容是从后端获取的，组件内部的`mounted`生命周期初始化时，请求尚未回来，会导致
+内容的高度在初始化有误差。可以在请求完毕渲染后(指的是this.$nextTick)，通过`ref`调用组件的`init`方法，重新初始化
+
+```vue
+<template>
+	<up-read-more ref="uReadMoreRef">
+        <rich-text :nodes="content"></rich-text>
+	</up-read-more>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref, onMounted } from 'vue';  
+  
+// 创建响应式数据  
+const content = ref('');  
+  
+// 创建组件引用  
+const uReadMoreRef = ref(null);  
+  
+// 模拟后端请求  
+async function fetchData() {  
+  return new Promise((resolve) => {  
+    setTimeout(() => {  
+      resolve(`山不在高，有仙则名。水不在深，有龙则灵。斯是陋室，惟吾德馨。  
+      苔痕上阶绿，草色入帘青。谈笑有鸿儒，往来无白丁。可以调素琴，阅金经。  
+      无丝竹之乱耳，无案牍之劳形。南阳诸葛庐，西蜀子云亭。孔子云：何陋之有？`);  
+    }, 2000);  
+  });  
+}  
+  
+// 在组件挂载后调用  
+onMounted(async () => {  
+  const text = await fetchData();  
+  content.value = text;  
+    
+  // 等待 DOM 更新  
+  await nextTick();  
+    
+  // 调用子组件的 init 方法  
+  if (uReadMoreRef.value) {  
+    uReadMoreRef.value.init();  
+  }  
+});  
+</script>
+```
+
+#### 自定义样式
+
+此组件上边部分有一个白色虚化的阴影，用以将点击区域与文字内容进行融合，如果您不想要这个阴影，可以调整`shadowStyle`对象，此对象内部如下：
+
+```json
+{
+    // #ifndef APP-NVUE
+    backgroundImage: "linear-gradient(-180deg, rgba(255, 255, 255, 0) 0%, #fff 80%)",
+    // #endif
+    // #ifdef APP-NVUE
+    // nvue上不支持设置复杂的backgroundImage属性
+    backgroundImage: "linear-gradient(to top, #fff, rgba(255, 255, 255, 0.5))",
+    // #endif
+    paddingTop: "100px",
+    marginTop: "-100px",
+}
+```
+
+如果您不想要阴影，将`backgroundImage`设置为`none`即可，关于`paddingTop`和`marginTop`自行调整至合适数值即可。
+
+```vue
+<template>
+	<up-read-more ref="uReadMore" :shadowStyle="shadowStyle" :showHeight="200">
+		<rich-text :nodes="content"></rich-text>
+	</up-read-more>
+</template>
+```
+
+```vue
+<script setup>  
+import { reactive } from 'vue';  
+  
+const state = reactive({  
+  content: '',  
+  shadowStyle: {  
+    backgroundImage: "none",  
+    paddingTop: "0",  
+    marginTop: "20rpx"  
+  }  
+});  
+</script>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/readMore.md`</small>
 
 </template>
 
 <template #uniappx>
 
+#### 基本使用
+
+通过slot传入正文内容
+
 ```vue
-<up-read-more
-    ref="uReadMore"
-    :showHeight="showHeight"
-    toggle
-    @open="open"
-    @close="close"
->
+<template>
+	<up-read-more>
+		<rich-text :nodes="content"></rich-text>
+	</up-read-more>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+const content = ref(`山不在高，有仙则名。水不在深，有龙则灵。斯是陋室，惟吾德馨。  
+苔痕上阶绿，草色入帘青。谈笑有鸿儒，往来无白丁。可以调素琴，阅金经。  
+无丝竹之乱耳，无案牍之劳形。南阳诸葛庐，西蜀子云亭。孔子云：何陋之有？`);  
+</script>
+```
+
+#### 兼容性
+
+由于一些微信小程序平台的渲染能力的问题，在解析up-parse组件内容时会比较耗时，导致`read-more`组件内部无法准确得知
+内容的高度，而出现计算错误，这种情况下，我们需要借助`up-parse`组件的`@load`(内容多为文字时)或者`@ready`(内容多为图片时，可能会有较大延时)事件，通过`ref`
+重新初始化`read-more`组件的高度，如下：
+
+```vue
+<template>
+	<up-read-more ref="uReadMoreRef">
+		<up-parse :content="content" @load="load"></up-parse>
+	</up-read-more>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref, onMounted } from 'vue';  
+  
+// 创建响应式数据  
+const content = ref(`山不在高，有仙则名。水不在深，有龙则灵。斯是陋室，惟吾德馨。  
+苔痕上阶绿，草色入帘青。谈笑有鸿儒，往来无白丁。可以调素琴，阅金经。  
+无丝竹之乱耳，无案牍之劳形。南阳诸葛庐，西蜀子云亭。孔子云：何陋之有？`);  
+  
+// 创建组件引用  
+const uReadMoreRef = ref(null);  
+  
+// 定义方法  
+function load() {  
+    if (uReadMoreRef.value) {  
+        uReadMoreRef.value.init();  
+    }  
+}  
+  
+// 如果需要在组件挂载后调用 load 方法，可以使用 onMounted 钩子  
+onMounted(() => {  
+    load();  
+});  
+</script>
+```
+
+#### 展开收起
+
+配置`toggle`为`true`，展开后可以收起，否则展开后没有收起的按钮
+
+```vue
+<up-read-more :toggle="true">
     <rich-text :nodes="content"></rich-text>
-    <!-- <up-parse
-        :content="content"
-        @load="load"
-        :tag-style="tagStyle"
-    ></up-parse> -->
 </up-read-more>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsC/readMore/readMore.uvue`</small>
+#### 配置展开高度
+
+可以配置一个高度，单位rpx，只有slot传入的内容高度超出这个值，才会出现"展开阅读全文"字样的按钮
+
+```vue
+<up-read-more showHeight="600">
+    <rich-text :nodes="content"></rich-text>
+</up-read-more>
+```
+
+#### 异步初始化
+
+有时候需要展示的内容是从后端获取的，组件内部的`mounted`生命周期初始化时，请求尚未回来，会导致
+内容的高度在初始化有误差。可以在请求完毕渲染后(指的是this.$nextTick)，通过`ref`调用组件的`init`方法，重新初始化
+
+```vue
+<template>
+	<up-read-more ref="uReadMoreRef">
+        <rich-text :nodes="content"></rich-text>
+	</up-read-more>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref, onMounted } from 'vue';  
+  
+// 创建响应式数据  
+const content = ref('');  
+  
+// 创建组件引用  
+const uReadMoreRef = ref(null);  
+  
+// 模拟后端请求  
+async function fetchData() {  
+  return new Promise((resolve) => {  
+    setTimeout(() => {  
+      resolve(`山不在高，有仙则名。水不在深，有龙则灵。斯是陋室，惟吾德馨。  
+      苔痕上阶绿，草色入帘青。谈笑有鸿儒，往来无白丁。可以调素琴，阅金经。  
+      无丝竹之乱耳，无案牍之劳形。南阳诸葛庐，西蜀子云亭。孔子云：何陋之有？`);  
+    }, 2000);  
+  });  
+}  
+  
+// 在组件挂载后调用  
+onMounted(async () => {  
+  const text = await fetchData();  
+  content.value = text;  
+    
+  // 等待 DOM 更新  
+  await nextTick();  
+    
+  // 调用子组件的 init 方法  
+  if (uReadMoreRef.value) {  
+    uReadMoreRef.value.init();  
+  }  
+});  
+</script>
+```
+
+#### 自定义样式
+
+此组件上边部分有一个白色虚化的阴影，用以将点击区域与文字内容进行融合，如果您不想要这个阴影，可以调整`shadowStyle`对象，此对象内部如下：
+
+```json
+{
+    // #ifndef APP-NVUE
+    backgroundImage: "linear-gradient(-180deg, rgba(255, 255, 255, 0) 0%, #fff 80%)",
+    // #endif
+    // #ifdef APP-NVUE
+    // nvue上不支持设置复杂的backgroundImage属性
+    backgroundImage: "linear-gradient(to top, #fff, rgba(255, 255, 255, 0.5))",
+    // #endif
+    paddingTop: "100px",
+    marginTop: "-100px",
+}
+```
+
+如果您不想要阴影，将`backgroundImage`设置为`none`即可，关于`paddingTop`和`marginTop`自行调整至合适数值即可。
+
+```vue
+<template>
+	<up-read-more ref="uReadMore" :shadowStyle="shadowStyle" :showHeight="200">
+		<rich-text :nodes="content"></rich-text>
+	</up-read-more>
+</template>
+```
+
+```vue
+<script setup>  
+import { reactive } from 'vue';  
+  
+const state = reactive({  
+  content: '',  
+  shadowStyle: {  
+    backgroundImage: "none",  
+    paddingTop: "0",  
+    marginTop: "20rpx"  
+  }  
+});  
+</script>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/readMore.md`</small>
 
 </template>
 

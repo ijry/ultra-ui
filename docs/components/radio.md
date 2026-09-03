@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -216,199 +216,261 @@ labelDisabled 时只有图标可点
 
 <template #uniapp>
 
-#### 基本案例
+#### 基本使用
+
+- 该组件需要搭配`radioGroup`组件使用，以便用户进行操作时，获得当前单选框组的选中情况
+- 通过`v-model`给`radioGroup`组件绑定一个变量，对应的` name`将会被选中
 
 ```vue
-<up-radio
-    :customStyle="{marginBottom: '8px'}"
-    v-for="(item, index) in radiolist1"
-    :key="index"
-    :label="item['name']"
-    :name="item['name']"
-    @change="radioChange"
->
-</up-radio>
+<template>
+  <up-radio-group
+    v-model="radiovalue1"
+    placement="column"
+    @change="groupChange"
+  >
+    <up-radio
+      :customStyle="{marginBottom: '8px'}"
+      v-for="(item, index) in radiolist1"
+      :key="index"
+      :label="item.name"
+      :name="item.name"
+      @change="radioChange"
+    >
+    </up-radio>
+  </up-radio-group>
+</template>
+
+<script setup>
+import { ref,reactive } from 'vue';
+
+// 基本案列数据
+const radiolist1 = reactive([
+  {
+    name: '苹果',
+    disabled: false,
+  },
+  {
+    name: '香蕉',
+    disabled: false,
+  },
+  {
+    name: '橙子',
+    disabled: false,
+  },
+  {
+    name: '榴莲',
+    disabled: false,
+  },
+]);
+
+// up-radio-group的v-model绑定的值如果设置为某个radio的name，就会被默认选中
+const radiovalue1 = ref('苹果');
+
+const groupChange = (n) => {
+  console.log('groupChange', n);
+};
+
+const radioChange = (n) => {
+  console.log('radioChange', n);
+};
+</script>
 ```
 
 #### 自定义形状
 
-```vue
-<up-radio
-    :customStyle="{marginBottom: '8px'}"
-    v-for="(item, index) in radiolist2"
-    :key="index"
-    :label="item['name']"
-    :name="item['name']"
->
-</up-radio>
-```
-
-#### 是否禁用
+可以通过设置`shape`为`square`或者`circle`，将单选框设置为方形或者圆形
 
 ```vue
-<up-radio
-    :customStyle="{marginBottom: '8px'}"
-    v-for="(item, index) in radiolist3"
-    :key="index"
-    :label="item['name']"
-    :name="item['name']"
-    :disabled="index == 0"
->
-</up-radio>
+<up-radio-group v-model="value">
+	<up-radio shape="circle" label="月明人倚楼"></up-radio>
+</up-radio-group>
 ```
 
-#### 纵向排列
+#### 禁用radio
+
+设置`disabled`为`true`，即可禁用某个组件，让用户无法点击
 
 ```vue
-<up-radio
-    :customStyle="{marginBottom:'8px'}"
-    v-for="(item, index) in radiolist4"
-    :key="index"
-    :label="item['name']"
-    :name="item['name']"
->
-</up-radio>
+<up-radio-group v-model="value">
+	<up-radio :disabled="true" label="明月几时有"></up-radio>
+</up-radio-group>
 ```
 
-#### 自定义颜色？
+#### 是否禁止点击提示语选中复选框
+
+设置`labelDisabled`为`true`，即可禁止点击提示语选中复选框
 
 ```vue
-<up-radio
-    :customStyle="{marginBottom: '8px'}"
-    v-for="(item, index) in radiolist5"
-    :key="index"
-    :label="item['name']"
-    :name="item['name']"
->
-</up-radio>
+<up-radio-group v-model="value">
+	<up-radio :labelDisabled="true" label="明月几时有"></up-radio>
+</up-radio-group>
 ```
 
-#### 横向排列形式？
+#### 自定义颜色
+
+此处所指的颜色，为`radio`选中时的背景颜色，参数为`activeColor`
 
 ```vue
-<up-radio
-    :customStyle="{marginRight: '16px'}"
-    v-for="(item, index) in radiolist6"
-    :key="index"
-    :label="item['name']"
-    :name="item['name']"
->
-</up-radio>
+<up-radio-group v-model="value">
+	<up-radio activeColor="red" label="思悠悠，恨悠悠，恨到归时方始休"></up-radio>
+</up-radio-group>
 ```
 
-#### 横向两端排列形式？
+#### 横向排列形式
+
+可以通过设置`placement`为`row`或者`column`，将复选框设置为横向排列或者竖向排列
 
 ```vue
-<up-radio
-    :customStyle="{marginBottom: '16px'}"
-    v-for="(item, index) in radiolist7"
-    :key="index"
-    :label="item['name']"
-    :name="item['name']"
->
-</up-radio>
+<up-radio-group 
+    v-model="value"
+    placement="row">
+	<up-radio activeColor="red" label="思悠悠，恨悠悠，恨到归时方始休"></up-radio>
+</up-radio-group>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsA/radio/radio.uvue`</small>
+#### 横向两端排列形式
+
+可以通过设置`iconPlacement`为`left`或者`right`，将复选框勾选图标的对齐设置为左对齐或者右对齐
+
+```vue
+<up-radio-group 
+    v-model="value"
+    iconPlacement="right">
+	<up-radio activeColor="red" label="思悠悠，恨悠悠，恨到归时方始休"></up-radio>
+</up-radio-group>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/radio.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 基本案例
+#### 基本使用
+
+- 该组件需要搭配`radioGroup`组件使用，以便用户进行操作时，获得当前单选框组的选中情况
+- 通过`v-model`给`radioGroup`组件绑定一个变量，对应的` name`将会被选中
 
 ```vue
-<up-radio
-    :customStyle="{marginBottom: '8px'}"
-    v-for="(item, index) in radiolist1"
-    :key="index"
-    :label="item['name']"
-    :name="item['name']"
-    @change="radioChange"
->
-</up-radio>
+<template>
+  <up-radio-group
+    v-model="radiovalue1"
+    placement="column"
+    @change="groupChange"
+  >
+    <up-radio
+      :customStyle="{marginBottom: '8px'}"
+      v-for="(item, index) in radiolist1"
+      :key="index"
+      :label="item.name"
+      :name="item.name"
+      @change="radioChange"
+    >
+    </up-radio>
+  </up-radio-group>
+</template>
+
+<script setup>
+import { ref,reactive } from 'vue';
+
+// 基本案列数据
+const radiolist1 = reactive([
+  {
+    name: '苹果',
+    disabled: false,
+  },
+  {
+    name: '香蕉',
+    disabled: false,
+  },
+  {
+    name: '橙子',
+    disabled: false,
+  },
+  {
+    name: '榴莲',
+    disabled: false,
+  },
+]);
+
+// up-radio-group的v-model绑定的值如果设置为某个radio的name，就会被默认选中
+const radiovalue1 = ref('苹果');
+
+const groupChange = (n) => {
+  console.log('groupChange', n);
+};
+
+const radioChange = (n) => {
+  console.log('radioChange', n);
+};
+</script>
 ```
 
 #### 自定义形状
 
-```vue
-<up-radio
-    :customStyle="{marginBottom: '8px'}"
-    v-for="(item, index) in radiolist2"
-    :key="index"
-    :label="item['name']"
-    :name="item['name']"
->
-</up-radio>
-```
-
-#### 是否禁用
+可以通过设置`shape`为`square`或者`circle`，将单选框设置为方形或者圆形
 
 ```vue
-<up-radio
-    :customStyle="{marginBottom: '8px'}"
-    v-for="(item, index) in radiolist3"
-    :key="index"
-    :label="item['name']"
-    :name="item['name']"
-    :disabled="index == 0"
->
-</up-radio>
+<up-radio-group v-model="value">
+	<up-radio shape="circle" label="月明人倚楼"></up-radio>
+</up-radio-group>
 ```
 
-#### 纵向排列
+#### 禁用radio
+
+设置`disabled`为`true`，即可禁用某个组件，让用户无法点击
 
 ```vue
-<up-radio
-    :customStyle="{marginBottom:'8px'}"
-    v-for="(item, index) in radiolist4"
-    :key="index"
-    :label="item['name']"
-    :name="item['name']"
->
-</up-radio>
+<up-radio-group v-model="value">
+	<up-radio :disabled="true" label="明月几时有"></up-radio>
+</up-radio-group>
 ```
 
-#### 自定义颜色？
+#### 是否禁止点击提示语选中复选框
+
+设置`labelDisabled`为`true`，即可禁止点击提示语选中复选框
 
 ```vue
-<up-radio
-    :customStyle="{marginBottom: '8px'}"
-    v-for="(item, index) in radiolist5"
-    :key="index"
-    :label="item['name']"
-    :name="item['name']"
->
-</up-radio>
+<up-radio-group v-model="value">
+	<up-radio :labelDisabled="true" label="明月几时有"></up-radio>
+</up-radio-group>
 ```
 
-#### 横向排列形式？
+#### 自定义颜色
+
+此处所指的颜色，为`radio`选中时的背景颜色，参数为`activeColor`
 
 ```vue
-<up-radio
-    :customStyle="{marginRight: '16px'}"
-    v-for="(item, index) in radiolist6"
-    :key="index"
-    :label="item['name']"
-    :name="item['name']"
->
-</up-radio>
+<up-radio-group v-model="value">
+	<up-radio activeColor="red" label="思悠悠，恨悠悠，恨到归时方始休"></up-radio>
+</up-radio-group>
 ```
 
-#### 横向两端排列形式？
+#### 横向排列形式
+
+可以通过设置`placement`为`row`或者`column`，将复选框设置为横向排列或者竖向排列
 
 ```vue
-<up-radio
-    :customStyle="{marginBottom: '16px'}"
-    v-for="(item, index) in radiolist7"
-    :key="index"
-    :label="item['name']"
-    :name="item['name']"
->
-</up-radio>
+<up-radio-group 
+    v-model="value"
+    placement="row">
+	<up-radio activeColor="red" label="思悠悠，恨悠悠，恨到归时方始休"></up-radio>
+</up-radio-group>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsA/radio/radio.uvue`</small>
+#### 横向两端排列形式
+
+可以通过设置`iconPlacement`为`left`或者`right`，将复选框勾选图标的对齐设置为左对齐或者右对齐
+
+```vue
+<up-radio-group 
+    v-model="value"
+    iconPlacement="right">
+	<up-radio activeColor="red" label="思悠悠，恨悠悠，恨到归时方始休"></up-radio>
+</up-radio-group>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/radio.md`</small>
 
 </template>
 

@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -75,21 +75,121 @@ height 控制容器高度
 
 <template #uniapp>
 
+#### 基本使用
+
+通过`src`参数传入PDF文件的URL地址即可显示PDF内容。
+
 ```vue
-<up-pdf-reader :src="pdfFileUrl"></up-pdf-reader>
+<template>
+	<view>
+		<up-pdf-reader 
+			:src="pdfUrl">
+		</up-pdf-reader>
+	</view>
+</template>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/pdfReader/pdfReader.uvue`</small>
+```vue
+<script setup>
+import { ref } from 'vue'
+
+const pdfUrl = ref('https://example.com/sample.pdf')
+</script>
+```
+
+#### 自定义高度
+
+通过[height]参数可以设置PDF阅读器的高度。
+
+```vue
+<template>
+	<view>
+		<up-pdf-reader 
+			:src="pdfUrl" 
+			height="500px">
+		</up-pdf-reader>
+	</view>
+</template>
+```
+
+#### 使用自定义pdf.js
+
+通过[baseUrl]参数可以指定自定义的pdf.js资源地址，注意需要下载pdfjs.zip进static目录，并打包部署一份H5网站到自己的服务器。
+
+下载链接: https://pan.baidu.com/s/1tYi2GI77g5Js25wrAO0UaA?pwd=kxp8 提取码: kxp8 复制这段内容后打开百度网盘手机App，操作更方便哦
+
+```vue
+<template>
+	<view>
+		<up-pdf-reader 
+			:src="pdfUrl" 
+			baseUrl="https://your-domain.com">
+		</up-pdf-reader>
+	</view>
+</template>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/pdfReader.md`</small>
 
 </template>
 
 <template #uniappx>
 
+#### 基本使用
+
+通过`src`参数传入PDF文件的URL地址即可显示PDF内容。
+
 ```vue
-<up-pdf-reader :src="pdfFileUrl"></up-pdf-reader>
+<template>
+	<view>
+		<up-pdf-reader 
+			:src="pdfUrl">
+		</up-pdf-reader>
+	</view>
+</template>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/pdfReader/pdfReader.uvue`</small>
+```vue
+<script setup>
+import { ref } from 'vue'
+
+const pdfUrl = ref('https://example.com/sample.pdf')
+</script>
+```
+
+#### 自定义高度
+
+通过[height]参数可以设置PDF阅读器的高度。
+
+```vue
+<template>
+	<view>
+		<up-pdf-reader 
+			:src="pdfUrl" 
+			height="500px">
+		</up-pdf-reader>
+	</view>
+</template>
+```
+
+#### 使用自定义pdf.js
+
+通过[baseUrl]参数可以指定自定义的pdf.js资源地址，注意需要下载pdfjs.zip进static目录，并打包部署一份H5网站到自己的服务器。
+
+下载链接: https://pan.baidu.com/s/1tYi2GI77g5Js25wrAO0UaA?pwd=kxp8 提取码: kxp8 复制这段内容后打开百度网盘手机App，操作更方便哦
+
+```vue
+<template>
+	<view>
+		<up-pdf-reader 
+			:src="pdfUrl" 
+			baseUrl="https://your-domain.com">
+		</up-pdf-reader>
+	</view>
+</template>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/pdfReader.md`</small>
 
 </template>
 

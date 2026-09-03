@@ -12,7 +12,7 @@ A single line with configurable direction, length, colour and dash style.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -231,111 +231,65 @@ direction=col，length 表现为高度
 
 <template #uniapp>
 
-#### 基本案例
+#### 基本使用
 
 ```vue
-<up-line></up-line>
-```
-
-#### 自定义颜色
-
-```vue
-<up-line color="#2979ff"></up-line>
-```
-
-#### 自定义长度
-
-```vue
-<up-line length="200"></up-line>
-```
-
-#### 自定义方向
-
-```vue
-<up-line
-    length="30"
-    color="#2979ff"
-    direction="col"
-></up-line>
-```
-
-#### 是否显示1px粗线条
-
-```vue
-<up-line :hairline="false"></up-line>
-```
-
-#### 线条与上下左右元素的间距
-
-```vue
-<up-line margin="20"></up-line>
+<template>
+	/* 基础使用 */
+	<up-line></up-line>
+	
+	/* 自定义颜色 */
+	<up-line color="#2979ff"></up-line>
+	
+	/* 自定义线条方向 */
+	<up-line direction="col"></up-line>
+	
+	/* 自定义线条长度 */
+	<up-line length="50%"></up-line>
+</template>
 ```
 
 #### 是否虚线
 
 ```vue
-<up-line
-    color="#2979ff"
-    :dashed="true"
-></up-line>
+<template>
+	<up-line dashed></up-line>
+</template>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsA/line/line.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/line.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 基本案例
+#### 基本使用
 
 ```vue
-<up-line></up-line>
-```
-
-#### 自定义颜色
-
-```vue
-<up-line color="#2979ff"></up-line>
-```
-
-#### 自定义长度
-
-```vue
-<up-line length="200"></up-line>
-```
-
-#### 自定义方向
-
-```vue
-<up-line
-    length="30"
-    color="#2979ff"
-    direction="col"
-></up-line>
-```
-
-#### 是否显示1px粗线条
-
-```vue
-<up-line :hairline="false"></up-line>
-```
-
-#### 线条与上下左右元素的间距
-
-```vue
-<up-line margin="20"></up-line>
+<template>
+	/* 基础使用 */
+	<up-line></up-line>
+	
+	/* 自定义颜色 */
+	<up-line color="#2979ff"></up-line>
+	
+	/* 自定义线条方向 */
+	<up-line direction="col"></up-line>
+	
+	/* 自定义线条长度 */
+	<up-line length="50%"></up-line>
+</template>
 ```
 
 #### 是否虚线
 
 ```vue
-<up-line
-    color="#2979ff"
-    :dashed="true"
-></up-line>
+<template>
+	<up-line dashed></up-line>
+</template>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsA/line/line.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/line.md`</small>
 
 </template>
 

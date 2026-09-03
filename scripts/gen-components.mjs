@@ -23,6 +23,7 @@ import { meta } from './lib/meta.mjs'
 import { scanAll, norm, pascal } from './lib/scan.mjs'
 import { readComponentApi } from './lib/extract.mjs'
 import { findSnippet } from './lib/snippet.mjs'
+import { readUpstreamExamples } from './lib/upstream-doc.mjs'
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const DOCS = path.join(ROOT, 'docs')
@@ -44,11 +45,21 @@ const UPSTREAM = path.join(
   'uni_modules/uview-ultra/components'
 )
 
+/**
+ * The two Vue platforms have hand-written documentation upstream, whose worked
+ * examples read far better than anything lifted out of the demo project. The
+ * six native ports have no such thing, so they keep using their own demo apps.
+ */
+const DOC_DIRS = {
+  uniapp: 'uview-plus-doc',
+  uniappx: 'uview-plus-doc4'
+}
+
 const t = {
   zh: {
     usage: '平台用法',
     usageLede:
-      '切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。',
+      '切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。',
     api: 'API',
     apiLede:
       '接口以 uview-plus 源码为准，各平台移植时保持了同名属性；平台间的差异请对照上方的示例标签。',
@@ -74,7 +85,7 @@ const t = {
   en: {
     usage: 'Usage by platform',
     usageLede:
-      'Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.',
+      'Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.',
     api: 'API',
     apiLede:
       'The reference below is extracted from the uview-plus source, whose property names the other ports keep. For per-platform differences, compare the tabs above.',
@@ -220,8 +231,11 @@ const collected = meta.map((component) => {
       symbol,
       tag
     })
+    const doc = DOC_DIRS[platform.id]
+      ? readUpstreamExamples(ROOT, DOC_DIRS[platform.id], component)
+      : null
 
-    perPlatform[platform.id] = { symbol, tag, file: hit.file, snippet }
+    perPlatform[platform.id] = { symbol, tag, file: hit.file, snippet, doc }
   }
 
   // API, one section per upstream folder this page covers
@@ -278,10 +292,28 @@ function renderPage(component, locale) {
       out.push('')
 
       const sections = entry.snippet?.sections ?? []
-      const hasMultipleSections = sections.length > 1
+      // Hand-written upstream examples beat anything scraped out of a demo app.
+      const source = entry.doc ? 'doc' : sections.length ? 'demo' : 'none'
 
-      if (sections.length === 0) {
-        // 没有提取到任何示例
+      if (source === 'doc') {
+        for (const example of entry.doc.examples) {
+          out.push(`#### ${example.title}`)
+          out.push('')
+          for (const chunk of example.chunks) {
+            // The upstream prose is Chinese only, so it is dropped from the
+            // English pages rather than left half-translated.
+            if (chunk.type === 'prose') {
+              if (locale === 'zh') {
+                out.push(chunk.body)
+                out.push('')
+              }
+              continue
+            }
+            out.push(fence(chunk.lang, chunk.body))
+            out.push('')
+          }
+        }
+      } else if (source === 'none') {
         const imports = importLines(platform.id, entry.symbol, '')
         if (imports) {
           out.push(fence(platform.lang, imports.join('\n')))
@@ -290,7 +322,6 @@ function renderPage(component, locale) {
         out.push(`::: tip\n${L.noneYet}\n:::`)
         out.push('')
       } else {
-        // 渲染所有示例段落
         for (let i = 0; i < sections.length; i++) {
           const section = sections[i]
           const code = section.code || ''
@@ -308,7 +339,6 @@ function renderPage(component, locale) {
             out.push('')
           }
 
-          // 渲染代码块
           if (code) {
             const codeWithImports = [imports?.join('\n'), code].filter(Boolean).join('\n\n')
             out.push(fence(platform.lang, codeWithImports))
@@ -317,12 +347,11 @@ function renderPage(component, locale) {
         }
       }
 
-      // 底部注释
       const notes = []
-      const firstCode = sections[0]?.code ?? ''
-      const imports = importLines(platform.id, entry.symbol, firstCode)
-      if (!imports) notes.push(L.easycom)
-      if (entry.snippet) {
+      if (!importLines(platform.id, entry.symbol, '')) notes.push(L.easycom)
+      if (source === 'doc') {
+        notes.push(`${L.from} \`${DOC_DIRS[platform.id]}/${entry.doc.file}\``)
+      } else if (source === 'demo') {
         notes.push(`${L.from} \`${platform.dir}/${entry.snippet.file.replace(/\\/g, '/')}\``)
       }
       if (notes.length) {
@@ -474,12 +503,21 @@ console.log(`  markdown pages written: ${written}`)
 console.log('')
 console.log('  platform coverage')
 for (const p of platforms) {
-  const n = collected.filter((c) => c.perPlatform[p.id]).length
-  const snips = collected.filter((c) => c.perPlatform[p.id]?.snippet).length
+  const entries = collected.map((c) => c.perPlatform[p.id]).filter(Boolean)
+  const n = entries.length
+  const withExamples = entries.filter((e) => e.doc || e.snippet)
+  const examples = withExamples.reduce(
+    (sum, e) => sum + (e.doc ? e.doc.examples.length : e.snippet.sections.length),
+    0
+  )
   const bar = '█'.repeat(Math.round((n / collected.length) * 24)).padEnd(24, '·')
   console.log(
     `    ${p.name.padEnd(width)}  ${bar} ${String(n).padStart(3)}/${collected.length}` +
-      `   snippets ${String(snips).padStart(3)}`
+      `   pages ${String(withExamples.length).padStart(3)}` +
+      `   examples ${String(examples).padStart(4)}` +
+      (DOC_DIRS[p.id]
+        ? `   from docs ${entries.filter((e) => e.doc).length}`
+        : '')
   )
 }
 

@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -102,125 +102,321 @@ import { UPTree } from '@ultra-ui'
 
 <template #uniapp>
 
+#### 微信小程序插槽说明
+
+为规避微信小程序端动态 scoped slot 在树形递归场景下可能不显示或运行时报错的问题，组件在微信小程序端会使用内置文本渲染作为稳定兜底。H5、App 等平台仍支持默认插槽自定义节点内容。
+
+## 基本使用
+
+通过 `data` 传入树数据，通过 `props` 指定节点字段映射。
+
 ```vue
-<up-tree
-  :data="treeData"
-  :props="defaultProps"
-  :default-expanded-keys="expandedKeys"
-  highlight-current
-  current-node-key="1"
-  @node-click="handleNodeClick"
-  @node-expand="handleNodeExpand"
-/>
+<template>
+  <up-tree
+    :data="treeData"
+    :props="defaultProps"
+    :default-expanded-keys="['1']"
+    highlight-current
+    current-node-key="1"
+    @node-click="handleNodeClick"
+  />
+</template>
 ```
 
 ```vue
-<up-tree
-  :data="customTreeData"
-  :props="defaultProps"
-  default-expand-all
-  :indent="40"
-  @node-click="handleNodeClick"
->
-  <template #default="{ node, level, expanded }">
-    <view class="custom-tree-node">
-      <text class="custom-tree-node__label">{{ getTreeNodeLabel(node) }}</text>
-      <text v-if="hasTreeNodeTag(node)" class="custom-tree-node__tag">{{ getTreeNodeTag(node) }}</text>
-      <text v-if="hasTreeNodeChildren(node)" class="custom-tree-node__state">
-        {{ getExpandedText(expanded) }} · {{ getTreeLevel(level) }}级
-      </text>
-    </view>
-  </template>
-</up-tree>
+<script setup>
+import { ref } from 'vue';
+
+const defaultProps = ref({
+  label: 'label',
+  children: 'children',
+  nodeKey: 'id',
+  disabled: 'disabled'
+});
+
+const treeData = ref([
+  {
+    id: '1',
+    label: '一级 1',
+    children: [
+      {
+        id: '1-1',
+        label: '二级 1-1',
+        children: [
+          { id: '1-1-1', label: '三级 1-1-1' },
+          { id: '1-1-2', label: '三级 1-1-2' }
+        ]
+      },
+      { id: '1-2', label: '二级 1-2' }
+    ]
+  }
+]);
+
+const handleNodeClick = (node) => {
+  console.log('节点被点击:', node);
+};
+</script>
+```
+
+## 自定义节点内容
+
+H5、App 等平台可以通过默认插槽自定义节点内容。插槽参数包含 `node`、`data`、`level`、`expanded`、`checked`、`indeterminate`、`disabled`。
+
+```vue
+<template>
+  <up-tree :data="treeData" :props="defaultProps" default-expand-all>
+    <template #default="{ node, level, expanded }">
+      <view class="custom-tree-node">
+        <text>{{ node.label }}</text>
+        <text v-if="node.children && node.children.length">
+          {{ expanded ? '已展开' : '已收起' }} · {{ level }}级
+        </text>
+      </view>
+    </template>
+  </up-tree>
+</template>
+```
+
+## 复选框
+
+设置 `show-checkbox` 后展示复选框。默认情况下父子节点会联动；设置 `check-strictly` 后父子节点互不影响。
+
+```vue
+<template>
+  <up-tree
+    ref="treeRef"
+    :data="treeData"
+    :props="defaultProps"
+    show-checkbox
+    default-expand-all
+    check-on-click-node
+    :default-checked-keys="['2-1-1']"
+    @check-change="handleCheckChange"
+    @check="handleCheck"
+  />
+</template>
 ```
 
 ```vue
-<up-tree
-  ref="checkTree"
-  :data="checkTreeData"
-  :props="defaultProps"
-  show-checkbox
-  default-expand-all
-  check-on-click-node
-  :default-checked-keys="defaultCheckedKeys"
-  @check-change="handleCheckChange"
-  @check="handleCheck"
-/>
+<script setup>
+import { ref } from 'vue';
+
+const treeRef = ref(null);
+const defaultProps = ref({
+  label: 'label',
+  children: 'children',
+  nodeKey: 'id',
+  disabled: 'disabled'
+});
+const treeData = ref([
+  {
+    id: '2',
+    label: '表单组件',
+    children: [
+      {
+        id: '2-1',
+        label: '输入组件',
+        children: [
+          { id: '2-1-1', label: 'Input 输入框' },
+          { id: '2-1-2', label: 'Textarea 文本域' }
+        ]
+      }
+    ]
+  }
+]);
+
+const handleCheckChange = (node, checked) => {
+  console.log('勾选状态变化:', node, checked);
+};
+
+const handleCheck = (node, state) => {
+  console.log('当前选中 keys:', state.checkedKeys);
+};
+
+const setChecked = () => {
+  treeRef.value.setCheckedKeys(['2-1-2']);
+};
+</script>
 ```
+
+## 手风琴模式
+
+设置 `accordion` 后，同一级节点每次只展开一个。
 
 ```vue
-<up-tree
-  :data="accordionTreeData"
-  :props="defaultProps"
-  accordion
-  expand-on-click-node
-  @node-click="handleNodeClick"
-/>
+<template>
+  <up-tree
+    :data="treeData"
+    :props="defaultProps"
+    accordion
+    expand-on-click-node
+  />
+</template>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/tree/tree.uvue`</small>
+## API
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/tree.md`</small>
 
 </template>
 
 <template #uniappx>
 
+#### 微信小程序插槽说明
+
+为规避微信小程序端动态 scoped slot 在树形递归场景下可能不显示或运行时报错的问题，组件在微信小程序端会使用内置文本渲染作为稳定兜底。H5、App 等平台仍支持默认插槽自定义节点内容。
+
+## 基本使用
+
+通过 `data` 传入树数据，通过 `props` 指定节点字段映射。
+
 ```vue
-<up-tree
-  :data="treeData"
-  :props="defaultProps"
-  :default-expanded-keys="expandedKeys"
-  highlight-current
-  current-node-key="1"
-  @node-click="handleNodeClick"
-  @node-expand="handleNodeExpand"
-/>
+<template>
+  <up-tree
+    :data="treeData"
+    :props="defaultProps"
+    :default-expanded-keys="['1']"
+    highlight-current
+    current-node-key="1"
+    @node-click="handleNodeClick"
+  />
+</template>
 ```
 
 ```vue
-<up-tree
-  :data="customTreeData"
-  :props="defaultProps"
-  default-expand-all
-  :indent="40"
-  @node-click="handleNodeClick"
->
-  <template #default="{ node, level, expanded }">
-    <view class="custom-tree-node">
-      <text class="custom-tree-node__label">{{ getTreeNodeLabel(node) }}</text>
-      <text v-if="hasTreeNodeTag(node)" class="custom-tree-node__tag">{{ getTreeNodeTag(node) }}</text>
-      <text v-if="hasTreeNodeChildren(node)" class="custom-tree-node__state">
-        {{ getExpandedText(expanded) }} · {{ getTreeLevel(level) }}级
-      </text>
-    </view>
-  </template>
-</up-tree>
+<script setup>
+import { ref } from 'vue';
+
+const defaultProps = ref({
+  label: 'label',
+  children: 'children',
+  nodeKey: 'id',
+  disabled: 'disabled'
+});
+
+const treeData = ref([
+  {
+    id: '1',
+    label: '一级 1',
+    children: [
+      {
+        id: '1-1',
+        label: '二级 1-1',
+        children: [
+          { id: '1-1-1', label: '三级 1-1-1' },
+          { id: '1-1-2', label: '三级 1-1-2' }
+        ]
+      },
+      { id: '1-2', label: '二级 1-2' }
+    ]
+  }
+]);
+
+const handleNodeClick = (node) => {
+  console.log('节点被点击:', node);
+};
+</script>
+```
+
+## 自定义节点内容
+
+H5、App 等平台可以通过默认插槽自定义节点内容。插槽参数包含 `node`、`data`、`level`、`expanded`、`checked`、`indeterminate`、`disabled`。
+
+```vue
+<template>
+  <up-tree :data="treeData" :props="defaultProps" default-expand-all>
+    <template #default="{ node, level, expanded }">
+      <view class="custom-tree-node">
+        <text>{{ node.label }}</text>
+        <text v-if="node.children && node.children.length">
+          {{ expanded ? '已展开' : '已收起' }} · {{ level }}级
+        </text>
+      </view>
+    </template>
+  </up-tree>
+</template>
+```
+
+## 复选框
+
+设置 `show-checkbox` 后展示复选框。默认情况下父子节点会联动；设置 `check-strictly` 后父子节点互不影响。
+
+```vue
+<template>
+  <up-tree
+    ref="treeRef"
+    :data="treeData"
+    :props="defaultProps"
+    show-checkbox
+    default-expand-all
+    check-on-click-node
+    :default-checked-keys="['2-1-1']"
+    @check-change="handleCheckChange"
+    @check="handleCheck"
+  />
+</template>
 ```
 
 ```vue
-<up-tree
-  ref="checkTree"
-  :data="checkTreeData"
-  :props="defaultProps"
-  show-checkbox
-  default-expand-all
-  check-on-click-node
-  :default-checked-keys="defaultCheckedKeys"
-  @check-change="handleCheckChange"
-  @check="handleCheck"
-/>
+<script setup>
+import { ref } from 'vue';
+
+const treeRef = ref(null);
+const defaultProps = ref({
+  label: 'label',
+  children: 'children',
+  nodeKey: 'id',
+  disabled: 'disabled'
+});
+const treeData = ref([
+  {
+    id: '2',
+    label: '表单组件',
+    children: [
+      {
+        id: '2-1',
+        label: '输入组件',
+        children: [
+          { id: '2-1-1', label: 'Input 输入框' },
+          { id: '2-1-2', label: 'Textarea 文本域' }
+        ]
+      }
+    ]
+  }
+]);
+
+const handleCheckChange = (node, checked) => {
+  console.log('勾选状态变化:', node, checked);
+};
+
+const handleCheck = (node, state) => {
+  console.log('当前选中 keys:', state.checkedKeys);
+};
+
+const setChecked = () => {
+  treeRef.value.setCheckedKeys(['2-1-2']);
+};
+</script>
 ```
+
+## 手风琴模式
+
+设置 `accordion` 后，同一级节点每次只展开一个。
 
 ```vue
-<up-tree
-  :data="accordionTreeData"
-  :props="defaultProps"
-  accordion
-  expand-on-click-node
-  @node-click="handleNodeClick"
-/>
+<template>
+  <up-tree
+    :data="treeData"
+    :props="defaultProps"
+    accordion
+    expand-on-click-node
+  />
+</template>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/tree/tree.uvue`</small>
+## API
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/tree.md`</small>
 
 </template>
 

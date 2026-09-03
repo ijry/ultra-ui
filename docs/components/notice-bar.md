@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -190,147 +190,141 @@ color / bgColor / fontSize / speed
 
 <template #uniapp>
 
-#### 基础功能
+#### 基本使用
+
+- 通过`text`参数设置需要滚动的内容
 
 ```vue
-<up-notice-bar
-    :text="text1"
-></up-notice-bar>
+<template>
+	<view>
+      <up-notice-bar :text="text1"></up-notice-bar>
+    </view>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 创建响应式数据  
+const text1 = ref('uview-plus UI众多组件覆盖开发过程的各个需求，组件功能丰富，多端兼容。让您快速集成，开箱即用');  
+</script>
 ```
 
 #### 可关闭
 
-```vue
-<up-notice-bar
-    :text="text5"
-    mode="closable"
-></up-notice-bar>
-```
-
-#### 自定义横向滚动速度
+通过`mode`配置为`closable`让右侧显示关闭按钮
 
 ```vue
-<up-notice-bar
-    :text="text2"
-    speed="250"
-    mode="closable"
-></up-notice-bar>
+<template>
+  <view>
+    <up-notice-bar :text="text1" mode="closable"></up-notice-bar>
+  </view>
+</template>
 ```
-
-#### 可跳转(点击右箭头)
 
 ```vue
-<up-notice-bar
-    :text="text3"
-    mode="link"
-    url="/pages/componentsB/tag/tag"
-></up-notice-bar>
+<script setup>  
+import { ref } from 'vue';  
+  
+// 创建响应式数据  
+const text1 = ref('uview-plus UI众多组件覆盖开发过程的各个需求，组件功能丰富，多端兼容。让您快速集成，开箱即用');  
+</script>
 ```
 
-#### 横向步进滚动
+#### 配置滚动速度和跳转
+
+- `speed`可配置横向滚动速度
+- `url`可配置跳转
 
 ```vue
-<up-notice-bar
-    :text="text4"
-    :step="true"
-    @click="click"
-></up-notice-bar>
+<template>
+  <view>
+    <up-notice-bar :text="text1" mode="closable" speed="250" url="/pages/componentsB/tag/tag"></up-notice-bar>
+  </view>
+</template>
 ```
-
-#### 纵向滚动
 
 ```vue
-<up-notice-bar
-    :text="text4"
-    direction="column"
-    @click="click"
-></up-notice-bar>
+<script setup>  
+import { ref } from 'vue';  
+  
+// 创建响应式数据  
+const text1 = ref('uview-plus UI众多组件覆盖开发过程的各个需求，组件功能丰富，多端兼容。让您快速集成，开箱即用');  
+</script>
 ```
 
-#### 自定义样式
-
-```vue
-<up-notice-bar
-    :text="text1"
-    color="#ffffff"
-    bgColor="#f56c6c"
-></up-notice-bar>
-```
-
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsB/noticeBar/noticeBar.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/noticeBar.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 基础功能
+#### 基本使用
+
+- 通过`text`参数设置需要滚动的内容
 
 ```vue
-<up-notice-bar
-    :text="text1"
-></up-notice-bar>
+<template>
+	<view>
+      <up-notice-bar :text="text1"></up-notice-bar>
+    </view>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 创建响应式数据  
+const text1 = ref('uview-ultra UI众多组件覆盖开发过程的各个需求，组件功能丰富，多端兼容。让您快速集成，开箱即用');  
+</script>
 ```
 
 #### 可关闭
 
-```vue
-<up-notice-bar
-    :text="text5"
-    mode="closable"
-></up-notice-bar>
-```
-
-#### 自定义横向滚动速度
+通过`mode`配置为`closable`让右侧显示关闭按钮
 
 ```vue
-<up-notice-bar
-    :text="text2"
-    speed="250"
-    mode="closable"
-></up-notice-bar>
+<template>
+  <view>
+    <up-notice-bar :text="text1" mode="closable"></up-notice-bar>
+  </view>
+</template>
 ```
-
-#### 可跳转(点击右箭头)
 
 ```vue
-<up-notice-bar
-    :text="text3"
-    mode="link"
-    url="/pages/componentsB/tag/tag"
-></up-notice-bar>
+<script setup>  
+import { ref } from 'vue';  
+  
+// 创建响应式数据  
+const text1 = ref('uview-ultra UI众多组件覆盖开发过程的各个需求，组件功能丰富，多端兼容。让您快速集成，开箱即用');  
+</script>
 ```
 
-#### 横向步进滚动
+#### 配置滚动速度和跳转
+
+- `speed`可配置横向滚动速度
+- `url`可配置跳转
 
 ```vue
-<up-notice-bar
-    :text="text4"
-    :step="true"
-    @click="click"
-></up-notice-bar>
+<template>
+  <view>
+    <up-notice-bar :text="text1" mode="closable" speed="250" url="/pages/componentsB/tag/tag"></up-notice-bar>
+  </view>
+</template>
 ```
-
-#### 纵向滚动
 
 ```vue
-<up-notice-bar
-    :text="text4"
-    direction="column"
-    @click="click"
-></up-notice-bar>
+<script setup>  
+import { ref } from 'vue';  
+  
+// 创建响应式数据  
+const text1 = ref('uview-ultra UI众多组件覆盖开发过程的各个需求，组件功能丰富，多端兼容。让您快速集成，开箱即用');  
+</script>
 ```
 
-#### 自定义样式
-
-```vue
-<up-notice-bar
-    :text="text1"
-    color="#ffffff"
-    bgColor="#f56c6c"
-></up-notice-bar>
-```
-
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsB/noticeBar/noticeBar.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/noticeBar.md`</small>
 
 </template>
 

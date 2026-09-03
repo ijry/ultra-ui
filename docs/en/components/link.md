@@ -12,7 +12,7 @@ Opens an external URL or copies it to the clipboard, smoothing over platform gap
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -189,93 +189,79 @@ mpTips 自定义复制成功后的 toast 文案
 
 <template #uniapp>
 
-#### 基本案例
+#### 基本使用
 
 ```vue
-<up-link
-    href="https://uviewui.com/"
-    text="打开uView UI文档"
-    @click="click"
-></up-link>
+<template>
+	<up-link href="https://uviewui.com/" text="打开uview-plus UI文档" @click="click"></up-link>
+</template>
 ```
 
-#### 显示下划线
+```vue
+<script setup>  
+// 直接定义方法  
+function click() {  
+  console.log('click');  
+}  
+</script>
+```
+
+#### 下划线
 
 ```vue
-<up-link
-    href="https://uviewui.com/"
-    :underLine="true"
-    text="Go to uView doc"
-></up-link>
+<template>
+	<up-link href="https://uviewui.com/" text="打开uview-plus UI文档" :under-line="true"></up-link>
+</template>
 ```
 
 #### 自定义颜色
 
 ```vue
-<up-link
-    href="https://uviewui.com/"
-    lineColor="#19be6b"
-    color="#19be6b"
-    text="打开uView UI文档"
-></up-link>
+<template>
+	<up-link href="https://uviewui.com/" text="打开uview-plus UI文档" color="#19be6b" line-color="#19be6b"></up-link>
+</template>
 ```
 
-#### 自定义链接内容
-
-```vue
-<up-link
-    href="https://uniapp.dcloud.io/"
-    text="打开uni-app文档"
-></up-link>
-```
-
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsA/link/link.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/link.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 基本案例
+#### 基本使用
 
 ```vue
-<up-link
-    href="https://uviewui.com/"
-    text="打开uView UI文档"
-    @click="click"
-></up-link>
+<template>
+	<up-link href="https://uviewui.com/" text="打开uview-ultra UI文档" @click="click"></up-link>
+</template>
 ```
 
-#### 显示下划线
+```vue
+<script setup>  
+// 直接定义方法  
+function click() {  
+  console.log('click');  
+}  
+</script>
+```
+
+#### 下划线
 
 ```vue
-<up-link
-    href="https://uviewui.com/"
-    :underLine="true"
-    text="Go to uView doc"
-></up-link>
+<template>
+	<up-link href="https://uviewui.com/" text="打开uview-ultra UI文档" :under-line="true"></up-link>
+</template>
 ```
 
 #### 自定义颜色
 
 ```vue
-<up-link
-    href="https://uviewui.com/"
-    lineColor="#19be6b"
-    color="#19be6b"
-    text="打开uView UI文档"
-></up-link>
+<template>
+	<up-link href="https://uviewui.com/" text="打开uview-ultra UI文档" color="#19be6b" line-color="#19be6b"></up-link>
+</template>
 ```
 
-#### 自定义链接内容
-
-```vue
-<up-link
-    href="https://uniapp.dcloud.io/"
-    text="打开uni-app文档"
-></up-link>
-```
-
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsA/link/link.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/link.md`</small>
 
 </template>
 

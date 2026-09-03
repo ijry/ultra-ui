@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -147,41 +147,147 @@ children 覆盖默认图标 + 文本
 
 <template #uniapp>
 
+#### 基本使用
+
 ```vue
-<up-loading-page
-    :loadingText="loadingPageData['loadingText']"
-    :image="loadingPageData['image']"
-    :iconSize="loadingPageData['iconSize']"
-    :loadingMode="loadingPageData['loadingMode']"
-    :bgColor="loadingPageData['bgColor']"
-    :loading="loading"
-    :color="loadingPageData['color']"
-    :loadingColor="loadingPageData['loadingColor']"
->
-</up-loading-page>
+<template>
+	<view>
+		<up-loading-page></up-loading-page>
+	</view>
+</template>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsA/loading-page/loading-page.uvue`</small>
+#### 显示或隐藏
+
+`loading`可以指定是否显示加载页
+
+```vue
+<up-loading-page :loading="true"></up-loading-page>
+```
+
+#### 文字内容
+
+`loading-text`可以指定提示内容
+
+```vue
+<up-loading-page loading-text="loading..."></up-loading-page>
+```
+
+#### 动画模式
+
+`loading-mode`可以指定加载动画的模式, 默认为`circle`
+
+```vue
+<up-loading-page loading-mode="spinner"></up-loading-page>
+<up-loading-page loading-mode="semicircle"></up-loading-page>
+```
+
+#### 动画图片
+
+`image`可以指定文字上方用于替换loading动画的图片
+
+```vue
+<up-loading-page image="/static/logo.png"></up-loading-page>
+```
+
+#### 文字颜色
+
+`color`可以指定文字颜色
+
+```vue
+<up-loading-page color="#666"></up-loading-page>
+```
+
+#### 文字大小
+
+`font-size`可以指定文字大小
+
+```vue
+<up-loading-page font-size="24"></up-loading-page>
+```
+
+#### 图标大小 <badge text="2.0.32" />
+
+`icon-size`可以指定图标大小
+
+```vue
+<up-loading-page icon-size="36"></up-loading-page>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/loadingPage.md`</small>
 
 </template>
 
 <template #uniappx>
 
+#### 基本使用
+
 ```vue
-<up-loading-page
-    :loadingText="loadingPageData['loadingText']"
-    :image="loadingPageData['image']"
-    :iconSize="loadingPageData['iconSize']"
-    :loadingMode="loadingPageData['loadingMode']"
-    :bgColor="loadingPageData['bgColor']"
-    :loading="loading"
-    :color="loadingPageData['color']"
-    :loadingColor="loadingPageData['loadingColor']"
->
-</up-loading-page>
+<template>
+	<view>
+		<up-loading-page></up-loading-page>
+	</view>
+</template>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsA/loading-page/loading-page.uvue`</small>
+#### 显示或隐藏
+
+`loading`可以指定是否显示加载页
+
+```vue
+<up-loading-page :loading="true"></up-loading-page>
+```
+
+#### 文字内容
+
+`loading-text`可以指定提示内容
+
+```vue
+<up-loading-page loading-text="loading..."></up-loading-page>
+```
+
+#### 动画模式
+
+`loading-mode`可以指定加载动画的模式, 默认为`circle`
+
+```vue
+<up-loading-page loading-mode="spinner"></up-loading-page>
+<up-loading-page loading-mode="semicircle"></up-loading-page>
+```
+
+#### 动画图片
+
+`image`可以指定文字上方用于替换loading动画的图片
+
+```vue
+<up-loading-page image="/static/logo.png"></up-loading-page>
+```
+
+#### 文字颜色
+
+`color`可以指定文字颜色
+
+```vue
+<up-loading-page color="#666"></up-loading-page>
+```
+
+#### 文字大小
+
+`font-size`可以指定文字大小
+
+```vue
+<up-loading-page font-size="24"></up-loading-page>
+```
+
+#### 图标大小 <badge text="2.0.32" />
+
+`icon-size`可以指定图标大小
+
+```vue
+<up-loading-page icon-size="36"></up-loading-page>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/loadingPage.md`</small>
 
 </template>
 

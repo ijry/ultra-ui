@@ -12,7 +12,7 @@ Consistent heading typography with several levels and an optional prefix accent.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -178,43 +178,65 @@ textSlot / subSlot / children 组合
 
 <template #uniapp>
 
-```vue
-<up-title>
-    默认标题
-</up-title>
-```
+#### 基本使用
 
 ```vue
-<up-title>
-    <template #prefix>
-        <up-icon name="level" color="red" size="16px"></up-icon>
-    </template>
-    等级3
-</up-title>
+<u-title>这里是标题</u-title>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/title/title.uvue`</small>
+#### 自定义前缀
+
+```vue
+<u-title>
+  <template #prefix>
+    <view class="custom-prefix">◆</view>
+  </template>
+  带自定义前缀的标题
+</u-title>
+```
+
+#### 组合使用
+
+```vue
+<u-title class="custom-title">
+  <u-icon name="bell" size="18"></u-icon>
+  带图标的标题
+</u-title>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/title.md`</small>
 
 </template>
 
 <template #uniappx>
 
+#### 基本使用
+
 ```vue
-<up-title>
-    默认标题
-</up-title>
+<up-title>这里是标题</up-title>
 ```
+
+#### 自定义前缀
 
 ```vue
 <up-title>
-    <template #prefix>
-        <up-icon name="level" color="red" size="16px"></up-icon>
-    </template>
-    等级3
+  <template #prefix>
+    <view class="custom-prefix">◆</view>
+  </template>
+  带自定义前缀的标题
 </up-title>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/title/title.uvue`</small>
+#### 组合使用
+
+```vue
+<up-title class="custom-title">
+  <up-icon name="bell" size="18"></up-icon>
+  带图标的标题
+</up-title>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/title.md`</small>
 
 </template>
 

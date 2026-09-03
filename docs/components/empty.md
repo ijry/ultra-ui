@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -168,49 +168,46 @@ children 作为底部操作区
 
 <template #uniapp>
 
-#### 演示效果
+#### 基本使用
+
+:::tip 提示
+我们的专业设计师精心为您准备了一套精美默认图，带有图片和`Sketch`文件，您可以下载或修改后再使用：资源下载
+:::
+
+- 通过`text`参数配置提示的文字内容
+- 通过`mode`(默认为`data`)参数配置要显示的图标
 
 ```vue
 <up-empty
-    :mode="mode"
-    :icon="imgList[mode]"
->
-    <up-button
-        size="small"
-        type="primary"
-        :style="{marginTop:10+'px'}"
-        v-if="mode=='car'"
-        text="查看更多商品"
-    >
-    </up-button>
+   mode="car"
+   icon="http://cdn.uviewui.com/uview/empty/car.png">
 </up-empty>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsA/empty/empty.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/empty.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 演示效果
+#### 基本使用
+
+:::tip 提示
+我们的专业设计师精心为您准备了一套精美默认图，带有图片和`Sketch`文件，您可以下载或修改后再使用：资源下载
+:::
+
+- 通过`text`参数配置提示的文字内容
+- 通过`mode`(默认为`data`)参数配置要显示的图标
 
 ```vue
 <up-empty
-    :mode="mode"
-    :icon="imgList[mode]"
+        mode="car"
+        icon="http://cdn.uviewui.com/uview/empty/car.png"
 >
-    <up-button
-        size="small"
-        type="primary"
-        :style="{marginTop:10+'px'}"
-        v-if="mode=='car'"
-        text="查看更多商品"
-    >
-    </up-button>
 </up-empty>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsA/empty/empty.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/empty.md`</small>
 
 </template>
 

@@ -12,7 +12,7 @@ Two-level navigation with categories on the left and content on the right.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -102,23 +102,153 @@ import { UPCateTab } from '@ultra-ui'
 
 <template #uniapp>
 
+#### 基本使用
+
 ```vue
-<up-cate-tab class="cate-tab" mode="follow" :height="height" :tabList="tabList"
-    tabKeyName="title" itemKeyName="title"></up-cate-tab>
+<style lang='scss' scoped>
+.cate-tab {
+    height: calc(100vh - 150px);
+    /* #ifdef H5 */
+    height: calc(100vh - 150px - var(--window-top));
+    /* #endif */
+}
+</style>
+<template>
+	<view>
+        <view style="height: 138px;background: #f1f1f1;"></view>
+		<up-cate-tab class="cate-tab" :tabList="tabList" tabKeyName="title" itemKeyName="title">
+            <template #pageItem="{pageItem}">
+                <view class="w-full">
+                    <up-cell-group :border='false'>
+                        <up-cell :border='false'>
+                            <template #icon>
+                                <up-image :src="pageItem.cover" width="100px" height="100px"></up-image>
+                            </template>
+                            <template v-slot:title>
+                                <view>
+                                    {{ pageItem.title }}
+                                </view>
+                            </template>
+                            <template v-slot:label>
+                                <view class="h-100 pt-1">
+                                    <text class="text-md text-red">￥{{ pageItem.price }}</text>
+                                </view>
+                            </template>
+                            <template v-slot:value>
+                                <up-number-box></up-number-box>
+                            </template>
+                        </up-cell>
+                    </up-cell-group>
+                </view>
+            </template>
+        </up-cate-tab>
+	</view>
+</template>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/cateTab/cateTab.uvue`</small>
+```vue
+<script setup>
+import { ref, onMounted } from 'vue';  
+  
+// 响应式数据  
+const tabList = ref([  
+  { title: '选项一',  children: [
+    {title: '水煮肉片', cover: 'https://s3.bmp.ovh/imgs/2024/12/16/35bc6d28ab1c8bc7.png', price: 88}
+    ]
+  },  
+  { title: '选项一',  children: [
+    {title: '酸菜鱼', cover: 'https://s3.bmp.ovh/imgs/2024/12/16/35bc6d28ab1c8bc7.png', price: 99}
+    ]
+  },
+  { title: '选项一',  children: [
+    {title: '水煮肉片', cover: 'https://s3.bmp.ovh/imgs/2024/12/16/35bc6d28ab1c8bc7.png', price: 88}
+    ]
+  },  
+  { title: '选项一',  children: [
+    {title: '酸菜鱼', cover: 'https://s3.bmp.ovh/imgs/2024/12/16/35bc6d28ab1c8bc7.png', price: 99}
+    ]
+  },
+]);
+</script>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/cateTab.md`</small>
 
 </template>
 
 <template #uniappx>
 
+#### 基本使用
+
 ```vue
-<up-cate-tab class="cate-tab" mode="follow" :height="height" :tabList="tabList"
-    tabKeyName="title" itemKeyName="title"></up-cate-tab>
+<style lang='scss' scoped>
+.cate-tab {
+    height: calc(100vh - 150px);
+    /* #ifdef H5 */
+    height: calc(100vh - 150px - var(--window-top));
+    /* #endif */
+}
+</style>
+<template>
+	<view>
+        <view style="height: 138px;background: #f1f1f1;"></view>
+		<up-cate-tab class="cate-tab" :tabList="tabList" tabKeyName="title" itemKeyName="title">
+            <template #pageItem="{pageItem}">
+                <view class="w-full">
+                    <up-cell-group :border='false'>
+                        <up-cell :border='false'>
+                            <template #icon>
+                                <up-image :src="pageItem.cover" width="100px" height="100px"></up-image>
+                            </template>
+                            <template v-slot:title>
+                                <view>
+                                    {{ pageItem.title }}
+                                </view>
+                            </template>
+                            <template v-slot:label>
+                                <view class="h-100 pt-1">
+                                    <text class="text-md text-red">￥{{ pageItem.price }}</text>
+                                </view>
+                            </template>
+                            <template v-slot:value>
+                                <up-number-box></up-number-box>
+                            </template>
+                        </up-cell>
+                    </up-cell-group>
+                </view>
+            </template>
+        </up-cate-tab>
+	</view>
+</template>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/cateTab/cateTab.uvue`</small>
+```vue
+<script setup>
+import { ref, onMounted } from 'vue';  
+  
+// 响应式数据  
+const tabList = ref([  
+  { title: '选项一',  children: [
+    {title: '水煮肉片', cover: 'https://s3.bmp.ovh/imgs/2024/12/16/35bc6d28ab1c8bc7.png', price: 88}
+    ]
+  },  
+  { title: '选项一',  children: [
+    {title: '酸菜鱼', cover: 'https://s3.bmp.ovh/imgs/2024/12/16/35bc6d28ab1c8bc7.png', price: 99}
+    ]
+  },
+  { title: '选项一',  children: [
+    {title: '水煮肉片', cover: 'https://s3.bmp.ovh/imgs/2024/12/16/35bc6d28ab1c8bc7.png', price: 88}
+    ]
+  },  
+  { title: '选项一',  children: [
+    {title: '酸菜鱼', cover: 'https://s3.bmp.ovh/imgs/2024/12/16/35bc6d28ab1c8bc7.png', price: 99}
+    ]
+  },
+]);
+</script>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/cateTab.md`</small>
 
 </template>
 

@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -112,45 +112,95 @@ import { UPSelect } from '@ultra-ui'
 
 <template #uniapp>
 
+#### 点击获取所点击选项ID
+
+`select`回调事件带有一个`object`值
+
 ```vue
-<up-select v-model:current="cateId" label="分类"
-    :options="scenesList"></up-select>
+<template>
+	<view>
+        <up-select v-model:current="cateId" label="分类"
+            :options="cateList" @select="selectItem"></up-select>
+	</view>
+</template>
 ```
 
 ```vue
-<up-select v-model:current="cateId" label="分类"
-    :options="scenesList">
-    <template #optionItem="{item}">
-        <text class="up-select__item-text">
-            自定义选项
-        </text>
-    </template>
-</up-select>
+<script setup>  
+import { ref, onMounted } from 'vue';  
+  
+// 响应式数据  
+const cateId = ref('')
+const cateList = ref([
+    {
+        id: '1',
+        name: '分类1'
+    },
+    {
+        id: '2',
+        name: '分类2'
+    },
+    {
+        id: '3',
+        name: '分类4'
+    },
+])
+  
+// 方法  
+const selectItem = (item) => {  
+  console.log(item);  
+};  
+</script>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/select/select.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/select.md`</small>
 
 </template>
 
 <template #uniappx>
 
+#### 点击获取所点击选项ID
+
+`select`回调事件带有一个`object`值
+
 ```vue
-<up-select v-model:current="cateId" label="分类"
-    :options="scenesList"></up-select>
+<template>
+	<view>
+        <up-select v-model:current="cateId" label="分类"
+            :options="cateList" @select="selectItem"></up-select>
+	</view>
+</template>
 ```
 
 ```vue
-<up-select v-model:current="cateId" label="分类"
-    :options="scenesList">
-    <template #optionItem="{item}">
-        <text class="up-select__item-text">
-            自定义选项
-        </text>
-    </template>
-</up-select>
+<script setup>  
+import { ref, onMounted } from 'vue';  
+  
+// 响应式数据  
+const cateId = ref('')
+const cateList = ref([
+    {
+        id: '1',
+        name: '分类1'
+    },
+    {
+        id: '2',
+        name: '分类2'
+    },
+    {
+        id: '3',
+        name: '分类4'
+    },
+])
+  
+// 方法  
+const selectItem = (item) => {  
+  console.log(item);  
+};  
+</script>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/select/select.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/select.md`</small>
 
 </template>
 

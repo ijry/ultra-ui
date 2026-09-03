@@ -12,7 +12,7 @@ Writes text to the system clipboard with consistent success feedback.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -103,37 +103,43 @@ icon=false 只保留文案
 
 <template #uniapp>
 
-```vue
-<up-copy content="uview-plus is great !">
-    <text>点击复制</text>
-</up-copy>
-```
+#### 基本使用
 
 ```vue
-<up-copy content="uview-plus is great !">
-    <up-button type="primary">点击复制</up-button>
-</up-copy>
+<template>
+	<view>
+		<up-copy content="uview-plus is great !">
+            <text>点击复制</text>
+        </up-copy>
+        <up-copy content="uview-plus is great !">
+            <up-button type="primary">点击复制</up-button>
+        </up-copy>
+	</view>
+</template>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/copy/copy.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/copy.md`</small>
 
 </template>
 
 <template #uniappx>
 
-```vue
-<up-copy content="uview-plus is great !">
-    <text>点击复制</text>
-</up-copy>
-```
+#### 基本使用
 
 ```vue
-<up-copy content="uview-plus is great !">
-    <up-button type="primary">点击复制</up-button>
-</up-copy>
+<template>
+	<view>
+		<up-copy content="uview-ultra is great !">
+            <text>点击复制</text>
+        </up-copy>
+        <up-copy content="uview-ultra is great !">
+            <up-button type="primary">点击复制</up-button>
+        </up-copy>
+	</view>
+</template>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/copy/copy.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/copy.md`</small>
 
 </template>
 

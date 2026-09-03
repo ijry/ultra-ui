@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -102,23 +102,157 @@ import { UPCateTab } from '@ultra-ui'
 
 <template #uniapp>
 
+#### 基本使用
+
+tabList指定tab列表，`tabKeyName`和`itemKeyName`指定对象的key。
+
 ```vue
-<up-cate-tab class="cate-tab" mode="follow" :height="height" :tabList="tabList"
-    tabKeyName="title" itemKeyName="title"></up-cate-tab>
+<style lang='scss' scoped>
+.cate-tab {
+    height: calc(100vh - 150px);
+    /* #ifdef H5 */
+    height: calc(100vh - 150px - var(--window-top));
+    /* #endif */
+}
+</style>
+<template>
+	<view>
+        <view style="height: 138px;background: #f1f1f1;"></view>
+		<up-cate-tab class="cate-tab" :tabList="tabList" tabKeyName="title" itemKeyName="title">
+            <template #pageItem="{pageItem}">
+                <view class="w-full">
+                    <up-cell-group :border='false'>
+                        <up-cell :border='false'>
+                            <template #icon>
+                                <up-image :src="pageItem.cover" width="100px" height="100px"></up-image>
+                            </template>
+                            <template v-slot:title>
+                                <view>
+                                    {{ pageItem.title }}
+                                </view>
+                            </template>
+                            <template v-slot:label>
+                                <view class="h-100 pt-1">
+                                    <text class="text-md text-red">￥{{ pageItem.price }}</text>
+                                </view>
+                            </template>
+                            <template v-slot:value>
+                                <up-number-box></up-number-box>
+                            </template>
+                        </up-cell>
+                    </up-cell-group>
+                </view>
+            </template>
+        </up-cate-tab>
+	</view>
+</template>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/cateTab/cateTab.uvue`</small>
+```vue
+<script setup>
+import { ref, onMounted } from 'vue';  
+  
+// 响应式数据  
+const tabList = ref([  
+  { title: '选项一',  children: [
+    {title: '水煮肉片', cover: 'https://s3.bmp.ovh/imgs/2024/12/16/35bc6d28ab1c8bc7.png', price: 88}
+    ]
+  },  
+  { title: '选项一',  children: [
+    {title: '酸菜鱼', cover: 'https://s3.bmp.ovh/imgs/2024/12/16/35bc6d28ab1c8bc7.png', price: 99}
+    ]
+  },
+  { title: '选项一',  children: [
+    {title: '水煮肉片', cover: 'https://s3.bmp.ovh/imgs/2024/12/16/35bc6d28ab1c8bc7.png', price: 88}
+    ]
+  },  
+  { title: '选项一',  children: [
+    {title: '酸菜鱼', cover: 'https://s3.bmp.ovh/imgs/2024/12/16/35bc6d28ab1c8bc7.png', price: 99}
+    ]
+  },
+]);
+</script>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/cateTab.md`</small>
 
 </template>
 
 <template #uniappx>
 
+#### 基本使用
+
+tabList指定tab列表，`tabKeyName`和`itemKeyName`指定对象的key。
+
 ```vue
-<up-cate-tab class="cate-tab" mode="follow" :height="height" :tabList="tabList"
-    tabKeyName="title" itemKeyName="title"></up-cate-tab>
+<style lang='scss' scoped>
+.cate-tab {
+    height: calc(100vh - 150px);
+    /* #ifdef H5 */
+    height: calc(100vh - 150px - var(--window-top));
+    /* #endif */
+}
+</style>
+<template>
+	<view>
+        <view style="height: 138px;background: #f1f1f1;"></view>
+		<up-cate-tab class="cate-tab" :tabList="tabList" tabKeyName="title" itemKeyName="title">
+            <template #pageItem="{pageItem}">
+                <view class="w-full">
+                    <up-cell-group :border='false'>
+                        <up-cell :border='false'>
+                            <template #icon>
+                                <up-image :src="pageItem.cover" width="100px" height="100px"></up-image>
+                            </template>
+                            <template v-slot:title>
+                                <view>
+                                    {{ pageItem.title }}
+                                </view>
+                            </template>
+                            <template v-slot:label>
+                                <view class="h-100 pt-1">
+                                    <text class="text-md text-red">￥{{ pageItem.price }}</text>
+                                </view>
+                            </template>
+                            <template v-slot:value>
+                                <up-number-box></up-number-box>
+                            </template>
+                        </up-cell>
+                    </up-cell-group>
+                </view>
+            </template>
+        </up-cate-tab>
+	</view>
+</template>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/cateTab/cateTab.uvue`</small>
+```vue
+<script setup>
+import { ref, onMounted } from 'vue';  
+  
+// 响应式数据  
+const tabList = ref([  
+  { title: '选项一',  children: [
+    {title: '水煮肉片', cover: 'https://s3.bmp.ovh/imgs/2024/12/16/35bc6d28ab1c8bc7.png', price: 88}
+    ]
+  },  
+  { title: '选项一',  children: [
+    {title: '酸菜鱼', cover: 'https://s3.bmp.ovh/imgs/2024/12/16/35bc6d28ab1c8bc7.png', price: 99}
+    ]
+  },
+  { title: '选项一',  children: [
+    {title: '水煮肉片', cover: 'https://s3.bmp.ovh/imgs/2024/12/16/35bc6d28ab1c8bc7.png', price: 88}
+    ]
+  },  
+  { title: '选项一',  children: [
+    {title: '酸菜鱼', cover: 'https://s3.bmp.ovh/imgs/2024/12/16/35bc6d28ab1c8bc7.png', price: 99}
+    ]
+  },
+]);
+</script>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/cateTab.md`</small>
 
 </template>
 

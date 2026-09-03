@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -190,107 +190,311 @@ urls 为对象数组时，用 keyName 指定图片字段
 
 <template #uniapp>
 
-#### 基础使用
+#### 基本使用
+
+- 通过`urls`设置相册的图片地址，搭配image等做出更棒的效果！
 
 ```vue
-<up-album
-    :urls="urls1"
-    keyName="src2"
-></up-album>
+<template>
+    <view class="u-page">
+        <view class="u-demo-block">
+            <text class="u-demo-block__title">多图模式</text>
+            <view class="u-demo-block__content">
+                <view class="album">
+                    <view class="album__avatar">
+                        <image
+                            src="/static/uview/common/logo.png"
+                            mode=""
+                            style="width: 32px;height: 32px;"
+                        ></image>
+                    </view>
+                    <view class="album__content">
+                        <up-text
+                                text="uview-plus UI"
+                                type="primary"
+                                bold
+                                size="17"
+                        ></up-text>
+                        <up-text
+                                margin="0 0 8px 0"
+                                text="全面的组件和便捷的工具会让您信手拈来，如鱼得水"
+                        ></up-text>
+                        <up-album :urls="urls1" keyName="src2"></up-album>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 响应式数据  
+const albumWidth = ref(0);  
+const urls1 = ref([{  
+    src2: 'https://uview-plus.jiangruyi.com/uview-plus/album/1.jpg',  
+}]);  
+</script>
+```
+
+```vue
+<style lang="scss">
+    .album {
+        @include flex;
+        align-items: flex-start;
+
+        &__avatar {
+             background-color: $u-bg-color;
+             padding: 5px;
+             border-radius: 3px;
+         }
+    
+        &__content {
+             margin-left: 10px;
+             flex: 1;
+         }
+    }
+</style>
 ```
 
 #### 多图模式
 
-```vue
-<up-album :urls="urls2"></up-album>
-```
-
-#### 图文对齐
+- 通过`urls`传入更多的图片地址形成图片列表
 
 ```vue
-<up-album
-    :urls="urls2"
-    @albumWidth="getAlbumWidth"
-    multipleSize="68"
-></up-album>
+<template>
+  <view class="u-page">
+    <view class="u-demo-block">
+      <text class="u-demo-block__title">多图模式</text>
+      <view class="u-demo-block__content">
+        <view class="album">
+          <view class="album__avatar">
+            <image
+              src="/static/uview/common/logo.png"
+              mode=""
+              style="width: 32px;height: 32px;"
+            ></image>
+          </view>
+          <view class="album__content">
+            <up-text
+              text="uview-plus UI"
+              type="primary"
+              bold
+              size="17"
+            ></up-text>
+            <up-text
+              margin="0 0 8px 0"
+              text="全面的组件和便捷的工具会让您信手拈来，如鱼得水"
+            ></up-text>
+            <up-album :urls="urls2"></up-album>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
 ```
-
-#### 更改裁剪模式
 
 ```vue
-<up-album
-    :urls="urls3"
-    rowCount="2"
-    maxCount="4"
-    multipleMode="scaleToFill"
-></up-album>
+<script setup>  
+import { ref } from 'vue';  
+  
+// 响应式数据  
+const albumWidth = ref(0);  
+const urls2 = ref([  
+    'https://uview-plus.jiangruyi.com/uview-plus/album/1.jpg',  
+    'https://uview-plus.jiangruyi.com/uview-plus/album/2.jpg',  
+    'https://uview-plus.jiangruyi.com/uview-plus/album/3.jpg',  
+    'https://uview-plus.jiangruyi.com/uview-plus/album/4.jpg',  
+    'https://uview-plus.jiangruyi.com/uview-plus/album/5.jpg',  
+    'https://uview-plus.jiangruyi.com/uview-plus/album/6.jpg',  
+    'https://uview-plus.jiangruyi.com/uview-plus/album/7.jpg',  
+    'https://uview-plus.jiangruyi.com/uview-plus/album/8.jpg',  
+    'https://uview-plus.jiangruyi.com/uview-plus/album/9.jpg',  
+    'https://uview-plus.jiangruyi.com/uview-plus/album/10.jpg',  
+]);  
+</script>
 ```
-
-#### 更改图片大小
 
 ```vue
-<up-album
-    :urls="urls4"
-    rowCount="2"
-    maxCount="4"
-    multipleSize="50"
-></up-album>
+<style lang="scss">
+    .album {
+        @include flex;
+        align-items: flex-start;
+
+        &__avatar {
+             background-color: $u-bg-color;
+             padding: 5px;
+             border-radius: 3px;
+         }
+    
+        &__content {
+             margin-left: 10px;
+             flex: 1;
+         }
+    }
+</style>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsC/album/album.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/album.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 基础使用
+#### 基本使用
+
+- 通过`urls`设置相册的图片地址，搭配image等做出更棒的效果！
 
 ```vue
-<up-album
-    :urls="urls1"
-    keyName="src2"
-></up-album>
+<template>
+    <view class="u-page">
+        <view class="u-demo-block">
+            <text class="u-demo-block__title">多图模式</text>
+            <view class="u-demo-block__content">
+                <view class="album">
+                    <view class="album__avatar">
+                        <image
+                            src="/static/uview/common/logo.png"
+                            mode=""
+                            style="width: 32px;height: 32px;"
+                        ></image>
+                    </view>
+                    <view class="album__content">
+                        <up-text
+                                text="uview-ultra UI"
+                                type="primary"
+                                bold
+                                size="17"
+                        ></up-text>
+                        <up-text
+                                margin="0 0 8px 0"
+                                text="全面的组件和便捷的工具会让您信手拈来，如鱼得水"
+                        ></up-text>
+                        <up-album :urls="urls1" keyName="src2"></up-album>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 响应式数据  
+const albumWidth = ref(0);  
+const urls1 = ref([{  
+    src2: 'https://uview-ultra.jiangruyi.com/uview-ultra/album/1.jpg',  
+}]);  
+</script>
+```
+
+```vue
+<style lang="scss">
+    .album {
+        @include flex;
+        align-items: flex-start;
+
+        &__avatar {
+             background-color: $up-bg-color;
+             padding: 5px;
+             border-radius: 3px;
+         }
+    
+        &__content {
+             margin-left: 10px;
+             flex: 1;
+         }
+    }
+</style>
 ```
 
 #### 多图模式
 
-```vue
-<up-album :urls="urls2"></up-album>
-```
-
-#### 图文对齐
+- 通过`urls`传入更多的图片地址形成图片列表
 
 ```vue
-<up-album
-    :urls="urls2"
-    @albumWidth="getAlbumWidth"
-    multipleSize="68"
-></up-album>
+<template>
+  <view class="u-page">
+    <view class="u-demo-block">
+      <text class="u-demo-block__title">多图模式</text>
+      <view class="u-demo-block__content">
+        <view class="album">
+          <view class="album__avatar">
+            <image
+              src="/static/uview/common/logo.png"
+              mode=""
+              style="width: 32px;height: 32px;"
+            ></image>
+          </view>
+          <view class="album__content">
+            <up-text
+              text="uview-ultra UI"
+              type="primary"
+              bold
+              size="17"
+            ></up-text>
+            <up-text
+              margin="0 0 8px 0"
+              text="全面的组件和便捷的工具会让您信手拈来，如鱼得水"
+            ></up-text>
+            <up-album :urls="urls2"></up-album>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
 ```
-
-#### 更改裁剪模式
 
 ```vue
-<up-album
-    :urls="urls3"
-    rowCount="2"
-    maxCount="4"
-    multipleMode="scaleToFill"
-></up-album>
+<script setup>  
+import { ref } from 'vue';  
+  
+// 响应式数据  
+const albumWidth = ref(0);  
+const urls2 = ref([  
+    'https://uview-ultra.jiangruyi.com/uview-ultra/album/1.jpg',  
+    'https://uview-ultra.jiangruyi.com/uview-ultra/album/2.jpg',  
+    'https://uview-ultra.jiangruyi.com/uview-ultra/album/3.jpg',  
+    'https://uview-ultra.jiangruyi.com/uview-ultra/album/4.jpg',  
+    'https://uview-ultra.jiangruyi.com/uview-ultra/album/5.jpg',  
+    'https://uview-ultra.jiangruyi.com/uview-ultra/album/6.jpg',  
+    'https://uview-ultra.jiangruyi.com/uview-ultra/album/7.jpg',  
+    'https://uview-ultra.jiangruyi.com/uview-ultra/album/8.jpg',  
+    'https://uview-ultra.jiangruyi.com/uview-ultra/album/9.jpg',  
+    'https://uview-ultra.jiangruyi.com/uview-ultra/album/10.jpg',  
+]);  
+</script>
 ```
-
-#### 更改图片大小
 
 ```vue
-<up-album
-    :urls="urls4"
-    rowCount="2"
-    maxCount="4"
-    multipleSize="50"
-></up-album>
+<style lang="scss">
+    .album {
+        @include flex;
+        align-items: flex-start;
+
+        &__avatar {
+             background-color: $up-bg-color;
+             padding: 5px;
+             border-radius: 3px;
+         }
+    
+        &__content {
+             margin-left: 10px;
+             flex: 1;
+         }
+    }
+</style>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsC/album/album.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/album.md`</small>
 
 </template>
 

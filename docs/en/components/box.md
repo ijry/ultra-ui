@@ -12,7 +12,7 @@ A basic container with padding, radius and shadow, so you write less CSS.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -156,91 +156,53 @@ bgColors 支持任意 CSS 颜色（含渐变）
 
 <template #uniapp>
 
-```vue
-<up-box height="160px" gap="12px">
-    <template #left>
-        左
-    </template>
-    <template #rightTop>
-        右上
-    </template>
-    <template #rightBottom>
-        右下
-    </template>
-</up-box>
-```
+#### 基本使用
 
 ```vue
-<up-box
-    height="180px" gap="12px"
->
-    <template #left>
-        <up-icon
-            name="arrow-left"
-            size="19"
-        ></up-icon>
-    </template>
-    <template #rightTop>
-        <up-icon
-            name="arrow-left"
-            size="19"
-        ></up-icon>
-    </template>
-    <template #rightBottom>
-        <up-icon
-            name="arrow-left"
-            size="19"
-        ></up-icon>
-    </template>
-</up-box>
+<template>
+	<view class="p-4 bg-white">
+        <up-box height="160px" gap="12px" :bgColors="['#EEFCFF', '#FCF8FF', '#FDF8F2']">
+            <template #left>
+                左
+            </template>
+            <template #rightTop>
+                右上
+            </template>
+            <template #rightBottom>
+                右下
+            </template>
+        </up-box>
+    </view>
+</template>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/box/box.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/box.md`</small>
 
 </template>
 
 <template #uniappx>
 
-```vue
-<up-box height="160px" gap="12px">
-    <template #left>
-        左
-    </template>
-    <template #rightTop>
-        右上
-    </template>
-    <template #rightBottom>
-        右下
-    </template>
-</up-box>
-```
+#### 基本使用
 
 ```vue
-<up-box
-    height="180px" gap="12px"
->
-    <template #left>
-        <up-icon
-            name="arrow-left"
-            size="19"
-        ></up-icon>
-    </template>
-    <template #rightTop>
-        <up-icon
-            name="arrow-left"
-            size="19"
-        ></up-icon>
-    </template>
-    <template #rightBottom>
-        <up-icon
-            name="arrow-left"
-            size="19"
-        ></up-icon>
-    </template>
-</up-box>
+<template>
+	<view class="p-4 bg-white">
+        <up-box height="160px" gap="12px" :bgColors="['#EEFCFF', '#FCF8FF', '#FDF8F2']">
+            <template #left>
+                左
+            </template>
+            <template #rightTop>
+                右上
+            </template>
+            <template #rightBottom>
+                右下
+            </template>
+        </up-box>
+    </view>
+</template>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/box/box.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/box.md`</small>
 
 </template>
 

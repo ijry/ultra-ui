@@ -12,7 +12,7 @@ Generates a QR code locally, with no server round trip.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -174,37 +174,57 @@ allowPreview 开启后点击可全屏查看
 
 <template #uniapp>
 
-```vue
-<up-qrcode cid="up-qrcode-basic" :size="200" :val="qrValue"></up-qrcode>
-```
+#### 基本使用
 
 ```vue
-<up-qrcode cid="up-qrcode-logo" :size="200" :val="qrValue" :icon="logo"></up-qrcode>
+<template>
+	<view>
+		<up-qrcode cid="ex1" :size="200" val="uview-plus"></up-qrcode>
+        <up-qrcode cid="ex2" :size="200" val="uview-plus" icon="https://uview-plus.jiangruyi.com/uview-plus/common/logo.png"></up-qrcode>
+        <up-qrcode cid="ex3" :size="200" val="uview-plus" background="red" foreground="blue"></up-qrcode>
+	</view>
+</template>
 ```
+
+#### 加载状态
 
 ```vue
-<up-qrcode cid="up-qrcode-color" :size="200" :val="qrValue" background="red" foreground="blue"></up-qrcode>
+<template>
+	<view>
+		<up-qrcode cid="ex4" :size="200" val="uview-plus" showLoading loadingText="loading..."></up-qrcode>
+	</view>
+</template>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/qrcode/qrcode.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/qrcode.md`</small>
 
 </template>
 
 <template #uniappx>
 
-```vue
-<up-qrcode cid="up-qrcode-basic" :size="200" :val="qrValue"></up-qrcode>
-```
+#### 基本使用
 
 ```vue
-<up-qrcode cid="up-qrcode-logo" :size="200" :val="qrValue" :icon="logo"></up-qrcode>
+<template>
+	<view>
+		<up-qrcode :size="200" val="uview-ultra"></up-qrcode>
+        <up-qrcode :size="200" val="uview-ultra" icon="https://uview-ultra.jiangruyi.com/uview-ultra/common/logo.png"></up-qrcode>
+        <up-qrcode :size="200" val="uview-ultra" background="red" foreground="blue"></up-qrcode>
+	</view>
+</template>
 ```
+
+#### 加载状态
 
 ```vue
-<up-qrcode cid="up-qrcode-color" :size="200" :val="qrValue" background="red" foreground="blue"></up-qrcode>
+<template>
+	<view>
+		<up-qrcode :size="200" val="uview-ultra" showLoading loadingText="loading..."></up-qrcode>
+	</view>
+</template>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/qrcode/qrcode.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/qrcode.md`</small>
 
 </template>
 

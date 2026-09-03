@@ -12,7 +12,7 @@ Defers image loading until it enters the viewport.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -71,23 +71,139 @@ import { UPLazyLoad } from '@ultra-ui'
 
 <template #uniapp>
 
+#### 基本使用
+
 ```vue
-<up-lazy-load threshold="-450" height="100px" img-mode="aspectFill" border-radius="10" :image="item.src"
-    :index="index" @statusChange="statusChange" @clickImg="clickImg"></up-lazy-load>
+<template>
+	<view>
+		<up-lazy-load v-for="(item, index) in list" :key="index" :image="item.src"></up-lazy-load>
+	</view>
+</template>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsA/lazyLoad/lazyLoad.uvue`</small>
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const list = ref([
+  {
+    src: "https://gtd.alicdn.com/sns_logo/i1/TB124_3NXXXXXasXVXXSutbFXXX.jpg_240x240xz.jpg",
+  },
+  {
+    src: "https://gtd.alicdn.com/sns_logo/i7/TB1IWtgQFXXXXcmXFXXSutbFXXX.jpg_240x240xz.jpg",
+  },
+  {
+    src: "https://gtd.alicdn.com/sns_logo/i1/TB1_f_PLXXXXXbVXpXXSutbFXXX.jpg_240x240xz.jpg",
+  },
+  {
+    // 这里图片不存在，会加载失败，显示错误的占位图
+    src: "xxx",
+  },
+]);
+</script>
+```
+
+#### 配置占位图
+
+```vue
+<template>
+	<view>
+		<up-lazy-load :image="image" :loading-img="loadingImg" :error-img="errorImg"></up-lazy-load>
+	</view>
+</template>
+```
+
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const image = ref("https://gtd.alicdn.com/sns_logo/i1/TB124_3NXXXXXasXVXXSutbFXXX.jpg_240x240xz.jpg");
+const loadingImg = ref('/static/uView/loading.png');
+const errorImg = ref('/static/uView/load_error.png');
+</script>
+```
+
+#### 图片加载位置
+
+```vue
+<up-lazy-load :image="image" threshold="300"></up-lazy-load>
+```
+
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const image = ref("https://gtd.alicdn.com/sns_logo/i1/TB124_3NXXXXXasXVXXSutbFXXX.jpg_240x240xz.jpg");
+</script>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/lazyLoad.md`</small>
 
 </template>
 
 <template #uniappx>
 
+#### 基本使用
+
 ```vue
-<up-lazy-load threshold="-450" height="100px" img-mode="aspectFill" border-radius="10" :image="item.src"
-    :index="index" @statusChange="statusChange" @clickImg="clickImg"></up-lazy-load>
+<template>
+	<view>
+		<up-lazy-load v-for="(item, index) in list" :key="index" :image="item.src"></up-lazy-load>
+	</view>
+</template>
+<script>
+	export default {
+		data() {
+			return {
+				// 设计成数组内嵌对象而不是纯数组形式，是考虑到真实环境后端返回的数据为如此形式
+				list: [{
+						src: "https://gtd.alicdn.com/sns_logo/i1/TB124_3NXXXXXasXVXXSutbFXXX.jpg_240x240xz.jpg",
+					},
+					{
+						src: "https://gtd.alicdn.com/sns_logo/i7/TB1IWtgQFXXXXcmXFXXSutbFXXX.jpg_240x240xz.jpg",
+					},
+					{
+						src: "https://gtd.alicdn.com/sns_logo/i1/TB1_f_PLXXXXXbVXpXXSutbFXXX.jpg_240x240xz.jpg",
+					},
+					{
+						// 这里图片不存在，会加载失败，显示错误的占位图
+						src: "xxx",
+					},
+				]
+			}
+		}
+	}
+</script>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsA/lazyLoad/lazyLoad.uvue`</small>
+#### 配置占位图
+
+```vue
+<template>
+	<view>
+		<up-lazy-load :image="image" :loading-img="loadingImg" :error-img="errorImg"></up-lazy-load>
+	</view>
+</template>
+<script>
+	export default {
+		data() {
+			return {
+				image: "https://gtd.alicdn.com/sns_logo/i1/TB124_3NXXXXXasXVXXSutbFXXX.jpg_240x240xz.jpg",
+				loadingImg: '/static/uView/loading.png',
+				errorImg: '/static/uView/load_error.png'
+			}
+		}
+	}
+</script>
+```
+
+#### 图片加载位置
+
+```vue
+<up-lazy-load :image="image" threshold="300"></up-lazy-load>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/lazyLoad.md`</small>
 
 </template>
 

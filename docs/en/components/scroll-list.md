@@ -12,7 +12,7 @@ A horizontally scrolling list with its own scrollbar indicator.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -134,69 +134,347 @@ itemWidth 统一每条宽度
 
 <template #uniapp>
 
-#### 多菜单扩展
+#### 基本使用
 
 ```vue
-<up-scroll-list>
-    <view class="scroll-list">
-        <view
-            class="scroll-list__line"
-            v-for="(item, index) in menuArr"
-            :key="index"
-        >
-            <view
-                class="scroll-list__line__item"
-                v-for="(item1, index1) in item"
-                :key="index1"
-                :class="[(index1 === item.length - 1) ? 'scroll-list__line__item--no-margin-right' : '']"
-            >
-                <image
-                    class="scroll-list__line__item__image"
-                    :src="menuBaseUrl + item1['icon']"
-                    mode=""
-                ></image>
-                <text class="scroll-list__line__item__text">{{ item1['name'] }}</text>
-            </view>
+<template>
+    <up-scroll-list>
+        <view v-for="(item, index) in list" :key="index">
+            <image :src="item.thumb"></image>
         </view>
-    </view>
-</up-scroll-list>
+    </up-scroll-list>
+</template>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/scrollList/scrollList.uvue`</small>
+```vue
+
+<script setup>  
+import { reactive } from 'vue';  
+  
+const list = reactive([  
+    {  
+        thumb: "https://cdn.uviewui.com/uview/goods/1.jpg"  
+    },  
+    {  
+        thumb: "https://cdn.uviewui.com/uview/goods/2.jpg"  
+    },  
+    {  
+        thumb: "https://cdn.uviewui.com/uview/goods/3.jpg"  
+    },  
+    {  
+        thumb: "https://cdn.uviewui.com/uview/goods/4.jpg"  
+    },  
+    {  
+        thumb: "https://cdn.uviewui.com/uview/goods/5.jpg"  
+    }  
+]);  
+</script>
+```
+
+```vue
+<template>
+    <up-scroll-list :indicator="indicator" indicatorColor="#fff0f0" indicatorActiveColor="#f56c6c">
+        <view v-for="(item, index) in list" :key="index">
+            <image :src="item.thumb"></image>
+        </view>
+    </up-scroll-list>
+</template>
+```
+
+```vue
+<script setup>  
+import { reactive } from 'vue';  
+  
+const list = reactive([  
+    {  
+        thumb: "https://cdn.uviewui.com/uview/goods/1.jpg"  
+    },  
+    {  
+        thumb: "https://cdn.uviewui.com/uview/goods/2.jpg"  
+    },  
+    {  
+        thumb: "https://cdn.uviewui.com/uview/goods/3.jpg"  
+    },  
+    {  
+        thumb: "https://cdn.uviewui.com/uview/goods/4.jpg"  
+    },  
+    {  
+        thumb: "https://cdn.uviewui.com/uview/goods/5.jpg"  
+    }  
+]);  
+</script>
+```
+
+#### 兼容性与性能
+
+```vue
+<template>
+    <up-scroll-list @right="right" @left="left">
+        <view class="scroll-list" style="flex-direction: row;">
+            <view
+                class="scroll-list__goods-item"
+                v-for="(item, index) in list"
+                :key="index"
+                :class="[(index === 9) && 'scroll-list__goods-item--no-margin-right']"
+            >
+                <image class="scroll-list__goods-item__image" :src="item.thumb"></image>
+                <text class="scroll-list__goods-item__text">￥{{ item.price }}</text>
+            </view>
+            <view class="scroll-list__show-more">
+                <text class="scroll-list__show-more__text">查看更多</text>
+                <up-icon name="arrow-leftward" color="#f56c6c" size="12"></up-icon>
+            </view>
+        </view>
+    </up-scroll-list>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 响应式数据  
+const list = ref([  
+  {  
+    price: '230.5',  
+    thumb: 'https://cdn.uviewui.com/uview/goods/1.jpg'  
+  },  
+  {  
+    price: '74.1',  
+    thumb: 'https://cdn.uviewui.com/uview/goods/2.jpg'  
+  },  
+  // ... 其他对象  
+  {  
+    price: '251.5',  
+    thumb: 'https://cdn.uviewui.com/uview/goods/1.jpg'  
+  }  
+]);  
+  
+// 方法  
+function left() {  
+  console.log('left');  
+}  
+  
+function right() {  
+  console.log('right');  
+}  
+</script>
+```
+
+```vue
+<style lang="scss">
+.scroll-list {
+	@include flex(column);
+
+	&__goods-item {
+		margin-right: 20px;
+
+		&__image {
+			width: 60px;
+			height: 60px;
+			border-radius: 4px;
+		}
+
+		&__text {
+			color: #f56c6c;
+			text-align: center;
+			font-size: 12px;
+			margin-top: 5px;
+		}
+	}
+
+	&__show-more {
+		background-color: #fff0f0;
+		border-radius: 3px;
+		padding: 3px 6px;
+		@include flex(column);
+		align-items: center;
+
+		&__text {
+			font-size: 12px;
+			width: 12px;
+			color: #f56c6c;
+			line-height: 16px;
+		}
+	}
+}
+</style>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/scrollList.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 多菜单扩展
+#### 基本使用
 
 ```vue
-<up-scroll-list>
-    <view class="scroll-list">
-        <view
-            class="scroll-list__line"
-            v-for="(item, index) in menuArr"
-            :key="index"
-        >
-            <view
-                class="scroll-list__line__item"
-                v-for="(item1, index1) in item"
-                :key="index1"
-                :class="[(index1 === item.length - 1) ? 'scroll-list__line__item--no-margin-right' : '']"
-            >
-                <image
-                    class="scroll-list__line__item__image"
-                    :src="menuBaseUrl + item1['icon']"
-                    mode=""
-                ></image>
-                <text class="scroll-list__line__item__text">{{ item1['name'] }}</text>
-            </view>
+<template>
+    <up-scroll-list>
+        <view v-for="(item, index) in list" :key="index">
+            <image :src="item.thumb"></image>
         </view>
-    </view>
-</up-scroll-list>
+    </up-scroll-list>
+</template>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/scrollList/scrollList.uvue`</small>
+```vue
+
+<script setup>  
+import { reactive } from 'vue';  
+  
+const list = reactive([  
+    {  
+        thumb: "https://cdn.uviewui.com/uview/goods/1.jpg"  
+    },  
+    {  
+        thumb: "https://cdn.uviewui.com/uview/goods/2.jpg"  
+    },  
+    {  
+        thumb: "https://cdn.uviewui.com/uview/goods/3.jpg"  
+    },  
+    {  
+        thumb: "https://cdn.uviewui.com/uview/goods/4.jpg"  
+    },  
+    {  
+        thumb: "https://cdn.uviewui.com/uview/goods/5.jpg"  
+    }  
+]);  
+</script>
+```
+
+```vue
+<template>
+    <up-scroll-list :indicator="indicator" indicatorColor="#fff0f0" indicatorActiveColor="#f56c6c">
+        <view v-for="(item, index) in list" :key="index">
+            <image :src="item.thumb"></image>
+        </view>
+    </up-scroll-list>
+</template>
+```
+
+```vue
+<script setup>  
+import { reactive } from 'vue';  
+  
+const list = reactive([  
+    {  
+        thumb: "https://cdn.uviewui.com/uview/goods/1.jpg"  
+    },  
+    {  
+        thumb: "https://cdn.uviewui.com/uview/goods/2.jpg"  
+    },  
+    {  
+        thumb: "https://cdn.uviewui.com/uview/goods/3.jpg"  
+    },  
+    {  
+        thumb: "https://cdn.uviewui.com/uview/goods/4.jpg"  
+    },  
+    {  
+        thumb: "https://cdn.uviewui.com/uview/goods/5.jpg"  
+    }  
+]);  
+</script>
+```
+
+#### 兼容性与性能
+
+```vue
+<template>
+    <up-scroll-list @right="right" @left="left">
+        <view class="scroll-list" style="flex-direction: row;">
+            <view
+                class="scroll-list__goods-item"
+                v-for="(item, index) in list"
+                :key="index"
+                :class="[(index === 9) && 'scroll-list__goods-item--no-margin-right']"
+            >
+                <image class="scroll-list__goods-item__image" :src="item.thumb"></image>
+                <text class="scroll-list__goods-item__text">￥{{ item.price }}</text>
+            </view>
+            <view class="scroll-list__show-more">
+                <text class="scroll-list__show-more__text">查看更多</text>
+                <up-icon name="arrow-leftward" color="#f56c6c" size="12"></up-icon>
+            </view>
+        </view>
+    </up-scroll-list>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 响应式数据  
+const list = ref([  
+  {  
+    price: '230.5',  
+    thumb: 'https://cdn.uviewui.com/uview/goods/1.jpg'  
+  },  
+  {  
+    price: '74.1',  
+    thumb: 'https://cdn.uviewui.com/uview/goods/2.jpg'  
+  },  
+  // ... 其他对象  
+  {  
+    price: '251.5',  
+    thumb: 'https://cdn.uviewui.com/uview/goods/1.jpg'  
+  }  
+]);  
+  
+// 方法  
+function left() {  
+  console.log('left');  
+}  
+  
+function right() {  
+  console.log('right');  
+}  
+</script>
+```
+
+```vue
+<style lang="scss">
+.scroll-list {
+	@include flex(column);
+
+	&__goods-item {
+		margin-right: 20px;
+
+		&__image {
+			width: 60px;
+			height: 60px;
+			border-radius: 4px;
+		}
+
+		&__text {
+			color: #f56c6c;
+			text-align: center;
+			font-size: 12px;
+			margin-top: 5px;
+		}
+	}
+
+	&__show-more {
+		background-color: #fff0f0;
+		border-radius: 3px;
+		padding: 3px 6px;
+		@include flex(column);
+		align-items: center;
+
+		&__text {
+			font-size: 12px;
+			width: 12px;
+			color: #f56c6c;
+			line-height: 16px;
+		}
+	}
+}
+</style>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/scrollList.md`</small>
 
 </template>
 

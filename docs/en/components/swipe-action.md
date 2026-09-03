@@ -12,7 +12,7 @@ Swipe a row to reveal action buttons, typically delete.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -266,181 +266,555 @@ disabled 时不可滑动展开
 
 <template #uniapp>
 
-#### 演示案例
+#### 基本使用
 
 ```vue
-<up-swipe-action>
+<template>
+	<view>
+      <up-swipe-action>
+        <up-swipe-action-item
+          v-model:show="show"
+          :options="options1"
+        >
+          <view class="swipe-action up-border-top up-border-bottom">
+            <view class="swipe-action__content">
+              <text class="swipe-action__content__text">基础使用</text>
+            </view>
+          </view>
+        </up-swipe-action-item>
+      </up-swipe-action>
+	</view>
+</template>
+```
+
+```vue
+<script setup>  
+import { reactive } from 'vue';  
+  
+const show = ref(false)
+// 使用 reactive 创建响应式对象  
+const options1 = reactive([{  
+    text: '删除'  
+}]);  
+</script>
+```
+
+```vue
+<style lang="scss">
+    .u-page {
+        padding: 0;
+    }
+
+    .u-demo-block__title {
+        padding: 10px 0 2px 15px;
+    }
+
+    .swipe-action {
+        &__content {
+             padding: 25rpx 0;
+    
+            &__text {
+                 font-size: 15px;
+                 color: $u-main-color;
+                 padding-left: 30rpx;
+             }
+        }
+    }
+</style>
+```
+
+#### 防止页面或容器滚动
+
+```vue
+<template>
+  <page-meta :page-style="swipeScrolling ? 'overflow:hidden;' : ''" />
+  <up-swipe-action>
     <up-swipe-action-item
-        v-if="show1"
-        :show="true"
+      v-model:scrolling="swipeScrolling"
+      :options="options1"
+    >
+      <view class="swipe-action up-border-top up-border-bottom">
+        <view class="swipe-action__content">
+          <text class="swipe-action__content__text">左滑时页面不滚动</text>
+        </view>
+      </view>
+    </up-swipe-action-item>
+  </up-swipe-action>
+</template>
+```
+
+```vue
+<template>
+  <scroll-view :scroll-y="!swipeScrolling">
+    <up-swipe-action>
+      <up-swipe-action-item
         v-model:scrolling="swipeScrolling"
         :options="options1"
-        @click="click"
-    >
-        <view class="swipe-action u-border-top u-border-bottom">
-            <view class="swipe-action__content">
-                <text class="swipe-action__content__text">基础使用</text>
-            </view>
+      >
+        <view class="swipe-action up-border-top up-border-bottom">
+          <view class="swipe-action__content">
+            <text class="swipe-action__content__text">左滑时容器不滚动</text>
+          </view>
         </view>
-    </up-swipe-action-item>
-</up-swipe-action>
+      </up-swipe-action-item>
+    </up-swipe-action>
+  </scroll-view>
+</template>
 ```
 
-#### 按钮组
-
 ```vue
-<up-swipe-action>
-    <up-swipe-action-item :options="options2">
-        <view class="swipe-action u-border-top u-border-bottom">
-            <view class="swipe-action__content">
-                <text class="swipe-action__content__text">两个按钮并列</text>
-            </view>
-        </view>
-    </up-swipe-action-item>
-</up-swipe-action>
+<script setup>
+import { ref } from 'vue'
+
+const swipeScrolling = ref(false)
+</script>
 ```
 
-#### 带图标
+#### 多个按钮并列
 
 ```vue
-<up-swipe-action>
-    <up-swipe-action-item :options="options3">
-        <view class="swipe-action u-border-top u-border-bottom">
+<template>
+	<view>
+      <up-swipe-action>
+        <up-swipe-action-item :options="options2">
+          <view class="swipe-action up-border-top up-border-bottom">
             <view class="swipe-action__content">
-                <text class="swipe-action__content__text">自定义图标</text>
+              <text class="swipe-action__content__text">两个按钮并列</text>
             </view>
-        </view>
-    </up-swipe-action-item>
-</up-swipe-action>
+          </view>
+        </up-swipe-action-item>
+      </up-swipe-action>
+	</view>
+</template>
+```
+
+```vue
+<script setup>  
+import { reactive } from 'vue';  
+  
+// 使用 reactive 创建响应式对象数组  
+const options2 = reactive([  
+  {  
+    text: '收藏',  
+    style: {  
+      backgroundColor: '#3c9cff'  
+    }  
+  },  
+  {  
+    text: '删除',  
+    style: {  
+      backgroundColor: '#f56c6c'  
+    }  
+  }  
+]);  
+</script>
+```
+
+```vue
+<style lang="scss">
+    .u-page {
+        padding: 0;
+    }
+
+    .u-demo-block__title {
+        padding: 10px 0 2px 15px;
+    }
+
+    .swipe-action {
+        &__content {
+             padding: 25rpx 0;
+    
+            &__text {
+                 font-size: 15px;
+                 color: $u-main-color;
+                 padding-left: 30rpx;
+             }
+        }
+    }
+</style>
 ```
 
 #### 组合使用
 
 ```vue
-<up-swipe-action>
-    <up-swipe-action-item
-        :options="item['options']"
-        v-for="(item, index) in options4"
-        :disabled="item['disabled']"
-        :key="index"
-    >
-        <view
-            class="swipe-action u-border-top"
-            :class="[index === options4.length - 1 ? 'u-border-bottom' : '']"
+<template>
+	<view>
+      <up-swipe-action>
+        <up-swipe-action-item
+          :options="item.options"
+          v-for="(item, index) in options4"
+          :disabled="item.disabled"
+          :key="index"
         >
+          <view
+            class="swipe-action up-border-top"
+            :class="[index === options4.length - 1 && 'up-border-bottom']"
+          >
             <view class="swipe-action__content">
-                <text class="swipe-action__content__text">{{ item['text'] }}</text>
+              <text class="swipe-action__content__text">{{ item.text }}</text>
             </view>
-        </view>
-    </up-swipe-action-item>
-</up-swipe-action>
+          </view>
+        </up-swipe-action-item>
+      </up-swipe-action>
+	</view>
+</template>
 ```
-
-#### 自定义按钮形状
 
 ```vue
-<up-swipe-action>
-    <up-swipe-action-item :options="options5">
-        <view class="swipe-action u-border-top u-border-bottom">
-            <view class="swipe-action__content">
-                <text class="swipe-action__content__text">圆形按钮</text>
-            </view>
-        </view>
-    </up-swipe-action-item>
-</up-swipe-action>
+<script setup>  
+import { reactive } from 'vue';  
+  
+// 使用 reactive 创建响应式对象数组  
+const options4 = reactive([  
+  {  
+    text: '禁用状态',  
+    disabled: true,  
+    options: [{  
+      text: '置顶',  
+      style: {  
+        backgroundColor: '#3c9cff',  
+      }  
+    }, {  
+      text: '取消',  
+      style: {  
+        backgroundColor: '#f9ae3d',  
+      }  
+    }],  
+  }, {  
+    text: '正常状态',  
+    disabled: false,  
+    options: [{  
+      text: '置顶',  
+      style: {  
+        backgroundColor: '#3c9cff',  
+      }  
+    }, {  
+      text: '取消',  
+      style: {  
+        backgroundColor: '#f9ae3d',  
+      }  
+    }],  
+  }, {  
+    text: '自动关闭',  
+    disabled: false,  
+    options: [{  
+      text: '置顶',  
+      style: {  
+        backgroundColor: '#3c9cff',  
+      }  
+    }, {  
+      text: '取消',  
+      style: {  
+        backgroundColor: '#f9ae3d',  
+      }  
+    }],  
+  }  
+]);  
+</script>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsA/swipeAction/swipeAction.uvue`</small>
+```vue
+<style lang="scss">
+    .u-page {
+        padding: 0;
+    }
+
+    .u-demo-block__title {
+        padding: 10px 0 2px 15px;
+    }
+
+    .swipe-action {
+        &__content {
+             padding: 25rpx 0;
+    
+            &__text {
+                 font-size: 15px;
+                 color: $u-main-color;
+                 padding-left: 30rpx;
+             }
+        }
+    }
+</style>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/swipeAction.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 演示案例
+#### 基本使用
 
 ```vue
-<up-swipe-action>
+<template>
+	<view>
+      <up-swipe-action>
+        <up-swipe-action-item
+          v-model:show="show"
+          :options="options1"
+        >
+          <view class="swipe-action up-border-top up-border-bottom">
+            <view class="swipe-action__content">
+              <text class="swipe-action__content__text">基础使用</text>
+            </view>
+          </view>
+        </up-swipe-action-item>
+      </up-swipe-action>
+	</view>
+</template>
+```
+
+```vue
+<script setup>  
+import { reactive } from 'vue';  
+  
+const show = ref(false)
+// 使用 reactive 创建响应式对象  
+const options1 = reactive([{  
+    text: '删除'  
+}]);  
+</script>
+```
+
+```vue
+<style lang="scss">
+    .u-page {
+        padding: 0;
+    }
+
+    .u-demo-block__title {
+        padding: 10px 0 2px 15px;
+    }
+
+    .swipe-action {
+        &__content {
+             padding: 25rpx 0;
+    
+            &__text {
+                 font-size: 15px;
+                 color: $up-main-color;
+                 padding-left: 30rpx;
+             }
+        }
+    }
+</style>
+```
+
+#### 防止页面或容器滚动
+
+```vue
+<template>
+  <page-meta :page-style="swipeScrolling ? 'overflow:hidden;' : ''" />
+  <up-swipe-action>
     <up-swipe-action-item
-        v-if="show1"
-        :show="true"
+      v-model:scrolling="swipeScrolling"
+      :options="options1"
+    >
+      <view class="swipe-action up-border-top up-border-bottom">
+        <view class="swipe-action__content">
+          <text class="swipe-action__content__text">左滑时页面不滚动</text>
+        </view>
+      </view>
+    </up-swipe-action-item>
+  </up-swipe-action>
+</template>
+```
+
+```vue
+<template>
+  <scroll-view :scroll-y="!swipeScrolling">
+    <up-swipe-action>
+      <up-swipe-action-item
         v-model:scrolling="swipeScrolling"
         :options="options1"
-        @click="click"
-    >
-        <view class="swipe-action u-border-top u-border-bottom">
-            <view class="swipe-action__content">
-                <text class="swipe-action__content__text">基础使用</text>
-            </view>
+      >
+        <view class="swipe-action up-border-top up-border-bottom">
+          <view class="swipe-action__content">
+            <text class="swipe-action__content__text">左滑时容器不滚动</text>
+          </view>
         </view>
-    </up-swipe-action-item>
-</up-swipe-action>
+      </up-swipe-action-item>
+    </up-swipe-action>
+  </scroll-view>
+</template>
 ```
 
-#### 按钮组
-
 ```vue
-<up-swipe-action>
-    <up-swipe-action-item :options="options2">
-        <view class="swipe-action u-border-top u-border-bottom">
-            <view class="swipe-action__content">
-                <text class="swipe-action__content__text">两个按钮并列</text>
-            </view>
-        </view>
-    </up-swipe-action-item>
-</up-swipe-action>
+<script setup>
+import { ref } from 'vue'
+
+const swipeScrolling = ref(false)
+</script>
 ```
 
-#### 带图标
+#### 多个按钮并列
 
 ```vue
-<up-swipe-action>
-    <up-swipe-action-item :options="options3">
-        <view class="swipe-action u-border-top u-border-bottom">
+<template>
+	<view>
+      <up-swipe-action>
+        <up-swipe-action-item :options="options2">
+          <view class="swipe-action up-border-top up-border-bottom">
             <view class="swipe-action__content">
-                <text class="swipe-action__content__text">自定义图标</text>
+              <text class="swipe-action__content__text">两个按钮并列</text>
             </view>
-        </view>
-    </up-swipe-action-item>
-</up-swipe-action>
+          </view>
+        </up-swipe-action-item>
+      </up-swipe-action>
+	</view>
+</template>
+```
+
+```vue
+<script setup>  
+import { reactive } from 'vue';  
+  
+// 使用 reactive 创建响应式对象数组  
+const options2 = reactive([  
+  {  
+    text: '收藏',  
+    style: {  
+      backgroundColor: '#3c9cff'  
+    }  
+  },  
+  {  
+    text: '删除',  
+    style: {  
+      backgroundColor: '#f56c6c'  
+    }  
+  }  
+]);  
+</script>
+```
+
+```vue
+<style lang="scss">
+    .u-page {
+        padding: 0;
+    }
+
+    .u-demo-block__title {
+        padding: 10px 0 2px 15px;
+    }
+
+    .swipe-action {
+        &__content {
+             padding: 25rpx 0;
+    
+            &__text {
+                 font-size: 15px;
+                 color: $up-main-color;
+                 padding-left: 30rpx;
+             }
+        }
+    }
+</style>
 ```
 
 #### 组合使用
 
 ```vue
-<up-swipe-action>
-    <up-swipe-action-item
-        :options="item['options']"
-        v-for="(item, index) in options4"
-        :disabled="item['disabled']"
-        :key="index"
-    >
-        <view
-            class="swipe-action u-border-top"
-            :class="[index === options4.length - 1 ? 'u-border-bottom' : '']"
+<template>
+	<view>
+      <up-swipe-action>
+        <up-swipe-action-item
+          :options="item.options"
+          v-for="(item, index) in options4"
+          :disabled="item.disabled"
+          :key="index"
         >
+          <view
+            class="swipe-action up-border-top"
+            :class="[index === options4.length - 1 && 'up-border-bottom']"
+          >
             <view class="swipe-action__content">
-                <text class="swipe-action__content__text">{{ item['text'] }}</text>
+              <text class="swipe-action__content__text">{{ item.text }}</text>
             </view>
-        </view>
-    </up-swipe-action-item>
-</up-swipe-action>
+          </view>
+        </up-swipe-action-item>
+      </up-swipe-action>
+	</view>
+</template>
 ```
-
-#### 自定义按钮形状
 
 ```vue
-<up-swipe-action>
-    <up-swipe-action-item :options="options5">
-        <view class="swipe-action u-border-top u-border-bottom">
-            <view class="swipe-action__content">
-                <text class="swipe-action__content__text">圆形按钮</text>
-            </view>
-        </view>
-    </up-swipe-action-item>
-</up-swipe-action>
+<script setup>  
+import { reactive } from 'vue';  
+  
+// 使用 reactive 创建响应式对象数组  
+const options4 = reactive([  
+  {  
+    text: '禁用状态',  
+    disabled: true,  
+    options: [{  
+      text: '置顶',  
+      style: {  
+        backgroundColor: '#3c9cff',  
+      }  
+    }, {  
+      text: '取消',  
+      style: {  
+        backgroundColor: '#f9ae3d',  
+      }  
+    }],  
+  }, {  
+    text: '正常状态',  
+    disabled: false,  
+    options: [{  
+      text: '置顶',  
+      style: {  
+        backgroundColor: '#3c9cff',  
+      }  
+    }, {  
+      text: '取消',  
+      style: {  
+        backgroundColor: '#f9ae3d',  
+      }  
+    }],  
+  }, {  
+    text: '自动关闭',  
+    disabled: false,  
+    options: [{  
+      text: '置顶',  
+      style: {  
+        backgroundColor: '#3c9cff',  
+      }  
+    }, {  
+      text: '取消',  
+      style: {  
+        backgroundColor: '#f9ae3d',  
+      }  
+    }],  
+  }  
+]);  
+</script>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsA/swipeAction/swipeAction.uvue`</small>
+```vue
+<style lang="scss">
+    .u-page {
+        padding: 0;
+    }
+
+    .u-demo-block__title {
+        padding: 10px 0 2px 15px;
+    }
+
+    .swipe-action {
+        &__content {
+             padding: 25rpx 0;
+    
+            &__text {
+                 font-size: 15px;
+                 color: $up-main-color;
+                 padding-left: 30rpx;
+             }
+        }
+    }
+</style>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/swipeAction.md`</small>
 
 </template>
 

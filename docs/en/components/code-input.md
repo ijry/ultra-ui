@@ -12,7 +12,7 @@ A boxed verification-code field, in box, underline or dash style.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -271,201 +271,109 @@ No snippet could be extracted automatically — please read the source.
 
 <template #uniapp>
 
-#### 基础使用
+#### 基本使用
 
 ```vue
-<up-code-input
-    v-model="value1"
-    :maxlength="4"
-    @change="change"
-    @finish="finish"
-></up-code-input>
+<up-code-input v-model="value"></up-code-input>
 ```
 
 #### 横线模式
 
 ```vue
-<up-code-input
-    v-model="value2"
-    mode="line"
-    :maxlength="4"
-    :bold="true"
-></up-code-input>
+<up-code-input v-model="value2" mode="line"></up-code-input>
 ```
 
 #### 设置长度
 
 ```vue
-<up-code-input
-    v-model="value3"
-    :maxlength="6"
-></up-code-input>
+<up-code-input v-model="value3" :maxlength="6"></up-code-input>
 ```
 
-#### 设置间距
+#### 横线间距
 
 ```vue
-<up-code-input
-    v-model="value4"
-    mode="box"
-    :space="0"
-    :maxlength="4"
-></up-code-input>
+<up-code-input v-model="value4" :space="0" ></up-code-input>
 ```
 
 #### 细边框
 
 ```vue
-<up-code-input
-    v-model="value5"
-    mode="box"
-    :space="0"
-    :maxlength="4"
-    hairline
-></up-code-input>
+<up-code-input v-model="value5" mode="box" :space="0" :maxlength="4" hairline></up-code-input>
 ```
 
 #### 调整颜色
 
 ```vue
-<up-code-input
-    v-model="value7"
-    mode="box"
-    :space="0"
-    :maxlength="4"
-    hairline
-    color="#f56c6c"
-    borderColor="#f56c6c"
-></up-code-input>
+<up-code-input v-model="value6" hairline color="#f56c6c" borderColor="#f56c6c"></up-code-input>
 ```
 
-#### 点模式
+#### 用"●"替代输入内容
 
 ```vue
-<up-code-input
-    v-model="value8"
-    mode="box"
-    dot
-    :space="0"
-    :maxlength="4"
-    hairline
-></up-code-input>
+<up-code-input v-model="value5" mode="box" dot></up-code-input>
 ```
 
-#### 预置内容
+#### 是否自动获取焦点
 
 ```vue
-<up-code-input
-    v-model="value9"
-    mode="box"
-    :space="0"
-    :maxlength="4"
-    hairline
-    fontSize="17"
-></up-code-input>
+<up-code-input v-model="value4" :focus="true"></up-code-input>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/codeInput/codeInput.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/codeInput.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 基础使用
+#### 基本使用
 
 ```vue
-<up-code-input
-    v-model="value1"
-    :maxlength="4"
-    @change="change"
-    @finish="finish"
-></up-code-input>
+<up-code-input v-model="value"></up-code-input>
 ```
 
 #### 横线模式
 
 ```vue
-<up-code-input
-    v-model="value2"
-    mode="line"
-    :maxlength="4"
-    :bold="true"
-></up-code-input>
+<up-code-input v-model="value2" mode="line"></up-code-input>
 ```
 
 #### 设置长度
 
 ```vue
-<up-code-input
-    v-model="value3"
-    :maxlength="6"
-></up-code-input>
+<up-code-input v-model="value3" :maxlength="6"></up-code-input>
 ```
 
-#### 设置间距
+#### 横线间距
 
 ```vue
-<up-code-input
-    v-model="value4"
-    mode="box"
-    :space="0"
-    :maxlength="4"
-></up-code-input>
+<up-code-input v-model="value4" :space="0" ></up-code-input>
 ```
 
 #### 细边框
 
 ```vue
-<up-code-input
-    v-model="value5"
-    mode="box"
-    :space="0"
-    :maxlength="4"
-    hairline
-></up-code-input>
+<up-code-input v-model="value5" mode="box" :space="0" :maxlength="4" hairline></up-code-input>
 ```
 
 #### 调整颜色
 
 ```vue
-<up-code-input
-    v-model="value7"
-    mode="box"
-    :space="0"
-    :maxlength="4"
-    hairline
-    color="#f56c6c"
-    borderColor="#f56c6c"
-></up-code-input>
+<up-code-input v-model="value6" hairline color="#f56c6c" borderColor="#f56c6c"></up-code-input>
 ```
 
-#### 点模式
+#### 用"●"替代输入内容
 
 ```vue
-<up-code-input
-    v-model="value8"
-    mode="box"
-    dot
-    :space="0"
-    :maxlength="4"
-    hairline
-></up-code-input>
+<up-code-input v-model="value5" mode="box" dot></up-code-input>
 ```
 
-#### 预置内容
+#### 是否自动获取焦点
 
 ```vue
-<up-code-input
-    v-model="value9"
-    mode="box"
-    :space="0"
-    :maxlength="4"
-    hairline
-    fontSize="17"
-></up-code-input>
+<up-code-input v-model="value4" :focus="true"></up-code-input>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/codeInput/codeInput.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/codeInput.md`</small>
 
 </template>
 

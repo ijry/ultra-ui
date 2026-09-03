@@ -12,7 +12,7 @@ A long list with an alphabet index and sticky group headers.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -163,105 +163,117 @@ import { UPIndexList } from '@ultra-ui'
 
 <template #uniapp>
 
+#### 基本使用
+
 ```vue
-<up-index-list :indexList="indexList" style="height: 100%">
-    <template #header>
-        <view class="list">
-            <view class="list__item" @click="goNext">
-                <up-avatar shape="square" size="35" icon="man-add-fill" fontSize="26" randomBgColor></up-avatar>
-                <text class="list__item__user-name">新的朋友</text>
-            </view>
-            <up-line></up-line>
-            <view class="list__item">
-                <up-avatar shape="square" size="35" icon="tags-fill" fontSize="26" randomBgColor></up-avatar>
-                <text class="list__item__user-name">标签</text>
-            </view>
-            <up-line></up-line>
-            <view class="list__item">
-                <up-avatar shape="square" size="35" icon="chrome-circle-fill" fontSize="26" randomBgColor></up-avatar>
-                <text class="list__item__user-name">朋友圈</text>
-            </view>
-            <up-line></up-line>
-            <view class="list__item">
-                <up-avatar shape="square" size="35" icon="qq-fill" fontSize="26" randomBgColor></up-avatar>
-                <text class="list__item__user-name">QQ</text>
-            </view>
-            <up-line></up-line>
-        </view>
-    </template>
-    <template :key="index" v-for="(item, index) in itemArr">
-        <up-index-item>
-            <up-index-anchor :text="indexList[index]"></up-index-anchor>
-            <view class="list" v-for="(item1, index1) in item" :key="index1">
-                <view class="list__item">
-                    <image class="list__item__avatar" :src="item1['url']"></image>
-                    <text class="list__item__user-name">{{item1['name']}}</text>
-                </view>
-                <up-line></up-line>
-            </view>
-        </up-index-item>
-    </template>
-    <template #footer>
-        <view class="u-safe-area-inset--bottom">
-            <text class="list__footer">共305位好友</text>
-        </view>
-    </template>
-</up-index-list>
+<template>
+	<up-index-list :index-list="indexList">
+		<template v-for="(item, index) in itemArr">
+			<!-- #ifdef APP-NVUE -->
+			<up-index-anchor :text="indexList[index]"></up-index-anchor>
+			<!-- #endif -->
+			<up-index-item>
+				<!-- #ifndef APP-NVUE -->
+				<up-index-anchor :text="indexList[index]"></up-index-anchor>
+				<!-- #endif -->
+				<view class="list-cell" v-for="(cell, index) in item">
+					{{cell}}
+				</view>
+			</up-index-item>
+		</template>
+	</up-index-list>
+</template>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/indexList/indexList.uvue`</small>
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 创建响应式数据  
+const indexList = ref(["A", "B", "C"]);  
+const itemArr = ref([  
+  ['列表A1', '列表A2', '列表A3'],  
+  ['列表B1', '列表B2', '列表B3'],  
+  ['列表C1', '列表C2', '列表C3']  
+]);  
+</script>
+```
+
+```vue
+<style lang="scss" scoped>
+	.list-cell {
+		display: flex;
+		box-sizing: border-box;
+		width: 100%;
+		padding: 10px 24rpx;
+		overflow: hidden;
+		color: #323233;
+		font-size: 14px;
+		line-height: 24px;
+		background-color: #fff;
+	}
+</style>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/indexList.md`</small>
 
 </template>
 
 <template #uniappx>
 
+#### 基本使用
+
 ```vue
-<up-index-list :indexList="indexList" style="height: 100%">
-    <template #header>
-        <view class="list">
-            <view class="list__item" @click="goNext">
-                <up-avatar shape="square" size="35" icon="man-add-fill" fontSize="26" randomBgColor></up-avatar>
-                <text class="list__item__user-name">新的朋友</text>
-            </view>
-            <up-line></up-line>
-            <view class="list__item">
-                <up-avatar shape="square" size="35" icon="tags-fill" fontSize="26" randomBgColor></up-avatar>
-                <text class="list__item__user-name">标签</text>
-            </view>
-            <up-line></up-line>
-            <view class="list__item">
-                <up-avatar shape="square" size="35" icon="chrome-circle-fill" fontSize="26" randomBgColor></up-avatar>
-                <text class="list__item__user-name">朋友圈</text>
-            </view>
-            <up-line></up-line>
-            <view class="list__item">
-                <up-avatar shape="square" size="35" icon="qq-fill" fontSize="26" randomBgColor></up-avatar>
-                <text class="list__item__user-name">QQ</text>
-            </view>
-            <up-line></up-line>
-        </view>
-    </template>
-    <template :key="index" v-for="(item, index) in itemArr">
-        <up-index-item>
-            <up-index-anchor :text="indexList[index]"></up-index-anchor>
-            <view class="list" v-for="(item1, index1) in item" :key="index1">
-                <view class="list__item">
-                    <image class="list__item__avatar" :src="item1['url']"></image>
-                    <text class="list__item__user-name">{{item1['name']}}</text>
-                </view>
-                <up-line></up-line>
-            </view>
-        </up-index-item>
-    </template>
-    <template #footer>
-        <view class="u-safe-area-inset--bottom">
-            <text class="list__footer">共305位好友</text>
-        </view>
-    </template>
-</up-index-list>
+<template>
+	<up-index-list :index-list="indexList">
+		<template v-for="(item, index) in itemArr">
+			<!-- #ifdef APP-NVUE -->
+			<up-index-anchor :text="indexList[index]"></up-index-anchor>
+			<!-- #endif -->
+			<up-index-item>
+				<!-- #ifndef APP-NVUE -->
+				<up-index-anchor :text="indexList[index]"></up-index-anchor>
+				<!-- #endif -->
+				<view class="list-cell" v-for="(cell, index) in item">
+					{{cell}}
+				</view>
+			</up-index-item>
+		</template>
+	</up-index-list>
+</template>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/indexList/indexList.uvue`</small>
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 创建响应式数据  
+const indexList = ref(["A", "B", "C"]);  
+const itemArr = ref([  
+  ['列表A1', '列表A2', '列表A3'],  
+  ['列表B1', '列表B2', '列表B3'],  
+  ['列表C1', '列表C2', '列表C3']  
+]);  
+</script>
+```
+
+```vue
+<style lang="scss" scoped>
+	.list-cell {
+		display: flex;
+		box-sizing: border-box;
+		width: 100%;
+		padding: 10px 24rpx;
+		overflow: hidden;
+		color: #323233;
+		font-size: 14px;
+		line-height: 24px;
+		background-color: #fff;
+	}
+</style>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/indexList.md`</small>
 
 </template>
 

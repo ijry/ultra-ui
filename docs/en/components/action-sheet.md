@@ -12,7 +12,7 @@ A bottom action list with title, description and destructive styling.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -285,135 +285,220 @@ import { UPActionSheet } from '@ultra-ui'
 
 <template #uniapp>
 
+#### 基本使用
+
 ```vue
-<up-action-sheet
-    :show="show0"
-    @close="close"
-    @select="select"
-    :actions="actions0"
-    :closeOnClickOverlay="false"
->
-</up-action-sheet>
+<template>
+	<view>
+		<up-action-sheet :actions="list" :title="title" :show="show"></up-action-sheet>
+		<up-button @click="show = true">打开ActionSheet</up-button>
+	</view>
+</template>
 ```
 
 ```vue
-<up-action-sheet
-    :show="show1"
-    @close="show1 = false"
-    :actions="actions1"
->
-</up-action-sheet>
+<script setup>  
+import { ref } from 'vue';  
+  
+// 使用 ref 创建响应式数据  
+const title = ref('标题');  
+const list = ref([  
+  {  
+    name: '选项一',  
+    subname: "选项一描述",  
+    color: '#ffaa7f',  
+    fontSize: '20'  
+  },  
+  {  
+    name: '选项二禁用',  
+    disabled: true  
+  },  
+  {  
+    name: '开启load加载', // 开启后文字不显示  
+    loading: true  
+  }  
+]);  
+const show = ref(false);  
+</script>
+```
+
+#### 配置点击遮罩关闭和点击某个菜单项时关闭弹窗
+
+```vue
+<template>
+	<view>
+		<up-action-sheet :actions="list" :closeOnClickOverlay="true" :closeOnClickAction="true"  :title="title" :show="show"></up-action-sheet>
+		<up-button @click="show = true">打开ActionSheet</up-button>
+	</view>
+</template>
 ```
 
 ```vue
-<up-action-sheet
-    :show="show2"
-    @close="show2 = false"
-    :actions="actions2"
-    cancelText="取消"
->
-</up-action-sheet>
+<script setup>  
+import { ref, onMounted } from 'vue';  
+  
+const title = ref('标题');  
+const list = ref([  
+  { name: '选项一' },  
+  { name: '选项二' }  
+]);  
+const show = ref(false);  
+  
+</script>
+```
+
+#### 点击获取所点击选项name
+
+```vue
+<template>
+	<view>
+		<up-action-sheet :actions="list" @select="selectClick" :title="title" :show="show"></up-action-sheet>
+		<up-button @click="show = true">打开ActionSheet</up-button>
+	</view>
+</template>
 ```
 
 ```vue
-<up-action-sheet
-    :show="show3"
-    @close="show3 = false"
-    :actions="actions3"
-    description="这是一段描述文本,字号偏小,颜色偏淡"
->
-</up-action-sheet>
+<script setup>  
+import { ref, onMounted } from 'vue';  
+  
+// 响应式数据  
+const title = ref('标题');  
+const list = ref([  
+  { name: '选项一' },  
+  { name: '选项二' }  
+]);  
+const show = ref(false);
+  
+// 方法  
+const selectClick = (index) => {  
+  console.log(index);  
+};  
+</script>
 ```
+
+#### 快捷组件使用
 
 ```vue
-<up-action-sheet
-    :show="show4"
-    @close="show4 = false"
-    title="标题位置"
-    :round="10"
->
-    <text style="margin: 10px 20px 30px 20px; color: #303133; font-size: 15px;">这是一段通过slot传入的内容,您可以在此自定义操作面板</text>
-</up-action-sheet>
+<template>
+	<view>
+		<up-action-sheet-data
+			v-model="info.gender"
+			title="请选择性别"
+			:options="[
+				{
+					name: '男',
+					value: 1,
+				},
+				{
+					name: '女',
+					value: 2,
+				},
+			]">
+		</up-action-sheet-data>
+	</view>
+</template>
 ```
 
-```vue
-<up-action-sheet
-    :show="show5"
-    @close="show5 = false"
-    title="微信开放能力"
-    :actions="actions5"
-    @getuserinfo="getuserinfo"
-></up-action-sheet>
-```
-
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsB/actionSheet/actionSheet.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/actionSheet.md`</small>
 
 </template>
 
 <template #uniappx>
 
+#### 基本使用
+
 ```vue
-<up-action-sheet
-    :show="show0"
-    @close="close"
-    @select="select"
-    :actions="actions0"
-    :closeOnClickOverlay="false"
->
-</up-action-sheet>
+<template>
+	<view>
+		<up-action-sheet :actions="list" :title="title" :show="show"></up-action-sheet>
+		<up-button @click="show = true">打开ActionSheet</up-button>
+	</view>
+</template>
 ```
 
 ```vue
-<up-action-sheet
-    :show="show1"
-    @close="show1 = false"
-    :actions="actions1"
->
-</up-action-sheet>
+<script setup>  
+import { ref } from 'vue';  
+  
+// 使用 ref 创建响应式数据  
+const title = ref('标题');  
+const list = ref([  
+  {  
+    name: '选项一',  
+    subname: "选项一描述",  
+    color: '#ffaa7f',  
+    fontSize: '20'  
+  },  
+  {  
+    name: '选项二禁用',  
+    disabled: true  
+  },  
+  {  
+    name: '开启load加载', // 开启后文字不显示  
+    loading: true  
+  }  
+]);  
+const show = ref(false);  
+</script>
+```
+
+#### 配置点击遮罩关闭和点击某个菜单项时关闭弹窗
+
+```vue
+<template>
+	<view>
+		<up-action-sheet :actions="list" :closeOnClickOverlay="true" :closeOnClickAction="true"  :title="title" :show="show"></up-action-sheet>
+		<up-button @click="show = true">打开ActionSheet</up-button>
+	</view>
+</template>
 ```
 
 ```vue
-<up-action-sheet
-    :show="show2"
-    @close="show2 = false"
-    :actions="actions2"
-    cancelText="取消"
->
-</up-action-sheet>
+<script setup>  
+import { ref, onMounted } from 'vue';  
+  
+const title = ref('标题');  
+const list = ref([  
+  { name: '选项一' },  
+  { name: '选项二' }  
+]);  
+const show = ref(false);  
+  
+</script>
+```
+
+#### 点击获取所点击选项name
+
+```vue
+<template>
+	<view>
+		<up-action-sheet :actions="list" @select="selectClick" :title="title" :show="show"></up-action-sheet>
+		<up-button @click="show = true">打开ActionSheet</up-button>
+	</view>
+</template>
 ```
 
 ```vue
-<up-action-sheet
-    :show="show3"
-    @close="show3 = false"
-    :actions="actions3"
-    description="这是一段描述文本,字号偏小,颜色偏淡"
->
-</up-action-sheet>
+<script setup>  
+import { ref, onMounted } from 'vue';  
+  
+// 响应式数据  
+const title = ref('标题');  
+const list = ref([  
+  { name: '选项一' },  
+  { name: '选项二' }  
+]);  
+const show = ref(false);
+  
+// 方法  
+const selectClick = (index) => {  
+  console.log(index);  
+};  
+</script>
 ```
 
-```vue
-<up-action-sheet
-    :show="show4"
-    @close="show4 = false"
-    title="标题位置"
-    :round="10"
->
-    <text style="margin: 10px 20px 30px 20px; color: #303133; font-size: 15px;">这是一段通过slot传入的内容,您可以在此自定义操作面板</text>
-</up-action-sheet>
-```
-
-```vue
-<up-action-sheet
-    :show="show5"
-    @close="show5 = false"
-    title="微信开放能力"
-    :actions="actions5"
-    @getuserinfo="getuserinfo"
-></up-action-sheet>
-```
-
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsB/actionSheet/actionSheet.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/actionSheet.md`</small>
 
 </template>
 

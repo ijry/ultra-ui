@@ -12,7 +12,7 @@ Toggles between two states, optionally awaiting async confirmation first.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -207,147 +207,221 @@ asyncChange 时组件不自动切换，等外部请求成功后再更新 value
 
 <template #uniapp>
 
-#### 基础功能
+#### 基础使用
 
 ```vue
-<up-switch
-    v-model="value1"
-    @change="change"
-></up-switch>
+<template>
+  <up-switch v-model="value" @change="change"></up-switch>
+</template>
+
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(false)
+
+const change = (e) => {
+  console.log('change', e);
+}
+</script>
 ```
 
 #### 加载中
 
 ```vue
-<up-switch
-    v-model="value3"
-    loading
-></up-switch>
+<template>
+  <up-switch v-model="value3" loading></up-switch>
+  <up-switch v-model="value4" loading></up-switch>
+</template>
+
+<script setup>
+import { ref } from 'vue'
+
+const value3 = ref(false)
+const value4 = ref(true)
+</script>
 ```
 
-#### 禁用状态
+#### 禁用switch
 
 ```vue
-<up-switch
-    v-model="value5"
-    disabled
-></up-switch>
+<template>
+  <up-switch v-model="value" disabled></up-switch>
+</template>
+
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(false)
+</script>
 ```
 
 #### 自定义尺寸
 
 ```vue
-<up-switch
-    v-model="value7"
-    size="28"
-></up-switch>
+<template>
+  <up-switch v-model="value3" size="28"></up-switch>
+  <up-switch v-model="value4" size="20"></up-switch>
+</template>
+
+<script setup>
+import { ref } from 'vue'
+
+const value3 = ref(false)
+const value4 = ref(true)
+</script>
 ```
 
 #### 自定义颜色
 
 ```vue
-<up-switch
-    v-model="value9"
-    activeColor="#f56c6c"
-    loading
-></up-switch>
+<template>
+  <up-switch v-model="value" activeColor="#f56c6c" loading></up-switch>
+  <up-switch v-model="value1" activeColor="#5ac725" loading></up-switch>
+</template>
+
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(true)
+const value1 = ref(true)
+</script>
 ```
 
 #### 自定义样式
 
 ```vue
-<up-switch
-    :space="2"
-    v-model="value11"
-    activeColor="#f56c6c"
-    inactiveColor="rgb(230, 230, 230)"
-></up-switch>
+<template>
+  <up-switch space="2" v-model="value11" activeColor="#f9ae3d" inactiveColor="rgb(230, 230, 230)"></up-switch>
+  <up-switch space="2" v-model="value12" activeColor="#f9ae3d" inactiveColor="rgb(230, 230, 230)"></up-switch>
+</template>
+
+<script setup>
+import { ref } from 'vue'
+
+const value11 = ref(false)
+const value12 = ref(true)
+</script>
 ```
 
 #### 异步控制
 
 ```vue
-<up-switch
-    v-model="value13"
-    asyncChange
-    @change="asyncChange"
-></up-switch>
+<template>
+  <up-switch v-model="value13" asyncChange @change="asyncChange"></up-switch>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const value13 = ref(true);
+
+const asyncChange = (e) => {
+  uni.showModal({
+    content: e ? '确定要打开吗' : '确定要关闭吗',
+    success: (res) => {
+      if (res.confirm) {
+        value13.value = e;
+      }
+    },
+  });
+};
+</script>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsB/switch/switch.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/switch.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 基础功能
+#### 基础使用
 
 ```vue
-<up-switch
-    v-model="value1"
-    @change="change"
-></up-switch>
+<up-switch v-model="value" @change="change"></up-switch>
+<!-- methods -->
+change(e) {
+	console.log('change', e);
+},
 ```
 
 #### 加载中
 
 ```vue
-<up-switch
-    v-model="value3"
-    loading
-></up-switch>
+<up-switch v-model="value3" loading ></up-switch>
+<up-switch v-model="value4" loading ></up-switch>
+<!-- data -->
+value3: false,
+value4: true,
 ```
 
-#### 禁用状态
+#### 禁用switch
 
 ```vue
-<up-switch
-    v-model="value5"
-    disabled
-></up-switch>
+<up-switch v-model="value" disabled ></up-switch>
 ```
 
 #### 自定义尺寸
 
 ```vue
-<up-switch
-    v-model="value7"
-    size="28"
-></up-switch>
+<up-switch v-model="value3" size="28" ></up-switch>
+<up-switch v-model="value4" size="20" ></up-switch>
+<!-- data -->
+value3: false,
+value4: true,
 ```
 
 #### 自定义颜色
 
 ```vue
-<up-switch
-    v-model="value9"
-    activeColor="#f56c6c"
-    loading
-></up-switch>
+<up-switch v-model="value" activeColor="#f56c6c" loading ></up-switch>
+<up-switch v-model="value1" activeColor="#5ac725" loading ></up-switch>
+<!-- data -->
+value: true,
+value1: true,
 ```
 
 #### 自定义样式
 
 ```vue
 <up-switch
-    :space="2"
-    v-model="value11"
-    activeColor="#f56c6c"
-    inactiveColor="rgb(230, 230, 230)"
-></up-switch>
+	space="2" v-model="value11" activeColor="#f9ae3d" 
+	inactiveColor="rgb(230, 230, 230)">
+</up-switch>
+<up-switch
+	space="2" v-model="value12" activeColor="#f9ae3d"
+	inactiveColor="rgb(230, 230, 230)">
+</up-switch>
+<!-- data -->
+value11: false,
+value12: true,
 ```
 
 #### 异步控制
 
 ```vue
-<up-switch
-    v-model="value13"
-    asyncChange
-    @change="asyncChange"
-></up-switch>
+<template>
+	<up-switch v-model="value13" asyncChange @change="asyncChange" ></up-switch>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const value13 = ref(true);
+
+const asyncChange = (e) => {
+  uni.showModal({
+    content: e ? '确定要打开吗' : '确定要关闭吗',
+    success: (res) => {
+      if (res.confirm) {
+        value13.value = e;
+      }
+    },
+  });
+};
+</script>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsB/switch/switch.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/switch.md`</small>
 
 </template>
 

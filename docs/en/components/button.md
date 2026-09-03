@@ -12,7 +12,7 @@ The most basic action unit: six themes, four sizes, plus plain, loading and grad
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -301,191 +301,133 @@ loading / loadingText / loadingMode
 
 <template #uniapp>
 
-#### 按钮类型
+#### 基本使用
 
 ```vue
-<up-button
-    text="默认按钮"
-    size="normal"
-    type="info"
-    @click="click"
-></up-button>
+<up-button text="月落"></up-button>
 ```
 
-#### 镂空按钮
+#### 设置按钮的多种形态
 
 ```vue
-<up-button
-    text="镂空按钮"
-    size="normal"
-    type="info"
-    plain
-></up-button>
+<template>
+	<view style="padding: 20px;">
+		<up-button type="primary" text="确定"></up-button>
+		<up-button type="primary" :plain="true" text="镂空"></up-button>
+		<up-button type="primary" :plain="true" :hairline="true" text="细边"></up-button>
+		<up-button type="primary" :disabled="disabled" text="禁用"></up-button>
+		<up-button type="primary" loading loadingText="加载中"></up-button>
+		<up-button type="primary" icon="map" text="图标按钮"></up-button>
+		<up-button type="primary" shape="circle" text="按钮形状"></up-button>
+		<up-button text="渐变色按钮" color="linear-gradient(to right, rgb(66, 83, 216), rgb(213, 51, 186))"></up-button>
+		<up-button type="primary" size="small" text="大小尺寸"></up-button>
+	</view>
+</template>
 ```
-
-#### 细边按钮
 
 ```vue
-<up-button
-    text="细边按钮"
-    size="normal"
-    type="info"
-    plain
-    hairline
-></up-button>
+<script setup>
+import { ref } from 'vue';
+
+const disabled = ref(true);
+</script>
 ```
 
-#### 禁用按钮
+#### 定义需要用到的外部样式
 
 ```vue
-<up-button
-    disabled
-    text="禁用按钮"
-    size="normal"
-    type="info"
-></up-button>
+<template>
+	<view style="padding: 20px;">
+		 <!-- 以下形式在微信小程序会无效，APP和H5有效  -->
+		<up-button class="custom-style" text="雪月夜"></up-button>
+	</view>
+</template>
+
+<script setup>
+import { ref, reactive } from 'vue';
+
+const disabled = ref(true);
+const customStyle = reactive({
+  marginTop: '20px',
+  color: 'red'
+});
+</script>
+
+<style lang="scss" scoped>
+	.custom-style {
+		color: #ff0000;
+		width: 400rpx;
+	}
+</style>
 ```
 
-#### 加载中
-
-```vue
-<up-button
-    loadingText="加载中"
-    size="normal"
-    loading
-    loadingMode="circle"
-    type="success"
-></up-button>
-```
-
-#### 按钮图标&按钮形状
-
-```vue
-<up-button
-    text="按钮图标"
-    size="normal"
-    icon="map"
-    plain
-    type="warning"
-></up-button>
-```
-
-#### 自定义颜色
-
-```vue
-<up-button
-    text="渐变色按钮"
-    size="normal"
-    color="linear-gradient(to right, rgb(66, 83, 216), rgb(213, 51, 186))"
-></up-button>
-```
-
-#### 自定义大小
-
-```vue
-<up-button
-    text="超大尺寸"
-    size="large"
-    type="success"
-></up-button>
-```
-
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsA/button/button.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/button.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 按钮类型
+#### 基本使用
 
 ```vue
-<up-button
-    text="默认按钮"
-    size="normal"
-    type="info"
-    @click="click"
-></up-button>
+<up-button text="月落"></up-button>
 ```
 
-#### 镂空按钮
+#### 设置按钮的多种形态
 
 ```vue
-<up-button
-    text="镂空按钮"
-    size="normal"
-    type="info"
-    plain
-></up-button>
+<template>
+	<view style="padding: 20px;">
+		<up-button type="primary" text="确定"></up-button>
+		<up-button type="primary" :plain="true" text="镂空"></up-button>
+		<up-button type="primary" :plain="true" :hairline="true" text="细边"></up-button>
+		<up-button type="primary" :disabled="disabled" text="禁用"></up-button>
+		<up-button type="primary" loading loadingText="加载中"></up-button>
+		<up-button type="primary" icon="map" text="图标按钮"></up-button>
+		<up-button type="primary" shape="circle" text="按钮形状"></up-button>
+		<up-button text="渐变色按钮" color="linear-gradient(to right, rgb(66, 83, 216), rgb(213, 51, 186))"></up-button>
+		<up-button type="primary" size="small" text="大小尺寸"></up-button>
+	</view>
+</template>
 ```
-
-#### 细边按钮
 
 ```vue
-<up-button
-    text="细边按钮"
-    size="normal"
-    type="info"
-    plain
-    hairline
-></up-button>
+<script setup>
+import { ref } from 'vue';
+
+const disabled = ref(true);
+</script>
 ```
 
-#### 禁用按钮
+#### 定义需要用到的外部样式
 
 ```vue
-<up-button
-    disabled
-    text="禁用按钮"
-    size="normal"
-    type="info"
-></up-button>
+<template>
+	<view style="padding: 20px;">
+		 <!-- 以下形式在微信小程序会无效，APP和H5有效  -->
+		<up-button class="custom-style" text="雪月夜"></up-button>
+	</view>
+</template>
+
+<script setup>
+import { ref, reactive } from 'vue';
+
+const disabled = ref(true);
+const customStyle = reactive({
+  marginTop: '20px',
+  color: 'red'
+});
+</script>
+
+<style lang="scss" scoped>
+	.custom-style {
+		color: #ff0000;
+		width: 400rpx;
+	}
+</style>
 ```
 
-#### 加载中
-
-```vue
-<up-button
-    loadingText="加载中"
-    size="normal"
-    loading
-    loadingMode="circle"
-    type="success"
-></up-button>
-```
-
-#### 按钮图标&按钮形状
-
-```vue
-<up-button
-    text="按钮图标"
-    size="normal"
-    icon="map"
-    plain
-    type="warning"
-></up-button>
-```
-
-#### 自定义颜色
-
-```vue
-<up-button
-    text="渐变色按钮"
-    size="normal"
-    color="linear-gradient(to right, rgb(66, 83, 216), rgb(213, 51, 186))"
-></up-button>
-```
-
-#### 自定义大小
-
-```vue
-<up-button
-    text="超大尺寸"
-    size="large"
-    type="success"
-></up-button>
-```
-
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsA/button/button.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/button.md`</small>
 
 </template>
 

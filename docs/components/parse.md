@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -130,21 +130,267 @@ content 为空时渲染 children
 
 <template #uniapp>
 
-::: tip
-暂无自动提取到的示例代码，请参考源码。
-:::
+#### 基本使用
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small>
+通过`content`参数绑定需要解析的内容即可。
+
+```vue
+<template>
+	<view class="up-content">
+		<up-parse :content="content"></up-parse>
+	</view>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 创建响应式数据  
+const content = ref(`  
+	<p>露从今夜白，月是故乡明</p>  
+	<img src="https://cdn.uviewui.com/uview/swiper/2.jpg" alt="Image Description" />  
+`);  
+</script>
+```
+
+```vue
+<style lang="scss" scoped>
+    .up-content {
+        padding: 24rpx;
+    }
+</style>
+```
+
+#### 长按复制
+
+可以通过设置`selectable`参数为`true`来实现长按复制的效果
+
+```vue
+<up-parse :content="content" :selectable="true"></up-parse>
+```
+
+#### 设置样式
+
+可以有两种方法可设置富文本的样式：
+
+- 通过组件的`tagStyle`参数可以精细化的对单独的标签设置样式，注意此方式设置的样式为**字符串**的形式，而非**对象**形式：
+
+```vue
+<template>
+	<view class="up-content">
+		<up-parse :content="content" :tagStyle="style"></up-parse>
+	</view>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 创建响应式数据  
+const paragraphText = ref('露从今夜白，月是故乡明');  
+const imageSrc = ref('https://cdn.uviewui.com/uview/swiper/2.jpg');  
+  
+// 样式对象，可以直接绑定到元素上  
+const styles = "{p: { color: 'red', fontSize: '32rpx'  },  span: {  fontSize: '30rpx'  }  }";  
+</script>
+```
+
+- 通过父元素标签，统一设置全文的颜色，行高，字体大小等，注意这种方式无法对单独的标签设置样式：
+
+```vue
+<template>
+	<view class="up-content">
+		<up-parse :content="content"></up-parse>
+	</view>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 创建响应式数据  
+const content = ref(`  
+	<p>露从今夜白，月是故乡明</p>  
+	<img src="https://cdn.uviewui.com/uview/swiper/2.jpg" />  
+`);  
+</script>
+```
+
+```vue
+<style lang="scss" scoped>
+    .up-content {
+        padding: 24rpx;
+        font-size: 32rpx;
+        color: $u-content-color;
+        line-height: 1.6;
+    }
+</style>
+```
+
+#### 懒加载和占位图
+
+- 设置`lazyLoad`为`true`即可开启图片懒加载功能
+- 设置`loadingImg`为网络路径或者base64图片，可以在图片加载完成前展示占位图
+
+```vue
+<up-parse :content="content" :lazyLoad="true" :loadingImg="/xxx/xxx.jpg"></up-parse>
+```
+
+#### 链接跳转/锚点
+
+H5、App（含NVUE）外链可以直接打开，小程序端将自动复制链接  
+小程序端`a`标签设置`app-id`后可以跳转到其他小程序
+
+```vue
+<a href="#">跳转到顶部</a>
+<a href="#list">跳转到列表</a>
+<a href="https://github.com/jin-yufeng/mp-html">外部链接</a>
+<a href="/pages/componentsB/parse/jump">内部链接</a>
+```
+
+<br>
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/parse.md`</small>
 
 </template>
 
 <template #uniappx>
 
-::: tip
-暂无自动提取到的示例代码，请参考源码。
-:::
+#### 基本使用
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small>
+通过`content`参数绑定需要解析的内容即可。
+
+```vue
+<template>
+	<view class="up-content">
+		<up-parse :content="content"></up-parse>
+	</view>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 创建响应式数据  
+const content = ref(`  
+	<p>露从今夜白，月是故乡明</p>  
+	<img src="https://cdn.uviewui.com/uview/swiper/2.jpg" alt="Image Description" />  
+`);  
+</script>
+```
+
+```vue
+<style lang="scss" scoped>
+    .up-content {
+        padding: 24rpx;
+    }
+</style>
+```
+
+#### 长按复制
+
+可以通过设置`selectable`参数为`true`来实现长按复制的效果
+
+```vue
+<up-parse :content="content" :selectable="true"></up-parse>
+```
+
+#### 设置样式
+
+可以有两种方法可设置富文本的样式：
+
+- 通过组件的`tagStyle`参数可以精细化的对单独的标签设置样式，注意此方式设置的样式为**字符串**的形式，而非**对象**形式：
+
+```vue
+<template>
+	<view class="up-content">
+		<up-parse :content="content" :tagStyle="style"></up-parse>
+	</view>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 创建响应式数据  
+const paragraphText = ref('露从今夜白，月是故乡明');  
+const imageSrc = ref('https://cdn.uviewui.com/uview/swiper/2.jpg');  
+  
+// 样式对象，可以直接绑定到元素上  
+const styles = {  
+  p: {  
+    color: 'red',  
+    fontSize: '32rpx'  
+  },  
+  span: {  
+    fontSize: '30rpx'  
+  }  
+};  
+</script>
+```
+
+- 通过父元素标签，统一设置全文的颜色，行高，字体大小等，注意这种方式无法对单独的标签设置样式：
+
+```vue
+<template>
+	<view class="up-content">
+		<up-parse :content="content"></up-parse>
+	</view>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 创建响应式数据  
+const content = ref(`  
+	<p>露从今夜白，月是故乡明</p>  
+	<img src="https://cdn.uviewui.com/uview/swiper/2.jpg" />  
+`);  
+</script>
+```
+
+```vue
+<style lang="scss" scoped>
+    .up-content {
+        padding: 24rpx;
+        font-size: 32rpx;
+        color: $up-content-color;
+        line-height: 1.6;
+    }
+</style>
+```
+
+#### 懒加载和占位图
+
+- 设置`lazyLoad`为`true`即可开启图片懒加载功能
+- 设置`loadingImg`为网络路径或者base64图片，可以在图片加载完成前展示占位图
+
+```vue
+<up-parse :content="content" :lazyLoad="true" :loadingImg="/xxx/xxx.jpg"></up-parse>
+```
+
+#### 链接跳转/锚点
+
+H5、App（含NVUE）外链可以直接打开，小程序端将自动复制链接  
+小程序端`a`标签设置`app-id`后可以跳转到其他小程序
+
+```vue
+<a href="#">跳转到顶部</a>
+<a href="#list">跳转到列表</a>
+<a href="https://github.com/jin-yufeng/mp-html">外部链接</a>
+<a href="/pages/componentsB/parse/jump">内部链接</a>
+```
+
+<br>
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/parse.md`</small>
 
 </template>
 

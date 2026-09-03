@@ -12,7 +12,7 @@ Shows a user avatar from an image, text or icon, and can stack into a group.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -243,133 +243,231 @@ src 无效时回退 defaultUrl，未配置则用内置兜底头像
 
 <template #uniapp>
 
-#### 基础演示
+#### 基本使用
 
 ```vue
-<up-avatar :src="src1"></up-avatar>
+<template>
+	<view>
+		<up-avatar :src="src"></up-avatar>
+		<up-avatar :text="text"></up-avatar>
+	</view>
+</template>
+```
+
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const src = ref('http://pic2.sc.chinaz.com/Files/pic/pic9/202002/hpic2119_s.jpg');
+const text = ref('无头像');
+</script>
 ```
 
 #### 头像形状
 
 ```vue
-<up-avatar
-    :src="src2"
-    shape="circle"
-    @click="click"
-></up-avatar>
+<template>
+	<up-avatar :src="src" shape="square"></up-avatar>
+</template>
 ```
 
-#### 头像尺寸
-
 ```vue
-<up-avatar
-    :src="src4"
-    size="30"
-></up-avatar>
+<script setup>
+import { ref } from 'vue';
+
+const src = ref('http://pic2.sc.chinaz.com/Files/pic/pic9/202002/hpic2119_s.jpg');
+</script>
 ```
 
 #### 图标头像
 
 ```vue
-<up-avatar
-    icon="red-packet-fill"
-    fontSize="22"
-></up-avatar>
+<view class="u-demo-block__content">
+    <view class="u-avatar-item">
+        <up-avatar
+                icon="red-packet-fill"
+                fontSize="22"
+        ></up-avatar>
+    </view>
+    <view class="u-avatar-item">
+        <up-avatar
+                icon="star-fill"
+                fontSize="22"
+        ></up-avatar>
+    </view>
+</view>
+
+<style lang="scss">
+    .u-demo-block__content {
+        @include flex;
+        align-items: center;
+    }
+
+    .u-avatar-item {
+        margin-right: 30px;
+    }
+</style>
 ```
 
-#### 文字头像(自动背景色)
+#### 文字头像（自动背景色）
 
 ```vue
-<up-avatar
-    text="U"
-    fontSize="20"
-    randomBgColor
-    :colorIndex="0"
-></up-avatar>
+<template>
+    <up-avatar
+            text="北"
+            fontSize="18"
+            randomBgColor
+    ></up-avatar>
+</template>
 ```
 
-#### 图片加载失败(显示默认头像)
+#### 头像组
 
 ```vue
-<up-avatar :src="src7"></up-avatar>
+<template>
+    <up-avatar-group
+            :urls="urls"
+            size="35"
+            gap="0.4"
+    ></up-avatar-group>
+</template>
 ```
-
-#### 小程序开放能力
 
 ```vue
-<up-avatar
-    mpAvatar
-    size="60"
-></up-avatar>
+<script setup>  
+import { reactive } from 'vue';  
+  
+// 使用 reactive 创建响应式数组  
+const urls = reactive([  
+    'https://uview-plus.jiangruyi.com/uview-plus/album/1.jpg',  
+    'https://uview-plus.jiangruyi.com/uview-plus/album/2.jpg',  
+    'https://uview-plus.jiangruyi.com/uview-plus/album/3.jpg',  
+    'https://uview-plus.jiangruyi.com/uview-plus/album/4.jpg',  
+    'https://uview-plus.jiangruyi.com/uview-plus/album/7.jpg',  
+    'https://uview-plus.jiangruyi.com/uview-plus/album/6.jpg',  
+    'https://uview-plus.jiangruyi.com/uview-plus/album/5.jpg'  
+]);  
+</script>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/avatar/avatar.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/avatar.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 基础演示
+#### 基本使用
 
 ```vue
-<up-avatar :src="src1"></up-avatar>
+<template>
+	<view>
+		<up-avatar :src="src"></up-avatar>
+		<up-avatar :text="text"></up-avatar>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				src: 'http://pic2.sc.chinaz.com/Files/pic/pic9/202002/hpic2119_s.jpg',
+				text: '无头像'
+			}
+		}
+	}
+</script>
 ```
 
 #### 头像形状
 
 ```vue
-<up-avatar
-    :src="src2"
-    shape="circle"
-    @click="click"
-></up-avatar>
-```
+<template>
+	<up-avatar :src="src" shape="square"></up-avatar>
+</template>
 
-#### 头像尺寸
-
-```vue
-<up-avatar
-    :src="src4"
-    size="30"
-></up-avatar>
+<script>
+	export default {
+		data() {
+			return {
+				src: 'http://pic2.sc.chinaz.com/Files/pic/pic9/202002/hpic2119_s.jpg'
+			}
+		}
+	}
+</script>
 ```
 
 #### 图标头像
 
 ```vue
-<up-avatar
-    icon="red-packet-fill"
-    fontSize="22"
-></up-avatar>
+<view class="u-demo-block__content">
+    <view class="u-avatar-item">
+        <up-avatar
+                icon="red-packet-fill"
+                fontSize="22"
+        ></up-avatar>
+    </view>
+    <view class="u-avatar-item">
+        <up-avatar
+                icon="star-fill"
+                fontSize="22"
+        ></up-avatar>
+    </view>
+</view>
+
+<style lang="scss">
+    .u-demo-block__content {
+        @include flex;
+        align-items: center;
+    }
+
+    .u-avatar-item {
+        margin-right: 30px;
+    }
+</style>
 ```
 
-#### 文字头像(自动背景色)
+#### 文字头像（自动背景色）
 
 ```vue
-<up-avatar
-    text="U"
-    fontSize="20"
-    randomBgColor
-    :colorIndex="0"
-></up-avatar>
+<template>
+    <up-avatar
+            text="北"
+            fontSize="18"
+            randomBgColor
+    ></up-avatar>
+</template>
 ```
 
-#### 图片加载失败(显示默认头像)
+#### 头像组
 
 ```vue
-<up-avatar :src="src7"></up-avatar>
+<template>
+    <up-avatar-group
+            :urls="urls"
+            size="35"
+            gap="0.4"
+    ></up-avatar-group>
+</template>
 ```
-
-#### 小程序开放能力
 
 ```vue
-<up-avatar
-    mpAvatar
-    size="60"
-></up-avatar>
+<script setup>  
+import { reactive } from 'vue';  
+  
+// 使用 reactive 创建响应式数组  
+const urls = reactive([  
+    'https://uview-ultra.jiangruyi.com/uview-ultra/album/1.jpg',  
+    'https://uview-ultra.jiangruyi.com/uview-ultra/album/2.jpg',  
+    'https://uview-ultra.jiangruyi.com/uview-ultra/album/3.jpg',  
+    'https://uview-ultra.jiangruyi.com/uview-ultra/album/4.jpg',  
+    'https://uview-ultra.jiangruyi.com/uview-ultra/album/7.jpg',  
+    'https://uview-ultra.jiangruyi.com/uview-ultra/album/6.jpg',  
+    'https://uview-ultra.jiangruyi.com/uview-ultra/album/5.jpg'  
+]);  
+</script>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/avatar/avatar.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/avatar.md`</small>
 
 </template>
 

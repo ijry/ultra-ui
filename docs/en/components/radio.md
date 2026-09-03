@@ -12,7 +12,7 @@ Single-select control with group validation, layout options and custom icons.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -216,199 +216,231 @@ labelDisabled 时只有图标可点
 
 <template #uniapp>
 
-#### 基本案例
+#### 基本使用
 
 ```vue
-<up-radio
-    :customStyle="{marginBottom: '8px'}"
-    v-for="(item, index) in radiolist1"
-    :key="index"
-    :label="item['name']"
-    :name="item['name']"
-    @change="radioChange"
->
-</up-radio>
+<template>
+  <up-radio-group
+    v-model="radiovalue1"
+    placement="column"
+    @change="groupChange"
+  >
+    <up-radio
+      :customStyle="{marginBottom: '8px'}"
+      v-for="(item, index) in radiolist1"
+      :key="index"
+      :label="item.name"
+      :name="item.name"
+      @change="radioChange"
+    >
+    </up-radio>
+  </up-radio-group>
+</template>
+
+<script setup>
+import { ref,reactive } from 'vue';
+
+// 基本案列数据
+const radiolist1 = reactive([
+  {
+    name: '苹果',
+    disabled: false,
+  },
+  {
+    name: '香蕉',
+    disabled: false,
+  },
+  {
+    name: '橙子',
+    disabled: false,
+  },
+  {
+    name: '榴莲',
+    disabled: false,
+  },
+]);
+
+// up-radio-group的v-model绑定的值如果设置为某个radio的name，就会被默认选中
+const radiovalue1 = ref('苹果');
+
+const groupChange = (n) => {
+  console.log('groupChange', n);
+};
+
+const radioChange = (n) => {
+  console.log('radioChange', n);
+};
+</script>
 ```
 
 #### 自定义形状
 
 ```vue
-<up-radio
-    :customStyle="{marginBottom: '8px'}"
-    v-for="(item, index) in radiolist2"
-    :key="index"
-    :label="item['name']"
-    :name="item['name']"
->
-</up-radio>
+<up-radio-group v-model="value">
+	<up-radio shape="circle" label="月明人倚楼"></up-radio>
+</up-radio-group>
 ```
 
-#### 是否禁用
+#### 禁用radio
 
 ```vue
-<up-radio
-    :customStyle="{marginBottom: '8px'}"
-    v-for="(item, index) in radiolist3"
-    :key="index"
-    :label="item['name']"
-    :name="item['name']"
-    :disabled="index == 0"
->
-</up-radio>
+<up-radio-group v-model="value">
+	<up-radio :disabled="true" label="明月几时有"></up-radio>
+</up-radio-group>
 ```
 
-#### 纵向排列
+#### 是否禁止点击提示语选中复选框
 
 ```vue
-<up-radio
-    :customStyle="{marginBottom:'8px'}"
-    v-for="(item, index) in radiolist4"
-    :key="index"
-    :label="item['name']"
-    :name="item['name']"
->
-</up-radio>
+<up-radio-group v-model="value">
+	<up-radio :labelDisabled="true" label="明月几时有"></up-radio>
+</up-radio-group>
 ```
 
-#### 自定义颜色？
+#### 自定义颜色
 
 ```vue
-<up-radio
-    :customStyle="{marginBottom: '8px'}"
-    v-for="(item, index) in radiolist5"
-    :key="index"
-    :label="item['name']"
-    :name="item['name']"
->
-</up-radio>
+<up-radio-group v-model="value">
+	<up-radio activeColor="red" label="思悠悠，恨悠悠，恨到归时方始休"></up-radio>
+</up-radio-group>
 ```
 
-#### 横向排列形式？
+#### 横向排列形式
 
 ```vue
-<up-radio
-    :customStyle="{marginRight: '16px'}"
-    v-for="(item, index) in radiolist6"
-    :key="index"
-    :label="item['name']"
-    :name="item['name']"
->
-</up-radio>
+<up-radio-group 
+    v-model="value"
+    placement="row">
+	<up-radio activeColor="red" label="思悠悠，恨悠悠，恨到归时方始休"></up-radio>
+</up-radio-group>
 ```
 
-#### 横向两端排列形式？
+#### 横向两端排列形式
 
 ```vue
-<up-radio
-    :customStyle="{marginBottom: '16px'}"
-    v-for="(item, index) in radiolist7"
-    :key="index"
-    :label="item['name']"
-    :name="item['name']"
->
-</up-radio>
+<up-radio-group 
+    v-model="value"
+    iconPlacement="right">
+	<up-radio activeColor="red" label="思悠悠，恨悠悠，恨到归时方始休"></up-radio>
+</up-radio-group>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsA/radio/radio.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/radio.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 基本案例
+#### 基本使用
 
 ```vue
-<up-radio
-    :customStyle="{marginBottom: '8px'}"
-    v-for="(item, index) in radiolist1"
-    :key="index"
-    :label="item['name']"
-    :name="item['name']"
-    @change="radioChange"
->
-</up-radio>
+<template>
+  <up-radio-group
+    v-model="radiovalue1"
+    placement="column"
+    @change="groupChange"
+  >
+    <up-radio
+      :customStyle="{marginBottom: '8px'}"
+      v-for="(item, index) in radiolist1"
+      :key="index"
+      :label="item.name"
+      :name="item.name"
+      @change="radioChange"
+    >
+    </up-radio>
+  </up-radio-group>
+</template>
+
+<script setup>
+import { ref,reactive } from 'vue';
+
+// 基本案列数据
+const radiolist1 = reactive([
+  {
+    name: '苹果',
+    disabled: false,
+  },
+  {
+    name: '香蕉',
+    disabled: false,
+  },
+  {
+    name: '橙子',
+    disabled: false,
+  },
+  {
+    name: '榴莲',
+    disabled: false,
+  },
+]);
+
+// up-radio-group的v-model绑定的值如果设置为某个radio的name，就会被默认选中
+const radiovalue1 = ref('苹果');
+
+const groupChange = (n) => {
+  console.log('groupChange', n);
+};
+
+const radioChange = (n) => {
+  console.log('radioChange', n);
+};
+</script>
 ```
 
 #### 自定义形状
 
 ```vue
-<up-radio
-    :customStyle="{marginBottom: '8px'}"
-    v-for="(item, index) in radiolist2"
-    :key="index"
-    :label="item['name']"
-    :name="item['name']"
->
-</up-radio>
+<up-radio-group v-model="value">
+	<up-radio shape="circle" label="月明人倚楼"></up-radio>
+</up-radio-group>
 ```
 
-#### 是否禁用
+#### 禁用radio
 
 ```vue
-<up-radio
-    :customStyle="{marginBottom: '8px'}"
-    v-for="(item, index) in radiolist3"
-    :key="index"
-    :label="item['name']"
-    :name="item['name']"
-    :disabled="index == 0"
->
-</up-radio>
+<up-radio-group v-model="value">
+	<up-radio :disabled="true" label="明月几时有"></up-radio>
+</up-radio-group>
 ```
 
-#### 纵向排列
+#### 是否禁止点击提示语选中复选框
 
 ```vue
-<up-radio
-    :customStyle="{marginBottom:'8px'}"
-    v-for="(item, index) in radiolist4"
-    :key="index"
-    :label="item['name']"
-    :name="item['name']"
->
-</up-radio>
+<up-radio-group v-model="value">
+	<up-radio :labelDisabled="true" label="明月几时有"></up-radio>
+</up-radio-group>
 ```
 
-#### 自定义颜色？
+#### 自定义颜色
 
 ```vue
-<up-radio
-    :customStyle="{marginBottom: '8px'}"
-    v-for="(item, index) in radiolist5"
-    :key="index"
-    :label="item['name']"
-    :name="item['name']"
->
-</up-radio>
+<up-radio-group v-model="value">
+	<up-radio activeColor="red" label="思悠悠，恨悠悠，恨到归时方始休"></up-radio>
+</up-radio-group>
 ```
 
-#### 横向排列形式？
+#### 横向排列形式
 
 ```vue
-<up-radio
-    :customStyle="{marginRight: '16px'}"
-    v-for="(item, index) in radiolist6"
-    :key="index"
-    :label="item['name']"
-    :name="item['name']"
->
-</up-radio>
+<up-radio-group 
+    v-model="value"
+    placement="row">
+	<up-radio activeColor="red" label="思悠悠，恨悠悠，恨到归时方始休"></up-radio>
+</up-radio-group>
 ```
 
-#### 横向两端排列形式？
+#### 横向两端排列形式
 
 ```vue
-<up-radio
-    :customStyle="{marginBottom: '16px'}"
-    v-for="(item, index) in radiolist7"
-    :key="index"
-    :label="item['name']"
-    :name="item['name']"
->
-</up-radio>
+<up-radio-group 
+    v-model="value"
+    iconPlacement="right">
+	<up-radio activeColor="red" label="思悠悠，恨悠悠，恨到归时方始休"></up-radio>
+</up-radio-group>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsA/radio/radio.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/radio.md`</small>
 
 </template>
 

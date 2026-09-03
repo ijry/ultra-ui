@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -103,37 +103,49 @@ icon=false 只保留文案
 
 <template #uniapp>
 
-```vue
-<up-copy content="uview-plus is great !">
-    <text>点击复制</text>
-</up-copy>
-```
+#### 基本使用
+
+- 通过`content`设置要复制的文字内容
+- 通过`alertStyle`设置提示样式
 
 ```vue
-<up-copy content="uview-plus is great !">
-    <up-button type="primary">点击复制</up-button>
-</up-copy>
+<template>
+	<view>
+		<up-copy content="uview-plus is great !">
+            <text>点击复制</text>
+        </up-copy>
+        <up-copy content="uview-plus is great !">
+            <up-button type="primary">点击复制</up-button>
+        </up-copy>
+	</view>
+</template>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/copy/copy.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/copy.md`</small>
 
 </template>
 
 <template #uniappx>
 
-```vue
-<up-copy content="uview-plus is great !">
-    <text>点击复制</text>
-</up-copy>
-```
+#### 基本使用
+
+- 通过`content`设置要复制的文字内容
+- 通过`alertStyle`设置提示样式
 
 ```vue
-<up-copy content="uview-plus is great !">
-    <up-button type="primary">点击复制</up-button>
-</up-copy>
+<template>
+	<view>
+		<up-copy content="uview-ultra is great !">
+            <text>点击复制</text>
+        </up-copy>
+        <up-copy content="uview-ultra is great !">
+            <up-button type="primary">点击复制</up-button>
+        </up-copy>
+	</view>
+</template>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/copy/copy.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/copy.md`</small>
 
 </template>
 

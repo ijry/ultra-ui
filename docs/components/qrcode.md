@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -174,37 +174,71 @@ allowPreview 开启后点击可全屏查看
 
 <template #uniapp>
 
-```vue
-<up-qrcode cid="up-qrcode-basic" :size="200" :val="qrValue"></up-qrcode>
-```
+#### 基本使用
+
+- 通过`size`和`val`设置二维码的大小和内容
+- 通过`background`和`foreground`设置二维码颜色
+- 通过`icon`设置二维码中间的logo图片
 
 ```vue
-<up-qrcode cid="up-qrcode-logo" :size="200" :val="qrValue" :icon="logo"></up-qrcode>
+<template>
+	<view>
+		<up-qrcode cid="ex1" :size="200" val="uview-plus"></up-qrcode>
+        <up-qrcode cid="ex2" :size="200" val="uview-plus" icon="https://uview-plus.jiangruyi.com/uview-plus/common/logo.png"></up-qrcode>
+        <up-qrcode cid="ex3" :size="200" val="uview-plus" background="red" foreground="blue"></up-qrcode>
+	</view>
+</template>
 ```
+
+#### 加载状态
+
+由于二维码使用前端JS计算生成，因此会有一个计算时间。
+- `showLoading`参数配置是否显示加载状态
 
 ```vue
-<up-qrcode cid="up-qrcode-color" :size="200" :val="qrValue" background="red" foreground="blue"></up-qrcode>
+<template>
+	<view>
+		<up-qrcode cid="ex4" :size="200" val="uview-plus" showLoading loadingText="loading..."></up-qrcode>
+	</view>
+</template>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/qrcode/qrcode.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/qrcode.md`</small>
 
 </template>
 
 <template #uniappx>
 
-```vue
-<up-qrcode cid="up-qrcode-basic" :size="200" :val="qrValue"></up-qrcode>
-```
+#### 基本使用
+
+- 通过`size`和`val`设置二维码的大小和内容
+- 通过`background`和`foreground`设置二维码颜色
+- 通过`icon`设置二维码中间的logo图片
 
 ```vue
-<up-qrcode cid="up-qrcode-logo" :size="200" :val="qrValue" :icon="logo"></up-qrcode>
+<template>
+	<view>
+		<up-qrcode :size="200" val="uview-ultra"></up-qrcode>
+        <up-qrcode :size="200" val="uview-ultra" icon="https://uview-ultra.jiangruyi.com/uview-ultra/common/logo.png"></up-qrcode>
+        <up-qrcode :size="200" val="uview-ultra" background="red" foreground="blue"></up-qrcode>
+	</view>
+</template>
 ```
+
+#### 加载状态
+
+由于二维码使用前端JS计算生成，因此会有一个计算时间。
+- `showLoading`参数配置是否显示加载状态
 
 ```vue
-<up-qrcode cid="up-qrcode-color" :size="200" :val="qrValue" background="red" foreground="blue"></up-qrcode>
+<template>
+	<view>
+		<up-qrcode :size="200" val="uview-ultra" showLoading loadingText="loading..."></up-qrcode>
+	</view>
+</template>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/qrcode/qrcode.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/qrcode.md`</small>
 
 </template>
 

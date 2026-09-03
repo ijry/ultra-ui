@@ -12,7 +12,7 @@ A built-in icon font, which also accepts an image path in place of a glyph.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -189,31 +189,203 @@ name 含 / 时按图片渲染，用 width / height / imgMode 控制
 
 <template #uniapp>
 
-```vue
-<up-icon
-    :name="item.name"
-    size="30px"
-    color="#909399"
-    @click="test"
-></up-icon>
+#### 新版本全局加载兼容性
+
+```js
+app.use(store)
+	.use(i18n)
+	.use(uviewPlus, () => {
+		return {
+			options: {
+				// 修改config对象的属性
+				config: {
+					// 只加载一次字体图标
+					loadFontOnce: true
+				}
+			}
+		}
+	})
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsA/icon/icon.uvue`</small>
+#### 微信小程序图标加载异常处理
+
+```vue
+<script>
+import { fontUtil } from 'uview-plus'
+
+export default {
+	onLaunch() {
+		fontUtil.loadFont()
+	}
+}
+</script>
+```
+
+#### 自定义默认字体图标自托管资源
+
+```js
+app.use(store)
+	.use(i18n)
+	.use(uviewPlus, () => {
+		return {
+			options: {
+				// 修改config对象的属性
+				config: {
+					// 默认字体图标自托管资源地址
+					iconUrl: 'https://at.alicdn.com/t/font_2225171_8kdcwk4po24.ttf'
+				}
+			}
+		}
+	})
+```
+
+#### 扩充自定义字体图标
+
+```js
+app.use(store)
+	.use(i18n)
+	.use(uviewPlus, () => {
+		return {
+			options: {
+				// 修改config对象的属性
+				config: {
+					customIcon: {
+						family: 'xyicon',
+						url: 'https://at.alicdn.com/t/c/font_1305928_egvk3tbr3fs.ttf?t=1744189362601'
+					},
+					customIcons: {
+						'light-mode' : '\ue66c'
+					}
+				}
+			}
+		}
+	})
+```
+
+```vue
+@font-face {
+	font-family: 'xyicon';
+	src: url('https://at.alicdn.com/t/font_2225171_8kdcwk4po24.ttf') format('truetype');
+}
+```
+
+```vue
+<up-icon customPrefix="xyicon" name="light-mode"></up-icon>
+```
+
+#### 基本使用
+
+```vue
+<up-icon name="photo"></up-icon>
+```
+
+#### 修改图标的样式
+
+```vue
+<up-icon name="photo" color="#2979ff" size="28"></up-icon>
+```
+
+#### 图片图标
+
+```vue
+<up-icon label="uview-plus" size="40" name="https://cdn.uviewui.com/uview/example/button.png"></up-icon>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/icon.md`</small>
 
 </template>
 
 <template #uniappx>
 
-```vue
-<up-icon
-    :name="item.name"
-    size="30px"
-    color="#909399"
-    @click="test"
-></up-icon>
+#### 新版本全局加载兼容性
+
+```js
+app.use(store)
+	.use(i18n)
+	.use(ultrUI, () => {
+		return {
+			options: {
+				// 修改config对象的属性
+				config: {
+					// 只加载一次字体图标
+					loadFontOnce: true
+				}
+			}
+		}
+	})
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsA/icon/icon.uvue`</small>
+#### 自定义默认字体图标自托管资源
+
+```js
+app.use(store)
+	.use(i18n)
+	.use(ultrUI, () => {
+		return {
+			options: {
+				// 修改config对象的属性
+				config: {
+					// 默认字体图标自托管资源地址
+					iconUrl: 'https://at.alicdn.com/t/font_2225171_8kdcwk4po24.ttf'
+				}
+			}
+		}
+	})
+```
+
+#### 扩充自定义字体图标
+
+```js
+app.use(store)
+	.use(i18n)
+	.use(uviewPlus, () => {
+		return {
+			options: {
+				// 修改config对象的属性
+				config: {
+					customIcon: {
+						family: 'xyicon',
+						url: 'https://at.alicdn.com/t/c/font_1305928_egvk3tbr3fs.ttf?t=1744189362601'
+					},
+					customIcons: {
+						'light-mode' : '\ue66c'
+					}
+				}
+			}
+		}
+	})
+```
+
+```vue
+@font-face {
+	font-family: 'xyicon';
+	src: url('https://at.alicdn.com/t/font_2225171_8kdcwk4po24.ttf') format('truetype');
+}
+```
+
+```vue
+<up-icon customPrefix="xyicon" name="light-mode"></up-icon>
+```
+
+#### 基本使用
+
+```vue
+<up-icon name="photo"></up-icon>
+```
+
+#### 修改图标的样式
+
+```vue
+<up-icon name="photo" color="#2979ff" size="28"></up-icon>
+```
+
+#### 图片图标
+
+```vue
+<up-icon label="uview-ultra" size="40" name="https://cdn.uviewui.com/uview/example/button.png"></up-icon>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/icon.md`</small>
 
 </template>
 

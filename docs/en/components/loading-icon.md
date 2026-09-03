@@ -12,7 +12,7 @@ A loading indicator drawn natively, in circle, flower or semicircle form.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -193,91 +193,125 @@ timingFunction，仅 circle / semicircle 生效
 
 <template #uniapp>
 
-#### 基本案列
+#### 基本使用
 
 ```vue
-<up-loading-icon></up-loading-icon>
+<template>
+	<view>
+		<up-loading-icon></up-loading-icon>
+	</view>
+</template>
 ```
 
-#### 半圆loading
+#### 动画文字
 
 ```vue
-<up-loading-icon mode="semicircle"></up-loading-icon>
+<up-loading-icon text="加载中" textSize="18"></up-loading-icon>
 ```
 
-#### 圆形loading
+#### 模式类型
 
 ```vue
-<up-loading-icon mode="circle"></up-loading-icon>
+<up-loading-icon text="花朵形"></up-loading-icon>
+<up-loading-icon mode="semicircle" text="半圆"></up-loading-icon>
+<up-loading-icon mode="circle" text="圆型"></up-loading-icon>
 ```
 
-#### 自定义动画
+#### 排列类型
 
 ```vue
-<up-loading-icon mode="circle" timingFunction="linear"></up-loading-icon>
+<up-loading-icon :vertical="true"></up-loading-icon>
 ```
 
-#### 自定义颜色
+#### 动画模式
 
 ```vue
-<up-loading-icon color="#19be6b"></up-loading-icon>
+<up-loading-icon timing-function="linear"></up-loading-icon>
 ```
 
-#### 自定义文字
+#### 动画运行时间
 
 ```vue
-<up-loading-icon
-    :vertical="true"
-    text="加载中"
-></up-loading-icon>
+<up-loading-icon duration="2000"></up-loading-icon>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsA/loading-icon/loading-icon.uvue`</small>
+#### 图标颜色
+
+```vue
+<up-loading-icon color="red"></up-loading-icon>
+
+<up-loading-icon mode="circle" inactive-color="red"></up-loading-icon>
+```
+
+#### 图标尺寸
+
+```vue
+<up-loading-icon size="36"></up-loading-icon>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/loadingIcon.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 基本案列
+#### 基本使用
 
 ```vue
-<up-loading-icon></up-loading-icon>
+<template>
+	<view>
+		<up-loading-icon></up-loading-icon>
+	</view>
+</template>
 ```
 
-#### 半圆loading
+#### 动画文字
 
 ```vue
-<up-loading-icon mode="semicircle"></up-loading-icon>
+<up-loading-icon text="加载中" textSize="18"></up-loading-icon>
 ```
 
-#### 圆形loading
+#### 模式类型
 
 ```vue
-<up-loading-icon mode="circle"></up-loading-icon>
+<up-loading-icon text="花朵形"></up-loading-icon>
+<up-loading-icon mode="semicircle" text="半圆"></up-loading-icon>
+<up-loading-icon mode="circle" text="圆型"></up-loading-icon>
 ```
 
-#### 自定义动画
+#### 排列类型
 
 ```vue
-<up-loading-icon mode="circle" timingFunction="linear"></up-loading-icon>
+<up-loading-icon :vertical="true"></up-loading-icon>
 ```
 
-#### 自定义颜色
+#### 动画模式
 
 ```vue
-<up-loading-icon color="#19be6b"></up-loading-icon>
+<up-loading-icon timing-function="linear"></up-loading-icon>
 ```
 
-#### 自定义文字
+#### 动画运行时间
 
 ```vue
-<up-loading-icon
-    :vertical="true"
-    text="加载中"
-></up-loading-icon>
+<up-loading-icon duration="2000"></up-loading-icon>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsA/loading-icon/loading-icon.uvue`</small>
+#### 图标颜色
+
+```vue
+<up-loading-icon color="red"></up-loading-icon>
+
+<up-loading-icon mode="circle" inactive-color="red"></up-loading-icon>
+```
+
+#### 图标尺寸
+
+```vue
+<up-loading-icon size="36"></up-loading-icon>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/loadingIcon.md`</small>
 
 </template>
 

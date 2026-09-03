@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -133,63 +133,163 @@ import { UPColorPicker } from '@ultra-ui'
 
 <template #uniapp>
 
+#### 基本使用
+
+通过`v-model`绑定颜色值，支持纯色和渐变色。
+
 ```vue
-<up-color-picker
-    v-model="selectedColor"
-    @confirm="confirmColor"
->
-    <view class="color-preview">
-        <view class="color-block" :style="{ backgroundColor: selectedColor }"></view>
-        <text class="color-text">{{ selectedColor }}</text>
+<template>
+	<view class="p-4 bg-white">
+        <up-color-picker 
+            v-model="color" 
+            @confirm="confirm"
+        >
+            <view class="color-preview">
+                <view class="color-block" :style="{ backgroundColor: color }"></view>
+                <text class="color-text">{{ color }}</text>
+            </view>
+        </up-color-picker>
     </view>
-</up-color-picker>
+</template>
 ```
 
 ```vue
-<up-color-picker
-    v-model="selectedColor2"
-    :commonColors="commonColors"
-    @confirm="confirmColor2"
->
-    <view class="color-preview">
-        <view class="color-block" :style="{ backgroundColor: selectedColor2 }"></view>
-        <text class="color-text">{{ selectedColor2 }}</text>
-    </view>
-    </up-color-picker>
+<script setup>
+import { ref } from 'vue';
+
+const color = ref('#ff0000');
+
+const confirm = (selectedColor) => {
+    console.log('选择的颜色：', selectedColor);
+};
+</script>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/colorPicker/colorPicker.uvue`</small>
+#### 带常用颜色的使用
+
+通过`commonColors`属性设置常用颜色列表。
+
+```vue
+<template>
+	<view class="p-4 bg-white">
+        <up-color-picker 
+            v-model="color" 
+            :commonColors="commonColors" 
+            @confirm="confirm"
+        >
+            <view class="color-preview">
+                <view class="color-block" :style="{ backgroundColor: color }"></view>
+                <text class="color-text">{{ color }}</text>
+            </view>
+        </up-color-picker>
+    </view>
+</template>
+```
+
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const color = ref('#ff0000');
+const commonColors = ref([
+    '#ff0000',
+    '#00ff00',
+    '#0000ff',
+    '#ffff00',
+    '#00ffff',
+    '#ff00ff',
+    '#ffffff',
+    '#000000'
+]);
+
+const confirm = (selectedColor) => {
+    console.log('选择的颜色：', selectedColor);
+};
+</script>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/colorPicker.md`</small>
 
 </template>
 
 <template #uniappx>
 
+#### 基本使用
+
+通过`v-model`绑定颜色值，支持纯色和渐变色。
+
 ```vue
-<up-color-picker
-    v-model="selectedColor"
-    @confirm="confirmColor"
->
-    <view class="color-preview">
-        <view class="color-block" :style="{ backgroundColor: selectedColor }"></view>
-        <text class="color-text">{{ selectedColor }}</text>
+<template>
+	<view class="p-4 bg-white">
+        <up-color-picker 
+            v-model="color" 
+            @confirm="confirm"
+        >
+            <view class="color-preview">
+                <view class="color-block" :style="{ backgroundColor: color }"></view>
+                <text class="color-text">{{ color }}</text>
+            </view>
+        </up-color-picker>
     </view>
-</up-color-picker>
+</template>
 ```
 
 ```vue
-<up-color-picker
-    v-model="selectedColor2"
-    :commonColors="commonColors"
-    @confirm="confirmColor2"
->
-    <view class="color-preview">
-        <view class="color-block" :style="{ backgroundColor: selectedColor2 }"></view>
-        <text class="color-text">{{ selectedColor2 }}</text>
-    </view>
-    </up-color-picker>
+<script setup>
+import { ref } from 'vue';
+
+const color = ref('#ff0000');
+
+const confirm = (selectedColor) => {
+    console.log('选择的颜色：', selectedColor);
+};
+</script>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/colorPicker/colorPicker.uvue`</small>
+#### 带常用颜色的使用
+
+通过`commonColors`属性设置常用颜色列表。
+
+```vue
+<template>
+	<view class="p-4 bg-white">
+        <up-color-picker 
+            v-model="color" 
+            :commonColors="commonColors" 
+            @confirm="confirm"
+        >
+            <view class="color-preview">
+                <view class="color-block" :style="{ backgroundColor: color }"></view>
+                <text class="color-text">{{ color }}</text>
+            </view>
+        </up-color-picker>
+    </view>
+</template>
+```
+
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const color = ref('#ff0000');
+const commonColors = ref([
+    '#ff0000',
+    '#00ff00',
+    '#0000ff',
+    '#ffff00',
+    '#00ffff',
+    '#ff00ff',
+    '#ffffff',
+    '#000000'
+]);
+
+const confirm = (selectedColor) => {
+    console.log('选择的颜色：', selectedColor);
+};
+</script>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/colorPicker.md`</small>
 
 </template>
 

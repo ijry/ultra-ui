@@ -12,7 +12,7 @@ A back-to-top button that appears after scrolling far enough.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -117,45 +117,187 @@ import { UPBackTop } from '@ultra-ui'
 
 <template #uniapp>
 
-#### 自定义backTop(滚动页面即可在右下角看到图标)
+#### 基本使用
 
 ```vue
-<up-back-top
-    :right="backTopData['right']"
-    :customStyle="backTopData['customStyle']"
-    :bottom="backTopData['bottom']"
-    :icon="backTopData['icon']"
-    :mode="backTopData['mode']"
-    :iconStyle="backTopData['iconStyle']"
-    :duration="backTopData['duration']"
-    :scrollTop="scrollTop"
-    @click="click"
-></up-back-top>
+<template>
+	<view class="wrap">
+		<text>滑动页面，返回顶部按钮将出现在右下角</text>
+		<up-back-top :scroll-top="scrollTop"></up-back-top>
+	</view>
+</template>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsA/backtop/backtop.uvue`</small>
+```vue
+<script setup>  
+import { ref } from 'vue';  
+import { onPageScroll } from '@dcloudio/uni-app';
+  
+// 创建响应式数据 scrollTop  
+const scrollTop = ref(0);  
+  
+// onPageScroll 方法来更新 scrollTop 的值  
+onPageScroll((e) => {
+	scrollTop.value = e.scrollTop;
+});
+</script>
+```
+
+```vue
+<style lang="scss" scoped>
+	.wrap {
+		height: 200vh;
+	}
+</style>
+```
+
+#### 改变返回顶部按钮的出现时机
+
+```vue
+<up-back-top :scroll-top="scrollTop" top="600"></up-back-top>
+```
+
+#### 自定义返回顶部的图标和提示
+
+```vue
+<up-back-top :scroll-top="scrollTop" icon="arrow-up" text="返回"></up-back-top>
+```
+
+#### 其他自定义样式
+
+```vue
+<template>
+	<view class="wrap">
+		<text>滑动页面，返回顶部按钮将出现在右下角</text>
+		<up-back-top :scrollTop="scrollTop" :mode="mode" :iconStyle="iconStyle"></up-back-top>
+	</view>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref, reactive } from 'vue';  
+import { onPageScroll } from '@dcloudio/uni-app';
+
+// 使用 ref 创建响应式基本类型数据  
+const scrollTop = ref(0);  
+const mode = ref('square');  
+  
+// 使用 reactive 创建响应式对象数据  
+const iconStyle = reactive({  
+  fontSize: '32rpx',  
+  color: '#2979ff'  
+});  
+  
+// onPageScroll 方法来更新 scrollTop 的值  
+onPageScroll((e) => {
+	scrollTop.value = e.scrollTop;
+}); 
+</script>
+```
+
+```vue
+<style lang="scss" scoped>
+	.wrap {
+		height: 200vh;
+	}
+</style>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/backTop.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 自定义backTop(滚动页面即可在右下角看到图标)
+#### 基本使用
 
 ```vue
-<up-back-top
-    :right="backTopData['right']"
-    :customStyle="backTopData['customStyle']"
-    :bottom="backTopData['bottom']"
-    :icon="backTopData['icon']"
-    :mode="backTopData['mode']"
-    :iconStyle="backTopData['iconStyle']"
-    :duration="backTopData['duration']"
-    :scrollTop="scrollTop"
-    @click="click"
-></up-back-top>
+<template>
+	<view class="wrap">
+		<text>滑动页面，返回顶部按钮将出现在右下角</text>
+		<up-back-top :scroll-top="scrollTop"></up-back-top>
+	</view>
+</template>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsA/backtop/backtop.uvue`</small>
+```vue
+<script setup>  
+import { ref } from 'vue';  
+import { onPageScroll } from '@dcloudio/uni-app';
+  
+// 创建响应式数据 scrollTop  
+const scrollTop = ref(0);  
+  
+// onPageScroll 方法来更新 scrollTop 的值  
+onPageScroll((e) => {
+	scrollTop.value = e.scrollTop;
+});
+</script>
+```
+
+```vue
+<style lang="scss" scoped>
+	.wrap {
+		height: 200vh;
+	}
+</style>
+```
+
+#### 改变返回顶部按钮的出现时机
+
+```vue
+<up-back-top :scroll-top="scrollTop" top="600"></up-back-top>
+```
+
+#### 自定义返回顶部的图标和提示
+
+```vue
+<up-back-top :scroll-top="scrollTop" icon="arrow-up" text="返回"></up-back-top>
+```
+
+#### 其他自定义样式
+
+```vue
+<template>
+	<view class="wrap">
+		<text>滑动页面，返回顶部按钮将出现在右下角</text>
+		<up-back-top :scrollTop="scrollTop" :mode="mode" :iconStyle="iconStyle"></up-back-top>
+	</view>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref, reactive } from 'vue';  
+import { onPageScroll } from '@dcloudio/uni-app';
+
+// 使用 ref 创建响应式基本类型数据  
+const scrollTop = ref(0);  
+const mode = ref('square');  
+  
+// 使用 reactive 创建响应式对象数据  
+const iconStyle = reactive({  
+  fontSize: '32rpx',  
+  color: '#2979ff'  
+});  
+  
+// onPageScroll 方法来更新 scrollTop 的值  
+onPageScroll((e) => {
+	scrollTop.value = e.scrollTop;
+}); 
+</script>
+```
+
+```vue
+<style lang="scss" scoped>
+	.wrap {
+		height: 200vh;
+	}
+</style>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/backTop.md`</small>
 
 </template>
 

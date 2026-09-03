@@ -12,7 +12,7 @@ A card container with head, body and foot sections.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -284,79 +284,185 @@ paddingHead / paddingBody / paddingFoot 优先于 padding
 
 <template #uniapp>
 
+#### 基本使用
+
 ```vue
-<up-card :showHead="false">
-    <template #body>
-        <view class="ts-14 tw5 lh-1-8" >
-            尊敬的客户您好，您有来自的开票。如果有疑问请联系您的客户经理。
-        </view>
-    </template>
-</up-card>
+<template>
+	<up-card :title="title" :sub-title="subTitle" :thumb="thumb">
+        <template #body>
+            <view class="" slot="body">
+                <view class="u-body-item u-flex u-border-bottom u-col-between u-p-t-0">
+                    <view class="u-body-item-title u-line-2">瓶身描绘的牡丹一如你初妆，冉冉檀香透过窗心事我了然，宣纸上走笔至此搁一半</view>
+                    <image src="https://img11.360buyimg.com/n7/jfs/t1/94448/29/2734/524808/5dd4cc16E990dfb6b/59c256f85a8c3757.jpg" mode="aspectFill"></image>
+                </view>
+                <view class="u-body-item u-flex u-row-between u-p-b-0">
+                    <view class="u-body-item-title u-line-2">釉色渲染仕女图韵味被私藏，而你嫣然的一笑如含苞待放</view>
+                    <image src="https://img12.360buyimg.com/n7/jfs/t1/102191/19/9072/330688/5e0af7cfE17698872/c91c00d713bf729a.jpg" mode="aspectFill"></image>
+                </view>
+            </view>
+        </template>
+        <template #foot>
+		    <view>
+                <up-icon name="chat-fill" size="34" color="" label="30评论"></up-icon>
+            </view>
+        </template>
+	</up-card>
+</template>
 ```
 
 ```vue
-<up-card @click="click" @head-click="headClick" :title="title" :showFoot="bottomSlot"
-    :sub-title="subTitle" subTitleSize="12px" :thumb="thumb" :padding="padding" :border="border">
-    <template #body>
-        <view>
-            <view class="up-body-item up-flex up-flex-items-start up-border-bottom up-col-between up-p-t-0">
-                <view class="up-body-item-title up-line-2">瓶身描绘的牡丹一如你初妆，冉冉檀香透过窗心事我了然，宣纸上走笔至此搁一半</view>
-                <image class="image" src="https://uview-plus.jiangruyi.com/uview/ext/59c256f85a8c3757.jpg" mode="aspectFill"></image>
-            </view>
-            <view class="up-body-item up-flex up-row-between up-p-b-0">
-                <view class="up-body-item-title up-line-2">釉色渲染仕女图韵味被私藏，而你嫣然的一笑如含苞待放</view>
-                <image class="image" src="https://uview-plus.jiangruyi.com/uview/ext/59c256f85a8c3757.jpg" mode="aspectFill"></image>
-            </view>
-        </view>
-    </template>
-    <template #foot>
-        <view>
-            <up-icon name="chat-fill" size="16" color="" label="30评论"></up-icon>
-        </view>
-    </template>
-</up-card>
+<script setup>
+import { ref } from 'vue';
+
+const title = ref('素胚勾勒出青花，笔锋浓转淡');
+const subTitle = ref('2020-05-15');
+const thumb = ref('http://pic2.sc.chinaz.com/Files/pic/pic9/202002/hpic2119_s.jpg');
+</script>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsB/card/card.uvue`</small>
+```vue
+<style scoped lang="scss">
+	.u-card-wrap { 
+		background-color: $u-bg-color;
+		padding: 1px;
+	}
+	
+	.u-body-item {
+		font-size: 32rpx;
+		color: #333;
+		padding: 20rpx 10rpx;
+	}
+		
+	.u-body-item image {
+		width: 120rpx;
+		flex: 0 0 120rpx;
+		height: 120rpx;
+		border-radius: 8rpx;
+		margin-left: 12rpx;
+	}
+</style>
+```
+
+#### 配置卡片间距
+
+```vue
+<up-card margin="30rpx"></up-card>
+```
+
+#### 配置卡片左上角的缩略图
+
+```vue
+<template>
+	<up-card thumb="xxx.jpg" thumb-width="60"></up-card>
+</template>
+```
+
+#### 配置卡片边框
+
+```vue
+<template>
+	<up-card :border="false" :foot-border-top="false"></up-card>
+</template>
+```
+
+#### 设置内边距
+
+```vue
+<template>
+	<up-card padding="30"></up-card>
+</template>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/card.md`</small>
 
 </template>
 
 <template #uniappx>
 
-```vue
-<up-card :showHead="false">
-    <template #body>
-        <view class="ts-14 tw5 lh-1-8" >
-            尊敬的客户您好，您有来自的开票。如果有疑问请联系您的客户经理。
-        </view>
-    </template>
-</up-card>
-```
+#### 基本使用
 
 ```vue
-<up-card @click="click" @head-click="headClick" :title="title" :showFoot="bottomSlot"
-    :sub-title="subTitle" subTitleSize="12px" :thumb="thumb" :padding="padding" :border="border">
-    <template #body>
-        <view>
-            <view class="up-body-item up-flex up-flex-items-start up-border-bottom up-col-between up-p-t-0">
-                <view class="up-body-item-title up-line-2">瓶身描绘的牡丹一如你初妆，冉冉檀香透过窗心事我了然，宣纸上走笔至此搁一半</view>
-                <image class="image" src="https://uview-plus.jiangruyi.com/uview/ext/59c256f85a8c3757.jpg" mode="aspectFill"></image>
+<template>
+	<up-card :title="title" :sub-title="subTitle" :thumb="thumb">
+        <template #body>
+            <view class="" slot="body">
+                <view class="u-body-item u-flex u-border-bottom u-col-between u-p-t-0">
+                    <view class="u-body-item-title u-line-2">瓶身描绘的牡丹一如你初妆，冉冉檀香透过窗心事我了然，宣纸上走笔至此搁一半</view>
+                    <image src="https://img11.360buyimg.com/n7/jfs/t1/94448/29/2734/524808/5dd4cc16E990dfb6b/59c256f85a8c3757.jpg" mode="aspectFill"></image>
+                </view>
+                <view class="u-body-item u-flex u-row-between u-p-b-0">
+                    <view class="u-body-item-title u-line-2">釉色渲染仕女图韵味被私藏，而你嫣然的一笑如含苞待放</view>
+                    <image src="https://img12.360buyimg.com/n7/jfs/t1/102191/19/9072/330688/5e0af7cfE17698872/c91c00d713bf729a.jpg" mode="aspectFill"></image>
+                </view>
             </view>
-            <view class="up-body-item up-flex up-row-between up-p-b-0">
-                <view class="up-body-item-title up-line-2">釉色渲染仕女图韵味被私藏，而你嫣然的一笑如含苞待放</view>
-                <image class="image" src="https://uview-plus.jiangruyi.com/uview/ext/59c256f85a8c3757.jpg" mode="aspectFill"></image>
+        </template>
+        <template #foot>
+		    <view>
+                <up-icon name="chat-fill" size="34" color="" label="30评论"></up-icon>
             </view>
-        </view>
-    </template>
-    <template #foot>
-        <view>
-            <up-icon name="chat-fill" size="16" color="" label="30评论"></up-icon>
-        </view>
-    </template>
-</up-card>
+        </template>
+	</up-card>
+</template>
+
+<script>
+export default {
+	data() {
+		return {
+			title: '素胚勾勒出青花，笔锋浓转淡',
+			subTitle: '2020-05-15',
+			thumb: 'http://pic2.sc.chinaz.com/Files/pic/pic9/202002/hpic2119_s.jpg',
+		};
+	}
+};
+</script>
+
+<style scoped lang="scss">
+	.u-card-wrap { 
+		background-color: $up-bg-color;
+		padding: 1px;
+	}
+	
+	.u-body-item {
+		font-size: 32rpx;
+		color: #333;
+		padding: 20rpx 10rpx;
+	}
+		
+	.u-body-item image {
+		width: 120rpx;
+		flex: 0 0 120rpx;
+		height: 120rpx;
+		border-radius: 8rpx;
+		margin-left: 12rpx;
+	}
+</style>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsB/card/card.uvue`</small>
+#### 配置卡片间距
+
+```vue
+<up-card margin="30rpx"></up-card>
+```
+
+#### 配置卡片左上角的缩略图
+
+```vue
+<up-card thumb="xxx.jpg" thumb-width="60"></up-card>
+```
+
+#### 配置卡片边框
+
+```vue
+<up-card :border="false" :foot-border-top="false"></up-card>
+```
+
+#### 设置内边距
+
+```vue
+<up-card padding="30"></up-card>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/card.md`</small>
 
 </template>
 

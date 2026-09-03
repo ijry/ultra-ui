@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -191,127 +191,169 @@ value 绑定 + ref 控制 start / reset
 
 <template #uniapp>
 
-#### 基础功能
+#### 基本使用
+
+通过`startVal`设置开始值，`endVal`设置结束值
 
 ```vue
-<up-count-to
-    :endVal="value"
-    @end="end"
-></up-count-to>
+<up-count-to :startVal="30" :endVal="500"></up-count-to>
 ```
 
-#### 倒计数
+#### 设置滚动相关参数
+
+- 通过`duration`设置从开始值到结束值整个滚动过程所需的时间，单位`ms`
+- 通过`useEasing`设置滚动快结尾的时候，是否放慢滚动的速度，给用户更好的视觉效果
 
 ```vue
-<up-count-to :startVal="startVal1"></up-count-to>
+<up-count-to :start-val="30" :end-val="500" :duration="2000" :useEasing="false"></up-count-to>
 ```
 
-#### 显示小数位
+#### 是否显示小数位
+
+通过`decimals`设置显示的小数位，如果设置了，在滚动过程中，小数位会一起变化。如果`startVal`和`endVal`是带小数的，应该设置`decimals`为
+`startVal`和`endVal`一样的小数位数值，如`endVal`为1200.55，那么`decimals`应该设置为2。
 
 ```vue
-<up-count-to
-    :startVal="startVal2"
-    :endVal="endVal"
-    :decimals="decimals"
-></up-count-to>
+<up-count-to :startVal="30" :endVal="500.55" :decimals="2"></up-count-to>
 ```
 
 #### 千分位分隔符
 
-```vue
-<up-count-to
-    :startVal="startVal3"
-    :endVal="endVal2"
-    separator=","
-    :decimals="decimals"
-></up-count-to>
-```
-
-#### 自定义控制
+通过`separator`配置千分位分隔符，默认为空字符串，可以设置英文逗号","，此参数表现为`endVal`值超过1000时，比如为"1257"，那么滚动后会变成"1,245"，在金额数值时，
+该参数可能会用上。
 
 ```vue
-<up-count-to
-    ref="uCountToRef"
-    :endVal="endVal3"
-    :autoplay="autoplay"
-></up-count-to>
+<up-count-to :endVal="1542" separator=","></up-count-to>
 ```
 
-#### 自定义
+#### 滚动执行的时机
+
+可以通过`autoplay`设置是否需要初始化时就开始滚动，默认为`true`，如果设置为`false`，可以通过组件的`ref`去控制组件内部的`start()`和`paused()`
+方法来开始或暂停。
 
 ```vue
-<up-count-to
-    :endVal="value"
-    color="#909399"
-    :fontSize="fontSize"
-    :bold="true"
-></up-count-to>
+<template>
+	<up-count-to ref="uCountToRef" :endVal="endVal" :autoplay="autoplay"></up-count-to>
+</template>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsB/countTo/countTo.uvue`</small>
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 创建响应式数据  
+const endVal = ref(5000.55);  
+const autoplay = ref(false);  
+  
+// 创建对子组件的引用  
+const uCountToRef = ref(null);  
+  
+// 定义方法  
+const start = () => {  
+  if (uCountToRef.value) {  
+    uCountToRef.value.start();  
+  }  
+};  
+  
+const paused = () => {  
+  if (uCountToRef.value) {  
+    uCountToRef.value.paused();  
+  }  
+};  
+  
+const reStart = () => {  
+  if (uCountToRef.value) {  
+    uCountToRef.value.reStart();  
+  }  
+};  
+</script>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/countTo.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 基础功能
+#### 基本使用
+
+通过`startVal`设置开始值，`endVal`设置结束值
 
 ```vue
-<up-count-to
-    :endVal="value"
-    @end="end"
-></up-count-to>
+<up-count-to :startVal="30" :endVal="500"></up-count-to>
 ```
 
-#### 倒计数
+#### 设置滚动相关参数
+
+- 通过`duration`设置从开始值到结束值整个滚动过程所需的时间，单位`ms`
+- 通过`useEasing`设置滚动快结尾的时候，是否放慢滚动的速度，给用户更好的视觉效果
 
 ```vue
-<up-count-to :startVal="startVal1"></up-count-to>
+<up-count-to :start-val="30" :end-val="500" :duration="2000" :useEasing="false"></up-count-to>
 ```
 
-#### 显示小数位
+#### 是否显示小数位
+
+通过`decimals`设置显示的小数位，如果设置了，在滚动过程中，小数位会一起变化。如果`startVal`和`endVal`是带小数的，应该设置`decimals`为
+`startVal`和`endVal`一样的小数位数值，如`endVal`为1200.55，那么`decimals`应该设置为2。
 
 ```vue
-<up-count-to
-    :startVal="startVal2"
-    :endVal="endVal"
-    :decimals="decimals"
-></up-count-to>
+<up-count-to :startVal="30" :endVal="500.55" :decimals="2"></up-count-to>
 ```
 
 #### 千分位分隔符
 
-```vue
-<up-count-to
-    :startVal="startVal3"
-    :endVal="endVal2"
-    separator=","
-    :decimals="decimals"
-></up-count-to>
-```
-
-#### 自定义控制
+通过`separator`配置千分位分隔符，默认为空字符串，可以设置英文逗号","，此参数表现为`endVal`值超过1000时，比如为"1257"，那么滚动后会变成"1,245"，在金额数值时，
+该参数可能会用上。
 
 ```vue
-<up-count-to
-    ref="uCountToRef"
-    :endVal="endVal3"
-    :autoplay="autoplay"
-></up-count-to>
+<up-count-to :endVal="1542" separator=","></up-count-to>
 ```
 
-#### 自定义
+#### 滚动执行的时机
+
+可以通过`autoplay`设置是否需要初始化时就开始滚动，默认为`true`，如果设置为`false`，可以通过组件的`ref`去控制组件内部的`start()`和`paused()`
+方法来开始或暂停。
 
 ```vue
-<up-count-to
-    :endVal="value"
-    color="#909399"
-    :fontSize="fontSize"
-    :bold="true"
-></up-count-to>
+<template>
+	<up-count-to ref="uCountToRef" :endVal="endVal" :autoplay="autoplay"></up-count-to>
+</template>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsB/countTo/countTo.uvue`</small>
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 创建响应式数据  
+const endVal = ref(5000.55);  
+const autoplay = ref(false);  
+  
+// 创建对子组件的引用  
+const uCountToRef = ref(null);  
+  
+// 定义方法  
+const start = () => {  
+  if (uCountToRef.value) {  
+    uCountToRef.value.start();  
+  }  
+};  
+  
+const paused = () => {  
+  if (uCountToRef.value) {  
+    uCountToRef.value.paused();  
+  }  
+};  
+  
+const reStart = () => {  
+  if (uCountToRef.value) {  
+    uCountToRef.value.reStart();  
+  }  
+};  
+</script>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/countTo.md`</small>
 
 </template>
 

@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -271,133 +271,207 @@ bgColor 用于占位区与深色背景融合
 
 <template #uniapp>
 
-#### 基本案例
+#### 配置manifest
+
+在项目的manifest.json中增加mergeVirtualHostAttributes配置
 
 ```vue
-<up-image
-    :showLoading="true"
-    :src="src"
-    width="80px"
-    height="80px"
-    @click="click"
-></up-image>
+"mp-weixin" : {
+	"appid" : "",
+	...
+	"mergeVirtualHostAttributes" : true
+},
+"mp-toutiao" : {
+	"appid" : "",
+	...
+	"mergeVirtualHostAttributes" : true
+}
 ```
 
-#### 自定义形状
+#### 基本使用
+
+配置图片的`width`宽和`height`高，以及`src`路径即可使用。
 
 ```vue
-<up-image
-    shape="circle"
-    :src="src"
-    width="80px"
-    height="80px"
-></up-image>
+<template>
+  <up-image :show-loading="true" :src="src" width="80px" height="80px" @click="click"></up-image>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const src = ref('https://cdn.uviewui.com/uview/album/1.jpg');
+
+const click = () => {
+  // 点击事件处理逻辑
+};
+</script>
 ```
 
-#### 自定义圆角
+#### 裁剪模式
+
+通过`mode`参数配置填充模式，此模式用法与uni-app的`image`组件的`mode`参数完全一致，详见：[Image](https://uniapp.dcloud.io/component/image)
 
 ```vue
-<up-image
-    radius="4"
-    :src="src"
-    width="80px"
-    height="80px"
-></up-image>
+<up-image src="https://cdn.uviewui.com/uview/album/1.jpg" mode="widthFix"></up-image>
 ```
 
-#### 图片模式(widthFix)
+#### 图片形状
+
+- 通过`shape`参数设置图片的形状，`circle`为圆形，`square`为方形
+- 如果为方形时，还可以通过`radius`属性设置圆角值
 
 ```vue
-<up-image
-    :src="src"
-    width="80px"
-    height="80px"
-    mode="widthFix"
-></up-image>
+<up-image src="https://cdn.uviewui.com/uview/album/1.jpg" shape="circle"></up-image>
 ```
 
-#### 自定义图片加载插槽
+#### 懒加载
+
+注意：此功能只对微信小程序、App、百度小程序、字节跳动小程序有效，默认开启。
 
 ```vue
-<up-image
-    :src="src1"
-    width="80px"
-    height="80px"
-    mode="widthFix"
->
-    <template v-slot:loading>
-        <up-loading-icon color="red"></up-loading-icon>
-    </template>
+<up-image src="https://cdn.uviewui.com/uview/album/1.jpg" :lazy-load="true"></up-image>
+```
+
+#### 加载中提示
+
+图片加载过程中，为加载中状态(默认显示一个小图标)，可以通过`loading`自定义插槽，结合uview-plus的`u-loading`组件，实现加载的动画效果。
+
+```vue
+<up-image src="https://cdn.uviewui.com/uview/album/1.jpg">
+  <template v-slot:loading>
+    <up-loading-icon color="red"></up-loading-icon>
+  </template>
 </up-image>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsA/image/image.uvue`</small>
+#### 加载错误提示
+
+图片加载失败时，默认显示一个错误提示图标，可以通过`error`自定义插槽，实现个性化的提示方式。
+
+```vue
+<up-image src="https://cdn.uviewui.com/uview/album/1.jpg">
+	<template #error>
+		<view style="font-size: 24rpx;">加载失败</view>
+	</template>
+</up-image>
+```
+
+#### 淡入动画
+
+组件自带了加载完成时的淡入动画效果：
+
+- 通过`fade`参数配置是否开启动画效果
+- 通过`duration`参数配置动画的过渡时间，单位ms
+
+```vue
+<up-image src="https://cdn.uviewui.com/uview/album/1.jpg" :fade="true" duration="450"></up-image>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/image.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 基本案例
+#### 配置manifest
+
+在项目的manifest.json中增加mergeVirtualHostAttributes配置
 
 ```vue
-<up-image
-    :showLoading="true"
-    :src="src"
-    width="80px"
-    height="80px"
-    @click="click"
-></up-image>
+"mp-weixin" : {
+	"appid" : "",
+	...
+	"mergeVirtualHostAttributes" : true
+},
+"mp-toutiao" : {
+	"appid" : "",
+	...
+	"mergeVirtualHostAttributes" : true
+}
 ```
 
-#### 自定义形状
+#### 基本使用
+
+配置图片的`width`宽和`height`高，以及`src`路径即可使用。
 
 ```vue
-<up-image
-    shape="circle"
-    :src="src"
-    width="80px"
-    height="80px"
-></up-image>
+<template>
+  <up-image :show-loading="true" :src="src" width="80px" height="80px" @click="click"></up-image>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const src = ref('https://cdn.uviewui.com/uview/album/1.jpg');
+
+const click = () => {
+  // 点击事件处理逻辑
+};
+</script>
 ```
 
-#### 自定义圆角
+#### 裁剪模式
+
+通过`mode`参数配置填充模式，此模式用法与uni-app的`image`组件的`mode`参数完全一致，详见：[Image](https://uniapp.dcloud.io/component/image)
 
 ```vue
-<up-image
-    radius="4"
-    :src="src"
-    width="80px"
-    height="80px"
-></up-image>
+<up-image src="https://cdn.uviewui.com/uview/album/1.jpg" mode="widthFix"></up-image>
 ```
 
-#### 图片模式(widthFix)
+#### 图片形状
+
+- 通过`shape`参数设置图片的形状，`circle`为圆形，`square`为方形
+- 如果为方形时，还可以通过`radius`属性设置圆角值
 
 ```vue
-<up-image
-    :src="src"
-    width="80px"
-    height="80px"
-    mode="widthFix"
-></up-image>
+<up-image src="https://cdn.uviewui.com/uview/album/1.jpg" shape="circle"></up-image>
 ```
 
-#### 自定义图片加载插槽
+#### 懒加载
+
+注意：此功能只对微信小程序、App、百度小程序、字节跳动小程序有效，默认开启。
 
 ```vue
-<up-image
-    :src="src1"
-    width="80px"
-    height="80px"
-    mode="widthFix"
->
-    <template v-slot:loading>
-        <up-loading-icon color="red"></up-loading-icon>
-    </template>
+<up-image src="https://cdn.uviewui.com/uview/album/1.jpg" :lazy-load="true"></up-image>
+```
+
+#### 加载中提示
+
+图片加载过程中，为加载中状态(默认显示一个小图标)，可以通过`loading`自定义插槽，结合uview-ultra的`u-loading`组件，实现加载的动画效果。
+
+```vue
+<up-image src="https://cdn.uviewui.com/uview/album/1.jpg">
+  <template v-slot:loading>
+    <up-loading-icon color="red"></up-loading-icon>
+  </template>
 </up-image>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsA/image/image.uvue`</small>
+#### 加载错误提示
+
+图片加载失败时，默认显示一个错误提示图标，可以通过`error`自定义插槽，实现个性化的提示方式。
+
+```vue
+<up-image src="https://cdn.uviewui.com/uview/album/1.jpg">
+	<template #error>
+		<view style="font-size: 24rpx;">加载失败</view>
+	</template>
+</up-image>
+```
+
+#### 淡入动画
+
+组件自带了加载完成时的淡入动画效果：
+
+- 通过`fade`参数配置是否开启动画效果
+- 通过`duration`参数配置动画的过渡时间，单位ms
+
+```vue
+<up-image src="https://cdn.uviewui.com/uview/album/1.jpg" :fade="true" duration="450"></up-image>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/image.md`</small>
 
 </template>
 

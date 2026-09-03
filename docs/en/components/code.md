@@ -12,7 +12,7 @@ A headless countdown that drives a "resend verification code" button.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -100,61 +100,147 @@ import { UPCode } from '@ultra-ui'
 
 <template #uniapp>
 
-#### 基础功能
+#### 基本使用
 
 ```vue
-<up-code
-    ref="uCode"
-    @change="codeChange"
-    seconds="20"
-    change-text="XS获取"
-    @start="disabled1 = true"
-    @end="disabled1 = false"
-></up-code>
+<template>
+	<view class="wrap">
+		<up-toast ref="uToastRef"></up-toast>
+		<up-code :seconds="seconds" @end="end" @start="start" ref="uCodeRef" 
+		@change="codeChange"></up-code>
+		<up-button @tap="getCode">{{tips}}</up-button>
+	</view>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const tips = ref('');
+const seconds = ref(10);
+const uCodeRef = ref(null);
+
+const codeChange = (text) => {
+  tips.value = text;
+};
+
+const getCode = () => {
+  if (uCodeRef.canGetCode) {
+    // 模拟向后端请求验证码
+    uni.showLoading({
+      title: '正在获取验证码',
+    });
+    setTimeout(() => {
+      uni.hideLoading();
+      // 这里此提示会被start()方法中的提示覆盖
+      uni.$u.toast('验证码已发送');
+      // 通知验证码组件内部开始倒计时
+      uCodeRef.start();
+    }, 2000);
+  } else {
+    uni.$u.toast('倒计时结束后再发送');
+  }
+};
+
+const end = () => {
+  uni.$u.toast('倒计时结束');
+};
+
+const start = () => {
+  uni.$u.toast('倒计时开始');
+};
+</script>
+
+<style lang="scss">
+	.wrap {
+		padding: 24rpx;
+	}
+</style>
 ```
 
-#### 文本样式
+#### 保持倒计时
 
 ```vue
-<up-code
-    ref="uCode2"
-    @change="codeChange2"
-    keep-running
-    start-text="点我获取验证码"
-></up-code>
+/* A.vue */
+<up-verification-code unique-key="page-a"></up-verification-code>
+
+/* B.vue */
+<up-verification-code unique-key="page-b"></up-verification-code>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsB/code/code.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/code.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 基础功能
+#### 基本使用
 
 ```vue
-<up-code
-    ref="uCode"
-    @change="codeChange"
-    seconds="20"
-    change-text="XS获取"
-    @start="disabled1 = true"
-    @end="disabled1 = false"
-></up-code>
+<template>
+	<view class="wrap">
+		<up-toast ref="uToastRef"></up-toast>
+		<up-code :seconds="seconds" @end="end" @start="start" ref="uCodeRef" 
+		@change="codeChange"></up-code>
+		<up-button @tap="getCode">{{tips}}</up-button>
+	</view>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const tips = ref('');
+const seconds = ref(10);
+const uCodeRef = ref(null);
+
+const codeChange = (text) => {
+  tips.value = text;
+};
+
+const getCode = () => {
+  if (uCodeRef.canGetCode) {
+    // 模拟向后端请求验证码
+    uni.showLoading({
+      title: '正在获取验证码',
+    });
+    setTimeout(() => {
+      uni.hideLoading();
+      // 这里此提示会被start()方法中的提示覆盖
+      uni.$u.toast('验证码已发送');
+      // 通知验证码组件内部开始倒计时
+      uCodeRef.start();
+    }, 2000);
+  } else {
+    uni.$u.toast('倒计时结束后再发送');
+  }
+};
+
+const end = () => {
+  uni.$u.toast('倒计时结束');
+};
+
+const start = () => {
+  uni.$u.toast('倒计时开始');
+};
+</script>
+
+<style lang="scss">
+	.wrap {
+		padding: 24rpx;
+	}
+</style>
 ```
 
-#### 文本样式
+#### 保持倒计时
 
 ```vue
-<up-code
-    ref="uCode2"
-    @change="codeChange2"
-    keep-running
-    start-text="点我获取验证码"
-></up-code>
+/* A.vue */
+<up-verification-code unique-key="page-a"></up-verification-code>
+
+/* B.vue */
+<up-verification-code unique-key="page-b"></up-verification-code>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsB/code/code.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/code.md`</small>
 
 </template>
 

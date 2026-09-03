@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -243,133 +243,255 @@ src 无效时回退 defaultUrl，未配置则用内置兜底头像
 
 <template #uniapp>
 
-#### 基础演示
+#### 基本使用
+
+通过`src`指定头像的路径即可简单使用，如果传递了`text`参数，`text`将会优先起作用  
+
+**注意：** 请保证传递给`src`的是绝对地址，而不是相对地址，为什么呢？因为传入`avatar`组件的相对地址，是相对于组件的，而不是父组件(页面)，所以相对址可能会出错。
 
 ```vue
-<up-avatar :src="src1"></up-avatar>
+<template>
+	<view>
+		<up-avatar :src="src"></up-avatar>
+		<up-avatar :text="text"></up-avatar>
+	</view>
+</template>
+```
+
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const src = ref('http://pic2.sc.chinaz.com/Files/pic/pic9/202002/hpic2119_s.jpg');
+const text = ref('无头像');
+</script>
 ```
 
 #### 头像形状
 
+- `shape`参数指定头像的形状，取值`circle`为圆形，取值`square`为圆角方形
+
 ```vue
-<up-avatar
-    :src="src2"
-    shape="circle"
-    @click="click"
-></up-avatar>
+<template>
+	<up-avatar :src="src" shape="square"></up-avatar>
+</template>
 ```
 
-#### 头像尺寸
-
 ```vue
-<up-avatar
-    :src="src4"
-    size="30"
-></up-avatar>
+<script setup>
+import { ref } from 'vue';
+
+const src = ref('http://pic2.sc.chinaz.com/Files/pic/pic9/202002/hpic2119_s.jpg');
+</script>
 ```
 
 #### 图标头像
 
-```vue
-<up-avatar
-    icon="red-packet-fill"
-    fontSize="22"
-></up-avatar>
-```
-
-#### 文字头像(自动背景色)
+- `icon`参数指定头像的图标，图标可参考`icon`组件
 
 ```vue
-<up-avatar
-    text="U"
-    fontSize="20"
-    randomBgColor
-    :colorIndex="0"
-></up-avatar>
+<view class="u-demo-block__content">
+    <view class="u-avatar-item">
+        <up-avatar
+                icon="red-packet-fill"
+                fontSize="22"
+        ></up-avatar>
+    </view>
+    <view class="u-avatar-item">
+        <up-avatar
+                icon="star-fill"
+                fontSize="22"
+        ></up-avatar>
+    </view>
+</view>
+
+<style lang="scss">
+    .u-demo-block__content {
+        @include flex;
+        align-items: center;
+    }
+
+    .u-avatar-item {
+        margin-right: 30px;
+    }
+</style>
 ```
 
-#### 图片加载失败(显示默认头像)
+#### 文字头像（自动背景色）
+
+- `randomBgColor`参数开启头像的自动背景色
 
 ```vue
-<up-avatar :src="src7"></up-avatar>
+<template>
+    <up-avatar
+            text="北"
+            fontSize="18"
+            randomBgColor
+    ></up-avatar>
+</template>
 ```
 
-#### 小程序开放能力
+#### 头像组
+
+使用`up-avatar-group`实现头像组
 
 ```vue
-<up-avatar
-    mpAvatar
-    size="60"
-></up-avatar>
+<template>
+    <up-avatar-group
+            :urls="urls"
+            size="35"
+            gap="0.4"
+    ></up-avatar-group>
+</template>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsC/avatar/avatar.uvue`</small>
+```vue
+<script setup>  
+import { reactive } from 'vue';  
+  
+// 使用 reactive 创建响应式数组  
+const urls = reactive([  
+    'https://uview-plus.jiangruyi.com/uview-plus/album/1.jpg',  
+    'https://uview-plus.jiangruyi.com/uview-plus/album/2.jpg',  
+    'https://uview-plus.jiangruyi.com/uview-plus/album/3.jpg',  
+    'https://uview-plus.jiangruyi.com/uview-plus/album/4.jpg',  
+    'https://uview-plus.jiangruyi.com/uview-plus/album/7.jpg',  
+    'https://uview-plus.jiangruyi.com/uview-plus/album/6.jpg',  
+    'https://uview-plus.jiangruyi.com/uview-plus/album/5.jpg'  
+]);  
+</script>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/avatar.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 基础演示
+#### 基本使用
+
+通过`src`指定头像的路径即可简单使用，如果传递了`text`参数，`text`将会优先起作用  
+
+**注意：** 请保证传递给`src`的是绝对地址，而不是相对地址，为什么呢？因为传入`avatar`组件的相对地址，是相对于组件的，而不是父组件(页面)，所以相对址可能会出错。
 
 ```vue
-<up-avatar :src="src1"></up-avatar>
+<template>
+	<view>
+		<up-avatar :src="src"></up-avatar>
+		<up-avatar :text="text"></up-avatar>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				src: 'http://pic2.sc.chinaz.com/Files/pic/pic9/202002/hpic2119_s.jpg',
+				text: '无头像'
+			}
+		}
+	}
+</script>
 ```
 
 #### 头像形状
 
-```vue
-<up-avatar
-    :src="src2"
-    shape="circle"
-    @click="click"
-></up-avatar>
-```
-
-#### 头像尺寸
+- `shape`参数指定头像的形状，取值`circle`为圆形，取值`square`为圆角方形
 
 ```vue
-<up-avatar
-    :src="src4"
-    size="30"
-></up-avatar>
+<template>
+	<up-avatar :src="src" shape="square"></up-avatar>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				src: 'http://pic2.sc.chinaz.com/Files/pic/pic9/202002/hpic2119_s.jpg'
+			}
+		}
+	}
+</script>
 ```
 
 #### 图标头像
 
-```vue
-<up-avatar
-    icon="red-packet-fill"
-    fontSize="22"
-></up-avatar>
-```
-
-#### 文字头像(自动背景色)
+- `icon`参数指定头像的图标，图标可参考`icon`组件
 
 ```vue
-<up-avatar
-    text="U"
-    fontSize="20"
-    randomBgColor
-    :colorIndex="0"
-></up-avatar>
+<view class="u-demo-block__content">
+    <view class="u-avatar-item">
+        <up-avatar
+                icon="red-packet-fill"
+                fontSize="22"
+        ></up-avatar>
+    </view>
+    <view class="u-avatar-item">
+        <up-avatar
+                icon="star-fill"
+                fontSize="22"
+        ></up-avatar>
+    </view>
+</view>
+
+<style lang="scss">
+    .u-demo-block__content {
+        @include flex;
+        align-items: center;
+    }
+
+    .u-avatar-item {
+        margin-right: 30px;
+    }
+</style>
 ```
 
-#### 图片加载失败(显示默认头像)
+#### 文字头像（自动背景色）
+
+- `randomBgColor`参数开启头像的自动背景色
 
 ```vue
-<up-avatar :src="src7"></up-avatar>
+<template>
+    <up-avatar
+            text="北"
+            fontSize="18"
+            randomBgColor
+    ></up-avatar>
+</template>
 ```
 
-#### 小程序开放能力
+#### 头像组
+
+使用`up-avatar-group`实现头像组
 
 ```vue
-<up-avatar
-    mpAvatar
-    size="60"
-></up-avatar>
+<template>
+    <up-avatar-group
+            :urls="urls"
+            size="35"
+            gap="0.4"
+    ></up-avatar-group>
+</template>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsC/avatar/avatar.uvue`</small>
+```vue
+<script setup>  
+import { reactive } from 'vue';  
+  
+// 使用 reactive 创建响应式数组  
+const urls = reactive([  
+    'https://uview-ultra.jiangruyi.com/uview-ultra/album/1.jpg',  
+    'https://uview-ultra.jiangruyi.com/uview-ultra/album/2.jpg',  
+    'https://uview-ultra.jiangruyi.com/uview-ultra/album/3.jpg',  
+    'https://uview-ultra.jiangruyi.com/uview-ultra/album/4.jpg',  
+    'https://uview-ultra.jiangruyi.com/uview-ultra/album/7.jpg',  
+    'https://uview-ultra.jiangruyi.com/uview-ultra/album/6.jpg',  
+    'https://uview-ultra.jiangruyi.com/uview-ultra/album/5.jpg'  
+]);  
+</script>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/avatar.md`</small>
 
 </template>
 

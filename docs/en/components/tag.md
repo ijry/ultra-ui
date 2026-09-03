@@ -12,7 +12,7 @@ Marks keywords or categories; supports plain, rounded and closable styles.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -277,187 +277,163 @@ bgColor / color / borderColor
 
 <template #uniapp>
 
-#### 基础功能
+#### 基本使用
 
 ```vue
-<up-tag
-    text="标签"
-    plain
-    size="mini"
-    type="warning"
->
-</up-tag>
+<up-tag text="标签" plain size="mini" type="warning"></up-tag>
 ```
 
 #### 自定义主题
 
 ```vue
-<up-tag text="标签">
-</up-tag>
+<up-tag text="标签"></up-tag>
+<up-tag text="标签" type="warning"></up-tag>
+<up-tag text="标签" type="success"></up-tag>
+<up-tag text="标签" type="error"></up-tag>
 ```
 
 #### 圆形标签
 
 ```vue
-<up-tag
-    text="标签"
-    plain
-    shape="circle"
->
-</up-tag>
+<up-tag text="标签" plain shape="circle"></up-tag>
+<up-tag text="标签" type="warning" shape="circle"></up-tag>
 ```
 
 #### 镂空标签
 
 ```vue
-<up-tag
-    text="标签"
-    plain
->
-</up-tag>
+<up-tag text="标签" plain > </up-tag>
+<up-tag text="标签" type="warning" plain></up-tag>
+<up-tag text="标签" type="success" plain></up-tag>
+<up-tag text="标签" type="error" plain></up-tag>
 ```
 
 #### 镂空带背景色
 
 ```vue
-<up-tag
-    text="标签"
-    plain
-    plainFill
->
-</up-tag>
+<up-tag text="标签" plain > </up-tag>
+<up-tag text="标签" type="warning" plain plainFill></up-tag>
+<up-tag text="标签" type="success" plain plainFill></up-tag>
+<up-tag text="标签" type="error" plain plainFill></up-tag>
+```
+
+#### 镂空带背景色不带边框
+
+```vue
+<up-tag text="标签" plain > </up-tag>
+<up-tag text="标签" type="warning" plain plainFill borderColor="transparent"></up-tag>
+<up-tag text="标签" type="success" plain plainFill borderColor="transparent"></up-tag>
+<up-tag text="标签" type="error" plain plainFill borderColor="transparent"></up-tag>
+```
+
+#### 镂空自动计算背景色
+
+```vue
+<up-tag text="标签" plain > </up-tag>
+<up-tag text="标签" type="warning" plain plainFill borderColor="transparent" color="#209D59" :autoBgColor="95"></up-tag>
+<up-tag text="标签" type="success" plain plainFill borderColor="transparent" color="#4E60DC" :autoBgColor="90"></up-tag>
+<up-tag text="标签" type="error" plain plainFill borderColor="transparent" color="#D56E14" :autoBgColor="85"></up-tag>
 ```
 
 #### 自定义尺寸
 
 ```vue
-<up-tag
-    text="标签"
-    plain
-    size="mini"
->
-</up-tag>
+<up-tag text="标签" plain size="mini"></up-tag>
+<up-tag text="标签" type="warning"></up-tag>
+<up-tag text="标签" type="success" plain size="large"></up-tag>
 ```
 
-#### 可关闭标签
-
-```vue
-<up-tag
-    text="标签"
-    size="mini"
-    closable
-    :show="close1"
-    @close="close1 = false"
->
-</up-tag>
-```
-
-#### 带图片和图标
-
-```vue
-<up-tag
-    text="标签"
-    size="mini"
-    icon="map"
-    plain
->
-</up-tag>
-```
-
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsB/tag/tag.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/tag.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 基础功能
+#### 基本使用
 
 ```vue
-<up-tag
-    text="标签"
-    plain
-    size="mini"
-    type="warning"
->
-</up-tag>
+<up-tag text="标签" plain size="mini" type="warning"></up-tag>
 ```
 
 #### 自定义主题
 
 ```vue
-<up-tag text="标签">
-</up-tag>
+<up-tag text="标签"></up-tag>
+<up-tag text="标签" type="warning"></up-tag>
+<up-tag text="标签" type="success"></up-tag>
+<up-tag text="标签" type="error"></up-tag>
 ```
 
 #### 圆形标签
 
 ```vue
-<up-tag
-    text="标签"
-    plain
-    shape="circle"
->
-</up-tag>
+<up-tag text="标签" plain shape="circle"></up-tag>
+<up-tag text="标签" type="warning" shape="circle"></up-tag>
 ```
 
 #### 镂空标签
 
 ```vue
-<up-tag
-    text="标签"
-    plain
->
-</up-tag>
+<up-tag text="标签" plain > </up-tag>
+<up-tag text="标签" type="warning" plain></up-tag>
+<up-tag text="标签" type="success" plain></up-tag>
+<up-tag text="标签" type="error" plain></up-tag>
 ```
 
 #### 镂空带背景色
 
 ```vue
-<up-tag
-    text="标签"
-    plain
-    plainFill
->
-</up-tag>
+<up-tag text="标签" plain > </up-tag>
+<up-tag text="标签" type="warning" plain plainFill></up-tag>
+<up-tag text="标签" type="success" plain plainFill></up-tag>
+<up-tag text="标签" type="error" plain plainFill></up-tag>
 ```
 
 #### 自定义尺寸
 
 ```vue
-<up-tag
-    text="标签"
-    plain
-    size="mini"
->
-</up-tag>
+<up-tag text="标签" plain size="mini"></up-tag>
+<up-tag text="标签" type="warning"></up-tag>
+<up-tag text="标签" type="success" plain size="large"></up-tag>
 ```
 
 #### 可关闭标签
 
 ```vue
-<up-tag
-    text="标签"
-    size="mini"
-    closable
-    :show="close1"
-    @close="close1 = false"
->
-</up-tag>
+<up-tag text="标签" size="mini" closable :show="close1" @close="close1 = false"></up-tag>
+<up-tag text="标签" type="warning" closable :show="close2" @close="close2 = false"></up-tag>
+<up-tag text="标签" type="success" plain size="large" 
+closable :show="close3" @close="close3 = false"></up-tag>
+
+<script setup>
+import { ref, reactive } from 'vue';
+
+const close1 = ref(true);
+const close2 = ref(true);
+const close3 = ref(true);
+const radios = reactive ([
+  { checked: true },
+  { checked: false },
+  { checked: false }
+]);
+const checkboxs = reactive ([
+  { checked: true },
+  { checked: false },
+  { checked: false }
+]);
+</script>
 ```
 
 #### 带图片和图标
 
 ```vue
-<up-tag
-    text="标签"
-    size="mini"
-    icon="map"
-    plain
->
-</up-tag>
+<up-tag text="标签" size="mini" icon="map" plain></up-tag>
+<up-tag text="标签" type="warning" icon="tags-fill"></up-tag>
+<up-tag text="标签" type="success" plain size="large"
+icon="https://cdn.uviewui.com/uview/example/tag.png"></up-tag>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsB/tag/tag.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/tag.md`</small>
 
 </template>
 

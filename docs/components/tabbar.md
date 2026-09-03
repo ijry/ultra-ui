@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -334,239 +334,408 @@ styleType 共 9 种
 
 <template #uniapp>
 
-```vue
-<up-tabbar
-    :value="value2"
-    :placeholder="false"
-    @change="(name: string | number | null) => {value2 = name}"
-    :fixed="false"
-    :safeAreaInsetBottom="false"
->
-    <up-tabbar-item
-        text="首页"
-        icon="home"
-        dot
-    ></up-tabbar-item>
-    <up-tabbar-item
-        text="放映厅"
-        icon="photo"
-        badge="3"
-    ></up-tabbar-item>
-    <up-tabbar-item
-        text="直播"
-        icon="play-right"
-    ></up-tabbar-item>
-    <up-tabbar-item
-        text="我的"
-        icon="account"
-    ></up-tabbar-item>
-</up-tabbar>
-```
+#### 基本使用
+
+推荐您使用list数组遍历循环，案例使用基础方式构建，请根据`click`事件回调进行后续逻辑操作。
 
 ```vue
 <up-tabbar
-    :value="value5"
-    :fixed="false"
-    @change="change5"
-    :safeAreaInsetBottom="false"
-    :placeholder="false"
+	:value="value1"
+	@change="change1"
+	:fixed="false"
+	:placeholder="false"
+	:safeAreaInsetBottom="false"
 >
-    <up-tabbar-item
-        text="首页"
-        icon="home"
-    >
-    </up-tabbar-item>
-    <up-tabbar-item
-        text="放映厅"
-        icon="photo"
-    ></up-tabbar-item>
-    <up-tabbar-item
-        text="直播"
-        icon="play-right"
-    ></up-tabbar-item>
-    <up-tabbar-item
-        text="我的"
-        icon="account"
-    ></up-tabbar-item>
+	<up-tabbar-item text="首页" icon="home" @click="click1" ></up-tabbar-item>
+	<up-tabbar-item text="放映厅" icon="photo" @click="click1" ></up-tabbar-item>
+	<up-tabbar-item text="直播" icon="play-right" @click="click1" ></up-tabbar-item>
+	<up-tabbar-item text="我的" icon="account" @click="click1" ></up-tabbar-item>
 </up-tabbar>
+<!-- js -->
+value1: 0,
+click1(e) {
+	console.log('click1', e);
+}
 ```
+
+#### 显示徽标
+
+使用`dot`属性添加--小点--类型徽标，使用`badge`属性添加--数字--类型徽标。您也可以使用`:badge='badge'`动态设置徽标数量，
+这在消息盒子的展示中是比较好用的功能，
 
 ```vue
 <up-tabbar
-    :value="value7"
-    :placeholder="false"
-    :border="false"
-    @change="(name: string | number | null) => {value7 = name}"
-    :fixed="false"
-    :safeAreaInsetBottom="false"
+	:value="value2"
+	:placeholder="false"
+	@change="name => value2 = name"
+	:fixed="false"
+	:safeAreaInsetBottom="false"
 >
-    <up-tabbar-item
-        text="首页"
-        icon="home"
-    ></up-tabbar-item>
-    <up-tabbar-item
-        text="放映厅"
-        icon="photo"
-    ></up-tabbar-item>
-    <up-tabbar-item
-        text="直播"
-        icon="play-right"
-    ></up-tabbar-item>
-    <up-tabbar-item
-        text="我的"
-        icon="account"
-    ></up-tabbar-item>
+	<up-tabbar-item text="首页" icon="home" dot ></up-tabbar-item>
+	<up-tabbar-item text="放映厅" icon="photo" badge="3"></up-tabbar-item>
+	<up-tabbar-item text="直播" icon="play-right" ></up-tabbar-item>
+	<up-tabbar-item text="我的" icon="account" ></up-tabbar-item>
 </up-tabbar>
+<!-- data -->
+value2: 1,
 ```
+
+#### 匹配标签的名称
 
 ```vue
 <up-tabbar
-    :value="value6"
-    @change="(name: string | number | null) => {value6 = name}"
-    :fixed="true"
-    :placeholder="true"
-    :safeAreaInsetBottom="true"
+:placeholder="false"
+:value="value3"
+@change="name => value3 = name"
+:fixed="false"
+:safeAreaInsetBottom="false"
 >
-    <up-tabbar-item
-        text="首页"
-        icon="home"
-    >
-    </up-tabbar-item>
-    <up-tabbar-item
-        text="放映厅"
-        icon="photo"
-    ></up-tabbar-item>
-    <up-tabbar-item
-        text="直播"
-        icon="play-right"
-    ></up-tabbar-item>
-    <up-tabbar-item
-        text="我的"
-        icon="account"
-    ></up-tabbar-item>
+	<up-tabbar-item text="首页" icon="home" name="home"></up-tabbar-item>
+	<up-tabbar-item text="放映厅" icon="photo" name="photo" ></up-tabbar-item>
+	<up-tabbar-item text="直播" icon="play-right" name="play-right"></up-tabbar-item>
+	<up-tabbar-item text="我的" name="account" icon="account" ></up-tabbar-item>
+</up-tabbar>
+<!-- data -->
+value3: 'play-right',
+```
+
+#### 自定义图标/颜色
+
+如您需要自定义图标/颜色，在`up-tabbar-item`标签中使用插槽`active-icon`和`inactive-icon`来定义图标和颜色
+
+```vue
+<up-tabbar
+	:value="value4"
+	@change="name => value4 = name"
+	:fixed="false"
+	:placeholder="false"
+	activeColor="#d81e06"
+	:safeAreaInsetBottom="false"
+>
+	<up-tabbar-item text="首页">
+		<template #active-icon>
+			<image
+				class="u-page__item__slot-icon"
+				src="https://cdn.uviewui.com/uview/common/bell-selected.png"
+			></image>
+		</template>
+		<template #inactive-icon>
+			<image
+				class="u-page__item__slot-icon"
+				src="https://cdn.uviewui.com/uview/common/bell.png"
+			></image>
+		</template>
+	</up-tabbar-item>
+	<up-tabbar-item text="放映厅" icon="photo" ></up-tabbar-item>
+	<up-tabbar-item text="直播" icon="play-right" ></up-tabbar-item>
+	<up-tabbar-item text="我的" icon="account" ></up-tabbar-item>
+</up-tabbar>
+<!-- data -->
+value4: 0,
+```
+
+#### 双态动态图标
+
+如果您不想使用插槽，也可以直接给 `up-tabbar-item` 配置 `activeIcon` 和 `inactiveIcon`。
+未配置 `inactiveIcon` 时，会回退到 `icon`；未配置 `activeIcon` 时，选中态也会继续使用 `icon`。
+
+```vue
+<up-tabbar
+	:value="value8"
+	@change="name => value8 = name"
+	:fixed="false"
+	:placeholder="false"
+	:safeAreaInsetBottom="false"
+	styleType="pill"
+	animationType="scale"
+	activeBackgroundColor="rgba(60, 156, 255, 0.12)"
+>
+	<up-tabbar-item text="首页" icon="home" activeIcon="home-fill"></up-tabbar-item>
+	<up-tabbar-item text="分类" icon="grid" activeIcon="grid-fill"></up-tabbar-item>
+	<up-tabbar-item text="消息" icon="chat" activeIcon="chat-fill"></up-tabbar-item>
+	<up-tabbar-item text="我的" icon="account" activeIcon="account-fill"></up-tabbar-item>
+</up-tabbar>
+<!-- data -->
+value8: 0,
+```
+
+#### 推荐图标方案
+
+如果您的 tabbar 需要更强的产品感，建议按下面顺序选择图标方案：
+
+- `本地图标资源`
+  - 视觉最好，适合首页、主导航、发布型底栏
+- `内置字体图标`
+  - 接入最快，适合工具类页面和后台页面
+- `iconfont 扩展图标库`
+  - 适合企业项目统一替换整套图标
+
+对于 `首页 / 发现 / 发布 / 消息 / 我的` 这类主导航，推荐优先使用本地 `PNG/SVG` 两态资源。
+
+```vue
+<up-tabbar
+	:value="valueMain"
+	@change="name => valueMain = name"
+	:fixed="false"
+	:placeholder="false"
+	:safeAreaInsetBottom="false"
+	styleType="convex"
+	animationType="scale"
+>
+	<up-tabbar-item text="首页" icon="/static/uview/tabbar/home.png" activeIcon="/static/uview/tabbar/home-active.png"></up-tabbar-item>
+	<up-tabbar-item text="发现" icon="/static/uview/tabbar/discover.png" activeIcon="/static/uview/tabbar/discover-active.png"></up-tabbar-item>
+	<up-tabbar-item text="发布" icon="/static/uview/tabbar/publish.png" activeIcon="/static/uview/tabbar/publish-active.png" mode="midButton"></up-tabbar-item>
+	<up-tabbar-item text="消息" icon="/static/uview/tabbar/message.png" activeIcon="/static/uview/tabbar/message-active.png"></up-tabbar-item>
+	<up-tabbar-item text="我的" icon="/static/uview/tabbar/profile.png" activeIcon="/static/uview/tabbar/profile-active.png"></up-tabbar-item>
 </up-tabbar>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsB/tabbar/tabbar.uvue`</small>
+如果您要统一替换整套字体图标，可以结合 `custom-prefix` 使用，详细步骤见 CustomIcon 扩展自定义图标库。
+
+#### 多风格模式
+
+`up-tabbar` 现在支持多种内置风格预设，用于覆盖工具类、内容类、卡片类和中间凸起等常见场景。
+
+当前支持：
+
+- `default`：默认风格，保持与原有视觉接近
+- `minimal`：极简风格，强调颜色变化
+- `pill`：胶囊风格，选中项带圆角背景
+- `lift`：上浮风格，选中项轻微抬起
+- `card`：卡片风格，层次更明显
+- `underline`：下划线风格，适合内容导航
+- `dot`：圆点风格，反馈更轻量
+- `glow`：发光风格，选中项更突出
+- `convex`：凸起风格，适合配合中间按钮使用
+
+```vue
+<up-tabbar
+	:value="value9"
+	@change="name => value9 = name"
+	:fixed="false"
+	:placeholder="false"
+	:safeAreaInsetBottom="false"
+	styleType="lift"
+	animationType="lift"
+	textMode="active"
+>
+	<up-tabbar-item text="首页" icon="home" activeIcon="home-fill"></up-tabbar-item>
+	<up-tabbar-item text="图片" icon="photo" activeIcon="photo-fill"></up-tabbar-item>
+	<up-tabbar-item text="视频" icon="play-right" activeIcon="play-right-fill"></up-tabbar-item>
+	<up-tabbar-item text="我的" icon="account" activeIcon="account-fill"></up-tabbar-item>
+</up-tabbar>
+<!-- data -->
+value9: 1,
+```
+
+#### 选中态动画
+
+通过 `animationType` 可以给激活项增加轻量反馈动画，目前支持：
+
+- `none`：无动画
+- `scale`：缩放反馈
+- `lift`：上浮反馈
+- `swing`：轻微摆动
+- `pulse`：脉冲反馈
+
+建议优先将动画与 `pill`、`lift`、`card`、`glow` 等风格组合使用，视觉效果更完整。
+
+```vue
+<up-tabbar
+	:value="value10"
+	@change="name => value10 = name"
+	:fixed="false"
+	:placeholder="false"
+	:safeAreaInsetBottom="false"
+	styleType="card"
+	animationType="pulse"
+	activeBackgroundColor="rgba(255, 107, 107, 0.12)"
+>
+	<up-tabbar-item text="收藏" icon="star" activeIcon="star-fill"></up-tabbar-item>
+	<up-tabbar-item text="喜欢" icon="heart" activeIcon="heart-fill"></up-tabbar-item>
+	<up-tabbar-item text="消息" icon="chat" activeIcon="chat-fill"></up-tabbar-item>
+	<up-tabbar-item text="地图" icon="map" activeIcon="map-fill"></up-tabbar-item>
+</up-tabbar>
+<!-- data -->
+value10: 0,
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/tabbar.md`</small>
 
 </template>
 
 <template #uniappx>
 
-```vue
-<up-tabbar
-    :value="value2"
-    :placeholder="false"
-    @change="(name: string | number | null) => {value2 = name}"
-    :fixed="false"
-    :safeAreaInsetBottom="false"
->
-    <up-tabbar-item
-        text="首页"
-        icon="home"
-        dot
-    ></up-tabbar-item>
-    <up-tabbar-item
-        text="放映厅"
-        icon="photo"
-        badge="3"
-    ></up-tabbar-item>
-    <up-tabbar-item
-        text="直播"
-        icon="play-right"
-    ></up-tabbar-item>
-    <up-tabbar-item
-        text="我的"
-        icon="account"
-    ></up-tabbar-item>
-</up-tabbar>
-```
+#### 基本使用
+
+推荐您使用list数组遍历循环，案例使用基础方式构建，请根据`click`事件回调进行后续逻辑操作。
 
 ```vue
 <up-tabbar
-    :value="value5"
-    :fixed="false"
-    @change="change5"
-    :safeAreaInsetBottom="false"
-    :placeholder="false"
+	:value="value1"
+	@change="change1"
+	:fixed="false"
+	:placeholder="false"
+	:safeAreaInsetBottom="false"
 >
-    <up-tabbar-item
-        text="首页"
-        icon="home"
-    >
-    </up-tabbar-item>
-    <up-tabbar-item
-        text="放映厅"
-        icon="photo"
-    ></up-tabbar-item>
-    <up-tabbar-item
-        text="直播"
-        icon="play-right"
-    ></up-tabbar-item>
-    <up-tabbar-item
-        text="我的"
-        icon="account"
-    ></up-tabbar-item>
+	<up-tabbar-item text="首页" icon="home" @click="click1" ></up-tabbar-item>
+	<up-tabbar-item text="放映厅" icon="photo" @click="click1" ></up-tabbar-item>
+	<up-tabbar-item text="直播" icon="play-right" @click="click1" ></up-tabbar-item>
+	<up-tabbar-item text="我的" icon="account" @click="click1" ></up-tabbar-item>
 </up-tabbar>
+<!-- js -->
+value1: 0,
+click1(e) {
+	console.log('click1', e);
+}
 ```
+
+#### 显示徽标
+
+使用`dot`属性添加--小点--类型徽标，使用`badge`属性添加--数字--类型徽标。您也可以使用`:badge='badge'`动态设置徽标数量，
+这在消息盒子的展示中是比较好用的功能，
 
 ```vue
 <up-tabbar
-    :value="value7"
-    :placeholder="false"
-    :border="false"
-    @change="(name: string | number | null) => {value7 = name}"
-    :fixed="false"
-    :safeAreaInsetBottom="false"
+	:value="value2"
+	:placeholder="false"
+	@change="name => value2 = name"
+	:fixed="false"
+	:safeAreaInsetBottom="false"
 >
-    <up-tabbar-item
-        text="首页"
-        icon="home"
-    ></up-tabbar-item>
-    <up-tabbar-item
-        text="放映厅"
-        icon="photo"
-    ></up-tabbar-item>
-    <up-tabbar-item
-        text="直播"
-        icon="play-right"
-    ></up-tabbar-item>
-    <up-tabbar-item
-        text="我的"
-        icon="account"
-    ></up-tabbar-item>
+	<up-tabbar-item text="首页" icon="home" dot ></up-tabbar-item>
+	<up-tabbar-item text="放映厅" icon="photo" badge="3"></up-tabbar-item>
+	<up-tabbar-item text="直播" icon="play-right" ></up-tabbar-item>
+	<up-tabbar-item text="我的" icon="account" ></up-tabbar-item>
 </up-tabbar>
+<!-- data -->
+value2: 1,
 ```
+
+#### 匹配标签的名称
 
 ```vue
 <up-tabbar
-    :value="value6"
-    @change="(name: string | number | null) => {value6 = name}"
-    :fixed="true"
-    :placeholder="true"
-    :safeAreaInsetBottom="true"
+:placeholder="false"
+:value="value3"
+@change="name => value3 = name"
+:fixed="false"
+:safeAreaInsetBottom="false"
 >
-    <up-tabbar-item
-        text="首页"
-        icon="home"
-    >
-    </up-tabbar-item>
-    <up-tabbar-item
-        text="放映厅"
-        icon="photo"
-    ></up-tabbar-item>
-    <up-tabbar-item
-        text="直播"
-        icon="play-right"
-    ></up-tabbar-item>
-    <up-tabbar-item
-        text="我的"
-        icon="account"
-    ></up-tabbar-item>
+	<up-tabbar-item text="首页" icon="home" name="home"></up-tabbar-item>
+	<up-tabbar-item text="放映厅" icon="photo" name="photo" ></up-tabbar-item>
+	<up-tabbar-item text="直播" icon="play-right" name="play-right"></up-tabbar-item>
+	<up-tabbar-item text="我的" name="account" icon="account" ></up-tabbar-item>
 </up-tabbar>
+<!-- data -->
+value3: 'play-right',
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsB/tabbar/tabbar.uvue`</small>
+#### 自定义图标/颜色
+
+如您需要自定义图标/颜色，在`up-tabbar-item`标签中使用插槽`active-icon`和`inactive-icon`来定义图标和颜色
+
+```vue
+<up-tabbar
+	:value="value4"
+	@change="name => value4 = name"
+	:fixed="false"
+	:placeholder="false"
+	activeColor="#d81e06"
+	:safeAreaInsetBottom="false"
+>
+	<up-tabbar-item text="首页">
+		<template #active-icon>
+			<image
+				class="u-page__item__slot-icon"
+				src="https://cdn.uviewui.com/uview/common/bell-selected.png"
+			></image>
+		</template>
+		<template #inactive-icon>
+			<image
+				class="u-page__item__slot-icon"
+				src="https://cdn.uviewui.com/uview/common/bell.png"
+			></image>
+		</template>
+	</up-tabbar-item>
+	<up-tabbar-item text="放映厅" icon="photo" ></up-tabbar-item>
+	<up-tabbar-item text="直播" icon="play-right" ></up-tabbar-item>
+	<up-tabbar-item text="我的" icon="account" ></up-tabbar-item>
+</up-tabbar>
+<!-- data -->
+value4: 0,
+```
+
+#### 拦截切换事件(点击第二个标签)
+
+在切换事件中，处理拦截事件或者您其他js操作逻辑。
+
+```vue
+<up-tabbar
+	:value="value5"
+	:fixed="false"
+	@change="change5"
+	:safeAreaInsetBottom="false"
+	:placeholder="false"
+>
+	<up-tabbar-item text="首页" icon="home" ></up-tabbar-item>
+	<up-tabbar-item text="放映厅" icon="photo" ></up-tabbar-item>
+	<up-tabbar-item text="直播" icon="play-right" ></up-tabbar-item>
+	<up-tabbar-item text="我的" icon="account" ></up-tabbar-item>
+</up-tabbar>
+<!-- data -->
+value5: 0,
+<!-- js -->
+change5(name) {
+	if (name === 1) return uni.$u.toast('请您先登录')
+	else this.value5 = name
+},
+```
+
+#### 边框
+
+组件默认带了顶部边框，如果不需要，配置`border`为`false`即可。
+
+```vue
+<up-tabbar
+	:value="value7"
+	:placeholder="false"
+	:border="false"
+	@change="name => value7 = name"
+	:fixed="false"
+	:safeAreaInsetBottom="false"
+>
+	<up-tabbar-item text="首页" icon="home" ></up-tabbar-item>
+	<up-tabbar-item text="放映厅" icon="photo" ></up-tabbar-item>
+	<up-tabbar-item text="直播" icon="play-right" ></up-tabbar-item>
+	<up-tabbar-item text="我的" icon="account" ></up-tabbar-item>
+</up-tabbar>
+<!-- data -->
+value7: 3
+```
+
+#### 固定在底部(固定在屏幕最下方)
+
+与原生效果无异，但您可以按照api配置您需要的其他配置，如徽标，边框等
+
+```vue
+<up-tabbar
+	:value="value6"
+	@change="name => value6 = name"
+	:fixed="true"
+	:placeholder="true"
+	:safeAreaInsetBottom="true"
+>
+	<up-tabbar-item text="首页" icon="home" ></up-tabbar-item>
+	<up-tabbar-item text="放映厅" icon="photo" ></up-tabbar-item>
+	<up-tabbar-item text="直播" icon="play-right" ></up-tabbar-item>
+	<up-tabbar-item text="我的" icon="account" ></up-tabbar-item>
+</up-tabbar>
+<!-- data -->
+value6: 0,
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/tabbar.md`</small>
 
 </template>
 

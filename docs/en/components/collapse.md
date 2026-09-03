@@ -12,7 +12,7 @@ Expandable panels, with an optional accordion mode.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -283,125 +283,439 @@ children 支持任意节点，自定义时长
 
 <template #uniapp>
 
+#### 基本使用
+
 ```vue
-<up-collapse @change="change" @close="close" @open="open">
-    <up-collapse-item title="文档指南" name="Docs guide">
-        <text class="u-collapse-content">涵盖uniapp各个方面，给开发者方向指导和设计理念，让您茅塞顿开，一马平川</text>
+<template>
+  <up-collapse
+    @change="change"
+    @close="close"
+    @open="open"
+  >
+    <up-collapse-item
+      title="文档指南"
+      name="Docs guide"
+    >
+      <text class="u-collapse-content">涵盖uniapp各个方面，给开发者方向指导和设计理念，让您茅塞顿开，一马平川</text>
     </up-collapse-item>
-    <up-collapse-item title="组件全面" name="Variety components">
-        <text class="u-collapse-content">众多组件覆盖开发过程的各个需求，组件功能丰富，多端兼容。让您快速集成，开箱即用</text>
+    <up-collapse-item
+      title="组件全面"
+      name="Variety components"
+    >
+      <text class="u-collapse-content">众多组件覆盖开发过程的各个需求，组件功能丰富，多端兼容。让您快速集成，开箱即用</text>
     </up-collapse-item>
-    <up-collapse-item title="众多利器" name="Numerous tools" :showRight="false">
-        <text class="u-collapse-content">众多的贴心小工具，是您开发过程中召之即来的利器，让您飞镖在手，百步穿杨</text>
+    <up-collapse-item
+      title="众多利器"
+      name="Numerous tools"
+    >
+      <text class="u-collapse-content">众多的贴心小工具，是您开发过程中召之即来的利器，让您飞镖在手，百步穿杨</text>
     </up-collapse-item>
-</up-collapse>
+  </up-collapse>
+</template>
 ```
 
 ```vue
-<up-collapse :value="['2']">
-    <up-collapse-item title="文档指南">
-        <text class="u-collapse-content">涵盖uniapp各个方面，给开发者方向指导和设计理念，让您茅塞顿开，一马平川</text>
+<script setup>  
+// 定义 open 方法  
+const open = (e) => {  
+  // console.log('open', e)  
+};  
+  
+// 定义 close 方法  
+const close = (e) => {  
+  // console.log('close', e)  
+};  
+  
+// 定义 change 方法  
+const change = (e) => {  
+  // console.log('change', e)  
+};  
+</script>
+```
+
+#### 控制面板的初始状态，以及是否可以操作
+
+```vue
+<template>
+  <up-collapse
+    :value="['2']"
+  >
+    <up-collapse-item
+      title="文档指南"
+    >
+      <text class="u-collapse-content">涵盖uniapp各个方面，给开发者方向指导和设计理念，让您茅塞顿开，一马平川</text>
     </up-collapse-item>
-    <up-collapse-item disabled title="组件全面">
-        <text class="u-collapse-content">众多组件覆盖开发过程的各个需求，组件功能丰富，多端兼容。让您快速集成，开箱即用</text>
+    <up-collapse-item
+      disabled
+      title="组件全面"
+    >
+      <text class="u-collapse-content">众多组件覆盖开发过程的各个需求，组件功能丰富，多端兼容。让您快速集成，开箱即用</text>
     </up-collapse-item>
-    <up-collapse-item name="2" title="众多利器">
-        <text class="u-collapse-content">众多的贴心小工具，是您开发过程中召之即来的利器，让您飞镖在手，百步穿杨</text>
+    <up-collapse-item
+      name="2"
+      title="众多利器"
+    >
+      <text class="u-collapse-content">众多的贴心小工具，是您开发过程中召之即来的利器，让您飞镖在手，百步穿杨</text>
     </up-collapse-item>
-</up-collapse>
+  </up-collapse>
+</template>
 ```
 
 ```vue
-<up-collapse accordion>
-    <up-collapse-item title="文档指南">
-        <text class="u-collapse-content">涵盖uniapp各个方面，给开发者方向指导和设计理念，让您茅塞顿开，一马平川</text>
-    </up-collapse-item>
-    <up-collapse-item title="组件全面">
-        <text class="u-collapse-content">众多组件覆盖开发过程的各个需求，组件功能丰富，多端兼容。让您快速集成，开箱即用</text>
-    </up-collapse-item>
-    <up-collapse-item title="众多利器">
-        <text class="u-collapse-content">众多的贴心小工具，是您开发过程中召之即来的利器，让您飞镖在手，百步穿杨</text>
-    </up-collapse-item>
-</up-collapse>
+<script setup>  
+// 定义 open 方法  
+const open = (e) => {  
+  // console.log('open', e)  
+};  
+  
+// 定义 close 方法  
+const close = (e) => {  
+  // console.log('close', e)  
+};  
+  
+// 定义 change 方法  
+const change = (e) => {  
+  // console.log('change', e)  
+};  
+</script>
 ```
+
+#### 手风琴模式
 
 ```vue
-<up-collapse accordion :border="false">
-    <up-collapse-item title="文档指南">
-        <text class="u-collapse-content">涵盖uniapp各个方面，给开发者方向指导和设计理念，让您茅塞顿开，一马平川</text>
-    </up-collapse-item>
-    <up-collapse-item title="组件全面">
-        <text class="u-collapse-content">众多组件覆盖开发过程的各个需求，组件功能丰富，多端兼容。让您快速集成，开箱即用</text>
-    </up-collapse-item>
-    <up-collapse-item title="众多利器">
-        <text class="u-collapse-content">众多的贴心小工具，是您开发过程中召之即来的利器，让您飞镖在手，百步穿杨</text>
-    </up-collapse-item>
-</up-collapse>
+<template>
+    <view class="u-page__item">
+        <text class="u-page__item__title">手风琴模式</text>
+        <up-collapse
+                accordion
+        >
+            <up-collapse-item
+                    title="文档指南"
+            >
+                <text class="u-collapse-content">涵盖uniapp各个方面，给开发者方向指导和设计理念，让您茅塞顿开，一马平川</text>
+            </up-collapse-item>
+            <up-collapse-item
+                    title="组件全面"
+            >
+                <text class="u-collapse-content">众多组件覆盖开发过程的各个需求，组件功能丰富，多端兼容。让您快速集成，开箱即用</text>
+            </up-collapse-item>
+            <up-collapse-item
+                    title="众多利器"
+            >
+                <text class="u-collapse-content">众多的贴心小工具，是您开发过程中召之即来的利器，让您飞镖在手，百步穿杨</text>
+            </up-collapse-item>
+        </up-collapse>
+    </view>
+</template>
+
+<style lang="scss">
+    .u-page {
+        padding: 0;
+
+        &__item {
+    
+            &__title {
+                 color: $u-tips-color;
+                 background-color: $u-bg-color;
+                 padding: 15px;
+                 font-size: 15px;
+        
+                &__slot-title {
+                     color: $u-primary;
+                     font-size: 14px;
+                 }
+            }
+        }
+    }
+
+    .u-collapse-content {
+        color: $u-tips-color;
+        font-size: 14px;
+    }
+</style>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsB/collapse/collapse.uvue`</small>
+#### 自定义标题和内容
+
+```vue
+<template>
+    <view class="u-page__item">
+        <text class="u-page__item__title">自定义标题和内容</text>
+        <up-collapse
+                accordion
+        >
+            <up-collapse-item
+            >
+                <template #title>
+                  <text class="u-page__item__title__slot-title">文档指南</text>
+                </template>
+                <text class="u-collapse-content">涵盖uniapp各个方面，给开发者方向指导和设计理念，让您茅塞顿开，一马平川</text>
+            </up-collapse-item>
+            <up-collapse-item
+                    title="组件全面"
+            >
+                <up-icon name="tags-fill" size="20" slot="icon"></up-icon>
+                <text class="u-collapse-content">众多组件覆盖开发过程的各个需求，组件功能丰富，多端兼容。让您快速集成，开箱即用</text>
+            </up-collapse-item>
+            <up-collapse-item
+                    title="众多利器"
+            >
+                <template #value>
+                  <text class="u-page__item__title__slot-title">自定义内容</text>
+                </template>
+                <text class="u-collapse-content">众多的贴心小工具，是您开发过程中召之即来的利器，让您飞镖在手，百步穿杨</text>
+            </up-collapse-item>
+        </up-collapse>
+    </view>
+</template>
+
+<style lang="scss">
+    .u-page {
+        padding: 0;
+
+        &__item {
+    
+            &__title {
+                 color: $u-tips-color;
+                 background-color: $u-bg-color;
+                 padding: 15px;
+                 font-size: 15px;
+        
+                &__slot-title {
+                     color: $u-primary;
+                     font-size: 14px;
+                 }
+            }
+        }
+    }
+
+    .u-collapse-content {
+        color: $u-tips-color;
+        font-size: 14px;
+    }
+</style>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/collapse.md`</small>
 
 </template>
 
 <template #uniappx>
 
+#### 基本使用
+
 ```vue
-<up-collapse @change="change" @close="close" @open="open">
-    <up-collapse-item title="文档指南" name="Docs guide">
-        <text class="u-collapse-content">涵盖uniapp各个方面，给开发者方向指导和设计理念，让您茅塞顿开，一马平川</text>
+<template>
+  <up-collapse
+    @change="change"
+    @close="close"
+    @open="open"
+  >
+    <up-collapse-item
+      title="文档指南"
+      name="Docs guide"
+    >
+      <text class="u-collapse-content">涵盖uniapp各个方面，给开发者方向指导和设计理念，让您茅塞顿开，一马平川</text>
     </up-collapse-item>
-    <up-collapse-item title="组件全面" name="Variety components">
-        <text class="u-collapse-content">众多组件覆盖开发过程的各个需求，组件功能丰富，多端兼容。让您快速集成，开箱即用</text>
+    <up-collapse-item
+      title="组件全面"
+      name="Variety components"
+    >
+      <text class="u-collapse-content">众多组件覆盖开发过程的各个需求，组件功能丰富，多端兼容。让您快速集成，开箱即用</text>
     </up-collapse-item>
-    <up-collapse-item title="众多利器" name="Numerous tools" :showRight="false">
-        <text class="u-collapse-content">众多的贴心小工具，是您开发过程中召之即来的利器，让您飞镖在手，百步穿杨</text>
+    <up-collapse-item
+      title="众多利器"
+      name="Numerous tools"
+    >
+      <text class="u-collapse-content">众多的贴心小工具，是您开发过程中召之即来的利器，让您飞镖在手，百步穿杨</text>
     </up-collapse-item>
-</up-collapse>
+  </up-collapse>
+</template>
 ```
 
 ```vue
-<up-collapse :value="['2']">
-    <up-collapse-item title="文档指南">
-        <text class="u-collapse-content">涵盖uniapp各个方面，给开发者方向指导和设计理念，让您茅塞顿开，一马平川</text>
+<script setup>  
+// 定义 open 方法  
+const open = (e) => {  
+  // console.log('open', e)  
+};  
+  
+// 定义 close 方法  
+const close = (e) => {  
+  // console.log('close', e)  
+};  
+  
+// 定义 change 方法  
+const change = (e) => {  
+  // console.log('change', e)  
+};  
+</script>
+```
+
+#### 控制面板的初始状态，以及是否可以操作
+
+```vue
+<template>
+  <up-collapse
+    :value="['2']"
+  >
+    <up-collapse-item
+      title="文档指南"
+    >
+      <text class="u-collapse-content">涵盖uniapp各个方面，给开发者方向指导和设计理念，让您茅塞顿开，一马平川</text>
     </up-collapse-item>
-    <up-collapse-item disabled title="组件全面">
-        <text class="u-collapse-content">众多组件覆盖开发过程的各个需求，组件功能丰富，多端兼容。让您快速集成，开箱即用</text>
+    <up-collapse-item
+      disabled
+      title="组件全面"
+    >
+      <text class="u-collapse-content">众多组件覆盖开发过程的各个需求，组件功能丰富，多端兼容。让您快速集成，开箱即用</text>
     </up-collapse-item>
-    <up-collapse-item name="2" title="众多利器">
-        <text class="u-collapse-content">众多的贴心小工具，是您开发过程中召之即来的利器，让您飞镖在手，百步穿杨</text>
+    <up-collapse-item
+      name="2"
+      title="众多利器"
+    >
+      <text class="u-collapse-content">众多的贴心小工具，是您开发过程中召之即来的利器，让您飞镖在手，百步穿杨</text>
     </up-collapse-item>
-</up-collapse>
+  </up-collapse>
+</template>
 ```
 
 ```vue
-<up-collapse accordion>
-    <up-collapse-item title="文档指南">
-        <text class="u-collapse-content">涵盖uniapp各个方面，给开发者方向指导和设计理念，让您茅塞顿开，一马平川</text>
-    </up-collapse-item>
-    <up-collapse-item title="组件全面">
-        <text class="u-collapse-content">众多组件覆盖开发过程的各个需求，组件功能丰富，多端兼容。让您快速集成，开箱即用</text>
-    </up-collapse-item>
-    <up-collapse-item title="众多利器">
-        <text class="u-collapse-content">众多的贴心小工具，是您开发过程中召之即来的利器，让您飞镖在手，百步穿杨</text>
-    </up-collapse-item>
-</up-collapse>
+<script setup>  
+// 定义 open 方法  
+const open = (e) => {  
+  // console.log('open', e)  
+};  
+  
+// 定义 close 方法  
+const close = (e) => {  
+  // console.log('close', e)  
+};  
+  
+// 定义 change 方法  
+const change = (e) => {  
+  // console.log('change', e)  
+};  
+</script>
 ```
+
+#### 手风琴模式
 
 ```vue
-<up-collapse accordion :border="false">
-    <up-collapse-item title="文档指南">
-        <text class="u-collapse-content">涵盖uniapp各个方面，给开发者方向指导和设计理念，让您茅塞顿开，一马平川</text>
-    </up-collapse-item>
-    <up-collapse-item title="组件全面">
-        <text class="u-collapse-content">众多组件覆盖开发过程的各个需求，组件功能丰富，多端兼容。让您快速集成，开箱即用</text>
-    </up-collapse-item>
-    <up-collapse-item title="众多利器">
-        <text class="u-collapse-content">众多的贴心小工具，是您开发过程中召之即来的利器，让您飞镖在手，百步穿杨</text>
-    </up-collapse-item>
-</up-collapse>
+<template>
+    <view class="u-page__item">
+        <text class="u-page__item__title">手风琴模式</text>
+        <up-collapse
+                accordion
+        >
+            <up-collapse-item
+                    title="文档指南"
+            >
+                <text class="u-collapse-content">涵盖uniapp各个方面，给开发者方向指导和设计理念，让您茅塞顿开，一马平川</text>
+            </up-collapse-item>
+            <up-collapse-item
+                    title="组件全面"
+            >
+                <text class="u-collapse-content">众多组件覆盖开发过程的各个需求，组件功能丰富，多端兼容。让您快速集成，开箱即用</text>
+            </up-collapse-item>
+            <up-collapse-item
+                    title="众多利器"
+            >
+                <text class="u-collapse-content">众多的贴心小工具，是您开发过程中召之即来的利器，让您飞镖在手，百步穿杨</text>
+            </up-collapse-item>
+        </up-collapse>
+    </view>
+</template>
+
+<style lang="scss">
+    .u-page {
+        padding: 0;
+
+        &__item {
+    
+            &__title {
+                 color: $up-tips-color;
+                 background-color: $up-bg-color;
+                 padding: 15px;
+                 font-size: 15px;
+        
+                &__slot-title {
+                     color: $up-primary;
+                     font-size: 14px;
+                 }
+            }
+        }
+    }
+
+    .u-collapse-content {
+        color: $up-tips-color;
+        font-size: 14px;
+    }
+</style>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsB/collapse/collapse.uvue`</small>
+#### 自定义标题和内容
+
+```vue
+<template>
+    <view class="u-page__item">
+        <text class="u-page__item__title">自定义标题和内容</text>
+        <up-collapse
+                accordion
+        >
+            <up-collapse-item
+            >
+                <template #title>
+                  <text class="u-page__item__title__slot-title">文档指南</text>
+                </template>
+                <text class="u-collapse-content">涵盖uniapp各个方面，给开发者方向指导和设计理念，让您茅塞顿开，一马平川</text>
+            </up-collapse-item>
+            <up-collapse-item
+                    title="组件全面"
+            >
+                <up-icon name="tags-fill" size="20" slot="icon"></up-icon>
+                <text class="u-collapse-content">众多组件覆盖开发过程的各个需求，组件功能丰富，多端兼容。让您快速集成，开箱即用</text>
+            </up-collapse-item>
+            <up-collapse-item
+                    title="众多利器"
+            >
+                <template #value>
+                  <text class="u-page__item__title__slot-title">自定义内容</text>
+                </template>
+                <text class="u-collapse-content">众多的贴心小工具，是您开发过程中召之即来的利器，让您飞镖在手，百步穿杨</text>
+            </up-collapse-item>
+        </up-collapse>
+    </view>
+</template>
+
+<style lang="scss">
+    .u-page {
+        padding: 0;
+
+        &__item {
+    
+            &__title {
+                 color: $up-tips-color;
+                 background-color: $up-bg-color;
+                 padding: 15px;
+                 font-size: 15px;
+        
+                &__slot-title {
+                     color: $up-primary;
+                     font-size: 14px;
+                 }
+            }
+        }
+    }
+
+    .u-collapse-content {
+        color: $up-tips-color;
+        font-size: 14px;
+    }
+</style>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/collapse.md`</small>
 
 </template>
 

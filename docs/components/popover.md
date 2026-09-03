@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -195,87 +195,183 @@ onOpen / onClose
 
 <template #uniapp>
 
-#### 右侧弹出
+#### 上方弹出
 
 ```vue
-<up-popover
-    color="#333"
-    bgColor="#e3e4e6"
-    popupBgColor="#f7f7f7"
-    direction="right"
->
-    <template #trigger>
-        <up-button style="width: 100px" :stop="false" type="primary">点击</up-button>
-    </template>
-    <template #content>
-        <view style="padding: 6px 12px;">自定义内容</view>
-    </template>
-</up-popover>
+<template>
+    <up-popover
+        text="text5"
+        color="#333"
+        bgColor="#e3e4e6"
+        popupBgColor="#f7f7f7"
+        direction="top"
+    >
+        <template #trigger>
+            <up-button style="width: 100px" :stop="false" type="primary">点击</up-button>
+        </template>
+        <template #content>
+            <view style="padding: 6px 12px;">自定义内容</view>
+        </template>
+    </up-popover>
+</template>
+```
+
+#### 下方弹出
+
+```vue
+<template>
+    <up-popover
+        text="text5"
+        color="#333"
+        bgColor="#e3e4e6"
+        popupBgColor="#f7f7f7"
+        direction="bottom"
+    >
+        <template #trigger>
+            <up-button style="width: 100px" :stop="false" type="primary">点击</up-button>
+        </template>
+        <template #content>
+            <view style="padding: 6px 12px;">自定义内容</view>
+        </template>
+    </up-popover>
+</template>
 ```
 
 #### 左侧弹出及强制定位
 
 ```vue
-<up-popover
-    color="#fff"
-    bgColor="#333"
-    popupBgColor="#333"
-    :forcePosition="{right: '108px', top: '0px'}"
-    direction="left"
->
-    <template #trigger>
-        <up-button style="width: 100px" :stop="false" type="primary">点击</up-button>
-    </template>
-    <template #content>
-        <view style="padding: 6px 12px;">自定义内容</view>
-    </template>
-</up-popover>
+<template>
+    <up-popover
+        text="text5"
+        color="#fff"
+        bgColor="#333"
+        popupBgColor="#333"
+        :forcePosition="{right: '108px', top: '0px'}"
+        direction="left"
+    >
+        <template #trigger>
+            <up-button style="width: 100px" :stop="false" type="primary">点击</up-button>
+        </template>
+        <template #content>
+            <view style="padding: 6px 12px;">自定义内容</view>
+        </template>
+    </up-popover>
+</template>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsC/popover/popover.uvue`</small>
+#### 右侧弹出
+
+```vue
+<template>
+    <up-popover
+        text="text5"
+        color="#333"
+        bgColor="#e3e4e6"
+        popupBgColor="#f7f7f7"
+        direction="right"
+    >
+        <template #trigger>
+            <up-button style="width: 100px" :stop="false" type="primary">点击</up-button>
+        </template>
+        <template #content>
+            <view style="padding: 6px 12px;">自定义内容</view>
+        </template>
+    </up-popover>
+</template>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/popover.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 右侧弹出
+#### 上方弹出
 
 ```vue
-<up-popover
-    color="#333"
-    bgColor="#e3e4e6"
-    popupBgColor="#f7f7f7"
-    direction="right"
->
-    <template #trigger>
-        <up-button style="width: 100px" :stop="false" type="primary">点击</up-button>
-    </template>
-    <template #content>
-        <view style="padding: 6px 12px;">自定义内容</view>
-    </template>
-</up-popover>
+<template>
+    <up-popover
+        text="text5"
+        color="#333"
+        bgColor="#e3e4e6"
+        popupBgColor="#f7f7f7"
+        direction="top"
+    >
+        <template #trigger>
+            <up-button style="width: 100px" :stop="false" type="primary">点击</up-button>
+        </template>
+        <template #content>
+            <view style="padding: 6px 12px;">自定义内容</view>
+        </template>
+    </up-popover>
+</template>
+```
+
+#### 下方弹出
+
+```vue
+<template>
+    <up-popover
+        text="text5"
+        color="#333"
+        bgColor="#e3e4e6"
+        popupBgColor="#f7f7f7"
+        direction="bottom"
+    >
+        <template #trigger>
+            <up-button style="width: 100px" :stop="false" type="primary">点击</up-button>
+        </template>
+        <template #content>
+            <view style="padding: 6px 12px;">自定义内容</view>
+        </template>
+    </up-popover>
+</template>
 ```
 
 #### 左侧弹出及强制定位
 
 ```vue
-<up-popover
-    color="#fff"
-    bgColor="#333"
-    popupBgColor="#333"
-    :forcePosition="{right: '108px', top: '0px'}"
-    direction="left"
->
-    <template #trigger>
-        <up-button style="width: 100px" :stop="false" type="primary">点击</up-button>
-    </template>
-    <template #content>
-        <view style="padding: 6px 12px;">自定义内容</view>
-    </template>
-</up-popover>
+<template>
+    <up-popover
+        text="text5"
+        color="#fff"
+        bgColor="#333"
+        popupBgColor="#333"
+        :forcePosition="{right: '108px', top: '0px'}"
+        direction="left"
+    >
+        <template #trigger>
+            <up-button style="width: 100px" :stop="false" type="primary">点击</up-button>
+        </template>
+        <template #content>
+            <view style="padding: 6px 12px;">自定义内容</view>
+        </template>
+    </up-popover>
+</template>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsC/popover/popover.uvue`</small>
+#### 右侧弹出
+
+```vue
+<template>
+    <up-popover
+        text="text5"
+        color="#333"
+        bgColor="#e3e4e6"
+        popupBgColor="#f7f7f7"
+        direction="right"
+    >
+        <template #trigger>
+            <up-button style="width: 100px" :stop="false" type="primary">点击</up-button>
+        </template>
+        <template #content>
+            <view style="padding: 6px 12px;">自定义内容</view>
+        </template>
+    </up-popover>
+</template>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/popover.md`</small>
 
 </template>
 

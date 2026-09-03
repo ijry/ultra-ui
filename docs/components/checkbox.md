@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -246,197 +246,447 @@ labelDisabled 时只有图标可点
 
 <template #uniapp>
 
-#### 基本案例
+#### 基本使用
 
 ```vue
-<up-checkbox
-    :customStyle="{marginBottom: '8px'}"
-    v-for="(item, index) in checkboxList1"
-    :key="index"
-    :label="item['name']"
-    :name="item['name']"
->
-</up-checkbox>
+<template>
+    <view>
+        <up-checkbox-group
+            v-model="checkboxValue1"
+            placement="column"
+            @change="checkboxChange"
+        >
+            <up-checkbox
+                :customStyle="{marginBottom: '8px'}"
+                v-for="(item, index) in checkboxList1"
+                :key="index"
+                :label="item.name"
+                :name="item.name"
+            >
+            </up-checkbox>
+        </up-checkbox-group>
+    </view>
+</template>
+<script setup>
+import { ref,reactive } from 'vue';
+
+const checkboxValue1 = reactive([]);
+
+// 基本案列数据
+const checkboxList1 = reactive([
+  {
+    name: '苹果',
+    disabled: false,
+  },
+  {
+    name: '香蕉',
+    disabled: false,
+  },
+  {
+    name: '橙子',
+    disabled: false,
+  },
+]);
+
+const checkboxChange = (n) => {
+  console.log('change', n);
+};
+</script>
+```
+
+#### 独立使用up-checkbox
+
+- 通过`usedAlone`可以设置独立使用up-checkbox，通过v-model:checked双向绑定值。
+
+```vue
+<template>
+    <up-checkbox
+        :customStyle="{marginBottom: '8px'}"
+        label="同意用户协议与隐私条款"
+        name="agree"
+        usedAlone
+        v-model:checked="aloneChecked"
+    >
+    </up-checkbox>
+</template>
+<script setup>
+import { ref } from 'vue'
+
+const aloneChecked = ref(false)
+</script>
 ```
 
 #### 自定义形状
 
+- 通过`shape`可以设置选择形状
+
 ```vue
-<up-checkbox
-    :customStyle="{marginBottom: '8px'}"
-    v-for="(item, index) in checkboxList2"
-    :key="index"
-    :label="item['name']"
-    :name="item['name']"
->
-</up-checkbox>
+<template>
+    <view>
+        <up-checkbox-group
+            v-model="checkboxValue1"
+            placement="column"
+            @change="checkboxChange"
+        >
+            <up-checkbox
+                :customStyle="{marginBottom: '8px'}"
+                v-for="(item, index) in checkboxList1"
+                :key="index"
+                :label="item.name"
+                :name="item.name"
+            >
+            </up-checkbox>
+        </up-checkbox-group>
+    </view>
+</template>
+<script setup>
+import { ref,reactive } from 'vue';
+
+const checkboxValue1 = reactive([]);
+
+// 基本案列数据
+const checkboxList1 = reactive([
+  {
+    name: '苹果',
+    disabled: false,
+  },
+  {
+    name: '香蕉',
+    disabled: false,
+  },
+  {
+    name: '橙子',
+    disabled: false,
+  },
+]);
+
+const checkboxChange = (n) => {
+  console.log('change', n);
+};
+</script>
 ```
 
-#### 是否禁用
+#### 禁用checkbox
+
+设置`disabled`为`true`，即可禁用某个组件，让用户无法点击，禁用分为两种状态，一是未勾选前禁用，这时只显示一个灰色的区域。二是已勾选后
+再禁用，会有灰色的已勾选的图标，但此时依然是不可操作的。
 
 ```vue
-<up-checkbox
-    :customStyle="{marginBottom: '8px'}"
-    v-for="(item, index) in checkboxList3"
-    :key="index"
-    :label="item['name']"
-    :name="item['name']"
-    :disabled="index == 0"
->
-</up-checkbox>
+<template>
+    <view>
+        <up-checkbox-group
+            v-model="checkboxValue1"
+            placement="column"
+            @change="checkboxChange"
+        >
+            <up-checkbox
+                :customStyle="{marginBottom: '8px'}"
+                v-for="(item, index) in checkboxList1"
+                :key="index"
+                :label="item.name"
+                :name="item.name"
+                :disabled="item.disabled"
+            >
+            </up-checkbox>
+        </up-checkbox-group>
+    </view>
+</template>
+<script setup>
+import { reactive } from 'vue';
+
+const checkboxValue1 = reactive([]);
+
+// 基本案列数据
+const checkboxList1 = reactive([
+  {
+    name: '苹果',
+    disabled: false,
+  },
+  {
+    name: '香蕉',
+    disabled: false,
+  },
+  {
+    name: '橙子',
+    disabled: true,
+  },
+]);
+
+const checkboxChange = (n) => {
+  console.log('change', n);
+};
+</script>
 ```
 
-#### 是否禁止点击提示语选中复选框
+#### 自定义形状
+
+可以通过设置`shape`为`square`或者`circle`，将复选框设置为方形或者圆形
 
 ```vue
-<up-checkbox
-    :customStyle="{marginBottom: '8px'}"
-    v-for="(item, index) in checkboxList4"
-    :key="index"
-    :label="item['name']"
-    :name="item['name']"
->
-</up-checkbox>
+<up-checkbox-group>
+	<up-checkbox v-model="checked" shape="circle" label="明月"></up-checkbox>
+</up-checkbox-group>
 ```
 
 #### 自定义颜色
 
+此处所指的颜色，为`checkbox`选中时的背景颜色，参数为`activeColor`
+
 ```vue
-<up-checkbox
-    :customStyle="{marginBottom: '8px'}"
-    v-for="(item, index) in checkboxList5"
-    :key="index"
-    :label="item['name']"
-    :name="item['name']"
->
-</up-checkbox>
+<up-checkbox-group v-model="checked">
+	<up-checkbox  activeColor="red" label="光影"></up-checkbox>
+</up-checkbox-group>
 ```
 
 #### 横向排列形式
 
+可以通过设置`placement`为`row`或者`column`，将复选框设置为横向排列或者竖向排列
+
 ```vue
-<up-checkbox
-    :customStyle="{marginRight: '16px'}"
-    v-for="(item, index) in checkboxList6"
-    :key="index"
-    :label="item['name']"
-    :name="item['name']"
->
-</up-checkbox>
+<up-checkbox-group v-model="checked" placement="row">
+	<up-checkbox activeColor="red" label="红色"></up-checkbox>
+	<up-checkbox activeColor="green" label="绿色"></up-checkbox>
+</up-checkbox-group>
 ```
 
 #### 横向两端排列形式
 
+可以通过设置`iconPlacement`为`left`或者`right`，将复选框勾选图标的对齐设置为左对齐或者右对齐
+
 ```vue
-<up-checkbox
-    :customStyle="{marginBottom: '16px'}"
-    v-for="(item, index) in checkboxList7"
-    :key="index"
-    :label="item['name']"
-    :name="item['name']"
->
-</up-checkbox>
+<up-checkbox-group 
+    v-model="checked"
+    iconPlacement="right" 
+    placement="row">
+	<up-checkbox activeColor="red" label="红色"></up-checkbox>
+	<up-checkbox activeColor="green" label="绿色"></up-checkbox>
+</up-checkbox-group>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsA/checkbox/checkbox.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/checkbox.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 基本案例
+#### 基本使用
 
 ```vue
-<up-checkbox
-    :customStyle="{marginBottom: '8px'}"
-    v-for="(item, index) in checkboxList1"
-    :key="index"
-    :label="item['name']"
-    :name="item['name']"
->
-</up-checkbox>
+<template>
+    <view>
+        <up-checkbox-group
+            v-model="checkboxValue1"
+            placement="column"
+            @change="checkboxChange"
+        >
+            <up-checkbox
+                :customStyle="{marginBottom: '8px'}"
+                v-for="(item, index) in checkboxList1"
+                :key="index"
+                :label="item.name"
+                :name="item.name"
+            >
+            </up-checkbox>
+        </up-checkbox-group>
+    </view>
+</template>
+<script setup>
+import { ref,reactive } from 'vue';
+
+const checkboxValue1 = reactive([]);
+
+// 基本案列数据
+const checkboxList1 = reactive([
+  {
+    name: '苹果',
+    disabled: false,
+  },
+  {
+    name: '香蕉',
+    disabled: false,
+  },
+  {
+    name: '橙子',
+    disabled: false,
+  },
+]);
+
+const checkboxChange = (n) => {
+  console.log('change', n);
+};
+</script>
+```
+
+#### 独立使用up-checkbox
+
+- 通过`usedAlone`可以设置独立使用up-checkbox，通过v-model:checked双向绑定值。
+
+```vue
+<template>
+    <up-checkbox
+        :customStyle="{marginBottom: '8px'}"
+        label="同意用户协议与隐私条款"
+        name="agree"
+        usedAlone
+        v-model:checked="aloneChecked"
+    >
+    </up-checkbox>
+</template>
+<script setup>
+import { ref } from 'vue'
+
+const aloneChecked = ref(false)
+</script>
 ```
 
 #### 自定义形状
 
+- 通过`shape`可以设置选择形状
+
 ```vue
-<up-checkbox
-    :customStyle="{marginBottom: '8px'}"
-    v-for="(item, index) in checkboxList2"
-    :key="index"
-    :label="item['name']"
-    :name="item['name']"
->
-</up-checkbox>
+<template>
+    <view>
+        <up-checkbox-group
+            v-model="checkboxValue1"
+            placement="column"
+            @change="checkboxChange"
+        >
+            <up-checkbox
+                :customStyle="{marginBottom: '8px'}"
+                v-for="(item, index) in checkboxList1"
+                :key="index"
+                :label="item.name"
+                :name="item.name"
+            >
+            </up-checkbox>
+        </up-checkbox-group>
+    </view>
+</template>
+<script setup>
+import { ref,reactive } from 'vue';
+
+const checkboxValue1 = reactive([]);
+
+// 基本案列数据
+const checkboxList1 = reactive([
+  {
+    name: '苹果',
+    disabled: false,
+  },
+  {
+    name: '香蕉',
+    disabled: false,
+  },
+  {
+    name: '橙子',
+    disabled: false,
+  },
+]);
+
+const checkboxChange = (n) => {
+  console.log('change', n);
+};
+</script>
 ```
 
-#### 是否禁用
+#### 禁用checkbox
+
+设置`disabled`为`true`，即可禁用某个组件，让用户无法点击，禁用分为两种状态，一是未勾选前禁用，这时只显示一个灰色的区域。二是已勾选后
+再禁用，会有灰色的已勾选的图标，但此时依然是不可操作的。
 
 ```vue
-<up-checkbox
-    :customStyle="{marginBottom: '8px'}"
-    v-for="(item, index) in checkboxList3"
-    :key="index"
-    :label="item['name']"
-    :name="item['name']"
-    :disabled="index == 0"
->
-</up-checkbox>
+<template>
+    <view>
+        <up-checkbox-group
+            v-model="checkboxValue1"
+            placement="column"
+            @change="checkboxChange"
+        >
+            <up-checkbox
+                :customStyle="{marginBottom: '8px'}"
+                v-for="(item, index) in checkboxList1"
+                :key="index"
+                :label="item.name"
+                :name="item.name"
+                :disabled="item.disabled"
+            >
+            </up-checkbox>
+        </up-checkbox-group>
+    </view>
+</template>
+<script setup>
+import { reactive } from 'vue';
+
+const checkboxValue1 = reactive([]);
+
+// 基本案列数据
+const checkboxList1 = reactive([
+  {
+    name: '苹果',
+    disabled: false,
+  },
+  {
+    name: '香蕉',
+    disabled: false,
+  },
+  {
+    name: '橙子',
+    disabled: true,
+  },
+]);
+
+const checkboxChange = (n) => {
+  console.log('change', n);
+};
+</script>
 ```
 
-#### 是否禁止点击提示语选中复选框
+#### 自定义形状
+
+可以通过设置`shape`为`square`或者`circle`，将复选框设置为方形或者圆形
 
 ```vue
-<up-checkbox
-    :customStyle="{marginBottom: '8px'}"
-    v-for="(item, index) in checkboxList4"
-    :key="index"
-    :label="item['name']"
-    :name="item['name']"
->
-</up-checkbox>
+<up-checkbox-group>
+	<up-checkbox v-model="checked" shape="circle" label="明月"></up-checkbox>
+</up-checkbox-group>
 ```
 
 #### 自定义颜色
 
+此处所指的颜色，为`checkbox`选中时的背景颜色，参数为`activeColor`
+
 ```vue
-<up-checkbox
-    :customStyle="{marginBottom: '8px'}"
-    v-for="(item, index) in checkboxList5"
-    :key="index"
-    :label="item['name']"
-    :name="item['name']"
->
-</up-checkbox>
+<up-checkbox-group v-model="checked">
+	<up-checkbox  activeColor="red" label="光影"></up-checkbox>
+</up-checkbox-group>
 ```
 
 #### 横向排列形式
 
+可以通过设置`placement`为`row`或者`column`，将复选框设置为横向排列或者竖向排列
+
 ```vue
-<up-checkbox
-    :customStyle="{marginRight: '16px'}"
-    v-for="(item, index) in checkboxList6"
-    :key="index"
-    :label="item['name']"
-    :name="item['name']"
->
-</up-checkbox>
+<up-checkbox-group v-model="checked" placement="row">
+	<up-checkbox activeColor="red" label="红色"></up-checkbox>
+	<up-checkbox activeColor="green" label="绿色"></up-checkbox>
+</up-checkbox-group>
 ```
 
 #### 横向两端排列形式
 
+可以通过设置`iconPlacement`为`left`或者`right`，将复选框勾选图标的对齐设置为左对齐或者右对齐
+
 ```vue
-<up-checkbox
-    :customStyle="{marginBottom: '16px'}"
-    v-for="(item, index) in checkboxList7"
-    :key="index"
-    :label="item['name']"
-    :name="item['name']"
->
-</up-checkbox>
+<up-checkbox-group 
+    v-model="checked"
+    iconPlacement="right" 
+    placement="row">
+	<up-checkbox activeColor="red" label="红色"></up-checkbox>
+	<up-checkbox activeColor="green" label="绿色"></up-checkbox>
+</up-checkbox-group>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsA/checkbox/checkbox.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/checkbox.md`</small>
 
 </template>
 

@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -225,113 +225,203 @@ showZero 决定 value 为 0 时是否展示
 
 <template #uniapp>
 
-#### 直角边形状
+#### 基本使用
+
+- 通过`value`参数定义徽标内容
+- 通过`type`设置主题。重申一次，uview-plus中，所有组件的`type`参数都只有5个固定的可选值，分别是`primary`(蓝色-主色)，`warning`(黄色-警告)，
+`error`(红色-错误)，`success`(绿色-成功)，`info`(灰色-信息)
+- 通过`max`参数控制最大值，超过最大值会显示 '{max}+'
+
+::: warning 注意
+此组件内部默认为`absulote`绝对定位，所以需要给`badge`父组件(元素)设置`position: relative`相对定位，
+再通过调整`offset`偏移值(数组，两个元素，第一个元素为`top`值，第二个元素为`right`值，单位rpx，可为负值，如"[-10, -10]")设置到合适的位置即可。  
+如果不需要组件内容默认的自动绝对定位，设置`absolute`参数为`false`即可。
+:::
 
 ```vue
-<up-badge
-    :value="1500"
-    shape="horn"
-></up-badge>
+<template>
+	<view style="padding: 20px;">
+		<view class="box">
+			 <up-badge :type="type" max="99" :value="value"></up-badge>
+		</view>
+	</view>
+</template>
 ```
-
-#### 徽标数显示方式
 
 ```vue
-<up-badge
-    :value="5132"
-    numberType="ellipsis"
-></up-badge>
+<script setup>  
+import { ref } from 'vue';  
+  
+// 使用 ref 创建响应式数据  
+const type = ref('warning');  
+const value = ref(100);  
+</script>
 ```
-
-#### 显示圆点
 
 ```vue
-<up-badge
-    :value="1011"
-    numberType="overflow"
-    isDot
->
-</up-badge>
+<style lang="scss" scoped>
+	.box{
+		width: 100px; 
+		height: 100px;
+		background-color: #909193;
+		border-radius: 15px;
+	}
+</style>
 ```
 
-#### 自定义主题
+#### 设置徽标的类型为一个圆点
+
+通过`isDot`参数设置，该形式组件没有内容，只显示一个圆点
 
 ```vue
-<up-badge
-    :value="9"
-    type="error"
->
-</up-badge>
+<up-badge :isDot="true" type="success"></up-badge>
 ```
 
-#### 反转色
+#### 设置数字的显示方式 overflow|ellipsis|limit
+
+- overflow会根据max字段判断，超出显示`${max}+`
+- ellipsis会根据max判断，超出显示`${max}...`
+- limit会依据1000作为判断条件，超出1000，显示`${value/1000}K`，比如2.2k、3.34w，最多保留2位小数
 
 ```vue
-<up-badge
-    :value="9"
-    type="error"
-    inverted
->
-</up-badge>
+<template>
+	<view style="padding: 20px;">
+		<view class="box">
+			 <up-badge numberType="overflow" :type="type" max="99" :value="value"></up-badge>
+		</view>
+		<view class="box">
+			 <up-badge numberType="ellipsis" :type="type" max="99" :value="value"></up-badge>
+		</view>
+		<view class="box">
+			 <up-badge numberType="limit" :type="type" max="99" :value="value"></up-badge>
+		</view>
+	</view>
+</template>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsB/badge/badge.uvue`</small>
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 使用 ref 创建响应式数据  
+const type = ref('warning');  
+const value = ref(99999);  
+</script>
+```
+
+```vue
+<style lang="scss" scoped>
+	.box{
+		width: 100px; 
+		height: 100px;
+		background-color: #909193;
+		border-radius: 15px;
+	}
+</style>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/badge.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 直角边形状
+#### 基本使用
+
+- 通过`value`参数定义徽标内容
+- 通过`type`设置主题。重申一次，uview-ultra中，所有组件的`type`参数都只有5个固定的可选值，分别是`primary`(蓝色-主色)，`warning`(黄色-警告)，
+`error`(红色-错误)，`success`(绿色-成功)，`info`(灰色-信息)
+- 通过`max`参数控制最大值，超过最大值会显示 '{max}+'
+
+::: warning 注意
+此组件内部默认为`absulote`绝对定位，所以需要给`badge`父组件(元素)设置`position: relative`相对定位，
+再通过调整`offset`偏移值(数组，两个元素，第一个元素为`top`值，第二个元素为`right`值，单位rpx，可为负值，如"[-10, -10]")设置到合适的位置即可。  
+如果不需要组件内容默认的自动绝对定位，设置`absolute`参数为`false`即可。
+:::
 
 ```vue
-<up-badge
-    :value="1500"
-    shape="horn"
-></up-badge>
+<template>
+	<view style="padding: 20px;">
+		<view class="box">
+			 <up-badge :type="type" max="99" :value="value"></up-badge>
+		</view>
+	</view>
+</template>
 ```
-
-#### 徽标数显示方式
 
 ```vue
-<up-badge
-    :value="5132"
-    numberType="ellipsis"
-></up-badge>
+<script setup>  
+import { ref } from 'vue';  
+  
+// 使用 ref 创建响应式数据  
+const type = ref('warning');  
+const value = ref(100);  
+</script>
 ```
-
-#### 显示圆点
 
 ```vue
-<up-badge
-    :value="1011"
-    numberType="overflow"
-    isDot
->
-</up-badge>
+<style lang="scss" scoped>
+	.box{
+		width: 100px; 
+		height: 100px;
+		background-color: #909193;
+		border-radius: 15px;
+	}
+</style>
 ```
 
-#### 自定义主题
+#### 设置徽标的类型为一个圆点
+
+通过`isDot`参数设置，该形式组件没有内容，只显示一个圆点
 
 ```vue
-<up-badge
-    :value="9"
-    type="error"
->
-</up-badge>
+<up-badge :isDot="true" type="success"></up-badge>
 ```
 
-#### 反转色
+#### 设置数字的显示方式 overflow|ellipsis|limit
+
+- overflow会根据max字段判断，超出显示`${max}+`
+- ellipsis会根据max判断，超出显示`${max}...`
+- limit会依据1000作为判断条件，超出1000，显示`${value/1000}K`，比如2.2k、3.34w，最多保留2位小数
 
 ```vue
-<up-badge
-    :value="9"
-    type="error"
-    inverted
->
-</up-badge>
+<template>
+	<view style="padding: 20px;">
+		<view class="box">
+			 <up-badge numberType="overflow" :type="type" max="99" :value="value"></up-badge>
+		</view>
+		<view class="box">
+			 <up-badge numberType="ellipsis" :type="type" max="99" :value="value"></up-badge>
+		</view>
+		<view class="box">
+			 <up-badge numberType="limit" :type="type" max="99" :value="value"></up-badge>
+		</view>
+	</view>
+</template>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsB/badge/badge.uvue`</small>
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 使用 ref 创建响应式数据  
+const type = ref('warning');  
+const value = ref(99999);  
+</script>
+```
+
+```vue
+<style lang="scss" scoped>
+	.box{
+		width: 100px; 
+		height: 100px;
+		background-color: #909193;
+		border-radius: 15px;
+	}
+</style>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/badge.md`</small>
 
 </template>
 

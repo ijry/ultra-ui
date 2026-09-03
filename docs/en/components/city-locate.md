@@ -12,7 +12,7 @@ A city list picker with an index bar and current-location support.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -70,35 +70,215 @@ No snippet could be extracted automatically — please read the source.
 
 <template #uniapp>
 
+#### 自定义数据结构
+
 ```vue
-<up-city-locate
-  :currentCity="currentCity"
-  locationType="wgs84"
-  :indexList="indexList"
-  :cityList="cityList"
-  @location-success="locationSuccess"
-  @select-city="selectCity">
-</up-city-locate>
+<template>
+  <up-city-locate 
+    :cityList="customData"
+    nameKey="cityName"
+  />
+</template>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/cityLocate/cityLocate.uvue`</small>
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const customData = ref([
+  [
+    { cityName: '北京', value: 'beijing' },
+    { cityName: '上海', value: 'shanghai' }
+  ]
+]);
+</script>
+```
+
+#### 外部控制当前城市
+
+```vue
+<template>
+  <up-city-locate 
+    :currentCity="userCity"
+  />
+</template>
+```
+
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const userCity = ref('北京');
+</script>
+```
+
+#### 设置定位类型
+
+```vue
+<template>
+  <up-city-locate 
+    locationType="gcj02"
+  />
+</template>
+```
+
+```vue
+<script setup>
+import { ref } from 'vue';
+// 组件将使用 gcj02 定位类型
+</script>
+```
+
+#### 监听定位结果
+
+```vue
+<template>
+  <up-city-locate 
+    @location-success="handleLocationResult"
+  />
+</template>
+```
+
+```vue
+<script setup>
+const handleLocationResult = (res) => {
+  console.log('定位结果:', res);
+};
+</script>
+```
+
+#### 如何获取用户选择的城市？
+
+```vue
+<script setup>
+const handleSelectCity = (city) => {
+  console.log('用户选择的城市:', city.locationCity);
+}
+</script>
+```
+
+#### 如何自定义热门城市？
+
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const cityList = ref([[
+  { name: '北京', value: 'beijing' },
+  { name: '上海', value: 'shanghai' },
+  { name: '广州', value: 'guangzhou' }
+]]);
+</script>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/cityLocate.md`</small>
 
 </template>
 
 <template #uniappx>
 
+#### 自定义数据结构
+
 ```vue
-<up-city-locate
-  :currentCity="currentCity"
-  locationType="wgs84"
-  :indexList="indexList"
-  :cityList="cityList"
-  @location-success="locationSuccess"
-  @select-city="selectCity">
-</up-city-locate>
+<template>
+  <up-city-locate 
+    :cityList="customData"
+    nameKey="cityName"
+  />
+</template>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/cityLocate/cityLocate.uvue`</small>
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const customData = ref([
+  [
+    { cityName: '北京', value: 'beijing' },
+    { cityName: '上海', value: 'shanghai' }
+  ]
+]);
+</script>
+```
+
+#### 外部控制当前城市
+
+```vue
+<template>
+  <up-city-locate 
+    :currentCity="userCity"
+  />
+</template>
+```
+
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const userCity = ref('北京');
+</script>
+```
+
+#### 设置定位类型
+
+```vue
+<template>
+  <up-city-locate 
+    locationType="gcj02"
+  />
+</template>
+```
+
+```vue
+<script setup>
+import { ref } from 'vue';
+// 组件将使用 gcj02 定位类型
+</script>
+```
+
+#### 监听定位结果
+
+```vue
+<template>
+  <up-city-locate 
+    @location-success="handleLocationResult"
+  />
+</template>
+```
+
+```vue
+<script setup>
+const handleLocationResult = (res) => {
+  console.log('定位结果:', res);
+};
+</script>
+```
+
+#### 如何获取用户选择的城市？
+
+```vue
+<script setup>
+const handleSelectCity = (city) => {
+  console.log('用户选择的城市:', city.locationCity);
+}
+</script>
+```
+
+#### 如何自定义热门城市？
+
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const cityList = ref([[
+  { name: '北京', value: 'beijing' },
+  { name: '上海', value: 'shanghai' },
+  { name: '广州', value: 'guangzhou' }
+]]);
+</script>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/cityLocate.md`</small>
 
 </template>
 

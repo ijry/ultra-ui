@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -258,115 +258,161 @@ closeSlot 替换默认叉号
 
 <template #uniapp>
 
-#### 基础功能
+#### 基本使用
+
+- 通过`title`和`description`设置组件的标题和描述内容
+- 通过`type`设置主题类型，有`primary`,`success`,`error`,`warning`,`info`可选值
+- 通过`effect`设置主题浅或深色调，有`light`(浅色 默认),`dark`(深色)可选值
 
 ```vue
-<up-alert
-    description="山不在于高，有了神仙就出名"
-    type="warning"
-></up-alert>
+<template>
+	<view>
+		<up-alert :title="title" type = "warning" :description = "description"></up-alert>
+		<up-alert :title="title" type = "warning" effect="dark" :description = "description"></up-alert>
+	</view>
+</template>
 ```
-
-#### 深浅色
 
 ```vue
-<up-alert
-    description="无丝竹之乱耳，无案牍之劳形"
-    type="warning"
-></up-alert>
+<script setup>  
+import { ref } from 'vue';  
+  
+// 响应式数据  
+const title = ref('uview-plus的目标是成为uni-app生态最优秀的UI框架');  
+const description = ref('uview-plus是uni-app生态专用的UI框架');  
+
+</script>
 ```
 
-#### 显示图标
+#### 图标
+
+通过`showIcon`设置是否显示图标，作用是让信息类型更加醒目。
+
+**注意**：当前版本图标为uview-plus内置图标，根据`type`参数显示不同的图标，无法自定义。
 
 ```vue
-<up-alert
-    description="六王毕，四海一；蜀山兀，阿房出"
-    type="error"
-    showIcon
-></up-alert>
+<up-alert type="warning" :show-icon="true"></up-alert>
 ```
 
-#### 可关闭
+#### 可关闭的警告提示
+
+显示关闭按钮，点击可关闭警告提示。
+- `closable`参数配置是否可关闭
 
 ```vue
-<up-alert
-    description="五步一楼，十步一阁；廊腰缦回，檐牙高啄；各抱地势，钩心斗角"
-    type="success"
-    showIcon
-    closable
-></up-alert>
+<template>
+	<view>
+		<up-alert :title="title"  type = "warning" :closable="closable" :description = "description"></up-alert>
+	
+	</view>
+</template>
 ```
-
-#### 带标题
 
 ```vue
-<up-alert
-    title="妃嫔媵嫱，王子皇孙，辞楼下殿"
-    description="长桥卧波，未云何龙？复道行空，不霁何虹"
-    type="info"
-    showIcon
-    closable
-></up-alert>
+<script setup>  
+import { ref } from 'vue';  
+import { onLoad, onShow } from '@dcloudio/uni-app';  
+  
+// 定义响应式数据  
+const title = ref('uview-plus的目标是成为uni-app生态最优秀的UI框架');  
+const description = ref('uview-plus是uni-app生态专用的UI框架');  
+const closable = ref(true);  
+  
+// 使用 uni-app 的 onLoad 生命周期钩子  
+onLoad(() => {  
+  // 组件加载时执行的逻辑  
+  console.log('组件加载了');  
+});  
+  
+// 使用 uni-app 的 onShow 生命周期钩子  
+onShow(() => {  
+  // 组件显示时执行的逻辑  
+  console.log('组件显示了');  
+});  
+</script>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsB/alert/alert.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/alert.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 基础功能
+#### 基本使用
+
+- 通过`title`和`description`设置组件的标题和描述内容
+- 通过`type`设置主题类型，有`primary`,`success`,`error`,`warning`,`info`可选值
+- 通过`effect`设置主题浅或深色调，有`light`(浅色 默认),`dark`(深色)可选值
 
 ```vue
-<up-alert
-    description="山不在于高，有了神仙就出名"
-    type="warning"
-></up-alert>
+<template>
+	<view>
+		<up-alert :title="title" type = "warning" :description = "description"></up-alert>
+		<up-alert :title="title" type = "warning" effect="dark" :description = "description"></up-alert>
+	</view>
+</template>
 ```
-
-#### 深浅色
 
 ```vue
-<up-alert
-    description="无丝竹之乱耳，无案牍之劳形"
-    type="warning"
-></up-alert>
+<script setup>  
+import { ref } from 'vue';  
+  
+// 响应式数据  
+const title = ref('uview-ultra的目标是成为uni-app生态最优秀的UI框架');  
+const description = ref('uview-ultra是uni-app生态专用的UI框架');  
+
+</script>
 ```
 
-#### 显示图标
+#### 图标
+
+通过`showIcon`设置是否显示图标，作用是让信息类型更加醒目。
+
+**注意**：当前版本图标为uview-ultra内置图标，根据`type`参数显示不同的图标，无法自定义。
 
 ```vue
-<up-alert
-    description="六王毕，四海一；蜀山兀，阿房出"
-    type="error"
-    showIcon
-></up-alert>
+<up-alert type="warning" :show-icon="true"></up-alert>
 ```
 
-#### 可关闭
+#### 可关闭的警告提示
+
+显示关闭按钮，点击可关闭警告提示。
+- `closable`参数配置是否可关闭
 
 ```vue
-<up-alert
-    description="五步一楼，十步一阁；廊腰缦回，檐牙高啄；各抱地势，钩心斗角"
-    type="success"
-    showIcon
-    closable
-></up-alert>
+<template>
+	<view>
+		<up-alert :title="title"  type = "warning" :closable="closable" :description = "description"></up-alert>
+	
+	</view>
+</template>
 ```
-
-#### 带标题
 
 ```vue
-<up-alert
-    title="妃嫔媵嫱，王子皇孙，辞楼下殿"
-    description="长桥卧波，未云何龙？复道行空，不霁何虹"
-    type="info"
-    showIcon
-    closable
-></up-alert>
+<script setup>  
+import { ref } from 'vue';  
+import { onLoad, onShow } from '@dcloudio/uni-app';  
+  
+// 定义响应式数据  
+const title = ref('uview-ultra的目标是成为uni-app生态最优秀的UI框架');  
+const description = ref('uview-ultra是uni-app生态专用的UI框架');  
+const closable = ref(true);  
+  
+// 使用 uni-app 的 onLoad 生命周期钩子  
+onLoad(() => {  
+  // 组件加载时执行的逻辑  
+  console.log('组件加载了');  
+});  
+  
+// 使用 uni-app 的 onShow 生命周期钩子  
+onShow(() => {  
+  // 组件显示时执行的逻辑  
+  console.log('组件显示了');  
+});  
+</script>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsB/alert/alert.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/alert.md`</small>
 
 </template>
 

@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -189,93 +189,93 @@ mpTips 自定义复制成功后的 toast 文案
 
 <template #uniapp>
 
-#### 基本案例
+#### 基本使用
+
+- 通过`href`设置打开的链接，`text`设置显示的内容
 
 ```vue
-<up-link
-    href="https://uviewui.com/"
-    text="打开uView UI文档"
-    @click="click"
-></up-link>
+<template>
+	<up-link href="https://uviewui.com/" text="打开uview-plus UI文档" @click="click"></up-link>
+</template>
 ```
 
-#### 显示下划线
+```vue
+<script setup>  
+// 直接定义方法  
+function click() {  
+  console.log('click');  
+}  
+</script>
+```
+
+#### 下划线
+
+通过`under-line`设置是否显示链接的下划线
 
 ```vue
-<up-link
-    href="https://uviewui.com/"
-    :underLine="true"
-    text="Go to uView doc"
-></up-link>
+<template>
+	<up-link href="https://uviewui.com/" text="打开uview-plus UI文档" :under-line="true"></up-link>
+</template>
 ```
 
 #### 自定义颜色
 
-```vue
-<up-link
-    href="https://uviewui.com/"
-    lineColor="#19be6b"
-    color="#19be6b"
-    text="打开uView UI文档"
-></up-link>
-```
-
-#### 自定义链接内容
+- 通过`color`设置文字颜色
+- 通过`line-color`设置下划线颜色
 
 ```vue
-<up-link
-    href="https://uniapp.dcloud.io/"
-    text="打开uni-app文档"
-></up-link>
+<template>
+	<up-link href="https://uviewui.com/" text="打开uview-plus UI文档" color="#19be6b" line-color="#19be6b"></up-link>
+</template>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsA/link/link.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/link.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 基本案例
+#### 基本使用
+
+- 通过`href`设置打开的链接，`text`设置显示的内容
 
 ```vue
-<up-link
-    href="https://uviewui.com/"
-    text="打开uView UI文档"
-    @click="click"
-></up-link>
+<template>
+	<up-link href="https://uviewui.com/" text="打开uview-ultra UI文档" @click="click"></up-link>
+</template>
 ```
 
-#### 显示下划线
+```vue
+<script setup>  
+// 直接定义方法  
+function click() {  
+  console.log('click');  
+}  
+</script>
+```
+
+#### 下划线
+
+通过`under-line`设置是否显示链接的下划线
 
 ```vue
-<up-link
-    href="https://uviewui.com/"
-    :underLine="true"
-    text="Go to uView doc"
-></up-link>
+<template>
+	<up-link href="https://uviewui.com/" text="打开uview-ultra UI文档" :under-line="true"></up-link>
+</template>
 ```
 
 #### 自定义颜色
 
-```vue
-<up-link
-    href="https://uviewui.com/"
-    lineColor="#19be6b"
-    color="#19be6b"
-    text="打开uView UI文档"
-></up-link>
-```
-
-#### 自定义链接内容
+- 通过`color`设置文字颜色
+- 通过`line-color`设置下划线颜色
 
 ```vue
-<up-link
-    href="https://uniapp.dcloud.io/"
-    text="打开uni-app文档"
-></up-link>
+<template>
+	<up-link href="https://uviewui.com/" text="打开uview-ultra UI文档" color="#19be6b" line-color="#19be6b"></up-link>
+</template>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsA/link/link.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/link.md`</small>
 
 </template>
 

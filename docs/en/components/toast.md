@@ -12,7 +12,7 @@ A lightweight global message with success, error and loading themes plus a compl
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -138,21 +138,233 @@ import { UPToast } from '@ultra-ui'
 
 <template #uniapp>
 
-```vue
-<up-toast ref="upToastRef"></up-toast>
+#### Root 全局调用（推荐）
+
+```js
+// 快捷写法
+uni.$u.rootToast('保存成功')
+
+// 完整写法
+uni.$u.rootToast({
+  message: '操作完成',
+  type: 'success',
+  duration: 2000
+})
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsB/toast/toast.uvue`</small>
+#### 基本使用
+
+```vue
+<template>
+	<view>
+		<up-toast ref="uToastRef"></up-toast>
+		<up-cell-group title-bg-color="rgb(243, 244, 246)">
+			<up-cell
+				:titleStyle="{fontWeight: 500}"
+				:title="item.title"
+				v-for="(item, index) in list"
+				:key="index"
+				isLink
+				:icon="item.iconUrl"
+				@click="showToast(item)"
+			>
+			</up-cell>
+		</up-cell-group>
+	</view>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref, computed } from 'vue';  
+  
+// 创建响应式数据  
+const show = ref(false);  
+const list = ref([  
+  	{
+		type: 'default',
+		title: '默认主题',
+		message: "锦瑟无端五十弦",
+		iconUrl: 'https://uview-plus.jiangruyi.com/resources/toast/default.png'
+	},
+	{
+		type: 'error',
+		icon: false,
+		title: '失败主题',
+		message: "一弦一柱思华年",
+		iconUrl: 'https://uview-plus.jiangruyi.com/resources/toast/error.png'
+	},
+	{
+		type: 'success',
+		title: '成功主题(带图标)',
+		message: "庄生晓梦迷蝴蝶",
+		iconUrl: 'https://uview-plus.jiangruyi.com/resources/toast/success.png'
+	},
+	{
+		type: 'loading',
+		title: '正在加载',
+		message: "正在加载",
+		iconUrl: 'https://uview-plus.jiangruyi.com/resources/toast/loading.png'
+	},
+	{
+		type: 'default',
+		title: '结束后跳转标签页',
+		message: "此情可待成追忆",
+		url: '/pages/componentsB/tag/tag',
+		iconUrl: 'https://uview-plus.jiangruyi.com/resources/toast/jump.png'
+	}
+]);  
+  
+// 计算属性  
+const getIcon = computed(() => {  
+  return path => {  
+    return 'https://cdn.uviewui.com/uview/example/' + path + '.png';  
+  }  
+});  
+  
+// 方法
+const uToastRef = ref(null)
+function showToast(params) {  
+  uToastRef.value.show({  
+    ...params,  
+    complete() {  
+      params.url && uni.navigateTo({  
+        url: params.url  
+      });  
+    }  
+  });  
+}  
+</script>
+```
+
+```vue
+<style lang="scss">
+	.u-page {
+		padding: 0;
+	}
+
+	.u-cell-icon {
+		width: 36rpx;
+		height: 36rpx;
+		margin-right: 8rpx;
+	}
+
+	.u-cell-group__title__text {
+		font-weight: bold;
+	}
+</style>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/toast.md`</small>
 
 </template>
 
 <template #uniappx>
 
+#### 基本使用
+
 ```vue
-<up-toast ref="upToastRef"></up-toast>
+<template>
+	<view>
+		<up-toast ref="uToastRef"></up-toast>
+		<up-cell-group title-bg-color="rgb(243, 244, 246)">
+			<up-cell
+				:titleStyle="{fontWeight: 500}"
+				:title="item.title"
+				v-for="(item, index) in list"
+				:key="index"
+				isLink
+				:icon="item.iconUrl"
+				@click="showToast(item)"
+			>
+			</up-cell>
+		</up-cell-group>
+	</view>
+</template>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsB/toast/toast.uvue`</small>
+```vue
+<script setup>  
+import { ref, computed } from 'vue';  
+  
+// 创建响应式数据  
+const show = ref(false);  
+const list = ref([  
+  	{
+		type: 'default',
+		title: '默认主题',
+		message: "锦瑟无端五十弦",
+		iconUrl: 'https://uview-ultra.jiangruyi.com/resources/toast/default.png'
+	},
+	{
+		type: 'error',
+		icon: false,
+		title: '失败主题',
+		message: "一弦一柱思华年",
+		iconUrl: 'https://uview-ultra.jiangruyi.com/resources/toast/error.png'
+	},
+	{
+		type: 'success',
+		title: '成功主题(带图标)',
+		message: "庄生晓梦迷蝴蝶",
+		iconUrl: 'https://uview-ultra.jiangruyi.com/resources/toast/success.png'
+	},
+	{
+		type: 'loading',
+		title: '正在加载',
+		message: "正在加载",
+		iconUrl: 'https://uview-ultra.jiangruyi.com/resources/toast/loading.png'
+	},
+	{
+		type: 'default',
+		title: '结束后跳转标签页',
+		message: "此情可待成追忆",
+		url: '/pages/componentsB/tag/tag',
+		iconUrl: 'https://uview-ultra.jiangruyi.com/resources/toast/jump.png'
+	}
+]);  
+  
+// 计算属性  
+const getIcon = computed(() => {  
+  return path => {  
+    return 'https://cdn.uviewui.com/uview/example/' + path + '.png';  
+  }  
+});  
+  
+// 方法
+const uToastRef = ref(null)
+function showToast(params) {  
+  uToastRef.value.show({  
+    ...params,  
+    complete() {  
+      params.url && uni.navigateTo({  
+        url: params.url  
+      });  
+    }  
+  });  
+}  
+</script>
+```
+
+```vue
+<style lang="scss">
+	.u-page {
+		padding: 0;
+	}
+
+	.u-cell-icon {
+		width: 36rpx;
+		height: 36rpx;
+		margin-right: 8rpx;
+	}
+
+	.u-cell-group__title__text {
+		font-weight: bold;
+	}
+</style>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/toast.md`</small>
 
 </template>
 

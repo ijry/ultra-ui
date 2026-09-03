@@ -12,7 +12,7 @@ A calendar picker supporting single, multiple and range selection.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -155,175 +155,420 @@ No snippet could be extracted automatically — please read the source.
 
 <template #uniapp>
 
+#### 基本使用
+
+```vue
+<template>
+	<view>
+		<up-calendar :show="show"></up-calendar>
+		<up-button @click="show = true">打开</up-button>
+	</view>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const show = ref(false);
+</script>
+```
+
+#### 单月切换模式
+
 ```vue
 <up-calendar
-    :show="show1"
-    defaultDate="2022-02-15"
-    @confirm="confirm"
-    @close="close"
+	:show="show"
+	defaultDate="2023-06-15"
+	minDate="2022-01-01"
+	maxDate="2024-12-31"
+	:monthNum="36"
+	monthSwitch
+	@confirm="confirm"
+	@close="show = false"
 ></up-calendar>
 ```
 
 ```vue
 <up-calendar
-    :show="show2"
-    mode="multiple"
-    :defaultDate="['2022-03-01']"
-    @confirm="confirm"
-    @close="close"
+	:show="show"
+	mode="range"
+	:defaultDate="['2023-06-15', '2023-06-20']"
+	minDate="2022-01-01"
+	maxDate="2024-12-31"
+	:monthNum="36"
+	monthSwitch
+	@confirm="confirm"
+	@close="show = false"
 ></up-calendar>
 ```
 
 ```vue
 <up-calendar
-    :show="show3"
-    mode="range"
-    @confirm="confirm"
-    @close="close"
+	:show="show"
+	mode="multiple"
+	:defaultDate="['2023-06-15', '2023-07-15', '2024-06-15']"
+	minDate="2022-01-01"
+	maxDate="2024-12-31"
+	:monthNum="36"
+	monthSwitch
+	@confirm="confirm"
+	@close="show = false"
 ></up-calendar>
+```
+
+#### 单行日历
+
+```vue
+<up-calendar-strip
+	v-model="date"
+	:minDate="'2022-01-01'"
+	:maxDate="'2026-12-31'"
+></up-calendar-strip>
+```
+
+```js
+const date = ref('2024-11-29')
 ```
 
 ```vue
-<up-calendar
-    :show="show4"
-    mode="range"
-    @confirm="confirm"
-    @close="close"
-    color="#f56c6c"
-    :defaultDate="customThemeDefaultDate"
-></up-calendar>
+<up-calendar-strip
+	v-model="date"
+	:minDate="'2024-01-01'"
+	:maxDate="'2024-12-31'"
+	:fullCalendarProps="{ showLunar: true }"
+	@change="onDateChange"
+	@monthChange="onMonthChange"
+	@toggleFull="onToggleFull"
+></up-calendar-strip>
+```
+
+```js
+const date = ref('2024-11-29')
+
+const onDateChange = (e) => {
+	console.log(e.date, e.month, e.scene)
+}
 ```
 
 ```vue
-<up-calendar
-    :show="show5"
-    mode="range"
-    @confirm="confirm"
-    @close="close"
-    :defaultDate="customTextDefaultDate"
-    startText="住店"
-    endText="离店"
-    confirmDisabledText="请选择离店日期"
-    :formatter="formatter"
-></up-calendar>
+<up-calendar-strip
+	v-model="date"
+	:fullCalendar="false"
+></up-calendar-strip>
 ```
+
+#### 时间选择
 
 ```vue
 <up-calendar
-    :show="show6"
-    @confirm="confirm"
-    @close="close"
-    :maxDate="maxDate"
+	:show="show"
+	enableTime
+	timePrecision="second"
+	defaultTime="09:30:00"
+	@confirm="confirm"
 ></up-calendar>
+```
+
+#### 单个日期模式
+
+```js
+["2021-07-01"]
 ```
 
 ```vue
-<up-calendar
-    :show="show7"
-    @confirm="confirm"
-    @close="close"
-    showLunar
-></up-calendar>
+<template>
+	<up-calendar :show="show" :mode="mode" @confirm="confirm"></up-calendar>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const show = ref(true);
+const mode = ref('single');
+
+const confirm = (e) => {
+  console.log(e);
+};
+</script>
+```
+
+#### 多个日期模式
+
+```js
+ ["2021-07-27", "2021-07-29", "2021-07-30"]
 ```
 
 ```vue
+<template>
+	<up-calendar :show="show" :mode="mode" @confirm="confirm"></up-calendar>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const show = ref(true);
+const mode = ref('multiple');
+
+const confirm = (e) => {
+  console.log(e);
+};
+</script>
+```
+
+#### 今天按钮与高亮颜色
+
+```vue
 <up-calendar
-    :show="show8"
-    @confirm="confirm"
-    @close="close"
-    mode="multiple"
-    :defaultDate="defaultDateMultiple"
+	:show="show"
+	mode="range"
+	todayColor="#f56c6c"
+	@confirm="confirm"
 ></up-calendar>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/calendar/calendar.uvue`</small>
+#### 日期范围模式
+
+```js
+["2021-07-27", "2021-07-28", "2021-07-29", "2021-07-30", "2021-07-31"]
+```
+
+```vue
+<template>
+	<up-calendar :show="show" :mode="mode" @confirm="confirm"></up-calendar>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const show = ref(true);
+const mode = ref('range');
+
+const confirm = (e) => {
+  console.log(e);
+};
+</script>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/calendar.md`</small>
 
 </template>
 
 <template #uniappx>
 
+#### 基本使用
+
+```vue
+<template>
+	<view>
+		<up-calendar :show="show"></up-calendar>
+		<up-button @click="show = true">打开</up-button>
+	</view>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const show = ref(false);
+</script>
+```
+
+#### 单月切换模式
+
 ```vue
 <up-calendar
-    :show="show1"
-    defaultDate="2022-02-15"
-    @confirm="confirm"
-    @close="close"
+	:show="show"
+	defaultDate="2023-06-15"
+	minDate="2022-01-01"
+	maxDate="2024-12-31"
+	:monthNum="36"
+	monthSwitch
+	@confirm="confirm"
+	@close="show = false"
 ></up-calendar>
 ```
 
 ```vue
 <up-calendar
-    :show="show2"
-    mode="multiple"
-    :defaultDate="['2022-03-01']"
-    @confirm="confirm"
-    @close="close"
+	:show="show"
+	mode="range"
+	:defaultDate="['2023-06-15', '2023-06-20']"
+	minDate="2022-01-01"
+	maxDate="2024-12-31"
+	:monthNum="36"
+	monthSwitch
+	@confirm="confirm"
+	@close="show = false"
 ></up-calendar>
 ```
 
 ```vue
 <up-calendar
-    :show="show3"
-    mode="range"
-    @confirm="confirm"
-    @close="close"
+	:show="show"
+	mode="multiple"
+	:defaultDate="['2023-06-15', '2023-07-15', '2024-06-15']"
+	minDate="2022-01-01"
+	maxDate="2024-12-31"
+	:monthNum="36"
+	monthSwitch
+	@confirm="confirm"
+	@close="show = false"
 ></up-calendar>
+```
+
+#### 单个日期模式
+
+```js
+["2021-07-01"]
 ```
 
 ```vue
-<up-calendar
-    :show="show4"
-    mode="range"
-    @confirm="confirm"
-    @close="close"
-    color="#f56c6c"
-    :defaultDate="customThemeDefaultDate"
-></up-calendar>
+<template>
+	<up-calendar :show="show" :mode="mode" @confirm="confirm"></up-calendar>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const show = ref(true);
+const mode = ref('single');
+
+const confirm = (e) => {
+  console.log(e);
+};
+</script>
+```
+
+#### 多个日期模式
+
+```js
+ ["2021-07-27", "2021-07-29", "2021-07-30"]
 ```
 
 ```vue
-<up-calendar
-    :show="show5"
-    mode="range"
-    @confirm="confirm"
-    @close="close"
-    :defaultDate="customTextDefaultDate"
-    startText="住店"
-    endText="离店"
-    confirmDisabledText="请选择离店日期"
-    :formatter="formatter"
-></up-calendar>
+<template>
+	<up-calendar :show="show" :mode="mode" @confirm="confirm"></up-calendar>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const show = ref(true);
+const mode = ref('multiple');
+
+const confirm = (e) => {
+  console.log(e);
+};
+</script>
 ```
+
+#### 今天按钮与高亮颜色
 
 ```vue
 <up-calendar
-    :show="show6"
-    @confirm="confirm"
-    @close="close"
-    :maxDate="maxDate"
+	:show="show"
+	mode="range"
+	todayColor="#f56c6c"
+	@confirm="confirm"
 ></up-calendar>
+```
+
+#### 日期范围模式
+
+```js
+["2021-07-27", "2021-07-28", "2021-07-29", "2021-07-30", "2021-07-31"]
 ```
 
 ```vue
-<up-calendar
-    :show="show7"
-    @confirm="confirm"
-    @close="close"
-    showLunar
-></up-calendar>
+<template>
+	<up-calendar :show="show" :mode="mode" @confirm="confirm"></up-calendar>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const show = ref(true);
+const mode = ref('range');
+
+const confirm = (e) => {
+  console.log(e);
+};
+</script>
 ```
+
+#### 自定义主题颜色
 
 ```vue
-<up-calendar
-    :show="show8"
-    @confirm="confirm"
-    @close="close"
-    mode="multiple"
-    :defaultDate="defaultDateMultiple"
-></up-calendar>
+<template>
+	<up-calendar :show="show" 
+    color="#f56c6c" :mode="mode" @confirm="confirm"></up-calendar>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const show = ref(true);
+const mode = ref('range');
+
+const confirm = (e) => {
+  console.log(e);
+};
+</script>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/calendar/calendar.uvue`</small>
+#### 自定义文案
+
+```vue
+<template>
+	<up-calendar 
+        startText="住店"
+        endText="离店"
+        confirmDisabledText="请选择离店日期"
+        :formatter="formatter"
+        :show="show" 
+        :mode="mode" 
+        @confirm="confirm"
+		ref="calendar"
+	>
+    </up-calendar>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+import { onReady } from '@dcloudio/uni-app';
+
+const show = ref(true);
+const mode = ref('range');
+
+const confirm = (e) => {
+  console.log(e);
+};
+
+const formatter = (day) => {
+  const d = new Date();
+  let month = d.getMonth() + 1;
+  const date = d.getDate();
+  if (day.month == month && day.day == date + 3) {
+    day.bottomInfo = '有优惠';
+    day.dot = true;
+  }
+  return day;
+};
+
+const onReady = () => {
+  // 如果需要兼容微信小程序的话，需要用此写法
+  $refs.calendar.setFormatter(formatter);
+};
+</script>
+
+<style lang="scss" scoped>
+	.title{
+		color: $up-primary;
+		text-align: center;
+		padding: 20rpx 0 0 0;
+	}
+</style>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/calendar.md`</small>
 
 </template>
 

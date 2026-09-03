@@ -12,7 +12,7 @@ Parses an HTML string into native nodes on every platform.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -130,21 +130,231 @@ content 为空时渲染 children
 
 <template #uniapp>
 
-::: tip
-No snippet could be extracted automatically — please read the source.
-:::
+#### 基本使用
 
-<small>Auto-imported through easycom — no import statement needed.</small>
+```vue
+<template>
+	<view class="up-content">
+		<up-parse :content="content"></up-parse>
+	</view>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 创建响应式数据  
+const content = ref(`  
+	<p>露从今夜白，月是故乡明</p>  
+	<img src="https://cdn.uviewui.com/uview/swiper/2.jpg" alt="Image Description" />  
+`);  
+</script>
+```
+
+```vue
+<style lang="scss" scoped>
+    .up-content {
+        padding: 24rpx;
+    }
+</style>
+```
+
+#### 长按复制
+
+```vue
+<up-parse :content="content" :selectable="true"></up-parse>
+```
+
+#### 设置样式
+
+```vue
+<template>
+	<view class="up-content">
+		<up-parse :content="content" :tagStyle="style"></up-parse>
+	</view>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 创建响应式数据  
+const paragraphText = ref('露从今夜白，月是故乡明');  
+const imageSrc = ref('https://cdn.uviewui.com/uview/swiper/2.jpg');  
+  
+// 样式对象，可以直接绑定到元素上  
+const styles = "{p: { color: 'red', fontSize: '32rpx'  },  span: {  fontSize: '30rpx'  }  }";  
+</script>
+```
+
+```vue
+<template>
+	<view class="up-content">
+		<up-parse :content="content"></up-parse>
+	</view>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 创建响应式数据  
+const content = ref(`  
+	<p>露从今夜白，月是故乡明</p>  
+	<img src="https://cdn.uviewui.com/uview/swiper/2.jpg" />  
+`);  
+</script>
+```
+
+```vue
+<style lang="scss" scoped>
+    .up-content {
+        padding: 24rpx;
+        font-size: 32rpx;
+        color: $u-content-color;
+        line-height: 1.6;
+    }
+</style>
+```
+
+#### 懒加载和占位图
+
+```vue
+<up-parse :content="content" :lazyLoad="true" :loadingImg="/xxx/xxx.jpg"></up-parse>
+```
+
+#### 链接跳转/锚点
+
+```vue
+<a href="#">跳转到顶部</a>
+<a href="#list">跳转到列表</a>
+<a href="https://github.com/jin-yufeng/mp-html">外部链接</a>
+<a href="/pages/componentsB/parse/jump">内部链接</a>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/parse.md`</small>
 
 </template>
 
 <template #uniappx>
 
-::: tip
-No snippet could be extracted automatically — please read the source.
-:::
+#### 基本使用
 
-<small>Auto-imported through easycom — no import statement needed.</small>
+```vue
+<template>
+	<view class="up-content">
+		<up-parse :content="content"></up-parse>
+	</view>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 创建响应式数据  
+const content = ref(`  
+	<p>露从今夜白，月是故乡明</p>  
+	<img src="https://cdn.uviewui.com/uview/swiper/2.jpg" alt="Image Description" />  
+`);  
+</script>
+```
+
+```vue
+<style lang="scss" scoped>
+    .up-content {
+        padding: 24rpx;
+    }
+</style>
+```
+
+#### 长按复制
+
+```vue
+<up-parse :content="content" :selectable="true"></up-parse>
+```
+
+#### 设置样式
+
+```vue
+<template>
+	<view class="up-content">
+		<up-parse :content="content" :tagStyle="style"></up-parse>
+	</view>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 创建响应式数据  
+const paragraphText = ref('露从今夜白，月是故乡明');  
+const imageSrc = ref('https://cdn.uviewui.com/uview/swiper/2.jpg');  
+  
+// 样式对象，可以直接绑定到元素上  
+const styles = {  
+  p: {  
+    color: 'red',  
+    fontSize: '32rpx'  
+  },  
+  span: {  
+    fontSize: '30rpx'  
+  }  
+};  
+</script>
+```
+
+```vue
+<template>
+	<view class="up-content">
+		<up-parse :content="content"></up-parse>
+	</view>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 创建响应式数据  
+const content = ref(`  
+	<p>露从今夜白，月是故乡明</p>  
+	<img src="https://cdn.uviewui.com/uview/swiper/2.jpg" />  
+`);  
+</script>
+```
+
+```vue
+<style lang="scss" scoped>
+    .up-content {
+        padding: 24rpx;
+        font-size: 32rpx;
+        color: $up-content-color;
+        line-height: 1.6;
+    }
+</style>
+```
+
+#### 懒加载和占位图
+
+```vue
+<up-parse :content="content" :lazyLoad="true" :loadingImg="/xxx/xxx.jpg"></up-parse>
+```
+
+#### 链接跳转/锚点
+
+```vue
+<a href="#">跳转到顶部</a>
+<a href="#list">跳转到列表</a>
+<a href="https://github.com/jin-yufeng/mp-html">外部链接</a>
+<a href="/pages/componentsB/parse/jump">内部链接</a>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/parse.md`</small>
 
 </template>
 

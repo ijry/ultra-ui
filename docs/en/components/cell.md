@@ -12,7 +12,7 @@ The general-purpose list row: title, label, icon, arrow and custom content.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -255,143 +255,277 @@ cell 的 border 优先于 cell-group 的 border
 
 <template #uniapp>
 
-```vue
-<up-cell
-    title="uview-plus"
-    value="内容"
-    :isLink="true"
-></up-cell>
-```
+#### 基础功能
 
 ```vue
-<up-cell
-    title="利剑出鞘,一统江湖"
-    value="内容"
-    label="挣脱束缚,向往自由"
-></up-cell>
+<template>
+	<up-cell-group>
+		<up-cell icon="setting-fill" title="个人设置"></up-cell>
+		<up-cell icon="integral-fill" title="会员等级" value="新版本"></up-cell>
+	</up-cell-group>
+</template>
 ```
+
+#### 自定义内容
 
 ```vue
-<up-cell
-    title="单元格"
-    icon="lock-fill"
-></up-cell>
+<up-cell-group>
+	<up-cell  title="夕阳无限好" arrow-direction="down">
+		<template #icon>
+			<up-icon size="32" name="search"></up-icon>
+		</template>
+		<!-- <up-badge count="99" :absolute="false" slot="right-icon"></up-badge> -->
+		<template #right-icon>
+			<up-switch v-model="checked"></up-switch>
+		</template>
+	</up-cell>
+	<up-cell icon="setting-fill" title="只是近黄昏"></up-cell>
+</up-cell-group>
 ```
+
+#### 自定义大小
 
 ```vue
-<up-cell
-    title="单元格"
-    icon="https://cdn.uviewui.com/uview/example/tag.png"
-></up-cell>
+
+<up-cell-group>
+	<up-cell
+	    size="large"
+	    title="单元格"
+	    value="内容"
+	    isLink
+	></up-cell>
+	<up-cell
+	    size="large"
+	    title="单元格"
+	    value="内容"
+	    label="描述信息"
+	></up-cell>
+</up-cell-group>
 ```
+
+#### 展示右箭头
 
 ```vue
-<up-cell
-    size="large"
-    title="单元格"
-    value="内容"
-    isLink
-></up-cell>
+<up-cell-group>
+	<up-cell icon="share" title="停车坐爱枫林晚" :isLink="true" arrow-direction="down"></up-cell>
+	<up-cell icon="map" title="霜叶红于二月花" :isLink="false"></up-cell>
+</up-cell-group>
 ```
+
+#### 跳转页面
 
 ```vue
-<up-cell
-    size="large"
-    title="单元格"
-    value="内容"
-    label="描述信息"
-></up-cell>
+<up-cell-group>
+	<up-cell
+	    title="打开标签页"
+	    isLink
+	    url="/pages/componentsB/tag/tag"
+	></up-cell>
+	<up-cell
+	    title="打开徽标页"
+	    isLink
+	    url="/pages/componentsB/badge/badge"
+	></up-cell>
+</up-cell-group>
 ```
+
+#### 右侧内容垂直居中
 
 ```vue
-<up-cell
-    title="单元格"
-    value="组件"
-    isLink
-></up-cell>
+<up-cell-group>
+    <up-cell
+        title="单元格"
+        value="内容"
+        label="描述信息"
+        center
+    ></up-cell>
+</up-cell-group>
 ```
+
+#### 自定义插槽
 
 ```vue
-<up-cell
-    title="单元格"
-    value="工具"
-    arrow-direction="up"
-    isLink
-></up-cell>
+<up-cell-group>
+    <up-cell value="内容">
+		<template #title>
+			<view
+				class="u-slot-title"
+			>
+				<text class="u-cell-text">单元格</text>
+				<up-tag
+					text="标签"
+					plain
+					size="mini"
+					type="warning"
+				>
+				</up-tag>
+			</view>
+		</template>
+    </up-cell>
+    <up-cell
+        title="单元格"
+    	isLink
+    >
+		<template #value>
+			<text
+					class="u-slot-value"
+				>99</text>
+		</template>
+    </up-cell>
+</up-cell-group>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsA/cell/cell.uvue`</small>
+```css
+/* App.vue */
+.cell-hover-class {
+	background-color: rgb(235, 237, 238);
+}
+
+/* 或者单是设置透明度 */
+.cell-hover-class {
+	opacity: 0.5;
+}
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/cell.md`</small>
 
 </template>
 
 <template #uniappx>
 
-```vue
-<up-cell
-    title="uview-plus"
-    value="内容"
-    :isLink="true"
-></up-cell>
-```
+#### 基础功能
 
 ```vue
-<up-cell
-    title="利剑出鞘,一统江湖"
-    value="内容"
-    label="挣脱束缚,向往自由"
-></up-cell>
+<template>
+	<up-cell-group>
+		<up-cell icon="setting-fill" title="个人设置"></up-cell>
+		<up-cell icon="integral-fill" title="会员等级" value="新版本"></up-cell>
+	</up-cell-group>
+</template>
 ```
+
+#### 自定义内容
 
 ```vue
-<up-cell
-    title="单元格"
-    icon="lock-fill"
-></up-cell>
+<up-cell-group>
+	<up-cell  title="夕阳无限好" arrow-direction="down">
+		<template #icon>
+			<up-icon size="32" name="search"></up-icon>
+		</template>
+		<!-- <up-badge count="99" :absolute="false" slot="right-icon"></up-badge> -->
+		<template #right-icon>
+			<up-switch v-model="checked"></up-switch>
+		</template>
+	</up-cell>
+	<up-cell icon="setting-fill" title="只是近黄昏"></up-cell>
+</up-cell-group>
 ```
+
+#### 自定义大小
 
 ```vue
-<up-cell
-    title="单元格"
-    icon="https://cdn.uviewui.com/uview/example/tag.png"
-></up-cell>
+
+<up-cell-group>
+	<up-cell
+	    size="large"
+	    title="单元格"
+	    value="内容"
+	    isLink
+	></up-cell>
+	<up-cell
+	    size="large"
+	    title="单元格"
+	    value="内容"
+	    label="描述信息"
+	></up-cell>
+</up-cell-group>
 ```
+
+#### 展示右箭头
 
 ```vue
-<up-cell
-    size="large"
-    title="单元格"
-    value="内容"
-    isLink
-></up-cell>
+<up-cell-group>
+	<up-cell icon="share" title="停车坐爱枫林晚" :isLink="true" arrow-direction="down"></up-cell>
+	<up-cell icon="map" title="霜叶红于二月花" :isLink="false"></up-cell>
+</up-cell-group>
 ```
+
+#### 跳转页面
 
 ```vue
-<up-cell
-    size="large"
-    title="单元格"
-    value="内容"
-    label="描述信息"
-></up-cell>
+<up-cell-group>
+	<up-cell
+	    title="打开标签页"
+	    isLink
+	    url="/pages/componentsB/tag/tag"
+	></up-cell>
+	<up-cell
+	    title="打开徽标页"
+	    isLink
+	    url="/pages/componentsB/badge/badge"
+	></up-cell>
+</up-cell-group>
 ```
+
+#### 右侧内容垂直居中
 
 ```vue
-<up-cell
-    title="单元格"
-    value="组件"
-    isLink
-></up-cell>
+<up-cell-group>
+    <up-cell
+        title="单元格"
+        value="内容"
+        label="描述信息"
+        center
+    ></up-cell>
+</up-cell-group>
 ```
+
+#### 自定义插槽
 
 ```vue
-<up-cell
-    title="单元格"
-    value="工具"
-    arrow-direction="up"
-    isLink
-></up-cell>
+<up-cell-group>
+    <up-cell value="内容">
+		<template #title>
+			<view
+				class="u-slot-title"
+			>
+				<text class="u-cell-text">单元格</text>
+				<up-tag
+					text="标签"
+					plain
+					size="mini"
+					type="warning"
+				>
+				</up-tag>
+			</view>
+		</template>
+    </up-cell>
+    <up-cell
+        title="单元格"
+    	isLink
+    >
+		<template #value>
+			<text
+					class="u-slot-value"
+				>99</text>
+		</template>
+    </up-cell>
+</up-cell-group>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsA/cell/cell.uvue`</small>
+```css
+/* App.vue */
+.cell-hover-class {
+	background-color: rgb(235, 237, 238);
+}
+
+/* 或者单是设置透明度 */
+.cell-hover-class {
+	opacity: 0.5;
+}
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/cell.md`</small>
 
 </template>
 

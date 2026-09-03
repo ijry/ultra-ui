@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -138,47 +138,115 @@ timingFunction 对应 CSS transition-timing-function
 
 <template #uniapp>
 
+#### 基本使用
+
+通过slot传入内容，默认使用的是`fade`效果
+
 ```vue
-<up-transition
-    :mode="mode"
-    :show="show"
-    :custom-style="style"
-    @click="click"
-    @beforeEnter="beforeEnter"
-    @enter="enter"
-    @afterEnter="afterEnter"
-    @beforeLeave="beforeLeave"
-    @leave="leave"
-    @afterLeave="afterLeave"
->
-    <view class="transition"></view>
-</up-transition>
+<template>
+    <up-transition :show="show">
+        <view class="transition"></view>
+    </up-transition>
+</template>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsA/transition/transition.uvue`</small>
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const show = ref(true);
+</script>
+```
+
+#### 动画模式
+
+通过`mode`传入效果模式，目前支持：
+- `fade` 淡入
+- `fade-up` 上滑淡入
+- `fade-down` 下滑淡入
+- `fade-left` 左滑淡入
+- `fade-right` 右滑淡入
+- `slide-up` 上滑进入
+- `slide-down` 下滑进入
+- `slide-left` 左滑进入
+- `slide-right` 右滑进入
+- `zoom-in` 缩放
+- `zoom-out` 缩放
+
+```vue
+<template>
+    <up-transition :show="show" mode="zoom-in">
+        <view class="transition"></view>
+    </up-transition>
+</template>
+```
+
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const show = ref(true);
+</script>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/transition.md`</small>
 
 </template>
 
 <template #uniappx>
 
+#### 基本使用
+
+通过slot传入内容，默认使用的是`fade`效果
+
 ```vue
-<up-transition
-    :mode="mode"
-    :show="show"
-    :custom-style="style"
-    @click="click"
-    @beforeEnter="beforeEnter"
-    @enter="enter"
-    @afterEnter="afterEnter"
-    @beforeLeave="beforeLeave"
-    @leave="leave"
-    @afterLeave="afterLeave"
->
-    <view class="transition"></view>
-</up-transition>
+<template>
+    <up-transition :show="show">
+        <view class="transition"></view>
+    </up-transition>
+</template>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsA/transition/transition.uvue`</small>
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const show = ref(true);
+</script>
+```
+
+#### 动画模式
+
+通过`mode`传入效果模式，目前支持：
+- `fade` 淡入
+- `fade-up` 上滑淡入
+- `fade-down` 下滑淡入
+- `fade-left` 左滑淡入
+- `fade-right` 右滑淡入
+- `slide-up` 上滑进入
+- `slide-down` 下滑进入
+- `slide-left` 左滑进入
+- `slide-right` 右滑进入
+- `zoom-in` 缩放
+- `zoom-out` 缩放
+
+```vue
+<template>
+    <up-transition :show="show" mode="zoom-in">
+        <view class="transition"></view>
+    </up-transition>
+</template>
+```
+
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const show = ref(true);
+</script>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/transition.md`</small>
 
 </template>
 

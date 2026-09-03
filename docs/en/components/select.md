@@ -12,7 +12,7 @@ A bottom-sheet list picker, ideal when there are few options.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -112,45 +112,91 @@ No snippet could be extracted automatically — please read the source.
 
 <template #uniapp>
 
+#### 点击获取所点击选项ID
+
 ```vue
-<up-select v-model:current="cateId" label="分类"
-    :options="scenesList"></up-select>
+<template>
+	<view>
+        <up-select v-model:current="cateId" label="分类"
+            :options="cateList" @select="selectItem"></up-select>
+	</view>
+</template>
 ```
 
 ```vue
-<up-select v-model:current="cateId" label="分类"
-    :options="scenesList">
-    <template #optionItem="{item}">
-        <text class="up-select__item-text">
-            自定义选项
-        </text>
-    </template>
-</up-select>
+<script setup>  
+import { ref, onMounted } from 'vue';  
+  
+// 响应式数据  
+const cateId = ref('')
+const cateList = ref([
+    {
+        id: '1',
+        name: '分类1'
+    },
+    {
+        id: '2',
+        name: '分类2'
+    },
+    {
+        id: '3',
+        name: '分类4'
+    },
+])
+  
+// 方法  
+const selectItem = (item) => {  
+  console.log(item);  
+};  
+</script>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/select/select.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/select.md`</small>
 
 </template>
 
 <template #uniappx>
 
+#### 点击获取所点击选项ID
+
 ```vue
-<up-select v-model:current="cateId" label="分类"
-    :options="scenesList"></up-select>
+<template>
+	<view>
+        <up-select v-model:current="cateId" label="分类"
+            :options="cateList" @select="selectItem"></up-select>
+	</view>
+</template>
 ```
 
 ```vue
-<up-select v-model:current="cateId" label="分类"
-    :options="scenesList">
-    <template #optionItem="{item}">
-        <text class="up-select__item-text">
-            自定义选项
-        </text>
-    </template>
-</up-select>
+<script setup>  
+import { ref, onMounted } from 'vue';  
+  
+// 响应式数据  
+const cateId = ref('')
+const cateList = ref([
+    {
+        id: '1',
+        name: '分类1'
+    },
+    {
+        id: '2',
+        name: '分类2'
+    },
+    {
+        id: '3',
+        name: '分类4'
+    },
+])
+  
+// 方法  
+const selectItem = (item) => {  
+  console.log(item);  
+};  
+</script>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/select/select.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/select.md`</small>
 
 </template>
 

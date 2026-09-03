@@ -12,7 +12,7 @@ A multi-line input that grows with content and can enforce a length limit.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -261,113 +261,215 @@ placeholderStyle 支持对象或字符串
 
 <template #uniapp>
 
-#### 基础使用
+#### 基本使用
 
 ```vue
-<up-textarea
-    v-model="value1"
-    placeholder="请输入内容"
-></up-textarea>
+<up-textarea v-model="value1" placeholder="请输入内容" ></up-textarea>
+```
+
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 使用 ref 创建响应式引用  
+const value1 = ref('');  
+</script>
 ```
 
 #### 字数统计
 
 ```vue
-<up-textarea
-    v-model="value2"
-    placeholder="请输入内容"
-    count
-></up-textarea>
+<up-textarea v-model="value2" placeholder="请输入内容" count ></up-textarea>
+```
+
+```js
+import { ref } from 'vue';  
+  
+// 使用 ref 创建响应式引用  
+const value2 = ref('统计字数');
 ```
 
 #### 自动增高
 
 ```vue
-<up-textarea
-    v-model="value3"
-    placeholder="请输入内容"
-    autoHeight
-></up-textarea>
+<up-textarea v-model="value3" placeholder="请输入内容" autoHeight ></up-textarea>
+```
+
+```js
+import { ref } from 'vue';  
+  
+// 使用 ref 创建响应式引用  
+const value3 = ref('');
 ```
 
 #### 禁用状态
 
 ```vue
-<up-textarea
-    v-model="value4"
-    placeholder="文本域已被禁用"
-    disabled
-    count
-></up-textarea>
+<up-textarea v-model="value4" placeholder="文本域已被禁用" disabled count></up-textarea>
+```
+
+```js
+import { ref } from 'vue';  
+  
+// 使用 ref 创建响应式引用  
+const value4 = ref('');
 ```
 
 #### 下划线模式
 
 ```vue
-<up-textarea
-    v-model="value5"
-    placeholder="请输入内容"
-    border="bottom"
-></up-textarea>
+<up-textarea v-model="value5" placeholder="请输入内容" border="bottom"></up-textarea>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/textarea/textarea.uvue`</small>
+```js
+import { ref } from 'vue';  
+  
+// 使用 ref 创建响应式引用  
+const value5 = ref('');
+```
+
+#### 格式化处理
+
+```vue
+<template>
+    <up-textarea v-model="value" :formatter="formatter" ref="textareaRef"></up-textarea>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref, onMounted } from 'vue';  
+import {
+	onLoad,
+	onShow,
+	onReady
+} from "@dcloudio/uni-app";
+
+// 创建响应式数据  
+const value = ref('');  
+const textareaRef = ref(null);
+  
+// 格式化方法  
+const formatter = (val) => {  
+  // 让输入框只能输入数值，过滤其他字符  
+  return val.replace(/[^0-9]/ig, "");  
+};  
+  
+// 生命周期钩子，使用 onMounted 替代 onReady  
+onReady(() => {  
+    textareaRef.value.setFormatter(formatter);  
+});  
+</script>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/textarea.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 基础使用
+#### 基本使用
 
 ```vue
-<up-textarea
-    v-model="value1"
-    placeholder="请输入内容"
-></up-textarea>
+<up-textarea v-model="value1" placeholder="请输入内容"></up-textarea>
+```
+
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 使用 ref 创建响应式引用  
+const value1 = ref('');  
+</script>
 ```
 
 #### 字数统计
 
 ```vue
-<up-textarea
-    v-model="value2"
-    placeholder="请输入内容"
-    count
-></up-textarea>
+<up-textarea v-model="value2" placeholder="请输入内容" count ></up-textarea>
+```
+
+```js
+import { ref } from 'vue';  
+  
+// 使用 ref 创建响应式引用  
+const value2 = ref('统计字数');
 ```
 
 #### 自动增高
 
 ```vue
-<up-textarea
-    v-model="value3"
-    placeholder="请输入内容"
-    autoHeight
-></up-textarea>
+<up-textarea v-model="value3" placeholder="请输入内容" autoHeight ></up-textarea>
+```
+
+```js
+import { ref } from 'vue';  
+  
+// 使用 ref 创建响应式引用  
+const value3 = ref('');
 ```
 
 #### 禁用状态
 
 ```vue
-<up-textarea
-    v-model="value4"
-    placeholder="文本域已被禁用"
-    disabled
-    count
-></up-textarea>
+<up-textarea v-model="value4" placeholder="文本域已被禁用" disabled count></up-textarea>
+```
+
+```js
+import { ref } from 'vue';  
+  
+// 使用 ref 创建响应式引用  
+const value4 = ref('');
 ```
 
 #### 下划线模式
 
 ```vue
-<up-textarea
-    v-model="value5"
-    placeholder="请输入内容"
-    border="bottom"
-></up-textarea>
+<up-textarea v-model="value5" placeholder="请输入内容" border="bottom"></up-textarea>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/textarea/textarea.uvue`</small>
+```js
+import { ref } from 'vue';  
+  
+// 使用 ref 创建响应式引用  
+const value5 = ref('');
+```
+
+#### 格式化处理
+
+```vue
+<template>
+    <up-textarea v-model="value" :formatter="formatter" ref="textareaRef"></up-textarea>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref, onMounted } from 'vue';  
+import {
+	onLoad,
+	onShow,
+	onReady
+} from "@dcloudio/uni-app";
+
+// 创建响应式数据  
+const value = ref('');  
+const textareaRef = ref(null);
+  
+// 格式化方法  
+const formatter = (val) => {  
+  // 让输入框只能输入数值，过滤其他字符  
+  return val.replace(/[^0-9]/ig, "");  
+};  
+  
+// 生命周期钩子，使用 onMounted 替代 onReady  
+onReady(() => {  
+    textareaRef.value.setFormatter(formatter);  
+});  
+</script>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/textarea.md`</small>
 
 </template>
 

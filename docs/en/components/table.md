@@ -12,7 +12,7 @@ A data table with a fixed header, custom columns and cell slots.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -253,75 +253,104 @@ padding 与 fontSize 控制疏密
 
 <template #uniapp>
 
-#### 演示效果
+#### 基本使用
 
 ```vue
-<up-table :align="align" :borderColor="borderColor">
-    <up-tr class="up-tr">
-        <up-th class="up-th">姓名</up-th>
-        <up-th class="up-th">年龄</up-th>
-        <up-th class="up-th">籍贯</up-th>
-        <up-th class="up-th">性别</up-th>
-    </up-tr>
-    <up-tr class="up-tr">
-        <up-td class="up-td">吕布</up-td>
-        <up-td class="up-td">22</up-td>
-        <up-td class="up-td">楚河</up-td>
-        <up-td class="up-td">男</up-td>
-    </up-tr>
-    <up-tr class="up-tr">
-        <up-td class="up-td">项羽</up-td>
-        <up-td class="up-td">28</up-td>
-        <up-td class="up-td">汉界</up-td>
-        <up-td class="up-td">男</up-td>
-    </up-tr>
-    <up-tr class="up-tr">
-        <up-td class="up-td">木兰</up-td>
-        <up-td class="up-td">24</up-td>
-        <up-td class="up-td">南国</up-td>
-        <up-td class="up-td">女</up-td>
-    </up-tr>
+<template>
+	<up-table>
+		<up-tr>
+			<up-th>学校</up-th>
+			<up-th>班级</up-th>
+			<up-th>年龄</up-th>
+		</up-tr>
+		<up-tr>
+			<up-td>浙江大学</up-td>
+			<up-td>二年级</up-td>
+			<up-td>22</up-td>
+		</up-tr>
+		<up-tr>
+			<up-td>清华大学</up-td>
+			<up-td>05班</up-td>
+			<up-td>20</up-td>
+		</up-tr>
+	</up-table>
+</template>
+```
+
+#### 兼容性
+
+```vue
+<up-table>
+	<up-tr class="up-tr">
+		<up-th class="up-th">姓名</up-th>
+		<up-th class="up-th">年龄</up-th>
+		<up-th class="up-th">籍贯</up-th>
+		<up-th class="up-th">性别</up-th>
+	</up-tr>
+	<up-tr class="up-tr">
+		<up-td class="up-td">吕布</up-td>
+		<up-td class="up-td">22</up-td>
+		<up-td class="up-td">楚河</up-td>
+		<up-td class="up-td">男</up-td>
+	</up-tr>
 </up-table>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsB/table/table.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/table.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 演示效果
+#### 基本使用
 
 ```vue
-<up-table :align="align" :borderColor="borderColor">
-    <up-tr class="up-tr">
-        <up-th class="up-th">姓名</up-th>
-        <up-th class="up-th">年龄</up-th>
-        <up-th class="up-th">籍贯</up-th>
-        <up-th class="up-th">性别</up-th>
-    </up-tr>
-    <up-tr class="up-tr">
-        <up-td class="up-td">吕布</up-td>
-        <up-td class="up-td">22</up-td>
-        <up-td class="up-td">楚河</up-td>
-        <up-td class="up-td">男</up-td>
-    </up-tr>
-    <up-tr class="up-tr">
-        <up-td class="up-td">项羽</up-td>
-        <up-td class="up-td">28</up-td>
-        <up-td class="up-td">汉界</up-td>
-        <up-td class="up-td">男</up-td>
-    </up-tr>
-    <up-tr class="up-tr">
-        <up-td class="up-td">木兰</up-td>
-        <up-td class="up-td">24</up-td>
-        <up-td class="up-td">南国</up-td>
-        <up-td class="up-td">女</up-td>
-    </up-tr>
+<template>
+	<up-table>
+		<up-tr>
+			<up-th>学校</up-th>
+			<up-th>班级</up-th>
+			<up-th>年龄</up-th>
+		</up-tr>
+		<up-tr>
+			<up-td>浙江大学</up-td>
+			<up-td>二年级</up-td>
+			<up-td>22</up-td>
+		</up-tr>
+		<up-tr>
+			<up-td>清华大学</up-td>
+			<up-td>05班</up-td>
+			<up-td>
+                <!-- 如果是非纯文本内容需要使用content插槽 -->
+                <template #content>
+                    <view>20</view>
+                </template>
+            </up-td>
+		</up-tr>
+	</up-table>
+</template>
+```
+
+#### 兼容性
+
+```vue
+<up-table>
+	<up-tr class="up-tr">
+		<up-th class="up-th">姓名</up-th>
+		<up-th class="up-th">年龄</up-th>
+		<up-th class="up-th">籍贯</up-th>
+		<up-th class="up-th">性别</up-th>
+	</up-tr>
+	<up-tr class="up-tr">
+		<up-td class="up-td">吕布</up-td>
+		<up-td class="up-td">22</up-td>
+		<up-td class="up-td">楚河</up-td>
+		<up-td class="up-td">男</up-td>
+	</up-tr>
 </up-table>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsB/table/table.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/table.md`</small>
 
 </template>
 

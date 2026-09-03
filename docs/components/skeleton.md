@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -258,145 +258,157 @@ animate 控制扫描高光效果
 
 <template #uniapp>
 
-#### 基础使用
+#### 基本使用
+
+组件由```标题```，```段落```和```头像```组件组件，其中```段落```需要通过```rows```参数配置才显示，可以通过```title```和```avatar```是否显示```标题```和```头像``` 。  
+该组件的使用，有几个需要注意的点，如下：
+- `title`(可选)，是否显示```标题```占位行，该占位行不布满全屏宽度，同时与```段落```的距离较大以做明显区分
+- `avatar`(可选)，是否在左上角位置显示圆形的```头像```占位区域
+- `rows`(可选)，```段落```的行数
+- `loading`(必选)，是否加载中状态，如果为`true```则显示骨架屏组件占位，否则显示插槽中的内容
+
+数据请求完成后，将`loading`设置为`false`，会隐藏骨架组件
 
 ```vue
-<up-skeleton
-    rows="3"
-    title
-    loading
-></up-skeleton>
+<template>
+	<up-skeleton
+	    rows="3"
+	    title
+		loading
+	></up-skeleton>
+</template>
 ```
 
-#### 自定义段落行数
+#### 加载中动画
+
+设置`animate`为`true`，加载中的骨架块将会有一个动画效果，用以加强视觉效果。
 
 ```vue
-<up-skeleton
-    rows="2"
-    title
-    loading
-></up-skeleton>
+<up-skeleton :loading="true" :animate="true"></up-skeleton>
 ```
 
-#### 设置段落宽度
+#### 显示头像
 
 ```vue
-<up-skeleton
-    rows="2"
-    title
-    :rowsWidth="['100%', '35%']"
-    loading
-></up-skeleton>
+<up-skeleton :loading="true" avatar rows="1"></up-skeleton>
 ```
 
-#### 设置段落高度
+#### 插槽内容
+
+可以通过插槽写入展示的内容，当请求结束，将```loading```设置为```false```，此时会隐藏骨架组件，同时展示插槽内容。
 
 ```vue
-<up-skeleton
-    rows="3"
-    title
-    :rowsWidth="['100%', '100%', '100%']"
-    :rowsHeight="['18px', '18px', '80px']"
-    loading
-></up-skeleton>
+<template>
+	<up-skeleton
+	    rows="2"
+		:loading="loading"
+		avatar
+		:title="false"
+	>
+		<up-text>loading为false时，将会展示此处插槽内容</up-text>
+	</up-skeleton>
+</template>
 ```
-
-#### 是否开启动画
 
 ```vue
-<up-skeleton
-    :animate="switch1"
-    rows="3"
-    title
-    loading
-></up-skeleton>
+<script setup>  
+import { ref, onMounted } from 'vue';  
+import {
+	onLoad,
+	onShow
+} from "@dcloudio/uni-app";
+
+// 响应式数据  
+const loading = ref(true);  
+  
+onLoad(() => {  
+  // 延时2秒钟  
+  uni.$u.sleep(2000).then(() => {  
+    loading.value = false;  
+  });  
+});  
+</script>
 ```
 
-#### 展示头像
-
-```vue
-<up-skeleton
-    :animate="switch1"
-    rows="3"
-    title
-    loading
-    avatar
-></up-skeleton>
-```
-
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsC/skeleton/skeleton.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/skeleton.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 基础使用
+#### 基本使用
+
+组件由```标题```，```段落```和```头像```组件组件，其中```段落```需要通过```rows```参数配置才显示，可以通过```title```和```avatar```是否显示```标题```和```头像``` 。  
+该组件的使用，有几个需要注意的点，如下：
+- `title`(可选)，是否显示```标题```占位行，该占位行不布满全屏宽度，同时与```段落```的距离较大以做明显区分
+- `avatar`(可选)，是否在左上角位置显示圆形的```头像```占位区域
+- `rows`(可选)，```段落```的行数
+- `loading`(必选)，是否加载中状态，如果为`true```则显示骨架屏组件占位，否则显示插槽中的内容
+
+数据请求完成后，将`loading`设置为`false`，会隐藏骨架组件
 
 ```vue
-<up-skeleton
-    rows="3"
-    title
-    loading
-></up-skeleton>
+<template>
+	<up-skeleton
+	    rows="3"
+	    title
+		loading
+	></up-skeleton>
+</template>
 ```
 
-#### 自定义段落行数
+#### 加载中动画
+
+设置`animate`为`true`，加载中的骨架块将会有一个动画效果，用以加强视觉效果。
 
 ```vue
-<up-skeleton
-    rows="2"
-    title
-    loading
-></up-skeleton>
+<up-skeleton :loading="true" :animate="true"></up-skeleton>
 ```
 
-#### 设置段落宽度
+#### 显示头像
 
 ```vue
-<up-skeleton
-    rows="2"
-    title
-    :rowsWidth="['100%', '35%']"
-    loading
-></up-skeleton>
+<up-skeleton :loading="true" avatar rows="1"></up-skeleton>
 ```
 
-#### 设置段落高度
+#### 插槽内容
+
+可以通过插槽写入展示的内容，当请求结束，将```loading```设置为```false```，此时会隐藏骨架组件，同时展示插槽内容。
 
 ```vue
-<up-skeleton
-    rows="3"
-    title
-    :rowsWidth="['100%', '100%', '100%']"
-    :rowsHeight="['18px', '18px', '80px']"
-    loading
-></up-skeleton>
+<template>
+	<up-skeleton
+	    rows="2"
+		:loading="loading"
+		avatar
+		:title="false"
+	>
+		<up-text>loading为false时，将会展示此处插槽内容</up-text>
+	</up-skeleton>
+</template>
 ```
-
-#### 是否开启动画
 
 ```vue
-<up-skeleton
-    :animate="switch1"
-    rows="3"
-    title
-    loading
-></up-skeleton>
+<script setup>  
+import { ref, onMounted } from 'vue';  
+import {
+	onLoad,
+	onShow
+} from "@dcloudio/uni-app";
+
+// 响应式数据  
+const loading = ref(true);  
+  
+onLoad(() => {  
+  // 延时2秒钟  
+  uni.$u.sleep(2000).then(() => {  
+    loading.value = false;  
+  });  
+});  
+</script>
 ```
 
-#### 展示头像
-
-```vue
-<up-skeleton
-    :animate="switch1"
-    rows="3"
-    title
-    loading
-    avatar
-></up-skeleton>
-```
-
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsC/skeleton/skeleton.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/skeleton.md`</small>
 
 </template>
 

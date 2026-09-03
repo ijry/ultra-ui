@@ -12,7 +12,7 @@ A single- or multi-column scroll picker, including cascading data.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -155,147 +155,316 @@ No snippet could be extracted automatically — please read the source.
 
 <template #uniapp>
 
-```vue
-<up-picker
-    :show="show1"
-    :columns="columns1"
-    @change="change"
-    @cancel="cancel"
-    @confirm="confirm"
-></up-picker>
-```
+#### 基本使用
 
 ```vue
-<up-picker
-    :show="show2"
-    :columns="columns2"
-    :defaultIndex="[1]"
-    @cancel="cancel"
-    @confirm="confirm"
-    @change="change"
-></up-picker>
+<template>
+	<view>
+		<up-picker :show="show" :columns="columns"></up-picker>
+		<up-button @click="show = true">打开</up-button>
+	</view>
+</template>
+
+<script setup>
+import { ref, reactive } from 'vue';
+
+const show = ref(false);
+const columns = reactive([
+  ['中国', '美国', '日本']
+]);
+</script>
 ```
+
+#### 单选快捷组件使用
 
 ```vue
-<up-picker
-    :show="show3"
-    :columns="columns3"
-    ref="uPicker3"
-    @cancel="cancel"
-    @confirm="confirm"
-    @change="changeHandler1"
-></up-picker>
+<template>
+	<view>
+		<up-picker-data
+        v-model="info.cate"
+        title="请选择文章分类"
+        :options="cateList"
+        valueKey="id"
+        labelKey="name">
+    </up-picker-data>
+	</view>
+</template>
+<script setup>
+import {ref} from 'vue'
+// 注意这里只需要一层数组，与基础用法不一样，基础用法是两层数组。
+const cateList = ref([
+  {
+    'id' => 1,
+    'name' => '分类1'
+  },
+  {
+    'id' => 2,
+    'name' => '分类2'
+  }
+
+])
+</script
 ```
+
+#### 多列模式与多列联动
 
 ```vue
-<up-picker
-    :show="show4"
-    :columns="columns4"
-    @cancel="cancel"
-    @confirm="confirm"
-    :loading="loading"
-    @change="changeHandler2"
-    ref="uPicker4"
-></up-picker>
+<template>
+    <up-picker :show="show" ref="uPickerRef" :columns="columns" @confirm="confirm" @change="changeHandler"></up-picker>
+</template>
+
+<script setup>
+import { ref, reactive } from 'vue';
+
+const show = ref(true);
+const columns = reactive([
+  ['中国', '美国'],
+  ['深圳', '厦门', '上海', '拉萨']
+]);
+const columnData = reactive([
+  ['深圳', '厦门', '上海', '拉萨'],
+  ['得州', '华盛顿', '纽约', '阿拉斯加']
+]);
+
+const uPickerRef = ref(null)
+const changeHandler = (e) => {
+  const {
+    columnIndex,
+    value,
+    values,
+    index,
+  } = e;
+
+  if (columnIndex === 0) {
+    uPickerRef.value.setColumnValues(1, columnData[index]);
+  }
+};
+
+const confirm = (e) => {
+  console.log('confirm', e);
+  show.value = false;
+};
+</script>
 ```
+
+#### 加载状态
 
 ```vue
-<up-picker
-    :show="show5"
-    :columns="columns5"
-    title="标题太长就会显示省略号"
-    @cancel="cancel"
-    @confirm="confirm"
-    @change="change"
-></up-picker>
+<template>
+    <up-picker :show="show" ref="uPickerRef" :loading="loading" :columns="columns" @change="changeHandler"></up-picker>
+</template>
+
+<script setup>
+import { ref, reactive } from 'vue';
+
+const show = ref(true);
+const loading = ref(false);
+const columns = reactive([
+  ['中国', '美国'],
+  ['深圳', '厦门', '上海', '拉萨']
+]);
+const columnData = reactive([
+  ['深圳', '厦门', '上海', '拉萨'],
+  ['得州', '华盛顿', '纽约', '阿拉斯加']
+]);
+
+const uPickerRef = ref(null)
+const changeHandler = (e) => {
+  const {
+    columnIndex,
+    index,
+    picker
+  } = e;
+
+  if (columnIndex === 0) {
+    loading.value = true;
+    // 模拟网络请求
+    setTimeout(() => {
+      uPickerRef.value.setColumnValues(1, columnData[index]);
+      loading.value = false;
+    }, 1500);
+  }
+};
+</script>
 ```
+
+#### 自定义选项值
 
 ```vue
-<up-picker
-    :show="show6"
-    :columns="columns6"
-    closeOnClickOverlay
-    @cancel="cancel"
-    @confirm="confirm"
-    @close="close"
-    @change="change"
-></up-picker>
+<template>
+    <up-cell
+				@click="show = true"
+				title="双向绑定"
+				isLink
+			>
+				<template #value>
+					<view>
+						{{selected.join('|')}}
+					</view>
+				</template>
+		</up-cell>
+    <up-picker v-model:show="show" v-model="selected" :columns="columns" keyName="label" valueName="id"></up-picker>
+</template>
+
+<script setup>
+import { ref, reactive } from 'vue';
+
+const show = ref(true);
+const selected = ref([804]);
+const columns = reactive([
+  [
+    {
+      label: '雪月夜',
+      // 其他属性值
+      id: 2021
+      // ...
+    },
+    {
+      label: '冷夜雨',
+      id: 804
+    }
+  ]
+]);
+</script>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/picker/picker.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/picker.md`</small>
 
 </template>
 
 <template #uniappx>
 
-```vue
-<up-picker
-    :show="show1"
-    :columns="columns1"
-    @change="change"
-    @cancel="cancel"
-    @confirm="confirm"
-></up-picker>
-```
+#### 基本使用
 
 ```vue
-<up-picker
-    :show="show2"
-    :columns="columns2"
-    :defaultIndex="[1]"
-    @cancel="cancel"
-    @confirm="confirm"
-    @change="change"
-></up-picker>
+<template>
+	<view>
+		<up-picker :show="show" :columns="columns"></up-picker>
+		<up-button @click="show = true">打开</up-button>
+	</view>
+</template>
+
+<script setup>
+import { ref, reactive } from 'vue';
+
+const show = ref(false);
+const columns = reactive([
+  ['中国', '美国', '日本']
+]);
+</script>
 ```
+
+#### 多列模式与多列联动
 
 ```vue
-<up-picker
-    :show="show3"
-    :columns="columns3"
-    ref="uPicker3"
-    @cancel="cancel"
-    @confirm="confirm"
-    @change="changeHandler1"
-></up-picker>
+<template>
+    <up-picker :show="show" ref="uPickerRef" :columns="columns" @confirm="confirm" @change="changeHandler"></up-picker>
+</template>
+
+<script setup>
+import { ref, reactive } from 'vue';
+
+const show = ref(true);
+const columns = reactive([
+  ['中国', '美国'],
+  ['深圳', '厦门', '上海', '拉萨']
+]);
+const columnData = reactive([
+  ['深圳', '厦门', '上海', '拉萨'],
+  ['得州', '华盛顿', '纽约', '阿拉斯加']
+]);
+
+const uPickerRef = ref(null)
+const changeHandler = (e) => {
+  const {
+    columnIndex,
+    value,
+    values,
+    index,
+  } = e;
+
+  if (columnIndex === 0) {
+    uPickerRef.value.setColumnValues(1, columnData[index]);
+  }
+};
+
+const confirm = (e) => {
+  console.log('confirm', e);
+  show.value = false;
+};
+</script>
 ```
+
+#### 加载状态
 
 ```vue
-<up-picker
-    :show="show4"
-    :columns="columns4"
-    @cancel="cancel"
-    @confirm="confirm"
-    :loading="loading"
-    @change="changeHandler2"
-    ref="uPicker4"
-></up-picker>
+<template>
+    <up-picker :show="show" ref="uPickerRef" :loading="loading" :columns="columns" @change="changeHandler"></up-picker>
+</template>
+
+<script setup>
+import { ref, reactive } from 'vue';
+
+const show = ref(true);
+const loading = ref(false);
+const columns = reactive([
+  ['中国', '美国'],
+  ['深圳', '厦门', '上海', '拉萨']
+]);
+const columnData = reactive([
+  ['深圳', '厦门', '上海', '拉萨'],
+  ['得州', '华盛顿', '纽约', '阿拉斯加']
+]);
+
+const uPickerRef = ref(null)
+const changeHandler = (e) => {
+  const {
+    columnIndex,
+    index,
+    picker
+  } = e;
+
+  if (columnIndex === 0) {
+    loading.value = true;
+    // 模拟网络请求
+    setTimeout(() => {
+      uPickerRef.value.setColumnValues(1, columnData[index]);
+      loading.value = false;
+    }, 1500);
+  }
+};
+</script>
 ```
+
+#### 自定义选项值
 
 ```vue
-<up-picker
-    :show="show5"
-    :columns="columns5"
-    title="标题太长就会显示省略号"
-    @cancel="cancel"
-    @confirm="confirm"
-    @change="change"
-></up-picker>
+<template>
+    <up-picker :show="show" :columns="columns" keyName="label"></up-picker>
+</template>
+
+<script setup>
+import { ref, reactive } from 'vue';
+
+const show = ref(true);
+const columns = reactive([
+  [
+    {
+      label: '雪月夜',
+      // 其他属性值
+      id: 2021
+      // ...
+    },
+    {
+      label: '冷夜雨',
+      id: 804
+    }
+  ]
+]);
+</script>
 ```
 
-```vue
-<up-picker
-    :show="show6"
-    :columns="columns6"
-    closeOnClickOverlay
-    @cancel="cancel"
-    @confirm="confirm"
-    @close="close"
-    @change="change"
-></up-picker>
-```
-
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/picker/picker.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/picker.md`</small>
 
 </template>
 

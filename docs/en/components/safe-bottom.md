@@ -12,7 +12,7 @@ Reserves the bottom safe-area inset on devices with a home indicator.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -90,21 +90,97 @@ No snippet could be extracted automatically — please read the source.
 
 <template #uniapp>
 
-::: tip
-No snippet could be extracted automatically — please read the source.
-:::
+#### 底部安全区
 
-<small>Auto-imported through easycom — no import statement needed.</small>
+```json
+"app-plus": {
+	"safearea": {
+		"bottom": {
+			"offset": "none"
+		}
+	}
+}
+```
+
+```vue
+<style>  
+	.list {  
+		padding-bottom: 0;  
+		padding-bottom: constant(safe-area-inset-bottom);  
+		padding-bottom: env(safe-area-inset-bottom);  
+	}  
+</style>
+```
+
+```vue
+<template>
+	<view>
+		......
+		<up-safe-bottom></up-safe-bottom>
+	</view>
+</template>
+```
+
+#### 顶部安全区
+
+```vue
+<template>
+	<view>
+		<up-status-bar></up-status-bar>
+		......
+	</view>
+</template>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/safeAreaInset.md`</small>
 
 </template>
 
 <template #uniappx>
 
-::: tip
-No snippet could be extracted automatically — please read the source.
-:::
+#### 底部安全区
 
-<small>Auto-imported through easycom — no import statement needed.</small>
+```json
+"app-plus": {
+	"safearea": {
+		"bottom": {
+			"offset": "none"
+		}
+	}
+}
+```
+
+```vue
+<style>  
+	.list {  
+		padding-bottom: 0;  
+		padding-bottom: constant(safe-area-inset-bottom);  
+		padding-bottom: env(safe-area-inset-bottom);  
+	}  
+</style>
+```
+
+```vue
+<template>
+	<view>
+		......
+		<up-safe-bottom></up-safe-bottom>
+	</view>
+</template>
+```
+
+#### 顶部安全区
+
+```vue
+<template>
+	<view>
+		<up-status-bar></up-status-bar>
+		......
+	</view>
+</template>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/safeAreaInset.md`</small>
 
 </template>
 

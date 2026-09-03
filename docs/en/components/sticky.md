@@ -12,7 +12,7 @@ Pins content to the top once scrolling passes a threshold.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -127,35 +127,59 @@ disabled 时内容随页面正常滚动，不吸顶
 
 <template #uniapp>
 
-#### 基础使用
+#### 基本使用
 
 ```vue
-<up-sticky ref="stickyRef" :offsetTop="0">
-    <up-button
-        text="吸顶按钮"
-        type="success"
-    ></up-button>
+<template>
+	<view class="container">
+		<!-- 建议放在外层 -->
+		<up-sticky>......</up-sticky>
+		<view class="container__inner">
+			<!-- 不建议放在层层嵌套的view中，除非您清楚知道自己为什么需要这么做 -->
+			<up-sticky>......</up-sticky>
+		</view>
+	</view>
+</template>
+```
+
+#### 吸顶距离
+
+```vue
+<up-sticky offset-top="200">
+	<text>塞下秋来风景异，衡阳雁去无留意</text>
 </up-sticky>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsA/sticky/sticky.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/sticky.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 基础使用
+#### 基本使用
 
 ```vue
-<up-sticky ref="stickyRef" :offsetTop="0">
-    <up-button
-        text="吸顶按钮"
-        type="success"
-    ></up-button>
+<template>
+	<view class="container">
+		<!-- 建议放在外层 -->
+		<up-sticky>......</up-sticky>
+		<view class="container__inner">
+			<!-- 不建议放在层层嵌套的view中，除非您清楚知道自己为什么需要这么做 -->
+			<up-sticky>......</up-sticky>
+		</view>
+	</view>
+</template>
+```
+
+#### 吸顶距离
+
+```vue
+<up-sticky offset-top="200">
+	<text>塞下秋来风景异，衡阳雁去无留意</text>
 </up-sticky>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsA/sticky/sticky.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/sticky.md`</small>
 
 </template>
 

@@ -12,7 +12,7 @@ A translucent scrim that highlights a layer and blocks background interaction.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -179,103 +179,131 @@ import { UPOverlay } from '@ultra-ui'
 
 <template #uniapp>
 
+#### 基本使用
+
 ```vue
-<up-overlay
-    :show="show"
-    @click="show = !show"
-></up-overlay>
+<template>
+	<up-overlay :show="show" @click="show = false"></up-overlay>
+</template>
 ```
 
 ```vue
-<up-overlay
-    :show="showSlot"
-    @click="showSlot = !showSlot"
->
-    <view class="overlay-wrap">
-        <view class="overlay-wrap__box"></view>
-    </view>
-</up-overlay>
+<script setup>
+import { ref } from 'vue';
+
+const show = ref(true);
+</script>
+```
+
+#### 嵌入内容
+
+```vue
+<template>
+	<up-overlay :show="show" @click="show = false">
+		<view class="warp">
+			<view class="rect" @tap.stop></view>
+		</view>
+	</up-overlay>
+</template>
 ```
 
 ```vue
-<up-overlay
-    opacity=".85"
-    :show="showOpcatiy"
-    @click="showOpcatiy = !showOpcatiy"
->
-</up-overlay>
+<script setup>
+import { ref } from 'vue';
+
+const show = ref(true);
+</script>
 ```
 
 ```vue
-<up-overlay
-    :show="showQrcode"
-    @click="showQrcode = false"
->
-    <view class="overlay-wrap">
-        <view class="overlay-wrap__qrcode">
-            <up-qrcode
-                cid="overlay-qrcode"
-                :size="180"
-                :showLoading="false"
-                val="https://click.meituan.com/t?t=1&c=2&p=WhaD2b5zGU-h"
-            ></up-qrcode>
-        </view>
-    </view>
-</up-overlay>
+<style scoped>
+	.warp {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 100%;
+	}
+
+	.rect {
+		width: 120px;
+		height: 120px;
+		background-color: #fff;
+	}
+</style>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsA/overlay/overlay.uvue`</small>
+#### 遮罩样式
+
+```vue
+<up-overlay :show="show" :duration="400" :z-index ="999" :opacity="0.3"></up-overlay>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/overlay.md`</small>
 
 </template>
 
 <template #uniappx>
 
+#### 基本使用
+
 ```vue
-<up-overlay
-    :show="show"
-    @click="show = !show"
-></up-overlay>
+<template>
+	<up-overlay :show="show" @click="show = false"></up-overlay>
+</template>
 ```
 
 ```vue
-<up-overlay
-    :show="showSlot"
-    @click="showSlot = !showSlot"
->
-    <view class="overlay-wrap">
-        <view class="overlay-wrap__box"></view>
-    </view>
-</up-overlay>
+<script setup>
+import { ref } from 'vue';
+
+const show = ref(true);
+</script>
+```
+
+#### 嵌入内容
+
+```vue
+<template>
+	<up-overlay :show="show" @click="show = false">
+		<view class="warp">
+			<view class="rect" @tap.stop></view>
+		</view>
+	</up-overlay>
+</template>
 ```
 
 ```vue
-<up-overlay
-    opacity=".85"
-    :show="showOpcatiy"
-    @click="showOpcatiy = !showOpcatiy"
->
-</up-overlay>
+<script setup>
+import { ref } from 'vue';
+
+const show = ref(true);
+</script>
 ```
 
 ```vue
-<up-overlay
-    :show="showQrcode"
-    @click="showQrcode = false"
->
-    <view class="overlay-wrap">
-        <view class="overlay-wrap__qrcode">
-            <up-qrcode
-                cid="overlay-qrcode"
-                :size="180"
-                :showLoading="false"
-                val="https://click.meituan.com/t?t=1&c=2&p=WhaD2b5zGU-h"
-            ></up-qrcode>
-        </view>
-    </view>
-</up-overlay>
+<style scoped>
+	.warp {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 100%;
+	}
+
+	.rect {
+		width: 120px;
+		height: 120px;
+		background-color: #fff;
+	}
+</style>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsA/overlay/overlay.uvue`</small>
+#### 遮罩样式
+
+```vue
+<up-overlay :show="show" :duration="400" :z-index ="999" :opacity="0.3"></up-overlay>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/overlay.md`</small>
 
 </template>
 

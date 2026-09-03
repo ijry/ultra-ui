@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -271,201 +271,147 @@ import { UPCodeInput } from '@ultra-ui'
 
 <template #uniapp>
 
-#### 基础使用
+#### 基本使用
+
+- 通过`mode`参数模式，可取如下值：
+- `box`(默认)-输入位置位一个方框
+- `bottomLine`-底部显示一条横线
+- `middleLine`-中部显示一条横线
 
 ```vue
-<up-code-input
-    v-model="value1"
-    :maxlength="4"
-    @change="change"
-    @finish="finish"
-></up-code-input>
+<up-code-input v-model="value"></up-code-input>
 ```
 
 #### 横线模式
 
+- 通过`mode="line"`可设置显示为横线模式
+
 ```vue
-<up-code-input
-    v-model="value2"
-    mode="line"
-    :maxlength="4"
-    :bold="true"
-></up-code-input>
+<up-code-input v-model="value2" mode="line"></up-code-input>
 ```
 
 #### 设置长度
 
+- 通过`maxlength`参数配置可输入的方框个数，如6位验证码，该值设置为6即可
+
 ```vue
-<up-code-input
-    v-model="value3"
-    :maxlength="6"
-></up-code-input>
+<up-code-input v-model="value3" :maxlength="6"></up-code-input>
 ```
 
-#### 设置间距
+#### 横线间距
+
+- 通过`space`可设置显示为横线模式
 
 ```vue
-<up-code-input
-    v-model="value4"
-    mode="box"
-    :space="0"
-    :maxlength="4"
-></up-code-input>
+<up-code-input v-model="value4" :space="0" ></up-code-input>
 ```
 
 #### 细边框
 
+- 通过`hairline`可设置细边框
+
 ```vue
-<up-code-input
-    v-model="value5"
-    mode="box"
-    :space="0"
-    :maxlength="4"
-    hairline
-></up-code-input>
+<up-code-input v-model="value5" mode="box" :space="0" :maxlength="4" hairline></up-code-input>
 ```
 
 #### 调整颜色
 
-```vue
-<up-code-input
-    v-model="value7"
-    mode="box"
-    :space="0"
-    :maxlength="4"
-    hairline
-    color="#f56c6c"
-    borderColor="#f56c6c"
-></up-code-input>
-```
-
-#### 点模式
+- 通过`color`和`borderColor`可设置颜色
 
 ```vue
-<up-code-input
-    v-model="value8"
-    mode="box"
-    dot
-    :space="0"
-    :maxlength="4"
-    hairline
-></up-code-input>
+<up-code-input v-model="value6" hairline color="#f56c6c" borderColor="#f56c6c"></up-code-input>
 ```
 
-#### 预置内容
+#### 用"●"替代输入内容
+
+`dot`参数配置后，输入内容将不可见，用点替代，事件回调中会返回真实值
 
 ```vue
-<up-code-input
-    v-model="value9"
-    mode="box"
-    :space="0"
-    :maxlength="4"
-    hairline
-    fontSize="17"
-></up-code-input>
+<up-code-input v-model="value5" mode="box" dot></up-code-input>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsC/codeInput/codeInput.uvue`</small>
+#### 是否自动获取焦点
+
+如果需要一打开页面，就自动弹出键盘获取焦点，请配置`focus`值为true，否则需要用户手动点击输入区域才能唤起键盘
+
+```vue
+<up-code-input v-model="value4" :focus="true"></up-code-input>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/codeInput.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 基础使用
+#### 基本使用
+
+- 通过`mode`参数模式，可取如下值：
+- `box`(默认)-输入位置位一个方框
+- `bottomLine`-底部显示一条横线
+- `middleLine`-中部显示一条横线
 
 ```vue
-<up-code-input
-    v-model="value1"
-    :maxlength="4"
-    @change="change"
-    @finish="finish"
-></up-code-input>
+<up-code-input v-model="value"></up-code-input>
 ```
 
 #### 横线模式
 
+- 通过`mode="line"`可设置显示为横线模式
+
 ```vue
-<up-code-input
-    v-model="value2"
-    mode="line"
-    :maxlength="4"
-    :bold="true"
-></up-code-input>
+<up-code-input v-model="value2" mode="line"></up-code-input>
 ```
 
 #### 设置长度
 
+- 通过`maxlength`参数配置可输入的方框个数，如6位验证码，该值设置为6即可
+
 ```vue
-<up-code-input
-    v-model="value3"
-    :maxlength="6"
-></up-code-input>
+<up-code-input v-model="value3" :maxlength="6"></up-code-input>
 ```
 
-#### 设置间距
+#### 横线间距
+
+- 通过`space`可设置显示为横线模式
 
 ```vue
-<up-code-input
-    v-model="value4"
-    mode="box"
-    :space="0"
-    :maxlength="4"
-></up-code-input>
+<up-code-input v-model="value4" :space="0" ></up-code-input>
 ```
 
 #### 细边框
 
+- 通过`hairline`可设置细边框
+
 ```vue
-<up-code-input
-    v-model="value5"
-    mode="box"
-    :space="0"
-    :maxlength="4"
-    hairline
-></up-code-input>
+<up-code-input v-model="value5" mode="box" :space="0" :maxlength="4" hairline></up-code-input>
 ```
 
 #### 调整颜色
 
-```vue
-<up-code-input
-    v-model="value7"
-    mode="box"
-    :space="0"
-    :maxlength="4"
-    hairline
-    color="#f56c6c"
-    borderColor="#f56c6c"
-></up-code-input>
-```
-
-#### 点模式
+- 通过`color`和`borderColor`可设置颜色
 
 ```vue
-<up-code-input
-    v-model="value8"
-    mode="box"
-    dot
-    :space="0"
-    :maxlength="4"
-    hairline
-></up-code-input>
+<up-code-input v-model="value6" hairline color="#f56c6c" borderColor="#f56c6c"></up-code-input>
 ```
 
-#### 预置内容
+#### 用"●"替代输入内容
+
+`dot`参数配置后，输入内容将不可见，用点替代，事件回调中会返回真实值
 
 ```vue
-<up-code-input
-    v-model="value9"
-    mode="box"
-    :space="0"
-    :maxlength="4"
-    hairline
-    fontSize="17"
-></up-code-input>
+<up-code-input v-model="value5" mode="box" dot></up-code-input>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsC/codeInput/codeInput.uvue`</small>
+#### 是否自动获取焦点
+
+如果需要一打开页面，就自动弹出键盘获取焦点，请配置`focus`值为true，否则需要用户手动点击输入区域才能唤起键盘
+
+```vue
+<up-code-input v-model="value4" :focus="true"></up-code-input>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/codeInput.md`</small>
 
 </template>
 

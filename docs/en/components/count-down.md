@@ -12,7 +12,7 @@ A millisecond countdown with custom formats and slot rendering.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -210,179 +210,437 @@ millisecond 开启毫秒级刷新
 
 <template #uniapp>
 
-#### 基础用法
+#### 基本使用
 
 ```vue
-<up-count-down
-    :time="30 * 60 * 60 * 1000"
-    format="HH:mm:ss"
-    autoStart
-    millisecond
-    @finish="finish"
->
-</up-count-down>
+<template>
+	<up-count-down :time="30 * 60 * 60 * 1000" format="HH:mm:ss"></up-count-down>
+</template>
 ```
 
 #### 自定义格式
 
 ```vue
-<up-count-down
-    :time="30 * 60 * 60 * 1000"
-    format="DD:HH:mm:ss"
-    autoStart
-    millisecond
-    @change="onChange"
->
-    <view class="time">
-        <text class="time__item">{{ timeData['days'] }}&nbsp;天</text>
-        <text class="time__item">{{ timeData['hours'] }}&nbsp;时</text>
-        <text class="time__item">{{ timeData['minutes'] }}&nbsp;分</text>
-        <text class="time__item">{{ timeData['seconds'] }}&nbsp;秒</text>
-    </view>
-</up-count-down>
+<template>
+    <up-count-down
+        :time="30 * 60 * 60 * 1000"
+        format="DD:HH:mm:ss"
+        autoStart
+        millisecond
+        @change="onChange"
+    >
+        <view class="time">
+            <text class="time__item">{{ timeData.days }}&nbsp;天</text>
+            <text class="time__item">{{ timeData.hours>10?timeData.hours:'0'+timeData.hours}}&nbsp;时</text>
+            <text class="time__item">{{ timeData.minutes }}&nbsp;分</text>
+            <text class="time__item">{{ timeData.seconds }}&nbsp;秒</text>
+        </view>
+    </up-count-down>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 使用 reactive 创建响应式对象  
+const timeData = ref({});  
+  
+// 定义 onChange 方法  
+const onChange = (e) => {  
+  timeData.value = e;  
+};  
+</script>
+```
+
+```vue
+<style lang="scss">
+.time {
+    @include flex;
+    align-items: center;
+
+    &__item {
+         color: #fff;
+         font-size: 12px;
+         text-align: center;
+     }
+}
+</style>
 ```
 
 #### 毫秒级渲染
 
 ```vue
-<up-count-down
-    :time="30 * 60 * 60 * 1000"
-    format="HH:mm:ss:SSS"
-    autoStart
-    millisecond
->
-</up-count-down>
+<up-count-down :time="30 * 60 * 60 * 1000" format="HH:mm:ss:SSS" autoStart millisecond></up-count-down>
 ```
 
 #### 自定义样式
 
 ```vue
-<up-count-down
-    :time="30 * 60 * 60 * 1000"
-    format="HH:mm:ss"
-    autoStart
-    millisecond
-    @change="onChange"
->
-    <view class="time">
-        <view class="time__custom">
-            <text class="time__custom__item">{{ timeData['hours'] }}</text>
+<template>
+    <up-count-down
+            :time="30 * 60 * 60 * 1000"
+            format="HH:mm:ss"
+            autoStart
+            millisecond
+            @change="onChange"
+    >
+        <view class="time">
+            <view class="time__custom">
+                <text class="time__custom__item">{{ timeData.hours>10?timeData.hours:'0'+timeData.hours}}</text>
+            </view>
+            <text class="time__doc">:</text>
+            <view class="time__custom">
+                <text class="time__custom__item">{{ timeData.minutes }}</text>
+            </view>
+            <text class="time__doc">:</text>
+            <view class="time__custom">
+                <text class="time__custom__item">{{ timeData.seconds }}</text>
+            </view>
         </view>
-        <text class="time__doc">:</text>
-        <view class="time__custom">
-            <text class="time__custom__item">{{ timeData['minutes'] }}</text>
-        </view>
-        <text class="time__doc">:</text>
-        <view class="time__custom">
-            <text class="time__custom__item">{{ timeData['seconds'] }}</text>
-        </view>
-    </view>
-</up-count-down>
+    </up-count-down>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 使用 reactive 创建响应式对象  
+const timeData = ref({});  
+  
+// 定义 onChange 方法  
+const onChange = (e) => {  
+  timeData.value = e;  
+};  
+</script>
+```
+
+```vue
+<style lang="scss">
+.time {
+    @include flex;
+    align-items: center;
+
+    &__custom {
+         margin-top: 4px;
+         width: 22px;
+         height: 22px;
+         background-color: $u-primary;
+         border-radius: 4px;
+         /* #ifndef APP-NVUE */
+         display: flex;
+         /* #endif */
+         justify-content: center;
+         align-items: center;
+    
+        &__item {
+             color: #fff;
+             font-size: 12px;
+             text-align: center;
+         }
+    }
+    
+    &__doc {
+         color: $u-primary;
+         padding: 0px 4px;
+     }
+    
+    &__item {
+         color: #606266;
+         font-size: 15px;
+         margin-right: 4px;
+     }
+}
+</style>
 ```
 
 #### 手动控制
 
 ```vue
-<up-count-down
-    ref="countDownRef"
-    :time="3* 1000"
-    format="ss:SSS"
-    :autoStart="false"
-    millisecond
->
-</up-count-down>
+<template>
+    <up-count-down
+        ref="countDown"
+        :time="3* 1000"
+        format="ss:SSS"
+        :autoStart="false"
+        millisecond
+        @change="onChange"
+    >
+    </up-count-down>
+    <up-button text="重置" size="normal" type="info" @click="reset"></up-button>
+    <up-button text="开始" size="normal" type="success" @click="start"></up-button>
+    <up-button text="暂停" size="normal" type="error" @click="pause"></up-button>
+</template>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsB/countDown/countDown.uvue`</small>
+```vue
+<script setup>  
+import { ref, onMounted, onUnmounted } from 'vue';  
+  
+// 假设 countDown 是一个子组件，并且它在模板中有 ref="countDown"  
+const countDownRef = ref(null);  
+  
+// data  
+const timeData = ref({});  
+  
+// methods  
+const start = () => {  
+  if (countDownRef.value) {  
+    countDownRef.value.start();  
+  }  
+};  
+  
+const pause = () => {  
+  if (countDownRef.value) {  
+    countDownRef.value.pause();  
+  }  
+};  
+  
+const reset = () => {  
+  if (countDownRef.value) {  
+    countDownRef.value.reset();  
+  }  
+};  
+  
+const onChange = (e) => {  
+  timeData.value = e;  
+};  
+  
+// 在组件挂载后设置 ref，确保子组件已经渲染  
+onMounted(() => {  
+  // 确保 countDownRef 已经指向了一个组件实例  
+  if (countDownRef.value) {  
+    // 你可以在这里做一些初始化操作，如果需要的话  
+  }  
+});  
+  
+// 在组件卸载时清理，如果有必要的话  
+onUnmounted(() => {  
+  // 清理操作  
+});  
+</script>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/countDown.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 基础用法
+#### 基本使用
 
 ```vue
-<up-count-down
-    :time="30 * 60 * 60 * 1000"
-    format="HH:mm:ss"
-    autoStart
-    millisecond
-    @finish="finish"
->
-</up-count-down>
+<template>
+	<up-count-down :time="30 * 60 * 60 * 1000" format="HH:mm:ss"></up-count-down>
+</template>
 ```
 
 #### 自定义格式
 
 ```vue
-<up-count-down
-    :time="30 * 60 * 60 * 1000"
-    format="DD:HH:mm:ss"
-    autoStart
-    millisecond
-    @change="onChange"
->
-    <view class="time">
-        <text class="time__item">{{ timeData['days'] }}&nbsp;天</text>
-        <text class="time__item">{{ timeData['hours'] }}&nbsp;时</text>
-        <text class="time__item">{{ timeData['minutes'] }}&nbsp;分</text>
-        <text class="time__item">{{ timeData['seconds'] }}&nbsp;秒</text>
-    </view>
-</up-count-down>
+<template>
+    <up-count-down
+        :time="30 * 60 * 60 * 1000"
+        format="DD:HH:mm:ss"
+        autoStart
+        millisecond
+        @change="onChange"
+    >
+        <view class="time">
+            <text class="time__item">{{ timeData.days }}&nbsp;天</text>
+            <text class="time__item">{{ timeData.hours>10?timeData.hours:'0'+timeData.hours}}&nbsp;时</text>
+            <text class="time__item">{{ timeData.minutes }}&nbsp;分</text>
+            <text class="time__item">{{ timeData.seconds }}&nbsp;秒</text>
+        </view>
+    </up-count-down>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 使用 reactive 创建响应式对象  
+const timeData = ref({});  
+  
+// 定义 onChange 方法  
+const onChange = (e) => {  
+  timeData.value = e;  
+};  
+</script>
+```
+
+```vue
+<style lang="scss">
+.time {
+    @include flex;
+    align-items: center;
+
+    &__item {
+         color: #fff;
+         font-size: 12px;
+         text-align: center;
+     }
+}
+</style>
 ```
 
 #### 毫秒级渲染
 
 ```vue
-<up-count-down
-    :time="30 * 60 * 60 * 1000"
-    format="HH:mm:ss:SSS"
-    autoStart
-    millisecond
->
-</up-count-down>
+<up-count-down :time="30 * 60 * 60 * 1000" format="HH:mm:ss:SSS" autoStart millisecond></up-count-down>
 ```
 
 #### 自定义样式
 
 ```vue
-<up-count-down
-    :time="30 * 60 * 60 * 1000"
-    format="HH:mm:ss"
-    autoStart
-    millisecond
-    @change="onChange"
->
-    <view class="time">
-        <view class="time__custom">
-            <text class="time__custom__item">{{ timeData['hours'] }}</text>
+<template>
+    <up-count-down
+            :time="30 * 60 * 60 * 1000"
+            format="HH:mm:ss"
+            autoStart
+            millisecond
+            @change="onChange"
+    >
+        <view class="time">
+            <view class="time__custom">
+                <text class="time__custom__item">{{ timeData.hours>10?timeData.hours:'0'+timeData.hours}}</text>
+            </view>
+            <text class="time__doc">:</text>
+            <view class="time__custom">
+                <text class="time__custom__item">{{ timeData.minutes }}</text>
+            </view>
+            <text class="time__doc">:</text>
+            <view class="time__custom">
+                <text class="time__custom__item">{{ timeData.seconds }}</text>
+            </view>
         </view>
-        <text class="time__doc">:</text>
-        <view class="time__custom">
-            <text class="time__custom__item">{{ timeData['minutes'] }}</text>
-        </view>
-        <text class="time__doc">:</text>
-        <view class="time__custom">
-            <text class="time__custom__item">{{ timeData['seconds'] }}</text>
-        </view>
-    </view>
-</up-count-down>
+    </up-count-down>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 使用 reactive 创建响应式对象  
+const timeData = ref({});  
+  
+// 定义 onChange 方法  
+const onChange = (e) => {  
+  timeData.value = e;  
+};  
+</script>
+```
+
+```vue
+<style lang="scss">
+.time {
+    @include flex;
+    align-items: center;
+
+    &__custom {
+         margin-top: 4px;
+         width: 22px;
+         height: 22px;
+         background-color: $up-primary;
+         border-radius: 4px;
+         /* #ifndef APP-NVUE */
+         display: flex;
+         /* #endif */
+         justify-content: center;
+         align-items: center;
+    
+        &__item {
+             color: #fff;
+             font-size: 12px;
+             text-align: center;
+         }
+    }
+    
+    &__doc {
+         color: $up-primary;
+         padding: 0px 4px;
+     }
+    
+    &__item {
+         color: #606266;
+         font-size: 15px;
+         margin-right: 4px;
+     }
+}
+</style>
 ```
 
 #### 手动控制
 
 ```vue
-<up-count-down
-    ref="countDownRef"
-    :time="3* 1000"
-    format="ss:SSS"
-    :autoStart="false"
-    millisecond
->
-</up-count-down>
+<template>
+    <up-count-down
+        ref="countDown"
+        :time="3* 1000"
+        format="ss:SSS"
+        :autoStart="false"
+        millisecond
+        @change="onChange"
+    >
+    </up-count-down>
+    <up-button text="重置" size="normal" type="info" @click="reset"></up-button>
+    <up-button text="开始" size="normal" type="success" @click="start"></up-button>
+    <up-button text="暂停" size="normal" type="error" @click="pause"></up-button>
+</template>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsB/countDown/countDown.uvue`</small>
+```vue
+<script setup>  
+import { ref, onMounted, onUnmounted } from 'vue';  
+  
+// 假设 countDown 是一个子组件，并且它在模板中有 ref="countDown"  
+const countDownRef = ref(null);  
+  
+// data  
+const timeData = ref({});  
+  
+// methods  
+const start = () => {  
+  if (countDownRef.value) {  
+    countDownRef.value.start();  
+  }  
+};  
+  
+const pause = () => {  
+  if (countDownRef.value) {  
+    countDownRef.value.pause();  
+  }  
+};  
+  
+const reset = () => {  
+  if (countDownRef.value) {  
+    countDownRef.value.reset();  
+  }  
+};  
+  
+const onChange = (e) => {  
+  timeData.value = e;  
+};  
+  
+// 在组件挂载后设置 ref，确保子组件已经渲染  
+onMounted(() => {  
+  // 确保 countDownRef 已经指向了一个组件实例  
+  if (countDownRef.value) {  
+    // 你可以在这里做一些初始化操作，如果需要的话  
+  }  
+});  
+  
+// 在组件卸载时清理，如果有必要的话  
+onUnmounted(() => {  
+  // 清理操作  
+});  
+</script>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/countDown.md`</small>
 
 </template>
 

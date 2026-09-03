@@ -12,7 +12,7 @@ A coupon card with ticket notches and available/expired states.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -280,203 +280,189 @@ bgColor 背景 / color 文字颜色
 
 <template #uniapp>
 
+#### 基本使用
+
 ```vue
-<up-coupon 
-    :amount="100" 
-    title="满减券" 
-    color="#333"
-    limit="满200可用" 
-    time="2023-12-31前使用">
-</up-coupon>
+<script setup>  
+import { ref } from 'vue';  
+  
+// 响应式数据  
+const amount = ref(100);
+const title = ref('满减券');
+const limit = ref('满200可用');
+const time = ref('2023-12-31前使用');
+
+</script>
 ```
+
+#### 尺寸
 
 ```vue
 <up-coupon 
-    :amount="20" 
-    title="满减券" 
-    size="small"
-    action-text="去使用">
+	:amount="20" 
+	title="满减券" 
+	size="small"
+	action-text="去使用">
 </up-coupon>
 ```
+
+#### 自定义样式
 
 ```vue
 <up-coupon 
-    :amount="200" 
-    unit="￥" 
-    title="大额优惠券" 
-    desc="仅限VIP用户" 
-    limit="满500可用" 
-    time="有效期至2023-12-31"
-    size="large"
-    type="error">
+	:amount="200" 
+	unit="￥" 
+	title="大额优惠券" 
+	desc="仅限VIP用户" 
+	limit="满500可用" 
+	time="有效期至2023-12-31"
+	size="large"
+	type="error">
 </up-coupon>
 ```
+
+#### 形状
 
 ```vue
 <up-coupon 
-    :amount="66" 
-    title="自定义样式" 
-    desc="通过插槽自定义内容"
-    shape="card">
-    <template #amount="{ amount }">
-        <text class="custom-amount">{{ amount }}</text>
-    </template>
-    <template #title="{ title }">
-        <text class="custom-title">{{ title }}</text>
-    </template>
-    <template #action="{ circle }">
-        <up-button type="success" size="mini" :hairline="false" :custom-style="{ borderRadius: getActionBorderRadius(circle) }">
-            立即使用
-        </up-button>
-    </template>
+	:amount="50" 
+	unit="元" 
+	title="新人红包" 
+	desc="限时专享" 
+	shape="envelope"
+	type="warning">
 </up-coupon>
 ```
+
+#### 禁用状态
 
 ```vue
 <up-coupon 
-    :amount="30" 
-    title="限时优惠" 
-    desc="今日专享"
-    :circle="true"
-    action-text="抢购">
+	:amount="50" 
+	title="已过期" 
+	desc="活动已结束"
+	time="2023-01-01至2023-01-31"
+	:disabled="true">
 </up-coupon>
 ```
+
+#### 插槽使用
 
 ```vue
 <up-coupon 
-    :amount="50" 
-    title="已过期" 
-    desc="活动已结束"
-    time="2023-01-01至2023-01-31"
-    :disabled="true">
+	:amount="66" 
+	title="自定义样式" 
+	desc="通过插槽自定义内容"
+	shape="card">
+	<template #amount="{ amount }">
+		<text class="custom-amount">{{ amount }}</text>
+	</template>
+	<template #title="{ title }">
+		<text class="custom-title">{{ title }}</text>
+	</template>
+	<template #action="{ circle }">
+		<up-button type="success" size="mini" :hairline="false" :custom-style="{ borderRadius: circle ? '50rpx' : '6rpx' }">
+			立即使用
+		</up-button>
+	</template>
 </up-coupon>
 ```
 
-```vue
-<up-coupon 
-    :amount="50" 
-    unit="元" 
-    title="新人红包" 
-    desc="限时专享" 
-    shape="envelope"
-    type="warning">
-</up-coupon>
-```
-
-```vue
-<up-coupon 
-    :amount="88" 
-    unit="折" 
-    title="折扣券" 
-    desc="全场通用" 
-    shape="card"
-    type="success"
-    action-text="立即领取">
-</up-coupon>
-```
-
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/coupon/coupon.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/coupon.md`</small>
 
 </template>
 
 <template #uniappx>
 
+#### 基本使用
+
 ```vue
-<up-coupon 
-    :amount="100" 
-    title="满减券" 
-    color="#333"
-    limit="满200可用" 
-    time="2023-12-31前使用">
-</up-coupon>
+<script setup>  
+import { ref } from 'vue';  
+  
+// 响应式数据  
+const amount = ref(100);
+const title = ref('满减券');
+const limit = ref('满200可用');
+const time = ref('2023-12-31前使用');
+
+</script>
 ```
+
+#### 尺寸
 
 ```vue
 <up-coupon 
-    :amount="20" 
-    title="满减券" 
-    size="small"
-    action-text="去使用">
+	:amount="20" 
+	title="满减券" 
+	size="small"
+	action-text="去使用">
 </up-coupon>
 ```
+
+#### 自定义样式
 
 ```vue
 <up-coupon 
-    :amount="200" 
-    unit="￥" 
-    title="大额优惠券" 
-    desc="仅限VIP用户" 
-    limit="满500可用" 
-    time="有效期至2023-12-31"
-    size="large"
-    type="error">
+	:amount="200" 
+	unit="￥" 
+	title="大额优惠券" 
+	desc="仅限VIP用户" 
+	limit="满500可用" 
+	time="有效期至2023-12-31"
+	size="large"
+	type="error">
 </up-coupon>
 ```
+
+#### 形状
 
 ```vue
 <up-coupon 
-    :amount="66" 
-    title="自定义样式" 
-    desc="通过插槽自定义内容"
-    shape="card">
-    <template #amount="{ amount }">
-        <text class="custom-amount">{{ amount }}</text>
-    </template>
-    <template #title="{ title }">
-        <text class="custom-title">{{ title }}</text>
-    </template>
-    <template #action="{ circle }">
-        <up-button type="success" size="mini" :hairline="false" :custom-style="{ borderRadius: getActionBorderRadius(circle) }">
-            立即使用
-        </up-button>
-    </template>
+	:amount="50" 
+	unit="元" 
+	title="新人红包" 
+	desc="限时专享" 
+	shape="envelope"
+	type="warning">
 </up-coupon>
 ```
+
+#### 禁用状态
 
 ```vue
 <up-coupon 
-    :amount="30" 
-    title="限时优惠" 
-    desc="今日专享"
-    :circle="true"
-    action-text="抢购">
+	:amount="50" 
+	title="已过期" 
+	desc="活动已结束"
+	time="2023-01-01至2023-01-31"
+	:disabled="true">
 </up-coupon>
 ```
+
+#### 插槽使用
 
 ```vue
 <up-coupon 
-    :amount="50" 
-    title="已过期" 
-    desc="活动已结束"
-    time="2023-01-01至2023-01-31"
-    :disabled="true">
+	:amount="66" 
+	title="自定义样式" 
+	desc="通过插槽自定义内容"
+	shape="card">
+	<template #amount="{ amount }">
+		<text class="custom-amount">{{ amount }}</text>
+	</template>
+	<template #title="{ title }">
+		<text class="custom-title">{{ title }}</text>
+	</template>
+	<template #action="{ circle }">
+		<up-button type="success" size="mini" :hairline="false" :custom-style="{ borderRadius: circle ? '50rpx' : '6rpx' }">
+			立即使用
+		</up-button>
+	</template>
 </up-coupon>
 ```
 
-```vue
-<up-coupon 
-    :amount="50" 
-    unit="元" 
-    title="新人红包" 
-    desc="限时专享" 
-    shape="envelope"
-    type="warning">
-</up-coupon>
-```
-
-```vue
-<up-coupon 
-    :amount="88" 
-    unit="折" 
-    title="折扣券" 
-    desc="全场通用" 
-    shape="card"
-    type="success"
-    action-text="立即领取">
-</up-coupon>
-```
-
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/coupon/coupon.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/coupon.md`</small>
 
 </template>
 

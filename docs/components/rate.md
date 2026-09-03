@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -265,133 +265,139 @@ minCount=0 时允许取消到 0 分
 
 <template #uniapp>
 
-#### 基本案例
+#### 基本使用
+
+- 通过`count`参数设置总共有多少颗星星可选择
+- 通过`v-model`双向绑定初始化时默认选中的星星数量
 
 ```vue
-<up-rate size="20"></up-rate>
+<template>
+	<up-rate :count="count" v-model="value"></up-rate>
+</template>
 ```
-
-#### 自定义选中星星数量
 
 ```vue
-<up-rate
-    size="20"
-    v-model="value"
-    @change="change"
-></up-rate>
+<script setup>  
+import { ref } from 'vue';  
+  
+const count = ref(4);  
+const value = ref(2);  
+</script>
 ```
 
-#### 自定义星星大小
+#### 自定义样式
+
+- 通过`active-color`设置选中的星星的颜色
+- 通过`inactive-color`设置未选中时星星的颜色
+- 通过`gutter`设置星星的间距，左右内边距各占`gutter`的一半
 
 ```vue
-<up-rate size="30" count="4"></up-rate>
+<up-rate active-color="#FA3534" inactive-color="#b2b2b2" gutter="20"></up-rate>
 ```
 
-#### 是否禁用评分
+#### 自定义图标
+
+- 通过`active-icon`设置激活的图标
+- 通过`inactive-icon`设置未激活的图标
+
+下方示例为使用心形图标替代默认的星星图标：
 
 ```vue
-<up-rate size="20" disabled></up-rate>
+<up-rate activeIcon="heart-fill" inactiveIcon="heart"></up-rate>
 ```
 
-#### 是否只读评分
+#### 最少选中的数量
 
 ```vue
-<up-rate size="20" readonly></up-rate>
+<up-rate :minCount="5"></up-rate>
 ```
 
-#### 自定义选中星星颜色
+#### 禁用状态
+
+禁用下，无法点击或者滑动选择，但是可以通过`value`设置默认选中的数量，禁用状态下用来展示分数，允许出现半星
 
 ```vue
-<up-rate
-    size="20"
-    v-model="activeColorValue"
-    activeColor="#2979ff"
-></up-rate>
+<up-rate :value="3.7" disabled></up-rate>
 ```
 
-#### 自定义未选中星星颜色
+#### 只读状态
+
+只读下，无法点击或者滑动选择，但是可以通过`value`设置默认选中的数量，禁用状态下用来展示分数，允许出现半星
 
 ```vue
-<up-rate
-    size="20"
-    v-model="value1"
-    inactiveColor="#2979ff"
-></up-rate>
+<up-rate :value="3.7" readonly></up-rate>
 ```
 
-#### 禁止触摸选择
-
-```vue
-<up-rate size="20" :touchable="false"></up-rate>
-```
-
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsA/rate/rate.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/rate.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 基本案例
+#### 基本使用
+
+- 通过`count`参数设置总共有多少颗星星可选择
+- 通过`v-model`双向绑定初始化时默认选中的星星数量
 
 ```vue
-<up-rate size="20"></up-rate>
+<template>
+	<up-rate :count="count" v-model="value"></up-rate>
+</template>
 ```
-
-#### 自定义选中星星数量
 
 ```vue
-<up-rate
-    size="20"
-    v-model="value"
-    @change="change"
-></up-rate>
+<script setup>  
+import { ref } from 'vue';  
+  
+const count = ref(4);  
+const value = ref(2);  
+</script>
 ```
 
-#### 自定义星星大小
+#### 自定义样式
+
+- 通过`active-color`设置选中的星星的颜色
+- 通过`inactive-color`设置未选中时星星的颜色
+- 通过`gutter`设置星星的间距，左右内边距各占`gutter`的一半
 
 ```vue
-<up-rate size="30" count="4"></up-rate>
+<up-rate active-color="#FA3534" inactive-color="#b2b2b2" gutter="20"></up-rate>
 ```
 
-#### 是否禁用评分
+#### 自定义图标
+
+- 通过`active-icon`设置激活的图标
+- 通过`inactive-icon`设置未激活的图标
+
+下方示例为使用心形图标替代默认的星星图标：
 
 ```vue
-<up-rate size="20" disabled></up-rate>
+<up-rate activeIcon="heart-fill" inactiveIcon="heart"></up-rate>
 ```
 
-#### 是否只读评分
+#### 最少选中的数量
 
 ```vue
-<up-rate size="20" readonly></up-rate>
+<up-rate :minCount="5"></up-rate>
 ```
 
-#### 自定义选中星星颜色
+#### 禁用状态
+
+禁用下，无法点击或者滑动选择，但是可以通过`value`设置默认选中的数量，禁用状态下用来展示分数，允许出现半星
 
 ```vue
-<up-rate
-    size="20"
-    v-model="activeColorValue"
-    activeColor="#2979ff"
-></up-rate>
+<up-rate :value="3.7" disabled></up-rate>
 ```
 
-#### 自定义未选中星星颜色
+#### 只读状态
+
+只读下，无法点击或者滑动选择，但是可以通过`value`设置默认选中的数量，禁用状态下用来展示分数，允许出现半星
 
 ```vue
-<up-rate
-    size="20"
-    v-model="value1"
-    inactiveColor="#2979ff"
-></up-rate>
+<up-rate :value="3.7" readonly></up-rate>
 ```
 
-#### 禁止触摸选择
-
-```vue
-<up-rate size="20" :touchable="false"></up-rate>
-```
-
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsA/rate/rate.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/rate.md`</small>
 
 </template>
 

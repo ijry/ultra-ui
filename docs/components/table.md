@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -253,75 +253,122 @@ padding 与 fontSize 控制疏密
 
 <template #uniapp>
 
-#### 演示效果
+#### 基本使用
+
+本组件标签类似HTML的table表格，由`table`、`tr`、`th`、`td`四个组件组成
+
+- `table`组件裹在最外层，可以配置一些基础参数
+- `tr`组件用于显示"行"数据
+- `th`组件用于显示表头内容，类似`td`，不同之处在于字体加粗了，也带有背景颜色，也可以直接用`td`替代`th`
+- `td`组件不是最小单位，为了合并单元格时，内部可以嵌入`tr`和`td`组件
 
 ```vue
-<up-table :align="align" :borderColor="borderColor">
-    <up-tr class="up-tr">
-        <up-th class="up-th">姓名</up-th>
-        <up-th class="up-th">年龄</up-th>
-        <up-th class="up-th">籍贯</up-th>
-        <up-th class="up-th">性别</up-th>
-    </up-tr>
-    <up-tr class="up-tr">
-        <up-td class="up-td">吕布</up-td>
-        <up-td class="up-td">22</up-td>
-        <up-td class="up-td">楚河</up-td>
-        <up-td class="up-td">男</up-td>
-    </up-tr>
-    <up-tr class="up-tr">
-        <up-td class="up-td">项羽</up-td>
-        <up-td class="up-td">28</up-td>
-        <up-td class="up-td">汉界</up-td>
-        <up-td class="up-td">男</up-td>
-    </up-tr>
-    <up-tr class="up-tr">
-        <up-td class="up-td">木兰</up-td>
-        <up-td class="up-td">24</up-td>
-        <up-td class="up-td">南国</up-td>
-        <up-td class="up-td">女</up-td>
-    </up-tr>
+<template>
+	<up-table>
+		<up-tr>
+			<up-th>学校</up-th>
+			<up-th>班级</up-th>
+			<up-th>年龄</up-th>
+		</up-tr>
+		<up-tr>
+			<up-td>浙江大学</up-td>
+			<up-td>二年级</up-td>
+			<up-td>22</up-td>
+		</up-tr>
+		<up-tr>
+			<up-td>清华大学</up-td>
+			<up-td>05班</up-td>
+			<up-td>20</up-td>
+		</up-tr>
+	</up-table>
+</template>
+```
+
+#### 兼容性
+
+由于`头条小程序`的兼容性问题，您需要给表格相关的组件(`up-tr`、`up-th`、`up-td`)写上对应的类名才有效，如下：
+
+```vue
+<up-table>
+	<up-tr class="up-tr">
+		<up-th class="up-th">姓名</up-th>
+		<up-th class="up-th">年龄</up-th>
+		<up-th class="up-th">籍贯</up-th>
+		<up-th class="up-th">性别</up-th>
+	</up-tr>
+	<up-tr class="up-tr">
+		<up-td class="up-td">吕布</up-td>
+		<up-td class="up-td">22</up-td>
+		<up-td class="up-td">楚河</up-td>
+		<up-td class="up-td">男</up-td>
+	</up-tr>
 </up-table>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsB/table/table.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/table.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 演示效果
+#### 基本使用
+
+本组件标签类似HTML的table表格，由`table`、`tr`、`th`、`td`四个组件组成
+
+- `table`组件裹在最外层，可以配置一些基础参数
+- `tr`组件用于显示"行"数据
+- `th`组件用于显示表头内容，类似`td`，不同之处在于字体加粗了，也带有背景颜色，也可以直接用`td`替代`th`
+- `td`组件不是最小单位，为了合并单元格时，内部可以嵌入`tr`和`td`组件
 
 ```vue
-<up-table :align="align" :borderColor="borderColor">
-    <up-tr class="up-tr">
-        <up-th class="up-th">姓名</up-th>
-        <up-th class="up-th">年龄</up-th>
-        <up-th class="up-th">籍贯</up-th>
-        <up-th class="up-th">性别</up-th>
-    </up-tr>
-    <up-tr class="up-tr">
-        <up-td class="up-td">吕布</up-td>
-        <up-td class="up-td">22</up-td>
-        <up-td class="up-td">楚河</up-td>
-        <up-td class="up-td">男</up-td>
-    </up-tr>
-    <up-tr class="up-tr">
-        <up-td class="up-td">项羽</up-td>
-        <up-td class="up-td">28</up-td>
-        <up-td class="up-td">汉界</up-td>
-        <up-td class="up-td">男</up-td>
-    </up-tr>
-    <up-tr class="up-tr">
-        <up-td class="up-td">木兰</up-td>
-        <up-td class="up-td">24</up-td>
-        <up-td class="up-td">南国</up-td>
-        <up-td class="up-td">女</up-td>
-    </up-tr>
+<template>
+	<up-table>
+		<up-tr>
+			<up-th>学校</up-th>
+			<up-th>班级</up-th>
+			<up-th>年龄</up-th>
+		</up-tr>
+		<up-tr>
+			<up-td>浙江大学</up-td>
+			<up-td>二年级</up-td>
+			<up-td>22</up-td>
+		</up-tr>
+		<up-tr>
+			<up-td>清华大学</up-td>
+			<up-td>05班</up-td>
+			<up-td>
+                <!-- 如果是非纯文本内容需要使用content插槽 -->
+                <template #content>
+                    <view>20</view>
+                </template>
+            </up-td>
+		</up-tr>
+	</up-table>
+</template>
+```
+
+#### 兼容性
+
+由于`头条小程序`的兼容性问题，您需要给表格相关的组件(`up-tr`、`up-th`、`up-td`)写上对应的类名才有效，如下：
+
+```vue
+<up-table>
+	<up-tr class="up-tr">
+		<up-th class="up-th">姓名</up-th>
+		<up-th class="up-th">年龄</up-th>
+		<up-th class="up-th">籍贯</up-th>
+		<up-th class="up-th">性别</up-th>
+	</up-tr>
+	<up-tr class="up-tr">
+		<up-td class="up-td">吕布</up-td>
+		<up-td class="up-td">22</up-td>
+		<up-td class="up-td">楚河</up-td>
+		<up-td class="up-td">男</up-td>
+	</up-tr>
 </up-table>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsB/table/table.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/table.md`</small>
 
 </template>
 

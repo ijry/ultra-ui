@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -237,135 +237,119 @@ children 会替换默认文字
 
 <template #uniapp>
 
-#### 基本案例
+#### 基本使用
+
+文字内容通过`text`传入
 
 ```vue
 <up-divider text="分割线"></up-divider>
 ```
 
-#### 是否虚线
+#### 设置虚线
+
+可以通过`dashed`指定虚线
+
+```vue
+<up-divider text="分割线" :dashed="true"></up-divider>
+```
+
+#### 设置细线
+
+可以通过`hairline`指定细线
+
+```vue
+<up-divider text="分割线" :hairline="true"></up-divider>
+```
+
+#### 设置以点代替文字
+
+可以通过`dot`指定以点代替文字
+
+```vue
+<up-divider text="分割线" :dot="true"></up-divider>
+```
+
+#### 设置文本靠左靠右
+
+可以通过`textPosition`指定文字靠左靠右
+
+```vue
+<up-divider text="靠左" textPosition="left"></up-divider>
+<up-divider text="靠右" textPosition="right"></up-divider>
+```
+
+#### 设置文本颜色和线条颜色
+
+可以通过`textColor`和`lineColor`指定文字刚线条颜色
 
 ```vue
 <up-divider
-    text="分割线"
-    :dashed="true"
+   text="分割线"
+   textColor="#2979ff"
+   lineColor="#ff0000"
 ></up-divider>
 ```
 
-#### 是否细线
-
-```vue
-<up-divider
-    text="分割线"
-    :hairline="true"
-></up-divider>
-```
-
-#### 是否以点代替文字
-
-```vue
-<up-divider
-    text="分割线"
-    :dot="true"
-></up-divider>
-```
-
-#### 文本内容靠左
-
-```vue
-<up-divider
-    text="分割线"
-    textPosition="left"
-></up-divider>
-```
-
-#### 文本内容靠右
-
-```vue
-<up-divider
-    text="分割线"
-    textPosition="right"
-></up-divider>
-```
-
-#### 自定义文本颜色
-
-```vue
-<up-divider
-    text="分割线"
-    textColor="#2979ff"
-    lineColor="#2979ff"
-></up-divider>
-```
-
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsA/divider/divider.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/divider.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 基本案例
+#### 基本使用
+
+文字内容通过`text`传入
 
 ```vue
 <up-divider text="分割线"></up-divider>
 ```
 
-#### 是否虚线
+#### 设置虚线
+
+可以通过`dashed`指定虚线
+
+```vue
+<up-divider text="分割线" :dashed="true"></up-divider>
+```
+
+#### 设置细线
+
+可以通过`hairline`指定细线
+
+```vue
+<up-divider text="分割线" :hairline="true"></up-divider>
+```
+
+#### 设置以点代替文字
+
+可以通过`dot`指定以点代替文字
+
+```vue
+<up-divider text="分割线" :dot="true"></up-divider>
+```
+
+#### 设置文本靠左靠右
+
+可以通过`textPosition`指定文字靠左靠右
+
+```vue
+<up-divider text="靠左" textPosition="left"></up-divider>
+<up-divider text="靠右" textPosition="right"></up-divider>
+```
+
+#### 设置文本颜色和线条颜色
+
+可以通过`textColor`和`lineColor`指定文字刚线条颜色
 
 ```vue
 <up-divider
-    text="分割线"
-    :dashed="true"
+        text="分割线"
+        textColor="#2979ff"
+        lineColor="#ff0000"
 ></up-divider>
 ```
 
-#### 是否细线
-
-```vue
-<up-divider
-    text="分割线"
-    :hairline="true"
-></up-divider>
-```
-
-#### 是否以点代替文字
-
-```vue
-<up-divider
-    text="分割线"
-    :dot="true"
-></up-divider>
-```
-
-#### 文本内容靠左
-
-```vue
-<up-divider
-    text="分割线"
-    textPosition="left"
-></up-divider>
-```
-
-#### 文本内容靠右
-
-```vue
-<up-divider
-    text="分割线"
-    textPosition="right"
-></up-divider>
-```
-
-#### 自定义文本颜色
-
-```vue
-<up-divider
-    text="分割线"
-    textColor="#2979ff"
-    lineColor="#2979ff"
-></up-divider>
-```
-
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsA/divider/divider.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/divider.md`</small>
 
 </template>
 

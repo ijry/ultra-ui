@@ -12,7 +12,7 @@ Loading placeholders in paragraph, avatar and image shapes.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -258,145 +258,131 @@ animate 控制扫描高光效果
 
 <template #uniapp>
 
-#### 基础使用
+#### 基本使用
 
 ```vue
-<up-skeleton
-    rows="3"
-    title
-    loading
-></up-skeleton>
+<template>
+	<up-skeleton
+	    rows="3"
+	    title
+		loading
+	></up-skeleton>
+</template>
 ```
 
-#### 自定义段落行数
+#### 加载中动画
 
 ```vue
-<up-skeleton
-    rows="2"
-    title
-    loading
-></up-skeleton>
+<up-skeleton :loading="true" :animate="true"></up-skeleton>
 ```
 
-#### 设置段落宽度
+#### 显示头像
 
 ```vue
-<up-skeleton
-    rows="2"
-    title
-    :rowsWidth="['100%', '35%']"
-    loading
-></up-skeleton>
+<up-skeleton :loading="true" avatar rows="1"></up-skeleton>
 ```
 
-#### 设置段落高度
+#### 插槽内容
 
 ```vue
-<up-skeleton
-    rows="3"
-    title
-    :rowsWidth="['100%', '100%', '100%']"
-    :rowsHeight="['18px', '18px', '80px']"
-    loading
-></up-skeleton>
+<template>
+	<up-skeleton
+	    rows="2"
+		:loading="loading"
+		avatar
+		:title="false"
+	>
+		<up-text>loading为false时，将会展示此处插槽内容</up-text>
+	</up-skeleton>
+</template>
 ```
-
-#### 是否开启动画
 
 ```vue
-<up-skeleton
-    :animate="switch1"
-    rows="3"
-    title
-    loading
-></up-skeleton>
+<script setup>  
+import { ref, onMounted } from 'vue';  
+import {
+	onLoad,
+	onShow
+} from "@dcloudio/uni-app";
+
+// 响应式数据  
+const loading = ref(true);  
+  
+onLoad(() => {  
+  // 延时2秒钟  
+  uni.$u.sleep(2000).then(() => {  
+    loading.value = false;  
+  });  
+});  
+</script>
 ```
 
-#### 展示头像
-
-```vue
-<up-skeleton
-    :animate="switch1"
-    rows="3"
-    title
-    loading
-    avatar
-></up-skeleton>
-```
-
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/skeleton/skeleton.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/skeleton.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 基础使用
+#### 基本使用
 
 ```vue
-<up-skeleton
-    rows="3"
-    title
-    loading
-></up-skeleton>
+<template>
+	<up-skeleton
+	    rows="3"
+	    title
+		loading
+	></up-skeleton>
+</template>
 ```
 
-#### 自定义段落行数
+#### 加载中动画
 
 ```vue
-<up-skeleton
-    rows="2"
-    title
-    loading
-></up-skeleton>
+<up-skeleton :loading="true" :animate="true"></up-skeleton>
 ```
 
-#### 设置段落宽度
+#### 显示头像
 
 ```vue
-<up-skeleton
-    rows="2"
-    title
-    :rowsWidth="['100%', '35%']"
-    loading
-></up-skeleton>
+<up-skeleton :loading="true" avatar rows="1"></up-skeleton>
 ```
 
-#### 设置段落高度
+#### 插槽内容
 
 ```vue
-<up-skeleton
-    rows="3"
-    title
-    :rowsWidth="['100%', '100%', '100%']"
-    :rowsHeight="['18px', '18px', '80px']"
-    loading
-></up-skeleton>
+<template>
+	<up-skeleton
+	    rows="2"
+		:loading="loading"
+		avatar
+		:title="false"
+	>
+		<up-text>loading为false时，将会展示此处插槽内容</up-text>
+	</up-skeleton>
+</template>
 ```
-
-#### 是否开启动画
 
 ```vue
-<up-skeleton
-    :animate="switch1"
-    rows="3"
-    title
-    loading
-></up-skeleton>
+<script setup>  
+import { ref, onMounted } from 'vue';  
+import {
+	onLoad,
+	onShow
+} from "@dcloudio/uni-app";
+
+// 响应式数据  
+const loading = ref(true);  
+  
+onLoad(() => {  
+  // 延时2秒钟  
+  uni.$u.sleep(2000).then(() => {  
+    loading.value = false;  
+  });  
+});  
+</script>
 ```
 
-#### 展示头像
-
-```vue
-<up-skeleton
-    :animate="switch1"
-    rows="3"
-    title
-    loading
-    avatar
-></up-skeleton>
-```
-
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/skeleton/skeleton.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/skeleton.md`</small>
 
 </template>
 

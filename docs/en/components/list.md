@@ -12,7 +12,7 @@ A recycling container for long lists, used with list-item.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -176,61 +176,143 @@ scrollIntoView 定位到指定 anchor
 
 <template #uniapp>
 
+#### 基本使用
+
 ```vue
-<up-list
-    @scrolltolower="scrolltolower"
->
-    <up-list-item
-        v-for="(item, index) in indexList"
-        :key="index"
-    >
-        <up-cell
-            :title="`列表长度-${index + 1}`"
-        >
-            <template #icon>
-                <up-avatar
-                    shape="square"
-                    size="35"
-                    :src="item.url"
-                    customStyle="margin: -3px 5px -3px 0"
-                ></up-avatar>
-            </template>
-        </up-cell>
-    </up-list-item>
-</up-list>
+<template>
+	<view class="u-page">
+		<up-list
+			@scroll-to-lower="scrolltolower"
+		>
+			<up-list-item
+				v-for="(item, index) in indexList"
+				:key="index"
+			>
+				<up-cell
+					:title="`列表长度-${index + 1}`"
+				>
+					<template #icon>
+						<up-avatar
+							shape="square"
+							size="35"
+							:src="item.url"
+							customStyle="margin: -3px 5px -3px 0"
+						></up-avatar>
+					</template>
+				</up-cell>
+			</up-list-item>
+		</up-list>
+	</view>
+</template>
+
+<script setup>
+import { ref, reactive } from 'vue';
+import { onLoad, onShow } from '@dcloudio/uni-app';  
+
+const indexList = ref([]);
+const urls = [
+  'https://uview-plus.jiangruyi.com/album/1.jpg',
+  'https://uview-plus.jiangruyi.com/album/2.jpg',
+  'https://uview-plus.jiangruyi.com/album/3.jpg',
+  'https://uview-plus.jiangruyi.com/album/4.jpg',
+  'https://uview-plus.jiangruyi.com/album/5.jpg',
+  'https://uview-plus.jiangruyi.com/album/6.jpg',
+  'https://uview-plus.jiangruyi.com/album/7.jpg',
+  'https://uview-plus.jiangruyi.com/album/8.jpg',
+  'https://uview-plus.jiangruyi.com/album/9.jpg',
+  'https://uview-plus.jiangruyi.com/album/10.jpg',
+];
+
+onLoad(() => {
+  loadmore();
+});
+
+const scrolltolower = () => {
+  loadmore();
+};
+
+const loadmore = () => {
+  for (let i = 0; i < 30; i++) {
+    indexList.value.push({
+      url: urls[uni.$u.random(0, urls.length - 1)],
+    });
+  }
+};
+</script>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/list/list.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/list.md`</small>
 
 </template>
 
 <template #uniappx>
 
+#### 基本使用
+
 ```vue
-<up-list
-    @scrolltolower="scrolltolower"
->
-    <up-list-item
-        v-for="(item, index) in indexList"
-        :key="index"
-    >
-        <up-cell
-            :title="`列表长度-${index + 1}`"
-        >
-            <template #icon>
-                <up-avatar
-                    shape="square"
-                    size="35"
-                    :src="item.url"
-                    customStyle="margin: -3px 5px -3px 0"
-                ></up-avatar>
-            </template>
-        </up-cell>
-    </up-list-item>
-</up-list>
+<template>
+	<view class="u-page">
+		<up-list
+			@scroll-to-lower="scrolltolower"
+		>
+			<up-list-item
+				v-for="(item, index) in indexList"
+				:key="index"
+			>
+				<up-cell
+					:title="`列表长度-${index + 1}`"
+				>
+					<template #icon>
+						<up-avatar
+							shape="square"
+							size="35"
+							:src="item.url"
+							customStyle="margin: -3px 5px -3px 0"
+						></up-avatar>
+					</template>
+				</up-cell>
+			</up-list-item>
+		</up-list>
+	</view>
+</template>
+
+<script setup>
+import { ref, reactive } from 'vue';
+import { onLoad, onShow } from '@dcloudio/uni-app';  
+
+const indexList = reactive([]);
+const urls = [
+  'https://uview-ultra.jiangruyi.com/album/1.jpg',
+  'https://uview-ultra.jiangruyi.com/album/2.jpg',
+  'https://uview-ultra.jiangruyi.com/album/3.jpg',
+  'https://uview-ultra.jiangruyi.com/album/4.jpg',
+  'https://uview-ultra.jiangruyi.com/album/5.jpg',
+  'https://uview-ultra.jiangruyi.com/album/6.jpg',
+  'https://uview-ultra.jiangruyi.com/album/7.jpg',
+  'https://uview-ultra.jiangruyi.com/album/8.jpg',
+  'https://uview-ultra.jiangruyi.com/album/9.jpg',
+  'https://uview-ultra.jiangruyi.com/album/10.jpg',
+];
+
+onLoad(() => {
+  loadmore();
+});
+
+const scrolltolower = () => {
+  loadmore();
+};
+
+const loadmore = () => {
+  for (let i = 0; i < 30; i++) {
+    indexList.value.push({
+      url: urls[uni.$u.random(0, urls.length - 1)],
+    });
+  }
+};
+</script>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/list/list.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/list.md`</small>
 
 </template>
 

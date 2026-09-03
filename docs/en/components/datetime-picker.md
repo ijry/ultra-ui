@@ -12,7 +12,7 @@ A date and time picker; compose year, month, day, hour, minute and second freely
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -204,233 +204,241 @@ No snippet could be extracted automatically — please read the source.
 
 <template #uniapp>
 
-```vue
-<up-datetime-picker
-    :show="show1"
-    v-model="value1"
-    mode="datetime"
-    closeOnClickOverlay
-    @confirm="confirm"
-    @cancel="cancel"
-    @change="change"
-    @close="close"
-></up-datetime-picker>
-```
+#### 基本使用
 
 ```vue
-<up-datetime-picker
-    :show="show2"
-    v-model="value2"
-    mode="date"
-    closeOnClickOverlay
-    @confirm="confirm"
-    @cancel="cancel"
-    @change="change"
-    @close="close"
-></up-datetime-picker>
+<template>
+	<view>
+        <up-datetime-picker
+            hasInput
+            :show="show"
+            v-model="value1"
+            mode="datetime"
+        ></up-datetime-picker>
+		<up-button @click="show = true">打开</up-button>
+	</view>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const show = ref(false);
+const value1 = ref(Date.now());
+</script>
 ```
+
+#### 年 月 日
 
 ```vue
-<up-datetime-picker
-    :show="show3"
-    v-model="value3"
-    mode="year-month"
-    closeOnClickOverlay
-    @confirm="confirm"
-    @cancel="cancel"
-    @change="change"
-    @close="close"
-></up-datetime-picker>
+<template>
+    <view>
+        <up-datetime-picker
+            hasInput
+            :show="show"
+            v-model="value1"
+            mode="date"
+        ></up-datetime-picker>
+        <up-button @click="show = true">打开</up-button>
+    </view>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const show = ref(false);
+const value1 = ref(Date.now());
+</script>
 ```
+
+#### 格式化
 
 ```vue
-<up-datetime-picker
-    :show="show4"
-    v-model="value4"
-    mode="time"
-    closeOnClickOverlay
-    @confirm="confirm"
-    @cancel="cancel"
-    @change="change"
-    @close="close"
-></up-datetime-picker>
+<template>
+    <view>
+        <up-datetime-picker
+			ref="datetimePickerRef"
+			:show="show"
+            v-model="value1"
+			mode="datetime"
+			:formatter="formatter"
+        ></up-datetime-picker>
+        <up-button @click="show = true">打开</up-button>
+    </view>
+</template>
+
+<script setup>
+import { ref, onMounted } from 'vue';
+import { onReady } from '@dcloud/uni-app';
+
+const show = ref(false);
+const value1 = ref(Date.now());
+const datetimePickerRef = ref(null);
+
+const formatter = (type, value) => {
+  if (type === 'year') {
+    return `${value}年`;
+  }
+  if (type === 'month') {
+    return `${value}月`;
+  }
+  if (type === 'day') {
+    return `${value}日`;
+  }
+  return value;
+};
+
+onReady(() => {
+  // 微信小程序需要用此写法
+  datetimePickerRef.value.setFormatter(formatter);
+});
+</script>
 ```
+
+#### 限制最大最小值
 
 ```vue
-<up-datetime-picker
-    :show="show5"
-    v-model="value5"
-    :filter="filter"
-    mode="date"
-    closeOnClickOverlay
-    @confirm="confirm"
-    @cancel="cancel"
-    @change="change"
-    @close="close"
-></up-datetime-picker>
+<template>
+    <view>
+        <up-datetime-picker
+            :show="show"
+            v-model="value1"
+            :minDate="1587524800000"
+            :maxDate="1786778555000"
+            mode="datetime"
+        ></up-datetime-picker>
+        <up-button @click="show = true">打开</up-button>
+    </view>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const show = ref(false);
+const value1 = ref(Date.now());
+</script>
 ```
 
-```vue
-<up-datetime-picker
-    :show="show6"
-    v-model="value6"
-    mode="date"
-    :formatter="formatter"
-    closeOnClickOverlay
-    @confirm="confirm"
-    @cancel="cancel"
-    @change="change"
-    @close="close"
-></up-datetime-picker>
-```
-
-```vue
-<up-datetime-picker
-    :show="show7"
-    v-model="value7"
-    mode="datetime"
-    :minDate="1587524800000"
-    :maxDate="1786778555000"
-    closeOnClickOverlay
-    @confirm="confirm"
-    @cancel="cancel"
-    @change="change"
-    @close="close"
-></up-datetime-picker>
-```
-
-```vue
-<up-datetime-picker
-    :show="show8"
-    v-model="value8"
-    mode="time"
-    :minHour="minHour8"
-    :minMinute="minMinute8"
-    closeOnClickOverlay
-    @confirm="confirm"
-    @cancel="cancel"
-    @change="changeTime8"
-    @close="close"
-></up-datetime-picker>
-```
-
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/datetimePicker/datetimePicker.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/datetimePicker.md`</small>
 
 </template>
 
 <template #uniappx>
 
-```vue
-<up-datetime-picker
-    :show="show1"
-    v-model="value1"
-    mode="datetime"
-    closeOnClickOverlay
-    @confirm="confirm"
-    @cancel="cancel"
-    @change="change"
-    @close="close"
-></up-datetime-picker>
-```
+#### 基本使用
 
 ```vue
-<up-datetime-picker
-    :show="show2"
-    v-model="value2"
-    mode="date"
-    closeOnClickOverlay
-    @confirm="confirm"
-    @cancel="cancel"
-    @change="change"
-    @close="close"
-></up-datetime-picker>
+<template>
+	<view>
+        <up-datetime-picker
+            hasInput
+            :show="show"
+            v-model="value1"
+            mode="datetime"
+        ></up-datetime-picker>
+		<up-button @click="show = true">打开</up-button>
+	</view>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const show = ref(false);
+const value1 = ref(Date.now());
+</script>
 ```
+
+#### 年 月 日
 
 ```vue
-<up-datetime-picker
-    :show="show3"
-    v-model="value3"
-    mode="year-month"
-    closeOnClickOverlay
-    @confirm="confirm"
-    @cancel="cancel"
-    @change="change"
-    @close="close"
-></up-datetime-picker>
+<template>
+    <view>
+        <up-datetime-picker
+            hasInput
+            :show="show"
+            v-model="value1"
+            mode="date"
+        ></up-datetime-picker>
+        <up-button @click="show = true">打开</up-button>
+    </view>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const show = ref(false);
+const value1 = ref(Date.now());
+</script>
 ```
+
+#### 格式化
 
 ```vue
-<up-datetime-picker
-    :show="show4"
-    v-model="value4"
-    mode="time"
-    closeOnClickOverlay
-    @confirm="confirm"
-    @cancel="cancel"
-    @change="change"
-    @close="close"
-></up-datetime-picker>
+<template>
+    <view>
+        <up-datetime-picker
+			ref="datetimePickerRef"
+			:show="show"
+            v-model="value1"
+			mode="datetime"
+			:formatter="formatter"
+        ></up-datetime-picker>
+        <up-button @click="show = true">打开</up-button>
+    </view>
+</template>
+
+<script setup>
+import { ref, onMounted } from 'vue';
+import { onReady } from '@dcloud/uni-app';
+
+const show = ref(false);
+const value1 = ref(Date.now());
+const datetimePickerRef = ref(null);
+
+const formatter = (type, value) => {
+  if (type === 'year') {
+    return `${value}年`;
+  }
+  if (type === 'month') {
+    return `${value}月`;
+  }
+  if (type === 'day') {
+    return `${value}日`;
+  }
+  return value;
+};
+
+onReady(() => {
+  // 微信小程序需要用此写法
+  datetimePickerRef.value.setFormatter(formatter);
+});
+</script>
 ```
+
+#### 限制最大最小值
 
 ```vue
-<up-datetime-picker
-    :show="show5"
-    v-model="value5"
-    :filter="filter"
-    mode="date"
-    closeOnClickOverlay
-    @confirm="confirm"
-    @cancel="cancel"
-    @change="change"
-    @close="close"
-></up-datetime-picker>
+<template>
+    <view>
+        <up-datetime-picker
+            :show="show"
+            v-model="value1"
+            :minDate="1587524800000"
+            :maxDate="1786778555000"
+            mode="datetime"
+        ></up-datetime-picker>
+        <up-button @click="show = true">打开</up-button>
+    </view>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const show = ref(false);
+const value1 = ref(Date.now());
+</script>
 ```
 
-```vue
-<up-datetime-picker
-    :show="show6"
-    v-model="value6"
-    mode="date"
-    :formatter="formatter"
-    closeOnClickOverlay
-    @confirm="confirm"
-    @cancel="cancel"
-    @change="change"
-    @close="close"
-></up-datetime-picker>
-```
-
-```vue
-<up-datetime-picker
-    :show="show7"
-    v-model="value7"
-    mode="datetime"
-    :minDate="1587524800000"
-    :maxDate="1786778555000"
-    closeOnClickOverlay
-    @confirm="confirm"
-    @cancel="cancel"
-    @change="change"
-    @close="close"
-></up-datetime-picker>
-```
-
-```vue
-<up-datetime-picker
-    :show="show8"
-    v-model="value8"
-    mode="time"
-    :minHour="minHour8"
-    :minMinute="minMinute8"
-    closeOnClickOverlay
-    @confirm="confirm"
-    @cancel="cancel"
-    @change="changeTime8"
-    @close="close"
-></up-datetime-picker>
-```
-
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/datetimePicker/datetimePicker.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/datetimePicker.md`</small>
 
 </template>
 

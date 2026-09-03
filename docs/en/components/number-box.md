@@ -12,7 +12,7 @@ A numeric stepper with step size, bounds and press-and-hold repetition.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -277,171 +277,213 @@ buttonWidth / buttonSize / inputWidth，单位 px
 
 <template #uniapp>
 
+#### 基本使用
+
 ```vue
-<up-number-box
-    v-model="value1"
-    step="1"
-    @change="change"
->
-</up-number-box>
+<template>
+	<up-number-box v-model="value" @change="valChange"></up-number-box>
+</template>
 ```
 
 ```vue
-<up-number-box
-    v-model="value2"
-    :step="step1"
-    @change="change"
->
-</up-number-box>
+<script setup>  
+import { ref } from 'vue';  
+  
+// 创建响应式数据  
+const value = ref(0);  
+  
+// 定义方法  
+function valChange(e) {  
+  console.log('当前值为: ' + e.target.value);  
+}  
+</script>
+```
+
+#### 步长设置
+
+```vue
+<up-number-box :step="2"></up-number-box>
+```
+
+#### 限制输入范围
+
+```vue
+<up-number-box :min="1" :max="100"></up-number-box>
+```
+
+#### 限制只能输入整数
+
+```vue
+<up-number-box integer></up-number-box>
+```
+
+#### 禁用
+
+```vue
+<!-- 通过设置`disabled`参数来禁用输入框，禁用状态下无法点击加减按钮或修改输入框的值 -->
+<up-number-box :disabled="true"></up-number-box>
+
+<!-- 禁用输入框 -->
+<up-number-box :disabledInput="true"></up-number-box>
+
+<!-- 禁用增加按钮 -->
+<up-number-box :disablePlus="true"></up-number-box>
+
+<!-- 禁用减少按钮 -->
+<up-number-box :disableMinus="true"></up-number-box>
+
+<!-- 禁用长按 -->
+<up-number-box :longPress="false"></up-number-box>
+```
+
+#### 固定小数位数
+
+```vue
+<up-number-box step="0.25" decimal-length="1" ></up-number-box>
+```
+
+#### 异步变更
+
+```vue
+<template>
+    <up-number-box v-model="value" :asyncChange="true" @change="onChange"></up-number-box>
+</template>
 ```
 
 ```vue
-<up-number-box
-    v-model="value3"
-    step="1"
-    :min="min1"
-    :max="max1"
-    @change="change"
->
-</up-number-box>
+<script setup>  
+import { ref, onMounted } from 'vue';  
+  
+// 创建响应式数据  
+const value = ref(1);  
+  
+// 定义方法  
+function onChange(e) {  
+  setTimeout(() => {  
+    value.value += 1; // 使用 value.value 来访问和修改响应式数据  
+  }, 3000);  
+}
+</script>
 ```
+
+#### 自定义颜色和大小
 
 ```vue
-<up-number-box
-    v-model="value4"
-    step="1"
-    integer
-    @change="change"
->
-</up-number-box>
+<up-number-box 
+    button-size="36"
+    color="#ffffff"
+    bgColor="#2979ff"
+    iconStyle="color: #fff"
+></up-number-box>
 ```
 
-```vue
-<up-number-box
-    v-model="value5"
-    step="1"
-    :disabled="true"
-    @change="change"
->
-</up-number-box>
-```
-
-```vue
-<up-number-box
-    v-model="value6"
-    step="1"
-    :disabledInput="true"
-    @change="change"
->
-</up-number-box>
-```
-
-```vue
-<up-number-box
-    v-model="value7"
-    step="1"
-    :longPress="false"
-    @change="change"
->
-</up-number-box>
-```
-
-```vue
-<up-number-box
-    v-model="value8"
-    step="0.2"
-    decimalLength="1"
-    @change="change"
->
-</up-number-box>
-```
-
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsB/numberBox/numberBox.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/numberBox.md`</small>
 
 </template>
 
 <template #uniappx>
 
+#### 基本使用
+
 ```vue
-<up-number-box
-    v-model="value1"
-    step="1"
-    @change="change"
->
-</up-number-box>
+<template>
+	<up-number-box v-model="value" @change="valChange"></up-number-box>
+</template>
 ```
 
 ```vue
-<up-number-box
-    v-model="value2"
-    :step="step1"
-    @change="change"
->
-</up-number-box>
+<script setup>  
+import { ref } from 'vue';  
+  
+// 创建响应式数据  
+const value = ref(0);  
+  
+// 定义方法  
+function valChange(e) {  
+  console.log('当前值为: ' + e.target.value);  
+}  
+</script>
+```
+
+#### 步长设置
+
+```vue
+<up-number-box :step="2"></up-number-box>
+```
+
+#### 限制输入范围
+
+```vue
+<up-number-box :min="1" :max="100"></up-number-box>
+```
+
+#### 限制只能输入整数
+
+```vue
+<up-number-box integer></up-number-box>
+```
+
+#### 禁用
+
+```vue
+<!-- 通过设置`disabled`参数来禁用输入框，禁用状态下无法点击加减按钮或修改输入框的值 -->
+<up-number-box :disabled="true"></up-number-box>
+
+<!-- 禁用输入框 -->
+<up-number-box :disabledInput="true"></up-number-box>
+
+<!-- 禁用增加按钮 -->
+<up-number-box :disablePlus="true"></up-number-box>
+
+<!-- 禁用减少按钮 -->
+<up-number-box :disableMinus="true"></up-number-box>
+
+<!-- 禁用长按 -->
+<up-number-box :longPress="false"></up-number-box>
+```
+
+#### 固定小数位数
+
+```vue
+<up-number-box step="0.25" decimal-length="1" ></up-number-box>
+```
+
+#### 异步变更
+
+```vue
+<template>
+    <up-number-box v-model="value" :asyncChange="true" @change="onChange"></up-number-box>
+</template>
 ```
 
 ```vue
-<up-number-box
-    v-model="value3"
-    step="1"
-    :min="min1"
-    :max="max1"
-    @change="change"
->
-</up-number-box>
+<script setup>  
+import { ref, onMounted } from 'vue';  
+  
+// 创建响应式数据  
+const value = ref(1);  
+  
+// 定义方法  
+function onChange(e) {  
+  setTimeout(() => {  
+    value.value += 1; // 使用 value.value 来访问和修改响应式数据  
+  }, 3000);  
+}
+</script>
 ```
+
+#### 自定义颜色和大小
 
 ```vue
-<up-number-box
-    v-model="value4"
-    step="1"
-    integer
-    @change="change"
->
-</up-number-box>
+<up-number-box 
+    button-size="36"
+    color="#ffffff"
+    bgColor="#2979ff"
+    iconStyle="color: #fff"
+></up-number-box>
 ```
 
-```vue
-<up-number-box
-    v-model="value5"
-    step="1"
-    :disabled="true"
-    @change="change"
->
-</up-number-box>
-```
-
-```vue
-<up-number-box
-    v-model="value6"
-    step="1"
-    :disabledInput="true"
-    @change="change"
->
-</up-number-box>
-```
-
-```vue
-<up-number-box
-    v-model="value7"
-    step="1"
-    :longPress="false"
-    @change="change"
->
-</up-number-box>
-```
-
-```vue
-<up-number-box
-    v-model="value8"
-    step="0.2"
-    decimalLength="1"
-    @change="change"
->
-</up-number-box>
-```
-
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsB/numberBox/numberBox.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/numberBox.md`</small>
 
 </template>
 

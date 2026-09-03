@@ -12,7 +12,7 @@ An embedded PDF viewer with paging and zoom.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -75,21 +75,105 @@ height 控制容器高度
 
 <template #uniapp>
 
+#### 基本使用
+
 ```vue
-<up-pdf-reader :src="pdfFileUrl"></up-pdf-reader>
+<template>
+	<view>
+		<up-pdf-reader 
+			:src="pdfUrl">
+		</up-pdf-reader>
+	</view>
+</template>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/pdfReader/pdfReader.uvue`</small>
+```vue
+<script setup>
+import { ref } from 'vue'
+
+const pdfUrl = ref('https://example.com/sample.pdf')
+</script>
+```
+
+#### 自定义高度
+
+```vue
+<template>
+	<view>
+		<up-pdf-reader 
+			:src="pdfUrl" 
+			height="500px">
+		</up-pdf-reader>
+	</view>
+</template>
+```
+
+#### 使用自定义pdf.js
+
+```vue
+<template>
+	<view>
+		<up-pdf-reader 
+			:src="pdfUrl" 
+			baseUrl="https://your-domain.com">
+		</up-pdf-reader>
+	</view>
+</template>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/pdfReader.md`</small>
 
 </template>
 
 <template #uniappx>
 
+#### 基本使用
+
 ```vue
-<up-pdf-reader :src="pdfFileUrl"></up-pdf-reader>
+<template>
+	<view>
+		<up-pdf-reader 
+			:src="pdfUrl">
+		</up-pdf-reader>
+	</view>
+</template>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/pdfReader/pdfReader.uvue`</small>
+```vue
+<script setup>
+import { ref } from 'vue'
+
+const pdfUrl = ref('https://example.com/sample.pdf')
+</script>
+```
+
+#### 自定义高度
+
+```vue
+<template>
+	<view>
+		<up-pdf-reader 
+			:src="pdfUrl" 
+			height="500px">
+		</up-pdf-reader>
+	</view>
+</template>
+```
+
+#### 使用自定义pdf.js
+
+```vue
+<template>
+	<view>
+		<up-pdf-reader 
+			:src="pdfUrl" 
+			baseUrl="https://your-domain.com">
+		</up-pdf-reader>
+	</view>
+</template>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/pdfReader.md`</small>
 
 </template>
 

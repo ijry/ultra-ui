@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -156,91 +156,59 @@ bgColors 支持任意 CSS 颜色（含渐变）
 
 <template #uniapp>
 
-```vue
-<up-box height="160px" gap="12px">
-    <template #left>
-        左
-    </template>
-    <template #rightTop>
-        右上
-    </template>
-    <template #rightBottom>
-        右下
-    </template>
-</up-box>
-```
+#### 基本使用
+
+- 通过`bgColors`(设置3个盒子的背景色)，`height`(盒子总高度)，`gap`(盒子间隔)
+- 通过`borderRadius`设置盒子圆角大小
 
 ```vue
-<up-box
-    height="180px" gap="12px"
->
-    <template #left>
-        <up-icon
-            name="arrow-left"
-            size="19"
-        ></up-icon>
-    </template>
-    <template #rightTop>
-        <up-icon
-            name="arrow-left"
-            size="19"
-        ></up-icon>
-    </template>
-    <template #rightBottom>
-        <up-icon
-            name="arrow-left"
-            size="19"
-        ></up-icon>
-    </template>
-</up-box>
+<template>
+	<view class="p-4 bg-white">
+        <up-box height="160px" gap="12px" :bgColors="['#EEFCFF', '#FCF8FF', '#FDF8F2']">
+            <template #left>
+                左
+            </template>
+            <template #rightTop>
+                右上
+            </template>
+            <template #rightBottom>
+                右下
+            </template>
+        </up-box>
+    </view>
+</template>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/box/box.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/box.md`</small>
 
 </template>
 
 <template #uniappx>
 
-```vue
-<up-box height="160px" gap="12px">
-    <template #left>
-        左
-    </template>
-    <template #rightTop>
-        右上
-    </template>
-    <template #rightBottom>
-        右下
-    </template>
-</up-box>
-```
+#### 基本使用
+
+- 通过`bgColors`(设置3个盒子的背景色)，`height`(盒子总高度)，`gap`(盒子间隔)
+- 通过`borderRadius`设置盒子圆角大小
 
 ```vue
-<up-box
-    height="180px" gap="12px"
->
-    <template #left>
-        <up-icon
-            name="arrow-left"
-            size="19"
-        ></up-icon>
-    </template>
-    <template #rightTop>
-        <up-icon
-            name="arrow-left"
-            size="19"
-        ></up-icon>
-    </template>
-    <template #rightBottom>
-        <up-icon
-            name="arrow-left"
-            size="19"
-        ></up-icon>
-    </template>
-</up-box>
+<template>
+	<view class="p-4 bg-white">
+        <up-box height="160px" gap="12px" :bgColors="['#EEFCFF', '#FCF8FF', '#FDF8F2']">
+            <template #left>
+                左
+            </template>
+            <template #rightTop>
+                右上
+            </template>
+            <template #rightBottom>
+                右下
+            </template>
+        </up-box>
+    </view>
+</template>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/box/box.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/box.md`</small>
 
 </template>
 

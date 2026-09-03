@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -168,69 +168,33 @@ customStyle 透传到根节点
 
 <template #uniapp>
 
-#### 基本案列
+#### 基本使用
+
+直接引入即可使用
+- 通过`height`配置高度，单位px
+- 通过`bgColor`配置背景颜色
 
 ```vue
-<up-gap bgColor="#f3f4f6"></up-gap>
+<up-gap height="80" bgColor="#bbb"></up-gap>
 ```
 
-#### 自定义颜色
-
-```vue
-<up-gap bgColor="#2979ff"></up-gap>
-```
-
-#### 自定义高度
-
-```vue
-<up-gap bgColor="#f3f4f6" height="40"></up-gap>
-```
-
-#### 自定义上下边距
-
-```vue
-<up-gap
-    bgColor="#f3f4f6"
-    marginTop="20"
-    marginBottom="20"
-></up-gap>
-```
-
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsA/gap/gap.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/gap.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 基本案列
+#### 基本使用
+
+直接引入即可使用
+- 通过`height`配置高度，单位px
+- 通过`bgColor`配置背景颜色
 
 ```vue
-<up-gap bgColor="#f3f4f6"></up-gap>
+<up-gap height="80" bgColor="#bbb"></up-gap>
 ```
 
-#### 自定义颜色
-
-```vue
-<up-gap bgColor="#2979ff"></up-gap>
-```
-
-#### 自定义高度
-
-```vue
-<up-gap bgColor="#f3f4f6" height="40"></up-gap>
-```
-
-#### 自定义上下边距
-
-```vue
-<up-gap
-    bgColor="#f3f4f6"
-    marginTop="20"
-    marginBottom="20"
-></up-gap>
-```
-
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsA/gap/gap.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/gap.md`</small>
 
 </template>
 

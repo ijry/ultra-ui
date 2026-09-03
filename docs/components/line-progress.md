@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -208,149 +208,204 @@ height
 
 <template #uniapp>
 
-#### 基础功能
+#### 基本使用
+
+- 通过`percentage`设置当前的进度值，该值区间为0-100.
+- 通过`activeColor`设置进度条的颜色
+- 不传`percentage`时默认为`0`，此时仅显示进度条底色
 
 ```vue
-<up-line-progress :percentage="percentage1">
-</up-line-progress>
+<template>
+	<up-line-progress :percentage="30" activeColor="#ff0000"></up-line-progress>
+</template>
+```
+
+#### 默认配置
+
+不传任何参数时，组件会使用默认底色、高度和`0`进度。
+
+```vue
+<template>
+	<up-line-progress></up-line-progress>
+</template>
 ```
 
 #### 不显示百分比
 
+不显示百分比值信息
+- `show-text`参数配置是否显示进度条内百分值
+
 ```vue
-<up-line-progress
-    :showText="false"
-    :percentage="percentage2"
->
-</up-line-progress>
+<template>
+	<up-line-progress :percentage="30" :showText="false"></up-line-progress>
+</template>
 ```
 
 #### 自定义高度
 
+- `height`进度条高度
+
 ```vue
-<up-line-progress
-    height="8"
-    :showText="false"
-    :percentage="percentage3"
->
-</up-line-progress>
+<template>
+	<up-line-progress :percentage="30" height="8"></up-line-progress>
+</template>
 ```
 
-#### 自定义颜色
+#### 从右往左
+
+- 通过`fromRight`设置进度条从右侧开始加载
 
 ```vue
-<up-line-progress
-    height="8"
-    :showText="false"
-    :percentage="percentage4"
-    activeColor="#3c9cff"
-    inactiveColor="#f3f4f6"
->
-</up-line-progress>
+<template>
+	<up-line-progress :percentage="40" :showText="false" :fromRight="true"></up-line-progress>
+</template>
 ```
 
 #### 自定义样式(不支持安卓环境的nvue)
 
+- 自定义的数值样式嵌套在默认插槽里
+
 ```vue
-<up-line-progress
-    height="8"
-    :showText="false"
-    :percentage="percentage5"
-    activeColor="#3c9cff"
-    inactiveColor="#f3f4f6"
->
-    <text class="u-percentage-slot">{{percentage4}}%</text>
-</up-line-progress>
+<template>
+	<up-line-progress :percentage="30">
+		<text class="u-percentage-slot">{{30}}%</text>
+	</up-line-progress>
+</template>
+
+<style lang="scss" scoped>
+.u-percentage-slot {
+	padding: 1px 5px;
+	background-color: $u-warning;
+	color: #fff;
+	border-radius: 100px;
+	font-size: 10px;
+	margin-right: -5px;
+}
+</style>
 ```
 
 #### 手动加减
 
+- 通过控制`percentage`参数数值达到增减
+
 ```vue
-<up-line-progress
-    height="8"
-    :showText="false"
-    :percentage="percentage6"
-    activeColor="#3c9cff"
-    inactiveColor="#f3f4f6"
->
-</up-line-progress>
+<template>
+	<view style="margin-top: 50px;">
+		<up-line-progress :percentage="percentage" />
+		<view style="display: flex;margin-top: 100px;">
+			<button @click="computedWidth('minus')">减少</button>
+			<button @click="computedWidth('plus')">增加</button>
+		</view>
+	</view>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const percentage = ref(30);
+
+const computedWidth = (type) => {
+  if (type === 'plus') {
+    percentage.value = uni.$u.range(0, 100, percentage.value + 10);
+  } else {
+    percentage.value = uni.$u.range(0, 100, percentage.value - 10);
+  }
+};
+</script>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsB/progress/progress.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/lineProgress.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 基础功能
+#### 基本使用
+
+- 通过`percentage`设置当前的进度值，该值区间为0-100.
+- 通过`activeColor`设置进度条的颜色
 
 ```vue
-<up-line-progress :percentage="percentage1">
-</up-line-progress>
+<template>
+	<up-line-progress :percentage="30" activeColor="#ff0000"></up-line-progress>
+</template>
 ```
 
 #### 不显示百分比
 
+不显示百分比值信息
+- `show-text`参数配置是否显示进度条内百分值
+
 ```vue
-<up-line-progress
-    :showText="false"
-    :percentage="percentage2"
->
-</up-line-progress>
+<template>
+	<up-line-progress :percentage="30" :showText="false"></up-line-progress>
+</template>
 ```
 
 #### 自定义高度
 
-```vue
-<up-line-progress
-    height="8"
-    :showText="false"
-    :percentage="percentage3"
->
-</up-line-progress>
-```
-
-#### 自定义颜色
+- `height`进度条高度
 
 ```vue
-<up-line-progress
-    height="8"
-    :showText="false"
-    :percentage="percentage4"
-    activeColor="#3c9cff"
-    inactiveColor="#f3f4f6"
->
-</up-line-progress>
+<template>
+	<up-line-progress :percentage="30" height="8"></up-line-progress>
+</template>
 ```
 
 #### 自定义样式(不支持安卓环境的nvue)
 
+- 自定义的数值样式嵌套在默认插槽里
+
 ```vue
-<up-line-progress
-    height="8"
-    :showText="false"
-    :percentage="percentage5"
-    activeColor="#3c9cff"
-    inactiveColor="#f3f4f6"
->
-    <text class="u-percentage-slot">{{percentage4}}%</text>
-</up-line-progress>
+<template>
+	<up-line-progress :percentage="30">
+		<text class="u-percentage-slot">{{30}}%</text>
+	</up-line-progress>
+</template>
+
+<style lang="scss" scoped>
+.u-percentage-slot {
+	padding: 1px 5px;
+	background-color: $up-warning;
+	color: #fff;
+	border-radius: 100px;
+	font-size: 10px;
+	margin-right: -5px;
+}
+</style>
 ```
 
 #### 手动加减
 
+- 通过控制`percentage`参数数值达到增减
+
 ```vue
-<up-line-progress
-    height="8"
-    :showText="false"
-    :percentage="percentage6"
-    activeColor="#3c9cff"
-    inactiveColor="#f3f4f6"
->
-</up-line-progress>
+<template>
+	<view style="margin-top: 50px;">
+		<up-line-progress :percentage="percentage" />
+		<view style="display: flex;margin-top: 100px;">
+			<button @click="computedWidth('minus')">减少</button>
+			<button @click="computedWidth('plus')">增加</button>
+		</view>
+	</view>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const percentage = ref(30);
+
+computedWidth = (type) => {
+  if (type === 'plus') {
+    percentage.value = uni.$u.range(0, 100, percentage.value + 10);
+  } else {
+    percentage.value = uni.$u.range(0, 100, percentage.value - 10);
+  }
+};
+</script>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsB/progress/progress.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/lineProgress.md`</small>
 
 </template>
 

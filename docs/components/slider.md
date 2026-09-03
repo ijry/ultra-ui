@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -272,191 +272,227 @@ vertical + length
 
 <template #uniapp>
 
-#### 基本案例
+#### 基本使用
+
+需要通过`v-model`绑定一个值，来初始化滑块的选择值(0到100之间)，这个值是双向绑定的，您可以通过这个值，实时地得知内部的滑动结果。
 
 ```vue
-<up-slider
-    :useNative="useNative"
-    v-model="value1"
-></up-slider>
+<template>
+	<up-slider v-model="value"></up-slider>
+</template>
 ```
-
-#### 自定义范围(10—50)
 
 ```vue
-<up-slider
-    :useNative="useNative"
-    v-model="value2"
-    showValue
-    min="10"
-    max="50"
-></up-slider>
+<script setup>  
+import { ref } from 'vue';  
+  
+// 响应式数据  
+const value = ref(30);  
+</script>
 ```
 
-#### 指定步长(每次步进5)
+#### 设置最大和最小值
+
+通过`min`和`max`，可以设置滑块所能选择的最大和最小值
 
 ```vue
-<up-slider
-    :useNative="useNative"
-    v-model="value4"
-    :step="5"
-></up-slider>
+<up-slider v-model="value" min="30" max="80"></up-slider>
 ```
 
-#### 小数步长(每次步进0.1)
+#### 设置步进值
+
+通过`step`参数设置步进值，这个步进值为每次跳变的值，具体表现请见示例。  
+
+:::tip 提示
+需要注意的是，建议让`(max - min)`能被`step`整除，否则可能出现无法滑动到最大值的情况。默认自定义模式支持`0.1`、`0.5`等小数步长；`useNative=true`时会透传给uni-app原生slider，具体小数表现取决于目标平台。
+:::
 
 ```vue
-<up-slider
-    v-model="value3"
-    :step="0.1"
-    :min="0"
-    :max="1"
-    showValue
-></up-slider>
+<up-slider v-model="value" step="20" min="20" max="100"></up-slider>
 ```
 
-#### 自定义样式
+小数步长也可以使用数字或字符串数字：
 
 ```vue
-<up-slider
-    v-model="value5"
-    activeColor="#deab8a"
-    blockColor="#f47920"
-    height="20px"
-></up-slider>
+<up-slider v-model="value" :step="0.1" :min="0" :max="1" showValue></up-slider>
 ```
 
-#### 自定义样式(图片)
+#### 在弹窗等初始化不显示的容器中使用
+
+:::tip 提示
+需要注意的是，在此场景中使用要注意给slider同时一个v-if让它随着弹窗的显示再渲染，这样才能计算出滑块的正确尺寸。
+:::
 
 ```vue
-<up-slider
-    v-model="value5"
-    activeColor="#deab8a"
-    blockColor="#f47920"
-    height="4px"
->
-    <template #default>
-        <view>
-            <svg t="1722094047017" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="11063" width="32" height="32"><path d="M965.12 469.333333c-81.493333-90.88-230.186667-149.333333-378.453333-149.333333h-6.826667a193.28 193.28 0 0 0-289.493333-109.226667 188.373333 188.373333 0 0 0-51.2 47.36 42.666667 42.666667 0 0 0-2.773334 45.653334 42.666667 42.666667 0 0 0 42.666667 21.333333A149.333333 149.333333 0 0 1 384 355.626667l-16.426667 6.4A42.666667 42.666667 0 0 0 341.333333 401.28v221.44A42.666667 42.666667 0 0 0 367.36 661.333333l16.64 7.466667a150.4 150.4 0 0 1-106.666667 30.506667 42.666667 42.666667 0 0 0-42.666666 21.333333 42.666667 42.666667 0 0 0 2.773333 45.866667 187.946667 187.946667 0 0 0 51.2 47.36 194.56 194.56 0 0 0 103.893333 29.653333A192 192 0 0 0 580.053333 704h6.613334c149.333333 0 296.96-58.666667 378.453333-149.333333a64 64 0 0 0 0-85.333334z m-535.68-130.773333a192 192 0 0 0-155.946667-55.04 146.133333 146.133333 0 0 1 39.68-36.693333 152.533333 152.533333 0 0 1 176.213334 10.24 149.333333 149.333333 0 0 1 46.293333 65.28 615.04 615.04 0 0 0-104.746667 18.346666 20.053333 20.053333 0 0 0-1.493333-2.133333zM489.173333 768a152.32 152.32 0 0 1-176.213333 10.24 135.893333 135.893333 0 0 1-38.826667-36.266667 192 192 0 0 0 155.093334-55.466666 21.333333 21.333333 0 0 0 2.133333-3.84 615.466667 615.466667 0 0 0 104.533333 18.346666A149.333333 149.333333 0 0 1 489.173333 768z m444.16-242.133333C859.52 608.213333 723.413333 661.333333 586.666667 661.333333a546.773333 546.773333 0 0 1-202.666667-38.613333V401.28A549.76 549.76 0 0 1 586.666667 362.666667c136.746667 0 272.853333 53.12 346.666666 135.466666a21.333333 21.333333 0 0 1 0 27.733334z" fill="#CE4141" p-id="11064"></path><path d="M682.666667 426.666667a85.333333 85.333333 0 1 0 85.333333 85.333333 85.333333 85.333333 0 0 0-85.333333-85.333333z m0 128a42.666667 42.666667 0 1 1 42.666666-42.666667 42.666667 42.666667 0 0 1-42.666666 42.666667zM128 448h149.333333a21.333333 21.333333 0 0 0 0-42.666667H128a21.333333 21.333333 0 0 0 0 42.666667zM298.666667 597.333333a21.333333 21.333333 0 0 0-21.333334-21.333333H192a21.333333 21.333333 0 0 0 0 42.666667h85.333333a21.333333 21.333333 0 0 0 21.333334-21.333334zM298.666667 512a21.333333 21.333333 0 0 0-21.333334-21.333333H64a21.333333 21.333333 0 0 0 0 42.666666h213.333333a21.333333 21.333333 0 0 0 21.333334-21.333333z" fill="#CE4141" p-id="11065"></path><path d="M448 426.666667m-21.333333 0a21.333333 21.333333 0 1 0 42.666666 0 21.333333 21.333333 0 1 0-42.666666 0Z" fill="#CE4141" p-id="11066"></path><path d="M448 512m-21.333333 0a21.333333 21.333333 0 1 0 42.666666 0 21.333333 21.333333 0 1 0-42.666666 0Z" fill="#CE4141" p-id="11067"></path><path d="M448 597.333333m-21.333333 0a21.333333 21.333333 0 1 0 42.666666 0 21.333333 21.333333 0 1 0-42.666666 0Z" fill="#CE4141" p-id="11068"></path></svg>
-        </view>
-    </template>
-</up-slider>
+<up-popup v-model:show="popupShow">
+	<view class="slot-content" style="width: 100%">
+		<up-slider v-if="popupShow" v-model="sliderValue" min="1" max="4" showValue></up-slider>
+	</view>
+</up-popup>
+
+<script setup> 
+import { ref } from "vue";
+const popupShow = ref(false);
+const sliderValue = ref(4);
+</script>
 ```
 
-#### 区间选择(双滑块)
+#### 禁用状态
 
 ```vue
-<up-slider
-    isRange
-    showValue
-    step="2"
-    v-model:rangeValue="value6"
-    height="2px"
-></up-slider>
+<up-slider v-model="value" disabled></up-slider>
 ```
 
-#### 在Modal弹窗中使用
+#### 垂直方向使用
+
+通过设置`vertical`属性为`true`，可以使滑块变为垂直方向。可以通过`length`属性设置垂直滑块的高度。
 
 ```vue
-<up-slider v-if="modelShow" v-model="sliderValue" min="1" max="4" showValue></up-slider>
+<up-slider v-model="value" vertical length="200px"></up-slider>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsB/slider/slider.uvue`</small>
+#### 双滑块模式
+
+通过设置`isRange`属性为`true`，可以开启双滑块模式。通过`rangeValue`绑定一个数组来获取两个滑块的值。
+
+```vue
+<up-slider :rangeValue="range" isRange></up-slider>
+```
+
+#### 自定义按钮的内容和样式
+
+- ```activeColor```，设置进度条的激活部分颜色
+- ```inactiveColor```，进度条的激活部分颜色
+- ```inactiveColor```，进度条的背景颜色
+- ```blockColor```，滑块的背景颜色
+- ```blockStyle```，用户对滑块的自定义样式(颜色)
+
+```vue
+<template>
+	<up-slider v-model="value" activeColor="#3c9cff" inactiveColor="#c0c4cc">
+	</up-slider>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 响应式数据  
+const value = ref(30);  
+</script>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/slider.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 基本案例
+#### 基本使用
+
+需要通过`v-model`绑定一个值，来初始化滑块的选择值(0到100之间)，这个值是双向绑定的，您可以通过这个值，实时地得知内部的滑动结果。
 
 ```vue
-<up-slider
-    :useNative="useNative"
-    v-model="value1"
-></up-slider>
+<template>
+	<up-slider v-model="value"></up-slider>
+</template>
 ```
-
-#### 自定义范围(10—50)
 
 ```vue
-<up-slider
-    :useNative="useNative"
-    v-model="value2"
-    showValue
-    min="10"
-    max="50"
-></up-slider>
+<script setup>  
+import { ref } from 'vue';  
+  
+// 响应式数据  
+const value = ref(30);  
+</script>
 ```
 
-#### 指定步长(每次步进5)
+#### 设置最大和最小值
+
+通过`min`和`max`，可以设置滑块所能选择的最大和最小值
 
 ```vue
-<up-slider
-    :useNative="useNative"
-    v-model="value4"
-    :step="5"
-></up-slider>
+<up-slider v-model="value" min="30" max="80"></up-slider>
 ```
 
-#### 小数步长(每次步进0.1)
+#### 设置步进值
+
+通过`step`参数设置步进值，这个步进值为每次跳变的值，具体表现请见示例。  
+
+:::tip 提示
+需要注意的是，这个`step`必须要被`max`值整除，否则会出现无法无法滑动到最大值的情况
+:::
 
 ```vue
-<up-slider
-    v-model="value3"
-    :step="0.1"
-    :min="0"
-    :max="1"
-    showValue
-></up-slider>
+<up-slider v-model="value" step="20" min="30" max="100"></up-slider>
 ```
 
-#### 自定义样式
+#### 在弹窗等初始化不显示的容器中使用
+
+:::tip 提示
+需要注意的是，在此场景中使用要注意给slider同时一个v-if让它随着弹窗的显示再渲染，这样才能计算出滑块的正确尺寸。
+:::
 
 ```vue
-<up-slider
-    v-model="value5"
-    activeColor="#deab8a"
-    blockColor="#f47920"
-    height="20px"
-></up-slider>
+<up-popup v-model:show="popupShow">
+	<view class="slot-content" style="width: 100%">
+		<up-slider v-if="popupShow" v-model="sliderValue" min="1" max="4" showValue></up-slider>
+	</view>
+</up-popup>
+
+<script setup> 
+import { ref } from "vue";
+const popupShow = ref(false);
+const sliderValue = ref(4);
+</script>
 ```
 
-#### 自定义样式(图片)
+#### 禁用状态
 
 ```vue
-<up-slider
-    v-model="value5"
-    activeColor="#deab8a"
-    blockColor="#f47920"
-    height="4px"
->
-    <template #default>
-        <view>
-            <svg t="1722094047017" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="11063" width="32" height="32"><path d="M965.12 469.333333c-81.493333-90.88-230.186667-149.333333-378.453333-149.333333h-6.826667a193.28 193.28 0 0 0-289.493333-109.226667 188.373333 188.373333 0 0 0-51.2 47.36 42.666667 42.666667 0 0 0-2.773334 45.653334 42.666667 42.666667 0 0 0 42.666667 21.333333A149.333333 149.333333 0 0 1 384 355.626667l-16.426667 6.4A42.666667 42.666667 0 0 0 341.333333 401.28v221.44A42.666667 42.666667 0 0 0 367.36 661.333333l16.64 7.466667a150.4 150.4 0 0 1-106.666667 30.506667 42.666667 42.666667 0 0 0-42.666666 21.333333 42.666667 42.666667 0 0 0 2.773333 45.866667 187.946667 187.946667 0 0 0 51.2 47.36 194.56 194.56 0 0 0 103.893333 29.653333A192 192 0 0 0 580.053333 704h6.613334c149.333333 0 296.96-58.666667 378.453333-149.333333a64 64 0 0 0 0-85.333334z m-535.68-130.773333a192 192 0 0 0-155.946667-55.04 146.133333 146.133333 0 0 1 39.68-36.693333 152.533333 152.533333 0 0 1 176.213334 10.24 149.333333 149.333333 0 0 1 46.293333 65.28 615.04 615.04 0 0 0-104.746667 18.346666 20.053333 20.053333 0 0 0-1.493333-2.133333zM489.173333 768a152.32 152.32 0 0 1-176.213333 10.24 135.893333 135.893333 0 0 1-38.826667-36.266667 192 192 0 0 0 155.093334-55.466666 21.333333 21.333333 0 0 0 2.133333-3.84 615.466667 615.466667 0 0 0 104.533333 18.346666A149.333333 149.333333 0 0 1 489.173333 768z m444.16-242.133333C859.52 608.213333 723.413333 661.333333 586.666667 661.333333a546.773333 546.773333 0 0 1-202.666667-38.613333V401.28A549.76 549.76 0 0 1 586.666667 362.666667c136.746667 0 272.853333 53.12 346.666666 135.466666a21.333333 21.333333 0 0 1 0 27.733334z" fill="#CE4141" p-id="11064"></path><path d="M682.666667 426.666667a85.333333 85.333333 0 1 0 85.333333 85.333333 85.333333 85.333333 0 0 0-85.333333-85.333333z m0 128a42.666667 42.666667 0 1 1 42.666666-42.666667 42.666667 42.666667 0 0 1-42.666666 42.666667zM128 448h149.333333a21.333333 21.333333 0 0 0 0-42.666667H128a21.333333 21.333333 0 0 0 0 42.666667zM298.666667 597.333333a21.333333 21.333333 0 0 0-21.333334-21.333333H192a21.333333 21.333333 0 0 0 0 42.666667h85.333333a21.333333 21.333333 0 0 0 21.333334-21.333334zM298.666667 512a21.333333 21.333333 0 0 0-21.333334-21.333333H64a21.333333 21.333333 0 0 0 0 42.666666h213.333333a21.333333 21.333333 0 0 0 21.333334-21.333333z" fill="#CE4141" p-id="11065"></path><path d="M448 426.666667m-21.333333 0a21.333333 21.333333 0 1 0 42.666666 0 21.333333 21.333333 0 1 0-42.666666 0Z" fill="#CE4141" p-id="11066"></path><path d="M448 512m-21.333333 0a21.333333 21.333333 0 1 0 42.666666 0 21.333333 21.333333 0 1 0-42.666666 0Z" fill="#CE4141" p-id="11067"></path><path d="M448 597.333333m-21.333333 0a21.333333 21.333333 0 1 0 42.666666 0 21.333333 21.333333 0 1 0-42.666666 0Z" fill="#CE4141" p-id="11068"></path></svg>
-        </view>
-    </template>
-</up-slider>
+<up-slider v-model="value" disabled></up-slider>
 ```
 
-#### 区间选择(双滑块)
+#### 自定义按钮的内容和样式
+
+- ```activeColor```，设置进度条的激活部分颜色
+- ```inactiveColor```，进度条的激活部分颜色
+- ```inactiveColor```，进度条的背景颜色
+- ```blockColor```，滑块的背景颜色
+- ```blockStyle```，用户对滑块的自定义样式(颜色)
 
 ```vue
-<up-slider
-    isRange
-    showValue
-    step="2"
-    v-model:rangeValue="value6"
-    height="2px"
-></up-slider>
+<template>
+	<up-slider v-model="value" activeColor="#3c9cff" inactiveColor="#c0c4cc">
+	</up-slider>
+</template>
 ```
-
-#### 在Modal弹窗中使用
 
 ```vue
-<up-slider v-if="modelShow" v-model="sliderValue" min="1" max="4" showValue></up-slider>
+<script setup>  
+import { ref } from 'vue';  
+  
+// 响应式数据  
+const value = ref(30);  
+</script>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsB/slider/slider.uvue`</small>
+#### 自定义滑动选择器整体的样式
+
+- 通过`inactive-color`配置底部滑动条背景颜色
+- 通过`active-color`配置底部选择部分的背景颜色
+- 通过`block-width`配置滑块宽度(高等于宽)
+- 通过`block-color`配置滑动按钮按钮的颜色
+- 通过`height`配置滑块条高度，单位rpx
+
+其他更多参数详见底部API
+
+```vue
+<up-slider v-model="value" block-width="40" block-color="red"></up-slider>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/slider.md`</small>
 
 </template>
 

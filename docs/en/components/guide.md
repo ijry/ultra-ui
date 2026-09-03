@@ -12,7 +12,7 @@ An onboarding overlay that spotlights part of the screen and explains it.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -107,11 +107,85 @@ showSkip 显示右上角跳过入口
 
 <template #uniapp>
 
-::: tip
-No snippet could be extracted automatically — please read the source.
-:::
+#### 基本使用
 
-<small>Auto-imported through easycom — no import statement needed.</small>
+```vue
+<template>
+  <up-guide
+    v-model:show="show"
+    :list="list"
+    storage-key="demo-up-guide-once"
+  />
+</template>
+```
+
+```vue
+<script setup>
+import { ref } from 'vue'
+
+const show = ref(true)
+const list = ref([
+  {
+    image: '/static/uview/common/logo.png',
+    title: '欢迎使用 uview-plus',
+    desc: '一套跨端可复用的高质量组件库。'
+  },
+  {
+    image: '/static/uview/common/gray-logo.png',
+    title: '引导页支持多页滑动',
+    desc: '可配置跳过、下一步和立即体验。'
+  },
+  {
+    image: '/static/uview/common/logo.jpg',
+    title: '只显示一次',
+    desc: '默认内置本地存储记忆能力。'
+  }
+])
+</script>
+```
+
+#### 仅展示一次与重置
+
+```vue
+<template>
+  <up-guide
+    ref="guideRef"
+    v-model:show="show"
+    :list="list"
+    storage-key="demo-up-guide-once"
+  />
+  <up-button text="重置首次标记" @click="resetGuide"></up-button>
+</template>
+```
+
+```vue
+<script setup>
+import { ref } from 'vue'
+
+const show = ref(false)
+const guideRef = ref(null)
+
+function resetGuide() {
+  guideRef.value?.reset?.()
+  show.value = true
+}
+</script>
+```
+
+#### 监听事件
+
+```vue
+<up-guide
+  v-model:show="show"
+  :list="list"
+  @change="onChange"
+  @skip="onSkip"
+  @finish="onFinish"
+  @close="onClose"
+/>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/guide.md`</small>
 
 </template>
 

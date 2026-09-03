@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -293,163 +293,143 @@ lines 指定最大行数
 
 <template #uniapp>
 
-#### 基础功能
+#### 基本使用
+
+- 通过`text`参数设置文本内容。推荐您使用`:text='value'`的形式
 
 ```vue
-<up-text
-    text="我用十年青春,赴你最后之约"
-    @click="test">
-</up-text>
+<up-text text="我用十年青春,赴你最后之约"></up-text>
 ```
 
 #### 设置主题
 
+- 通过`type`参数设置文本主题，我们提供了五类属性。
+- `primary  error  success  warning  info`
+
 ```vue
-<up-text
-    text="主色"
-    type="primary"
-></up-text>
+<up-text type="primary" text="主色"></up-text>
+<up-text type="error"   text="错误"></up-text>
+<up-text type="success" text="成功"></up-text>
+<up-text type="warning" text="警告"></up-text>
+<up-text type="info"    text="信息"></up-text>
 ```
 
 #### 拨打电话
 
+- 通过将`mode`属性设置为`phone`即可调用拨打电话，提供加密值`encrypt`
+- 除此之外还有格式化日期，姓名脱敏，超链接，千分位金额等属性，将在以下实例中展示
+
 ```vue
-<up-text
-    mode="phone"
-    text="15019479320"
-></up-text>
+<up-text mode="phone" text="15019479320"></up-text>
 ```
 
 #### 日期格式化
 
 ```vue
-<up-text
-    mode="date"
-    text="1612959739"
-></up-text>
+<up-text mode="date" text="1612959739"></up-text>
 ```
 
 #### 姓名脱敏
 
 ```vue
-<up-text
-    mode="name"
-    text="张三三"
-    format="encrypt"
-></up-text>
+<up-text mode="name" text="张三三" format="encrypt"></up-text>
 ```
 
 #### 超链接
 
+添加`href`指定链接地址
+
 ```vue
-<up-text
-    mode="link"
-    text="Go to uview-plus docs"
-    href="https://ijry.github.io/uview-plus/"
-></up-text>
+<up-text mode="link" text="Go to uview-plus docs" href="https://www.uviewui.com" ></up-text>
 ```
 
 #### 显示金额
 
 ```vue
-<up-text
-    mode="price"
-    text="728732.32"
-></up-text>
+<up-text mode="price" text="728732.32"></up-text>
 ```
 
 #### 前后图标
 
+添加`prefixIcon,suffixIcon`指定图标和位置，`iconStyle`设置图标大小
+
 ```vue
-<up-text
-    prefixIcon="baidu"
-    iconStyle="font-size: 19px"
-    text="百度一下"
-></up-text>
+<up-text prefixIcon="baidu" iconStyle="font-size: 19px" text="百度一下,你就知道"></up-text>
+<up-text suffixIcon="arrow-leftward" iconStyle="font-size: 18px" text="查看更多"></up-text>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsC/text/text.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/text.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 基础功能
+#### 基本使用
+
+- 通过`text`参数设置文本内容。推荐您使用`:text='value'`的形式
 
 ```vue
-<up-text
-    text="我用十年青春,赴你最后之约"
-    @click="test">
-</up-text>
+<up-text text="我用十年青春,赴你最后之约"></up-text>
 ```
 
 #### 设置主题
 
+- 通过`type`参数设置文本主题，我们提供了五类属性。
+- `primary  error  success  warning  info`
+
 ```vue
-<up-text
-    text="主色"
-    type="primary"
-></up-text>
+<up-text type="primary" text="主色"></up-text>
+<up-text type="error"   text="错误"></up-text>
+<up-text type="success" text="成功"></up-text>
+<up-text type="warning" text="警告"></up-text>
+<up-text type="info"    text="信息"></up-text>
 ```
 
 #### 拨打电话
 
+- 通过将`mode`属性设置为`phone`即可调用拨打电话，提供加密值`encrypt`
+- 除此之外还有格式化日期，姓名脱敏，超链接，千分位金额等属性，将在以下实例中展示
+
 ```vue
-<up-text
-    mode="phone"
-    text="15019479320"
-></up-text>
+<up-text mode="phone" text="15019479320"></up-text>
 ```
 
 #### 日期格式化
 
 ```vue
-<up-text
-    mode="date"
-    text="1612959739"
-></up-text>
+<up-text mode="date" text="1612959739"></up-text>
 ```
 
 #### 姓名脱敏
 
 ```vue
-<up-text
-    mode="name"
-    text="张三三"
-    format="encrypt"
-></up-text>
+<up-text mode="name" text="张三三" format="encrypt"></up-text>
 ```
 
 #### 超链接
 
+添加`href`指定链接地址
+
 ```vue
-<up-text
-    mode="link"
-    text="Go to uview-plus docs"
-    href="https://ijry.github.io/uview-plus/"
-></up-text>
+<up-text mode="link" text="Go to uview-ultra docs" href="https://www.uviewui.com" ></up-text>
 ```
 
 #### 显示金额
 
 ```vue
-<up-text
-    mode="price"
-    text="728732.32"
-></up-text>
+<up-text mode="price" text="728732.32"></up-text>
 ```
 
 #### 前后图标
 
+添加`prefixIcon,suffixIcon`指定图标和位置，`iconStyle`设置图标大小
+
 ```vue
-<up-text
-    prefixIcon="baidu"
-    iconStyle="font-size: 19px"
-    text="百度一下"
-></up-text>
+<up-text prefixIcon="baidu" iconStyle="font-size: 19px" text="百度一下,你就知道"></up-text>
+<up-text suffixIcon="arrow-leftward" iconStyle="font-size: 18px" text="查看更多"></up-text>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsC/text/text.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/text.md`</small>
 
 </template>
 

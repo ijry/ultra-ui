@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -134,69 +134,381 @@ itemWidth 统一每条宽度
 
 <template #uniapp>
 
-#### 多菜单扩展
+#### 基本使用
+
+通过slot传入内容
 
 ```vue
-<up-scroll-list>
-    <view class="scroll-list">
-        <view
-            class="scroll-list__line"
-            v-for="(item, index) in menuArr"
-            :key="index"
-        >
-            <view
-                class="scroll-list__line__item"
-                v-for="(item1, index1) in item"
-                :key="index1"
-                :class="[(index1 === item.length - 1) ? 'scroll-list__line__item--no-margin-right' : '']"
-            >
-                <image
-                    class="scroll-list__line__item__image"
-                    :src="menuBaseUrl + item1['icon']"
-                    mode=""
-                ></image>
-                <text class="scroll-list__line__item__text">{{ item1['name'] }}</text>
-            </view>
+<template>
+    <up-scroll-list>
+        <view v-for="(item, index) in list" :key="index">
+            <image :src="item.thumb"></image>
         </view>
-    </view>
-</up-scroll-list>
+    </up-scroll-list>
+</template>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsC/scrollList/scrollList.uvue`</small>
+```vue
+
+<script setup>  
+import { reactive } from 'vue';  
+  
+const list = reactive([  
+    {  
+        thumb: "https://cdn.uviewui.com/uview/goods/1.jpg"  
+    },  
+    {  
+        thumb: "https://cdn.uviewui.com/uview/goods/2.jpg"  
+    },  
+    {  
+        thumb: "https://cdn.uviewui.com/uview/goods/3.jpg"  
+    },  
+    {  
+        thumb: "https://cdn.uviewui.com/uview/goods/4.jpg"  
+    },  
+    {  
+        thumb: "https://cdn.uviewui.com/uview/goods/5.jpg"  
+    }  
+]);  
+</script>
+```
+
+# 指示器的使用
+
+- `indicator` 用于控制指示器是否显示
+- `indicatorWidth` 用于控制指示器整体的宽度
+- `indicatorBarWidth` 用于控制指示器滑块的宽度
+- `indicatorColor` 指示器的颜色
+- `indicatorActiveColor` 滑块的颜色
+- `indicatorStyle` 指示器的位置/样式控制
+
+```vue
+<template>
+    <up-scroll-list :indicator="indicator" indicatorColor="#fff0f0" indicatorActiveColor="#f56c6c">
+        <view v-for="(item, index) in list" :key="index">
+            <image :src="item.thumb"></image>
+        </view>
+    </up-scroll-list>
+</template>
+```
+
+```vue
+<script setup>  
+import { reactive } from 'vue';  
+  
+const list = reactive([  
+    {  
+        thumb: "https://cdn.uviewui.com/uview/goods/1.jpg"  
+    },  
+    {  
+        thumb: "https://cdn.uviewui.com/uview/goods/2.jpg"  
+    },  
+    {  
+        thumb: "https://cdn.uviewui.com/uview/goods/3.jpg"  
+    },  
+    {  
+        thumb: "https://cdn.uviewui.com/uview/goods/4.jpg"  
+    },  
+    {  
+        thumb: "https://cdn.uviewui.com/uview/goods/5.jpg"  
+    }  
+]);  
+</script>
+```
+
+#### 兼容性与性能
+
+- 此组件是在nvue中引入bindingx，此库类似于微信小程序wxs，目的是让js运行在视图层，减少视图层和逻辑层的通信折损，在nvue中会有更好的体验。
+- 此组件是在APP-VUE、H5、小程序中使用的是wxs。
+- 其他平台则使用js完成。
+
+当滑动到最左边/最右边时，uview-plus提供了事件`left`和`right`可供调用，用于对列表滑动到端点处的业务实现。
+
+```vue
+<template>
+    <up-scroll-list @right="right" @left="left">
+        <view class="scroll-list" style="flex-direction: row;">
+            <view
+                class="scroll-list__goods-item"
+                v-for="(item, index) in list"
+                :key="index"
+                :class="[(index === 9) && 'scroll-list__goods-item--no-margin-right']"
+            >
+                <image class="scroll-list__goods-item__image" :src="item.thumb"></image>
+                <text class="scroll-list__goods-item__text">￥{{ item.price }}</text>
+            </view>
+            <view class="scroll-list__show-more">
+                <text class="scroll-list__show-more__text">查看更多</text>
+                <up-icon name="arrow-leftward" color="#f56c6c" size="12"></up-icon>
+            </view>
+        </view>
+    </up-scroll-list>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 响应式数据  
+const list = ref([  
+  {  
+    price: '230.5',  
+    thumb: 'https://cdn.uviewui.com/uview/goods/1.jpg'  
+  },  
+  {  
+    price: '74.1',  
+    thumb: 'https://cdn.uviewui.com/uview/goods/2.jpg'  
+  },  
+  // ... 其他对象  
+  {  
+    price: '251.5',  
+    thumb: 'https://cdn.uviewui.com/uview/goods/1.jpg'  
+  }  
+]);  
+  
+// 方法  
+function left() {  
+  console.log('left');  
+}  
+  
+function right() {  
+  console.log('right');  
+}  
+</script>
+```
+
+```vue
+<style lang="scss">
+.scroll-list {
+	@include flex(column);
+
+	&__goods-item {
+		margin-right: 20px;
+
+		&__image {
+			width: 60px;
+			height: 60px;
+			border-radius: 4px;
+		}
+
+		&__text {
+			color: #f56c6c;
+			text-align: center;
+			font-size: 12px;
+			margin-top: 5px;
+		}
+	}
+
+	&__show-more {
+		background-color: #fff0f0;
+		border-radius: 3px;
+		padding: 3px 6px;
+		@include flex(column);
+		align-items: center;
+
+		&__text {
+			font-size: 12px;
+			width: 12px;
+			color: #f56c6c;
+			line-height: 16px;
+		}
+	}
+}
+</style>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/scrollList.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 多菜单扩展
+#### 基本使用
+
+通过slot传入内容
 
 ```vue
-<up-scroll-list>
-    <view class="scroll-list">
-        <view
-            class="scroll-list__line"
-            v-for="(item, index) in menuArr"
-            :key="index"
-        >
-            <view
-                class="scroll-list__line__item"
-                v-for="(item1, index1) in item"
-                :key="index1"
-                :class="[(index1 === item.length - 1) ? 'scroll-list__line__item--no-margin-right' : '']"
-            >
-                <image
-                    class="scroll-list__line__item__image"
-                    :src="menuBaseUrl + item1['icon']"
-                    mode=""
-                ></image>
-                <text class="scroll-list__line__item__text">{{ item1['name'] }}</text>
-            </view>
+<template>
+    <up-scroll-list>
+        <view v-for="(item, index) in list" :key="index">
+            <image :src="item.thumb"></image>
         </view>
-    </view>
-</up-scroll-list>
+    </up-scroll-list>
+</template>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsC/scrollList/scrollList.uvue`</small>
+```vue
+
+<script setup>  
+import { reactive } from 'vue';  
+  
+const list = reactive([  
+    {  
+        thumb: "https://cdn.uviewui.com/uview/goods/1.jpg"  
+    },  
+    {  
+        thumb: "https://cdn.uviewui.com/uview/goods/2.jpg"  
+    },  
+    {  
+        thumb: "https://cdn.uviewui.com/uview/goods/3.jpg"  
+    },  
+    {  
+        thumb: "https://cdn.uviewui.com/uview/goods/4.jpg"  
+    },  
+    {  
+        thumb: "https://cdn.uviewui.com/uview/goods/5.jpg"  
+    }  
+]);  
+</script>
+```
+
+# 指示器的使用
+
+- `indicator` 用于控制指示器是否显示
+- `indicatorWidth` 用于控制指示器整体的宽度
+- `indicatorBarWidth` 用于控制指示器滑块的宽度
+- `indicatorColor` 指示器的颜色
+- `indicatorActiveColor` 滑块的颜色
+- `indicatorStyle` 指示器的位置/样式控制
+
+```vue
+<template>
+    <up-scroll-list :indicator="indicator" indicatorColor="#fff0f0" indicatorActiveColor="#f56c6c">
+        <view v-for="(item, index) in list" :key="index">
+            <image :src="item.thumb"></image>
+        </view>
+    </up-scroll-list>
+</template>
+```
+
+```vue
+<script setup>  
+import { reactive } from 'vue';  
+  
+const list = reactive([  
+    {  
+        thumb: "https://cdn.uviewui.com/uview/goods/1.jpg"  
+    },  
+    {  
+        thumb: "https://cdn.uviewui.com/uview/goods/2.jpg"  
+    },  
+    {  
+        thumb: "https://cdn.uviewui.com/uview/goods/3.jpg"  
+    },  
+    {  
+        thumb: "https://cdn.uviewui.com/uview/goods/4.jpg"  
+    },  
+    {  
+        thumb: "https://cdn.uviewui.com/uview/goods/5.jpg"  
+    }  
+]);  
+</script>
+```
+
+#### 兼容性与性能
+
+- 此组件是在nvue中引入bindingx，此库类似于微信小程序wxs，目的是让js运行在视图层，减少视图层和逻辑层的通信折损，在nvue中会有更好的体验。
+- 此组件是在APP-VUE、H5、小程序中使用的是wxs。
+- 其他平台则使用js完成。
+
+当滑动到最左边/最右边时，uview-ultra提供了事件`left`和`right`可供调用，用于对列表滑动到端点处的业务实现。
+
+```vue
+<template>
+    <up-scroll-list @right="right" @left="left">
+        <view class="scroll-list" style="flex-direction: row;">
+            <view
+                class="scroll-list__goods-item"
+                v-for="(item, index) in list"
+                :key="index"
+                :class="[(index === 9) && 'scroll-list__goods-item--no-margin-right']"
+            >
+                <image class="scroll-list__goods-item__image" :src="item.thumb"></image>
+                <text class="scroll-list__goods-item__text">￥{{ item.price }}</text>
+            </view>
+            <view class="scroll-list__show-more">
+                <text class="scroll-list__show-more__text">查看更多</text>
+                <up-icon name="arrow-leftward" color="#f56c6c" size="12"></up-icon>
+            </view>
+        </view>
+    </up-scroll-list>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 响应式数据  
+const list = ref([  
+  {  
+    price: '230.5',  
+    thumb: 'https://cdn.uviewui.com/uview/goods/1.jpg'  
+  },  
+  {  
+    price: '74.1',  
+    thumb: 'https://cdn.uviewui.com/uview/goods/2.jpg'  
+  },  
+  // ... 其他对象  
+  {  
+    price: '251.5',  
+    thumb: 'https://cdn.uviewui.com/uview/goods/1.jpg'  
+  }  
+]);  
+  
+// 方法  
+function left() {  
+  console.log('left');  
+}  
+  
+function right() {  
+  console.log('right');  
+}  
+</script>
+```
+
+```vue
+<style lang="scss">
+.scroll-list {
+	@include flex(column);
+
+	&__goods-item {
+		margin-right: 20px;
+
+		&__image {
+			width: 60px;
+			height: 60px;
+			border-radius: 4px;
+		}
+
+		&__text {
+			color: #f56c6c;
+			text-align: center;
+			font-size: 12px;
+			margin-top: 5px;
+		}
+	}
+
+	&__show-more {
+		background-color: #fff0f0;
+		border-radius: 3px;
+		padding: 3px 6px;
+		@include flex(column);
+		align-items: center;
+
+		&__text {
+			font-size: 12px;
+			width: 12px;
+			color: #f56c6c;
+			line-height: 16px;
+		}
+	}
+}
+</style>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/scrollList.md`</small>
 
 </template>
 

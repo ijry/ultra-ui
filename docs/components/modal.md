@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -398,203 +398,283 @@ import { UPModal } from '@ultra-ui'
 
 <template #uniapp>
 
+#### 基本使用
+
+默认情况下，模态框只有一个`确认`按钮：
+- 请至少要配置弹框的内容参数`content`。
+- 通过`show`绑定一个布尔变量来控制模态框的显示与否。
+
 ```vue
-<up-modal
-    :content="content"
-    title="标题"
-    :show="show1"
-    @confirm="() => {show1 = false}"
-></up-modal>
+<template>
+	<view >
+		<up-modal :show="show" :title="title" :content='content'></up-modal>
+		<up-button @click="show = true">打开</up-button>
+	</view>
+</template>
 ```
 
 ```vue
-<up-modal
-    :content="content"
-    :show="show2"
-    @confirm="() => {show2 = false}"
-></up-modal>
+<script setup>  
+import { ref } from 'vue';  
+  
+// 使用 ref 创建响应式数据  
+const show = ref(false);  
+const title = ref('标题');  
+const content = ref('uview-plus的目标是成为uni-app生态最优秀的UI框架');  
+</script>
+```
+
+#### 传入富文本内容
+
+有时候我们需要给模态框的内容，不一定是纯文本的字符串，可能会需要换行，嵌入其他元素等，这时候我们可以使用`slot`功能，再结合uni-app`rictText`组件，
+就能传入富文本内容了，如下演示：
+
+```vue
+<template>
+	<view >
+		<up-modal :show="show"  :title="title" >
+			<view class="slot-content">
+				<rich-text :nodes="content"></rich-text>
+			</view>
+		</up-modal>
+		<up-button @click="show = true">打开</up-button>
+	</view>
+</template>
 ```
 
 ```vue
-<up-modal
-    :content="content"
-    :show="show3"
-    showCancelButton
-    closeOnClickOverlay
-    @confirm="confirm"
-    @cancel="cancel"
-    @close="close"
-></up-modal>
+<script setup>  
+import { ref } from 'vue';  
+  
+// 创建响应式数据  
+const show = ref(false);  
+const title = ref('标题');  
+const content = ref(`空山新雨后<br>  
+                      天气晚来秋`);  
+</script>
+```
+
+#### 异步关闭
+
+异步关闭只对"确定"按钮起作用，需要设置`asyncClose`为`true`，当点击确定按钮的时候，按钮的文字变成一个loading动画，此动画的颜色为
+`confirm-color`参数的颜色，同时Modal不会自动关闭，需要手动设置通过`show`绑定的变量为`false`来实现手动关闭。
+
+```vue
+<template>
+	<view class="">
+		<up-modal :show="show" @confirm="confirm" ref="uModal" :asyncClose="true"></up-modal>
+		<up-button @click="showModal">弹起Modal</up-button>
+	</view>
+</template>
 ```
 
 ```vue
-<up-modal
-    :content="content"
-    :show="show4"
-    showCancelButton
-    asyncClose
-    @confirm="confirm4"
-    @cancel="() => {show4 = false}"
-></up-modal>
+<script setup>  
+import { ref } from 'vue';  
+import { onLoad, onShow } from "@dcloudio/uni-app";  
+  
+// 创建响应式数据  
+const show = ref(false);  
+  
+// 方法  
+const showModal = () => {  
+    show.value = true;  
+};  
+  
+const confirm = () => {  
+    setTimeout(() => {  
+        // 3秒后自动关闭  
+        show.value = false;  
+    }, 3000);  
+};  
+  
+// uni-app 的生命周期钩子  
+onLoad((opt) => {  
+    // 页面加载时执行的代码  
+    console.log('页面加载了', opt);  
+});  
+  
+onShow(() => {  
+    // 页面显示时执行的代码  
+    console.log('页面显示了');  
+});  
+</script>
 ```
+
+#### 点击遮罩关闭
+
+有时候我们不显示"关闭"按钮的时候，需要点击遮罩也可以关闭Modal，这时通过配置`closeOnClickOverlay`为`true`即可（注意：关闭事件需要自行处理，只会在开启closeOnClickOverlay后点击遮罩层执行close回调）
+
+```vue
+<up-modal :show="show" :closeOnClickOverlay="true"></up-modal>
+```
+
+#### 控制模态框宽度
+
+可以通过设置`width`参数控制模态框的宽度，不支持百分比，可以数值，px，rpx单位
+
+```vue
+<up-modal v-model:show="show" width="300px"></up-modal>
+```
+
+#### 缩放效果
+
+开启缩放效果，在打开和收起模态框的时候，会带有缩放效果，具体效果请见示例，此效果默认开启，通过`zoom`参数配置
+
+```vue
+<up-modal v-model:show="show" :zoom="false"></up-modal>
+```
+
+#### 带底部关闭按钮
 
 ```vue
 <up-modal
-    :content="content"
-    :show="show5"
-    showCancelButton
-    buttonReverse
-    @confirm="() => {show5 = false}"
-    @cancel="() => {show5 = false}"
-></up-modal>
-```
-
-```vue
-<up-modal
-    :content="content"
-    title="标题"
-    :show="show6"
-    closeOnClickOverlay
-    @confirm="() => {show6 = false}"
-    @close="() => {show6 = false}"
-></up-modal>
-```
-
-```vue
-<up-modal
-    title="利剑出鞘,一统江湖"
-    :show="show7"
-    closeOnClickOverlay
-    @confirm="() => {show7 = false}"
+	:content="content"
+	title="标题"
+	:show="show10"
 >
-    <image
-        style="width: 80px;height: 80px;"
-        src="/static/uview/common/logo.png"
-    ></image>
+	<template #popupBottom>
+		<view class="rounded" style="margin-top: 20px;" @click="show10 = false">
+			<up-icon name="close" color="#fff"></up-icon>
+		</view>
+	</template>
 </up-modal>
 ```
 
-```vue
-<up-modal
-    title="标题"
-    :show="show8"
-    :content="content"
-    closeOnClickOverlay
-    showCancelButton
->
-    <template #confirmButton>
-        <up-button
-            text="确定"
-            type="success"
-            shape="circle"
-            @click="show8 = false"
-        ></up-button>
-    </template>
-</up-modal>
-```
-
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsC/modal/modal.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/modal.md`</small>
 
 </template>
 
 <template #uniappx>
 
+#### 基本使用
+
+默认情况下，模态框只有一个`确认`按钮：
+- 请至少要配置弹框的内容参数`content`。
+- 通过`show`绑定一个布尔变量来控制模态框的显示与否。
+
 ```vue
-<up-modal
-    :content="content"
-    title="标题"
-    :show="show1"
-    @confirm="() => {show1 = false}"
-></up-modal>
+<template>
+	<view >
+		<up-modal :show="show" :title="title" :content='content'></up-modal>
+		<up-button @click="show = true">打开</up-button>
+	</view>
+</template>
 ```
 
 ```vue
-<up-modal
-    :content="content"
-    :show="show2"
-    @confirm="() => {show2 = false}"
-></up-modal>
+<script setup>  
+import { ref } from 'vue';  
+  
+// 使用 ref 创建响应式数据  
+const show = ref(false);  
+const title = ref('标题');  
+const content = ref('uview-ultra的目标是成为uni-app生态最优秀的UI框架');  
+</script>
+```
+
+#### 传入富文本内容
+
+有时候我们需要给模态框的内容，不一定是纯文本的字符串，可能会需要换行，嵌入其他元素等，这时候我们可以使用`slot`功能，再结合uni-app`rictText`组件，
+就能传入富文本内容了，如下演示：
+
+```vue
+<template>
+	<view >
+		<up-modal :show="show"  :title="title" >
+			<view class="slot-content">
+				<rich-text :nodes="content"></rich-text>
+			</view>
+		</up-modal>
+		<up-button @click="show = true">打开</up-button>
+	</view>
+</template>
 ```
 
 ```vue
-<up-modal
-    :content="content"
-    :show="show3"
-    showCancelButton
-    closeOnClickOverlay
-    @confirm="confirm"
-    @cancel="cancel"
-    @close="close"
-></up-modal>
+<script setup>  
+import { ref } from 'vue';  
+  
+// 创建响应式数据  
+const show = ref(false);  
+const title = ref('标题');  
+const content = ref(`空山新雨后<br>  
+                      天气晚来秋`);  
+</script>
+```
+
+#### 异步关闭
+
+异步关闭只对"确定"按钮起作用，需要设置`asyncClose`为`true`，当点击确定按钮的时候，按钮的文字变成一个loading动画，此动画的颜色为
+`confirm-color`参数的颜色，同时Modal不会自动关闭，需要手动设置通过`show`绑定的变量为`false`来实现手动关闭。
+
+```vue
+<template>
+	<view class="">
+		<up-modal :show="show" @confirm="confirm" ref="uModal" :asyncClose="true"></up-modal>
+		<up-button @click="showModal">弹起Modal</up-button>
+	</view>
+</template>
 ```
 
 ```vue
-<up-modal
-    :content="content"
-    :show="show4"
-    showCancelButton
-    asyncClose
-    @confirm="confirm4"
-    @cancel="() => {show4 = false}"
-></up-modal>
+<script setup>  
+import { ref } from 'vue';  
+import { onLoad, onShow } from "@dcloudio/uni-app";  
+  
+// 创建响应式数据  
+const show = ref(false);  
+  
+// 方法  
+const showModal = () => {  
+    show.value = true;  
+};  
+  
+const confirm = () => {  
+    setTimeout(() => {  
+        // 3秒后自动关闭  
+        show.value = false;  
+    }, 3000);  
+};  
+  
+// uni-app 的生命周期钩子  
+onLoad((opt) => {  
+    // 页面加载时执行的代码  
+    console.log('页面加载了', opt);  
+});  
+  
+onShow(() => {  
+    // 页面显示时执行的代码  
+    console.log('页面显示了');  
+});  
+</script>
 ```
+
+#### 点击遮罩关闭
+
+有时候我们不显示"关闭"按钮的时候，需要点击遮罩也可以关闭Modal，这时通过配置`closeOnClickOverlay`为`true`即可（注意：关闭事件需要自行处理，只会在开启closeOnClickOverlay后点击遮罩层执行close回调）
 
 ```vue
-<up-modal
-    :content="content"
-    :show="show5"
-    showCancelButton
-    buttonReverse
-    @confirm="() => {show5 = false}"
-    @cancel="() => {show5 = false}"
-></up-modal>
+<up-modal :show="show" :closeOnClickOverlay="true"></up-modal>
 ```
+
+#### 控制模态框宽度
+
+可以通过设置`width`参数控制模态框的宽度，不支持百分比，可以数值，px，rpx单位
 
 ```vue
-<up-modal
-    :content="content"
-    title="标题"
-    :show="show6"
-    closeOnClickOverlay
-    @confirm="() => {show6 = false}"
-    @close="() => {show6 = false}"
-></up-modal>
+<up-modal v-model="show" width="300px"></up-modal>
 ```
+
+#### 缩放效果
+
+开启缩放效果，在打开和收起模态框的时候，会带有缩放效果，具体效果请见示例，此效果默认开启，通过`zoom`参数配置
 
 ```vue
-<up-modal
-    title="利剑出鞘,一统江湖"
-    :show="show7"
-    closeOnClickOverlay
-    @confirm="() => {show7 = false}"
->
-    <image
-        style="width: 80px;height: 80px;"
-        src="/static/uview/common/logo.png"
-    ></image>
-</up-modal>
+<up-modal v-model="show" :zoom="false"></up-modal>
 ```
 
-```vue
-<up-modal
-    title="标题"
-    :show="show8"
-    :content="content"
-    closeOnClickOverlay
-    showCancelButton
->
-    <template #confirmButton>
-        <up-button
-            text="确定"
-            type="success"
-            shape="circle"
-            @click="show8 = false"
-        ></up-button>
-    </template>
-</up-modal>
-```
-
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsC/modal/modal.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/modal.md`</small>
 
 </template>
 

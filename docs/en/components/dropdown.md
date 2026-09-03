@@ -12,7 +12,7 @@ A filter menu dropping from a nav area, for sorting and filtering lists.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -199,53 +199,401 @@ import { UPDropdown } from '@ultra-ui'
 
 <template #uniapp>
 
+#### 基本使用
+
 ```vue
-<up-dropdown :close-on-click-mask="mask" ref="upDropdownRef"
-    :activeColor="activeColor" :borderBottom="borderBottom">
-    <up-dropdown-item @change="change" v-model="value1" title="距离" :options="options1"></up-dropdown-item>
-    <up-dropdown-item @change="change" v-model="value2" title="温度" :options="options2"></up-dropdown-item>
-    <up-dropdown-item title="属性">
-        <view class="slot-content">
-            <view class="item-box">
-                <view class="item" :class="[item['active'] as Boolean ? 'active' : '']"
-                    @tap="tagClick(index)"
-                    v-for="(item, index) in list" :key="index">
-                    {{item['label']}}
-                </view>
-            </view>
-            <up-button type="primary" @click="closeDropdown">确定</up-button>
-        </view>
-    </up-dropdown-item>
-</up-dropdown>
+<template>
+	<view class="">
+		<up-dropdown>
+			<up-dropdown-item v-model="value1" title="距离" :options="options1"></up-dropdown-item>
+			<up-dropdown-item v-model="value2" title="温度" :options="options2"></up-dropdown-item>
+		</up-dropdown>
+	</view>
+</template>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsB/dropdown/dropdown.uvue`</small>
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const value1 = ref(1);
+const value2 = ref(2);
+
+const options1 = ref([
+  {
+    label: '默认排序',
+    value: 1,
+  },
+  {
+    label: '距离优先',
+    value: 2,
+  },
+  {
+    label: '价格优先',
+    value: 3,
+  }
+]);
+
+const options2 = ref([
+  {
+    label: '去冰',
+    value: 1,
+  },
+  {
+    label: '加冰',
+    value: 2,
+  },
+]);
+</script>
+```
+
+#### 配置选项卡默认功能
+
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const options = ref([
+  {
+    label: '蜀道难',
+    value: 1
+  },
+  {
+    label: '难以上青天',
+    value: 2
+  }
+]);
+</script>
+```
+
+#### 配置选项卡自定义功能
+
+```vue
+<template>
+	<view class="">
+		<up-dropdown ref="uDropdownRef">
+			<up-dropdown-item title="属性">
+				<view class="slot-content">
+					<view class="up-text-center up-content-color up-m-t-20 up-m-b-20">其他自定义内容</view>
+					<up-button type="primary" @click="closeDropdown">确定</up-button>
+				</view>
+			</up-dropdown-item>
+		</up-dropdown>
+	</view>
+</template>
+```
+
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const uDropdownRef = ref(null);
+
+const closeDropdown = () => {
+  uDropdownRef.value.close();
+};
+</script>
+```
+
+#### 配置选项卡内容可滚动
+
+```vue
+<template>
+	<view class="">
+		<up-dropdown ref="uDropdownRef">
+			<up-dropdown-item title="属性">
+				<view class="slot-content" style="background-color: #FFFFFF;">
+					<scroll-view scroll-y="true" style="height: 200rpx;">
+						<view class="up-text-center up-content-color up-m-t-20 up-m-b-20">无言独上西楼</view>
+						<view class="up-text-center up-content-color up-m-t-20 up-m-b-20">月如钩</view>
+						<view class="up-text-center up-content-color up-m-t-20 up-m-b-20">寂寞梧桐深院锁清秋</view>
+						<view class="up-text-center up-content-color up-m-t-20 up-m-b-20">剪不断</view>
+						<view class="up-text-center up-content-color up-m-t-20 up-m-b-20">理还乱</view>
+						<view class="up-text-center up-content-color up-m-t-20 up-m-b-20">是离愁</view>
+						<view class="up-text-center up-content-color up-m-t-20 up-m-b-20">别是一般滋味在心头</view>
+					</scroll-view>
+					<up-button type="primary" @click="closeDropdown">确定</up-button>
+				</view>
+			</up-dropdown-item>
+		</up-dropdown>
+	</view>
+</template>
+```
+
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const uDropdownRef = ref(null);
+
+const closeDropdown = () => {
+  uDropdownRef.value.close();
+};
+</script>
+```
+
+#### 如何保持菜单高亮
+
+```vue
+<template>
+	<view class="">
+		<up-dropdown ref="uDropdownRef" @open="open" @close="close">
+			<up-dropdown-item v-model="value1" title="距离" :options="options1" @change="change"></up-dropdown-item>
+			<up-dropdown-item v-model="value2" title="温度" :options="options2"></up-dropdown-item>
+		</up-dropdown>
+	</view>
+</template>
+```
+
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const value1 = ref(1);
+const value2 = ref(2);
+const uDropdownRef = ref(null);
+
+const options1 = ref([
+  {
+    label: '默认排序',
+    value: 1,
+  },
+  {
+    label: '距离优先',
+    value: 2,
+  }
+]);
+
+const options2 = ref([
+  {
+    label: '去冰',
+    value: 1,
+  },
+  {
+    label: '加冰',
+    value: 2,
+  },
+]);
+
+const open = (index) => {
+  // 展开某个下来菜单时，先关闭原来的其他菜单的高亮
+  // 同时内部会自动给当前展开项进行高亮
+  uDropdownRef.value.highlight();
+};
+
+const close = (index) => {
+  // 关闭的时候，给当前项加上高亮
+  // 当然，您也可以通过监听dropdown-item的@change事件进行处理
+  uDropdownRef.value.highlight(index);
+};
+
+const change = () => {
+  // 更多的细节，如有需要请自行根据业务逻辑进行处理
+  // uDropdownRef.value.highlight(xxx);
+};
+</script>
+```
+
+#### 兼容性
+
+```vue
+<up-dropdown class="up-dropdown"></up-dropdown>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/dropdown.md`</small>
 
 </template>
 
 <template #uniappx>
 
+#### 基本使用
+
 ```vue
-<up-dropdown :close-on-click-mask="mask" ref="upDropdownRef"
-    :activeColor="activeColor" :borderBottom="borderBottom">
-    <up-dropdown-item @change="change" v-model="value1" title="距离" :options="options1"></up-dropdown-item>
-    <up-dropdown-item @change="change" v-model="value2" title="温度" :options="options2"></up-dropdown-item>
-    <up-dropdown-item title="属性">
-        <view class="slot-content">
-            <view class="item-box">
-                <view class="item" :class="[item['active'] as Boolean ? 'active' : '']"
-                    @tap="tagClick(index)"
-                    v-for="(item, index) in list" :key="index">
-                    {{item['label']}}
-                </view>
-            </view>
-            <up-button type="primary" @click="closeDropdown">确定</up-button>
-        </view>
-    </up-dropdown-item>
-</up-dropdown>
+<template>
+	<view class="">
+		<up-dropdown>
+			<up-dropdown-item v-model="value1" title="距离" :options="options1"></up-dropdown-item>
+			<up-dropdown-item v-model="value2" title="温度" :options="options2"></up-dropdown-item>
+		</up-dropdown>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				value1: 1,
+				value2: 2,
+				options1: [{
+						label: '默认排序',
+						value: 1,
+					},
+					{
+						label: '距离优先',
+						value: 2,
+					},
+					{
+						label: '价格优先',
+						value: 3,
+					}
+				],
+				options2: [{
+						label: '去冰',
+						value: 1,
+					},
+					{
+						label: '加冰',
+						value: 2,
+					},
+				],
+			}
+		},
+	}
+</script>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsB/dropdown/dropdown.uvue`</small>
+#### 配置选项卡默认功能
+
+```js
+let options = [
+	{
+		label: '蜀道难',
+		value: 1
+	},
+	{
+		label: '难以上青天',
+		value: 2
+	}
+]
+```
+
+#### 配置选项卡自定义功能
+
+```vue
+<template>
+	<view class="">
+		<up-dropdown ref="uDropdownRef">
+			<up-dropdown-item title="属性">
+				<view class="slot-content">
+					<view class="up-text-center up-content-color up-m-t-20 up-m-b-20">其他自定义内容</view>
+					<up-button type="primary" @click="closeDropdown">确定</up-button>
+				</view>
+			</up-dropdown-item>
+		</up-dropdown>
+	</view>
+</template>
+
+<script>
+	export default {
+		methods: {
+			closeDropdown() {
+				this.$refs.uDropdownRef.close();
+			}
+		}
+	}
+</script>
+```
+
+#### 配置选项卡内容可滚动
+
+```vue
+<template>
+	<view class="">
+		<up-dropdown ref="uDropdownRef">
+			<up-dropdown-item title="属性">
+				<view class="slot-content" style="background-color: #FFFFFF;">
+					<scroll-view scroll-y="true" style="height: 200rpx;">
+						<view class="up-text-center up-content-color up-m-t-20 up-m-b-20">无言独上西楼</view>
+						<view class="up-text-center up-content-color up-m-t-20 up-m-b-20">月如钩</view>
+						<view class="up-text-center up-content-color up-m-t-20 up-m-b-20">寂寞梧桐深院锁清秋</view>
+						<view class="up-text-center up-content-color up-m-t-20 up-m-b-20">剪不断</view>
+						<view class="up-text-center up-content-color up-m-t-20 up-m-b-20">理还乱</view>
+						<view class="up-text-center up-content-color up-m-t-20 up-m-b-20">是离愁</view>
+						<view class="up-text-center up-content-color up-m-t-20 up-m-b-20">别是一般滋味在心头</view>
+					</scroll-view>
+					<up-button type="primary" @click="closeDropdown">确定</up-button>
+				</view>
+			</up-dropdown-item>
+		</up-dropdown>
+	</view>
+</template>
+
+<script>
+	export default {
+		methods: {
+			closeDropdown() {
+				this.$refs.uDropdownRef.close();
+			}
+		}
+	}
+</script>
+```
+
+#### 如何保持菜单高亮
+
+```vue
+<template>
+	<view class="">
+		<up-dropdown ref="uDropdownRef" @open="open" @close="close">
+			<up-dropdown-item v-model="value1" title="距离" :options="options1" @change="change"></up-dropdown-item>
+			<up-dropdown-item v-model="value2" title="温度" :options="options2"></up-dropdown-item>
+		</up-dropdown>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				value1: 1,
+				value2: 2,
+				options1: [{
+						label: '默认排序',
+						value: 1,
+					},
+					{
+						label: '距离优先',
+						value: 2,
+					}
+				],
+				options2: [{
+						label: '去冰',
+						value: 1,
+					},
+					{
+						label: '加冰',
+						value: 2,
+					},
+				],
+			}
+		},
+		methods: {
+			open(index) {
+				// 展开某个下来菜单时，先关闭原来的其他菜单的高亮
+				// 同时内部会自动给当前展开项进行高亮
+				this.$refs.uDropdownRef.highlight();
+			},
+			close(index) {
+				// 关闭的时候，给当前项加上高亮
+				// 当然，您也可以通过监听dropdown-item的@change事件进行处理
+				this.$refs.uDropdownRef.highlight(index);
+			},
+			change() {
+				// 更多的细节，如有需要请自行根据业务逻辑进行处理
+				// this.$refs.uDropdownRef.highlight(xxx);
+			}
+		}
+	}
+</script>
+```
+
+#### 兼容性
+
+```vue
+<up-dropdown class="up-dropdown"></up-dropdown>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/dropdown.md`</small>
 
 </template>
 

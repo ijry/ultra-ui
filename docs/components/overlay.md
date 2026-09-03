@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -179,103 +179,147 @@ import { UPOverlay } from '@ultra-ui'
 
 <template #uniapp>
 
+#### 基本使用
+
+- 通过`show`参数配置是否显示遮罩  
+- 遮罩被点击时，会发送一个`click`事件，如不需要此事件，请设置`mask-click-able`参数为`false`
+
 ```vue
-<up-overlay
-    :show="show"
-    @click="show = !show"
-></up-overlay>
+<template>
+	<up-overlay :show="show" @click="show = false"></up-overlay>
+</template>
 ```
 
 ```vue
-<up-overlay
-    :show="showSlot"
-    @click="showSlot = !showSlot"
->
-    <view class="overlay-wrap">
-        <view class="overlay-wrap__box"></view>
-    </view>
-</up-overlay>
+<script setup>
+import { ref } from 'vue';
+
+const show = ref(true);
+</script>
+```
+
+#### 嵌入内容
+
+通过默认插槽可以在遮罩层上嵌入任意内容  
+注意：如果不想让`slot`插槽内容的点击事件冒泡到遮罩，请给指定元素添加上`@tap.stop`
+
+```vue
+<template>
+	<up-overlay :show="show" @click="show = false">
+		<view class="warp">
+			<view class="rect" @tap.stop></view>
+		</view>
+	</up-overlay>
+</template>
 ```
 
 ```vue
-<up-overlay
-    opacity=".85"
-    :show="showOpcatiy"
-    @click="showOpcatiy = !showOpcatiy"
->
-</up-overlay>
+<script setup>
+import { ref } from 'vue';
+
+const show = ref(true);
+</script>
 ```
 
 ```vue
-<up-overlay
-    :show="showQrcode"
-    @click="showQrcode = false"
->
-    <view class="overlay-wrap">
-        <view class="overlay-wrap__qrcode">
-            <up-qrcode
-                cid="overlay-qrcode"
-                :size="180"
-                :showLoading="false"
-                val="https://click.meituan.com/t?t=1&c=2&p=WhaD2b5zGU-h"
-            ></up-qrcode>
-        </view>
-    </view>
-</up-overlay>
+<style scoped>
+	.warp {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 100%;
+	}
+
+	.rect {
+		width: 120px;
+		height: 120px;
+		background-color: #fff;
+	}
+</style>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsA/overlay/overlay.uvue`</small>
+#### 遮罩样式
+
+- 通过`duration`设置遮罩淡入淡出的时长，单位`ms`
+
+```vue
+<up-overlay :show="show" :duration="400" :z-index ="999" :opacity="0.3"></up-overlay>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/overlay.md`</small>
 
 </template>
 
 <template #uniappx>
 
+#### 基本使用
+
+- 通过`show`参数配置是否显示遮罩  
+- 遮罩被点击时，会发送一个`click`事件，如不需要此事件，请设置`mask-click-able`参数为`false`
+
 ```vue
-<up-overlay
-    :show="show"
-    @click="show = !show"
-></up-overlay>
+<template>
+	<up-overlay :show="show" @click="show = false"></up-overlay>
+</template>
 ```
 
 ```vue
-<up-overlay
-    :show="showSlot"
-    @click="showSlot = !showSlot"
->
-    <view class="overlay-wrap">
-        <view class="overlay-wrap__box"></view>
-    </view>
-</up-overlay>
+<script setup>
+import { ref } from 'vue';
+
+const show = ref(true);
+</script>
+```
+
+#### 嵌入内容
+
+通过默认插槽可以在遮罩层上嵌入任意内容  
+注意：如果不想让`slot`插槽内容的点击事件冒泡到遮罩，请给指定元素添加上`@tap.stop`
+
+```vue
+<template>
+	<up-overlay :show="show" @click="show = false">
+		<view class="warp">
+			<view class="rect" @tap.stop></view>
+		</view>
+	</up-overlay>
+</template>
 ```
 
 ```vue
-<up-overlay
-    opacity=".85"
-    :show="showOpcatiy"
-    @click="showOpcatiy = !showOpcatiy"
->
-</up-overlay>
+<script setup>
+import { ref } from 'vue';
+
+const show = ref(true);
+</script>
 ```
 
 ```vue
-<up-overlay
-    :show="showQrcode"
-    @click="showQrcode = false"
->
-    <view class="overlay-wrap">
-        <view class="overlay-wrap__qrcode">
-            <up-qrcode
-                cid="overlay-qrcode"
-                :size="180"
-                :showLoading="false"
-                val="https://click.meituan.com/t?t=1&c=2&p=WhaD2b5zGU-h"
-            ></up-qrcode>
-        </view>
-    </view>
-</up-overlay>
+<style scoped>
+	.warp {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 100%;
+	}
+
+	.rect {
+		width: 120px;
+		height: 120px;
+		background-color: #fff;
+	}
+</style>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsA/overlay/overlay.uvue`</small>
+#### 遮罩样式
+
+- 通过`duration`设置遮罩淡入淡出的时长，单位`ms`
+
+```vue
+<up-overlay :show="show" :duration="400" :z-index ="999" :opacity="0.3"></up-overlay>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/overlay.md`</small>
 
 </template>
 

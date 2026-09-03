@@ -12,7 +12,7 @@ A list footer with loading, loaded and no-more states.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -181,155 +181,215 @@ color / bgColor
 
 <template #uniapp>
 
-#### 基础使用
+#### 基本使用
 
 ```vue
-<up-loadmore
-    status="loading"
-    :isDot="true"
-    :iconSize="17"
-></up-loadmore>
+<template>
+	<view class="wrap">
+		<view class="item up-border-bottom" v-for="(item, index) in list" :key="index">
+			{{'第' + item + '条数据'}}
+		</view>
+		<up-loadmore :status="status" />
+	</view>
+</template>
 ```
-
-#### 无更多数据
 
 ```vue
-<up-loadmore
-    :line="true"
-    status="nomore"
-></up-loadmore>
+<script setup>  
+import { ref } from 'vue';  
+  
+// 创建响应式数据  
+const status = ref('loadmore');  
+const list = ref(15);  
+const page = ref(0);  
+  
+// 定义方法  
+function onReachBottom() {  
+  if (page.value >= 3) return;  
+  status.value = 'loading';  
+  page.value++;  
+  setTimeout(() => {  
+    list.value += 10;  
+    if (page.value >= 3) status.value = 'nomore';  
+    else status.value = 'loading';  
+  }, 2000);  
+}  
+</script>
 ```
-
-#### 加载更多(点击触发事件)
 
 ```vue
-<up-loadmore
-    :line="true"
-    status="loadmore"
-    @loadmore="loadmore"
-></up-loadmore>
+<style lang="scss" scoped>
+	.wrap {
+		padding: 24rpx;
+	}
+	
+	.item {
+		padding: 24rpx 0;
+		color: $u-content-color;
+		font-size: 28rpx;
+	}
+</style>
 ```
 
-#### 自定义图标
+#### 控制组件的提示以及动画效果
 
 ```vue
-<up-loadmore
-    status="loading"
-    loadingIcon="circle"
-></up-loadmore>
+<template>
+	<up-loadmore 
+        :status="status" 
+        :loading-text="loadingText" 
+        :loadmore-text="loadmoreText" 
+        :nomore-text="nomoreText" 
+    />
+</template>
 ```
-
-#### 显示点
 
 ```vue
-<up-loadmore
-    status="nomore"
-    :isDot="true"
-    :line="true"
-    color="#909399"
-></up-loadmore>
+<script setup>  
+import { ref } from 'vue';  
+  
+// 创建响应式数据  
+const status = ref('loadmore');  
+const loadingText = ref('努力加载中');  
+const loadmoreText = ref('轻轻上拉');  
+const nomoreText = ref('实在没有了');  
+</script>
 ```
 
-#### 自定义提示语
+#### 线条自定义颜色和设置为虚线 <badge text="2.0.32" />
 
 ```vue
-<up-loadmore
-    status="loading"
-    loadingText="努力加载中,先喝杯茶"
-    color="#909399"
-></up-loadmore>
+<template>
+	<up-loadmore 
+		loadmoreText="看,我和别人不一样"
+		color="#1CD29B"
+		lineColor="#1CD29B"
+		dashed
+		line
+    />
+</template>
 ```
-
-#### 自定义线条颜色
 
 ```vue
-<up-loadmore
-    loadmoreText="看,我和别人不一样"
-    color="#1CD29B"
-    lineColor="#1CD29B"
-    dashed
-    :line="true"
-></up-loadmore>
+<script setup>  
+import { ref } from 'vue';  
+  
+// 创建响应式数据  
+const status = ref('loadmore');  
+const loadingText = ref('努力加载中');  
+const loadmoreText = ref('轻轻上拉');  
+const nomoreText = ref('实在没有了');  
+</script>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/loadmore/loadmore.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/loadMore.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 基础使用
+#### 基本使用
 
 ```vue
-<up-loadmore
-    status="loading"
-    :isDot="true"
-    :iconSize="17"
-></up-loadmore>
+<template>
+	<view class="wrap">
+		<view class="item up-border-bottom" v-for="(item, index) in list" :key="index">
+			{{'第' + item + '条数据'}}
+		</view>
+		<up-loadmore :status="status" />
+	</view>
+</template>
 ```
-
-#### 无更多数据
 
 ```vue
-<up-loadmore
-    :line="true"
-    status="nomore"
-></up-loadmore>
+<script setup>  
+import { ref } from 'vue';  
+  
+// 创建响应式数据  
+const status = ref('loadmore');  
+const list = ref(15);  
+const page = ref(0);  
+  
+// 定义方法  
+function onReachBottom() {  
+  if (page.value >= 3) return;  
+  status.value = 'loading';  
+  page.value++;  
+  setTimeout(() => {  
+    list.value += 10;  
+    if (page.value >= 3) status.value = 'nomore';  
+    else status.value = 'loading';  
+  }, 2000);  
+}  
+</script>
 ```
-
-#### 加载更多(点击触发事件)
 
 ```vue
-<up-loadmore
-    :line="true"
-    status="loadmore"
-    @loadmore="loadmore"
-></up-loadmore>
+<style lang="scss" scoped>
+	.wrap {
+		padding: 24rpx;
+	}
+	
+	.item {
+		padding: 24rpx 0;
+		color: $up-content-color;
+		font-size: 28rpx;
+	}
+</style>
 ```
 
-#### 自定义图标
+#### 控制组件的提示以及动画效果
 
 ```vue
-<up-loadmore
-    status="loading"
-    loadingIcon="circle"
-></up-loadmore>
+<template>
+	<up-loadmore 
+        :status="status" 
+        :loading-text="loadingText" 
+        :loadmore-text="loadmoreText" 
+        :nomore-text="nomoreText" 
+    />
+</template>
 ```
-
-#### 显示点
 
 ```vue
-<up-loadmore
-    status="nomore"
-    :isDot="true"
-    :line="true"
-    color="#909399"
-></up-loadmore>
+<script setup>  
+import { ref } from 'vue';  
+  
+// 创建响应式数据  
+const status = ref('loadmore');  
+const loadingText = ref('努力加载中');  
+const loadmoreText = ref('轻轻上拉');  
+const nomoreText = ref('实在没有了');  
+</script>
 ```
 
-#### 自定义提示语
+#### 线条自定义颜色和设置为虚线 <badge text="2.0.32" />
 
 ```vue
-<up-loadmore
-    status="loading"
-    loadingText="努力加载中,先喝杯茶"
-    color="#909399"
-></up-loadmore>
+<template>
+	<up-loadmore 
+		loadmoreText="看,我和别人不一样"
+		color="#1CD29B"
+		lineColor="#1CD29B"
+		dashed
+		line
+    />
+</template>
 ```
-
-#### 自定义线条颜色
 
 ```vue
-<up-loadmore
-    loadmoreText="看,我和别人不一样"
-    color="#1CD29B"
-    lineColor="#1CD29B"
-    dashed
-    :line="true"
-></up-loadmore>
+<script setup>  
+import { ref } from 'vue';  
+  
+// 创建响应式数据  
+const status = ref('loadmore');  
+const loadingText = ref('努力加载中');  
+const loadmoreText = ref('轻轻上拉');  
+const nomoreText = ref('实在没有了');  
+</script>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/loadmore/loadmore.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/loadMore.md`</small>
 
 </template>
 

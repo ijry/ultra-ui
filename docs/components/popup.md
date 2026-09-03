@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -233,75 +233,280 @@ import { UPPopup } from '@ultra-ui'
 
 <template #uniapp>
 
+#### 基本使用
+
+- 弹出层的内容通过`slot`传入，由用户自定义
+- 通过`show`绑定一个布尔值的变量控制弹出层的打开和收起，通过v-model:show双向绑定简化使用。
+
 ```vue
-<up-popup
-    :safeAreaInsetBottom="true"
-    :safeAreaInsetTop="true"
-    :mode="popupData?.['mode']"
-    :show="show"
-    :round="popupData?.['round']"
-    :overlay="popupData?.['overlay']"
-    :borderRadius="popupData?.['borderRadius']"
-    :closeable="popupData?.['closeable']"
-    :closeOnClickOverlay="popupData?.['closeOnClickOverlay']"
-    @close="close"
-    @open="open"
->
-    <view
-        class="u-popup-slot"
-        :style="{
-            width: ['bottom', 'top'].includes(getMode(popupData)) ? '750rpx' : '200px',
-            marginTop: ['left', 'right'].includes(getMode(popupData)) ? '480rpx' : '0',
-        }"
-    >
-        <up-tag
-            type="success"
-            text="点我关闭"
-            customStyle="width: 200rpx"
-            @click="close"
-        ></up-tag>
-    </view>
-</up-popup>
+<template>
+	<view>
+		<up-popup :show="show" @close="close" @open="open">
+        <view>
+            <text>出淤泥而不染，濯清涟而不妖</text>
+        </view>
+		</up-popup>
+    <up-popup v-model:show="show">
+        <view>
+            <text>出淤泥而不染，濯清涟而不妖</text>
+        </view>
+		</up-popup>
+		<up-button @click="show = true">打开</up-button>
+	</view>
+</template>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsA/popup/popup.uvue`</small>
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 创建响应式数据  
+const show = ref(false);
+  
+// 定义方法  
+function open() {  
+  // 打开逻辑，比如设置 show 为 true  
+  show.value = true;  
+  // console.log('open');  
+}  
+  
+function close() {  
+  // 关闭逻辑，设置 show 为 false  
+  show.value = false;  
+  // console.log('close');  
+}  
+</script>
+```
+
+#### 设置弹出层的方向
+
+- 可以通过`mode`参数设置，可以设置为`left`、`top`、`right`、`bottom`、`center`
+
+```vue
+<template>
+	<up-popup :show="show" mode="top"  @close="close" @open="open">
+        <view>
+            <text>人生若只如初见，何事秋风悲画扇</text>
+        </view>
+	</up-popup>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 创建响应式数据  
+const show = ref(false);  
+  
+// 定义方法  
+function open() {  
+  // 打开逻辑，比如设置 show 为 true  
+  show.value = true;  
+  // console.log('open');  
+}  
+  
+function close() {  
+  // 关闭逻辑，设置 show 为 false  
+  show.value = false;  
+  // console.log('close');  
+}  
+</script>
+```
+
+#### 设置弹出层的圆角
+
+需要将`round`设置为圆角值(仅对`mode = top | bottom | center`有效)。
+
+```vue
+<template>
+	<up-popup :show="show" :round="10" mode="top" @close="close" @open="open">
+		<view>
+        <text>人生若只如初见，何事秋风悲画扇</text>
+		</view>
+	</up-popup>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 创建响应式数据  
+const show = ref(false);  
+  
+// 定义方法  
+function open() {  
+  // 打开逻辑，比如设置 show 为 true  
+  show.value = true;  
+  // console.log('open');  
+}  
+  
+function close() {  
+  // 关闭逻辑，设置 show 为 false  
+  show.value = false;  
+  // console.log('close');  
+}  
+</script>
+```
+
+#### 弹窗中内容滚动
+
+- 可以通过`scroll-view`来支持内容滚动，。
+
+```vue
+<template>
+	<up-popup :show="show" :round="10" mode="center" @close="close" @open="open">
+		<scroll-view height="900px" scroll-y>
+        <view>人生若只如初见，何事秋风悲画扇</view>
+		</scroll-view>
+	</up-popup>
+</template>
+```
+
+#### 底部追加内容
+
+- 可以通过`bottom`插槽设置除了内容外的追加内容，典型的如一个悬浮的关闭按钮。
+
+```vue
+<template>
+	<up-popup :show="show" :round="10" mode="center" @close="close" @open="open">
+		<view>
+        <text>人生若只如初见，何事秋风悲画扇</text>
+		</view>
+    <template #bottom>
+      <view v-if="popupData.mode == 'center'" class="rounded" style="margin-top: 20px;">
+        <up-icon name="close" color="#fff"></up-icon>
+      </view>
+    </template>
+	</up-popup>
+</template>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/popup.md`</small>
 
 </template>
 
 <template #uniappx>
 
+#### 基本使用
+
+- 弹出层的内容通过`slot`传入，由用户自定义
+- 通过`show`绑定一个布尔值的变量控制弹出层的打开和收起，通过v-model:show双向绑定简化使用。
+
 ```vue
-<up-popup
-    :safeAreaInsetBottom="true"
-    :safeAreaInsetTop="true"
-    :mode="popupData?.['mode']"
-    :show="show"
-    :round="popupData?.['round']"
-    :overlay="popupData?.['overlay']"
-    :borderRadius="popupData?.['borderRadius']"
-    :closeable="popupData?.['closeable']"
-    :closeOnClickOverlay="popupData?.['closeOnClickOverlay']"
-    @close="close"
-    @open="open"
->
-    <view
-        class="u-popup-slot"
-        :style="{
-            width: ['bottom', 'top'].includes(getMode(popupData)) ? '750rpx' : '200px',
-            marginTop: ['left', 'right'].includes(getMode(popupData)) ? '480rpx' : '0',
-        }"
-    >
-        <up-tag
-            type="success"
-            text="点我关闭"
-            customStyle="width: 200rpx"
-            @click="close"
-        ></up-tag>
-    </view>
-</up-popup>
+<template>
+	<view>
+		<up-popup :show="show" @close="close" @open="open">
+        <view>
+            <text>出淤泥而不染，濯清涟而不妖</text>
+        </view>
+		</up-popup>
+    <up-popup v-model:show="show">
+        <view>
+            <text>出淤泥而不染，濯清涟而不妖</text>
+        </view>
+		</up-popup>
+		<up-button @click="show = true">打开</up-button>
+	</view>
+</template>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsA/popup/popup.uvue`</small>
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 创建响应式数据  
+const show = ref(false);
+  
+// 定义方法  
+function open() {  
+  // 打开逻辑，比如设置 show 为 true  
+  show.value = true;  
+  // console.log('open');  
+}  
+  
+function close() {  
+  // 关闭逻辑，设置 show 为 false  
+  show.value = false;  
+  // console.log('close');  
+}  
+</script>
+```
+
+#### 设置弹出层的方向
+
+- 可以通过`mode`参数设置，可以设置为`left`、`top`、`right`、`bottom`、`center`
+
+```vue
+<template>
+	<up-popup :show="show" mode="top"  @close="close" @open="open">
+        <view>
+            <text>人生若只如初见，何事秋风悲画扇</text>
+        </view>
+	</up-popup>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 创建响应式数据  
+const show = ref(false);  
+  
+// 定义方法  
+function open() {  
+  // 打开逻辑，比如设置 show 为 true  
+  show.value = true;  
+  // console.log('open');  
+}  
+  
+function close() {  
+  // 关闭逻辑，设置 show 为 false  
+  show.value = false;  
+  // console.log('close');  
+}  
+</script>
+```
+
+#### 设置弹出层的圆角
+
+需要将`round`设置为圆角值(仅对`mode = top | bottom | center`有效)。
+
+```vue
+<template>
+	<up-popup :show="show" :round="10" mode="top" @close="close" @open="open">
+		<view>
+        <text>人生若只如初见，何事秋风悲画扇</text>
+		</view>
+	</up-popup>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 创建响应式数据  
+const show = ref(false);  
+  
+// 定义方法  
+function open() {  
+  // 打开逻辑，比如设置 show 为 true  
+  show.value = true;  
+  // console.log('open');  
+}  
+  
+function close() {  
+  // 关闭逻辑，设置 show 为 false  
+  show.value = false;  
+  // console.log('close');  
+}  
+</script>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/popup.md`</small>
 
 </template>
 

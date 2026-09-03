@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -54,11 +54,83 @@ import { UPCanvas } from '@ultra-ui'
 
 <template #uniapp>
 
-::: tip
-暂无自动提取到的示例代码，请参考源码。
-:::
+#### 基本使用
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small>
+通过 `ref` 获取组件实例，再调用绘图方法。组件触发 `ready` 后表示画布已经完成初始化。
+
+```vue
+<template>
+  <view>
+    <up-canvas
+      ref="canvasRef"
+      canvas-id="demoCanvas"
+      :width="300"
+      :height="180"
+      bg-color="#ffffff"
+      @ready="draw"
+    ></up-canvas>
+
+    <up-button text="导出图片" @click="exportImage"></up-button>
+  </view>
+</template>
+
+<script setup>
+import { ref } from 'vue'
+
+const canvasRef = ref(null)
+
+const draw = () => {
+  const canvas = canvasRef.value
+  canvas.setFillStyle('#f5f7fa')
+  canvas.fillRect(0, 0, 300, 180)
+
+  canvas.setFillStyle('#2979ff')
+  canvas.fillRect(24, 24, 120, 64)
+
+  canvas.setFillStyle('#303133')
+  canvas.setFontSize(18)
+  canvas.fillText('up-canvas', 24, 120)
+
+  canvas.draw(false)
+}
+
+const exportImage = async () => {
+  const tempFilePath = await canvasRef.value.exportImage('png', 1)
+  console.log('导出图片:', tempFilePath)
+}
+</script>
+```
+
+#### 绘制图片
+
+`drawImage` 支持图片路径、临时文件路径、H5 图片对象、小程序 `CanvasImage` 等平台可识别的图片源。H5 和小程序 2D Canvas 下传入字符串路径时，组件会先加载图片再绘制。
+
+```js
+const canvas = canvasRef.value
+await canvas.drawImage('/static/logo.png', 20, 20, 80, 80)
+canvas.draw(false)
+```
+
+#### 导出图片
+
+`toTempFilePath` 保留 uni-app 风格的回调参数，同时返回 `Promise`。
+
+```js
+const res = await canvasRef.value.toTempFilePath({
+  x: 0,
+  y: 0,
+  width: 300,
+  height: 180,
+  destWidth: 600,
+  destHeight: 360,
+  fileType: 'png',
+  quality: 1
+})
+
+console.log(res.tempFilePath || res.apFilePath)
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/canvas.md`</small>
 
 </template>
 

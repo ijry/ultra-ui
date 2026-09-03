@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -79,41 +79,207 @@ safe 显示底部安全区占位
 
 <template #uniapp>
 
+#### 基本使用
+
+通过`mode`参数定义键盘的类型，`show`绑定一个值为布尔值的变量控制键盘的弹出与收起：
+- mode = car  (默认值)为汽车键盘，此时顶部工具条中间的提示文字为"车牌号键盘"
+- mode = number为数字键盘，此时顶部工具条中间的提示文字为"数字键盘"
+- mode = card 为身份证键盘，此时顶部工具条中间的提示文字为"身份证键盘"
+
 ```vue
-<up-keyboard
-    :mode="keyData.mode"
-    :dotDisabled="keyData.dotDisabled"
-    :random="keyData.random"
-    :show="show"
-    @close="close"
-    @cancel="cancel"
-    @confirm="confirm"
-    @change="change"
-    @backspace="backspace"
-></up-keyboard>
+<template>
+	<view>
+		<up-keyboard ref="uKeyboard" mode="car" :show="show"></up-keyboard>
+		<up-button @click="show = true">打开</up-button>
+	</view>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const show = ref(false);
+</script>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsB/keyboard/keyboard.uvue`</small>
+#### 隐藏键盘"."符号
+
+- 通过`dotDisabled`参数配置是否显示键盘"."符号，默认为`false`，只在"mode = number"时生效
+
+```vue
+<up-keyboard mode="number" :dotDisabled="true"></up-keyboard>
+```
+
+#### 是否打乱按键的顺序
+
+如果配置`random`参数为`true`的话，**每次**打开键盘，按键的顺序都是随机的，该功能默认是关闭的
+
+```vue
+<up-keyboard ref="uKeyboard" mode="number" :random="true" :show="show"></up-keyboard>
+```
+
+#### 如何控制键盘的打开和关闭？
+
+```vue
+<template>
+	<up-keyboard mode="number" :show="show"></up-keyboard>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+import { onReady, onLoad } from '@dcloud/uniapp';
+
+const show = ref(false);
+
+onReady(() => {
+  // 如果想一进入页面就打开键盘，请在此生命周期调用
+  show.value = true;
+});
+
+onLoad(() => {
+  // 不应在此调用，因为此时up-keyboard组件尚未创建完成
+  // show.value = true;
+});
+</script>
+```
+
+#### 如何监听键盘按键被点击？
+
+- 输入值是通过组件的`change`事件实现的，组件内部每个按键被点击的时候，组件就会发出一个`change`事件，回调参数为点击的按键的值。  
+- 通过`backspace`事件监听键盘退格键的点击，通过修改父组件的值实现退格的效果，见下方示例
+
+注意：点击退格键(也即删除键)不会触发`change`事件
+
+```vue
+<template>
+	<up-keyboard mode="number" @change="valChange" @backspace="backspace" :show="show"></up-keyboard>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const value = ref(''); // 输入框的值
+const show = ref(false); // 是否显示键盘
+
+const valChange = (val) => {
+  // 将每次按键的值拼接到value变量中，注意+=写法
+  value.value += val;
+  console.log(value.value);
+};
+
+const backspace = () => {
+  // 删除value的最后一个字符
+  if (value.value.length) {
+    value.value = value.value.substr(0, value.value.length - 1);
+  }
+  console.log(value.value);
+};
+</script>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/keyboard.md`</small>
 
 </template>
 
 <template #uniappx>
 
+#### 基本使用
+
+通过`mode`参数定义键盘的类型，`show`绑定一个值为布尔值的变量控制键盘的弹出与收起：
+- mode = car  (默认值)为汽车键盘，此时顶部工具条中间的提示文字为"车牌号键盘"
+- mode = number为数字键盘，此时顶部工具条中间的提示文字为"数字键盘"
+- mode = card 为身份证键盘，此时顶部工具条中间的提示文字为"身份证键盘"
+
 ```vue
-<up-keyboard
-    :mode="keyData.mode"
-    :dotDisabled="keyData.dotDisabled"
-    :random="keyData.random"
-    :show="show"
-    @close="close"
-    @cancel="cancel"
-    @confirm="confirm"
-    @change="change"
-    @backspace="backspace"
-></up-keyboard>
+<template>
+	<view>
+		<up-keyboard ref="uKeyboard" mode="car" :show="show"></up-keyboard>
+		<up-button @click="show = true">打开</up-button>
+	</view>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const show = ref(false);
+</script>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsB/keyboard/keyboard.uvue`</small>
+#### 隐藏键盘"."符号
+
+- 通过`dotDisabled`参数配置是否显示键盘"."符号，默认为`false`，只在"mode = number"时生效
+
+```vue
+<up-keyboard mode="number" :dotDisabled="true"></up-keyboard>
+```
+
+#### 是否打乱按键的顺序
+
+如果配置`random`参数为`true`的话，**每次**打开键盘，按键的顺序都是随机的，该功能默认是关闭的
+
+```vue
+<up-keyboard ref="uKeyboard" mode="number" :random="true" :show="show"></up-keyboard>
+```
+
+#### 如何控制键盘的打开和关闭？
+
+```vue
+<template>
+	<up-keyboard mode="number" :show="show"></up-keyboard>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+import { onReady, onLoad } from '@dcloud/uniapp';
+
+const show = ref(false);
+
+onReady(() => {
+  // 如果想一进入页面就打开键盘，请在此生命周期调用
+  show.value = true;
+});
+
+onLoad(() => {
+  // 不应在此调用，因为此时up-keyboard组件尚未创建完成
+  // show.value = true;
+});
+</script>
+```
+
+#### 如何监听键盘按键被点击？
+
+- 输入值是通过组件的`change`事件实现的，组件内部每个按键被点击的时候，组件就会发出一个`change`事件，回调参数为点击的按键的值。  
+- 通过`backspace`事件监听键盘退格键的点击，通过修改父组件的值实现退格的效果，见下方示例
+
+注意：点击退格键(也即删除键)不会触发`change`事件
+
+```vue
+<template>
+	<up-keyboard mode="number" @change="valChange" @backspace="backspace" :show="show"></up-keyboard>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const value = ref(''); // 输入框的值
+const show = ref(false); // 是否显示键盘
+
+const valChange = (val) => {
+  // 将每次按键的值拼接到value变量中，注意+=写法
+  value.value += val;
+  console.log(value.value);
+};
+
+const backspace = () => {
+  // 删除value的最后一个字符
+  if (value.value.length) {
+    value.value = value.value.substr(0, value.value.length - 1);
+  }
+  console.log(value.value);
+};
+</script>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/keyboard.md`</small>
 
 </template>
 

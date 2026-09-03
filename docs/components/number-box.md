@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -277,171 +277,243 @@ buttonWidth / buttonSize / inputWidth，单位 px
 
 <template #uniapp>
 
+#### 基本使用
+
+通过`v-model`绑定`modelValue`初始值，此值是双向绑定的，**无需**在回调中将返回的数值重新赋值给`modelValue`。
+
 ```vue
-<up-number-box
-    v-model="value1"
-    step="1"
-    @change="change"
->
-</up-number-box>
+<template>
+	<up-number-box v-model="value" @change="valChange"></up-number-box>
+</template>
 ```
 
 ```vue
-<up-number-box
-    v-model="value2"
-    :step="step1"
-    @change="change"
->
-</up-number-box>
+<script setup>  
+import { ref } from 'vue';  
+  
+// 创建响应式数据  
+const value = ref(0);  
+  
+// 定义方法  
+function valChange(e) {  
+  console.log('当前值为: ' + e.target.value);  
+}  
+</script>
+```
+
+#### 步长设置
+
+- 通过`step`属性设置每次点击增加或减少按钮时变化的值，默认为1，下面示例每次都会加2或者减2
+
+```vue
+<up-number-box :step="2"></up-number-box>
+```
+
+#### 限制输入范围
+
+通过`min`和`max`参数限制输的入值最小值和最大值
+
+```vue
+<up-number-box :min="1" :max="100"></up-number-box>
+```
+
+#### 限制只能输入整数
+
+通过`integer`限制输入类型
+
+```vue
+<up-number-box integer></up-number-box>
+```
+
+#### 禁用
+
+```vue
+<!-- 通过设置`disabled`参数来禁用输入框，禁用状态下无法点击加减按钮或修改输入框的值 -->
+<up-number-box :disabled="true"></up-number-box>
+
+<!-- 禁用输入框 -->
+<up-number-box :disabledInput="true"></up-number-box>
+
+<!-- 禁用增加按钮 -->
+<up-number-box :disablePlus="true"></up-number-box>
+
+<!-- 禁用减少按钮 -->
+<up-number-box :disableMinus="true"></up-number-box>
+
+<!-- 禁用长按 -->
+<up-number-box :longPress="false"></up-number-box>
+```
+
+#### 固定小数位数
+
+通过`step`设置步进长度，`decimal-length`设置显示小数位数
+
+```vue
+<up-number-box step="0.25" decimal-length="1" ></up-number-box>
+```
+
+#### 异步变更
+
+通过`asyncChange`设置异步变更，开启后需要手动控制输入值 （默认 false ）
+
+```vue
+<template>
+    <up-number-box v-model="value" :asyncChange="true" @change="onChange"></up-number-box>
+</template>
 ```
 
 ```vue
-<up-number-box
-    v-model="value3"
-    step="1"
-    :min="min1"
-    :max="max1"
-    @change="change"
->
-</up-number-box>
+<script setup>  
+import { ref, onMounted } from 'vue';  
+  
+// 创建响应式数据  
+const value = ref(1);  
+  
+// 定义方法  
+function onChange(e) {  
+  setTimeout(() => {  
+    value.value += 1; // 使用 value.value 来访问和修改响应式数据  
+  }, 3000);  
+}
+</script>
 ```
+
+#### 自定义颜色和大小
+
+- 通过`button-size`参数设置按钮大小
+- 通过`icon-style`参数设置加减按钮图标的样式
 
 ```vue
-<up-number-box
-    v-model="value4"
-    step="1"
-    integer
-    @change="change"
->
-</up-number-box>
+<up-number-box 
+    button-size="36"
+    color="#ffffff"
+    bgColor="#2979ff"
+    iconStyle="color: #fff"
+></up-number-box>
 ```
 
-```vue
-<up-number-box
-    v-model="value5"
-    step="1"
-    :disabled="true"
-    @change="change"
->
-</up-number-box>
-```
-
-```vue
-<up-number-box
-    v-model="value6"
-    step="1"
-    :disabledInput="true"
-    @change="change"
->
-</up-number-box>
-```
-
-```vue
-<up-number-box
-    v-model="value7"
-    step="1"
-    :longPress="false"
-    @change="change"
->
-</up-number-box>
-```
-
-```vue
-<up-number-box
-    v-model="value8"
-    step="0.2"
-    decimalLength="1"
-    @change="change"
->
-</up-number-box>
-```
-
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsB/numberBox/numberBox.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/numberBox.md`</small>
 
 </template>
 
 <template #uniappx>
 
+#### 基本使用
+
+通过`v-model`绑定`modelValue`初始值，此值是双向绑定的，**无需**在回调中将返回的数值重新赋值给`modelValue`。
+
 ```vue
-<up-number-box
-    v-model="value1"
-    step="1"
-    @change="change"
->
-</up-number-box>
+<template>
+	<up-number-box v-model="value" @change="valChange"></up-number-box>
+</template>
 ```
 
 ```vue
-<up-number-box
-    v-model="value2"
-    :step="step1"
-    @change="change"
->
-</up-number-box>
+<script setup>  
+import { ref } from 'vue';  
+  
+// 创建响应式数据  
+const value = ref(0);  
+  
+// 定义方法  
+function valChange(e) {  
+  console.log('当前值为: ' + e.target.value);  
+}  
+</script>
+```
+
+#### 步长设置
+
+- 通过`step`属性设置每次点击增加或减少按钮时变化的值，默认为1，下面示例每次都会加2或者减2
+
+```vue
+<up-number-box :step="2"></up-number-box>
+```
+
+#### 限制输入范围
+
+通过`min`和`max`参数限制输的入值最小值和最大值
+
+```vue
+<up-number-box :min="1" :max="100"></up-number-box>
+```
+
+#### 限制只能输入整数
+
+通过`integer`限制输入类型
+
+```vue
+<up-number-box integer></up-number-box>
+```
+
+#### 禁用
+
+```vue
+<!-- 通过设置`disabled`参数来禁用输入框，禁用状态下无法点击加减按钮或修改输入框的值 -->
+<up-number-box :disabled="true"></up-number-box>
+
+<!-- 禁用输入框 -->
+<up-number-box :disabledInput="true"></up-number-box>
+
+<!-- 禁用增加按钮 -->
+<up-number-box :disablePlus="true"></up-number-box>
+
+<!-- 禁用减少按钮 -->
+<up-number-box :disableMinus="true"></up-number-box>
+
+<!-- 禁用长按 -->
+<up-number-box :longPress="false"></up-number-box>
+```
+
+#### 固定小数位数
+
+通过`step`设置步进长度，`decimal-length`设置显示小数位数
+
+```vue
+<up-number-box step="0.25" decimal-length="1" ></up-number-box>
+```
+
+#### 异步变更
+
+通过`asyncChange`设置异步变更，开启后需要手动控制输入值 （默认 false ）
+
+```vue
+<template>
+    <up-number-box v-model="value" :asyncChange="true" @change="onChange"></up-number-box>
+</template>
 ```
 
 ```vue
-<up-number-box
-    v-model="value3"
-    step="1"
-    :min="min1"
-    :max="max1"
-    @change="change"
->
-</up-number-box>
+<script setup>  
+import { ref, onMounted } from 'vue';  
+  
+// 创建响应式数据  
+const value = ref(1);  
+  
+// 定义方法  
+function onChange(e) {  
+  setTimeout(() => {  
+    value.value += 1; // 使用 value.value 来访问和修改响应式数据  
+  }, 3000);  
+}
+</script>
 ```
+
+#### 自定义颜色和大小
+
+- 通过`button-size`参数设置按钮大小
+- 通过`icon-style`参数设置加减按钮图标的样式
 
 ```vue
-<up-number-box
-    v-model="value4"
-    step="1"
-    integer
-    @change="change"
->
-</up-number-box>
+<up-number-box 
+    button-size="36"
+    color="#ffffff"
+    bgColor="#2979ff"
+    iconStyle="color: #fff"
+></up-number-box>
 ```
 
-```vue
-<up-number-box
-    v-model="value5"
-    step="1"
-    :disabled="true"
-    @change="change"
->
-</up-number-box>
-```
-
-```vue
-<up-number-box
-    v-model="value6"
-    step="1"
-    :disabledInput="true"
-    @change="change"
->
-</up-number-box>
-```
-
-```vue
-<up-number-box
-    v-model="value7"
-    step="1"
-    :longPress="false"
-    @change="change"
->
-</up-number-box>
-```
-
-```vue
-<up-number-box
-    v-model="value8"
-    step="0.2"
-    decimalLength="1"
-    @change="change"
->
-</up-number-box>
-```
-
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsB/numberBox/numberBox.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/numberBox.md`</small>
 
 </template>
 

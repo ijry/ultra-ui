@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -176,61 +176,151 @@ scrollIntoView 定位到指定 anchor
 
 <template #uniapp>
 
+#### 基本使用
+
+- 配合组件`up-list-item`嵌套使用
+- 参数`show-scrollbar`是否出现滚动条仅在nvue中有效
+- 事件`@scroll-to-lower`滚动到底部触发事件
+
 ```vue
-<up-list
-    @scrolltolower="scrolltolower"
->
-    <up-list-item
-        v-for="(item, index) in indexList"
-        :key="index"
-    >
-        <up-cell
-            :title="`列表长度-${index + 1}`"
-        >
-            <template #icon>
-                <up-avatar
-                    shape="square"
-                    size="35"
-                    :src="item.url"
-                    customStyle="margin: -3px 5px -3px 0"
-                ></up-avatar>
-            </template>
-        </up-cell>
-    </up-list-item>
-</up-list>
+<template>
+	<view class="u-page">
+		<up-list
+			@scroll-to-lower="scrolltolower"
+		>
+			<up-list-item
+				v-for="(item, index) in indexList"
+				:key="index"
+			>
+				<up-cell
+					:title="`列表长度-${index + 1}`"
+				>
+					<template #icon>
+						<up-avatar
+							shape="square"
+							size="35"
+							:src="item.url"
+							customStyle="margin: -3px 5px -3px 0"
+						></up-avatar>
+					</template>
+				</up-cell>
+			</up-list-item>
+		</up-list>
+	</view>
+</template>
+
+<script setup>
+import { ref, reactive } from 'vue';
+import { onLoad, onShow } from '@dcloudio/uni-app';  
+
+const indexList = ref([]);
+const urls = [
+  'https://uview-plus.jiangruyi.com/album/1.jpg',
+  'https://uview-plus.jiangruyi.com/album/2.jpg',
+  'https://uview-plus.jiangruyi.com/album/3.jpg',
+  'https://uview-plus.jiangruyi.com/album/4.jpg',
+  'https://uview-plus.jiangruyi.com/album/5.jpg',
+  'https://uview-plus.jiangruyi.com/album/6.jpg',
+  'https://uview-plus.jiangruyi.com/album/7.jpg',
+  'https://uview-plus.jiangruyi.com/album/8.jpg',
+  'https://uview-plus.jiangruyi.com/album/9.jpg',
+  'https://uview-plus.jiangruyi.com/album/10.jpg',
+];
+
+onLoad(() => {
+  loadmore();
+});
+
+const scrolltolower = () => {
+  loadmore();
+};
+
+const loadmore = () => {
+  for (let i = 0; i < 30; i++) {
+    indexList.value.push({
+      url: urls[uni.$u.random(0, urls.length - 1)],
+    });
+  }
+};
+</script>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsC/list/list.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/list.md`</small>
 
 </template>
 
 <template #uniappx>
 
+#### 基本使用
+
+- 配合组件`up-list-item`嵌套使用
+- 参数`show-scrollbar`是否出现滚动条仅在nvue中有效
+- 事件`@scroll-to-lower`滚动到底部触发事件
+
 ```vue
-<up-list
-    @scrolltolower="scrolltolower"
->
-    <up-list-item
-        v-for="(item, index) in indexList"
-        :key="index"
-    >
-        <up-cell
-            :title="`列表长度-${index + 1}`"
-        >
-            <template #icon>
-                <up-avatar
-                    shape="square"
-                    size="35"
-                    :src="item.url"
-                    customStyle="margin: -3px 5px -3px 0"
-                ></up-avatar>
-            </template>
-        </up-cell>
-    </up-list-item>
-</up-list>
+<template>
+	<view class="u-page">
+		<up-list
+			@scroll-to-lower="scrolltolower"
+		>
+			<up-list-item
+				v-for="(item, index) in indexList"
+				:key="index"
+			>
+				<up-cell
+					:title="`列表长度-${index + 1}`"
+				>
+					<template #icon>
+						<up-avatar
+							shape="square"
+							size="35"
+							:src="item.url"
+							customStyle="margin: -3px 5px -3px 0"
+						></up-avatar>
+					</template>
+				</up-cell>
+			</up-list-item>
+		</up-list>
+	</view>
+</template>
+
+<script setup>
+import { ref, reactive } from 'vue';
+import { onLoad, onShow } from '@dcloudio/uni-app';  
+
+const indexList = reactive([]);
+const urls = [
+  'https://uview-ultra.jiangruyi.com/album/1.jpg',
+  'https://uview-ultra.jiangruyi.com/album/2.jpg',
+  'https://uview-ultra.jiangruyi.com/album/3.jpg',
+  'https://uview-ultra.jiangruyi.com/album/4.jpg',
+  'https://uview-ultra.jiangruyi.com/album/5.jpg',
+  'https://uview-ultra.jiangruyi.com/album/6.jpg',
+  'https://uview-ultra.jiangruyi.com/album/7.jpg',
+  'https://uview-ultra.jiangruyi.com/album/8.jpg',
+  'https://uview-ultra.jiangruyi.com/album/9.jpg',
+  'https://uview-ultra.jiangruyi.com/album/10.jpg',
+];
+
+onLoad(() => {
+  loadmore();
+});
+
+const scrolltolower = () => {
+  loadmore();
+};
+
+const loadmore = () => {
+  for (let i = 0; i < 30; i++) {
+    indexList.value.push({
+      url: urls[uni.$u.random(0, urls.length - 1)],
+    });
+  }
+};
+</script>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsC/list/list.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/list.md`</small>
 
 </template>
 

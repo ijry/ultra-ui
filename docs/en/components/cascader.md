@@ -12,7 +12,7 @@ A cascading picker for tree data such as regions or categories.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -122,97 +122,431 @@ No snippet could be extracted automatically — please read the source.
 
 <template #uniapp>
 
+#### 基本使用
+
 ```vue
-<up-cascader 
-  v-model:show="show1"
-  v-model="result1"
-  valueKey="label"
-  :data="areaData" 
-></up-cascader>
+<template>
+	<view>
+		<up-button @click="show = true">选择地区</up-button>
+		<up-cascader 
+			v-model:show="show"
+			v-model="value"
+			:data="areaData"
+		></up-cascader>
+	</view>
+</template>
 ```
 
 ```vue
-<up-cascader 
-  v-model:show="show2" 
-  v-model="result2"
-  :data="categoryData"
-  headerDirection="column"
-  @confirm="confirm2"
-></up-cascader>
+<script setup>
+import { ref } from 'vue';
+
+const show = ref(false);
+const value = ref([]);
+
+const areaData = ref([
+	{
+		label: '北京市',
+		value: '11',
+		children: [
+			{
+				label: '北京市',
+				value: '1101',
+				children: [
+					{ label: '东城区', value: '110101' },
+					{ label: '西城区', value: '110102' },
+					{ label: '朝阳区', value: '110105' }
+				]
+			}
+		]
+	}
+]);
+</script>
+```
+
+#### 设置默认值
+
+```vue
+<template>
+	<view>
+		<up-button @click="show = true">选择商品分类</up-button>
+		<up-cascader 
+			v-model:show="show"
+			v-model="value"
+			:data="categoryData"
+		></up-cascader>
+	</view>
+</template>
 ```
 
 ```vue
-<up-cascader 
-  v-model:show="show3" 
-  v-model="result3"
-  :data="orgData" 
-  value-key="id"
-  label-key="name"
-  children-key="childs"
-  @confirm="confirm3"
-></up-cascader>
+<script setup>
+import { ref } from 'vue';
+
+const show = ref(false);
+const value = ref(['2', '2-2']); // 默认选中"数码" -> "电脑"
+
+const categoryData = ref([
+	{
+		label: '服装',
+		value: '1',
+		children: [
+			{
+				label: '上装',
+				value: '1-1',
+				children: [
+					{ label: 'T恤', value: '1-1-1' },
+					{ label: '衬衫', value: '1-1-2' }
+				]
+			}
+		]
+	},
+	{
+		label: '数码',
+		value: '2',
+		children: [
+			{
+				label: '电脑',
+				value: '2-2',
+				children: [
+					{ label: '笔记本', value: '2-2-1' },
+					{ label: '台式机', value: '2-2-2' }
+				]
+			}
+		]
+	}
+]);
+</script>
+```
+
+#### 自定义字段名
+
+```vue
+<template>
+	<view>
+		<up-button @click="show = true">选择组织架构</up-button>
+		<up-cascader 
+			v-model:show="show"
+			v-model="value"
+			:data="orgData"
+			value-key="id"
+			label-key="name"
+			children-key="childs"
+		></up-cascader>
+	</view>
+</template>
 ```
 
 ```vue
+<script setup>
+import { ref } from 'vue';
+
+const show = ref(false);
+const value = ref([]);
+
+const orgData = ref([
+	{
+		name: '总部',
+		id: '1',
+		childs: [
+			{
+				name: '研发部',
+				id: '1-1',
+				childs: [
+					{ name: '前端组', id: '1-1-1' },
+					{ name: '后端组', id: '1-1-2' }
+				]
+			}
+		]
+	}
+]);
+</script>
+```
+
+#### 垂直头部及单列选项
+
+```vue
+<template>
+	<view>
+		<up-button @click="show = true">选择商品分类</up-button>
+		<up-cascader 
+			v-model:show="show"
+			v-model="value"
+			headerDirection="column"
+            :optionsCols="1"
+			:data="categoryData"
+		></up-cascader>
+	</view>
+</template>
+```
+
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const show = ref(false);
+const value = ref(['2', '2-2']); // 默认选中"数码" -> "电脑"
+
+const categoryData = ref([
+	{
+		label: '服装',
+		value: '1',
+		children: [
+			{
+				label: '上装',
+				value: '1-1',
+				children: [
+					{ label: 'T恤', value: '1-1-1' },
+					{ label: '衬衫', value: '1-1-2' }
+				]
+			}
+		]
+	},
+	{
+		label: '数码',
+		value: '2',
+		children: [
+			{
+				label: '电脑',
+				value: '2-2',
+				children: [
+					{ label: '笔记本', value: '2-2-1' },
+					{ label: '台式机', value: '2-2-2' }
+				]
+			}
+		]
+	}
+]);
+</script>
+```
+
+#### 自动关闭
+
+```vue
 <up-cascader 
-  v-model:show="show2" 
-  v-model="result2"
-  :data="categoryData"
-  headerDirection="column"
-  :optionsCols="1"
-  @confirm="confirm2"
+	v-model:show="show"
+	v-model="value"
+	:data="areaData"
+	:auto-close="true"
 ></up-cascader>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/cascader/cascader.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/cascader.md`</small>
 
 </template>
 
 <template #uniappx>
 
+#### 基本使用
+
 ```vue
-<up-cascader 
-  v-model:show="show1"
-  v-model="result1"
-  valueKey="label"
-  :data="areaData" 
-></up-cascader>
+<template>
+	<view>
+		<up-button @click="show = true">选择地区</up-button>
+		<up-cascader 
+			v-model:show="show"
+			v-model="value"
+			:data="areaData"
+		></up-cascader>
+	</view>
+</template>
 ```
 
 ```vue
-<up-cascader 
-  v-model:show="show2" 
-  v-model="result2"
-  :data="categoryData"
-  headerDirection="column"
-  @confirm="confirm2"
-></up-cascader>
+<script setup>
+import { ref } from 'vue';
+
+const show = ref(false);
+const value = ref([]);
+
+const areaData = ref([
+	{
+		label: '北京市',
+		value: '11',
+		children: [
+			{
+				label: '北京市',
+				value: '1101',
+				children: [
+					{ label: '东城区', value: '110101' },
+					{ label: '西城区', value: '110102' },
+					{ label: '朝阳区', value: '110105' }
+				]
+			}
+		]
+	}
+]);
+</script>
+```
+
+#### 设置默认值
+
+```vue
+<template>
+	<view>
+		<up-button @click="show = true">选择商品分类</up-button>
+		<up-cascader 
+			v-model:show="show"
+			v-model="value"
+			:data="categoryData"
+		></up-cascader>
+	</view>
+</template>
 ```
 
 ```vue
-<up-cascader 
-  v-model:show="show3" 
-  v-model="result3"
-  :data="orgData" 
-  value-key="id"
-  label-key="name"
-  children-key="childs"
-  @confirm="confirm3"
-></up-cascader>
+<script setup>
+import { ref } from 'vue';
+
+const show = ref(false);
+const value = ref(['2', '2-2']); // 默认选中"数码" -> "电脑"
+
+const categoryData = ref([
+	{
+		label: '服装',
+		value: '1',
+		children: [
+			{
+				label: '上装',
+				value: '1-1',
+				children: [
+					{ label: 'T恤', value: '1-1-1' },
+					{ label: '衬衫', value: '1-1-2' }
+				]
+			}
+		]
+	},
+	{
+		label: '数码',
+		value: '2',
+		children: [
+			{
+				label: '电脑',
+				value: '2-2',
+				children: [
+					{ label: '笔记本', value: '2-2-1' },
+					{ label: '台式机', value: '2-2-2' }
+				]
+			}
+		]
+	}
+]);
+</script>
+```
+
+#### 自定义字段名
+
+```vue
+<template>
+	<view>
+		<up-button @click="show = true">选择组织架构</up-button>
+		<up-cascader 
+			v-model:show="show"
+			v-model="value"
+			:data="orgData"
+			value-key="id"
+			label-key="name"
+			children-key="childs"
+		></up-cascader>
+	</view>
+</template>
 ```
 
 ```vue
+<script setup>
+import { ref } from 'vue';
+
+const show = ref(false);
+const value = ref([]);
+
+const orgData = ref([
+	{
+		name: '总部',
+		id: '1',
+		childs: [
+			{
+				name: '研发部',
+				id: '1-1',
+				childs: [
+					{ name: '前端组', id: '1-1-1' },
+					{ name: '后端组', id: '1-1-2' }
+				]
+			}
+		]
+	}
+]);
+</script>
+```
+
+#### 垂直头部及单列选项
+
+```vue
+<template>
+	<view>
+		<up-button @click="show = true">选择商品分类</up-button>
+		<up-cascader 
+			v-model:show="show"
+			v-model="value"
+			headerDirection="column"
+            :optionsCols="1"
+			:data="categoryData"
+		></up-cascader>
+	</view>
+</template>
+```
+
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const show = ref(false);
+const value = ref(['2', '2-2']); // 默认选中"数码" -> "电脑"
+
+const categoryData = ref([
+	{
+		label: '服装',
+		value: '1',
+		children: [
+			{
+				label: '上装',
+				value: '1-1',
+				children: [
+					{ label: 'T恤', value: '1-1-1' },
+					{ label: '衬衫', value: '1-1-2' }
+				]
+			}
+		]
+	},
+	{
+		label: '数码',
+		value: '2',
+		children: [
+			{
+				label: '电脑',
+				value: '2-2',
+				children: [
+					{ label: '笔记本', value: '2-2-1' },
+					{ label: '台式机', value: '2-2-2' }
+				]
+			}
+		]
+	}
+]);
+</script>
+```
+
+#### 自动关闭
+
+```vue
 <up-cascader 
-  v-model:show="show2" 
-  v-model="result2"
-  :data="categoryData"
-  headerDirection="column"
-  :optionsCols="1"
-  @confirm="confirm2"
+	v-model:show="show"
+	v-model="value"
+	:data="areaData"
+	:auto-close="true"
 ></up-cascader>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/cascader/cascader.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/cascader.md`</small>
 
 </template>
 

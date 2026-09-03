@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -244,91 +244,269 @@ width / height 控制方块大小，uploadText 显示提示语
 
 #### 基础用法
 
+- 可以通过设置`fileList`参数(数组，元素为对象)，显示预置的图片。其中元素的`url`属性为图片路径
+
+```vue
+<template>
+	<up-upload
+		:fileList="fileList1"
+		@afterRead="afterRead"
+		@delete="deletePic"
+		name="1"
+		multiple
+		:maxCount="10"
+	></up-upload>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const fileList1 = ref([]);
+
+// 删除图片
+const deletePic = (event) => {
+  fileList1.value.splice(event.index, 1);
+};
+
+// 新增图片
+const afterRead = async (event) => {
+  // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
+  let lists = [].concat(event.file);
+  let fileListLen = fileList1.value.length;
+  lists.map((item) => {
+    fileList1.value.push({
+      ...item,
+      status: 'uploading',
+      message: '上传中',
+    });
+  });
+  for (let i = 0; i < lists.length; i++) {
+    const result = await uploadFilePromise(lists[i].url);
+    let item = fileList1.value[fileListLen];
+    fileList1.value.splice(fileListLen, 1, {
+      ...item,
+      status: 'success',
+      message: '',
+      url: result,
+    });
+    fileListLen++;
+  }
+};
+
+const uploadFilePromise = (url) => {
+  return new Promise((resolve, reject) => {
+    let a = uni.uploadFile({
+      url: 'http://192.168.2.21:7001/upload', // 仅为示例，非真实的接口地址
+      filePath: url,
+      name: 'file',
+      formData: {
+        user: 'test',
+      },
+      success: (res) => {
+        setTimeout(() => {
+          resolve(res.data.data);
+        }, 1000);
+      },
+    });
+  });
+};
+</script>
+```
+
+#### 读取前处理程序
+
 ```vue
 <up-upload
-    :fileList="fileList1"
-    useBeforeRead
-    @beforeRead="beforeRead"
-    @afterRead="afterRead"
-    @delete="deletePic"
-    name="1"
-    multiple
-    :maxCount="10"
-></up-upload>
+	width="56px"
+	height="56px"
+	v-model:fileList="fileList"
+	name="1"
+	multiple
+	:maxCount="8"
+	:previewFullImage="true"
+	accept="image"
+	:useBeforeRead="true"
+	@beforeRead="beforeRead"
+>
+	<template #trigger>
+		<view class="w-56px h-56px border border-solid border-#E3E3E3 flex justify-center items-center">
+			<up-icon name="plus" color="#E3E3E3" size="33px"></up-icon>
+		</view>
+	</template>
+</up-upload>
+<!-- data 方法请参考 基本用法 -->
+data(){
+	return{
+		fileList: [],
+	}
+},
+methods:{
+	beforeRead(res) {
+		// 一定要调用callback方法
+		res.callback(true);
+	}
+}
 ```
 
 #### 上传视频
 
+- 通过设置`accept='video'`属性，将上传改为视频上传。
+
 ```vue
 <up-upload
-    :fileList="fileList2"
-    @afterRead="afterRead"
-    @delete="deletePic"
-    name="2"
-    multiple
-    :maxCount="10"
-    accept="video"
+	:fileList="fileList2"
+	@afterRead="afterRead"
+	@delete="deletePic"
+	name="2"
+	multiple
+	:maxCount="10"
+	accept="video"
 ></up-upload>
+<!-- data 方法请参考 基本用法 -->
+data(){
+	return{
+		fileList2: [],
+	}
+}
 ```
 
 #### 文件预览
 
+- 通过设置`:previewFullImage="true"'`属性，达到文件预览的目的。
+
 ```vue
 <up-upload
-    :fileList="fileList3"
-    @afterRead="afterRead"
-    @delete="deletePic"
-    name="3"
-    multiple
-    :maxCount="10"
-    :previewFullImage="true"
+	:fileList="fileList3"
+	@afterRead="afterRead"
+	@delete="deletePic"
+	name="3"
+	multiple
+	:maxCount="10"
+	:previewFullImage="true"
 ></up-upload>
+<!-- data 方法请参考 基本用法 -->
+data(){
+	return{
+		fileList3: [{
+			type: 'image',	// 文件类型，image/video/file
+			url: 'https://cdn.uviewui.com/uview/swiper/1.jpg',
+		}],
+	}
+}
 ```
 
 #### 隐藏上传按钮
 
+- 上传数量等于`maxCount`所规定的数据时，隐藏上传按钮。
+
 ```vue
 <up-upload
-    :fileList="fileList4"
-    @afterRead="afterRead"
-    @delete="deletePic"
-    name="4"
-    multiple
-    :maxCount="2"
+	:fileList="fileList4"
+	@afterRead="afterRead"
+	@delete="deletePic"
+	name="4"
+	multiple
+	:maxCount="2"
 ></up-upload>
+<!-- data 方法请参考 基本用法 -->
+data(){
+	return{
+		fileList4: [{
+			    type: 'image',
+				url: 'https://cdn.uviewui.com/uview/swiper/1.jpg',
+			},
+			{
+				type: 'image',
+				url: 'https://cdn.uviewui.com/uview/swiper/1.jpg',
+			}
+		],
+	}
+}
 ```
 
 #### 限制上传数量
 
+- 同上，规定`maxCount`的数据时。
+
 ```vue
 <up-upload
-    :fileList="fileList5"
-    @afterRead="afterRead"
-    @delete="deletePic"
-    name="5"
-    multiple
-    :maxCount="3"
+	:fileList="fileList5"
+	@afterRead="afterRead"
+	@delete="deletePic"
+	name="5"
+	multiple
+	:maxCount="3"
 ></up-upload>
+<!-- data 方法请参考 基本用法 -->
+data(){
+	return{
+		fileList5: [],
+	}
+}
 ```
 
 #### 自定义上传样式
 
+- 添加`image`以自定义上传样式，达到身份证，银行卡等不同场景需求。
+
 ```vue
 <up-upload
-    :fileList="fileList6"
-    @afterRead="afterRead"
-    @delete="deletePic"
-    name="6"
-    multiple
-    :maxCount="1"
-    width="250"
-    height="150"
+	:fileList="fileList6"
+	@afterRead="afterRead"
+	@delete="deletePic"
+	name="6"
+	multiple
+	:maxCount="1"
+	width="250"
+	height="150"
 >
-    <image src="https://cdn.uviewui.com/uview/demo/upload/positive.png" mode="widthFix" style="width: 250px;height: 150px;"></image>
+	<image src="https://cdn.uviewui.com/uview/demo/upload/positive.png" 
+	mode="widthFix" style="width: 250px;height: 150px;"></image>
 </up-upload>
+<!-- data 方法请参考 基本用法 -->
+data(){
+	return{
+		fileList6: [],
+	}
+}
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsB/upload/upload.uvue`</small>
+#### 示例
+
+```vue
+<up-upload
+	width="56px"
+	height="56px"
+	v-model:fileList="fileList"
+	autoDelete
+	autoUpload
+	autoUploadApi="https://test.com/api/v1/local/upload"
+	autoUploadDriver="local"
+	:autoUploadHeader="{
+		'Authorization': '123456'
+	}"
+	getVideoThumb
+	name="1"
+	multiple
+	:maxCount="8"
+	:previewFullImage="true"
+	accept="video"
+>
+	<template #trigger>
+		<view class="w-56px h-56px border border-solid border-#E3E3E3 flex justify-center items-center">
+			<up-icon name="plus" color="#E3E3E3" size="33px"></up-icon>
+		</view>
+	</template>
+</up-upload>
+<!-- data 方法请参考 基本用法 -->
+data(){
+	return{
+		fileList: [],
+	}
+}
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/upload.md`</small>
 
 </template>
 
@@ -336,91 +514,196 @@ width / height 控制方块大小，uploadText 显示提示语
 
 #### 基础用法
 
+- 可以通过设置`fileList`参数(数组，元素为对象)，显示预置的图片。其中元素的`url`属性为图片路径
+
 ```vue
-<up-upload
-    :fileList="fileList1"
-    useBeforeRead
-    @beforeRead="beforeRead"
-    @afterRead="afterRead"
-    @delete="deletePic"
-    name="1"
-    multiple
-    :maxCount="10"
-></up-upload>
+<template>
+	<up-upload
+		:fileList="fileList1"
+		@afterRead="afterRead"
+		@delete="deletePic"
+		name="1"
+		multiple
+		:maxCount="10"
+	></up-upload>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const fileList1 = ref([]);
+
+// 删除图片
+const deletePic = (event) => {
+  fileList1.value.splice(event.index, 1);
+};
+
+// 新增图片
+const afterRead = async (event) => {
+  // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
+  let lists = [].concat(event.file);
+  let fileListLen = fileList1.value.length;
+  lists.map((item) => {
+    fileList1.value.push({
+      ...item,
+      status: 'uploading',
+      message: '上传中',
+    });
+  });
+  for (let i = 0; i < lists.length; i++) {
+    const result = await uploadFilePromise(lists[i].url);
+    let item = fileList1.value[fileListLen];
+    fileList1.value.splice(fileListLen, 1, {
+      ...item,
+      status: 'success',
+      message: '',
+      url: result,
+    });
+    fileListLen++;
+  }
+};
+
+const uploadFilePromise = (url) => {
+  return new Promise((resolve, reject) => {
+    let a = uni.uploadFile({
+      url: 'http://192.168.2.21:7001/upload', // 仅为示例，非真实的接口地址
+      filePath: url,
+      name: 'file',
+      formData: {
+        user: 'test',
+      },
+      success: (res) => {
+        setTimeout(() => {
+          resolve(res.data.data);
+        }, 1000);
+      },
+    });
+  });
+};
+</script>
 ```
 
 #### 上传视频
 
+- 通过设置`accept='video'`属性，将上传改为视频上传。
+
 ```vue
 <up-upload
-    :fileList="fileList2"
-    @afterRead="afterRead"
-    @delete="deletePic"
-    name="2"
-    multiple
-    :maxCount="10"
-    accept="video"
+	:fileList="fileList2"
+	@afterRead="afterRead"
+	@delete="deletePic"
+	name="2"
+	multiple
+	:maxCount="10"
+	accept="video"
 ></up-upload>
+<!-- data 方法请参考 基本用法 -->
+data(){
+	return{
+		fileList2: [],
+	}
+}
 ```
 
 #### 文件预览
 
+- 通过设置`:previewFullImage="true"'`属性，达到文件预览的目的。
+
 ```vue
 <up-upload
-    :fileList="fileList3"
-    @afterRead="afterRead"
-    @delete="deletePic"
-    name="3"
-    multiple
-    :maxCount="10"
-    :previewFullImage="true"
+	:fileList="fileList3"
+	@afterRead="afterRead"
+	@delete="deletePic"
+	name="3"
+	multiple
+	:maxCount="10"
+	:previewFullImage="true"
 ></up-upload>
+<!-- data 方法请参考 基本用法 -->
+data(){
+	return{
+		fileList3: [{
+			url: 'https://cdn.uviewui.com/uview/swiper/1.jpg',
+		}],
+	}
+}
 ```
 
 #### 隐藏上传按钮
 
+- 上传数量等于`maxCount`所规定的数据时，隐藏上传按钮。
+
 ```vue
 <up-upload
-    :fileList="fileList4"
-    @afterRead="afterRead"
-    @delete="deletePic"
-    name="4"
-    multiple
-    :maxCount="2"
+	:fileList="fileList4"
+	@afterRead="afterRead"
+	@delete="deletePic"
+	name="4"
+	multiple
+	:maxCount="2"
 ></up-upload>
+<!-- data 方法请参考 基本用法 -->
+data(){
+	return{
+		fileList4: [{
+				url: 'https://cdn.uviewui.com/uview/swiper/1.jpg',
+			},
+			{
+				url: 'https://cdn.uviewui.com/uview/swiper/1.jpg',
+			}
+		],
+	}
+}
 ```
 
 #### 限制上传数量
 
+- 同上，规定`maxCount`的数据时。
+
 ```vue
 <up-upload
-    :fileList="fileList5"
-    @afterRead="afterRead"
-    @delete="deletePic"
-    name="5"
-    multiple
-    :maxCount="3"
+	:fileList="fileList5"
+	@afterRead="afterRead"
+	@delete="deletePic"
+	name="5"
+	multiple
+	:maxCount="3"
 ></up-upload>
+<!-- data 方法请参考 基本用法 -->
+data(){
+	return{
+		fileList5: [],
+	}
+}
 ```
 
 #### 自定义上传样式
 
+- 添加`image`以自定义上传样式，达到身份证，银行卡等不同场景需求。
+
 ```vue
 <up-upload
-    :fileList="fileList6"
-    @afterRead="afterRead"
-    @delete="deletePic"
-    name="6"
-    multiple
-    :maxCount="1"
-    width="250"
-    height="150"
+	:fileList="fileList6"
+	@afterRead="afterRead"
+	@delete="deletePic"
+	name="6"
+	multiple
+	:maxCount="1"
+	width="250"
+	height="150"
 >
-    <image src="https://cdn.uviewui.com/uview/demo/upload/positive.png" mode="widthFix" style="width: 250px;height: 150px;"></image>
+	<image src="https://cdn.uviewui.com/uview/demo/upload/positive.png" 
+	mode="widthFix" style="width: 250px;height: 150px;"></image>
 </up-upload>
+<!-- data 方法请参考 基本用法 -->
+data(){
+	return{
+		fileList6: [],
+	}
+}
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsB/upload/upload.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/upload.md`</small>
 
 </template>
 

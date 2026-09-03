@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -280,203 +280,219 @@ bgColor 背景 / color 文字颜色
 
 <template #uniapp>
 
+#### 基本使用
+
+- 通过`amount`设置优惠券金额
+- 通过`title`设置优惠券标题
+- 通过`limit`设置使用条件
+- 通过`time`设置有效期
+
 ```vue
-<up-coupon 
-    :amount="100" 
-    title="满减券" 
-    color="#333"
-    limit="满200可用" 
-    time="2023-12-31前使用">
-</up-coupon>
+<script setup>  
+import { ref } from 'vue';  
+  
+// 响应式数据  
+const amount = ref(100);
+const title = ref('满减券');
+const limit = ref('满200可用');
+const time = ref('2023-12-31前使用');
+
+</script>
 ```
+
+#### 尺寸
+
+通过[size]参数设置优惠券尺寸，可选值为[small]、`medium`(默认)、`large`。
 
 ```vue
 <up-coupon 
-    :amount="20" 
-    title="满减券" 
-    size="small"
-    action-text="去使用">
+	:amount="20" 
+	title="满减券" 
+	size="small"
+	action-text="去使用">
 </up-coupon>
 ```
+
+#### 自定义样式
+
+通过type参数设置优惠券主题类型，可选值为primary、success、error、`warning`、`info`。
 
 ```vue
 <up-coupon 
-    :amount="200" 
-    unit="￥" 
-    title="大额优惠券" 
-    desc="仅限VIP用户" 
-    limit="满500可用" 
-    time="有效期至2023-12-31"
-    size="large"
-    type="error">
+	:amount="200" 
+	unit="￥" 
+	title="大额优惠券" 
+	desc="仅限VIP用户" 
+	limit="满500可用" 
+	time="有效期至2023-12-31"
+	size="large"
+	type="error">
 </up-coupon>
 ```
+
+#### 形状
+
+通过[shape]参数设置优惠券形状，可选值为round、`square`、`envelope`、`card`。
 
 ```vue
 <up-coupon 
-    :amount="66" 
-    title="自定义样式" 
-    desc="通过插槽自定义内容"
-    shape="card">
-    <template #amount="{ amount }">
-        <text class="custom-amount">{{ amount }}</text>
-    </template>
-    <template #title="{ title }">
-        <text class="custom-title">{{ title }}</text>
-    </template>
-    <template #action="{ circle }">
-        <up-button type="success" size="mini" :hairline="false" :custom-style="{ borderRadius: getActionBorderRadius(circle) }">
-            立即使用
-        </up-button>
-    </template>
+	:amount="50" 
+	unit="元" 
+	title="新人红包" 
+	desc="限时专享" 
+	shape="envelope"
+	type="warning">
 </up-coupon>
 ```
+
+#### 禁用状态
+
+通过[disabled]参数设置优惠券是否禁用。
 
 ```vue
 <up-coupon 
-    :amount="30" 
-    title="限时优惠" 
-    desc="今日专享"
-    :circle="true"
-    action-text="抢购">
+	:amount="50" 
+	title="已过期" 
+	desc="活动已结束"
+	time="2023-01-01至2023-01-31"
+	:disabled="true">
 </up-coupon>
 ```
+
+#### 插槽使用
+
+通过插槽可以自定义优惠券的各个部分。
 
 ```vue
 <up-coupon 
-    :amount="50" 
-    title="已过期" 
-    desc="活动已结束"
-    time="2023-01-01至2023-01-31"
-    :disabled="true">
+	:amount="66" 
+	title="自定义样式" 
+	desc="通过插槽自定义内容"
+	shape="card">
+	<template #amount="{ amount }">
+		<text class="custom-amount">{{ amount }}</text>
+	</template>
+	<template #title="{ title }">
+		<text class="custom-title">{{ title }}</text>
+	</template>
+	<template #action="{ circle }">
+		<up-button type="success" size="mini" :hairline="false" :custom-style="{ borderRadius: circle ? '50rpx' : '6rpx' }">
+			立即使用
+		</up-button>
+	</template>
 </up-coupon>
 ```
 
-```vue
-<up-coupon 
-    :amount="50" 
-    unit="元" 
-    title="新人红包" 
-    desc="限时专享" 
-    shape="envelope"
-    type="warning">
-</up-coupon>
-```
-
-```vue
-<up-coupon 
-    :amount="88" 
-    unit="折" 
-    title="折扣券" 
-    desc="全场通用" 
-    shape="card"
-    type="success"
-    action-text="立即领取">
-</up-coupon>
-```
-
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/coupon/coupon.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/coupon.md`</small>
 
 </template>
 
 <template #uniappx>
 
+#### 基本使用
+
+- 通过`amount`设置优惠券金额
+- 通过`title`设置优惠券标题
+- 通过`limit`设置使用条件
+- 通过`time`设置有效期
+
 ```vue
-<up-coupon 
-    :amount="100" 
-    title="满减券" 
-    color="#333"
-    limit="满200可用" 
-    time="2023-12-31前使用">
-</up-coupon>
+<script setup>  
+import { ref } from 'vue';  
+  
+// 响应式数据  
+const amount = ref(100);
+const title = ref('满减券');
+const limit = ref('满200可用');
+const time = ref('2023-12-31前使用');
+
+</script>
 ```
+
+#### 尺寸
+
+通过[size]参数设置优惠券尺寸，可选值为[small]、`medium`(默认)、`large`。
 
 ```vue
 <up-coupon 
-    :amount="20" 
-    title="满减券" 
-    size="small"
-    action-text="去使用">
+	:amount="20" 
+	title="满减券" 
+	size="small"
+	action-text="去使用">
 </up-coupon>
 ```
+
+#### 自定义样式
+
+通过type参数设置优惠券主题类型，可选值为primary、success、error、`warning`、`info`。
 
 ```vue
 <up-coupon 
-    :amount="200" 
-    unit="￥" 
-    title="大额优惠券" 
-    desc="仅限VIP用户" 
-    limit="满500可用" 
-    time="有效期至2023-12-31"
-    size="large"
-    type="error">
+	:amount="200" 
+	unit="￥" 
+	title="大额优惠券" 
+	desc="仅限VIP用户" 
+	limit="满500可用" 
+	time="有效期至2023-12-31"
+	size="large"
+	type="error">
 </up-coupon>
 ```
+
+#### 形状
+
+通过[shape]参数设置优惠券形状，可选值为`round`（默认）、`square`、`envelope`、`card`。
 
 ```vue
 <up-coupon 
-    :amount="66" 
-    title="自定义样式" 
-    desc="通过插槽自定义内容"
-    shape="card">
-    <template #amount="{ amount }">
-        <text class="custom-amount">{{ amount }}</text>
-    </template>
-    <template #title="{ title }">
-        <text class="custom-title">{{ title }}</text>
-    </template>
-    <template #action="{ circle }">
-        <up-button type="success" size="mini" :hairline="false" :custom-style="{ borderRadius: getActionBorderRadius(circle) }">
-            立即使用
-        </up-button>
-    </template>
+	:amount="50" 
+	unit="元" 
+	title="新人红包" 
+	desc="限时专享" 
+	shape="envelope"
+	type="warning">
 </up-coupon>
 ```
+
+#### 禁用状态
+
+通过[disabled]参数设置优惠券是否禁用。
 
 ```vue
 <up-coupon 
-    :amount="30" 
-    title="限时优惠" 
-    desc="今日专享"
-    :circle="true"
-    action-text="抢购">
+	:amount="50" 
+	title="已过期" 
+	desc="活动已结束"
+	time="2023-01-01至2023-01-31"
+	:disabled="true">
 </up-coupon>
 ```
+
+#### 插槽使用
+
+通过插槽可以自定义优惠券的各个部分。
 
 ```vue
 <up-coupon 
-    :amount="50" 
-    title="已过期" 
-    desc="活动已结束"
-    time="2023-01-01至2023-01-31"
-    :disabled="true">
+	:amount="66" 
+	title="自定义样式" 
+	desc="通过插槽自定义内容"
+	shape="card">
+	<template #amount="{ amount }">
+		<text class="custom-amount">{{ amount }}</text>
+	</template>
+	<template #title="{ title }">
+		<text class="custom-title">{{ title }}</text>
+	</template>
+	<template #action="{ circle }">
+		<up-button type="success" size="mini" :hairline="false" :custom-style="{ borderRadius: circle ? '50rpx' : '6rpx' }">
+			立即使用
+		</up-button>
+	</template>
 </up-coupon>
 ```
 
-```vue
-<up-coupon 
-    :amount="50" 
-    unit="元" 
-    title="新人红包" 
-    desc="限时专享" 
-    shape="envelope"
-    type="warning">
-</up-coupon>
-```
-
-```vue
-<up-coupon 
-    :amount="88" 
-    unit="折" 
-    title="折扣券" 
-    desc="全场通用" 
-    shape="card"
-    type="success"
-    action-text="立即领取">
-</up-coupon>
-```
-
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/coupon/coupon.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/coupon.md`</small>
 
 </template>
 

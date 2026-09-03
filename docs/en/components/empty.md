@@ -12,7 +12,7 @@ An empty-state placeholder with several built-in illustrations.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -168,49 +168,32 @@ children 作为底部操作区
 
 <template #uniapp>
 
-#### 演示效果
+#### 基本使用
 
 ```vue
 <up-empty
-    :mode="mode"
-    :icon="imgList[mode]"
->
-    <up-button
-        size="small"
-        type="primary"
-        :style="{marginTop:10+'px'}"
-        v-if="mode=='car'"
-        text="查看更多商品"
-    >
-    </up-button>
+   mode="car"
+   icon="http://cdn.uviewui.com/uview/empty/car.png">
 </up-empty>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsA/empty/empty.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/empty.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 演示效果
+#### 基本使用
 
 ```vue
 <up-empty
-    :mode="mode"
-    :icon="imgList[mode]"
+        mode="car"
+        icon="http://cdn.uviewui.com/uview/empty/car.png"
 >
-    <up-button
-        size="small"
-        type="primary"
-        :style="{marginTop:10+'px'}"
-        v-if="mode=='car'"
-        text="查看更多商品"
-    >
-    </up-button>
 </up-empty>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsA/empty/empty.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/empty.md`</small>
 
 </template>
 

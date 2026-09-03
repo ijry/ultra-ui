@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -127,35 +127,69 @@ disabled 时内容随页面正常滚动，不吸顶
 
 <template #uniapp>
 
-#### 基础使用
+#### 基本使用
+
+由于`css sticky`的特殊性，建议您将此组件放置在页面外层元素中，否则可能会导致`sticky`失效，以下为[MDN对sticky的解释](https://developer.mozilla.org/zh-CN/docs/Web/CSS/position)：  
+- 元素根据正常文档流进行定位，然后相对它的最近滚动祖先（nearest scrolling ancestor）和 containing block (最近块级祖先 nearest block-level ancestor)，包括table-related元素，基于top, right, bottom, 和 left的值进行偏移。偏移值不会影响任何其他元素的位置。
 
 ```vue
-<up-sticky ref="stickyRef" :offsetTop="0">
-    <up-button
-        text="吸顶按钮"
-        type="success"
-    ></up-button>
+<template>
+	<view class="container">
+		<!-- 建议放在外层 -->
+		<up-sticky>......</up-sticky>
+		<view class="container__inner">
+			<!-- 不建议放在层层嵌套的view中，除非您清楚知道自己为什么需要这么做 -->
+			<up-sticky>......</up-sticky>
+		</view>
+	</view>
+</template>
+```
+
+#### 吸顶距离
+
+通过`offset-top`参数设置组件在吸顶时与顶部的距离
+
+```vue
+<up-sticky offset-top="200">
+	<text>塞下秋来风景异，衡阳雁去无留意</text>
 </up-sticky>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsA/sticky/sticky.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/sticky.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 基础使用
+#### 基本使用
+
+由于`css sticky`的特殊性，建议您将此组件放置在页面外层元素中，否则可能会导致`sticky`失效，以下为[MDN对sticky的解释](https://developer.mozilla.org/zh-CN/docs/Web/CSS/position)：  
+- 元素根据正常文档流进行定位，然后相对它的最近滚动祖先（nearest scrolling ancestor）和 containing block (最近块级祖先 nearest block-level ancestor)，包括table-related元素，基于top, right, bottom, 和 left的值进行偏移。偏移值不会影响任何其他元素的位置。
 
 ```vue
-<up-sticky ref="stickyRef" :offsetTop="0">
-    <up-button
-        text="吸顶按钮"
-        type="success"
-    ></up-button>
+<template>
+	<view class="container">
+		<!-- 建议放在外层 -->
+		<up-sticky>......</up-sticky>
+		<view class="container__inner">
+			<!-- 不建议放在层层嵌套的view中，除非您清楚知道自己为什么需要这么做 -->
+			<up-sticky>......</up-sticky>
+		</view>
+	</view>
+</template>
+```
+
+#### 吸顶距离
+
+通过`offset-top`参数设置组件在吸顶时与顶部的距离
+
+```vue
+<up-sticky offset-top="200">
+	<text>塞下秋来风景异，衡阳雁去无留意</text>
 </up-sticky>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsA/sticky/sticky.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/sticky.md`</small>
 
 </template>
 

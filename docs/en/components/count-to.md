@@ -12,7 +12,7 @@ Animates a number from a start value to a target value.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -191,127 +191,141 @@ value 绑定 + ref 控制 start / reset
 
 <template #uniapp>
 
-#### 基础功能
+#### 基本使用
 
 ```vue
-<up-count-to
-    :endVal="value"
-    @end="end"
-></up-count-to>
+<up-count-to :startVal="30" :endVal="500"></up-count-to>
 ```
 
-#### 倒计数
+#### 设置滚动相关参数
 
 ```vue
-<up-count-to :startVal="startVal1"></up-count-to>
+<up-count-to :start-val="30" :end-val="500" :duration="2000" :useEasing="false"></up-count-to>
 ```
 
-#### 显示小数位
+#### 是否显示小数位
 
 ```vue
-<up-count-to
-    :startVal="startVal2"
-    :endVal="endVal"
-    :decimals="decimals"
-></up-count-to>
+<up-count-to :startVal="30" :endVal="500.55" :decimals="2"></up-count-to>
 ```
 
 #### 千分位分隔符
 
 ```vue
-<up-count-to
-    :startVal="startVal3"
-    :endVal="endVal2"
-    separator=","
-    :decimals="decimals"
-></up-count-to>
+<up-count-to :endVal="1542" separator=","></up-count-to>
 ```
 
-#### 自定义控制
+#### 滚动执行的时机
 
 ```vue
-<up-count-to
-    ref="uCountToRef"
-    :endVal="endVal3"
-    :autoplay="autoplay"
-></up-count-to>
+<template>
+	<up-count-to ref="uCountToRef" :endVal="endVal" :autoplay="autoplay"></up-count-to>
+</template>
 ```
-
-#### 自定义
 
 ```vue
-<up-count-to
-    :endVal="value"
-    color="#909399"
-    :fontSize="fontSize"
-    :bold="true"
-></up-count-to>
+<script setup>  
+import { ref } from 'vue';  
+  
+// 创建响应式数据  
+const endVal = ref(5000.55);  
+const autoplay = ref(false);  
+  
+// 创建对子组件的引用  
+const uCountToRef = ref(null);  
+  
+// 定义方法  
+const start = () => {  
+  if (uCountToRef.value) {  
+    uCountToRef.value.start();  
+  }  
+};  
+  
+const paused = () => {  
+  if (uCountToRef.value) {  
+    uCountToRef.value.paused();  
+  }  
+};  
+  
+const reStart = () => {  
+  if (uCountToRef.value) {  
+    uCountToRef.value.reStart();  
+  }  
+};  
+</script>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsB/countTo/countTo.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/countTo.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 基础功能
+#### 基本使用
 
 ```vue
-<up-count-to
-    :endVal="value"
-    @end="end"
-></up-count-to>
+<up-count-to :startVal="30" :endVal="500"></up-count-to>
 ```
 
-#### 倒计数
+#### 设置滚动相关参数
 
 ```vue
-<up-count-to :startVal="startVal1"></up-count-to>
+<up-count-to :start-val="30" :end-val="500" :duration="2000" :useEasing="false"></up-count-to>
 ```
 
-#### 显示小数位
+#### 是否显示小数位
 
 ```vue
-<up-count-to
-    :startVal="startVal2"
-    :endVal="endVal"
-    :decimals="decimals"
-></up-count-to>
+<up-count-to :startVal="30" :endVal="500.55" :decimals="2"></up-count-to>
 ```
 
 #### 千分位分隔符
 
 ```vue
-<up-count-to
-    :startVal="startVal3"
-    :endVal="endVal2"
-    separator=","
-    :decimals="decimals"
-></up-count-to>
+<up-count-to :endVal="1542" separator=","></up-count-to>
 ```
 
-#### 自定义控制
+#### 滚动执行的时机
 
 ```vue
-<up-count-to
-    ref="uCountToRef"
-    :endVal="endVal3"
-    :autoplay="autoplay"
-></up-count-to>
+<template>
+	<up-count-to ref="uCountToRef" :endVal="endVal" :autoplay="autoplay"></up-count-to>
+</template>
 ```
-
-#### 自定义
 
 ```vue
-<up-count-to
-    :endVal="value"
-    color="#909399"
-    :fontSize="fontSize"
-    :bold="true"
-></up-count-to>
+<script setup>  
+import { ref } from 'vue';  
+  
+// 创建响应式数据  
+const endVal = ref(5000.55);  
+const autoplay = ref(false);  
+  
+// 创建对子组件的引用  
+const uCountToRef = ref(null);  
+  
+// 定义方法  
+const start = () => {  
+  if (uCountToRef.value) {  
+    uCountToRef.value.start();  
+  }  
+};  
+  
+const paused = () => {  
+  if (uCountToRef.value) {  
+    uCountToRef.value.paused();  
+  }  
+};  
+  
+const reStart = () => {  
+  if (uCountToRef.value) {  
+    uCountToRef.value.reStart();  
+  }  
+};  
+</script>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsB/countTo/countTo.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/countTo.md`</small>
 
 </template>
 

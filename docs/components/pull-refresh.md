@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -238,147 +238,522 @@ showLoadmore + onLoadmore 组合上拉加载更多
 
 <template #uniapp>
 
+#### 1. 自定义下拉动画
+
+通过插槽可以自定义下拉过程中的不同状态：下拉状态、释放状态和刷新中状态
+
 ```vue
-<up-pull-refresh
+<template>
+  <up-pull-refresh
     :refreshing="refreshing"
-    :threshold="50"
+    :threshold="60"
     @refresh="onRefresh"
   >
-    <!-- 列表内容 -->
-    <view class="list-content">
-          <view 
-            v-for="item in listData" 
-            :key="getItemId(item)"
-            class="list-item"
-          >
-            <text>{{ getItemName(item) }}</text>
-          </view>
-      </view>
-  </up-pull-refresh>
-```
-
-```vue
-<up-pull-refresh
-  :refreshing="refreshing3"
-  @refresh="onRefresh3"
->
-  <up-virtual-list
-    :list-data="listData3"
-    :item-height="32"
-    height="150px"
-    @scroll="onScroll3"
-  >
-    <template #default="{ item, index }">
-      <view class="list-item">
-        <text>Item {{ getAnyItemId(item) }}: {{ getAnyItemName(item) }}</text>
+    <!-- 自定义下拉状态 -->
+    <template #pull="{ distance, threshold }">
+      <view class="custom-refresh-content">
+        <view class="pull-animation">
+          <text>👇</text>
+        </view>
+        <text class="refresh-text">下拉刷新 ({{ Math.round(distance) }}px)</text>
       </view>
     </template>
-  </up-virtual-list>
-</up-pull-refresh>
+    
+    <!-- 自定义释放状态 -->
+    <template #release="{ distance, threshold }">
+      <view class="custom-refresh-content">
+        <view class="release-animation">
+          <text>👆</text>
+        </view>
+        <text class="refresh-text">释放刷新</text>
+      </view>
+    </template>
+    
+    <!-- 自定义刷新中状态 -->
+    <template #refreshing>
+      <view class="custom-refresh-content" style="background-color: gray;">
+        <view class="refreshing-animation">
+          <up-icon size="100px" name="https://s3.bmp.ovh/imgs/2025/07/25/772bb6ae58cbd2c1.gif"></up-icon>
+        </view>
+      </view>
+    </template>
+    
+    <!-- 列表内容 -->
+    <view class="list-content">
+      <view 
+        v-for="item in listData" 
+        :key="item.id"
+        class="list-item"
+      >
+        <text>{{ item.name }}</text>
+      </view>
+    </view>
+  </up-pull-refresh>
+</template>
 ```
 
 ```vue
-<up-pull-refresh
-        :refreshing="refreshing2"
-        :showLoadmore="true"
-        :loadmoreProps="loadmoreConfig"
-        @refresh="onRefresh2"
-        @loadmore="onLoadmore"
-      >
-          <!-- 使用外部 scroll-view 或其他可滚动组件 -->
-          <scroll-view
-            class="scroll-area"
-            style="height: 100px;"
-            :scroll-y="true"
-            @scrolltolower="onScrollToLower"
-          >
-            <view class="list-content">
-              <view 
-                v-for="item in listData2" 
-                :key="getItemId(item)"
-                class="list-item"
-              >
-                <text>{{ getItemName(item) }}</text>
-              </view>
-            </view>
-          </scroll-view>
-      </up-pull-refresh>
+<script setup>
+import { ref } from 'vue';
+
+const refreshing = ref(false);
+const listData = ref([]);
+
+const onRefresh = () => {
+  refreshing.value = true;
+  // 模拟网络请求
+  setTimeout(() => {
+    loadData();
+    refreshing.value = false;
+  }, 2000);
+};
+
+const loadData = () => {
+  // 模拟加载数据
+  listData.value = Array.from({ length: 20 }, (_, i) => ({
+    id: i,
+    name: `Item ${i}`
+  }));
+};
+</script>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/pullRefresh/pullRefresh.uvue`</small>
+#### 2. 结合虚拟列表
+
+与虚拟列表组件up-virtual-list结合使用，优化长列表性能
+
+```vue
+<template>
+  <up-pull-refresh
+    :refreshing="refreshing"
+    @refresh="onRefresh"
+  >
+    <up-virtual-list
+      :list-data="listData"
+      :item-height="32"
+      height="150px"
+      @scroll="onScroll"
+    >
+      <template #default="{ item, index }">
+        <view class="list-item">
+          <text>Item {{ item.id }}: {{ item.name }}</text>
+        </view>
+      </template>
+    </up-virtual-list>
+  </up-pull-refresh>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      refreshing: false,
+      listData: []
+    };
+  },
+  methods: {
+    onRefresh() {
+      this.refreshing = true
+      // 模拟网络请求
+      setTimeout(() => {
+        this.loadData()
+        this.refreshing = false
+      }, 2000)
+    },
+    
+    onScroll() {}
+  }
+};
+</script>
+```
+
+#### 3. 结合上拉加载
+
+通过 `showLoadmore` 和 `loadmoreProps` 属性开启上拉加载功能
+
+```vue
+<template>
+  <up-pull-refresh
+    :refreshing="refreshing"
+    :showLoadmore="true"
+    :loadmoreProps="loadmoreConfig"
+    @refresh="onRefresh"
+    @loadmore="onLoadmore"
+  >
+    <!-- 使用外部 scroll-view 或其他可滚动组件 -->
+    <scroll-view
+      class="scroll-area"
+      style="height: 100px;"
+      :scroll-y="true"
+      @scrolltolower="onScrollToLower"
+    >
+      <view class="list-content">
+        <view 
+          v-for="item in listData" 
+          :key="item.id"
+          class="list-item"
+        >
+          <text>{{ item.name }}</text>
+        </view>
+      </view>
+    </scroll-view>
+  </up-pull-refresh>
+</template>
+```
+
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const refreshing = ref(false);
+const listData = ref([]);
+
+const loadmoreConfig = ref({
+  status: 'loadmore', // loadmore, loading, nomore
+  loadmoreText: '上拉加载更多',
+  loadingText: '努力加载中...',
+  nomoreText: '我们是有底线的',
+  iconSize: 18
+});
+
+const onRefresh = () => {
+  refreshing.value = true;
+  // 模拟网络请求
+  setTimeout(() => {
+    loadData();
+    refreshing.value = false;
+  }, 2000);
+};
+
+const onLoadmore = () => {};
+
+const onScrollToLower = () => {
+  loadmoreConfig.value.status = 'loading';
+  setTimeout(() => {
+    listData.value.push({
+      id: listData.value.length,
+      name: 'Item ' + listData.value.length
+    });
+    loadmoreConfig.value.status = 'loadmore';
+  }, 2000);
+};
+
+const loadData = () => {
+  // 模拟加载数据
+  listData.value = Array.from({ length: 20 }, (_, i) => ({
+    id: i,
+    name: `Item ${i}`
+  }));
+};
+</script>
+```
+
+#### 自定义内容
+
+通过三个插槽可以完全自定义下拉刷新的各个状态：
+
+```vue
+<template>
+  <up-pull-refresh
+    :refreshing="refreshing"
+    @refresh="onRefresh"
+  >
+    <!-- 下拉状态 -->
+    <template #pull="{ distance, threshold }">
+      <view>下拉状态，当前下拉距离: {{ distance }}</view>
+    </template>
+    
+    <!-- 释放状态 -->
+    <template #release="{ distance, threshold }">
+      <view>释放状态，达到阈值: {{ threshold }}</view>
+    </template>
+    
+    <!-- 刷新中状态 -->
+    <template #refreshing>
+      <view>正在刷新中...</view>
+    </template>
+    
+    <!-- 内容区域 -->
+    <view>内容区域</view>
+  </up-pull-refresh>
+</template>
+```
+
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const refreshing = ref(false);
+
+const onRefresh = () => {
+  refreshing.value = true;
+  // 模拟网络请求
+  setTimeout(() => {
+    refreshing.value = false;
+  }, 2000);
+};
+</script>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/pullRefresh.md`</small>
 
 </template>
 
 <template #uniappx>
 
+#### 1. 自定义下拉动画
+
+通过插槽可以自定义下拉过程中的不同状态：下拉状态、释放状态和刷新中状态
+
 ```vue
-<up-pull-refresh
+<template>
+  <up-pull-refresh
     :refreshing="refreshing"
-    :threshold="50"
+    :threshold="60"
     @refresh="onRefresh"
   >
-    <!-- 列表内容 -->
-    <view class="list-content">
-          <view 
-            v-for="item in listData" 
-            :key="getItemId(item)"
-            class="list-item"
-          >
-            <text>{{ getItemName(item) }}</text>
-          </view>
-      </view>
-  </up-pull-refresh>
-```
-
-```vue
-<up-pull-refresh
-  :refreshing="refreshing3"
-  @refresh="onRefresh3"
->
-  <up-virtual-list
-    :list-data="listData3"
-    :item-height="32"
-    height="150px"
-    @scroll="onScroll3"
-  >
-    <template #default="{ item, index }">
-      <view class="list-item">
-        <text>Item {{ getAnyItemId(item) }}: {{ getAnyItemName(item) }}</text>
+    <!-- 自定义下拉状态 -->
+    <template #pull="{ distance, threshold }">
+      <view class="custom-refresh-content">
+        <view class="pull-animation">
+          <text>👇</text>
+        </view>
+        <text class="refresh-text">下拉刷新 ({{ Math.round(distance) }}px)</text>
       </view>
     </template>
-  </up-virtual-list>
-</up-pull-refresh>
+    
+    <!-- 自定义释放状态 -->
+    <template #release="{ distance, threshold }">
+      <view class="custom-refresh-content">
+        <view class="release-animation">
+          <text>👆</text>
+        </view>
+        <text class="refresh-text">释放刷新</text>
+      </view>
+    </template>
+    
+    <!-- 自定义刷新中状态 -->
+    <template #refreshing>
+      <view class="custom-refresh-content" style="background-color: gray;">
+        <view class="refreshing-animation">
+          <up-icon size="100px" name="https://s3.bmp.ovh/imgs/2025/07/25/772bb6ae58cbd2c1.gif"></up-icon>
+        </view>
+      </view>
+    </template>
+    
+    <!-- 列表内容 -->
+    <view class="list-content">
+      <view 
+        v-for="item in listData" 
+        :key="item.id"
+        class="list-item"
+      >
+        <text>{{ item.name }}</text>
+      </view>
+    </view>
+  </up-pull-refresh>
+</template>
 ```
 
 ```vue
-<up-pull-refresh
-        :refreshing="refreshing2"
-        :showLoadmore="true"
-        :loadmoreProps="loadmoreConfig"
-        @refresh="onRefresh2"
-        @loadmore="onLoadmore"
-      >
-          <!-- 使用外部 scroll-view 或其他可滚动组件 -->
-          <scroll-view
-            class="scroll-area"
-            style="height: 100px;"
-            :scroll-y="true"
-            @scrolltolower="onScrollToLower"
-          >
-            <view class="list-content">
-              <view 
-                v-for="item in listData2" 
-                :key="getItemId(item)"
-                class="list-item"
-              >
-                <text>{{ getItemName(item) }}</text>
-              </view>
-            </view>
-          </scroll-view>
-      </up-pull-refresh>
+<script setup>
+import { ref } from 'vue';
+
+const refreshing = ref(false);
+const listData = ref([]);
+
+const onRefresh = () => {
+  refreshing.value = true;
+  // 模拟网络请求
+  setTimeout(() => {
+    loadData();
+    refreshing.value = false;
+  }, 2000);
+};
+
+const loadData = () => {
+  // 模拟加载数据
+  listData.value = Array.from({ length: 20 }, (_, i) => ({
+    id: i,
+    name: `Item ${i}`
+  }));
+};
+</script>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/pullRefresh/pullRefresh.uvue`</small>
+#### 2. 结合虚拟列表
+
+与虚拟列表组件up-virtual-list结合使用，优化长列表性能
+
+```vue
+<template>
+  <up-pull-refresh
+    :refreshing="refreshing"
+    @refresh="onRefresh"
+  >
+    <up-virtual-list
+      :list-data="listData"
+      :item-height="32"
+      height="150px"
+      @scroll="onScroll"
+    >
+      <template #default="{ item, index }">
+        <view class="list-item">
+          <text>Item {{ item.id }}: {{ item.name }}</text>
+        </view>
+      </template>
+    </up-virtual-list>
+  </up-pull-refresh>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const refreshing = ref(false);
+const listData = ref([]);
+
+const onRefresh = () => {
+  refreshing.value = true;
+  // 模拟网络请求
+  setTimeout(() => {
+    loadData();
+    refreshing.value = false;
+  }, 2000);
+};
+
+const onScroll = () => {};
+</script>
+```
+
+#### 3. 结合上拉加载
+
+通过 `showLoadmore` 和 `loadmoreProps` 属性开启上拉加载功能
+
+```vue
+<template>
+  <up-pull-refresh
+    :refreshing="refreshing"
+    :showLoadmore="true"
+    :loadmoreProps="loadmoreConfig"
+    @refresh="onRefresh"
+    @loadmore="onLoadmore"
+  >
+    <!-- 使用外部 scroll-view 或其他可滚动组件 -->
+    <scroll-view
+      class="scroll-area"
+      style="height: 100px;"
+      :scroll-y="true"
+      @scrolltolower="onScrollToLower"
+    >
+      <view class="list-content">
+        <view 
+          v-for="item in listData" 
+          :key="item.id"
+          class="list-item"
+        >
+          <text>{{ item.name }}</text>
+        </view>
+      </view>
+    </scroll-view>
+  </up-pull-refresh>
+</template>
+```
+
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const refreshing = ref(false);
+const listData = ref([]);
+
+const loadmoreConfig = ref({
+  status: 'loadmore', // loadmore, loading, nomore
+  loadmoreText: '上拉加载更多',
+  loadingText: '努力加载中...',
+  nomoreText: '我们是有底线的',
+  iconSize: 18
+});
+
+const onRefresh = () => {
+  refreshing.value = true;
+  // 模拟网络请求
+  setTimeout(() => {
+    loadData();
+    refreshing.value = false;
+  }, 2000);
+};
+
+const onLoadmore = () => {};
+
+const onScrollToLower = () => {
+  loadmoreConfig.value.status = 'loading';
+  setTimeout(() => {
+    listData.value.push({
+      id: listData.value.length,
+      name: 'Item ' + listData.value.length
+    });
+    loadmoreConfig.value.status = 'loadmore';
+  }, 2000);
+};
+
+const loadData = () => {
+  // 模拟加载数据
+  listData.value = Array.from({ length: 20 }, (_, i) => ({
+    id: i,
+    name: `Item ${i}`
+  }));
+};
+</script>
+```
+
+#### 自定义内容
+
+通过三个插槽可以完全自定义下拉刷新的各个状态：
+
+```vue
+<template>
+  <up-pull-refresh
+    :refreshing="refreshing"
+    @refresh="onRefresh"
+  >
+    <!-- 下拉状态 -->
+    <template #pull="{ distance, threshold }">
+      <view>下拉状态，当前下拉距离: {{ distance }}</view>
+    </template>
+    
+    <!-- 释放状态 -->
+    <template #release="{ distance, threshold }">
+      <view>释放状态，达到阈值: {{ threshold }}</view>
+    </template>
+    
+    <!-- 刷新中状态 -->
+    <template #refreshing>
+      <view>正在刷新中...</view>
+    </template>
+    
+    <!-- 内容区域 -->
+    <view>内容区域</view>
+  </up-pull-refresh>
+</template>
+```
+
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const refreshing = ref(false);
+
+const onRefresh = () => {
+  refreshing.value = true;
+  // 模拟网络请求
+  setTimeout(() => {
+    refreshing.value = false;
+  }, 2000);
+};
+</script>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/pullRefresh.md`</small>
 
 </template>
 

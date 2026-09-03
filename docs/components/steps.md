@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -286,349 +286,264 @@ content 插槽
 
 <template #uniapp>
 
-#### 基础演示
+#### 基本使用
+
+:::warning 说明
+由于安卓`nvue`下，`overflow`属性不支持`visible`值，故此组件暂不支持安卓`nvue`环境。
+:::
+
+- 通过`current`参数标识目前处于第几步，从0开始
 
 ```vue
-<up-steps :current="current1">
-    <up-steps-item
-        title="已下单"
-        desc="10:30"
-    >
-    </up-steps-item>
-    <up-steps-item
-        title="已出库"
-        desc="10:35"
-    >
-    </up-steps-item>
-    <up-steps-item
-        title="运输中"
-        desc="11:40"
-    >
-    </up-steps-item>
-</up-steps>
-```
-
-#### 显示点类型
-
-```vue
-<up-steps
-    :current="1"
-    dot
->
-    <up-steps-item
-        title="已下单"
-        desc="10:30"
-    >
-    </up-steps-item>
-    <up-steps-item
-        title="已出库"
-        desc="10:35"
-    >
-    </up-steps-item>
-    <up-steps-item
-        title="运输中"
-        desc="11:40"
-    >
-    </up-steps-item>
-</up-steps>
+<template>
+	<up-steps current="0">
+		<up-steps-item title="已下单" desc="10:30">
+		</up-steps-item>
+		<up-steps-item title="已出库" desc="10:35" ></up-steps-item>
+		<up-steps-item title="运输中" desc="11:40"></up-steps-item>
+	</up-steps>
+</template>
 ```
 
 #### 错误状态
 
+如果设置```up-steps-item```的```error```参数为```true```的话，当前步骤将会为“失败”的状态
+
 ```vue
-<up-steps :current="1">
-    <up-steps-item
-        title="已下单"
-        desc="10:30"
-    >
-    </up-steps-item>
-    <up-steps-item
-        error
-        title="仓库着火"
-        desc="10:35"
-    >
-    </up-steps-item>
-    <up-steps-item
-        title="破产清算"
-        desc="11:40"
-    >
-    </up-steps-item>
+<up-steps current="1">
+	<up-steps-item title="已下单" desc="10:30"></up-steps-item>
+	<up-steps-item error title="仓库着火" desc="10:35"></up-steps-item>
+	<up-steps-item title="破产清算" desc="11:40"></up-steps-item>
 </up-steps>
+```
+
+#### 步骤条模式
+
+```up-steps```的```dot```参数设置为```true```的话，将会以点状的形式展示步骤条样式。
+
+```html
+<up-steps current="1" dot>
+	<up-steps-item title="已下单" desc="10:30"></up-steps-item>
+	<up-steps-item title="已出库" desc="10:35"></up-steps-item>
+	<up-steps-item title="运输中" desc="11:40"></up-steps-item>
+</up-steps>
+```
+
+#### 竖向模式
+
+```vue
+
+```html
+<template>
+	<up-steps current="1" direction="column">
+		<up-steps-item title="已下单" desc="10:30">
+		</up-steps-item>
+		<up-steps-item title="已出库" desc="10:35">
+		</up-steps-item>
+		<up-steps-item title="运输中" desc="11:40"></up-steps-item>
+	</up-steps>
+</template>
 ```
 
 #### 自定义图标
 
+- 通过```activeIcon```可以设置激活状态的图标
+- 通过```inactiveIcon```可以设置非激活状态的图标
+
 ```vue
 <up-steps
-    :current="1"
-    activeIcon="checkmark"
-    inactiveIcon="arrow-right"
->
-    <up-steps-item
-        title="已下单"
-        desc="10:30"
-    >
-    </up-steps-item>
-    <up-steps-item
-        title="已出库"
-        desc="10:35"
-    >
-    </up-steps-item>
-    <up-steps-item
-        title="运输中"
-        desc="11:40"
-    >
-    </up-steps-item>
+	current="1" activeIcon="checkmark" inactiveIcon="arrow-right">
+	<up-steps-item title="已下单" desc="10:30"></up-steps-item>
+	<up-steps-item title="已出库" desc="10:35"></up-steps-item>
+	<up-steps-item title="运输中" desc="11:40"></up-steps-item>
 </up-steps>
 ```
 
-#### 自定义插槽
+#### 通过插槽自定义标题
+
+通过title插槽，可以自定义某个步骤标题。<Badge text="3.4.2" />
 
 ```vue
 <up-steps :current="1">
-    <up-steps-item
-        title="已下单"
-        desc="10:30"
-    >
-    </up-steps-item>
-    <up-steps-item
-        title="已出库"
-        desc="10:35"
-    >
-    </up-steps-item>
-    <up-steps-item
-        title="运输中"
-        desc="11:40"
-    >
-        <template v-slot:icon>
-            <text class="slot-icon">运</text>
-        </template>
-    </up-steps-item>
+	<up-steps-item title="已下单" desc="10:30"></up-steps-item>
+	<up-steps-item title="已出库" desc="10:35"></up-steps-item>
+	<up-steps-item title="运输中" desc="11:40">
+		<template #title>
+			<text class="slot-title">标题</text>
+		</template>
+	</up-steps-item>
 </up-steps>
+
+### 通过插槽自定义描述
+
+通过desc插槽，可以自定义某个步骤描述。
+
+```html
+<up-steps :current="1">
+	<up-steps-item title="已下单" desc="10:30"></up-steps-item>
+	<up-steps-item title="已出库" desc="10:35"></up-steps-item>
+	<up-steps-item title="运输中" desc="11:40">
+		<template #desc>
+			<text class="slot-desc">描述</text>
+		</template>
+	</up-steps-item>
+</up-steps>
+
+### 通过插槽自定义内容
+
+通过content插槽，可以自定义某个步骤标题和描述整体内容区域。
+
+```html
+<up-steps :current="1">
+	<up-steps-item title="已下单" desc="10:30"></up-steps-item>
+	<up-steps-item title="已出库" desc="10:35"></up-steps-item>
+	<up-steps-item title="运输中" desc="11:40">
+		<template #content>
+			<text class="slot-title">标题</text>
+			<text class="slot-desc">描述</text>
+		</template>
+	</up-steps-item>
+</up-steps>
+
+
+### 通过插槽自定义样式
+
+通过默认插槽，可以自定义某个步骤当前状态的特殊标识
+
+```html
+<up-steps :current="1">
+	<up-steps-item title="已下单" desc="10:30"></up-steps-item>
+	<up-steps-item title="已出库" desc="10:35"></up-steps-item>
+	<up-steps-item title="运输中" desc="11:40">
+		<template #icon>
+			<text class="slot-icon">运</text>
+		</template>
+	</up-steps-item>
+</up-steps>
+
+<style lang="scss">
+	.slot-icon {
+		width: 21px;
+		height: 21px;
+		background-color: $u-warning;
+		border-radius: 100px;
+		font-size: 12px;
+		color: #fff;
+		line-height: 21px;
+		text-align: center;
+	}
+</style>
 ```
 
-#### 自定义颜色
-
-```vue
-<up-steps :current="1" activeColor="#3c9cff">
-    <up-steps-item
-        title="已下单"
-        desc="10:30"
-    >
-    </up-steps-item>
-    <up-steps-item
-        title="已出库"
-        desc="10:35"
-    >
-    </up-steps-item>
-    <up-steps-item
-        title="运输中"
-        desc="11:40"
-    >
-    </up-steps-item>
-</up-steps>
-```
-
-#### 竖向展示
-
-```vue
-<up-steps
-    :current="1"
-    direction="column"
->
-    <up-steps-item
-        title="已下单"
-        desc="10:30"
-    >
-    </up-steps-item>
-    <up-steps-item
-        title="已出库"
-        desc="10:35"
-    >
-    </up-steps-item>
-    <up-steps-item
-        title="运输中"
-        desc="11:40"
-    >
-    </up-steps-item>
-</up-steps>
-```
-
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsC/steps/steps.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/steps.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 基础演示
+#### 基本使用
+
+:::warning 说明
+由于安卓`nvue`下，`overflow`属性不支持`visible`值，故此组件暂不支持安卓`nvue`环境。
+:::
+
+- 通过`current`参数标识目前处于第几步，从0开始
 
 ```vue
-<up-steps :current="current1">
-    <up-steps-item
-        title="已下单"
-        desc="10:30"
-    >
-    </up-steps-item>
-    <up-steps-item
-        title="已出库"
-        desc="10:35"
-    >
-    </up-steps-item>
-    <up-steps-item
-        title="运输中"
-        desc="11:40"
-    >
-    </up-steps-item>
-</up-steps>
-```
-
-#### 显示点类型
-
-```vue
-<up-steps
-    :current="1"
-    dot
->
-    <up-steps-item
-        title="已下单"
-        desc="10:30"
-    >
-    </up-steps-item>
-    <up-steps-item
-        title="已出库"
-        desc="10:35"
-    >
-    </up-steps-item>
-    <up-steps-item
-        title="运输中"
-        desc="11:40"
-    >
-    </up-steps-item>
-</up-steps>
+<template>
+	<up-steps current="0">
+		<up-steps-item title="已下单" desc="10:30">
+		</up-steps-item>
+		<up-steps-item title="已出库" desc="10:35" ></up-steps-item>
+		<up-steps-item title="运输中" desc="11:40"></up-steps-item>
+	</up-steps>
+</template>
 ```
 
 #### 错误状态
 
+如果设置```up-steps-item```的```error```参数为```true```的话，当前步骤将会为“失败”的状态
+
 ```vue
-<up-steps :current="1">
-    <up-steps-item
-        title="已下单"
-        desc="10:30"
-    >
-    </up-steps-item>
-    <up-steps-item
-        error
-        title="仓库着火"
-        desc="10:35"
-    >
-    </up-steps-item>
-    <up-steps-item
-        title="破产清算"
-        desc="11:40"
-    >
-    </up-steps-item>
+<up-steps current="1">
+	<up-steps-item title="已下单" desc="10:30"></up-steps-item>
+	<up-steps-item error title="仓库着火" desc="10:35"></up-steps-item>
+	<up-steps-item title="破产清算" desc="11:40"></up-steps-item>
 </up-steps>
+```
+
+#### 步骤条模式
+
+```up-steps```的```dot```参数设置为```true```的话，将会以点状的形式展示步骤条样式。
+
+```html
+<up-steps current="1" dot>
+	<up-steps-item title="已下单" desc="10:30"></up-steps-item>
+	<up-steps-item title="已出库" desc="10:35"></up-steps-item>
+	<up-steps-item title="运输中" desc="11:40"></up-steps-item>
+</up-steps>
+```
+
+#### 竖向模式
+
+```vue
+
+```html
+<template>
+	<up-steps current="1" direction="column">
+		<up-steps-item title="已下单" desc="10:30">
+		</up-steps-item>
+		<up-steps-item title="已出库" desc="10:35">
+		</up-steps-item>
+		<up-steps-item title="运输中" desc="11:40"></up-steps-item>
+	</up-steps>
+</template>
 ```
 
 #### 自定义图标
 
+- 通过```activeIcon```可以设置激活状态的图标
+- 通过```inactiveIcon```可以设置非激活状态的图标
+
 ```vue
 <up-steps
-    :current="1"
-    activeIcon="checkmark"
-    inactiveIcon="arrow-right"
->
-    <up-steps-item
-        title="已下单"
-        desc="10:30"
-    >
-    </up-steps-item>
-    <up-steps-item
-        title="已出库"
-        desc="10:35"
-    >
-    </up-steps-item>
-    <up-steps-item
-        title="运输中"
-        desc="11:40"
-    >
-    </up-steps-item>
+	current="1" activeIcon="checkmark" inactiveIcon="arrow-right">
+	<up-steps-item title="已下单" desc="10:30"></up-steps-item>
+	<up-steps-item title="已出库" desc="10:35"></up-steps-item>
+	<up-steps-item title="运输中" desc="11:40"></up-steps-item>
 </up-steps>
 ```
 
-#### 自定义插槽
+#### 通过插槽自定义样式
+
+通过默认插槽，可以自定义某个步骤当前状态的特殊标识
 
 ```vue
 <up-steps :current="1">
-    <up-steps-item
-        title="已下单"
-        desc="10:30"
-    >
-    </up-steps-item>
-    <up-steps-item
-        title="已出库"
-        desc="10:35"
-    >
-    </up-steps-item>
-    <up-steps-item
-        title="运输中"
-        desc="11:40"
-    >
-        <template v-slot:icon>
-            <text class="slot-icon">运</text>
-        </template>
-    </up-steps-item>
+	<up-steps-item title="已下单" desc="10:30"></up-steps-item>
+	<up-steps-item title="已出库" desc="10:35"></up-steps-item>
+	<up-steps-item title="运输中" desc="11:40">
+		<template #icon>
+			<text class="slot-icon">运</text>
+		</template>
+	</up-steps-item>
 </up-steps>
+
+<style lang="scss">
+	.slot-icon {
+		width: 21px;
+		height: 21px;
+		background-color: $up-warning;
+		border-radius: 100px;
+		font-size: 12px;
+		color: #fff;
+		line-height: 21px;
+		text-align: center;
+	}
+</style>
 ```
 
-#### 自定义颜色
-
-```vue
-<up-steps :current="1" activeColor="#3c9cff">
-    <up-steps-item
-        title="已下单"
-        desc="10:30"
-    >
-    </up-steps-item>
-    <up-steps-item
-        title="已出库"
-        desc="10:35"
-    >
-    </up-steps-item>
-    <up-steps-item
-        title="运输中"
-        desc="11:40"
-    >
-    </up-steps-item>
-</up-steps>
-```
-
-#### 竖向展示
-
-```vue
-<up-steps
-    :current="1"
-    direction="column"
->
-    <up-steps-item
-        title="已下单"
-        desc="10:30"
-    >
-    </up-steps-item>
-    <up-steps-item
-        title="已出库"
-        desc="10:35"
-    >
-    </up-steps-item>
-    <up-steps-item
-        title="运输中"
-        desc="11:40"
-    >
-    </up-steps-item>
-</up-steps>
-```
-
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsC/steps/steps.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/steps.md`</small>
 
 </template>
 

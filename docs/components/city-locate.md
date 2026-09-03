@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -70,35 +70,227 @@ import { UPCityLocate } from '@ultra-ui'
 
 <template #uniapp>
 
+#### 自定义数据结构
+
 ```vue
-<up-city-locate
-  :currentCity="currentCity"
-  locationType="wgs84"
-  :indexList="indexList"
-  :cityList="cityList"
-  @location-success="locationSuccess"
-  @select-city="selectCity">
-</up-city-locate>
+<template>
+  <up-city-locate 
+    :cityList="customData"
+    nameKey="cityName"
+  />
+</template>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/cityLocate/cityLocate.uvue`</small>
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const customData = ref([
+  [
+    { cityName: '北京', value: 'beijing' },
+    { cityName: '上海', value: 'shanghai' }
+  ]
+]);
+</script>
+```
+
+#### 外部控制当前城市
+
+```vue
+<template>
+  <up-city-locate 
+    :currentCity="userCity"
+  />
+</template>
+```
+
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const userCity = ref('北京');
+</script>
+```
+
+#### 设置定位类型
+
+```vue
+<template>
+  <up-city-locate 
+    locationType="gcj02"
+  />
+</template>
+```
+
+```vue
+<script setup>
+import { ref } from 'vue';
+// 组件将使用 gcj02 定位类型
+</script>
+```
+
+#### 监听定位结果
+
+```vue
+<template>
+  <up-city-locate 
+    @location-success="handleLocationResult"
+  />
+</template>
+```
+
+```vue
+<script setup>
+const handleLocationResult = (res) => {
+  console.log('定位结果:', res);
+};
+</script>
+```
+
+## API
+
+#### 如何获取用户选择的城市？
+
+通过监听 `select-city` 事件获取用户选择的城市：
+
+```vue
+<script setup>
+const handleSelectCity = (city) => {
+  console.log('用户选择的城市:', city.locationCity);
+}
+</script>
+```
+
+#### 如何自定义热门城市？
+
+通过 `cityList` 属性传入第一个数组就是热门城市列表：
+
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const cityList = ref([[
+  { name: '北京', value: 'beijing' },
+  { name: '上海', value: 'shanghai' },
+  { name: '广州', value: 'guangzhou' }
+]]);
+</script>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/cityLocate.md`</small>
 
 </template>
 
 <template #uniappx>
 
+#### 自定义数据结构
+
 ```vue
-<up-city-locate
-  :currentCity="currentCity"
-  locationType="wgs84"
-  :indexList="indexList"
-  :cityList="cityList"
-  @location-success="locationSuccess"
-  @select-city="selectCity">
-</up-city-locate>
+<template>
+  <up-city-locate 
+    :cityList="customData"
+    nameKey="cityName"
+  />
+</template>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/cityLocate/cityLocate.uvue`</small>
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const customData = ref([
+  [
+    { cityName: '北京', value: 'beijing' },
+    { cityName: '上海', value: 'shanghai' }
+  ]
+]);
+</script>
+```
+
+#### 外部控制当前城市
+
+```vue
+<template>
+  <up-city-locate 
+    :currentCity="userCity"
+  />
+</template>
+```
+
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const userCity = ref('北京');
+</script>
+```
+
+#### 设置定位类型
+
+```vue
+<template>
+  <up-city-locate 
+    locationType="gcj02"
+  />
+</template>
+```
+
+```vue
+<script setup>
+import { ref } from 'vue';
+// 组件将使用 gcj02 定位类型
+</script>
+```
+
+#### 监听定位结果
+
+```vue
+<template>
+  <up-city-locate 
+    @location-success="handleLocationResult"
+  />
+</template>
+```
+
+```vue
+<script setup>
+const handleLocationResult = (res) => {
+  console.log('定位结果:', res);
+};
+</script>
+```
+
+## API
+
+#### 如何获取用户选择的城市？
+
+通过监听 `select-city` 事件获取用户选择的城市：
+
+```vue
+<script setup>
+const handleSelectCity = (city) => {
+  console.log('用户选择的城市:', city.locationCity);
+}
+</script>
+```
+
+#### 如何自定义热门城市？
+
+通过 `cityList` 属性传入第一个数组就是热门城市列表：
+
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const cityList = ref([[
+  { name: '北京', value: 'beijing' },
+  { name: '上海', value: 'shanghai' },
+  { name: '广州', value: 'guangzhou' }
+]]);
+</script>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/cityLocate.md`</small>
 
 </template>
 

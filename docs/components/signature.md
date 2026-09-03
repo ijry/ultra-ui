@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -60,7 +60,7 @@ UPSignature(
 import { UPSignature } from 'ultra-ui-rn';
 
 <UPSignature
-  bgColor="#f5f5f5"
+  bgColor={bgColor}
   height={200}
   onConfirm={onConfirm1}
   onError={onError1}
@@ -72,7 +72,7 @@ import { UPSignature } from 'ultra-ui-rn';
 
 ```tsx
 <UPSignature
-  bgColor="#f5f5f5"
+  bgColor={bgColor}
   color="#ff0000"
   height={200}
   onConfirm={onConfirm2}
@@ -144,63 +144,481 @@ width / height 控制画布大小
 
 <template #uniapp>
 
+#### 基础用法
+
 ```vue
-<up-signature 
-    ref="signature1" 
-    :width="700" 
-    :height="200" 
-    bg-color="#f5f5f5"
-    :show-toolbar="false"
-    @confirm="onConfirm1"
-    @error="onError1"
-></up-signature>
+<template>
+  <view>
+    <up-signature 
+        ref="signature1" 
+        :width="700" 
+        :height="200" 
+        bg-color="#f5f5f5"
+        :show-toolbar="false"
+        @confirm="onConfirm1"
+        @error="onError1"
+    ></up-signature>
+  </view>
+</template>
 ```
 
 ```vue
-<up-signature 
-    ref="signature2" 
-    :width="700" 
-    :height="200" 
-    color="#ff0000"
-    thickness="6"
-    bg-color="#f5f5f5"
-    @confirm="onConfirm2"
-    @error="onError2"
-></up-signature>
+<script setup>
+import { ref } from 'vue';
+
+const signature1 = ref(null);
+
+const onConfirm1 = (tempFilePath) => {
+  console.log('签名图片路径:', tempFilePath);
+};
+
+const onError1 = (err) => {
+  console.error('签名导出错误:', err);
+  uni.showToast({
+    title: '签名导出失败',
+    icon: 'none'
+  });
+};
+</script>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/signature/signature.uvue`</small>
+#### 自定义样式
+
+```vue
+<template>
+  <view>
+    <up-signature 
+      ref="signature" 
+      :width="300" 
+      :height="200" 
+      color="#ff0000"
+      thickness="6"
+      bg-color="#f5f5f0"
+      @confirm="onConfirm"
+      @error="onError"
+    ></up-signature>
+  </view>
+</template>
+```
+
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const signature = ref(null);
+
+const onConfirm = (tempFilePath) => {
+  console.log('签名图片路径:', tempFilePath);
+};
+
+const onError = (err) => {
+  console.error('签名导出错误:', err);
+  uni.showToast({
+    title: '签名导出失败',
+    icon: 'none'
+  });
+};
+</script>
+```
+
+#### 隐藏工具栏
+
+```vue
+<template>
+  <view>
+    <up-signature 
+      ref="signature" 
+      :width="300" 
+      :height="200" 
+      bg-color="#ffffff"
+      :show-toolbar="false"
+      @confirm="onConfirm"
+      @error="onError"
+    ></up-signature>
+  </view>
+</template>
+```
+
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const signature = ref(null);
+
+const onConfirm = (tempFilePath) => {
+  console.log('签名图片路径:', tempFilePath);
+};
+
+const onError = (err) => {
+  console.error('签名导出错误:', err);
+  uni.showToast({
+    title: '签名导出失败',
+    icon: 'none'
+  });
+};
+</script>
+```
+
+#### 完整示例
+
+```vue
+<template>
+  <view class="u-page">
+    <view class="u-page__item">
+      <text class="u-page__item__title">基础签名示例</text>
+      <view class="u-page__item__content">
+        <up-signature 
+          ref="signature1" 
+          :width="300" 
+          :height="200" 
+          bg-color="#f5f5f5"
+          :show-toolbar="false"
+          @confirm="onConfirm1"
+          @error="onError1"
+        ></up-signature>
+        
+        <view class="preview" v-if="signatureImage1">
+          <text>签名预览:</text>
+          <image :src="signatureImage1" class="preview-image"></image>
+          <up-button type="primary" size="small" @click="clearSignature1">清除签名</up-button>
+        </view>
+      </view>
+    </view>
+    
+    <view class="u-page__item">
+      <text class="u-page__item__title">自定义颜色和工具栏示例</text>
+      <view class="u-page__item__content">
+        <up-signature 
+          ref="signature2" 
+          :width="300" 
+          :height="200" 
+          color="#ff0000"
+          thickness="6"
+          bg-color="#f5f5f5"
+          @confirm="onConfirm2"
+          @error="onError2"
+        ></up-signature>
+        
+        <view class="preview" v-if="signatureImage2">
+          <text>签名预览:</text>
+          <image :src="signatureImage2" class="preview-image"></image>
+          <up-button type="primary" size="small" @click="clearSignature2">清除签名</up-button>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+```
+
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const signature1 = ref(null);
+const signature2 = ref(null);
+const signatureImage1 = ref('');
+const signatureImage2 = ref('');
+
+const onConfirm1 = (tempFilePath) => {
+  signatureImage1.value = tempFilePath;
+  console.log('签名图片路径1:', tempFilePath);
+};
+
+const onError1 = (err) => {
+  console.error('签名导出错误1:', err);
+  uni.showToast({
+    title: '签名导出失败',
+    icon: 'none'
+  });
+};
+
+const clearSignature1 = () => {
+  signatureImage1.value = '';
+  signature1.value.clear();
+};
+
+const onConfirm2 = (tempFilePath) => {
+  signatureImage2.value = tempFilePath;
+  console.log('签名图片路径2:', tempFilePath);
+};
+
+const onError2 = (err) => {
+  console.error('签名导出错误2:', err);
+  uni.showToast({
+    title: '签名导出失败',
+    icon: 'none'
+  });
+};
+
+const clearSignature2 = () => {
+  signatureImage2.value = '';
+  signature2.value.clear();
+};
+</script>
+```
+
+.u-page__item {
+  margin-bottom: 35px;
+}
+.u-page__item__title {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.preview {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.preview-image {
+  width: 300px;
+  height: 200px;
+  margin: 10px auto;
+  border: 1px solid #e0e0e0;
+}
+&lt;/style>
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/signature.md`</small>
 
 </template>
 
 <template #uniappx>
 
+#### 基础用法
+
 ```vue
-<up-signature 
-    ref="signature1" 
-    :width="700" 
-    :height="200" 
-    bg-color="#f5f5f5"
-    :show-toolbar="false"
-    @confirm="onConfirm1"
-    @error="onError1"
-></up-signature>
+<template>
+  <view>
+    <up-signature 
+        ref="signature1" 
+        :width="700" 
+        :height="200" 
+        bg-color="#f5f5f5"
+        :show-toolbar="false"
+        @confirm="onConfirm1"
+        @error="onError1"
+    ></up-signature>
+  </view>
+</template>
 ```
 
 ```vue
-<up-signature 
-    ref="signature2" 
-    :width="700" 
-    :height="200" 
-    color="#ff0000"
-    thickness="6"
-    bg-color="#f5f5f5"
-    @confirm="onConfirm2"
-    @error="onError2"
-></up-signature>
+<script setup>
+import { ref } from 'vue';
+
+const signature1 = ref(null);
+
+const onConfirm1 = (tempFilePath) => {
+  console.log('签名图片路径:', tempFilePath);
+};
+
+const onError1 = (err) => {
+  console.error('签名导出错误:', err);
+  uni.showToast({
+    title: '签名导出失败',
+    icon: 'none'
+  });
+};
+</script>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/signature/signature.uvue`</small>
+#### 自定义样式
+
+```vue
+<template>
+  <view>
+    <up-signature 
+      ref="signature" 
+      :width="300" 
+      :height="200" 
+      color="#ff0000"
+      thickness="6"
+      bg-color="#f5f5f0"
+      @confirm="onConfirm"
+      @error="onError"
+    ></up-signature>
+  </view>
+</template>
+```
+
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const signature = ref(null);
+
+const onConfirm = (tempFilePath) => {
+  console.log('签名图片路径:', tempFilePath);
+};
+
+const onError = (err) => {
+  console.error('签名导出错误:', err);
+  uni.showToast({
+    title: '签名导出失败',
+    icon: 'none'
+  });
+};
+</script>
+```
+
+#### 隐藏工具栏
+
+```vue
+<template>
+  <view>
+    <up-signature 
+      ref="signature" 
+      :width="300" 
+      :height="200" 
+      bg-color="#ffffff"
+      :show-toolbar="false"
+      @confirm="onConfirm"
+      @error="onError"
+    ></up-signature>
+  </view>
+</template>
+```
+
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const signature = ref(null);
+
+const onConfirm = (tempFilePath) => {
+  console.log('签名图片路径:', tempFilePath);
+};
+
+const onError = (err) => {
+  console.error('签名导出错误:', err);
+  uni.showToast({
+    title: '签名导出失败',
+    icon: 'none'
+  });
+};
+</script>
+```
+
+#### 完整示例
+
+```vue
+<template>
+  <view class="u-page">
+    <view class="u-page__item">
+      <text class="u-page__item__title">基础签名示例</text>
+      <view class="u-page__item__content">
+        <up-signature 
+          ref="signature1" 
+          :width="300" 
+          :height="200" 
+          bg-color="#f5f5f5"
+          :show-toolbar="false"
+          @confirm="onConfirm1"
+          @error="onError1"
+        ></up-signature>
+        
+        <view class="preview" v-if="signatureImage1">
+          <text>签名预览:</text>
+          <image :src="signatureImage1" class="preview-image"></image>
+          <up-button type="primary" size="small" @click="clearSignature1">清除签名</up-button>
+        </view>
+      </view>
+    </view>
+    
+    <view class="u-page__item">
+      <text class="u-page__item__title">自定义颜色和工具栏示例</text>
+      <view class="u-page__item__content">
+        <up-signature 
+          ref="signature2" 
+          :width="300" 
+          :height="200" 
+          color="#ff0000"
+          thickness="6"
+          bg-color="#f5f5f5"
+          @confirm="onConfirm2"
+          @error="onError2"
+        ></up-signature>
+        
+        <view class="preview" v-if="signatureImage2">
+          <text>签名预览:</text>
+          <image :src="signatureImage2" class="preview-image"></image>
+          <up-button type="primary" size="small" @click="clearSignature2">清除签名</up-button>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+```
+
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const signature1 = ref(null);
+const signature2 = ref(null);
+const signatureImage1 = ref('');
+const signatureImage2 = ref('');
+
+const onConfirm1 = (tempFilePath) => {
+  signatureImage1.value = tempFilePath;
+  console.log('签名图片路径1:', tempFilePath);
+};
+
+const onError1 = (err) => {
+  console.error('签名导出错误1:', err);
+  uni.showToast({
+    title: '签名导出失败',
+    icon: 'none'
+  });
+};
+
+const clearSignature1 = () => {
+  signatureImage1.value = '';
+  signature1.value.clear();
+};
+
+const onConfirm2 = (tempFilePath) => {
+  signatureImage2.value = tempFilePath;
+  console.log('签名图片路径2:', tempFilePath);
+};
+
+const onError2 = (err) => {
+  console.error('签名导出错误2:', err);
+  uni.showToast({
+    title: '签名导出失败',
+    icon: 'none'
+  });
+};
+
+const clearSignature2 = () => {
+  signatureImage2.value = '';
+  signature2.value.clear();
+};
+</script>
+```
+
+.u-page__item {
+  margin-bottom: 35px;
+}
+.u-page__item__title {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.preview {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.preview-image {
+  width: 300px;
+  height: 200px;
+  margin: 10px auto;
+  border: 1px solid #e0e0e0;
+}
+&lt;/style>
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/signature.md`</small>
 
 </template>
 

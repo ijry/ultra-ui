@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -85,83 +85,123 @@ import { UPFloatButton } from '@ultra-ui'
 
 <template #uniapp>
 
+#### 基本使用
+
+只显示一个不带展开的悬浮按钮
+
 ```vue
-<up-float-button :isMenu="false" top="90px">
-</up-float-button>
+<style lang='scss' scoped>
+<template>
+	<view>
+        <up-float-button :isMenu="false" top="90px">
+        </up-float-button>
+	</view>
+</template>
 ```
 
 ```vue
-<up-float-button :isMenu="true" top="220px" @item-click="itemClick"
- :list="[
-   {key: 'plus', name: 'plus', color: '#fff', backgroundColor: 'red'},
-   {key: 'order', name: 'order', color: '#fff', backgroundColor: 'green'}
- ]">
-</up-float-button>
+<script setup>  
+import { ref, onMounted } from 'vue';  
+  
+// 响应式数据  
+const list = ref([
+]);
+</script>
+```
+
+#### 带子菜单模式
+
+支持点击后展开子菜单
+
+```vue
+<style lang='scss' scoped>
+<template>
+	<view>
+        <up-float-button :isMenu="true" top="220px"
+          :list="list"  @item-click="itemClick">
+        </up-float-button>
+	</view>
+</template>
 ```
 
 ```vue
-<up-float-button top="''" bottom="250px" :isMenu="true">
-   <template #list>
-      <view style="display: flex ;justify-content: center;align-items: center;margin: 5px 0px;background-color: blueviolet;border-radius: 50%; width: 50px;height:50px;">
-           <up-icon
-               name="arrow-left"
-               color='#fff'
-               size="19"
-           ></up-icon>
-       </view>
-       <view style="display: flex ;justify-content: center;align-items: center;margin: 5px 0px;background-color: chocolate;border-radius: 50%; width: 50px;height:50px;">
-           <up-icon
-               name="arrow-left"
-               color='#fff'
-               size="19"
-           ></up-icon>
-       </view>
-   </template>
-</up-float-button>
+<script setup>  
+import { ref, onMounted } from 'vue';  
+  
+// 响应式数据  
+const list = ref([
+    {key: 'plus', name: 'plus', color: '#fff', backgroundColor: 'red'},
+    {key: 'order', name: 'order', color: '#fff', backgroundColor: 'green'}
+]);
+
+const itemClick = (e) => {
+    console.log(e)
+}
+</script>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/floatButton/floatButton.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/floatButton.md`</small>
 
 </template>
 
 <template #uniappx>
 
+#### 基本使用
+
+只显示一个不带展开的悬浮按钮
+
 ```vue
-<up-float-button :isMenu="false" top="90px">
-</up-float-button>
+<style lang='scss' scoped>
+<template>
+	<view>
+        <up-float-button :isMenu="false" top="90px">
+        </up-float-button>
+	</view>
+</template>
 ```
 
 ```vue
-<up-float-button :isMenu="true" top="220px" @item-click="itemClick"
- :list="[
-   {key: 'plus', name: 'plus', color: '#fff', backgroundColor: 'red'},
-   {key: 'order', name: 'order', color: '#fff', backgroundColor: 'green'}
- ]">
-</up-float-button>
+<script setup>  
+import { ref, onMounted } from 'vue';  
+  
+// 响应式数据  
+const list = ref([
+]);
+</script>
+```
+
+#### 带子菜单模式
+
+支持点击后展开子菜单
+
+```vue
+<style lang='scss' scoped>
+<template>
+	<view>
+        <up-float-button :isMenu="true" top="220px"
+          :list="list"  @item-click="itemClick">
+        </up-float-button>
+	</view>
+</template>
 ```
 
 ```vue
-<up-float-button top="''" bottom="250px" :isMenu="true">
-   <template #list>
-      <view style="display: flex ;justify-content: center;align-items: center;margin: 5px 0px;background-color: blueviolet;border-radius: 50%; width: 50px;height:50px;">
-           <up-icon
-               name="arrow-left"
-               color='#fff'
-               size="19"
-           ></up-icon>
-       </view>
-       <view style="display: flex ;justify-content: center;align-items: center;margin: 5px 0px;background-color: chocolate;border-radius: 50%; width: 50px;height:50px;">
-           <up-icon
-               name="arrow-left"
-               color='#fff'
-               size="19"
-           ></up-icon>
-       </view>
-   </template>
-</up-float-button>
+<script setup>  
+import { ref, onMounted } from 'vue';  
+  
+// 响应式数据  
+const list = ref([
+    {key: 'plus', name: 'plus', color: '#fff', backgroundColor: 'red'},
+    {key: 'order', name: 'order', color: '#fff', backgroundColor: 'green'}
+]);
+
+const itemClick = (e) => {
+    console.log(e)
+}
+</script>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/floatButton/floatButton.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/floatButton.md`</small>
 
 </template>
 

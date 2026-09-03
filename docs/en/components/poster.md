@@ -12,7 +12,7 @@ Composites text and images into a shareable poster.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -71,31 +71,553 @@ linear-gradient 背景、圆角卡片、圆角图片裁剪
 
 <template #uniapp>
 
+#### 基础用法
+
 ```vue
-<up-poster
-    ref="poster"
-    :json="posterConfig"
-    @export="onPosterExport"
-    @error="onPosterError"
-></up-poster>
+<template>
+  <view class="u-page">
+    <view class="u-page__item">
+      <up-button type="primary" shape="circle" @click="generatePoster">生成海报</up-button>
+      
+      <!-- 海报预览区域 -->
+      <view class="poster-preview" v-if="posterImageUrl">
+        <image :src="posterImageUrl" class="poster-image" mode="widthFix"></image>
+      </view>
+
+      <!-- 海报组件 -->
+      <up-poster 
+        ref="poster" 
+        :json="posterConfig"
+      ></up-poster>
+    </view>
+  </view>
+</template>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/poster/poster.uvue`</small>
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const poster = ref(null);
+const posterImageUrl = ref('');
+
+const posterConfig = ref({
+  css: {
+    width: '750rpx',
+    height: '1000rpx',
+    background: '#fff'
+  },
+  views: [
+    {
+      type: 'text',
+      text: '夏日清凉特惠',
+      css: {
+        position: 'absolute',
+        color: '#fff',
+        left: '50rpx',
+        top: '100rpx',
+        fontSize: '40rpx',
+        fontWeight: 'bold'
+      }
+    },
+    {
+      type: 'image',
+      src: 'https://example.com/product.png',
+      css: {
+        position: 'absolute',
+        left: '150rpx',
+        top: '250rpx',
+        width: '450rpx',
+        height: '450rpx'
+      }
+    },
+    {
+      type: 'text',
+      text: '立即抢购',
+      css: {
+        position: 'absolute',
+        color: '#ff6600',
+        left: '300rpx',
+        top: '750rpx',
+        fontSize: '36rpx',
+        fontWeight: 'bold'
+      }
+    }
+  ]
+});
+
+const generatePoster = async () => {
+  try {
+    uni.showLoading({ title: '海报生成中...' });
+    const result = await poster.value.exportImage();
+    posterImageUrl.value = result.path;
+    uni.hideLoading();
+    uni.showToast({ title: '海报生成成功', icon: 'success' });
+  } catch (error) {
+    uni.hideLoading();
+    uni.showToast({ title: '海报生成失败', icon: 'none' });
+  }
+};
+</script>
+```
+
+#### 自定义背景图海报
+
+```vue
+<template>
+  <view class="u-page">
+    <view class="u-page__item">
+      <up-button type="primary" shape="circle" @click="generatePoster">生成海报</up-button>
+      
+      <!-- 海报预览区域 -->
+      <view class="poster-preview" v-if="posterImageUrl">
+        <image :src="posterImageUrl" class="poster-image" mode="widthFix"></image>
+      </view>
+
+      <!-- 海报组件 -->
+      <up-poster 
+        ref="poster" 
+        :json="posterConfig"
+      ></up-poster>
+    </view>
+  </view>
+</template>
+```
+
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const poster = ref(null);
+const posterImageUrl = ref('');
+
+const posterConfig = ref({
+  css: {
+    width: '750rpx',
+    height: '1000rpx',
+    background: 'https://example.com/background.jpg'
+  },
+  views: [
+    {
+      type: 'text',
+      text: '夏日清凉特惠',
+      css: {
+        position: 'absolute',
+        color: '#fff',
+        left: '50rpx',
+        top: '100rpx',
+        fontSize: '40rpx',
+        fontWeight: 'bold'
+      }
+    },
+    {
+      type: 'image',
+      src: 'https://example.com/product.png',
+      css: {
+        position: 'absolute',
+        left: '150rpx',
+        top: '250rpx',
+        width: '450rpx',
+        height: '450rpx'
+      }
+    },
+    {
+      type: 'text',
+      text: '立即抢购',
+      css: {
+        position: 'absolute',
+        color: '#ff6600',
+        left: '300rpx',
+        top: '750rpx',
+        fontSize: '36rpx',
+        fontWeight: 'bold'
+      }
+    }
+  ]
+});
+
+const generatePoster = async () => {
+  try {
+    uni.showLoading({ title: '海报生成中...' });
+    const result = await poster.value.exportImage();
+    posterImageUrl.value = result.path;
+    uni.hideLoading();
+    uni.showToast({ title: '海报生成成功', icon: 'success' });
+  } catch (error) {
+    uni.hideLoading();
+    uni.showToast({ title: '海报生成失败', icon: 'none' });
+  }
+};
+</script>
+```
+
+#### 渐变背景海报
+
+```vue
+<template>
+  <view class="u-page">
+    <view class="u-page__item">
+      <up-button type="primary" shape="circle" @click="generatePoster">生成海报</up-button>
+      
+      <!-- 海报预览区域 -->
+      <view class="poster-preview" v-if="posterImageUrl">
+        <image :src="posterImageUrl" class="poster-image" mode="widthFix"></image>
+      </view>
+
+      <!-- 海报组件 -->
+      <up-poster 
+        ref="poster" 
+        :json="posterConfig"
+      ></up-poster>
+    </view>
+  </view>
+</template>
+```
+
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const poster = ref(null);
+const posterImageUrl = ref('');
+
+const posterConfig = ref({
+  css: {
+    width: '750rpx',
+    height: '1000rpx',
+    background: 'linear-gradient(45deg, #ff9a9e, #fecfef)'
+  },
+  views: [
+    {
+      type: 'view',
+      css: {
+        position: 'absolute',
+        left: '60rpx',
+        top: '150rpx',
+        width: '630rpx',
+        height: '700rpx',
+        background: 'rgba(255, 255, 255, 0.9)',
+        radius: '20rpx'
+      }
+    },
+    {
+      type: 'text',
+      text: '限时优惠',
+      css: {
+        position: 'absolute',
+        color: '#ff4d4f',
+        left: '250rpx',
+        top: '200rpx',
+        fontSize: '48rpx',
+        fontWeight: 'bold'
+      }
+    },
+    {
+      type: 'text',
+      text: '全场商品5折起',
+      css: {
+        position: 'absolute',
+        color: '#666',
+        left: '200rpx',
+        top: '300rpx',
+        fontSize: '36rpx'
+      }
+    }
+  ]
+});
+
+const generatePoster = async () => {
+  try {
+    uni.showLoading({ title: '海报生成中...' });
+    const result = await poster.value.exportImage();
+    posterImageUrl.value = result.path;
+    uni.hideLoading();
+    uni.showToast({ title: '海报生成成功', icon: 'success' });
+  } catch (error) {
+    uni.hideLoading();
+    uni.showToast({ title: '海报生成失败', icon: 'none' });
+  }
+};
+</script>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/poster.md`</small>
 
 </template>
 
 <template #uniappx>
 
+#### 基础用法
+
 ```vue
-<up-poster
-    ref="poster"
-    :json="posterConfig"
-    @export="onPosterExport"
-    @error="onPosterError"
-></up-poster>
+<template>
+  <view class="u-page">
+    <view class="u-page__item">
+      <up-button type="primary" shape="circle" @click="generatePoster">生成海报</up-button>
+      
+      <!-- 海报预览区域 -->
+      <view class="poster-preview" v-if="posterImageUrl">
+        <image :src="posterImageUrl" class="poster-image" mode="widthFix"></image>
+      </view>
+
+      <!-- 海报组件 -->
+      <up-poster 
+        ref="poster" 
+        :json="posterConfig"
+      ></up-poster>
+    </view>
+  </view>
+</template>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/poster/poster.uvue`</small>
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const poster = ref(null);
+const posterImageUrl = ref('');
+
+const posterConfig = ref({
+  css: {
+    width: '750rpx',
+    height: '1000rpx',
+    background: '#fff'
+  },
+  views: [
+    {
+      type: 'text',
+      text: '夏日清凉特惠',
+      css: {
+        position: 'absolute',
+        color: '#fff',
+        left: '50rpx',
+        top: '100rpx',
+        fontSize: '40rpx',
+        fontWeight: 'bold'
+      }
+    },
+    {
+      type: 'image',
+      src: 'https://example.com/product.png',
+      css: {
+        position: 'absolute',
+        left: '150rpx',
+        top: '250rpx',
+        width: '450rpx',
+        height: '450rpx'
+      }
+    },
+    {
+      type: 'text',
+      text: '立即抢购',
+      css: {
+        position: 'absolute',
+        color: '#ff6600',
+        left: '300rpx',
+        top: '750rpx',
+        fontSize: '36rpx',
+        fontWeight: 'bold'
+      }
+    }
+  ]
+});
+
+const generatePoster = async () => {
+  try {
+    uni.showLoading({ title: '海报生成中...' });
+    const result = await poster.value.exportImage();
+    posterImageUrl.value = result.path;
+    uni.hideLoading();
+    uni.showToast({ title: '海报生成成功', icon: 'success' });
+  } catch (error) {
+    uni.hideLoading();
+    uni.showToast({ title: '海报生成失败', icon: 'none' });
+  }
+};
+</script>
+```
+
+#### 自定义背景图海报
+
+```vue
+<template>
+  <view class="u-page">
+    <view class="u-page__item">
+      <up-button type="primary" shape="circle" @click="generatePoster">生成海报</up-button>
+      
+      <!-- 海报预览区域 -->
+      <view class="poster-preview" v-if="posterImageUrl">
+        <image :src="posterImageUrl" class="poster-image" mode="widthFix"></image>
+      </view>
+
+      <!-- 海报组件 -->
+      <up-poster 
+        ref="poster" 
+        :json="posterConfig"
+      ></up-poster>
+    </view>
+  </view>
+</template>
+```
+
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const poster = ref(null);
+const posterImageUrl = ref('');
+
+const posterConfig = ref({
+  css: {
+    width: '750rpx',
+    height: '1000rpx',
+    background: 'https://example.com/background.jpg'
+  },
+  views: [
+    {
+      type: 'text',
+      text: '夏日清凉特惠',
+      css: {
+        position: 'absolute',
+        color: '#fff',
+        left: '50rpx',
+        top: '100rpx',
+        fontSize: '40rpx',
+        fontWeight: 'bold'
+      }
+    },
+    {
+      type: 'image',
+      src: 'https://example.com/product.png',
+      css: {
+        position: 'absolute',
+        left: '150rpx',
+        top: '250rpx',
+        width: '450rpx',
+        height: '450rpx'
+      }
+    },
+    {
+      type: 'text',
+      text: '立即抢购',
+      css: {
+        position: 'absolute',
+        color: '#ff6600',
+        left: '300rpx',
+        top: '750rpx',
+        fontSize: '36rpx',
+        fontWeight: 'bold'
+      }
+    }
+  ]
+});
+
+const generatePoster = async () => {
+  try {
+    uni.showLoading({ title: '海报生成中...' });
+    const result = await poster.value.exportImage();
+    posterImageUrl.value = result.path;
+    uni.hideLoading();
+    uni.showToast({ title: '海报生成成功', icon: 'success' });
+  } catch (error) {
+    uni.hideLoading();
+    uni.showToast({ title: '海报生成失败', icon: 'none' });
+  }
+};
+</script>
+```
+
+#### 渐变背景海报
+
+```vue
+<template>
+  <view class="u-page">
+    <view class="u-page__item">
+      <up-button type="primary" shape="circle" @click="generatePoster">生成海报</up-button>
+      
+      <!-- 海报预览区域 -->
+      <view class="poster-preview" v-if="posterImageUrl">
+        <image :src="posterImageUrl" class="poster-image" mode="widthFix"></image>
+      </view>
+
+      <!-- 海报组件 -->
+      <up-poster 
+        ref="poster" 
+        :json="posterConfig"
+      ></up-poster>
+    </view>
+  </view>
+</template>
+```
+
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const poster = ref(null);
+const posterImageUrl = ref('');
+
+const posterConfig = ref({
+  css: {
+    width: '750rpx',
+    height: '1000rpx',
+    background: 'linear-gradient(45deg, #ff9a9e, #fecfef)'
+  },
+  views: [
+    {
+      type: 'view',
+      css: {
+        position: 'absolute',
+        left: '60rpx',
+        top: '150rpx',
+        width: '630rpx',
+        height: '700rpx',
+        background: 'rgba(255, 255, 255, 0.9)',
+        radius: '20rpx'
+      }
+    },
+    {
+      type: 'text',
+      text: '限时优惠',
+      css: {
+        position: 'absolute',
+        color: '#ff4d4f',
+        left: '250rpx',
+        top: '200rpx',
+        fontSize: '48rpx',
+        fontWeight: 'bold'
+      }
+    },
+    {
+      type: 'text',
+      text: '全场商品5折起',
+      css: {
+        position: 'absolute',
+        color: '#666',
+        left: '200rpx',
+        top: '300rpx',
+        fontSize: '36rpx'
+      }
+    }
+  ]
+});
+
+const generatePoster = async () => {
+  try {
+    uni.showLoading({ title: '海报生成中...' });
+    const result = await poster.value.exportImage();
+    posterImageUrl.value = result.path;
+    uni.hideLoading();
+    uni.showToast({ title: '海报生成成功', icon: 'success' });
+  } catch (error) {
+    uni.hideLoading();
+    uni.showToast({ title: '海报生成失败', icon: 'none' });
+  }
+};
+</script>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/poster.md`</small>
 
 </template>
 

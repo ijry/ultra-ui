@@ -12,7 +12,7 @@ A form container and validator that pairs with form-item for rules and errors.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -173,21 +173,665 @@ leftIcon / required
 
 <template #uniapp>
 
-::: tip
-No snippet could be extracted automatically — please read the source.
-:::
+#### 基本使用
 
-<small>Auto-imported through easycom — no import statement needed.</small>
+```vue
+<template>
+	<view>
+		<!-- 注意，如果需要兼容微信小程序，最好通过setRules方法设置rules规则 -->
+		<up-form
+				labelPosition="left"
+				:model="model1"
+				:rules="rules"
+				ref="form1"
+		>
+			<up-form-item
+					label="姓名"
+					prop="userInfo.name"
+					:borderBottom="true"
+					ref="item1"
+			>
+				<up-input
+						v-model="model1.userInfo.name"
+						border="none"
+				></up-input>
+			</up-form-item>
+			<up-form-item
+					label="性别"
+					prop="userInfo.sex"
+					:borderBottom="true"
+					@click="showSex = true; hideKeyboard()"
+					ref="item1"
+			>
+				<up-input
+					v-model="model1.userInfo.sex"
+					disabled
+					disabledColor="#ffffff"
+					placeholder="请选择性别"
+					border="none"
+				></up-input>
+				<template #right>
+					<up-icon
+						name="arrow-right"
+					></up-icon>
+				</template>
+			</up-form-item>
+		</up-form>
+		<up-action-sheet
+				:show="showSex"
+				:actions="actions"
+				title="请选择性别"
+				description="如果选择保密会报错"
+				@close="showSex = false"
+				@select="sexSelect"
+		>
+		</up-action-sheet>
+	</view>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref, reactive } from 'vue';  
+  
+// 使用 reactive 创建响应式状态  
+const state = reactive({  
+  showSex: false,  
+  model1: {  
+    userInfo: {  
+      name: 'uview-plus UI',  
+      sex: '',  
+    },  
+  },  
+  actions: [  
+    { name: '男' },  
+    { name: '女' },  
+    { name: '保密' },  
+  ],  
+  rules: {  
+    'userInfo.name': {  
+      type: 'string',  
+      required: true,  
+      message: '请填写姓名',  
+      trigger: ['blur', 'change'],  
+    },  
+    'userInfo.sex': {  
+      type: 'string',  
+      max: 1,  
+      required: true,  
+      message: '请选择男或女',  
+      trigger: ['blur', 'change'],  
+    },  
+  },  
+  radio: '',  
+  switchVal: false,  
+});  
+  
+// 使用 ref 创建响应式引用  
+const formRef = ref(null);  
+  
+// 定义方法  
+function sexSelect(e) {  
+  state.model1.userInfo.sex = e.name;  
+  if (formRef.value) {  
+    formRef.value.validateField('userInfo.sex');  
+  }  
+}  
+</script>
+```
+
+#### 验证规则
+
+```js
+rules: {
+	'userInfo.name': {
+		type: 'string',
+				required: true,
+				message: '请填写姓名',
+				trigger: ['blur', 'change']
+	},
+	code: {
+		type: 'string',
+				required: true,
+				len: 4,
+				message: '请填写4位验证码',
+				trigger: ['blur']
+	},
+	'userInfo.sex': {
+		type: 'string',
+				max: 1,
+				required: true,
+				message: '请选择男或女',
+				trigger: ['blur', 'change']
+	},
+	radiovalue1: {
+		type: 'string',
+				min: 1,
+				max: 2,
+				message: '生命是美好的，请不要放弃治疗',
+				trigger: ['change']
+	},
+	checkboxValue1: {
+		type: 'array',
+				min: 2,
+				required: true,
+				message: '不能太宅，至少选两项',
+				trigger: ['change']
+	},
+	intro: {
+		type: 'string',
+				min: 3,
+				required: true,
+				message: '不低于3个字',
+				trigger: ['change']
+	},
+	hotel: {
+		type: 'string',
+				min: 2,
+				required: true,
+				message: '请选择住店时间',
+				trigger: ['change']
+	},
+	'userInfo.birthday': {
+		type: 'string',
+				required: true,
+				message: '请选择生日',
+				trigger: ['change']
+	},
+},
+```
+
+#### uview-plus自带验证规则
+
+```js
+rules: {
+	// 字段名称
+	mobile: [
+		{
+			required: true, 
+			message: '请输入手机号',
+			trigger: ['change','blur'],
+		},
+		{
+			// 自定义验证函数，见上说明
+			validator: (rule, value, callback) => {
+				// 上面有说，返回true表示校验通过，返回false表示不通过
+				// uni.$u.test.mobile()就是返回true或者false的
+				return uni.$u.test.mobile(value);
+			},
+			message: '手机号码不正确',
+			// 触发器可以同时用blur和change
+			trigger: ['change','blur'],
+		}
+	]
+}
+```
+
+#### 综合实战
+
+```js
+rules: {
+	name: [
+		// 必填规则
+		{
+			required: true,
+			message: '此为必填字段'，
+			// blur和change事件触发检验
+			trigger: ['blur', 'change'],
+		},
+		// 正则判断为字母或数字
+		{
+			pattern: /^[0-9a-zA-Z]*$/g,
+			// 正则检验前先将值转为字符串
+			transform(value) {
+				return String(value);
+			},
+			message: '只能包含字母或数字'
+		},
+		// 6-8个字符之间的判断
+		{
+			min: 6,
+			max: 8,
+			message: '长度在6-8个字符之间'
+		},
+		// 自定义规则判断是否包含字母"A"
+		{
+			validator: (rule, value, callback) => {
+				return uni.$u.test.contains(value, "A");
+			},
+			message: '必须包含字母"A"'
+		},
+		// 校验用户是否已存在
+		{
+			asyncValidator: (rule, value, callback) => {
+				uni.$u.http.post('/xxx/xxx', {name: value}).then(res => {
+					// 如果验证不通过，需要在callback()抛出new Error('错误提示信息')
+					if(res.error) {
+						callback(new Error('姓名重复'));
+					} else {
+						// 如果校验通过，也要执行callback()回调
+						callback();
+					}
+				})
+			},
+			// 如果是异步校验，无需写message属性，错误的信息通过Error抛出即可
+			// message: 'xxx'
+		}
+	]
+}
+```
+
+#### 校验错误提示方式
+
+```vue
+<template>
+	<up-form :errorType="errorType">
+		......
+	</up-form>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 使用 ref 创建响应式数据  
+const errorType = ref('message'); // 初始化为 'message' 
+  
+// 例如，在一个方法中改变 errorType 的值：  
+function changeErrorType() {  
+  errorType.value = 'border-bottom'; // 假设你想要切换到下划线提示  
+}  
+</script>
+```
+
+#### 校验
+
+```vue
+<template>
+	<view class="">
+		<up-form :model="form" ref="uFormRef">
+			<up-form-item label="姓名" prop="name">
+				<up-input v-model="form.name" />
+			</up-form-item>
+		</up-form>
+		<up-button @click="submit">提交</up-button>
+	</view>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 响应式表单数据  
+const form = ref({  
+  name: '',  
+});  
+  
+// 校验规则  
+const rules = {  
+  name: [  
+    {  
+      required: true,  
+      message: '请输入姓名',  
+      trigger: ['blur', 'change'],  
+    },  
+  ],  
+};  
+  
+// 表单引用  
+const uFormRef = ref(null);  
+  
+// 提交方法  
+function submit() {  
+  uFormRef.value.validate().then(valid => {  
+    if (valid) {  
+      uni.$u.toast('校验通过')
+    } else {  
+      uni.$u.toast('校验失败')
+    }  
+  }).catch(() => {  
+    // 处理验证错误  
+    uni.$u.toast('校验失败')
+  });  
+}  
+</script>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/form.md`</small>
 
 </template>
 
 <template #uniappx>
 
-::: tip
-No snippet could be extracted automatically — please read the source.
-:::
+#### 基本使用
 
-<small>Auto-imported through easycom — no import statement needed.</small>
+```vue
+<template>
+	<view>
+		<!-- 注意，如果需要兼容微信小程序，最好通过setRules方法设置rules规则 -->
+		<up-form
+				labelPosition="left"
+				:model="model1"
+				:rules="rules"
+				ref="form1"
+		>
+			<up-form-item
+					label="姓名"
+					prop="userInfo.name"
+					borderBottom
+					ref="item1"
+			>
+				<up-input
+						v-model="model1.userInfo.name"
+						border="none"
+				></up-input>
+			</up-form-item>
+			<up-form-item
+					label="性别"
+					prop="userInfo.sex"
+					borderBottom
+					@click="showSex = true; hideKeyboard()"
+					ref="item1"
+			>
+				<up-input
+					v-model="model1.userInfo.sex"
+					disabled
+					disabledColor="#ffffff"
+					placeholder="请选择性别"
+					border="none"
+				></up-input>
+				<template #right>
+					<up-icon
+						name="arrow-right"
+					></up-icon>
+				</template>
+			</up-form-item>
+		</up-form>
+		<up-action-sheet
+				:show="showSex"
+				:actions="actions"
+				title="请选择性别"
+				description="如果选择保密会报错"
+				@close="showSex = false"
+				@select="sexSelect"
+		>
+		</up-action-sheet>
+	</view>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref, reactive } from 'vue';  
+  
+// 使用 reactive 创建响应式状态  
+const state = reactive({  
+  showSex: false,  
+  model1: {  
+    userInfo: {  
+      name: 'uview-ultra UI',  
+      sex: '',  
+    },  
+  },  
+  actions: [  
+    { name: '男' },  
+    { name: '女' },  
+    { name: '保密' },  
+  ],  
+  rules: {  
+    'userInfo.name': {  
+      type: 'string',  
+      required: true,  
+      message: '请填写姓名',  
+      trigger: ['blur', 'change'],  
+    },  
+    'userInfo.sex': {  
+      type: 'string',  
+      max: 1,  
+      required: true,  
+      message: '请选择男或女',  
+      trigger: ['blur', 'change'],  
+    },  
+  },  
+  radio: '',  
+  switchVal: false,  
+});  
+  
+// 使用 ref 创建响应式引用  
+const formRef = ref(null);  
+  
+// 定义方法  
+function sexSelect(e) {  
+  state.model1.userInfo.sex = e.name;  
+  if (formRef.value) {  
+    formRef.value.validateField('userInfo.sex');  
+  }  
+}  
+</script>
+```
+
+#### 验证规则
+
+```js
+rules: {
+	'userInfo.name': {
+		type: 'string',
+				required: true,
+				message: '请填写姓名',
+				trigger: ['blur', 'change']
+	},
+	code: {
+		type: 'string',
+				required: true,
+				len: 4,
+				message: '请填写4位验证码',
+				trigger: ['blur']
+	},
+	'userInfo.sex': {
+		type: 'string',
+				max: 1,
+				required: true,
+				message: '请选择男或女',
+				trigger: ['blur', 'change']
+	},
+	radiovalue1: {
+		type: 'string',
+				min: 1,
+				max: 2,
+				message: '生命是美好的，请不要放弃治疗',
+				trigger: ['change']
+	},
+	checkboxValue1: {
+		type: 'array',
+				min: 2,
+				required: true,
+				message: '不能太宅，至少选两项',
+				trigger: ['change']
+	},
+	intro: {
+		type: 'string',
+				min: 3,
+				required: true,
+				message: '不低于3个字',
+				trigger: ['change']
+	},
+	hotel: {
+		type: 'string',
+				min: 2,
+				required: true,
+				message: '请选择住店时间',
+				trigger: ['change']
+	},
+	'userInfo.birthday': {
+		type: 'string',
+				required: true,
+				message: '请选择生日',
+				trigger: ['change']
+	},
+},
+```
+
+#### uview-ultra自带验证规则
+
+```js
+rules: {
+	// 字段名称
+	mobile: [
+		{
+			required: true, 
+			message: '请输入手机号',
+			trigger: ['change','blur'],
+		},
+		{
+			// 自定义验证函数，见上说明
+			validator: (rule, value, callback) => {
+				// 上面有说，返回true表示校验通过，返回false表示不通过
+				// uni.$u.test.mobile()就是返回true或者false的
+				return uni.$u.test.mobile(value);
+			},
+			message: '手机号码不正确',
+			// 触发器可以同时用blur和change
+			trigger: ['change','blur'],
+		}
+	]
+}
+```
+
+#### 综合实战
+
+```js
+rules: {
+	name: [
+		// 必填规则
+		{
+			required: true,
+			message: '此为必填字段'，
+			// blur和change事件触发检验
+			trigger: ['blur', 'change'],
+		},
+		// 正则判断为字母或数字
+		{
+			pattern: /^[0-9a-zA-Z]*$/g,
+			// 正则检验前先将值转为字符串
+			transform(value) {
+				return String(value);
+			},
+			message: '只能包含字母或数字'
+		},
+		// 6-8个字符之间的判断
+		{
+			min: 6,
+			max: 8,
+			message: '长度在6-8个字符之间'
+		},
+		// 自定义规则判断是否包含字母"A"
+		{
+			validator: (rule, value, callback) => {
+				return uni.$u.test.contains(value, "A");
+			},
+			message: '必须包含字母"A"'
+		},
+		// 校验用户是否已存在
+		{
+			asyncValidator: (rule, value, callback) => {
+				uni.$u.http.post('/xxx/xxx', {name: value}).then(res => {
+					// 如果验证不通过，需要在callback()抛出new Error('错误提示信息')
+					if(res.error) {
+						callback(new Error('姓名重复'));
+					} else {
+						// 如果校验通过，也要执行callback()回调
+						callback();
+					}
+				})
+			},
+			// 如果是异步校验，无需写message属性，错误的信息通过Error抛出即可
+			// message: 'xxx'
+		}
+	]
+}
+```
+
+#### 校验错误提示方式
+
+```vue
+<template>
+	<up-form :errorType="errorType">
+		......
+	</up-form>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 使用 ref 创建响应式数据  
+const errorType = ref('message'); // 初始化为 'message' 
+  
+// 例如，在一个方法中改变 errorType 的值：  
+function changeErrorType() {  
+  errorType.value = 'border-bottom'; // 假设你想要切换到下划线提示  
+}  
+</script>
+```
+
+#### 校验
+
+```vue
+<template>
+	<view class="">
+		<up-form :model="form" ref="uFormRef">
+			<up-form-item label="姓名" prop="name">
+				<up-input v-model="form.name" />
+			</up-form-item>
+		</up-form>
+		<up-button @click="submit">提交</up-button>
+	</view>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 响应式表单数据  
+const form = ref({  
+  name: '',  
+});  
+  
+// 校验规则  
+const rules = {  
+  name: [  
+    {  
+      required: true,  
+      message: '请输入姓名',  
+      trigger: ['blur', 'change'],  
+    },  
+  ],  
+};  
+  
+// 表单引用  
+const uFormRef = ref(null);  
+  
+// 提交方法  
+function submit() {  
+  uFormRef.value.validate().then(valid => {  
+    if (valid) {  
+      uni.$u.toast('校验通过')
+    } else {  
+      uni.$u.toast('校验失败')
+    }  
+  }).catch(() => {  
+    // 处理验证错误  
+    uni.$u.toast('校验失败')
+  });  
+}  
+</script>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/form.md`</small>
 
 </template>
 

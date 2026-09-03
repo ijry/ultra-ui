@@ -12,7 +12,7 @@ A full-page loading cover for first paint or route transitions.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -147,41 +147,119 @@ children 覆盖默认图标 + 文本
 
 <template #uniapp>
 
+#### 基本使用
+
 ```vue
-<up-loading-page
-    :loadingText="loadingPageData['loadingText']"
-    :image="loadingPageData['image']"
-    :iconSize="loadingPageData['iconSize']"
-    :loadingMode="loadingPageData['loadingMode']"
-    :bgColor="loadingPageData['bgColor']"
-    :loading="loading"
-    :color="loadingPageData['color']"
-    :loadingColor="loadingPageData['loadingColor']"
->
-</up-loading-page>
+<template>
+	<view>
+		<up-loading-page></up-loading-page>
+	</view>
+</template>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsA/loading-page/loading-page.uvue`</small>
+#### 显示或隐藏
+
+```vue
+<up-loading-page :loading="true"></up-loading-page>
+```
+
+#### 文字内容
+
+```vue
+<up-loading-page loading-text="loading..."></up-loading-page>
+```
+
+#### 动画模式
+
+```vue
+<up-loading-page loading-mode="spinner"></up-loading-page>
+<up-loading-page loading-mode="semicircle"></up-loading-page>
+```
+
+#### 动画图片
+
+```vue
+<up-loading-page image="/static/logo.png"></up-loading-page>
+```
+
+#### 文字颜色
+
+```vue
+<up-loading-page color="#666"></up-loading-page>
+```
+
+#### 文字大小
+
+```vue
+<up-loading-page font-size="24"></up-loading-page>
+```
+
+#### 图标大小 <badge text="2.0.32" />
+
+```vue
+<up-loading-page icon-size="36"></up-loading-page>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/loadingPage.md`</small>
 
 </template>
 
 <template #uniappx>
 
+#### 基本使用
+
 ```vue
-<up-loading-page
-    :loadingText="loadingPageData['loadingText']"
-    :image="loadingPageData['image']"
-    :iconSize="loadingPageData['iconSize']"
-    :loadingMode="loadingPageData['loadingMode']"
-    :bgColor="loadingPageData['bgColor']"
-    :loading="loading"
-    :color="loadingPageData['color']"
-    :loadingColor="loadingPageData['loadingColor']"
->
-</up-loading-page>
+<template>
+	<view>
+		<up-loading-page></up-loading-page>
+	</view>
+</template>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsA/loading-page/loading-page.uvue`</small>
+#### 显示或隐藏
+
+```vue
+<up-loading-page :loading="true"></up-loading-page>
+```
+
+#### 文字内容
+
+```vue
+<up-loading-page loading-text="loading..."></up-loading-page>
+```
+
+#### 动画模式
+
+```vue
+<up-loading-page loading-mode="spinner"></up-loading-page>
+<up-loading-page loading-mode="semicircle"></up-loading-page>
+```
+
+#### 动画图片
+
+```vue
+<up-loading-page image="/static/logo.png"></up-loading-page>
+```
+
+#### 文字颜色
+
+```vue
+<up-loading-page color="#666"></up-loading-page>
+```
+
+#### 文字大小
+
+```vue
+<up-loading-page font-size="24"></up-loading-page>
+```
+
+#### 图标大小 <badge text="2.0.32" />
+
+```vue
+<up-loading-page icon-size="36"></up-loading-page>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/loadingPage.md`</small>
 
 </template>
 

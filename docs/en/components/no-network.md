@@ -12,7 +12,7 @@ A full-screen offline notice with retry and system-settings shortcuts.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -94,29 +94,149 @@ children 完全接管占位渲染
 
 <template #uniapp>
 
+#### 基本使用
+
 ```vue
-<up-no-network
-    @disconnected="disconnected"
-    @connected="connected"
-    @retry="retry"
-></up-no-network>
+<template>
+	<view>
+		<up-no-network
+			@disconnected="disconnected"
+			@connected="connected"
+			@retry="retry"
+		></up-no-network>
+		<view class="up-content">
+			<view class="up-content__circle">
+				<up-icon
+					name="checkbox-mark"
+					color="#fff"
+					size="30"
+				></up-icon>
+			</view>
+			<text class="up-content__normal">网络正常</text>
+		</view>
+	</view>
+</template>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/noNetwork/noNetwork.uvue`</small>
+```vue
+<script setup>  
+// 定义方法  
+function disconnected() {  
+    console.log('disconnected');  
+}  
+  
+function connected() {  
+    console.log('connected');  
+}  
+  
+function retry() {  
+    console.log('retry');  
+}  
+</script>
+```
+
+```vue
+<style lang="scss" scoped>
+	.up-content {
+		padding: 150px 60px 0;
+		@include flex(column);
+		align-items: center;
+		justify-content: center;
+
+		&__circle {
+			background-color: $u-success;
+			@include flex;
+			border-radius: 100px;
+			width: 60px;
+			height: 60px;
+			align-items: center;
+			justify-content: center;
+		}
+
+		&__normal {
+			font-size: 15px;
+			color: $u-success;
+			margin-top: 15px;
+		}
+	}
+</style>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/noNetwork.md`</small>
 
 </template>
 
 <template #uniappx>
 
+#### 基本使用
+
 ```vue
-<up-no-network
-    @disconnected="disconnected"
-    @connected="connected"
-    @retry="retry"
-></up-no-network>
+<template>
+	<view>
+		<up-no-network
+			@disconnected="disconnected"
+			@connected="connected"
+			@retry="retry"
+		></up-no-network>
+		<view class="up-content">
+			<view class="up-content__circle">
+				<up-icon
+					name="checkbox-mark"
+					color="#fff"
+					size="30"
+				></up-icon>
+			</view>
+			<text class="up-content__normal">网络正常</text>
+		</view>
+	</view>
+</template>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/noNetwork/noNetwork.uvue`</small>
+```vue
+<script setup>  
+// 定义方法  
+function disconnected() {  
+    console.log('disconnected');  
+}  
+  
+function connected() {  
+    console.log('connected');  
+}  
+  
+function retry() {  
+    console.log('retry');  
+}  
+</script>
+```
+
+```vue
+<style lang="scss" scoped>
+	.up-content {
+		padding: 150px 60px 0;
+		@include flex(column);
+		align-items: center;
+		justify-content: center;
+
+		&__circle {
+			background-color: $up-success;
+			@include flex;
+			border-radius: 100px;
+			width: 60px;
+			height: 60px;
+			align-items: center;
+			justify-content: center;
+		}
+
+		&__normal {
+			font-size: 15px;
+			color: $up-success;
+			margin-top: 15px;
+		}
+	}
+</style>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/noNetwork.md`</small>
 
 </template>
 

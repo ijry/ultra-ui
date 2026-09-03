@@ -12,7 +12,7 @@ Whitespace between blocks, with configurable height and background.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -168,69 +168,25 @@ customStyle 透传到根节点
 
 <template #uniapp>
 
-#### 基本案列
+#### 基本使用
 
 ```vue
-<up-gap bgColor="#f3f4f6"></up-gap>
+<up-gap height="80" bgColor="#bbb"></up-gap>
 ```
 
-#### 自定义颜色
-
-```vue
-<up-gap bgColor="#2979ff"></up-gap>
-```
-
-#### 自定义高度
-
-```vue
-<up-gap bgColor="#f3f4f6" height="40"></up-gap>
-```
-
-#### 自定义上下边距
-
-```vue
-<up-gap
-    bgColor="#f3f4f6"
-    marginTop="20"
-    marginBottom="20"
-></up-gap>
-```
-
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsA/gap/gap.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/gap.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 基本案列
+#### 基本使用
 
 ```vue
-<up-gap bgColor="#f3f4f6"></up-gap>
+<up-gap height="80" bgColor="#bbb"></up-gap>
 ```
 
-#### 自定义颜色
-
-```vue
-<up-gap bgColor="#2979ff"></up-gap>
-```
-
-#### 自定义高度
-
-```vue
-<up-gap bgColor="#f3f4f6" height="40"></up-gap>
-```
-
-#### 自定义上下边距
-
-```vue
-<up-gap
-    bgColor="#f3f4f6"
-    marginTop="20"
-    marginBottom="20"
-></up-gap>
-```
-
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsA/gap/gap.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/gap.md`</small>
 
 </template>
 

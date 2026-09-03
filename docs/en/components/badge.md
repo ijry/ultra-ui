@@ -12,7 +12,7 @@ A number or dot pinned to the corner of an icon to signal unread items.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -225,113 +225,169 @@ showZero 决定 value 为 0 时是否展示
 
 <template #uniapp>
 
-#### 直角边形状
+#### 基本使用
 
 ```vue
-<up-badge
-    :value="1500"
-    shape="horn"
-></up-badge>
+<template>
+	<view style="padding: 20px;">
+		<view class="box">
+			 <up-badge :type="type" max="99" :value="value"></up-badge>
+		</view>
+	</view>
+</template>
 ```
-
-#### 徽标数显示方式
 
 ```vue
-<up-badge
-    :value="5132"
-    numberType="ellipsis"
-></up-badge>
+<script setup>  
+import { ref } from 'vue';  
+  
+// 使用 ref 创建响应式数据  
+const type = ref('warning');  
+const value = ref(100);  
+</script>
 ```
-
-#### 显示圆点
 
 ```vue
-<up-badge
-    :value="1011"
-    numberType="overflow"
-    isDot
->
-</up-badge>
+<style lang="scss" scoped>
+	.box{
+		width: 100px; 
+		height: 100px;
+		background-color: #909193;
+		border-radius: 15px;
+	}
+</style>
 ```
 
-#### 自定义主题
+#### 设置徽标的类型为一个圆点
 
 ```vue
-<up-badge
-    :value="9"
-    type="error"
->
-</up-badge>
+<up-badge :isDot="true" type="success"></up-badge>
 ```
 
-#### 反转色
+#### 设置数字的显示方式 overflow|ellipsis|limit
 
 ```vue
-<up-badge
-    :value="9"
-    type="error"
-    inverted
->
-</up-badge>
+<template>
+	<view style="padding: 20px;">
+		<view class="box">
+			 <up-badge numberType="overflow" :type="type" max="99" :value="value"></up-badge>
+		</view>
+		<view class="box">
+			 <up-badge numberType="ellipsis" :type="type" max="99" :value="value"></up-badge>
+		</view>
+		<view class="box">
+			 <up-badge numberType="limit" :type="type" max="99" :value="value"></up-badge>
+		</view>
+	</view>
+</template>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsB/badge/badge.uvue`</small>
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 使用 ref 创建响应式数据  
+const type = ref('warning');  
+const value = ref(99999);  
+</script>
+```
+
+```vue
+<style lang="scss" scoped>
+	.box{
+		width: 100px; 
+		height: 100px;
+		background-color: #909193;
+		border-radius: 15px;
+	}
+</style>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/badge.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 直角边形状
+#### 基本使用
 
 ```vue
-<up-badge
-    :value="1500"
-    shape="horn"
-></up-badge>
+<template>
+	<view style="padding: 20px;">
+		<view class="box">
+			 <up-badge :type="type" max="99" :value="value"></up-badge>
+		</view>
+	</view>
+</template>
 ```
-
-#### 徽标数显示方式
 
 ```vue
-<up-badge
-    :value="5132"
-    numberType="ellipsis"
-></up-badge>
+<script setup>  
+import { ref } from 'vue';  
+  
+// 使用 ref 创建响应式数据  
+const type = ref('warning');  
+const value = ref(100);  
+</script>
 ```
-
-#### 显示圆点
 
 ```vue
-<up-badge
-    :value="1011"
-    numberType="overflow"
-    isDot
->
-</up-badge>
+<style lang="scss" scoped>
+	.box{
+		width: 100px; 
+		height: 100px;
+		background-color: #909193;
+		border-radius: 15px;
+	}
+</style>
 ```
 
-#### 自定义主题
+#### 设置徽标的类型为一个圆点
 
 ```vue
-<up-badge
-    :value="9"
-    type="error"
->
-</up-badge>
+<up-badge :isDot="true" type="success"></up-badge>
 ```
 
-#### 反转色
+#### 设置数字的显示方式 overflow|ellipsis|limit
 
 ```vue
-<up-badge
-    :value="9"
-    type="error"
-    inverted
->
-</up-badge>
+<template>
+	<view style="padding: 20px;">
+		<view class="box">
+			 <up-badge numberType="overflow" :type="type" max="99" :value="value"></up-badge>
+		</view>
+		<view class="box">
+			 <up-badge numberType="ellipsis" :type="type" max="99" :value="value"></up-badge>
+		</view>
+		<view class="box">
+			 <up-badge numberType="limit" :type="type" max="99" :value="value"></up-badge>
+		</view>
+	</view>
+</template>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsB/badge/badge.uvue`</small>
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 使用 ref 创建响应式数据  
+const type = ref('warning');  
+const value = ref(99999);  
+</script>
+```
+
+```vue
+<style lang="scss" scoped>
+	.box{
+		width: 100px; 
+		height: 100px;
+		background-color: #909193;
+		border-radius: 15px;
+	}
+</style>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/badge.md`</small>
 
 </template>
 

@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -248,68 +248,186 @@ keyName='label'，从元素的 label 字段取文字
 
 <template #uniapp>
 
-#### 基础演示
+#### 基本使用
+
+- 通过设置`scrollable`(默认为`true`)，配置tabs组件的内容是否可以左右拖动，一般4个标签以下时，无需拖动，设置为`false`，5个标签以上，建议可以左右拖动。  
+- tabs标签的切换，需要绑定`current`值，在`change`事件回调中可以得到`index`，将其赋值给`current`即可，也可以使用v-model:current自动双向绑定。
+
+具体的标签，通过`list`参数配置，该参数要求为数组，元素为对象，对象要有`name`属性，见示例：
+
+:::tip 说明
+`scrollable`参数很重要，如果您的tabs项只有几个，且不想tabs导航栏可以被左右滑动的话，请一定要设置`scrollable`为`false`，因为它默认为`true`。
+:::
 
 ```vue
-<up-tabs :list="list1" @click="click" :current="3">
-</up-tabs>
+<template>
+    <up-tabs :list="list1" @click="click"></up-tabs>
+</template>
+```
+
+```vue
+<script setup>  
+import { reactive } from 'vue';  
+  
+// 创建响应式数据  
+const list1 = reactive([  
+    { name: '关注' },  
+    { name: '推荐' },  
+    { name: '电影' },  
+    { name: '科技' },  
+    { name: '音乐' },  
+    { name: '美食' },  
+    { name: '文化' },  
+    { name: '财经' },  
+    { name: '手工' }  
+]);  
+  
+// 定义方法  
+function click(item) {  
+    console.log('item', item);  
+}  
+</script>
 ```
 
 #### 粘性布局
 
+通过加上`up-sticky`来使tabs滑动浮动在最顶部。
+
 ```vue
-<up-tabs
-    :list="list1"
->
-</up-tabs>
+<template>
+  <up-sticky bgColor="#fff">
+    <up-tabs :list="list1"></up-tabs>
+  </up-sticky>
+</template>
+```
+
+```vue
+<script setup>  
+import { reactive } from 'vue';  
+  
+// 创建响应式数据  
+const list1 = reactive([  
+    { name: '关注' },  
+    { name: '推荐' },  
+    { name: '电影' },  
+    { name: '科技' },  
+    { name: '音乐' },  
+    { name: '美食' },  
+    { name: '文化' },  
+    { name: '财经' },  
+    { name: '手工' }  
+]);
+</script>
 ```
 
 #### 显示徽标
 
+可以通过在列表对象中加入`badge`来设置徽标。
+
 ```vue
-<up-tabs :list="list2">
-</up-tabs>
+<template>
+    <up-tabs :list="list2"></up-tabs>
+</template>
 ```
 
-#### 禁止滚动
-
 ```vue
-<up-tabs :list="list6" :scrollable="false">
-</up-tabs>
+<script setup>  
+import { reactive } from 'vue';  
+  
+// 创建响应式数据  
+const list2 = reactive([  
+    { name: '关注' },  
+    { name: '推荐', badge: { isDot: true } },  
+    { name: '电影', badge: { value: 5 } },  
+    { name: '科技' },  
+    { name: '音乐' },  
+    { name: '美食' },  
+    { name: '文化' },  
+    { name: '财经' },  
+    { name: '手工' }  
+]);  
+</script>
 ```
 
-#### 禁用菜单
+#### 禁用
+
+可以通过在列表对象中加入`disabled = true`来设置禁用。
 
 ```vue
-<up-tabs :list="list3">
-</up-tabs>
+<template>
+    <up-tabs :list="list2"></up-tabs>
+</template>
+```
+
+```vue
+<script setup>  
+import { reactive } from 'vue';  
+  
+// 创建响应式数据  
+const list2 = reactive([  
+    { name: '关注', disabled: true },  
+    { name: '推荐', badge: { isDot: true } },  
+    { name: '电影', badge: { value: 5 } },  
+    { name: '科技', disabled: true },  
+    { name: '音乐' },  
+    { name: '美食' },  
+    { name: '文化' },  
+    { name: '财经' },  
+    { name: '手工' }  
+]);  
+</script>
 ```
 
 #### 自定义样式
 
+通过使用`activeStyle`、`inactiveStyle`、`itemStyle`来设置tabs的样式。
+
 ```vue
-<up-tabs
-    :list="list4"
-    lineWidth="30"
-    lineColor="#f56c6c"
-    :activeStyle="{
-        color: '#303133',
-        fontWeight: 'bold',
-        transform: 'scale(1.05)'
-    }"
-    :inactiveStyle="{
-        color: '#606266',
-        transform: 'scale(1)'
-    }"
-    itemStyle="padding-left: 15px; padding-right: 15px; height: 34px;"
->
-</up-tabs>
+<template>
+    <up-tabs
+        :list="list4"
+        lineWidth="30"
+        lineColor="#f56c6c"
+        :activeStyle="{
+            color: '#303133',
+            fontWeight: 'bold',
+            transform: 'scale(1.05)'
+        }"
+        :inactiveStyle="{
+            color: '#606266',
+            transform: 'scale(1)'
+        }"
+        itemStyle="padding-left: 15px; padding-right: 15px; height: 34px;"
+    >
+    </up-tabs>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref, reactive } from 'vue';  
+  
+const list4 = reactive([  
+    { name: '关注' },  
+    { name: '推荐', badge: { isDot: true } },  
+    { name: '电影' },  
+    { name: '科技' },  
+    { name: '音乐' },  
+    { name: '美食' },  
+    { name: '文化' },  
+    { name: '财经' },  
+    { name: '手工' }  
+]);  
+</script>
 ```
 
 #### 滑块设置背景图
 
+通过使用`lineColor`来设置滑块背景图。
+
 ```vue
-<up-tabs
+<template>
+    <up-tabs
     :list="list4"
     lineWidth="20"
     lineHeight="7"
@@ -324,91 +442,287 @@ keyName='label'，从元素的 label 字段取文字
         transform: 'scale(1)'
     }"
     itemStyle="padding-left: 15px; padding-right: 15px; height: 34px;"
->
-</up-tabs>
+    >
+    </up-tabs>
+</template>
 ```
 
-#### 自定义内容插槽
+```vue
+<script setup>  
+import { reactive } from 'vue';  
+  
+const lineBg = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAOCAYAAABdC15GAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAFxSURBVHgBzZNRTsJAEIb/WTW+lpiY+FZPIDew3ABP4GJ8hxsI9zBpOYHeQDwBPQI+mRiRvpLojtPdYhCorQqF/6GdbGd2vvwzBXZcNAt4oj1ANeUoAT5iqkUjbEFLHNmhD1YPEvpZ3ghkGlVDCkc94/BmHMq998I5ONiY1ZBfpKAyuOtgAc5yOEDmYEWNh32BHF91sGHZHmwW4azciN9aQwnz3SJEgOmte+R2tdLprTYoa50mvuomlLpD4Y3oQZnov6D2RzCqI93bWOHaEmAGqQUyRBlZR1WfarcD/EJ2z8DtzDGvsMCwpm8XOCfDUsVOCYhiqRxI/CTQo4UOvjzO7Pow18vfywneuUHHUUxLn55lLw5JFpZ8bEUcY8oXdOLWiHLTxvoGpLqoUmy6dBT15o/ox3znpoycAmxUsiJTbs1cmxeVKp+0zmFIS7bGWiVghC7Vwse8jFKAX9eljh4ggKLLv7uaQvG9/F59Oo2SouxPu7OTCxN/s8wAAAAASUVORK5CYII=";
+  
+// 响应式数据  
+const list4 = reactive([  
+    { name: '关注' },  
+    { name: '推荐', badge: { isDot: true } },  
+    { name: '电影' },  
+    { name: '科技' },  
+    { name: '音乐' },  
+    { name: '美食' },  
+    { name: '文化' },  
+    { name: '财经' },  
+    { name: '手工' }  
+]);  
+</script>
+```
+
+#### Tab内容自定义插槽
 
 ```vue
-<up-tabs :list="list1">
-    <template #default="{item, keyName}">
-        <text class="u-tabs__wrapper__nav__item__text"
-            style="color: red">
-            {{item != null ? (item as UTSJSONObject)[keyName as string] : '-'}}
-        </text>
+<up-tabs :list="list1" keyName="name">
+    <template #content="{item, keyName, index}">
+        {{item[keyName]}}
     </template>
 </up-tabs>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsC/tabs/tabs.uvue`</small>
+```vue
+<script setup>  
+import { reactive } from 'vue';  
+  
+// 创建响应式数组  
+const list1 = reactive([  
+    { name: '关注' },  
+    { name: '推荐' },  
+    { name: '电影' },  
+    { name: '科技' },  
+    { name: '音乐' },  
+    { name: '美食' },  
+    { name: '文化' },  
+    { name: '财经' },  
+    { name: '手工' }  
+]);  
+</script>
+```
+
+#### 右侧自定义插槽
+
+```vue
+<template>
+    <up-tabs :list="list1">
+        <template #right>
+            <view
+                style="padding-left: 4px;"
+                @tap="$u.toast('插槽被点击')"
+            >
+                <up-icon
+                        name="list"
+                        size="21"
+                        bold
+                ></up-icon>
+            </view>
+        </template>
+    </up-tabs>
+</template>
+```
+
+```vue
+<script setup>  
+import { reactive } from 'vue';  
+  
+// 创建响应式数组  
+const list1 = reactive([  
+    { name: '关注' },  
+    { name: '推荐' },  
+    { name: '电影' },  
+    { name: '科技' },  
+    { name: '音乐' },  
+    { name: '美食' },  
+    { name: '文化' },  
+    { name: '财经' },  
+    { name: '手工' }  
+]);  
+</script>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/tabs.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 基础演示
+#### 基本使用
+
+- 通过设置`scrollable`(默认为`true`)，配置tabs组件的内容是否可以左右拖动，一般4个标签以下时，无需拖动，设置为`false`，5个标签以上，建议可以左右拖动。  
+- tabs标签的切换，需要绑定`current`值，在`change`事件回调中可以得到`index`，将其赋值给`current`即可，也可以使用v-model:current自动双向绑定。
+
+具体的标签，通过`list`参数配置，该参数要求为数组，元素为对象，对象要有`name`属性，见示例：
+
+:::tip 说明
+`scrollable`参数很重要，如果您的tabs项只有几个，且不想tabs导航栏可以被左右滑动的话，请一定要设置`scrollable`为`false`，因为它默认为`true`。
+:::
 
 ```vue
-<up-tabs :list="list1" @click="click" :current="3">
-</up-tabs>
+<template>
+    <up-tabs :list="list1" @click="click"></up-tabs>
+</template>
+```
+
+```vue
+<script setup>  
+import { reactive } from 'vue';  
+  
+// 创建响应式数据  
+const list1 = reactive([  
+    { name: '关注' },  
+    { name: '推荐' },  
+    { name: '电影' },  
+    { name: '科技' },  
+    { name: '音乐' },  
+    { name: '美食' },  
+    { name: '文化' },  
+    { name: '财经' },  
+    { name: '手工' }  
+]);  
+  
+// 定义方法  
+function click(item) {  
+    console.log('item', item);  
+}  
+</script>
 ```
 
 #### 粘性布局
 
+通过加上`up-sticky`来使tabs滑动浮动在最顶部。
+
 ```vue
-<up-tabs
-    :list="list1"
->
-</up-tabs>
+<template>
+  <up-sticky bgColor="#fff">
+    <up-tabs :list="list1"></up-tabs>
+  </up-sticky>
+</template>
+```
+
+```vue
+<script setup>  
+import { reactive } from 'vue';  
+  
+// 创建响应式数据  
+const list1 = reactive([  
+    { name: '关注' },  
+    { name: '推荐' },  
+    { name: '电影' },  
+    { name: '科技' },  
+    { name: '音乐' },  
+    { name: '美食' },  
+    { name: '文化' },  
+    { name: '财经' },  
+    { name: '手工' }  
+]);
+</script>
 ```
 
 #### 显示徽标
 
+可以通过在列表对象中加入`badge`来设置徽标。
+
 ```vue
-<up-tabs :list="list2">
-</up-tabs>
+<template>
+    <up-tabs :list="list2"></up-tabs>
+</template>
 ```
 
-#### 禁止滚动
-
 ```vue
-<up-tabs :list="list6" :scrollable="false">
-</up-tabs>
+<script setup>  
+import { reactive } from 'vue';  
+  
+// 创建响应式数据  
+const list2 = reactive([  
+    { name: '关注' },  
+    { name: '推荐', badge: { isDot: true } },  
+    { name: '电影', badge: { value: 5 } },  
+    { name: '科技' },  
+    { name: '音乐' },  
+    { name: '美食' },  
+    { name: '文化' },  
+    { name: '财经' },  
+    { name: '手工' }  
+]);  
+</script>
 ```
 
-#### 禁用菜单
+#### 禁用
+
+可以通过在列表对象中加入`disabled = true`来设置禁用。
 
 ```vue
-<up-tabs :list="list3">
-</up-tabs>
+<template>
+    <up-tabs :list="list2"></up-tabs>
+</template>
+```
+
+```vue
+<script setup>  
+import { reactive } from 'vue';  
+  
+// 创建响应式数据  
+const list2 = reactive([  
+    { name: '关注', disabled: true },  
+    { name: '推荐', badge: { isDot: true } },  
+    { name: '电影', badge: { value: 5 } },  
+    { name: '科技', disabled: true },  
+    { name: '音乐' },  
+    { name: '美食' },  
+    { name: '文化' },  
+    { name: '财经' },  
+    { name: '手工' }  
+]);  
+</script>
 ```
 
 #### 自定义样式
 
+通过使用`activeStyle`、`inactiveStyle`、`itemStyle`来设置tabs的样式。
+
 ```vue
-<up-tabs
-    :list="list4"
-    lineWidth="30"
-    lineColor="#f56c6c"
-    :activeStyle="{
-        color: '#303133',
-        fontWeight: 'bold',
-        transform: 'scale(1.05)'
-    }"
-    :inactiveStyle="{
-        color: '#606266',
-        transform: 'scale(1)'
-    }"
-    itemStyle="padding-left: 15px; padding-right: 15px; height: 34px;"
->
-</up-tabs>
+<template>
+    <up-tabs
+        :list="list4"
+        lineWidth="30"
+        lineColor="#f56c6c"
+        :activeStyle="{
+            color: '#303133',
+            fontWeight: 'bold',
+            transform: 'scale(1.05)'
+        }"
+        :inactiveStyle="{
+            color: '#606266',
+            transform: 'scale(1)'
+        }"
+        itemStyle="padding-left: 15px; padding-right: 15px; height: 34px;"
+    >
+    </up-tabs>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref, reactive } from 'vue';  
+  
+const list4 = reactive([  
+    { name: '关注' },  
+    { name: '推荐', badge: { isDot: true } },  
+    { name: '电影' },  
+    { name: '科技' },  
+    { name: '音乐' },  
+    { name: '美食' },  
+    { name: '文化' },  
+    { name: '财经' },  
+    { name: '手工' }  
+]);  
+</script>
 ```
 
 #### 滑块设置背景图
 
+通过使用`lineColor`来设置滑块背景图。
+
 ```vue
-<up-tabs
+<template>
+    <up-tabs
     :list="list4"
     lineWidth="20"
     lineHeight="7"
@@ -423,24 +737,73 @@ keyName='label'，从元素的 label 字段取文字
         transform: 'scale(1)'
     }"
     itemStyle="padding-left: 15px; padding-right: 15px; height: 34px;"
->
-</up-tabs>
+    >
+    </up-tabs>
+</template>
 ```
-
-#### 自定义内容插槽
 
 ```vue
-<up-tabs :list="list1">
-    <template #default="{item, keyName}">
-        <text class="u-tabs__wrapper__nav__item__text"
-            style="color: red">
-            {{item != null ? (item as UTSJSONObject)[keyName as string] : '-'}}
-        </text>
-    </template>
-</up-tabs>
+<script setup>  
+import { reactive } from 'vue';  
+  
+const lineBg = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAOCAYAAABdC15GAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAFxSURBVHgBzZNRTsJAEIb/WTW+lpiY+FZPIDew3ABP4GJ8hxsI9zBpOYHeQDwBPQI+mRiRvpLojtPdYhCorQqF/6GdbGd2vvwzBXZcNAt4oj1ANeUoAT5iqkUjbEFLHNmhD1YPEvpZ3ghkGlVDCkc94/BmHMq998I5ONiY1ZBfpKAyuOtgAc5yOEDmYEWNh32BHF91sGHZHmwW4azciN9aQwnz3SJEgOmte+R2tdLprTYoa50mvuomlLpD4Y3oQZnov6D2RzCqI93bWOHaEmAGqQUyRBlZR1WfarcD/EJ2z8DtzDGvsMCwpm8XOCfDUsVOCYhiqRxI/CTQo4UOvjzO7Pow18vfywneuUHHUUxLn55lLw5JFpZ8bEUcY8oXdOLWiHLTxvoGpLqoUmy6dBT15o/ox3znpoycAmxUsiJTbs1cmxeVKp+0zmFIS7bGWiVghC7Vwse8jFKAX9eljh4ggKLLv7uaQvG9/F59Oo2SouxPu7OTCxN/s8wAAAAASUVORK5CYII=";
+  
+// 响应式数据  
+const list4 = reactive([  
+    { name: '关注' },  
+    { name: '推荐', badge: { isDot: true } },  
+    { name: '电影' },  
+    { name: '科技' },  
+    { name: '音乐' },  
+    { name: '美食' },  
+    { name: '文化' },  
+    { name: '财经' },  
+    { name: '手工' }  
+]);  
+</script>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsC/tabs/tabs.uvue`</small>
+#### 右侧自定义插槽
+
+```vue
+<template>
+    <up-tabs :list="list1">
+        <template #right>
+            <view
+                style="padding-left: 4px;"
+                @tap="$u.toast('插槽被点击')"
+            >
+                <up-icon
+                        name="list"
+                        size="21"
+                        bold
+                ></up-icon>
+            </view>
+        </template>
+    </up-tabs>
+</template>
+```
+
+```vue
+<script setup>  
+import { reactive } from 'vue';  
+  
+// 创建响应式数组  
+const list1 = reactive([  
+    { name: '关注' },  
+    { name: '推荐' },  
+    { name: '电影' },  
+    { name: '科技' },  
+    { name: '音乐' },  
+    { name: '美食' },  
+    { name: '文化' },  
+    { name: '财经' },  
+    { name: '手工' }  
+]);  
+</script>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/tabs.md`</small>
 
 </template>
 

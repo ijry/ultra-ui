@@ -12,7 +12,7 @@ A floating action button that can fan out into several sub-actions.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -85,83 +85,115 @@ No snippet could be extracted automatically — please read the source.
 
 <template #uniapp>
 
+#### 基本使用
+
 ```vue
-<up-float-button :isMenu="false" top="90px">
-</up-float-button>
+<style lang='scss' scoped>
+<template>
+	<view>
+        <up-float-button :isMenu="false" top="90px">
+        </up-float-button>
+	</view>
+</template>
 ```
 
 ```vue
-<up-float-button :isMenu="true" top="220px" @item-click="itemClick"
- :list="[
-   {key: 'plus', name: 'plus', color: '#fff', backgroundColor: 'red'},
-   {key: 'order', name: 'order', color: '#fff', backgroundColor: 'green'}
- ]">
-</up-float-button>
+<script setup>  
+import { ref, onMounted } from 'vue';  
+  
+// 响应式数据  
+const list = ref([
+]);
+</script>
+```
+
+#### 带子菜单模式
+
+```vue
+<style lang='scss' scoped>
+<template>
+	<view>
+        <up-float-button :isMenu="true" top="220px"
+          :list="list"  @item-click="itemClick">
+        </up-float-button>
+	</view>
+</template>
 ```
 
 ```vue
-<up-float-button top="''" bottom="250px" :isMenu="true">
-   <template #list>
-      <view style="display: flex ;justify-content: center;align-items: center;margin: 5px 0px;background-color: blueviolet;border-radius: 50%; width: 50px;height:50px;">
-           <up-icon
-               name="arrow-left"
-               color='#fff'
-               size="19"
-           ></up-icon>
-       </view>
-       <view style="display: flex ;justify-content: center;align-items: center;margin: 5px 0px;background-color: chocolate;border-radius: 50%; width: 50px;height:50px;">
-           <up-icon
-               name="arrow-left"
-               color='#fff'
-               size="19"
-           ></up-icon>
-       </view>
-   </template>
-</up-float-button>
+<script setup>  
+import { ref, onMounted } from 'vue';  
+  
+// 响应式数据  
+const list = ref([
+    {key: 'plus', name: 'plus', color: '#fff', backgroundColor: 'red'},
+    {key: 'order', name: 'order', color: '#fff', backgroundColor: 'green'}
+]);
+
+const itemClick = (e) => {
+    console.log(e)
+}
+</script>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/floatButton/floatButton.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/floatButton.md`</small>
 
 </template>
 
 <template #uniappx>
 
+#### 基本使用
+
 ```vue
-<up-float-button :isMenu="false" top="90px">
-</up-float-button>
+<style lang='scss' scoped>
+<template>
+	<view>
+        <up-float-button :isMenu="false" top="90px">
+        </up-float-button>
+	</view>
+</template>
 ```
 
 ```vue
-<up-float-button :isMenu="true" top="220px" @item-click="itemClick"
- :list="[
-   {key: 'plus', name: 'plus', color: '#fff', backgroundColor: 'red'},
-   {key: 'order', name: 'order', color: '#fff', backgroundColor: 'green'}
- ]">
-</up-float-button>
+<script setup>  
+import { ref, onMounted } from 'vue';  
+  
+// 响应式数据  
+const list = ref([
+]);
+</script>
+```
+
+#### 带子菜单模式
+
+```vue
+<style lang='scss' scoped>
+<template>
+	<view>
+        <up-float-button :isMenu="true" top="220px"
+          :list="list"  @item-click="itemClick">
+        </up-float-button>
+	</view>
+</template>
 ```
 
 ```vue
-<up-float-button top="''" bottom="250px" :isMenu="true">
-   <template #list>
-      <view style="display: flex ;justify-content: center;align-items: center;margin: 5px 0px;background-color: blueviolet;border-radius: 50%; width: 50px;height:50px;">
-           <up-icon
-               name="arrow-left"
-               color='#fff'
-               size="19"
-           ></up-icon>
-       </view>
-       <view style="display: flex ;justify-content: center;align-items: center;margin: 5px 0px;background-color: chocolate;border-radius: 50%; width: 50px;height:50px;">
-           <up-icon
-               name="arrow-left"
-               color='#fff'
-               size="19"
-           ></up-icon>
-       </view>
-   </template>
-</up-float-button>
+<script setup>  
+import { ref, onMounted } from 'vue';  
+  
+// 响应式数据  
+const list = ref([
+    {key: 'plus', name: 'plus', color: '#fff', backgroundColor: 'red'},
+    {key: 'order', name: 'order', color: '#fff', backgroundColor: 'green'}
+]);
+
+const itemClick = (e) => {
+    console.log(e)
+}
+</script>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/floatButton/floatButton.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/floatButton.md`</small>
 
 </template>
 

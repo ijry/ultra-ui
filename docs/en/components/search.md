@@ -12,7 +12,7 @@ A search field with built-in search and clear buttons.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -357,165 +357,95 @@ inputAlign：left / center / right
 
 <template #uniapp>
 
-#### 基础功能
+#### 基本使用
 
 ```vue
-<up-search
-    v-model="value1"
-    :show-action="false"
-    @change="change"
-></up-search>
+<template>
+	<up-search placeholder="日照香炉生紫烟" v-model="keyword"></up-search>
+</template>
 ```
-
-#### 设置初始值
 
 ```vue
-<up-search
-    v-model="value2"
-    :show-action="false"
-></up-search>
+<script setup>  
+import { ref } from 'vue';  
+  
+// 响应式数据  
+const keyword = ref('遥看瀑布挂前川');  
+</script>
 ```
 
-#### 搜索框形状
+#### 设置输入框形状
 
 ```vue
-<up-search
-    v-model="value3"
-    :show-action="false"
-    shape="round"
-></up-search>
+<up-search shape="round"></up-search>
 ```
 
-#### 右侧控件
+#### 是否开启清除控件
 
 ```vue
-<up-search v-model="value5"></up-search>
+<up-search :clearabled="true"></up-search>
 ```
 
-#### 禁用输入框
+#### 是否开启右边控件
 
 ```vue
-<up-search
-    placeholder="输入框被禁用,可以监听点击事件进行跳转"
-    disabled
-    :show-action="false"
-></up-search>
+<up-search :show-action="true" actionText="搜索" :animation="true"></up-search>
 ```
 
-#### 点击左侧图标
+#### 自定义样式
 
 ```vue
-<up-search
-    v-model="value6"
-    :show-action="false"
-    @clickIcon="clickIcon"
-></up-search>
+<up-search inputAlign="center" height="70"></up-search>
 ```
 
-#### 搜索框内容水平对齐
-
-```vue
-<up-search
-    v-model="value7"
-    :show-action="false"
-    input-align="left"
-></up-search>
-```
-
-#### 自定义
-
-```vue
-<up-search
-    v-model="value10"
-    :show-action="false"
-    borderColor="rgb(230, 230, 230)"
-    bgColor="#fff"
-></up-search>
-```
-
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsB/search/search.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/search.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 基础功能
+#### 基本使用
 
 ```vue
-<up-search
-    v-model="value1"
-    :show-action="false"
-    @change="change"
-></up-search>
+<template>
+	<up-search placeholder="日照香炉生紫烟" v-model="keyword"></up-search>
+</template>
 ```
-
-#### 设置初始值
 
 ```vue
-<up-search
-    v-model="value2"
-    :show-action="false"
-></up-search>
+<script setup>  
+import { ref } from 'vue';  
+  
+// 响应式数据  
+const keyword = ref('遥看瀑布挂前川');  
+</script>
 ```
 
-#### 搜索框形状
+#### 设置输入框形状
 
 ```vue
-<up-search
-    v-model="value3"
-    :show-action="false"
-    shape="round"
-></up-search>
+<up-search shape="round"></up-search>
 ```
 
-#### 右侧控件
+#### 是否开启清除控件
 
 ```vue
-<up-search v-model="value5"></up-search>
+<up-search :clearabled="true"></up-search>
 ```
 
-#### 禁用输入框
+#### 是否开启右边控件
 
 ```vue
-<up-search
-    placeholder="输入框被禁用,可以监听点击事件进行跳转"
-    disabled
-    :show-action="false"
-></up-search>
+<up-search :show-action="true" actionText="搜索" :animation="true"></up-search>
 ```
 
-#### 点击左侧图标
+#### 自定义样式
 
 ```vue
-<up-search
-    v-model="value6"
-    :show-action="false"
-    @clickIcon="clickIcon"
-></up-search>
+<up-search inputAlign="center" height="70"></up-search>
 ```
 
-#### 搜索框内容水平对齐
-
-```vue
-<up-search
-    v-model="value7"
-    :show-action="false"
-    input-align="left"
-></up-search>
-```
-
-#### 自定义
-
-```vue
-<up-search
-    v-model="value10"
-    :show-action="false"
-    borderColor="rgb(230, 230, 230)"
-    bgColor="#fff"
-></up-search>
-```
-
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsB/search/search.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/search.md`</small>
 
 </template>
 

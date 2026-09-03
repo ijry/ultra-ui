@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -261,113 +261,243 @@ placeholderStyle 支持对象或字符串
 
 <template #uniapp>
 
-#### 基础使用
+#### 基本使用
 
 ```vue
-<up-textarea
-    v-model="value1"
-    placeholder="请输入内容"
-></up-textarea>
+<up-textarea v-model="value1" placeholder="请输入内容" ></up-textarea>
+```
+
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 使用 ref 创建响应式引用  
+const value1 = ref('');  
+</script>
 ```
 
 #### 字数统计
 
+设置`count`属性实现字数统计
+
 ```vue
-<up-textarea
-    v-model="value2"
-    placeholder="请输入内容"
-    count
-></up-textarea>
+<up-textarea v-model="value2" placeholder="请输入内容" count ></up-textarea>
+```
+
+```js
+import { ref } from 'vue';  
+  
+// 使用 ref 创建响应式引用  
+const value2 = ref('统计字数');
 ```
 
 #### 自动增高
 
+设置`autoHeight`属性实现自动增高
+
 ```vue
-<up-textarea
-    v-model="value3"
-    placeholder="请输入内容"
-    autoHeight
-></up-textarea>
+<up-textarea v-model="value3" placeholder="请输入内容" autoHeight ></up-textarea>
+```
+
+```js
+import { ref } from 'vue';  
+  
+// 使用 ref 创建响应式引用  
+const value3 = ref('');
 ```
 
 #### 禁用状态
 
+设置`disabled`属性实现进行禁用，您也可以动态设置是否禁用
+
 ```vue
-<up-textarea
-    v-model="value4"
-    placeholder="文本域已被禁用"
-    disabled
-    count
-></up-textarea>
+<up-textarea v-model="value4" placeholder="文本域已被禁用" disabled count></up-textarea>
+```
+
+```js
+import { ref } from 'vue';  
+  
+// 使用 ref 创建响应式引用  
+const value4 = ref('');
 ```
 
 #### 下划线模式
 
+设置`border="bottom"`属性单独设置底部下划线
+
 ```vue
-<up-textarea
-    v-model="value5"
-    placeholder="请输入内容"
-    border="bottom"
-></up-textarea>
+<up-textarea v-model="value5" placeholder="请输入内容" border="bottom"></up-textarea>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsC/textarea/textarea.uvue`</small>
+```js
+import { ref } from 'vue';  
+  
+// 使用 ref 创建响应式引用  
+const value5 = ref('');
+```
+
+#### 格式化处理
+
+如有需要，可以通过`formatter`参数编写自定义格式化规则。
+
+:::warning 注意：
+微信小程序不支持通过`props`传递函数参数，所以组件内部暴露了一个`setFormatter`方法用于设置格式化方法，注意在页面的`onReady`生命周期获取`ref`再操作。
+:::
+
+```vue
+<template>
+    <up-textarea v-model="value" :formatter="formatter" ref="textareaRef"></up-textarea>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref, onMounted } from 'vue';  
+import {
+	onLoad,
+	onShow,
+	onReady
+} from "@dcloudio/uni-app";
+
+// 创建响应式数据  
+const value = ref('');  
+const textareaRef = ref(null);
+  
+// 格式化方法  
+const formatter = (val) => {  
+  // 让输入框只能输入数值，过滤其他字符  
+  return val.replace(/[^0-9]/ig, "");  
+};  
+  
+// 生命周期钩子，使用 onMounted 替代 onReady  
+onReady(() => {  
+    textareaRef.value.setFormatter(formatter);  
+});  
+</script>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/textarea.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 基础使用
+#### 基本使用
 
 ```vue
-<up-textarea
-    v-model="value1"
-    placeholder="请输入内容"
-></up-textarea>
+<up-textarea v-model="value1" placeholder="请输入内容"></up-textarea>
+```
+
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 使用 ref 创建响应式引用  
+const value1 = ref('');  
+</script>
 ```
 
 #### 字数统计
 
+设置`count`属性实现字数统计
+
 ```vue
-<up-textarea
-    v-model="value2"
-    placeholder="请输入内容"
-    count
-></up-textarea>
+<up-textarea v-model="value2" placeholder="请输入内容" count ></up-textarea>
+```
+
+```js
+import { ref } from 'vue';  
+  
+// 使用 ref 创建响应式引用  
+const value2 = ref('统计字数');
 ```
 
 #### 自动增高
 
+设置`autoHeight`属性实现自动增高
+
 ```vue
-<up-textarea
-    v-model="value3"
-    placeholder="请输入内容"
-    autoHeight
-></up-textarea>
+<up-textarea v-model="value3" placeholder="请输入内容" autoHeight ></up-textarea>
+```
+
+```js
+import { ref } from 'vue';  
+  
+// 使用 ref 创建响应式引用  
+const value3 = ref('');
 ```
 
 #### 禁用状态
 
+设置`disabled`属性实现进行禁用，您也可以动态设置是否禁用
+
 ```vue
-<up-textarea
-    v-model="value4"
-    placeholder="文本域已被禁用"
-    disabled
-    count
-></up-textarea>
+<up-textarea v-model="value4" placeholder="文本域已被禁用" disabled count></up-textarea>
+```
+
+```js
+import { ref } from 'vue';  
+  
+// 使用 ref 创建响应式引用  
+const value4 = ref('');
 ```
 
 #### 下划线模式
 
+设置`border="bottom"`属性单独设置底部下划线
+
 ```vue
-<up-textarea
-    v-model="value5"
-    placeholder="请输入内容"
-    border="bottom"
-></up-textarea>
+<up-textarea v-model="value5" placeholder="请输入内容" border="bottom"></up-textarea>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsC/textarea/textarea.uvue`</small>
+```js
+import { ref } from 'vue';  
+  
+// 使用 ref 创建响应式引用  
+const value5 = ref('');
+```
+
+#### 格式化处理
+
+如有需要，可以通过`formatter`参数编写自定义格式化规则。
+
+:::warning 注意：
+微信小程序不支持通过`props`传递函数参数，所以组件内部暴露了一个`setFormatter`方法用于设置格式化方法，注意在页面的`onReady`生命周期获取`ref`再操作。
+:::
+
+```vue
+<template>
+    <up-textarea v-model="value" :formatter="formatter" ref="textareaRef"></up-textarea>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref, onMounted } from 'vue';  
+import {
+	onLoad,
+	onShow,
+	onReady
+} from "@dcloudio/uni-app";
+
+// 创建响应式数据  
+const value = ref('');  
+const textareaRef = ref(null);
+  
+// 格式化方法  
+const formatter = (val) => {  
+  // 让输入框只能输入数值，过滤其他字符  
+  return val.replace(/[^0-9]/ig, "");  
+};  
+  
+// 生命周期钩子，使用 onMounted 替代 onReady  
+onReady(() => {  
+    textareaRef.value.setFormatter(formatter);  
+});  
+</script>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/textarea.md`</small>
 
 </template>
 

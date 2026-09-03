@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -193,91 +193,159 @@ timingFunction，仅 circle / semicircle 生效
 
 <template #uniapp>
 
-#### 基本案列
+#### 基本使用
+
+通过`mode`设定动画的类型，`circle`为圆圈的形状，`flower`为经典类似花朵的形状
 
 ```vue
-<up-loading-icon></up-loading-icon>
+<template>
+	<view>
+		<up-loading-icon></up-loading-icon>
+	</view>
+</template>
 ```
 
-#### 半圆loading
+#### 动画文字
+
+`text`可以指定文字内容
+`textSize`可以指定文字大小
 
 ```vue
-<up-loading-icon mode="semicircle"></up-loading-icon>
+<up-loading-icon text="加载中" textSize="18"></up-loading-icon>
 ```
 
-#### 圆形loading
+#### 模式类型
+
+`mode`可以指定模式
 
 ```vue
-<up-loading-icon mode="circle"></up-loading-icon>
+<up-loading-icon text="花朵形"></up-loading-icon>
+<up-loading-icon mode="semicircle" text="半圆"></up-loading-icon>
+<up-loading-icon mode="circle" text="圆型"></up-loading-icon>
 ```
 
-#### 自定义动画
+#### 排列类型
+
+`vertical`可以指定文字和图标是否垂直排列
 
 ```vue
-<up-loading-icon mode="circle" timingFunction="linear"></up-loading-icon>
+<up-loading-icon :vertical="true"></up-loading-icon>
 ```
 
-#### 自定义颜色
+#### 动画模式
+
+`timing-function`可以指定`mode`为`semicircle`或`circle`时动画里css中`animation-timing-function`的属性，默认为`ease-in-out`
 
 ```vue
-<up-loading-icon color="#19be6b"></up-loading-icon>
+<up-loading-icon timing-function="linear"></up-loading-icon>
 ```
 
-#### 自定义文字
+#### 动画运行时间
+
+`duration`可以指定动画的运行周期时间
 
 ```vue
-<up-loading-icon
-    :vertical="true"
-    text="加载中"
-></up-loading-icon>
+<up-loading-icon duration="2000"></up-loading-icon>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsA/loading-icon/loading-icon.uvue`</small>
+#### 图标颜色
+
+`color`可以指定动画活动区域的颜色, `inactive-color`可以制定`mode`为`circle`时的暗边颜色
+
+```vue
+<up-loading-icon color="red"></up-loading-icon>
+
+<up-loading-icon mode="circle" inactive-color="red"></up-loading-icon>
+```
+
+#### 图标尺寸
+
+通过`size`设定尺寸，单位rpx，组件内把`size`值体现为组件的宽和高
+
+```vue
+<up-loading-icon size="36"></up-loading-icon>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/loadingIcon.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 基本案列
+#### 基本使用
+
+通过`mode`设定动画的类型，`circle`为圆圈的形状，`flower`为经典类似花朵的形状
 
 ```vue
-<up-loading-icon></up-loading-icon>
+<template>
+	<view>
+		<up-loading-icon></up-loading-icon>
+	</view>
+</template>
 ```
 
-#### 半圆loading
+#### 动画文字
+
+`text`可以指定文字内容
+`textSize`可以指定文字大小
 
 ```vue
-<up-loading-icon mode="semicircle"></up-loading-icon>
+<up-loading-icon text="加载中" textSize="18"></up-loading-icon>
 ```
 
-#### 圆形loading
+#### 模式类型
+
+`mode`可以指定模式
 
 ```vue
-<up-loading-icon mode="circle"></up-loading-icon>
+<up-loading-icon text="花朵形"></up-loading-icon>
+<up-loading-icon mode="semicircle" text="半圆"></up-loading-icon>
+<up-loading-icon mode="circle" text="圆型"></up-loading-icon>
 ```
 
-#### 自定义动画
+#### 排列类型
+
+`vertical`可以指定文字和图标是否垂直排列
 
 ```vue
-<up-loading-icon mode="circle" timingFunction="linear"></up-loading-icon>
+<up-loading-icon :vertical="true"></up-loading-icon>
 ```
 
-#### 自定义颜色
+#### 动画模式
+
+`timing-function`可以指定`mode`为`semicircle`或`circle`时动画里css中`animation-timing-function`的属性，默认为`ease-in-out`
 
 ```vue
-<up-loading-icon color="#19be6b"></up-loading-icon>
+<up-loading-icon timing-function="linear"></up-loading-icon>
 ```
 
-#### 自定义文字
+#### 动画运行时间
+
+`duration`可以指定动画的运行周期时间
 
 ```vue
-<up-loading-icon
-    :vertical="true"
-    text="加载中"
-></up-loading-icon>
+<up-loading-icon duration="2000"></up-loading-icon>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsA/loading-icon/loading-icon.uvue`</small>
+#### 图标颜色
+
+`color`可以指定动画活动区域的颜色, `inactive-color`可以制定`mode`为`circle`时的暗边颜色
+
+```vue
+<up-loading-icon color="red"></up-loading-icon>
+
+<up-loading-icon mode="circle" inactive-color="red"></up-loading-icon>
+```
+
+#### 图标尺寸
+
+通过`size`设定尺寸，单位rpx，组件内把`size`值体现为组件的宽和高
+
+```vue
+<up-loading-icon size="36"></up-loading-icon>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/loadingIcon.md`</small>
 
 </template>
 

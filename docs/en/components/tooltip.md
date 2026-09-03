@@ -12,7 +12,7 @@ A text bubble on tap or long press, optionally with a copy action.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -251,107 +251,131 @@ color / bgColor / disabled
 
 <template #uniapp>
 
-#### 基础使用
+#### 基本使用.
 
 ```vue
-<up-tooltip
-    :text="text1"
-    overlay
-></up-tooltip>
+<template>
+    <up-tooltip text="复制" overlay></up-tooltip>
+</template>
 ```
 
 #### 下方显示
 
 ```vue
-<up-tooltip
-    :text="text2"
-    direction="bottom"
-></up-tooltip>
+<template>
+    <up-tooltip text="下方显示" direction="bottom"></up-tooltip>
+</template>
 ```
 
 #### 扩展按钮
 
 ```vue
-<up-tooltip
-    :text="text3"
-    :buttons="buttons1"
-    @click="click"
-></up-tooltip>
-```
-
-#### 自动调整位置
-
-```vue
-<up-tooltip
-    :text="text4"
-    :buttons="buttons2"
-></up-tooltip>
+<template>
+    <up-tooltip text="扩展显示" :buttons="['扩展']"></up-tooltip>
+</template>
 ```
 
 #### 高亮选中文本背景色
 
 ```vue
-<up-tooltip
-    :text="text5"
-    :buttons="buttons3"
-    bgColor="#e3e4e6"
-></up-tooltip>
+<template>
+    <up-tooltip text="高亮选中文本背景色" :buttons="['扩展']" bgColor="#e3e4e6"></up-tooltip>
+</template>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/tooltip/tooltip.uvue`</small>
+#### 单例打开
+
+```vue
+<template>
+    <up-tooltip text="第一个" triggerMode="click" singleton></up-tooltip>
+    <up-tooltip text="第二个" triggerMode="click" singleton></up-tooltip>
+</template>
+```
+
+#### 左侧弹出及强制定位
+
+```vue
+<template>
+    <up-tooltip
+        text="text5"
+        color="#fff"
+        bgColor="#333"
+        popupBgColor="#333"
+        triggerMode="click"
+        :forcePosition="{right: '108px', top: '0px'}"
+        direction="left"
+    >
+        <template #trigger>
+            <up-button style="width: 100px" :stop="false" type="primary">点击</up-button>
+        </template>
+        <template #content>
+            <view style="padding: 6px 12px;">自定义内容</view>
+        </template>
+    </up-tooltip>
+</template>
+```
+
+#### 右侧弹出
+
+```vue
+<template>
+    <up-tooltip
+        text="text5"
+        color="#333"
+        bgColor="#e3e4e6"
+        popupBgColor="#f7f7f7"
+        triggerMode="click"
+        direction="right"
+    >
+        <template #trigger>
+            <up-button style="width: 100px" :stop="false" type="primary">点击</up-button>
+        </template>
+        <template #content>
+            <view style="padding: 6px 12px;">自定义内容</view>
+        </template>
+    </up-tooltip>
+</template>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/tooltip.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 基础使用
+#### 基本使用.
 
 ```vue
-<up-tooltip
-    :text="text1"
-    overlay
-></up-tooltip>
+<template>
+    <up-tooltip text="复制" overlay></up-tooltip>
+</template>
 ```
 
 #### 下方显示
 
 ```vue
-<up-tooltip
-    :text="text2"
-    direction="bottom"
-></up-tooltip>
+<template>
+    <up-tooltip text="下方显示" direction="bottom"></up-tooltip>
+</template>
 ```
 
 #### 扩展按钮
 
 ```vue
-<up-tooltip
-    :text="text3"
-    :buttons="buttons1"
-    @click="click"
-></up-tooltip>
-```
-
-#### 自动调整位置
-
-```vue
-<up-tooltip
-    :text="text4"
-    :buttons="buttons2"
-></up-tooltip>
+<template>
+    <up-tooltip text="扩展显示" :buttons="['扩展']"></up-tooltip>
+</template>
 ```
 
 #### 高亮选中文本背景色
 
 ```vue
-<up-tooltip
-    :text="text5"
-    :buttons="buttons3"
-    bgColor="#e3e4e6"
-></up-tooltip>
+<template>
+    <up-tooltip text="高亮选中文本背景色" :buttons="['扩展']" bgColor="#e3e4e6"></up-tooltip>
+</template>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/tooltip/tooltip.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/tooltip.md`</small>
 
 </template>
 

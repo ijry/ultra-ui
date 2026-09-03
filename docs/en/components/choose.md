@@ -12,7 +12,7 @@ A data-driven picker covering single select, multi select and search in one.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -157,85 +157,243 @@ No snippet could be extracted automatically — please read the source.
 
 <template #uniapp>
 
-#### 基本用法
+#### 基本使用
 
 ```vue
-<up-choose v-model="value1" :options="options1"></up-choose>
+<template>
+  <up-choose v-model="value" :options="options"></up-choose>
+</template>
+```
+
+```vue
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(0)
+const options = ref([
+  {id: 1, title: '选项1'},
+  {id: 2, title: '选项2'},
+  {id: 3, title: '选项3'},
+  {id: 4, title: '选项4'},
+  {id: 5, title: '选项5'},
+  {id: 6, title: '选项6'}
+])
+</script>
 ```
 
 #### 不换行显示
 
 ```vue
-<up-choose v-model="value2" :options="options2" :wrap="false"></up-choose>
-```
-
-#### 时间选择
-
-```vue
-<up-choose v-model="value5" :options="options3" itemWidth="340rpx" itemHeight="70rpx"></up-choose>
-```
-
-#### 快递上门时间预约
-
-```vue
-<up-choose 
-    :modelValue="getDeliverySelectedIndex(item)"
-    :options="getDeliveryTimes(item)"
-    item-width="460rpx" 
-    item-height="60rpx"
-    @update:modelValue="updateDeliverySelectedIndex(item, $event)">
-</up-choose>
+<template>
+  <up-choose v-model="value" :options="options" :wrap="false"></up-choose>
+</template>
 ```
 
 #### 自定义尺寸
 
 ```vue
-<up-choose v-model="value5" :options="options4" :wrap="false" itemWidth="250rpx" itemHeight="220rpx"></up-choose>
+<template>
+  <up-choose 
+    v-model="value" 
+    :options="options" 
+    item-width="250rpx" 
+    item-height="220rpx">
+  </up-choose>
+</template>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/choose/choose.uvue`</small>
+#### 快递上门时间预约
+
+```vue
+<template>
+  <up-cate-tab height="300px" :tab-list="deliveryOptions" v-model:current="deliveryCurrent">
+    <template v-slot:itemList="{item}">
+      <view class="delivery-time-container">
+        <view class="item-title">
+          <text>{{item.name}}</text>
+        </view>
+        <view class="item-container">
+          <up-choose 
+            v-model="item.selectedIndex" 
+            :options="item.times" 
+            item-width="460rpx" 
+            item-height="60rpx"
+            @change="onDeliveryTimeChange">
+          </up-choose>
+        </view>
+      </view>
+    </template>
+  </up-cate-tab>
+</template>
+```
+
+#### 自定义选项插槽
+
+```vue
+<template>
+  <up-choose v-model="value" :options="options">
+    <template v-slot="slotProps">
+      <view class="custom-option">
+        <text>{{ slotProps.item.title }}</text>
+      </view>
+    </template>
+  </up-choose>
+</template>
+```
+
+#### 自定义点击事件
+
+```vue
+<template>
+  <up-choose 
+    v-model="value" 
+    :options="options" 
+    :custom-click="true"
+    @custom-click="onCustomClick">
+  </up-choose>
+</template>
+```
+
+```vue
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(0)
+const options = ref([
+  {id: 1, title: '选项1'},
+  {id: 2, title: '选项2'},
+  {id: 3, title: '选项3'}
+])
+
+function onCustomClick(index) {
+  console.log('自定义点击事件，选中索引：', index)
+  // 在这里实现自定义逻辑
+}
+</script>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/choose.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 基本用法
+#### 基本使用
 
 ```vue
-<up-choose v-model="value1" :options="options1"></up-choose>
+<template>
+  <up-choose v-model="value" :options="options"></up-choose>
+</template>
+```
+
+```vue
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(0)
+const options = ref([
+  {id: 1, title: '选项1'},
+  {id: 2, title: '选项2'},
+  {id: 3, title: '选项3'},
+  {id: 4, title: '选项4'},
+  {id: 5, title: '选项5'},
+  {id: 6, title: '选项6'}
+])
+</script>
 ```
 
 #### 不换行显示
 
 ```vue
-<up-choose v-model="value2" :options="options2" :wrap="false"></up-choose>
-```
-
-#### 时间选择
-
-```vue
-<up-choose v-model="value5" :options="options3" itemWidth="340rpx" itemHeight="70rpx"></up-choose>
-```
-
-#### 快递上门时间预约
-
-```vue
-<up-choose 
-    :modelValue="getDeliverySelectedIndex(item)"
-    :options="getDeliveryTimes(item)"
-    item-width="460rpx" 
-    item-height="60rpx"
-    @update:modelValue="updateDeliverySelectedIndex(item, $event)">
-</up-choose>
+<template>
+  <up-choose v-model="value" :options="options" :wrap="false"></up-choose>
+</template>
 ```
 
 #### 自定义尺寸
 
 ```vue
-<up-choose v-model="value5" :options="options4" :wrap="false" itemWidth="250rpx" itemHeight="220rpx"></up-choose>
+<template>
+  <up-choose 
+    v-model="value" 
+    :options="options" 
+    item-width="250rpx" 
+    item-height="220rpx">
+  </up-choose>
+</template>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/choose/choose.uvue`</small>
+#### 快递上门时间预约
+
+```vue
+<template>
+  <up-cate-tab height="300px" :tab-list="deliveryOptions" v-model:current="deliveryCurrent">
+    <template v-slot:itemList="{item}">
+      <view class="delivery-time-container">
+        <view class="item-title">
+          <text>{{item.name}}</text>
+        </view>
+        <view class="item-container">
+          <up-choose 
+            v-model="item.selectedIndex" 
+            :options="item.times" 
+            item-width="460rpx" 
+            item-height="60rpx"
+            @change="onDeliveryTimeChange">
+          </up-choose>
+        </view>
+      </view>
+    </template>
+  </up-cate-tab>
+</template>
+```
+
+#### 自定义选项插槽
+
+```vue
+<template>
+  <up-choose v-model="value" :options="options">
+    <template v-slot="slotProps">
+      <view class="custom-option">
+        <text>{{ slotProps.item.title }}</text>
+      </view>
+    </template>
+  </up-choose>
+</template>
+```
+
+#### 自定义点击事件
+
+```vue
+<template>
+  <up-choose 
+    v-model="value" 
+    :options="options" 
+    :custom-click="true"
+    @custom-click="onCustomClick">
+  </up-choose>
+</template>
+```
+
+```vue
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(0)
+const options = ref([
+  {id: 1, title: '选项1'},
+  {id: 2, title: '选项2'},
+  {id: 3, title: '选项3'}
+])
+
+function onCustomClick(index) {
+  console.log('自定义点击事件，选中索引：', index)
+  // 在这里实现自定义逻辑
+}
+</script>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/choose.md`</small>
 
 </template>
 

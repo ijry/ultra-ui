@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -107,11 +107,91 @@ showSkip 显示右上角跳过入口
 
 <template #uniapp>
 
-::: tip
-暂无自动提取到的示例代码，请参考源码。
-:::
+#### 基本使用
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small>
+通过 `v-model:show` 控制显隐，`list` 传入引导页数据。
+
+```vue
+<template>
+  <up-guide
+    v-model:show="show"
+    :list="list"
+    storage-key="demo-up-guide-once"
+  />
+</template>
+```
+
+```vue
+<script setup>
+import { ref } from 'vue'
+
+const show = ref(true)
+const list = ref([
+  {
+    image: '/static/uview/common/logo.png',
+    title: '欢迎使用 uview-plus',
+    desc: '一套跨端可复用的高质量组件库。'
+  },
+  {
+    image: '/static/uview/common/gray-logo.png',
+    title: '引导页支持多页滑动',
+    desc: '可配置跳过、下一步和立即体验。'
+  },
+  {
+    image: '/static/uview/common/logo.jpg',
+    title: '只显示一次',
+    desc: '默认内置本地存储记忆能力。'
+  }
+])
+</script>
+```
+
+#### 仅展示一次与重置
+
+- `once` 默认为 `true`，点击“跳过”或“立即体验”后会写入本地存储。
+- 通过 `storageKey` 区分不同业务引导。
+- 可通过 `ref` 调用 `reset()` 清理已读标记后重新展示。
+
+```vue
+<template>
+  <up-guide
+    ref="guideRef"
+    v-model:show="show"
+    :list="list"
+    storage-key="demo-up-guide-once"
+  />
+  <up-button text="重置首次标记" @click="resetGuide"></up-button>
+</template>
+```
+
+```vue
+<script setup>
+import { ref } from 'vue'
+
+const show = ref(false)
+const guideRef = ref(null)
+
+function resetGuide() {
+  guideRef.value?.reset?.()
+  show.value = true
+}
+</script>
+```
+
+#### 监听事件
+
+```vue
+<up-guide
+  v-model:show="show"
+  :list="list"
+  @change="onChange"
+  @skip="onSkip"
+  @finish="onFinish"
+  @close="onClose"
+/>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/guide.md`</small>
 
 </template>
 

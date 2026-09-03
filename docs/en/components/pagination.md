@@ -12,7 +12,7 @@ Page navigation with prev/next and direct page jumps.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -181,101 +181,167 @@ disabled 整体禁止交互
 
 <template #uniapp>
 
-#### 基础
+#### 使用示例
 
 ```vue
-<up-pagination
-    :current-page="currentPage"
-    :page-size="pageSize"
-    :total="total"
-    :page-sizes="pageSizes"
-    layout="prev, total, next"
-    @current-change="handleCurrentChange"
-    @size-change="handleSizeChange"
-  />
+<template>
+	<view class="u-page">
+		<view class="u-demo-block">
+			<view class="u-demo-block__title">基础</view>
+			<view class="u-demo-block__content">
+				<up-pagination
+				    :current-page="currentPage"
+				    :page-size="pageSize"
+				    :total="total"
+				    :page-sizes="pageSizes"
+				    layout="prev, total, next"
+				    @current-change="handleCurrentChange"
+				    @size-change="handleSizeChange"
+				  />
+			</view>
+		</view>
+		<view class="u-demo-block">
+			<view class="u-demo-block__title">上一页下一页文案</view>
+			<view class="u-demo-block__content">
+				<up-pagination
+					prevText="上一页"
+					nextText="下一页"
+				    :current-page="currentPage"
+				    :page-size="pageSize"
+				    :total="total"
+				    :page-sizes="pageSizes"
+				    layout="prev, total, next"
+				    @current-change="handleCurrentChange"
+				    @size-change="handleSizeChange"
+				  />
+			</view>
+		</view>
+		<view class="u-demo-block">
+			<view class="u-demo-block__title">显示分页切换</view>
+			<view class="u-demo-block__content">
+				<up-pagination
+				    :current-page="currentPage"
+				    :page-size="pageSize"
+				    :total="total"
+				    :page-sizes="pageSizes"
+				    layout="prev, pager, next"
+				    @current-change="handleCurrentChange"
+				    @size-change="handleSizeChange"
+				  />
+			</view>
+		</view>
+	</view>
+</template>
 ```
-
-#### 上一页下一页文案
 
 ```vue
-<up-pagination
-    prevText="上一页"
-    nextText="下一页"
-    :current-page="currentPage"
-    :page-size="pageSize"
-    :total="total"
-    :page-sizes="pageSizes"
-    layout="prev, total, next"
-    @current-change="handleCurrentChange"
-    @size-change="handleSizeChange"
-  />
+<script setup>
+import { ref } from 'vue';
+
+const currentPage = ref(1);
+const pageSize = ref(10);
+const total = ref(100);
+
+const handleCurrentChange = (page) => {
+  console.log('当前页:', page);
+  currentPage.value = page;
+};
+
+const handleSizeChange = (size) => {
+  console.log('每页条数:', size);
+  pageSize.value = size;
+};
+</script>
 ```
 
-#### 显示分页切换
-
-```vue
-<up-pagination
-    :current-page="currentPage"
-    :page-size="pageSize"
-    :total="total"
-    :page-sizes="pageSizes"
-    layout="prev, pager, next"
-    @current-change="handleCurrentChange"
-    @size-change="handleSizeChange"
-  />
-```
-
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/pagination/pagination.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/pagination.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 基础
+#### 使用示例
 
 ```vue
-<up-pagination
-    :current-page="currentPage"
-    :page-size="pageSize"
-    :total="total"
-    :page-sizes="pageSizes"
-    layout="prev, total, next"
-    @current-change="handleCurrentChange"
-    @size-change="handleSizeChange"
-  />
+<template>
+	<view class="u-page">
+		<view class="u-demo-block">
+			<view class="u-demo-block__title">基础</view>
+			<view class="u-demo-block__content">
+				<u-pagination
+				    :current-page="currentPage"
+				    :page-size="pageSize"
+				    :total="total"
+				    :page-sizes="pageSizes"
+				    layout="prev, total, next"
+				    @current-change="handleCurrentChange"
+				    @size-change="handleSizeChange"
+				  />
+			</view>
+		</view>
+		<view class="u-demo-block">
+			<view class="u-demo-block__title">上一页下一页文案</view>
+			<view class="u-demo-block__content">
+				<u-pagination
+					prevText="上一页"
+					nextText="下一页"
+				    :current-page="currentPage"
+				    :page-size="pageSize"
+				    :total="total"
+				    :page-sizes="pageSizes"
+				    layout="prev, total, next"
+				    @current-change="handleCurrentChange"
+				    @size-change="handleSizeChange"
+				  />
+			</view>
+		</view>
+		<view class="u-demo-block">
+			<view class="u-demo-block__title">显示分页切换</view>
+			<view class="u-demo-block__content">
+				<u-pagination
+				    :current-page="currentPage"
+				    :page-size="pageSize"
+				    :total="total"
+				    :page-sizes="pageSizes"
+				    layout="prev, pager, next"
+				    @current-change="handleCurrentChange"
+				    @size-change="handleSizeChange"
+				  />
+			</view>
+		</view>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+			  currentPage: 1,
+			  pageSize: 10,
+			  total: 100
+			}
+		},
+		methods: {
+			handleCurrentChange(page) {
+			  console.log('当前页:', page);
+			  this.currentPage = page;
+			},
+			handleSizeChange(size) {
+			  console.log('每页条数:', size);
+			  this.pageSize = size;
+			}
+		}
+	}
+</script>
+
+<style lang="scss" scoped>
+	.wrap {
+		padding: 24rpx;
+	}
+</style>
 ```
 
-#### 上一页下一页文案
-
-```vue
-<up-pagination
-    prevText="上一页"
-    nextText="下一页"
-    :current-page="currentPage"
-    :page-size="pageSize"
-    :total="total"
-    :page-sizes="pageSizes"
-    layout="prev, total, next"
-    @current-change="handleCurrentChange"
-    @size-change="handleSizeChange"
-  />
-```
-
-#### 显示分页切换
-
-```vue
-<up-pagination
-    :current-page="currentPage"
-    :page-size="pageSize"
-    :total="total"
-    :page-sizes="pageSizes"
-    layout="prev, pager, next"
-    @current-change="handleCurrentChange"
-    @size-change="handleSizeChange"
-  />
-```
-
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/pagination/pagination.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/pagination.md`</small>
 
 </template>
 

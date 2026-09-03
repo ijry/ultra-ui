@@ -12,7 +12,7 @@ Multi-select control with group validation, layout options and custom icons.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -246,197 +246,417 @@ labelDisabled 时只有图标可点
 
 <template #uniapp>
 
-#### 基本案例
+#### 基本使用
 
 ```vue
-<up-checkbox
-    :customStyle="{marginBottom: '8px'}"
-    v-for="(item, index) in checkboxList1"
-    :key="index"
-    :label="item['name']"
-    :name="item['name']"
->
-</up-checkbox>
+<template>
+    <view>
+        <up-checkbox-group
+            v-model="checkboxValue1"
+            placement="column"
+            @change="checkboxChange"
+        >
+            <up-checkbox
+                :customStyle="{marginBottom: '8px'}"
+                v-for="(item, index) in checkboxList1"
+                :key="index"
+                :label="item.name"
+                :name="item.name"
+            >
+            </up-checkbox>
+        </up-checkbox-group>
+    </view>
+</template>
+<script setup>
+import { ref,reactive } from 'vue';
+
+const checkboxValue1 = reactive([]);
+
+// 基本案列数据
+const checkboxList1 = reactive([
+  {
+    name: '苹果',
+    disabled: false,
+  },
+  {
+    name: '香蕉',
+    disabled: false,
+  },
+  {
+    name: '橙子',
+    disabled: false,
+  },
+]);
+
+const checkboxChange = (n) => {
+  console.log('change', n);
+};
+</script>
+```
+
+#### 独立使用up-checkbox
+
+```vue
+<template>
+    <up-checkbox
+        :customStyle="{marginBottom: '8px'}"
+        label="同意用户协议与隐私条款"
+        name="agree"
+        usedAlone
+        v-model:checked="aloneChecked"
+    >
+    </up-checkbox>
+</template>
+<script setup>
+import { ref } from 'vue'
+
+const aloneChecked = ref(false)
+</script>
 ```
 
 #### 自定义形状
 
 ```vue
-<up-checkbox
-    :customStyle="{marginBottom: '8px'}"
-    v-for="(item, index) in checkboxList2"
-    :key="index"
-    :label="item['name']"
-    :name="item['name']"
->
-</up-checkbox>
+<template>
+    <view>
+        <up-checkbox-group
+            v-model="checkboxValue1"
+            placement="column"
+            @change="checkboxChange"
+        >
+            <up-checkbox
+                :customStyle="{marginBottom: '8px'}"
+                v-for="(item, index) in checkboxList1"
+                :key="index"
+                :label="item.name"
+                :name="item.name"
+            >
+            </up-checkbox>
+        </up-checkbox-group>
+    </view>
+</template>
+<script setup>
+import { ref,reactive } from 'vue';
+
+const checkboxValue1 = reactive([]);
+
+// 基本案列数据
+const checkboxList1 = reactive([
+  {
+    name: '苹果',
+    disabled: false,
+  },
+  {
+    name: '香蕉',
+    disabled: false,
+  },
+  {
+    name: '橙子',
+    disabled: false,
+  },
+]);
+
+const checkboxChange = (n) => {
+  console.log('change', n);
+};
+</script>
 ```
 
-#### 是否禁用
+#### 禁用checkbox
 
 ```vue
-<up-checkbox
-    :customStyle="{marginBottom: '8px'}"
-    v-for="(item, index) in checkboxList3"
-    :key="index"
-    :label="item['name']"
-    :name="item['name']"
-    :disabled="index == 0"
->
-</up-checkbox>
+<template>
+    <view>
+        <up-checkbox-group
+            v-model="checkboxValue1"
+            placement="column"
+            @change="checkboxChange"
+        >
+            <up-checkbox
+                :customStyle="{marginBottom: '8px'}"
+                v-for="(item, index) in checkboxList1"
+                :key="index"
+                :label="item.name"
+                :name="item.name"
+                :disabled="item.disabled"
+            >
+            </up-checkbox>
+        </up-checkbox-group>
+    </view>
+</template>
+<script setup>
+import { reactive } from 'vue';
+
+const checkboxValue1 = reactive([]);
+
+// 基本案列数据
+const checkboxList1 = reactive([
+  {
+    name: '苹果',
+    disabled: false,
+  },
+  {
+    name: '香蕉',
+    disabled: false,
+  },
+  {
+    name: '橙子',
+    disabled: true,
+  },
+]);
+
+const checkboxChange = (n) => {
+  console.log('change', n);
+};
+</script>
 ```
 
-#### 是否禁止点击提示语选中复选框
+#### 自定义形状
 
 ```vue
-<up-checkbox
-    :customStyle="{marginBottom: '8px'}"
-    v-for="(item, index) in checkboxList4"
-    :key="index"
-    :label="item['name']"
-    :name="item['name']"
->
-</up-checkbox>
+<up-checkbox-group>
+	<up-checkbox v-model="checked" shape="circle" label="明月"></up-checkbox>
+</up-checkbox-group>
 ```
 
 #### 自定义颜色
 
 ```vue
-<up-checkbox
-    :customStyle="{marginBottom: '8px'}"
-    v-for="(item, index) in checkboxList5"
-    :key="index"
-    :label="item['name']"
-    :name="item['name']"
->
-</up-checkbox>
+<up-checkbox-group v-model="checked">
+	<up-checkbox  activeColor="red" label="光影"></up-checkbox>
+</up-checkbox-group>
 ```
 
 #### 横向排列形式
 
 ```vue
-<up-checkbox
-    :customStyle="{marginRight: '16px'}"
-    v-for="(item, index) in checkboxList6"
-    :key="index"
-    :label="item['name']"
-    :name="item['name']"
->
-</up-checkbox>
+<up-checkbox-group v-model="checked" placement="row">
+	<up-checkbox activeColor="red" label="红色"></up-checkbox>
+	<up-checkbox activeColor="green" label="绿色"></up-checkbox>
+</up-checkbox-group>
 ```
 
 #### 横向两端排列形式
 
 ```vue
-<up-checkbox
-    :customStyle="{marginBottom: '16px'}"
-    v-for="(item, index) in checkboxList7"
-    :key="index"
-    :label="item['name']"
-    :name="item['name']"
->
-</up-checkbox>
+<up-checkbox-group 
+    v-model="checked"
+    iconPlacement="right" 
+    placement="row">
+	<up-checkbox activeColor="red" label="红色"></up-checkbox>
+	<up-checkbox activeColor="green" label="绿色"></up-checkbox>
+</up-checkbox-group>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsA/checkbox/checkbox.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/checkbox.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 基本案例
+#### 基本使用
 
 ```vue
-<up-checkbox
-    :customStyle="{marginBottom: '8px'}"
-    v-for="(item, index) in checkboxList1"
-    :key="index"
-    :label="item['name']"
-    :name="item['name']"
->
-</up-checkbox>
+<template>
+    <view>
+        <up-checkbox-group
+            v-model="checkboxValue1"
+            placement="column"
+            @change="checkboxChange"
+        >
+            <up-checkbox
+                :customStyle="{marginBottom: '8px'}"
+                v-for="(item, index) in checkboxList1"
+                :key="index"
+                :label="item.name"
+                :name="item.name"
+            >
+            </up-checkbox>
+        </up-checkbox-group>
+    </view>
+</template>
+<script setup>
+import { ref,reactive } from 'vue';
+
+const checkboxValue1 = reactive([]);
+
+// 基本案列数据
+const checkboxList1 = reactive([
+  {
+    name: '苹果',
+    disabled: false,
+  },
+  {
+    name: '香蕉',
+    disabled: false,
+  },
+  {
+    name: '橙子',
+    disabled: false,
+  },
+]);
+
+const checkboxChange = (n) => {
+  console.log('change', n);
+};
+</script>
+```
+
+#### 独立使用up-checkbox
+
+```vue
+<template>
+    <up-checkbox
+        :customStyle="{marginBottom: '8px'}"
+        label="同意用户协议与隐私条款"
+        name="agree"
+        usedAlone
+        v-model:checked="aloneChecked"
+    >
+    </up-checkbox>
+</template>
+<script setup>
+import { ref } from 'vue'
+
+const aloneChecked = ref(false)
+</script>
 ```
 
 #### 自定义形状
 
 ```vue
-<up-checkbox
-    :customStyle="{marginBottom: '8px'}"
-    v-for="(item, index) in checkboxList2"
-    :key="index"
-    :label="item['name']"
-    :name="item['name']"
->
-</up-checkbox>
+<template>
+    <view>
+        <up-checkbox-group
+            v-model="checkboxValue1"
+            placement="column"
+            @change="checkboxChange"
+        >
+            <up-checkbox
+                :customStyle="{marginBottom: '8px'}"
+                v-for="(item, index) in checkboxList1"
+                :key="index"
+                :label="item.name"
+                :name="item.name"
+            >
+            </up-checkbox>
+        </up-checkbox-group>
+    </view>
+</template>
+<script setup>
+import { ref,reactive } from 'vue';
+
+const checkboxValue1 = reactive([]);
+
+// 基本案列数据
+const checkboxList1 = reactive([
+  {
+    name: '苹果',
+    disabled: false,
+  },
+  {
+    name: '香蕉',
+    disabled: false,
+  },
+  {
+    name: '橙子',
+    disabled: false,
+  },
+]);
+
+const checkboxChange = (n) => {
+  console.log('change', n);
+};
+</script>
 ```
 
-#### 是否禁用
+#### 禁用checkbox
 
 ```vue
-<up-checkbox
-    :customStyle="{marginBottom: '8px'}"
-    v-for="(item, index) in checkboxList3"
-    :key="index"
-    :label="item['name']"
-    :name="item['name']"
-    :disabled="index == 0"
->
-</up-checkbox>
+<template>
+    <view>
+        <up-checkbox-group
+            v-model="checkboxValue1"
+            placement="column"
+            @change="checkboxChange"
+        >
+            <up-checkbox
+                :customStyle="{marginBottom: '8px'}"
+                v-for="(item, index) in checkboxList1"
+                :key="index"
+                :label="item.name"
+                :name="item.name"
+                :disabled="item.disabled"
+            >
+            </up-checkbox>
+        </up-checkbox-group>
+    </view>
+</template>
+<script setup>
+import { reactive } from 'vue';
+
+const checkboxValue1 = reactive([]);
+
+// 基本案列数据
+const checkboxList1 = reactive([
+  {
+    name: '苹果',
+    disabled: false,
+  },
+  {
+    name: '香蕉',
+    disabled: false,
+  },
+  {
+    name: '橙子',
+    disabled: true,
+  },
+]);
+
+const checkboxChange = (n) => {
+  console.log('change', n);
+};
+</script>
 ```
 
-#### 是否禁止点击提示语选中复选框
+#### 自定义形状
 
 ```vue
-<up-checkbox
-    :customStyle="{marginBottom: '8px'}"
-    v-for="(item, index) in checkboxList4"
-    :key="index"
-    :label="item['name']"
-    :name="item['name']"
->
-</up-checkbox>
+<up-checkbox-group>
+	<up-checkbox v-model="checked" shape="circle" label="明月"></up-checkbox>
+</up-checkbox-group>
 ```
 
 #### 自定义颜色
 
 ```vue
-<up-checkbox
-    :customStyle="{marginBottom: '8px'}"
-    v-for="(item, index) in checkboxList5"
-    :key="index"
-    :label="item['name']"
-    :name="item['name']"
->
-</up-checkbox>
+<up-checkbox-group v-model="checked">
+	<up-checkbox  activeColor="red" label="光影"></up-checkbox>
+</up-checkbox-group>
 ```
 
 #### 横向排列形式
 
 ```vue
-<up-checkbox
-    :customStyle="{marginRight: '16px'}"
-    v-for="(item, index) in checkboxList6"
-    :key="index"
-    :label="item['name']"
-    :name="item['name']"
->
-</up-checkbox>
+<up-checkbox-group v-model="checked" placement="row">
+	<up-checkbox activeColor="red" label="红色"></up-checkbox>
+	<up-checkbox activeColor="green" label="绿色"></up-checkbox>
+</up-checkbox-group>
 ```
 
 #### 横向两端排列形式
 
 ```vue
-<up-checkbox
-    :customStyle="{marginBottom: '16px'}"
-    v-for="(item, index) in checkboxList7"
-    :key="index"
-    :label="item['name']"
-    :name="item['name']"
->
-</up-checkbox>
+<up-checkbox-group 
+    v-model="checked"
+    iconPlacement="right" 
+    placement="row">
+	<up-checkbox activeColor="red" label="红色"></up-checkbox>
+	<up-checkbox activeColor="green" label="绿色"></up-checkbox>
+</up-checkbox-group>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsA/checkbox/checkbox.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/checkbox.md`</small>
 
 </template>
 

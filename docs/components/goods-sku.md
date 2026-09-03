@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -177,66 +177,157 @@ pageInline 直接铺在页面里，不走弹层
 
 #### 基本使用
 
+- 通过`goodsInfo`设置商品基本信息（图片、价格、库存等）
+- 通过`skuTree`设置规格树形结构
+- 通过`skuList`设置具体规格组合及其价格、库存等信息
+
 ```vue
-<up-goods-sku
-    :goodsInfo="goodsInfo"
-    :skuTree="skuTree"
-    :skuList="skuList"
-    @confirm="confirmSku"
->
-    <template #trigger>
-        <up-button :stop="false" type="primary">打开SKU弹窗</up-button>
-    </template>
-</up-goods-sku>
+<script setup>
+import { ref } from 'vue';
+
+// 商品信息
+const goodsInfo = ref({
+	image: 'https://picsum.photos/200/200',
+	price: 99.00,
+	stock: 100
+});
+
+// SKU树形结构
+const skuTree = ref([
+	{
+		label: '颜色',
+		name: 'color',
+		children: [
+			{ id: 1, name: '红色' },
+			{ id: 2, name: '蓝色' },
+			{ id: 3, name: '黑色' }
+		]
+	},
+	{
+		label: '尺寸',
+		name: 'size',
+		children: [
+			{ id: 1, name: 'S' },
+			{ id: 2, name: 'M' },
+			{ id: 3, name: 'L' },
+			{ id: 4, name: 'XL' }
+		]
+	}
+]);
+
+// SKU列表
+const skuList = ref([
+	{
+		id: 1,
+		color: 1,
+		size: 1,
+		price: 99.00,
+		stock: 50
+	},
+	{
+		id: 2,
+		color: 1,
+		size: 2,
+		price: 99.00,
+		stock: 40
+	},
+	{
+		id: 3,
+		color: 2,
+		size: 1,
+		price: 109.00,
+		stock: 30
+	},
+	{
+		id: 4,
+		color: 2,
+		size: 3,
+		price: 109.00,
+		stock: 20
+	},
+	{
+		id: 5,
+		color: 3,
+		size: 4,
+		price: 89.00,
+		stock: 60
+	}
+]);
+
+function confirmSku(e) {
+	uni.showToast({
+		title: `选择了: ${e.selectedText}, 数量: ${e.num}`,
+		icon: 'none'
+	});
+}
+</script>
 ```
 
 #### 自定义最大购买数量
 
+通过`maxBuy`参数设置最大购买数量，默认为999。
+
 ```vue
-<up-goods-sku
-    :goodsInfo="goodsInfo"
-    :skuTree="skuTree"
-    :skuList="skuList"
-    :maxBuy="10"
-    @confirm="confirmSku"
->
-    <template #trigger>
-        <up-button :stop="false" type="error">打开SKU弹窗(最大购买10件)</up-button>
-    </template>
-</up-goods-sku>
+<template>
+	<view>
+		<up-goods-sku
+			:goodsInfo="goodsInfo"
+			:skuTree="skuTree"
+			:skuList="skuList"
+			:maxBuy="10"
+			@confirm="confirmSku"
+		>
+            <template #trigger>
+                <up-button :stop="false" type="error">打开SKU弹窗(最大购买10件)</up-button>
+            </template>
+        </up-goods-sku>
+	</view>
+</template>
 ```
 
 #### 自定义确认按钮文字
 
-```vue
-<up-goods-sku
-    :goodsInfo="goodsInfo"
-    :skuTree="skuTree"
-    :skuList="skuList"
-    confirmText="立即购买"
-    @confirm="confirmSku"
->
-    <template #trigger>
-        <up-button :stop="false" type="warning">打开SKU弹窗</up-button>
-    </template>
-</up-goods-sku>
-```
-
-#### 无弹窗页面模式
+通过confirmText参数设置确认按钮的文字内容。
 
 ```vue
-<up-goods-sku
-    :goodsInfo="goodsInfo"
-    :skuTree="skuTree"
-    :skuList="skuList"
-    :pageInline="true"
-    confirmText="立即购买"
-    @confirm="confirmSku"
->
-</up-goods-sku>
+<template>
+	<view>
+		<up-goods-sku
+			:goodsInfo="goodsInfo"
+			:skuTree="skuTree"
+			:skuList="skuList"
+			confirmText="立即购买"
+			@confirm="confirmSku"
+		>
+            <template #trigger>
+                <up-button :stop="false" type="warning">打开SKU弹窗</up-button>
+            </template>
+        </up-goods-sku>
+	</view>
+</template>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/goodsSku/goodsSku.uvue`</small>
+#### 页面内联模式
+
+通过`pageInline`参数启用页面内联模式，组件将直接显示在页面中而不是弹窗形式。
+
+```vue
+<template>
+	<view>
+		<up-goods-sku
+			:goodsInfo="goodsInfo"
+			:skuTree="skuTree"
+			:skuList="skuList"
+            :pageInline="true"
+			confirmText="立即购买"
+			@confirm="confirmSku"
+		>
+        </up-goods-sku>
+	</view>
+</template>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/goodsSku.md`</small>
 
 </template>
 
@@ -244,66 +335,157 @@ pageInline 直接铺在页面里，不走弹层
 
 #### 基本使用
 
+- 通过`goodsInfo`设置商品基本信息（图片、价格、库存等）
+- 通过`skuTree`设置规格树形结构
+- 通过`skuList`设置具体规格组合及其价格、库存等信息
+
 ```vue
-<up-goods-sku
-    :goodsInfo="goodsInfo"
-    :skuTree="skuTree"
-    :skuList="skuList"
-    @confirm="confirmSku"
->
-    <template #trigger>
-        <up-button :stop="false" type="primary">打开SKU弹窗</up-button>
-    </template>
-</up-goods-sku>
+<script setup>
+import { ref } from 'vue';
+
+// 商品信息
+const goodsInfo = ref({
+	image: 'https://picsum.photos/200/200',
+	price: 99.00,
+	stock: 100
+});
+
+// SKU树形结构
+const skuTree = ref([
+	{
+		label: '颜色',
+		name: 'color',
+		children: [
+			{ id: 1, name: '红色' },
+			{ id: 2, name: '蓝色' },
+			{ id: 3, name: '黑色' }
+		]
+	},
+	{
+		label: '尺寸',
+		name: 'size',
+		children: [
+			{ id: 1, name: 'S' },
+			{ id: 2, name: 'M' },
+			{ id: 3, name: 'L' },
+			{ id: 4, name: 'XL' }
+		]
+	}
+]);
+
+// SKU列表
+const skuList = ref([
+	{
+		id: 1,
+		color: 1,
+		size: 1,
+		price: 99.00,
+		stock: 50
+	},
+	{
+		id: 2,
+		color: 1,
+		size: 2,
+		price: 99.00,
+		stock: 40
+	},
+	{
+		id: 3,
+		color: 2,
+		size: 1,
+		price: 109.00,
+		stock: 30
+	},
+	{
+		id: 4,
+		color: 2,
+		size: 3,
+		price: 109.00,
+		stock: 20
+	},
+	{
+		id: 5,
+		color: 3,
+		size: 4,
+		price: 89.00,
+		stock: 60
+	}
+]);
+
+function confirmSku(e) {
+	uni.showToast({
+		title: `选择了: ${e.selectedText}, 数量: ${e.num}`,
+		icon: 'none'
+	});
+}
+</script>
 ```
 
 #### 自定义最大购买数量
 
+通过`maxBuy`参数设置最大购买数量，默认为999。
+
 ```vue
-<up-goods-sku
-    :goodsInfo="goodsInfo"
-    :skuTree="skuTree"
-    :skuList="skuList"
-    :maxBuy="10"
-    @confirm="confirmSku"
->
-    <template #trigger>
-        <up-button :stop="false" type="error">打开SKU弹窗(最大购买10件)</up-button>
-    </template>
-</up-goods-sku>
+<template>
+	<view>
+		<up-goods-sku
+			:goodsInfo="goodsInfo"
+			:skuTree="skuTree"
+			:skuList="skuList"
+			:maxBuy="10"
+			@confirm="confirmSku"
+		>
+            <template #trigger>
+                <up-button :stop="false" type="error">打开SKU弹窗(最大购买10件)</up-button>
+            </template>
+        </up-goods-sku>
+	</view>
+</template>
 ```
 
 #### 自定义确认按钮文字
 
-```vue
-<up-goods-sku
-    :goodsInfo="goodsInfo"
-    :skuTree="skuTree"
-    :skuList="skuList"
-    confirmText="立即购买"
-    @confirm="confirmSku"
->
-    <template #trigger>
-        <up-button :stop="false" type="warning">打开SKU弹窗</up-button>
-    </template>
-</up-goods-sku>
-```
-
-#### 无弹窗页面模式
+通过confirmText参数设置确认按钮的文字内容。
 
 ```vue
-<up-goods-sku
-    :goodsInfo="goodsInfo"
-    :skuTree="skuTree"
-    :skuList="skuList"
-    :pageInline="true"
-    confirmText="立即购买"
-    @confirm="confirmSku"
->
-</up-goods-sku>
+<template>
+	<view>
+		<up-goods-sku
+			:goodsInfo="goodsInfo"
+			:skuTree="skuTree"
+			:skuList="skuList"
+			confirmText="立即购买"
+			@confirm="confirmSku"
+		>
+            <template #trigger>
+                <up-button :stop="false" type="warning">打开SKU弹窗</up-button>
+            </template>
+        </up-goods-sku>
+	</view>
+</template>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/goodsSku/goodsSku.uvue`</small>
+#### 页面内联模式
+
+通过`pageInline`参数启用页面内联模式，组件将直接显示在页面中而不是弹窗形式。
+
+```vue
+<template>
+	<view>
+		<up-goods-sku
+			:goodsInfo="goodsInfo"
+			:skuTree="skuTree"
+			:skuList="skuList"
+            :pageInline="true"
+			confirmText="立即购买"
+			@confirm="confirmSku"
+		>
+        </up-goods-sku>
+	</view>
+</template>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/goodsSku.md`</small>
 
 </template>
 

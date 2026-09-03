@@ -12,7 +12,7 @@ Replaces the system nav bar, handling status-bar height and back navigation.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -165,79 +165,256 @@ safeAreaInsetTop 开启后，statusBarBgColor 可单独设置状态栏背景
 
 <template #uniapp>
 
+#### 基本使用
+
 ```vue
-<up-navbar
-    title="导航栏"
-    safeAreaInsetTop
-    fixed
-    placeholder
-    :autoBack="true"
->
-</up-navbar>
+<template>
+	<view>
+		<!-- 2.0.19支持autoBack，默认为false -->
+        <up-navbar
+            title="个人中心"
+            @rightClick="rightClick"
+            :autoBack="true"
+        >
+        </up-navbar>
+	</view>
+</template>
 ```
 
 ```vue
-<up-navbar
-    title="个人中心"
-    :safeAreaInsetTop="false"
-    :fixed="false"
-    @rightClick="rightClick"
-    @leftClick="leftClick"
->
-</up-navbar>
+<script setup>  
+  
+// 定义方法  
+const rightClick = () => {  
+    console.log('rightClick');  
+};  
+  
+const leftClick = () => {  
+    console.log('leftClick');  
+};  
+
+</script>
+```
+
+#### 注意事项
+
+```js
+// pages.json
+
+"pages": [
+	// navbar-自定义导航栏
+	{
+		"path": "/pages/navbar/index",
+		"style": {
+			"navigationStyle": "custom" ,// 隐藏系统导航栏
+			"navigationBarTextStyle": "white" // 状态栏字体为白色，只能为 white-白色，black-黑色 二选一
+		}
+	}
+]
+```
+
+#### 自定义导航栏内容
+
+```vue
+<template>
+	<view>
+        <up-navbar
+            leftText="返回"
+            title="个人中心"
+            :safeAreaInsetTop="false"
+        >
+            <template #left>
+                <view
+                    class="u-nav-slot"
+                >
+                    <up-icon
+                        name="arrow-left"
+                        size="19"
+                    ></up-icon>
+                    <up-line
+                        direction="column"
+                        :hairline="false"
+                        length="16"
+                        margin="0 8px"
+                    ></up-line>
+                    <up-icon
+                        name="home"
+                        size="20"
+                    ></up-icon>
+                </view>
+          </template>
+	</up-navbar>
+  </view>
+</template>
+```
+
+#### 自定义导航栏背景颜色
+
+```vue
+<template>
+	<view>
+		<up-navbar title="" :bgColor="bgColor">
+			
+		</up-navbar>
+		<view class="content">
+			<!-- 正文内容 -->
+		</view>
+	</view>
+</template>
 ```
 
 ```vue
-<up-navbar
-    :safeAreaInsetTop="false"
-    title="个人中心"
-    :fixed="false"
-    left-text="返回"
-    rightIcon="map"
->
-</up-navbar>
+<script setup>  
+import { ref } from 'vue';  
+  
+// 创建响应式数据  
+const bgColor = ref('#001f3f');  
+</script>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/navbar/navbar.uvue`</small>
+#### iOS 大标题模式
+
+```vue
+<template>
+	<view>
+		<up-navbar
+			mode="ios"
+			title="设置"
+			:scrollTop="scrollTop"
+			:autoBack="true"
+		></up-navbar>
+		<view><!-- 页面内容 --></view>
+	</view>
+</template>
+```
+
+```vue
+<script setup>
+import { ref } from 'vue';
+import { onPageScroll } from '@dcloudio/uni-app';
+
+const scrollTop = ref(0);
+
+onPageScroll((e) => {
+	scrollTop.value = e.scrollTop;
+});
+</script>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/navbar.md`</small>
 
 </template>
 
 <template #uniappx>
 
+#### 基本使用
+
 ```vue
-<up-navbar
-    title="导航栏"
-    safeAreaInsetTop
-    fixed
-    placeholder
-    :autoBack="true"
->
-</up-navbar>
+<template>
+	<view>
+		<!-- 2.0.19支持autoBack，默认为false -->
+        <up-navbar
+            title="个人中心"
+            @rightClick="rightClick"
+            :autoBack="true"
+        >
+        </up-navbar>
+	</view>
+</template>
 ```
 
 ```vue
-<up-navbar
-    title="个人中心"
-    :safeAreaInsetTop="false"
-    :fixed="false"
-    @rightClick="rightClick"
-    @leftClick="leftClick"
->
-</up-navbar>
+<script setup>  
+  
+// 定义方法  
+const rightClick = () => {  
+    console.log('rightClick');  
+};  
+  
+const leftClick = () => {  
+    console.log('leftClick');  
+};  
+
+</script>
+```
+
+#### 注意事项
+
+```js
+// pages.json
+
+"pages": [
+	// navbar-自定义导航栏
+	{
+		"path": "/pages/navbar/index",
+		"style": {
+			"navigationStyle": "custom" ,// 隐藏系统导航栏
+			"navigationBarTextStyle": "white" // 状态栏字体为白色，只能为 white-白色，black-黑色 二选一
+		}
+	}
+]
+```
+
+#### 自定义导航栏内容
+
+```vue
+<template>
+	<view>
+        <up-navbar
+            leftText="返回"
+            title="个人中心"
+            :safeAreaInsetTop="false"
+        >
+            <template #left>
+                <view
+                    class="u-nav-slot"
+                >
+                    <up-icon
+                        name="arrow-left"
+                        size="19"
+                    ></up-icon>
+                    <up-line
+                        direction="column"
+                        :hairline="false"
+                        length="16"
+                        margin="0 8px"
+                    ></up-line>
+                    <up-icon
+                        name="home"
+                        size="20"
+                    ></up-icon>
+                </view>
+          </template>
+	</up-navbar>
+  </view>
+</template>
+```
+
+#### 自定义导航栏背景颜色
+
+```vue
+<template>
+	<view>
+		<up-navbar title="" :bgColor="bgColor">
+			
+		</up-navbar>
+		<view class="content">
+			<!-- 正文内容 -->
+		</view>
+	</view>
+</template>
 ```
 
 ```vue
-<up-navbar
-    :safeAreaInsetTop="false"
-    title="个人中心"
-    :fixed="false"
-    left-text="返回"
-    rightIcon="map"
->
-</up-navbar>
+<script setup>  
+import { ref } from 'vue';  
+  
+// 创建响应式数据  
+const bgColor = ref('#001f3f');  
+</script>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/navbar/navbar.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/navbar.md`</small>
 
 </template>
 

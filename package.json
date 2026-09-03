@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "vitepress dev docs --port 9100",
-    "build": "vitepress build docs",
+    "build": "node --max-old-space-size=6144 node_modules/vitepress/bin/vitepress.js build docs",
     "preview": "vitepress preview docs --port 9100",
     "gen": "node scripts/gen-components.mjs",
     "gen:check": "node scripts/gen-components.mjs --dry-run"

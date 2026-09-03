@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -357,165 +357,149 @@ inputAlign：left / center / right
 
 <template #uniapp>
 
-#### 基础功能
+#### 基本使用
+
+- 通过`placeholder`参数设置占位内容
+- 通过`v-model`双向绑定一个**变量**值，设置初始化时搜索框的值，如果初始内容为空，那么请绑定一个值为空字符的变量。
+
+**说明：** 因为是双向绑定的，所以当组件内容输入框内容变化时，也会实时的反映到绑定的`keyword`变量，这意味着，您**无需**监听`change`事件，
+也能实时的得知输入框的内容。
 
 ```vue
-<up-search
-    v-model="value1"
-    :show-action="false"
-    @change="change"
-></up-search>
+<template>
+	<up-search placeholder="日照香炉生紫烟" v-model="keyword"></up-search>
+</template>
 ```
-
-#### 设置初始值
 
 ```vue
-<up-search
-    v-model="value2"
-    :show-action="false"
-></up-search>
+<script setup>  
+import { ref } from 'vue';  
+  
+// 响应式数据  
+const keyword = ref('遥看瀑布挂前川');  
+</script>
 ```
 
-#### 搜索框形状
+#### 设置输入框形状
+
+通过`shape`设置输入框两端的形状，`square`-方形带圆角，`round`(默认)-半圆形
 
 ```vue
-<up-search
-    v-model="value3"
-    :show-action="false"
-    shape="round"
-></up-search>
+<up-search shape="round"></up-search>
 ```
 
-#### 右侧控件
+#### 是否开启清除控件
+
+`clearabled`(默认为`true`)设置为`true`的话，输入框有内容时，右边会显示一个清除的图标
 
 ```vue
-<up-search v-model="value5"></up-search>
+<up-search :clearabled="true"></up-search>
 ```
 
-#### 禁用输入框
+#### 是否开启右边控件
+
+该控件为类似按钮形式，可以设置为"搜索"或者"取消"等内容，如果开启动画效果，用户确认搜索后，该控件会自动消失
+
+- `showAction`配置是否开启右边按钮控件
+- `actionText`配置控件内容
+- `animation`(默认为`false`)设置为`true`的话，失去焦点，或者点击控件按钮时，控件自动消失，并且带有动画效果
+
+::: warning 说明
+1. 如果不想点击右侧控件时自动消失，请把`animation`设置为`false`
+2. 右侧控件的默认文字为"搜索"(它本意为控件，碰巧内容为"搜索"二字，并非说它就是一个搜索按钮)，点击它的时候触发的是`custom`事件，而不是`search`事件
+:::
 
 ```vue
-<up-search
-    placeholder="输入框被禁用,可以监听点击事件进行跳转"
-    disabled
-    :show-action="false"
-></up-search>
+<up-search :show-action="true" actionText="搜索" :animation="true"></up-search>
 ```
 
-#### 点击左侧图标
+#### 自定义样式
+
+- 通过`inputAlign`设置输入框内容的对其方式，和css的`text-align`同理
+- 通过`borderColor`设置整个搜索组件的边框，只要配置了颜色，才会出现边框
+- 通过`height`设置组件高度
+- 通过`disabled`设置是否禁用输入框
+- 通过`bgColor`设置是搜索组件背景颜色
 
 ```vue
-<up-search
-    v-model="value6"
-    :show-action="false"
-    @clickIcon="clickIcon"
-></up-search>
+<up-search inputAlign="center" height="70"></up-search>
 ```
 
-#### 搜索框内容水平对齐
-
-```vue
-<up-search
-    v-model="value7"
-    :show-action="false"
-    input-align="left"
-></up-search>
-```
-
-#### 自定义
-
-```vue
-<up-search
-    v-model="value10"
-    :show-action="false"
-    borderColor="rgb(230, 230, 230)"
-    bgColor="#fff"
-></up-search>
-```
-
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsB/search/search.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/search.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 基础功能
+#### 基本使用
+
+- 通过`placeholder`参数设置占位内容
+- 通过`v-model`双向绑定一个**变量**值，设置初始化时搜索框的值，如果初始内容为空，那么请绑定一个值为空字符的变量。
+
+**说明：** 因为是双向绑定的，所以当组件内容输入框内容变化时，也会实时的反映到绑定的`keyword`变量，这意味着，您**无需**监听`change`事件，
+也能实时的得知输入框的内容。
 
 ```vue
-<up-search
-    v-model="value1"
-    :show-action="false"
-    @change="change"
-></up-search>
+<template>
+	<up-search placeholder="日照香炉生紫烟" v-model="keyword"></up-search>
+</template>
 ```
-
-#### 设置初始值
 
 ```vue
-<up-search
-    v-model="value2"
-    :show-action="false"
-></up-search>
+<script setup>  
+import { ref } from 'vue';  
+  
+// 响应式数据  
+const keyword = ref('遥看瀑布挂前川');  
+</script>
 ```
 
-#### 搜索框形状
+#### 设置输入框形状
+
+通过`shape`设置输入框两端的形状，`square`-方形带圆角，`round`(默认)-半圆形
 
 ```vue
-<up-search
-    v-model="value3"
-    :show-action="false"
-    shape="round"
-></up-search>
+<up-search shape="round"></up-search>
 ```
 
-#### 右侧控件
+#### 是否开启清除控件
+
+`clearabled`(默认为`true`)设置为`true`的话，输入框有内容时，右边会显示一个清除的图标
 
 ```vue
-<up-search v-model="value5"></up-search>
+<up-search :clearabled="true"></up-search>
 ```
 
-#### 禁用输入框
+#### 是否开启右边控件
+
+该控件为类似按钮形式，可以设置为"搜索"或者"取消"等内容，如果开启动画效果，用户确认搜索后，该控件会自动消失
+
+- `showAction`配置是否开启右边按钮控件
+- `actionText`配置控件内容
+- `animation`(默认为`false`)设置为`true`的话，失去焦点，或者点击控件按钮时，控件自动消失，并且带有动画效果
+
+::: warning 说明
+1. 如果不想点击右侧控件时自动消失，请把`animation`设置为`false`
+2. 右侧控件的默认文字为"搜索"(它本意为控件，碰巧内容为"搜索"二字，并非说它就是一个搜索按钮)，点击它的时候触发的是`custom`事件，而不是`search`事件
+:::
 
 ```vue
-<up-search
-    placeholder="输入框被禁用,可以监听点击事件进行跳转"
-    disabled
-    :show-action="false"
-></up-search>
+<up-search :show-action="true" actionText="搜索" :animation="true"></up-search>
 ```
 
-#### 点击左侧图标
+#### 自定义样式
+
+- 通过`inputAlign`设置输入框内容的对其方式，和css的`text-align`同理
+- 通过`borderColor`设置整个搜索组件的边框，只要配置了颜色，才会出现边框
+- 通过`height`设置组件高度
+- 通过`disabled`设置是否禁用输入框
+- 通过`bgColor`设置是搜索组件背景颜色
 
 ```vue
-<up-search
-    v-model="value6"
-    :show-action="false"
-    @clickIcon="clickIcon"
-></up-search>
+<up-search inputAlign="center" height="70"></up-search>
 ```
 
-#### 搜索框内容水平对齐
-
-```vue
-<up-search
-    v-model="value7"
-    :show-action="false"
-    input-align="left"
-></up-search>
-```
-
-#### 自定义
-
-```vue
-<up-search
-    v-model="value10"
-    :show-action="false"
-    borderColor="rgb(230, 230, 230)"
-    bgColor="#fff"
-></up-search>
-```
-
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsB/search/search.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/search.md`</small>
 
 </template>
 

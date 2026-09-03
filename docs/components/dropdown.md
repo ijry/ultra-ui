@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -199,53 +199,451 @@ import { UPDropdown } from '@ultra-ui'
 
 <template #uniapp>
 
+#### 基本使用
+
+使用前说明：
+
+- 该组件必须结合`up-dorpdown`和`up-dropdown-item`一起使用，展开的内容由`up-dropdown-item`通过传递参数或者`slot`提供
+- 组件的菜单栏标题由`up-dropdown-item`通过`title`参数提供
+- `up-dropdown-item`带有默认的单选展示功能，通过`options`(见下方说明)配置，传入`slot`则会覆盖默认功能，通过`v-model`双向绑定`options`选中项的`value`值
+
 ```vue
-<up-dropdown :close-on-click-mask="mask" ref="upDropdownRef"
-    :activeColor="activeColor" :borderBottom="borderBottom">
-    <up-dropdown-item @change="change" v-model="value1" title="距离" :options="options1"></up-dropdown-item>
-    <up-dropdown-item @change="change" v-model="value2" title="温度" :options="options2"></up-dropdown-item>
-    <up-dropdown-item title="属性">
-        <view class="slot-content">
-            <view class="item-box">
-                <view class="item" :class="[item['active'] as Boolean ? 'active' : '']"
-                    @tap="tagClick(index)"
-                    v-for="(item, index) in list" :key="index">
-                    {{item['label']}}
-                </view>
-            </view>
-            <up-button type="primary" @click="closeDropdown">确定</up-button>
-        </view>
-    </up-dropdown-item>
-</up-dropdown>
+<template>
+	<view class="">
+		<up-dropdown>
+			<up-dropdown-item v-model="value1" title="距离" :options="options1"></up-dropdown-item>
+			<up-dropdown-item v-model="value2" title="温度" :options="options2"></up-dropdown-item>
+		</up-dropdown>
+	</view>
+</template>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsB/dropdown/dropdown.uvue`</small>
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const value1 = ref(1);
+const value2 = ref(2);
+
+const options1 = ref([
+  {
+    label: '默认排序',
+    value: 1,
+  },
+  {
+    label: '距离优先',
+    value: 2,
+  },
+  {
+    label: '价格优先',
+    value: 3,
+  }
+]);
+
+const options2 = ref([
+  {
+    label: '去冰',
+    value: 1,
+  },
+  {
+    label: '加冰',
+    value: 2,
+  },
+]);
+</script>
+```
+
+#### 配置选项卡默认功能
+
+如上所示，`up-dropdown-item`具有默认的单选功能，这里主要讲解其`options`和`v-model`参数：
+
+`options`参数为一个数组，元素为对象，其中`label`为需要展示的提示文字，`value`为点击时双向绑定给`v-model`的值，`v-model`初始化时如果设置
+某个`options`中的`value`，则该条目将会被默认选中：
+
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const options = ref([
+  {
+    label: '蜀道难',
+    value: 1
+  },
+  {
+    label: '难以上青天',
+    value: 2
+  }
+]);
+</script>
+```
+
+#### 配置选项卡自定义功能
+
+在选项卡默认的单选功能无法满足的时候，我们可以给`up-dropw-item`传递`slot`来自定义需要展示的内容。  
+
+问：如果自定义内容，如何实现点击其中的按钮关闭下拉菜单？
+
+答：在`up-dropdown`中，有一个`close()`方法，可以通过`ref`获取实例，并调用方法进行关闭即可。
+
+```vue
+<template>
+	<view class="">
+		<up-dropdown ref="uDropdownRef">
+			<up-dropdown-item title="属性">
+				<view class="slot-content">
+					<view class="up-text-center up-content-color up-m-t-20 up-m-b-20">其他自定义内容</view>
+					<up-button type="primary" @click="closeDropdown">确定</up-button>
+				</view>
+			</up-dropdown-item>
+		</up-dropdown>
+	</view>
+</template>
+```
+
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const uDropdownRef = ref(null);
+
+const closeDropdown = () => {
+  uDropdownRef.value.close();
+};
+</script>
+```
+
+#### 配置选项卡内容可滚动
+
+如果我们想给自定义内容的选项中局部内容可滚动，可以通过嵌入`scroll-view`元素实现，需要注意的是`scroll-view`必须声明高度才有效，大概如下：
+
+```vue
+<template>
+	<view class="">
+		<up-dropdown ref="uDropdownRef">
+			<up-dropdown-item title="属性">
+				<view class="slot-content" style="background-color: #FFFFFF;">
+					<scroll-view scroll-y="true" style="height: 200rpx;">
+						<view class="up-text-center up-content-color up-m-t-20 up-m-b-20">无言独上西楼</view>
+						<view class="up-text-center up-content-color up-m-t-20 up-m-b-20">月如钩</view>
+						<view class="up-text-center up-content-color up-m-t-20 up-m-b-20">寂寞梧桐深院锁清秋</view>
+						<view class="up-text-center up-content-color up-m-t-20 up-m-b-20">剪不断</view>
+						<view class="up-text-center up-content-color up-m-t-20 up-m-b-20">理还乱</view>
+						<view class="up-text-center up-content-color up-m-t-20 up-m-b-20">是离愁</view>
+						<view class="up-text-center up-content-color up-m-t-20 up-m-b-20">别是一般滋味在心头</view>
+					</scroll-view>
+					<up-button type="primary" @click="closeDropdown">确定</up-button>
+				</view>
+			</up-dropdown-item>
+		</up-dropdown>
+	</view>
+</template>
+```
+
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const uDropdownRef = ref(null);
+
+const closeDropdown = () => {
+  uDropdownRef.value.close();
+};
+</script>
+```
+
+#### 如何保持菜单高亮
+
+有时候，我们可能会希望下拉菜单收起之后，标题部分可以保持高亮，组件内部可以做到这样的要求，但是如果通过自定义`slot`传入了内容，那么组件就不知道
+收起的时候，是否该保持菜单的高亮了，因为组件不知道您在自定义的内容中是否进行了"操作"，所以我们提供了一个手动通过`ref`设置的`highlight(index)`方法，
+让您自主决定是否让某个菜单高亮，可以自行结合`change`(dropdown-item)、`open`(dropdown)、`close`(dropdown)事件进行组合操作。
+
+```vue
+<template>
+	<view class="">
+		<up-dropdown ref="uDropdownRef" @open="open" @close="close">
+			<up-dropdown-item v-model="value1" title="距离" :options="options1" @change="change"></up-dropdown-item>
+			<up-dropdown-item v-model="value2" title="温度" :options="options2"></up-dropdown-item>
+		</up-dropdown>
+	</view>
+</template>
+```
+
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const value1 = ref(1);
+const value2 = ref(2);
+const uDropdownRef = ref(null);
+
+const options1 = ref([
+  {
+    label: '默认排序',
+    value: 1,
+  },
+  {
+    label: '距离优先',
+    value: 2,
+  }
+]);
+
+const options2 = ref([
+  {
+    label: '去冰',
+    value: 1,
+  },
+  {
+    label: '加冰',
+    value: 2,
+  },
+]);
+
+const open = (index) => {
+  // 展开某个下来菜单时，先关闭原来的其他菜单的高亮
+  // 同时内部会自动给当前展开项进行高亮
+  uDropdownRef.value.highlight();
+};
+
+const close = (index) => {
+  // 关闭的时候，给当前项加上高亮
+  // 当然，您也可以通过监听dropdown-item的@change事件进行处理
+  uDropdownRef.value.highlight(index);
+};
+
+const change = () => {
+  // 更多的细节，如有需要请自行根据业务逻辑进行处理
+  // uDropdownRef.value.highlight(xxx);
+};
+</script>
+```
+
+#### 兼容性
+
+- 由于`头条小程序`的兼容性原因，如果`up-dropdown`父元素设置了`display: flex`，您可能需要给组件添加`up-dropdown`类，如下：
+
+```vue
+<up-dropdown class="up-dropdown"></up-dropdown>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/dropdown.md`</small>
 
 </template>
 
 <template #uniappx>
 
+#### 基本使用
+
+使用前说明：
+
+- 该组件必须结合`up-dorpdown`和`up-dropdown-item`一起使用，展开的内容由`up-dropdown-item`通过传递参数或者`slot`提供
+- 组件的菜单栏标题由`up-dropdown-item`通过`title`参数提供
+- `up-dropdown-item`带有默认的单选展示功能，通过`options`(见下方说明)配置，传入`slot`则会覆盖默认功能，通过`v-model`双向绑定`options`选中项的`value`值
+
 ```vue
-<up-dropdown :close-on-click-mask="mask" ref="upDropdownRef"
-    :activeColor="activeColor" :borderBottom="borderBottom">
-    <up-dropdown-item @change="change" v-model="value1" title="距离" :options="options1"></up-dropdown-item>
-    <up-dropdown-item @change="change" v-model="value2" title="温度" :options="options2"></up-dropdown-item>
-    <up-dropdown-item title="属性">
-        <view class="slot-content">
-            <view class="item-box">
-                <view class="item" :class="[item['active'] as Boolean ? 'active' : '']"
-                    @tap="tagClick(index)"
-                    v-for="(item, index) in list" :key="index">
-                    {{item['label']}}
-                </view>
-            </view>
-            <up-button type="primary" @click="closeDropdown">确定</up-button>
-        </view>
-    </up-dropdown-item>
-</up-dropdown>
+<template>
+	<view class="">
+		<up-dropdown>
+			<up-dropdown-item v-model="value1" title="距离" :options="options1"></up-dropdown-item>
+			<up-dropdown-item v-model="value2" title="温度" :options="options2"></up-dropdown-item>
+		</up-dropdown>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				value1: 1,
+				value2: 2,
+				options1: [{
+						label: '默认排序',
+						value: 1,
+					},
+					{
+						label: '距离优先',
+						value: 2,
+					},
+					{
+						label: '价格优先',
+						value: 3,
+					}
+				],
+				options2: [{
+						label: '去冰',
+						value: 1,
+					},
+					{
+						label: '加冰',
+						value: 2,
+					},
+				],
+			}
+		},
+	}
+</script>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsB/dropdown/dropdown.uvue`</small>
+#### 配置选项卡默认功能
+
+如上所示，`up-dropdown-item`具有默认的单选功能，这里主要讲解其`options`和`v-model`参数：
+
+`options`参数为一个数组，元素为对象，其中`label`为需要展示的提示文字，`value`为点击时双向绑定给`v-model`的值，`v-model`初始化时如果设置
+某个`options`中的`value`，则该条目将会被默认选中：
+
+```js
+let options = [
+	{
+		label: '蜀道难',
+		value: 1
+	},
+	{
+		label: '难以上青天',
+		value: 2
+	}
+]
+```
+
+#### 配置选项卡自定义功能
+
+在选项卡默认的单选功能无法满足的时候，我们可以给`up-dropw-item`传递`slot`来自定义需要展示的内容。  
+
+问：如果自定义内容，如何实现点击其中的按钮关闭下拉菜单？
+
+答：在`up-dropdown`中，有一个`close()`方法，可以通过`ref`获取实例，并调用方法进行关闭即可。
+
+```vue
+<template>
+	<view class="">
+		<up-dropdown ref="uDropdownRef">
+			<up-dropdown-item title="属性">
+				<view class="slot-content">
+					<view class="up-text-center up-content-color up-m-t-20 up-m-b-20">其他自定义内容</view>
+					<up-button type="primary" @click="closeDropdown">确定</up-button>
+				</view>
+			</up-dropdown-item>
+		</up-dropdown>
+	</view>
+</template>
+
+<script>
+	export default {
+		methods: {
+			closeDropdown() {
+				this.$refs.uDropdownRef.close();
+			}
+		}
+	}
+</script>
+```
+
+#### 配置选项卡内容可滚动
+
+如果我们想给自定义内容的选项中局部内容可滚动，可以通过嵌入`scroll-view`元素实现，需要注意的是`scroll-view`必须声明高度才有效，大概如下：
+
+```vue
+<template>
+	<view class="">
+		<up-dropdown ref="uDropdownRef">
+			<up-dropdown-item title="属性">
+				<view class="slot-content" style="background-color: #FFFFFF;">
+					<scroll-view scroll-y="true" style="height: 200rpx;">
+						<view class="up-text-center up-content-color up-m-t-20 up-m-b-20">无言独上西楼</view>
+						<view class="up-text-center up-content-color up-m-t-20 up-m-b-20">月如钩</view>
+						<view class="up-text-center up-content-color up-m-t-20 up-m-b-20">寂寞梧桐深院锁清秋</view>
+						<view class="up-text-center up-content-color up-m-t-20 up-m-b-20">剪不断</view>
+						<view class="up-text-center up-content-color up-m-t-20 up-m-b-20">理还乱</view>
+						<view class="up-text-center up-content-color up-m-t-20 up-m-b-20">是离愁</view>
+						<view class="up-text-center up-content-color up-m-t-20 up-m-b-20">别是一般滋味在心头</view>
+					</scroll-view>
+					<up-button type="primary" @click="closeDropdown">确定</up-button>
+				</view>
+			</up-dropdown-item>
+		</up-dropdown>
+	</view>
+</template>
+
+<script>
+	export default {
+		methods: {
+			closeDropdown() {
+				this.$refs.uDropdownRef.close();
+			}
+		}
+	}
+</script>
+```
+
+#### 如何保持菜单高亮
+
+有时候，我们可能会希望下拉菜单收起之后，标题部分可以保持高亮，组件内部可以做到这样的要求，但是如果通过自定义`slot`传入了内容，那么组件就不知道
+收起的时候，是否该保持菜单的高亮了，因为组件不知道您在自定义的内容中是否进行了"操作"，所以我们提供了一个手动通过`ref`设置的`highlight(index)`方法，
+让您自主决定是否让某个菜单高亮，可以自行结合`change`(dropdown-item)、`open`(dropdown)、`close`(dropdown)事件进行组合操作。
+
+```vue
+<template>
+	<view class="">
+		<up-dropdown ref="uDropdownRef" @open="open" @close="close">
+			<up-dropdown-item v-model="value1" title="距离" :options="options1" @change="change"></up-dropdown-item>
+			<up-dropdown-item v-model="value2" title="温度" :options="options2"></up-dropdown-item>
+		</up-dropdown>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				value1: 1,
+				value2: 2,
+				options1: [{
+						label: '默认排序',
+						value: 1,
+					},
+					{
+						label: '距离优先',
+						value: 2,
+					}
+				],
+				options2: [{
+						label: '去冰',
+						value: 1,
+					},
+					{
+						label: '加冰',
+						value: 2,
+					},
+				],
+			}
+		},
+		methods: {
+			open(index) {
+				// 展开某个下来菜单时，先关闭原来的其他菜单的高亮
+				// 同时内部会自动给当前展开项进行高亮
+				this.$refs.uDropdownRef.highlight();
+			},
+			close(index) {
+				// 关闭的时候，给当前项加上高亮
+				// 当然，您也可以通过监听dropdown-item的@change事件进行处理
+				this.$refs.uDropdownRef.highlight(index);
+			},
+			change() {
+				// 更多的细节，如有需要请自行根据业务逻辑进行处理
+				// this.$refs.uDropdownRef.highlight(xxx);
+			}
+		}
+	}
+</script>
+```
+
+#### 兼容性
+
+- 由于`头条小程序`的兼容性原因，如果`up-dropdown`父元素设置了`display: flex`，您可能需要给组件添加`up-dropdown`类，如下：
+
+```vue
+<up-dropdown class="up-dropdown"></up-dropdown>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/dropdown.md`</small>
 
 </template>
 

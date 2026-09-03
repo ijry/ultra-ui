@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -189,31 +189,289 @@ name 含 / 时按图片渲染，用 width / height / imgMode 控制
 
 <template #uniapp>
 
-```vue
-<up-icon
-    :name="item.name"
-    size="30px"
-    color="#909399"
-    @click="test"
-></up-icon>
+#### 新版本全局加载兼容性
+
+默认不再加载一次，需要只加载一次可以配置如下参数：
+
+```js
+app.use(store)
+	.use(i18n)
+	.use(uviewPlus, () => {
+		return {
+			options: {
+				// 修改config对象的属性
+				config: {
+					// 只加载一次字体图标
+					loadFontOnce: true
+				}
+			}
+		}
+	})
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsA/icon/icon.uvue`</small>
+#### 微信小程序图标加载异常处理
+
+正常情况下，`u-icon` 会自动加载字体。如果微信小程序出现图标不显示或字体加载失败，可以在 `App.vue` 的 `onLaunch` 中手动调用 `fontUtil.loadFont()`，确保字体在应用启动时完成加载。
+
+```vue
+<script>
+import { fontUtil } from 'uview-plus'
+
+export default {
+	onLaunch() {
+		fontUtil.loadFont()
+	}
+}
+</script>
+```
+
+:::tip
+`fontUtil` 已从 uview-plus 主入口直接导出，无需从组件内部路径导入。通过 uni_modules 安装时，将导入路径改为 `@/uni_modules/uview-plus`。
+:::
+
+#### 自定义默认字体图标自托管资源
+
+受限于uni.loadFontFace，目前仅在APP-VUE/APP-UVUE/微信小程序/支付宝小程序/H5平台支持自定义。
+https://zh.uniapp.dcloud.io/api/ui/font.html
+因公共CDN存在不稳定等问题，建议将图标放在自己的服务器上，然后在uview-plus初始化时如下配置加载字体图标：
+
+Tips
+字体链接需要是下载类型。
+字体文件返回的 content-type 参考 font，格式不正确时会解析失败。
+字体链接必须是 https（ios不支持http)。
+建议格式为 TTF 和 WOFF，WOFF2 在低版本的iOS上会不兼容。
+字体链接必须是同源下的，或开启了cors支持，小程序的域名是servicewechat.com
+微信开发者工具里提示 Faild to load font可以忽略(这是微信自己的问题不用管https://developers.weixin.qq.com/miniprogram/dev/api/ui/font/wx.loadFontFace.html)
+
+```js
+app.use(store)
+	.use(i18n)
+	.use(uviewPlus, () => {
+		return {
+			options: {
+				// 修改config对象的属性
+				config: {
+					// 默认字体图标自托管资源地址
+					iconUrl: 'https://at.alicdn.com/t/font_2225171_8kdcwk4po24.ttf'
+				}
+			}
+		}
+	})
+```
+
+#### 扩充自定义字体图标
+
+如果内置图标不够用可以使用如下方式扩展
+
+APP-VUE/APP-UVUE/微信小程序/支付宝小程序/H5平台如下示例：
+
+```js
+app.use(store)
+	.use(i18n)
+	.use(uviewPlus, () => {
+		return {
+			options: {
+				// 修改config对象的属性
+				config: {
+					customIcon: {
+						family: 'xyicon',
+						url: 'https://at.alicdn.com/t/c/font_1305928_egvk3tbr3fs.ttf?t=1744189362601'
+					},
+					customIcons: {
+						'light-mode' : '\ue66c'
+					}
+				}
+			}
+		}
+	})
+```
+
+其他平台如抖音/QQ/百度小程序请直接在App.vue定一个一个css示例如下：
+
+```vue
+@font-face {
+	font-family: 'xyicon';
+	src: url('https://at.alicdn.com/t/font_2225171_8kdcwk4po24.ttf') format('truetype');
+}
+```
+
+扩展图标使用方式
+
+```vue
+<up-icon customPrefix="xyicon" name="light-mode"></up-icon>
+```
+
+#### 基本使用
+
+<br>
+
+
+icon下载地址
+:::
+
+<br>
+
+通过`<up-icon>`形式来调用，设置`name`参数为图标名即可。其中`color`默认为`#606266`，`size`默认为`16px`
+
+```vue
+<up-icon name="photo"></up-icon>
+```
+
+#### 修改图标的样式
+
+- 通过`color`参数修改图标的颜色
+- 通过`size`参数修改图标的大小，单位为px
+
+```vue
+<up-icon name="photo" color="#2979ff" size="28"></up-icon>
+```
+
+#### 图片图标
+
+这里说的图片图标，指的是小图标，起作用定位为"icon"图标作用，而非大尺寸的图片展示场景，理论上，这个小图标应该为`png`格式的正方形图标。
+
+上面说到，给组件的`name`参数传入一个图片的名称即可显示字体图标，这些名称中不能带有`/`斜杠符号，否则会被认为是传入了图片图标，同时，`size`参数
+也被设置为这个图片图标的宽度，由于是图片，诸如颜色`color`等参数都会失效。
+
+```vue
+<up-icon label="uview-plus" size="40" name="https://cdn.uviewui.com/uview/example/button.png"></up-icon>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/icon.md`</small>
 
 </template>
 
 <template #uniappx>
 
-```vue
-<up-icon
-    :name="item.name"
-    size="30px"
-    color="#909399"
-    @click="test"
-></up-icon>
+#### 新版本全局加载兼容性
+
+默认不再加载一次，需要只加载一次可以配置如下参数：
+
+```js
+app.use(store)
+	.use(i18n)
+	.use(ultrUI, () => {
+		return {
+			options: {
+				// 修改config对象的属性
+				config: {
+					// 只加载一次字体图标
+					loadFontOnce: true
+				}
+			}
+		}
+	})
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsA/icon/icon.uvue`</small>
+#### 自定义默认字体图标自托管资源
+
+受限于uni.loadFontFace，目前仅在APP-VUE/APP-UVUE/微信小程序/支付宝小程序/H5平台支持自定义。
+https://zh.uniapp.dcloud.io/api/ui/font.html
+因公共CDN存在不稳定等问题，建议将图标放在自己的服务器上，然后在uview-ultra初始化时如下配置加载字体图标：
+
+Tips
+字体链接需要是下载类型。
+字体文件返回的 content-type 参考 font，格式不正确时会解析失败。
+字体链接必须是 https（ios不支持http)。
+建议格式为 TTF 和 WOFF，WOFF2 在低版本的iOS上会不兼容。
+字体链接必须是同源下的，或开启了cors支持，小程序的域名是servicewechat.com
+微信开发者工具里提示 Faild to load font可以忽略(这是微信自己的问题不用管https://developers.weixin.qq.com/miniprogram/dev/api/ui/font/wx.loadFontFace.html)
+
+```js
+app.use(store)
+	.use(i18n)
+	.use(ultrUI, () => {
+		return {
+			options: {
+				// 修改config对象的属性
+				config: {
+					// 默认字体图标自托管资源地址
+					iconUrl: 'https://at.alicdn.com/t/font_2225171_8kdcwk4po24.ttf'
+				}
+			}
+		}
+	})
+```
+
+#### 扩充自定义字体图标
+
+如果内置图标不够用可以使用如下方式扩展
+
+APP-VUE/APP-UVUE/微信小程序/支付宝小程序/H5平台如下示例：
+
+```js
+app.use(store)
+	.use(i18n)
+	.use(uviewPlus, () => {
+		return {
+			options: {
+				// 修改config对象的属性
+				config: {
+					customIcon: {
+						family: 'xyicon',
+						url: 'https://at.alicdn.com/t/c/font_1305928_egvk3tbr3fs.ttf?t=1744189362601'
+					},
+					customIcons: {
+						'light-mode' : '\ue66c'
+					}
+				}
+			}
+		}
+	})
+```
+
+其他平台如抖音/QQ/百度小程序请直接在App.vue定一个一个css示例如下：
+
+```vue
+@font-face {
+	font-family: 'xyicon';
+	src: url('https://at.alicdn.com/t/font_2225171_8kdcwk4po24.ttf') format('truetype');
+}
+```
+
+扩展图标使用方式
+
+```vue
+<up-icon customPrefix="xyicon" name="light-mode"></up-icon>
+```
+
+#### 基本使用
+
+<br>
+
+
+icon下载地址
+:::
+
+<br>
+
+通过`<up-icon>`形式来调用，设置`name`参数为图标名即可。其中`color`默认为`#606266`，`size`默认为`16px`
+
+```vue
+<up-icon name="photo"></up-icon>
+```
+
+#### 修改图标的样式
+
+- 通过`color`参数修改图标的颜色
+- 通过`size`参数修改图标的大小，单位为px
+
+```vue
+<up-icon name="photo" color="#2979ff" size="28"></up-icon>
+```
+
+#### 图片图标
+
+这里说的图片图标，指的是小图标，起作用定位为"icon"图标作用，而非大尺寸的图片展示场景，理论上，这个小图标应该为`png`格式的正方形图标。
+
+上面说到，给组件的`name`参数传入一个图片的名称即可显示字体图标，这些名称中不能带有`/`斜杠符号，否则会被认为是传入了图片图标，同时，`size`参数
+也被设置为这个图片图标的宽度，由于是图片，诸如颜色`color`等参数都会失效。
+
+```vue
+<up-icon label="uview-ultra" size="40" name="https://cdn.uviewui.com/uview/example/button.png"></up-icon>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/icon.md`</small>
 
 </template>
 

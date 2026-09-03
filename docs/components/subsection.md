@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -297,105 +297,159 @@ keyName='title'
 
 <template #uniapp>
 
-#### 基础使用
+#### 基本使用
+
+- 通过`list`数组参数传递分段的选项，数组元素可为字符串，或者通过`keyName`参数传入对象(默认为`name`)
+- 通过`current`指定初始化时激活的选项
 
 ```vue
-<up-subsection
-    :list="list"
-    mode="subsection"
-    :current="current1"
-    @change="change1"
-></up-subsection>
+<template>
+	<up-subsection :list="list" :current="1"></up-subsection>
+</template>
 ```
-
-#### 按钮模式
 
 ```vue
-<up-subsection
-    :list="list"
-    mode="button"
-    :current="current2"
-    @change="change2"
-></up-subsection>
+<script setup>  
+import { ref } from 'vue';  
+  
+const list = ref(['未付款', '待评价', '已付款']);  
+// 或者如果您想要使用对象数组  
+// const list = ref([  
+//   { name: '未付款' },  
+//   { name: '待评价' },  
+//   { name: '已付款' }  
+// ]);  
+  
+const current = ref(1);  
+</script>
 ```
 
-#### 更换主题
+#### 模式选择
+
+通过`mode`设置分段器的模式
+- 值为`button`时为按钮类型
+- 值为`subsection`时为分段器形式
 
 ```vue
-<up-subsection
-    :list="list"
-    mode="subsection"
-    :current="current3"
-    activeColor="#f56c6c"
-    @change="change3"
-></up-subsection>
+<up-subsection :list="list" mode="subsection" :current="1"></up-subsection>
 ```
 
-#### 默认位置
+#### 颜色配置
+
+- 通过`activeColor`配置激活选项的文字颜色
+- 通过`inactiveColor`配置未激活选项的文字颜色
+- 通过`bgColor`配置背景颜色，mode为button时有效（默认 '#eeeeef' ）
 
 ```vue
-<up-subsection
-    :list="list"
-    mode="button"
-    :current="current4"
-    activeColor="#f9ae3d"
-    @change="change4"
-></up-subsection>
+<up-subsection activeColor="#f56c6c"></up-subsection>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsC/subsection/subsection.uvue`</small>
+#### 注意事项
+
+如果想通过一个变量绑定`current`值，需要在`change`事件回调中修改此值，否则可能会由于`props`的限制，前后两次设置`current`为相同的值，
+而导致无法通过修改`current`值触发分段器的变化。
+
+```vue
+<template>
+    <up-subsection :list="list" :current="curNow" @change="sectionChange"></up-subsection>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 创建响应式引用  
+const list = ref(['未付款', '待评价', '已付款']);  
+const curNow = ref(0);  
+  
+// 定义方法，注意在 setup 中不需要 this，直接访问响应式引用  
+function sectionChange(index) {  
+  curNow.value = index;  
+}  
+</script>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/subsection.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 基础使用
+#### 基本使用
+
+- 通过`list`数组参数传递分段的选项，数组元素可为字符串，或者通过`keyName`参数传入对象(默认为`name`)
+- 通过`current`指定初始化时激活的选项
 
 ```vue
-<up-subsection
-    :list="list"
-    mode="subsection"
-    :current="current1"
-    @change="change1"
-></up-subsection>
+<template>
+	<up-subsection :list="list" :current="1"></up-subsection>
+</template>
 ```
-
-#### 按钮模式
 
 ```vue
-<up-subsection
-    :list="list"
-    mode="button"
-    :current="current2"
-    @change="change2"
-></up-subsection>
+<script setup>  
+import { ref } from 'vue';  
+  
+const list = ref(['未付款', '待评价', '已付款']);  
+// 或者如果您想要使用对象数组  
+// const list = ref([  
+//   { name: '未付款' },  
+//   { name: '待评价' },  
+//   { name: '已付款' }  
+// ]);  
+  
+const current = ref(1);  
+</script>
 ```
 
-#### 更换主题
+#### 模式选择
+
+通过`mode`设置分段器的模式
+- 值为`button`时为按钮类型
+- 值为`subsection`时为分段器形式
 
 ```vue
-<up-subsection
-    :list="list"
-    mode="subsection"
-    :current="current3"
-    activeColor="#f56c6c"
-    @change="change3"
-></up-subsection>
+<up-subsection :list="list" mode="subsection" :current="1"></up-subsection>
 ```
 
-#### 默认位置
+#### 颜色配置
+
+- 通过`activeColor`配置激活选项的文字颜色
+- 通过`inactiveColor`配置未激活选项的文字颜色
+- 通过`bgColor`配置背景颜色，mode为button时有效（默认 '#eeeeef' ）
 
 ```vue
-<up-subsection
-    :list="list"
-    mode="button"
-    :current="current4"
-    activeColor="#f9ae3d"
-    @change="change4"
-></up-subsection>
+<up-subsection activeColor="#f56c6c"></up-subsection>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsC/subsection/subsection.uvue`</small>
+#### 注意事项
+
+如果想通过一个变量绑定`current`值，需要在`change`事件回调中修改此值，否则可能会由于`props`的限制，前后两次设置`current`为相同的值，
+而导致无法通过修改`current`值触发分段器的变化。
+
+```vue
+<template>
+    <up-subsection :list="list" :current="curNow" @change="sectionChange"></up-subsection>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 创建响应式引用  
+const list = ref(['未付款', '待评价', '已付款']);  
+const curNow = ref(0);  
+  
+// 定义方法，注意在 setup 中不需要 this，直接访问响应式引用  
+function sectionChange(index) {  
+  curNow.value = index;  
+}  
+</script>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/subsection.md`</small>
 
 </template>
 

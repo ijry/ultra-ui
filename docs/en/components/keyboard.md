@@ -12,7 +12,7 @@ Custom keyboards: numeric, ID-card and licence-plate layouts.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -79,41 +79,179 @@ safe 显示底部安全区占位
 
 <template #uniapp>
 
+#### 基本使用
+
 ```vue
-<up-keyboard
-    :mode="keyData.mode"
-    :dotDisabled="keyData.dotDisabled"
-    :random="keyData.random"
-    :show="show"
-    @close="close"
-    @cancel="cancel"
-    @confirm="confirm"
-    @change="change"
-    @backspace="backspace"
-></up-keyboard>
+<template>
+	<view>
+		<up-keyboard ref="uKeyboard" mode="car" :show="show"></up-keyboard>
+		<up-button @click="show = true">打开</up-button>
+	</view>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const show = ref(false);
+</script>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsB/keyboard/keyboard.uvue`</small>
+#### 隐藏键盘"."符号
+
+```vue
+<up-keyboard mode="number" :dotDisabled="true"></up-keyboard>
+```
+
+#### 是否打乱按键的顺序
+
+```vue
+<up-keyboard ref="uKeyboard" mode="number" :random="true" :show="show"></up-keyboard>
+```
+
+#### 如何控制键盘的打开和关闭？
+
+```vue
+<template>
+	<up-keyboard mode="number" :show="show"></up-keyboard>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+import { onReady, onLoad } from '@dcloud/uniapp';
+
+const show = ref(false);
+
+onReady(() => {
+  // 如果想一进入页面就打开键盘，请在此生命周期调用
+  show.value = true;
+});
+
+onLoad(() => {
+  // 不应在此调用，因为此时up-keyboard组件尚未创建完成
+  // show.value = true;
+});
+</script>
+```
+
+#### 如何监听键盘按键被点击？
+
+```vue
+<template>
+	<up-keyboard mode="number" @change="valChange" @backspace="backspace" :show="show"></up-keyboard>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const value = ref(''); // 输入框的值
+const show = ref(false); // 是否显示键盘
+
+const valChange = (val) => {
+  // 将每次按键的值拼接到value变量中，注意+=写法
+  value.value += val;
+  console.log(value.value);
+};
+
+const backspace = () => {
+  // 删除value的最后一个字符
+  if (value.value.length) {
+    value.value = value.value.substr(0, value.value.length - 1);
+  }
+  console.log(value.value);
+};
+</script>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/keyboard.md`</small>
 
 </template>
 
 <template #uniappx>
 
+#### 基本使用
+
 ```vue
-<up-keyboard
-    :mode="keyData.mode"
-    :dotDisabled="keyData.dotDisabled"
-    :random="keyData.random"
-    :show="show"
-    @close="close"
-    @cancel="cancel"
-    @confirm="confirm"
-    @change="change"
-    @backspace="backspace"
-></up-keyboard>
+<template>
+	<view>
+		<up-keyboard ref="uKeyboard" mode="car" :show="show"></up-keyboard>
+		<up-button @click="show = true">打开</up-button>
+	</view>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const show = ref(false);
+</script>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsB/keyboard/keyboard.uvue`</small>
+#### 隐藏键盘"."符号
+
+```vue
+<up-keyboard mode="number" :dotDisabled="true"></up-keyboard>
+```
+
+#### 是否打乱按键的顺序
+
+```vue
+<up-keyboard ref="uKeyboard" mode="number" :random="true" :show="show"></up-keyboard>
+```
+
+#### 如何控制键盘的打开和关闭？
+
+```vue
+<template>
+	<up-keyboard mode="number" :show="show"></up-keyboard>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+import { onReady, onLoad } from '@dcloud/uniapp';
+
+const show = ref(false);
+
+onReady(() => {
+  // 如果想一进入页面就打开键盘，请在此生命周期调用
+  show.value = true;
+});
+
+onLoad(() => {
+  // 不应在此调用，因为此时up-keyboard组件尚未创建完成
+  // show.value = true;
+});
+</script>
+```
+
+#### 如何监听键盘按键被点击？
+
+```vue
+<template>
+	<up-keyboard mode="number" @change="valChange" @backspace="backspace" :show="show"></up-keyboard>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const value = ref(''); // 输入框的值
+const show = ref(false); // 是否显示键盘
+
+const valChange = (val) => {
+  // 将每次按键的值拼接到value变量中，注意+=写法
+  value.value += val;
+  console.log(value.value);
+};
+
+const backspace = () => {
+  // 删除value的最后一个字符
+  if (value.value.length) {
+    value.value = value.value.substr(0, value.value.length - 1);
+  }
+  console.log(value.value);
+};
+</script>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/keyboard.md`</small>
 
 </template>
 

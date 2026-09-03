@@ -12,7 +12,7 @@ Collapses content past a height threshold and offers an expand button.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -131,47 +131,329 @@ closeText / openText / color
 
 <template #uniapp>
 
+#### 基本使用
+
 ```vue
-<up-read-more
-    ref="uReadMore"
-    :showHeight="showHeight"
-    toggle
-    @open="open"
-    @close="close"
->
+<template>
+	<up-read-more>
+		<rich-text :nodes="content"></rich-text>
+	</up-read-more>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+const content = ref(`山不在高，有仙则名。水不在深，有龙则灵。斯是陋室，惟吾德馨。  
+苔痕上阶绿，草色入帘青。谈笑有鸿儒，往来无白丁。可以调素琴，阅金经。  
+无丝竹之乱耳，无案牍之劳形。南阳诸葛庐，西蜀子云亭。孔子云：何陋之有？`);  
+</script>
+```
+
+#### 兼容性
+
+```vue
+<template>
+	<up-read-more ref="uReadMoreRef">
+		<up-parse :content="content" @load="load"></up-parse>
+	</up-read-more>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref, onMounted } from 'vue';  
+  
+// 创建响应式数据  
+const content = ref(`山不在高，有仙则名。水不在深，有龙则灵。斯是陋室，惟吾德馨。  
+苔痕上阶绿，草色入帘青。谈笑有鸿儒，往来无白丁。可以调素琴，阅金经。  
+无丝竹之乱耳，无案牍之劳形。南阳诸葛庐，西蜀子云亭。孔子云：何陋之有？`);  
+  
+// 创建组件引用  
+const uReadMoreRef = ref(null);  
+  
+// 定义方法  
+function load() {  
+    if (uReadMoreRef.value) {  
+        uReadMoreRef.value.init();  
+    }  
+}  
+  
+// 如果需要在组件挂载后调用 load 方法，可以使用 onMounted 钩子  
+onMounted(() => {  
+    load();  
+});  
+</script>
+```
+
+#### 展开收起
+
+```vue
+<up-read-more :toggle="true">
     <rich-text :nodes="content"></rich-text>
-    <!-- <up-parse
-        :content="content"
-        @load="load"
-        :tag-style="tagStyle"
-    ></up-parse> -->
 </up-read-more>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/readMore/readMore.uvue`</small>
+#### 配置展开高度
+
+```vue
+<up-read-more showHeight="600">
+    <rich-text :nodes="content"></rich-text>
+</up-read-more>
+```
+
+#### 异步初始化
+
+```vue
+<template>
+	<up-read-more ref="uReadMoreRef">
+        <rich-text :nodes="content"></rich-text>
+	</up-read-more>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref, onMounted } from 'vue';  
+  
+// 创建响应式数据  
+const content = ref('');  
+  
+// 创建组件引用  
+const uReadMoreRef = ref(null);  
+  
+// 模拟后端请求  
+async function fetchData() {  
+  return new Promise((resolve) => {  
+    setTimeout(() => {  
+      resolve(`山不在高，有仙则名。水不在深，有龙则灵。斯是陋室，惟吾德馨。  
+      苔痕上阶绿，草色入帘青。谈笑有鸿儒，往来无白丁。可以调素琴，阅金经。  
+      无丝竹之乱耳，无案牍之劳形。南阳诸葛庐，西蜀子云亭。孔子云：何陋之有？`);  
+    }, 2000);  
+  });  
+}  
+  
+// 在组件挂载后调用  
+onMounted(async () => {  
+  const text = await fetchData();  
+  content.value = text;  
+    
+  // 等待 DOM 更新  
+  await nextTick();  
+    
+  // 调用子组件的 init 方法  
+  if (uReadMoreRef.value) {  
+    uReadMoreRef.value.init();  
+  }  
+});  
+</script>
+```
+
+#### 自定义样式
+
+```json
+{
+    // #ifndef APP-NVUE
+    backgroundImage: "linear-gradient(-180deg, rgba(255, 255, 255, 0) 0%, #fff 80%)",
+    // #endif
+    // #ifdef APP-NVUE
+    // nvue上不支持设置复杂的backgroundImage属性
+    backgroundImage: "linear-gradient(to top, #fff, rgba(255, 255, 255, 0.5))",
+    // #endif
+    paddingTop: "100px",
+    marginTop: "-100px",
+}
+```
+
+```vue
+<template>
+	<up-read-more ref="uReadMore" :shadowStyle="shadowStyle" :showHeight="200">
+		<rich-text :nodes="content"></rich-text>
+	</up-read-more>
+</template>
+```
+
+```vue
+<script setup>  
+import { reactive } from 'vue';  
+  
+const state = reactive({  
+  content: '',  
+  shadowStyle: {  
+    backgroundImage: "none",  
+    paddingTop: "0",  
+    marginTop: "20rpx"  
+  }  
+});  
+</script>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/readMore.md`</small>
 
 </template>
 
 <template #uniappx>
 
+#### 基本使用
+
 ```vue
-<up-read-more
-    ref="uReadMore"
-    :showHeight="showHeight"
-    toggle
-    @open="open"
-    @close="close"
->
+<template>
+	<up-read-more>
+		<rich-text :nodes="content"></rich-text>
+	</up-read-more>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+const content = ref(`山不在高，有仙则名。水不在深，有龙则灵。斯是陋室，惟吾德馨。  
+苔痕上阶绿，草色入帘青。谈笑有鸿儒，往来无白丁。可以调素琴，阅金经。  
+无丝竹之乱耳，无案牍之劳形。南阳诸葛庐，西蜀子云亭。孔子云：何陋之有？`);  
+</script>
+```
+
+#### 兼容性
+
+```vue
+<template>
+	<up-read-more ref="uReadMoreRef">
+		<up-parse :content="content" @load="load"></up-parse>
+	</up-read-more>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref, onMounted } from 'vue';  
+  
+// 创建响应式数据  
+const content = ref(`山不在高，有仙则名。水不在深，有龙则灵。斯是陋室，惟吾德馨。  
+苔痕上阶绿，草色入帘青。谈笑有鸿儒，往来无白丁。可以调素琴，阅金经。  
+无丝竹之乱耳，无案牍之劳形。南阳诸葛庐，西蜀子云亭。孔子云：何陋之有？`);  
+  
+// 创建组件引用  
+const uReadMoreRef = ref(null);  
+  
+// 定义方法  
+function load() {  
+    if (uReadMoreRef.value) {  
+        uReadMoreRef.value.init();  
+    }  
+}  
+  
+// 如果需要在组件挂载后调用 load 方法，可以使用 onMounted 钩子  
+onMounted(() => {  
+    load();  
+});  
+</script>
+```
+
+#### 展开收起
+
+```vue
+<up-read-more :toggle="true">
     <rich-text :nodes="content"></rich-text>
-    <!-- <up-parse
-        :content="content"
-        @load="load"
-        :tag-style="tagStyle"
-    ></up-parse> -->
 </up-read-more>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/readMore/readMore.uvue`</small>
+#### 配置展开高度
+
+```vue
+<up-read-more showHeight="600">
+    <rich-text :nodes="content"></rich-text>
+</up-read-more>
+```
+
+#### 异步初始化
+
+```vue
+<template>
+	<up-read-more ref="uReadMoreRef">
+        <rich-text :nodes="content"></rich-text>
+	</up-read-more>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref, onMounted } from 'vue';  
+  
+// 创建响应式数据  
+const content = ref('');  
+  
+// 创建组件引用  
+const uReadMoreRef = ref(null);  
+  
+// 模拟后端请求  
+async function fetchData() {  
+  return new Promise((resolve) => {  
+    setTimeout(() => {  
+      resolve(`山不在高，有仙则名。水不在深，有龙则灵。斯是陋室，惟吾德馨。  
+      苔痕上阶绿，草色入帘青。谈笑有鸿儒，往来无白丁。可以调素琴，阅金经。  
+      无丝竹之乱耳，无案牍之劳形。南阳诸葛庐，西蜀子云亭。孔子云：何陋之有？`);  
+    }, 2000);  
+  });  
+}  
+  
+// 在组件挂载后调用  
+onMounted(async () => {  
+  const text = await fetchData();  
+  content.value = text;  
+    
+  // 等待 DOM 更新  
+  await nextTick();  
+    
+  // 调用子组件的 init 方法  
+  if (uReadMoreRef.value) {  
+    uReadMoreRef.value.init();  
+  }  
+});  
+</script>
+```
+
+#### 自定义样式
+
+```json
+{
+    // #ifndef APP-NVUE
+    backgroundImage: "linear-gradient(-180deg, rgba(255, 255, 255, 0) 0%, #fff 80%)",
+    // #endif
+    // #ifdef APP-NVUE
+    // nvue上不支持设置复杂的backgroundImage属性
+    backgroundImage: "linear-gradient(to top, #fff, rgba(255, 255, 255, 0.5))",
+    // #endif
+    paddingTop: "100px",
+    marginTop: "-100px",
+}
+```
+
+```vue
+<template>
+	<up-read-more ref="uReadMore" :shadowStyle="shadowStyle" :showHeight="200">
+		<rich-text :nodes="content"></rich-text>
+	</up-read-more>
+</template>
+```
+
+```vue
+<script setup>  
+import { reactive } from 'vue';  
+  
+const state = reactive({  
+  content: '',  
+  shadowStyle: {  
+    backgroundImage: "none",  
+    paddingTop: "0",  
+    marginTop: "20rpx"  
+  }  
+});  
+</script>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/readMore.md`</small>
 
 </template>
 

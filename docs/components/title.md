@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -178,43 +178,73 @@ textSlot / subSlot / children 组合
 
 <template #uniapp>
 
-```vue
-<up-title>
-    默认标题
-</up-title>
-```
+#### 基本使用
+
+通过默认插槽设置标题内容：
 
 ```vue
-<up-title>
-    <template #prefix>
-        <up-icon name="level" color="red" size="16px"></up-icon>
-    </template>
-    等级3
-</up-title>
+<u-title>这里是标题</u-title>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/title/title.uvue`</small>
+#### 自定义前缀
+
+使用 [prefix] 插槽自定义前缀标识：
+
+```vue
+<u-title>
+  <template #prefix>
+    <view class="custom-prefix">◆</view>
+  </template>
+  带自定义前缀的标题
+</u-title>
+```
+
+#### 组合使用
+
+```vue
+<u-title class="custom-title">
+  <u-icon name="bell" size="18"></u-icon>
+  带图标的标题
+</u-title>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/title.md`</small>
 
 </template>
 
 <template #uniappx>
 
+#### 基本使用
+
+通过默认插槽设置标题内容：
+
 ```vue
-<up-title>
-    默认标题
-</up-title>
+<up-title>这里是标题</up-title>
 ```
+
+#### 自定义前缀
+
+使用 [prefix] 插槽自定义前缀标识：
 
 ```vue
 <up-title>
-    <template #prefix>
-        <up-icon name="level" color="red" size="16px"></up-icon>
-    </template>
-    等级3
+  <template #prefix>
+    <view class="custom-prefix">◆</view>
+  </template>
+  带自定义前缀的标题
 </up-title>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/title/title.uvue`</small>
+#### 组合使用
+
+```vue
+<up-title class="custom-title">
+  <up-icon name="bell" size="18"></up-icon>
+  带图标的标题
+</up-title>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/title.md`</small>
 
 </template>
 

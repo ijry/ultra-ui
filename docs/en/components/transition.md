@@ -12,7 +12,7 @@ Fade, zoom and slide presets for element enter and leave.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -138,47 +138,85 @@ timingFunction 对应 CSS transition-timing-function
 
 <template #uniapp>
 
+#### 基本使用
+
 ```vue
-<up-transition
-    :mode="mode"
-    :show="show"
-    :custom-style="style"
-    @click="click"
-    @beforeEnter="beforeEnter"
-    @enter="enter"
-    @afterEnter="afterEnter"
-    @beforeLeave="beforeLeave"
-    @leave="leave"
-    @afterLeave="afterLeave"
->
-    <view class="transition"></view>
-</up-transition>
+<template>
+    <up-transition :show="show">
+        <view class="transition"></view>
+    </up-transition>
+</template>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsA/transition/transition.uvue`</small>
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const show = ref(true);
+</script>
+```
+
+#### 动画模式
+
+```vue
+<template>
+    <up-transition :show="show" mode="zoom-in">
+        <view class="transition"></view>
+    </up-transition>
+</template>
+```
+
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const show = ref(true);
+</script>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/transition.md`</small>
 
 </template>
 
 <template #uniappx>
 
+#### 基本使用
+
 ```vue
-<up-transition
-    :mode="mode"
-    :show="show"
-    :custom-style="style"
-    @click="click"
-    @beforeEnter="beforeEnter"
-    @enter="enter"
-    @afterEnter="afterEnter"
-    @beforeLeave="beforeLeave"
-    @leave="leave"
-    @afterLeave="afterLeave"
->
-    <view class="transition"></view>
-</up-transition>
+<template>
+    <up-transition :show="show">
+        <view class="transition"></view>
+    </up-transition>
+</template>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsA/transition/transition.uvue`</small>
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const show = ref(true);
+</script>
+```
+
+#### 动画模式
+
+```vue
+<template>
+    <up-transition :show="show" mode="zoom-in">
+        <view class="transition"></view>
+    </up-transition>
+</template>
+```
+
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const show = ref(true);
+</script>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/transition.md`</small>
 
 </template>
 

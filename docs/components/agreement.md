@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -82,75 +82,239 @@ disabled 时不可交互
 
 <template #uniapp>
 
+#### 基础用法
+
 ```vue
-<up-agreement ref="agreement1" @confirm="change1"
-    url-protocol="/pages/user_agreement/agreement/info?title=用户协议"
-    url-privacy="/pages/user_agreement/agreement/info?title=隐私政策"></up-agreement>
+<template>
+  <view class="container">
+    <up-agreement 
+      :isAgree="isAgree"
+      @confirm="handleAgree"
+      url-protocol="/pages/user_agreement/agreement/info?title=用户协议"
+      url-privacy="/pages/user_agreement/agreement/info?title=隐私政策"
+    />
+    
+    <!-- 其他页面内容 -->
+    <view v-if="isAgree" class="content">
+      <text>用户已同意协议，可以正常使用功能</text>
+    </view>
+  </view>
+</template>
 ```
 
 ```vue
-<up-agreement ref="agreement2" @confirm="change2"
-    url-protocol="/pages/user_agreement/agreement/info?title=用户协议"
-    url-privacy="/pages/user_agreement/agreement/info?title=隐私政策">
-  <view class="custom-content">
-    <text class="title">请仔细阅读并同意以下协议：</text>
-    <view class="agreement-item">
-        <text>《</text>
-        <navigator class="inline-link" :url="urlProtocol">用户服务协议</navigator>
-        <text>》</text>
-    </view>
-    <view class="agreement-item">
-        <text>《</text>
-        <navigator class="inline-link" :url="urlPrivacy">隐私保护政策</navigator>
-        <text>》</text>
-    </view>
-    <view class="agreement-item">
-        <text>《</text>
-        <navigator class="inline-link" :url="urlThird">第三方信息共享清单</navigator>
-        <text>》</text>
-    </view>
- </view>
-</up-agreement>
+<script setup>
+import { ref } from 'vue';
+
+const isAgree = ref(0); // 0表示未同意，1表示已同意
+
+const handleAgree = (status) => {
+  isAgree.value = status;
+  console.log('用户已同意协议');
+  // 可以在这里执行用户同意后的逻辑
+};
+</script>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/agreement/agreement.uvue`</small>
+#### 自定义内容插槽用法
+
+```vue
+<template>
+  <view class="container">
+    <up-agreement 
+      :isAgree="isAgree"
+      @confirm="handleAgree"
+    >
+      <template #default>
+        <view class="custom-content">
+          <text class="title">请仔细阅读并同意以下协议：</text>
+          <view class="agreement-item">
+            <text>《</text>
+            <navigator class="inline-link" :url="urlProtocol">用户服务协议</navigator>
+            <text>》</text>
+          </view>
+          <view class="agreement-item">
+            <text>《</text>
+            <navigator class="inline-link" :url="urlPrivacy">隐私保护政策</navigator>
+            <text>》</text>
+          </view>
+          <view class="agreement-item">
+            <text>《</text>
+            <navigator class="inline-link" :url="urlThird">第三方信息共享清单</navigator>
+            <text>》</text>
+          </view>
+        </view>
+      </template>
+    </up-agreement>
+  </view>
+</template>
+```
+
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const isAgree = ref(0);
+const urlProtocol = ref('/pages/agreement/protocol');
+const urlPrivacy = ref('/pages/agreement/privacy');
+const urlThird = ref('/pages/agreement/third-party');
+
+const handleAgree = (status) => {
+  isAgree.value = status;
+  uni.showToast({
+    title: '同意协议成功',
+    icon: 'success'
+  });
+};
+</script>
+```
+
+```vue
+<style scoped>
+.custom-content {
+  padding: 20rpx;
+  display: inline-block;
+}
+
+.title {
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 30rpx;
+  display: block;
+}
+
+.agreement-item {
+  margin-bottom: 20rpx;
+  display: inline-block;
+}
+
+.inline-link {
+  color: #007AFF;
+  display: inline-block;
+}
+</style>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/agreement.md`</small>
 
 </template>
 
 <template #uniappx>
 
+#### 基础用法
+
 ```vue
-<up-agreement ref="agreement1" @confirm="change1"
-    url-protocol="/pages/user_agreement/agreement/info?title=用户协议"
-    url-privacy="/pages/user_agreement/agreement/info?title=隐私政策"></up-agreement>
+<template>
+  <view class="container">
+    <up-agreement 
+      :isAgree="isAgree"
+      @confirm="handleAgree"
+      url-protocol="/pages/user_agreement/agreement/info?title=用户协议"
+      url-privacy="/pages/user_agreement/agreement/info?title=隐私政策"
+    />
+    
+    <!-- 其他页面内容 -->
+    <view v-if="isAgree" class="content">
+      <text>用户已同意协议，可以正常使用功能</text>
+    </view>
+  </view>
+</template>
 ```
 
 ```vue
-<up-agreement ref="agreement2" @confirm="change2"
-    url-protocol="/pages/user_agreement/agreement/info?title=用户协议"
-    url-privacy="/pages/user_agreement/agreement/info?title=隐私政策">
-  <view class="custom-content">
-    <text class="title">请仔细阅读并同意以下协议：</text>
-    <view class="agreement-item">
-        <text>《</text>
-        <navigator class="inline-link" :url="urlProtocol">用户服务协议</navigator>
-        <text>》</text>
-    </view>
-    <view class="agreement-item">
-        <text>《</text>
-        <navigator class="inline-link" :url="urlPrivacy">隐私保护政策</navigator>
-        <text>》</text>
-    </view>
-    <view class="agreement-item">
-        <text>《</text>
-        <navigator class="inline-link" :url="urlThird">第三方信息共享清单</navigator>
-        <text>》</text>
-    </view>
- </view>
-</up-agreement>
+<script setup>
+import { ref } from 'vue';
+
+const isAgree = ref(0); // 0表示未同意，1表示已同意
+
+const handleAgree = (status) => {
+  isAgree.value = status;
+  console.log('用户已同意协议');
+  // 可以在这里执行用户同意后的逻辑
+};
+</script>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/agreement/agreement.uvue`</small>
+#### 自定义内容插槽用法
+
+```vue
+<template>
+  <view class="container">
+    <up-agreement 
+      :isAgree="isAgree"
+      @confirm="handleAgree"
+    >
+      <template #default>
+        <view class="custom-content">
+          <text class="title">请仔细阅读并同意以下协议：</text>
+          <view class="agreement-item">
+            <text>《</text>
+            <navigator class="inline-link" :url="urlProtocol">用户服务协议</navigator>
+            <text>》</text>
+          </view>
+          <view class="agreement-item">
+            <text>《</text>
+            <navigator class="inline-link" :url="urlPrivacy">隐私保护政策</navigator>
+            <text>》</text>
+          </view>
+          <view class="agreement-item">
+            <text>《</text>
+            <navigator class="inline-link" :url="urlThird">第三方信息共享清单</navigator>
+            <text>》</text>
+          </view>
+        </view>
+      </template>
+    </up-agreement>
+  </view>
+</template>
+```
+
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const isAgree = ref(0);
+const urlProtocol = ref('/pages/agreement/protocol');
+const urlPrivacy = ref('/pages/agreement/privacy');
+const urlThird = ref('/pages/agreement/third-party');
+
+const handleAgree = (status) => {
+  isAgree.value = status;
+  uni.showToast({
+    title: '同意协议成功',
+    icon: 'success'
+  });
+};
+</script>
+```
+
+```vue
+<style scoped>
+.custom-content {
+  padding: 20rpx;
+  display: inline-block;
+}
+
+.title {
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 30rpx;
+  display: block;
+}
+
+.agreement-item {
+  margin-bottom: 20rpx;
+  display: inline-block;
+}
+
+.inline-link {
+  color: #007AFF;
+  display: inline-block;
+}
+</style>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/agreement.md`</small>
 
 </template>
 

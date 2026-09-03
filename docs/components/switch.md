@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -207,147 +207,271 @@ asyncChange 时组件不自动切换，等外部请求成功后再更新 value
 
 <template #uniapp>
 
-#### 基础功能
+#### 基础使用
+
+通过`v-model`绑定一个`布尔值`变量，这个变量是双向绑定的，当用户开或关选择器的时候，在父组件的该值也会相应的变为`true`或者`false`，也就是说，
+您不用监听`change`事件，也能知道选择器当前处于**开**或者**关**的状态。
+
+我们为其提供了`加载中 禁用 自定义尺寸 自定义颜色 自定义样式 异步控制`等六种能力，并在以下案例中为您展示
 
 ```vue
-<up-switch
-    v-model="value1"
-    @change="change"
-></up-switch>
+<template>
+  <up-switch v-model="value" @change="change"></up-switch>
+</template>
+
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(false)
+
+const change = (e) => {
+  console.log('change', e);
+}
+</script>
 ```
 
 #### 加载中
 
+设置`loading`属性，默认为`true`，可以让`switch`处于加载中的状态，这时`switch`是不可操作的，您可以通过`:loading='loading'`以动态设置加载状态
+
 ```vue
-<up-switch
-    v-model="value3"
-    loading
-></up-switch>
+<template>
+  <up-switch v-model="value3" loading></up-switch>
+  <up-switch v-model="value4" loading></up-switch>
+</template>
+
+<script setup>
+import { ref } from 'vue'
+
+const value3 = ref(false)
+const value4 = ref(true)
+</script>
 ```
 
-#### 禁用状态
+#### 禁用switch
+
+设置`disabled`属性,默认为`true`，即可禁用某个组件，让用户无法点击，禁用分为两种状态：
+
+- 一是关闭情况下的禁用，这时只显示一个白色的区域。
+- 二是打开后再禁用，这时会在原有的颜色上加一个`opacity`透明度，但此时依然是不可操作的。
 
 ```vue
-<up-switch
-    v-model="value5"
-    disabled
-></up-switch>
+<template>
+  <up-switch v-model="value" disabled></up-switch>
+</template>
+
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(false)
+</script>
 ```
 
 #### 自定义尺寸
 
+设置`size`属性，可以让您自定义`switch`的尺寸，单位为`px`
+
 ```vue
-<up-switch
-    v-model="value7"
-    size="28"
-></up-switch>
+<template>
+  <up-switch v-model="value3" size="28"></up-switch>
+  <up-switch v-model="value4" size="20"></up-switch>
+</template>
+
+<script setup>
+import { ref } from 'vue'
+
+const value3 = ref(false)
+const value4 = ref(true)
+</script>
 ```
 
 #### 自定义颜色
 
+设置`activeColor`属性，可以让您自定义`switch`的颜色，支持多种设置方式，如：`activeColor="#f56c6c" activeColor="red" activeColor="rgb(0,0,0)" `
+
 ```vue
-<up-switch
-    v-model="value9"
-    activeColor="#f56c6c"
-    loading
-></up-switch>
+<template>
+  <up-switch v-model="value" activeColor="#f56c6c" loading></up-switch>
+  <up-switch v-model="value1" activeColor="#5ac725" loading></up-switch>
+</template>
+
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(true)
+const value1 = ref(true)
+</script>
 ```
 
 #### 自定义样式
 
+同时设置`activeColor`和`inactiveColor`属性，可以让您自定义`switch`的样式，同样支持多种设置方式
+
 ```vue
-<up-switch
-    :space="2"
-    v-model="value11"
-    activeColor="#f56c6c"
-    inactiveColor="rgb(230, 230, 230)"
-></up-switch>
+<template>
+  <up-switch space="2" v-model="value11" activeColor="#f9ae3d" inactiveColor="rgb(230, 230, 230)"></up-switch>
+  <up-switch space="2" v-model="value12" activeColor="#f9ae3d" inactiveColor="rgb(230, 230, 230)"></up-switch>
+</template>
+
+<script setup>
+import { ref } from 'vue'
+
+const value11 = ref(false)
+const value12 = ref(true)
+</script>
 ```
 
 #### 异步控制
 
+异步控制场景，一般发生在用户打开或者关闭选择器时，需要本地或者向后端请求判断，是否允许用户打开或者关闭的场景。  
+同时您也可以组合使用，例如根据接口结果添加`disabled`，`loading`属性等
+
+:::warning 注意
+请添加`asyncChange`属性来支持异步控制操作，否则您将先操作`v-model`绑定的值，并失去控制效果
+:::
+
 ```vue
-<up-switch
-    v-model="value13"
-    asyncChange
-    @change="asyncChange"
-></up-switch>
+<template>
+  <up-switch v-model="value13" asyncChange @change="asyncChange"></up-switch>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const value13 = ref(true);
+
+const asyncChange = (e) => {
+  uni.showModal({
+    content: e ? '确定要打开吗' : '确定要关闭吗',
+    success: (res) => {
+      if (res.confirm) {
+        value13.value = e;
+      }
+    },
+  });
+};
+</script>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsB/switch/switch.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/switch.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 基础功能
+#### 基础使用
+
+通过`v-model`绑定一个`布尔值`变量，这个变量是双向绑定的，当用户开或关选择器的时候，在父组件的该值也会相应的变为`true`或者`false`，也就是说，
+您不用监听`change`事件，也能知道选择器当前处于**开**或者**关**的状态。
+
+我们为其提供了`加载中 禁用 自定义尺寸 自定义颜色 自定义样式 异步控制`等六种能力，并在以下案例中为您展示
 
 ```vue
-<up-switch
-    v-model="value1"
-    @change="change"
-></up-switch>
+<up-switch v-model="value" @change="change"></up-switch>
+<!-- methods -->
+change(e) {
+	console.log('change', e);
+},
 ```
 
 #### 加载中
 
+设置`loading`属性，默认为`true`，可以让`switch`处于加载中的状态，这时`switch`是不可操作的，您可以通过`:loading='loading'`以动态设置加载状态
+
 ```vue
-<up-switch
-    v-model="value3"
-    loading
-></up-switch>
+<up-switch v-model="value3" loading ></up-switch>
+<up-switch v-model="value4" loading ></up-switch>
+<!-- data -->
+value3: false,
+value4: true,
 ```
 
-#### 禁用状态
+#### 禁用switch
+
+设置`disabled`属性,默认为`true`，即可禁用某个组件，让用户无法点击，禁用分为两种状态：
+
+- 一是关闭情况下的禁用，这时只显示一个白色的区域。
+- 二是打开后再禁用，这时会在原有的颜色上加一个`opacity`透明度，但此时依然是不可操作的。
 
 ```vue
-<up-switch
-    v-model="value5"
-    disabled
-></up-switch>
+<up-switch v-model="value" disabled ></up-switch>
 ```
 
 #### 自定义尺寸
 
+设置`size`属性，可以让您自定义`switch`的尺寸，单位为`px`
+
 ```vue
-<up-switch
-    v-model="value7"
-    size="28"
-></up-switch>
+<up-switch v-model="value3" size="28" ></up-switch>
+<up-switch v-model="value4" size="20" ></up-switch>
+<!-- data -->
+value3: false,
+value4: true,
 ```
 
 #### 自定义颜色
 
+设置`activeColor`属性，可以让您自定义`switch`的颜色，支持多种设置方式，如：`activeColor="#f56c6c" activeColor="red" activeColor="rgb(0,0,0)" `
+
 ```vue
-<up-switch
-    v-model="value9"
-    activeColor="#f56c6c"
-    loading
-></up-switch>
+<up-switch v-model="value" activeColor="#f56c6c" loading ></up-switch>
+<up-switch v-model="value1" activeColor="#5ac725" loading ></up-switch>
+<!-- data -->
+value: true,
+value1: true,
 ```
 
 #### 自定义样式
 
+同时设置`activeColor`和`inactiveColor`属性，可以让您自定义`switch`的样式，同样支持多种设置方式
+
 ```vue
 <up-switch
-    :space="2"
-    v-model="value11"
-    activeColor="#f56c6c"
-    inactiveColor="rgb(230, 230, 230)"
-></up-switch>
+	space="2" v-model="value11" activeColor="#f9ae3d" 
+	inactiveColor="rgb(230, 230, 230)">
+</up-switch>
+<up-switch
+	space="2" v-model="value12" activeColor="#f9ae3d"
+	inactiveColor="rgb(230, 230, 230)">
+</up-switch>
+<!-- data -->
+value11: false,
+value12: true,
 ```
 
 #### 异步控制
 
+异步控制场景，一般发生在用户打开或者关闭选择器时，需要本地或者向后端请求判断，是否允许用户打开或者关闭的场景。  
+同时您也可以组合使用，例如根据接口结果添加`disabled`，`loading`属性等
+
+:::warning 注意
+请添加`asyncChange`属性来支持异步控制操作，否则您将先操作`v-model`绑定的值，并失去控制效果
+:::
+
 ```vue
-<up-switch
-    v-model="value13"
-    asyncChange
-    @change="asyncChange"
-></up-switch>
+<template>
+	<up-switch v-model="value13" asyncChange @change="asyncChange" ></up-switch>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const value13 = ref(true);
+
+const asyncChange = (e) => {
+  uni.showModal({
+    content: e ? '确定要打开吗' : '确定要关闭吗',
+    success: (res) => {
+      if (res.confirm) {
+        value13.value = e;
+      }
+    },
+  });
+};
+</script>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsB/switch/switch.uvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/switch.md`</small>
 
 </template>
 

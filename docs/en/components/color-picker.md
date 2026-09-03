@@ -12,7 +12,7 @@ A colour panel with hue, saturation and alpha controls.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -133,63 +133,155 @@ import { UPColorPicker } from '@ultra-ui'
 
 <template #uniapp>
 
+#### 基本使用
+
 ```vue
-<up-color-picker
-    v-model="selectedColor"
-    @confirm="confirmColor"
->
-    <view class="color-preview">
-        <view class="color-block" :style="{ backgroundColor: selectedColor }"></view>
-        <text class="color-text">{{ selectedColor }}</text>
+<template>
+	<view class="p-4 bg-white">
+        <up-color-picker 
+            v-model="color" 
+            @confirm="confirm"
+        >
+            <view class="color-preview">
+                <view class="color-block" :style="{ backgroundColor: color }"></view>
+                <text class="color-text">{{ color }}</text>
+            </view>
+        </up-color-picker>
     </view>
-</up-color-picker>
+</template>
 ```
 
 ```vue
-<up-color-picker
-    v-model="selectedColor2"
-    :commonColors="commonColors"
-    @confirm="confirmColor2"
->
-    <view class="color-preview">
-        <view class="color-block" :style="{ backgroundColor: selectedColor2 }"></view>
-        <text class="color-text">{{ selectedColor2 }}</text>
-    </view>
-    </up-color-picker>
+<script setup>
+import { ref } from 'vue';
+
+const color = ref('#ff0000');
+
+const confirm = (selectedColor) => {
+    console.log('选择的颜色：', selectedColor);
+};
+</script>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/colorPicker/colorPicker.uvue`</small>
+#### 带常用颜色的使用
+
+```vue
+<template>
+	<view class="p-4 bg-white">
+        <up-color-picker 
+            v-model="color" 
+            :commonColors="commonColors" 
+            @confirm="confirm"
+        >
+            <view class="color-preview">
+                <view class="color-block" :style="{ backgroundColor: color }"></view>
+                <text class="color-text">{{ color }}</text>
+            </view>
+        </up-color-picker>
+    </view>
+</template>
+```
+
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const color = ref('#ff0000');
+const commonColors = ref([
+    '#ff0000',
+    '#00ff00',
+    '#0000ff',
+    '#ffff00',
+    '#00ffff',
+    '#ff00ff',
+    '#ffffff',
+    '#000000'
+]);
+
+const confirm = (selectedColor) => {
+    console.log('选择的颜色：', selectedColor);
+};
+</script>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/colorPicker.md`</small>
 
 </template>
 
 <template #uniappx>
 
+#### 基本使用
+
 ```vue
-<up-color-picker
-    v-model="selectedColor"
-    @confirm="confirmColor"
->
-    <view class="color-preview">
-        <view class="color-block" :style="{ backgroundColor: selectedColor }"></view>
-        <text class="color-text">{{ selectedColor }}</text>
+<template>
+	<view class="p-4 bg-white">
+        <up-color-picker 
+            v-model="color" 
+            @confirm="confirm"
+        >
+            <view class="color-preview">
+                <view class="color-block" :style="{ backgroundColor: color }"></view>
+                <text class="color-text">{{ color }}</text>
+            </view>
+        </up-color-picker>
     </view>
-</up-color-picker>
+</template>
 ```
 
 ```vue
-<up-color-picker
-    v-model="selectedColor2"
-    :commonColors="commonColors"
-    @confirm="confirmColor2"
->
-    <view class="color-preview">
-        <view class="color-block" :style="{ backgroundColor: selectedColor2 }"></view>
-        <text class="color-text">{{ selectedColor2 }}</text>
-    </view>
-    </up-color-picker>
+<script setup>
+import { ref } from 'vue';
+
+const color = ref('#ff0000');
+
+const confirm = (selectedColor) => {
+    console.log('选择的颜色：', selectedColor);
+};
+</script>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/colorPicker/colorPicker.uvue`</small>
+#### 带常用颜色的使用
+
+```vue
+<template>
+	<view class="p-4 bg-white">
+        <up-color-picker 
+            v-model="color" 
+            :commonColors="commonColors" 
+            @confirm="confirm"
+        >
+            <view class="color-preview">
+                <view class="color-block" :style="{ backgroundColor: color }"></view>
+                <text class="color-text">{{ color }}</text>
+            </view>
+        </up-color-picker>
+    </view>
+</template>
+```
+
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const color = ref('#ff0000');
+const commonColors = ref([
+    '#ff0000',
+    '#00ff00',
+    '#0000ff',
+    '#ffff00',
+    '#00ffff',
+    '#ff00ff',
+    '#ffffff',
+    '#000000'
+]);
+
+const confirm = (selectedColor) => {
+    console.log('选择的颜色：', selectedColor);
+};
+</script>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/colorPicker.md`</small>
 
 </template>
 

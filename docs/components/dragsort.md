@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -197,121 +197,537 @@ draggable=false 时不可拖拽
 
 <template #uniapp>
 
+#### 基本使用
+
+- 通过 `initialList` 设置初始数据列表
+- 通过 [direction]设置拖拽方向：vertical（垂直）、horizontal（水平）、all（网格）
+- 通过 [columns] 设置网格模式下的列数
+- 通过 [draggable] 控制是否允许拖拽
+
 ```vue
-<up-dragsort :initial-list="list" @drag-end="handleDragEnd">
+<template>
+  <view class="p-4 bg-white">
+    <!-- 垂直拖拽排序 -->
+    <up-dragsort 
+      :initialList="verticalList" 
+      direction="vertical"
+      @drag-end="onVerticalDragEnd"
+    />
+    
+    <!-- 水平拖拽排序 -->
+    <up-dragsort 
+      :initialList="horizontalList" 
+      direction="horizontal"
+      class="mt-4"
+      @drag-end="onHorizontalDragEnd"
+    />
+    
+    <!-- 网格拖拽排序 -->
+    <up-dragsort 
+      :initialList="gridList" 
+      direction="all"
+      :columns="3"
+      class="mt-4"
+      @drag-end="onGridDragEnd"
+    />
+  </view>
+</template>
+```
+
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const verticalList = ref([
+  { id: 1, label: '项目1' },
+  { id: 2, label: '项目2' },
+  { id: 3, label: '项目3' },
+  { id: 4, label: '项目4' }
+]);
+
+const horizontalList = ref([
+  { id: 1, label: '项目A' },
+  { id: 2, label: '项目B' },
+  { id: 3, label: '项目C' },
+  { id: 4, label: '项目D' }
+]);
+
+const gridList = ref([
+  { id: 1, label: '格子1' },
+  { id: 2, label: '格子2' },
+  { id: 3, label: '格子3' },
+  { id: 4, label: '格子4' },
+  { id: 5, label: '格子5' },
+  { id: 6, label: '格子6' }
+]);
+
+const onVerticalDragEnd = (list) => {
+  console.log('垂直拖拽结束', list);
+  verticalList.value = list;
+};
+
+const onHorizontalDragEnd = (list) => {
+  console.log('水平拖拽结束', list);
+  horizontalList.value = list;
+};
+
+const onGridDragEnd = (list) => {
+  console.log('网格拖拽结束', list);
+  gridList.value = list;
+};
+</script>
+```
+
+#### 1. 部分项目禁用拖拽
+
+可以通过给列表项添加 `draggable: false` 属性来禁用特定项目的拖拽功能：
+
+```vue
+<up-dragsort 
+  :initialList="listWithFixedItems" 
+  direction="vertical"
+  @drag-end="onDragEnd"
+>
   <template #default="{ item, index }">
-    <view class="custom-item">
-      <text class="custom-item__text">序号：{{ getDisplayIndex(index) }} - {{ getItemLabel(item) }}</text>
+    <view class="custom-item" :class="{ 'fixed-item': item.draggable === false }">
+      <text>{{ item.label }}</text>
+      <text v-if="item.draggable === false" class="fixed-label">(固定)</text>
     </view>
   </template>
 </up-dragsort>
 ```
 
 ```vue
-<up-dragsort :initial-list="list" @drag-end="handleDragEnd">
-  <template #handler="{ item, index }">
-    <view class="custom-item-handler">
-        <view class="handle"></view>
-    </view>
-  </template>
+<script setup>
+import { ref } from 'vue';
+
+const listWithFixedItems = ref([
+  { id: 1, label: '可拖拽项目1', draggable: true },
+  { id: 2, label: '固定项目', draggable: false },
+  { id: 3, label: '可拖拽项目2', draggable: true },
+  { id: 4, label: '可拖拽项目3', draggable: true }
+]);
+
+const onDragEnd = (list) => {
+  console.log('拖拽结束', list);
+  listWithFixedItems.value = list;
+};
+</script>
+```
+
+#### 2. 自定义网格样式
+
+网格模式下可以实现图标类应用的拖拽排序：
+
+```vue
+<up-dragsort 
+  :initialList="appList" 
+  direction="all"
+  :columns="4"
+  @drag-end="onDragEnd"
+>
   <template #default="{ item, index }">
-    <view class="custom-item">
-      <text class="custom-item__text">序号：{{ getDisplayIndex(index) }} - {{ getItemLabel(item) }}</text>
+    <view class="app-item">
+      <view class="app-icon">
+        <text>{{ item.icon }}</text>
+      </view>
+      <text class="app-label">{{ item.label }}</text>
     </view>
   </template>
 </up-dragsort>
 ```
 
 ```vue
-<up-dragsort
-    :initial-list="list"
-    :draggable="true"
-    :columns="3"
-    direction="all"
-    @drag-end="handleDragEnd">
-  <template #default="{ item, index }">
+<script setup>
+import { ref } from 'vue';
+
+const appList = ref([
+  { id: 1, label: '电话', icon: '📞' },
+  { id: 2, label: '短信', icon: '💬' },
+  { id: 3, label: '相机', icon: '📷' },
+  { id: 4, label: '设置', icon: '⚙️' },
+  { id: 5, label: '音乐', icon: '🎵' },
+  { id: 6, label: '视频', icon: '🎬' }
+]);
+
+const onDragEnd = (list) => {
+  console.log('拖拽结束', list);
+  appList.value = list;
+};
+</script>
+
+<style>
+.app-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+
+.app-icon {
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
+.app-label {
+  font-size: 12px;
+}
+</style>
+```
+
+#### 3. 响应式列数
+
+根据不同屏幕尺寸调整网格列数：
+
+```vue
+<up-dragsort 
+  :initialList="responsiveList" 
+  direction="all"
+  :columns="gridColumns"
+  @drag-end="onDragEnd"
+>
+  <template #default="{ item }">
     <view class="grid-item">
-        <text class="custom-item__text">{{ getItemLabel(item) }}</text>
+      <text>{{ item.label }}</text>
     </view>
   </template>
 </up-dragsort>
 ```
 
 ```vue
-<up-dragsort
-    :initial-list="list2"
-    :draggable="true"
-    direction="horizontal"
-    @drag-end="handleDragEnd">
+<script setup>
+import { ref, computed } from 'vue';
+
+const responsiveList = ref([
+  { id: 1, label: '项目1' },
+  { id: 2, label: '项目2' },
+  { id: 3, label: '项目3' },
+  // ...更多项目
+]);
+
+const gridColumns = computed(() => {
+  // 根据屏幕宽度动态计算列数
+  const screenWidth = uni.getSystemInfoSync().windowWidth;
+  if (screenWidth < 375) {
+    return 2; // 小屏手机
+  } else if (screenWidth < 414) {
+    return 3; // 中屏手机
+  } else {
+    return 4; // 大屏手机/平板
+  }
+});
+
+const onDragEnd = (list) => {
+  console.log('拖拽结束', list);
+  responsiveList.value = list;
+};
+</script>
+```
+
+#### 自定义内容
+
+通过默认插槽可以自定义每个拖拽项的内容：
+
+```vue
+<up-dragsort 
+  :initialList="customList" 
+  direction="vertical"
+  @drag-end="onCustomDragEnd"
+>
   <template #default="{ item, index }">
-    <view class="horizontal-item">
-        <text class="custom-item__text">{{ getItemLabel(item) }}</text>
+    <view class="custom-item">
+      <text>{{ index + 1 }}. {{ item.label }}</text>
     </view>
   </template>
 </up-dragsort>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/dragsort/dragsort.uvue`</small>
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const customList = ref([
+  { id: 1, label: '项目1' },
+  { id: 2, label: '项目2' },
+  { id: 3, label: '项目3' }
+]);
+
+const onCustomDragEnd = (list) => {
+  console.log('自定义拖拽结束', list);
+  customList.value = list;
+};
+</script>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/dragsort.md`</small>
 
 </template>
 
 <template #uniappx>
 
+#### 基本使用
+
+- 通过 `initialList` 设置初始数据列表
+- 通过 [direction]设置拖拽方向：vertical（垂直）、horizontal（水平）、all（网格）
+- 通过 [columns] 设置网格模式下的列数
+- 通过 [draggable] 控制是否允许拖拽
+
 ```vue
-<up-dragsort :initial-list="list" @drag-end="handleDragEnd">
+<template>
+  <view class="p-4 bg-white">
+    <!-- 垂直拖拽排序 -->
+    <up-dragsort 
+      :initialList="verticalList" 
+      direction="vertical"
+      @drag-end="onVerticalDragEnd"
+    />
+    
+    <!-- 水平拖拽排序 -->
+    <up-dragsort 
+      :initialList="horizontalList" 
+      direction="horizontal"
+      class="mt-4"
+      @drag-end="onHorizontalDragEnd"
+    />
+    
+    <!-- 网格拖拽排序 -->
+    <up-dragsort 
+      :initialList="gridList" 
+      direction="all"
+      :columns="3"
+      class="mt-4"
+      @drag-end="onGridDragEnd"
+    />
+  </view>
+</template>
+```
+
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const verticalList = ref([
+  { id: 1, label: '项目1' },
+  { id: 2, label: '项目2' },
+  { id: 3, label: '项目3' },
+  { id: 4, label: '项目4' }
+]);
+
+const horizontalList = ref([
+  { id: 1, label: '项目A' },
+  { id: 2, label: '项目B' },
+  { id: 3, label: '项目C' },
+  { id: 4, label: '项目D' }
+]);
+
+const gridList = ref([
+  { id: 1, label: '格子1' },
+  { id: 2, label: '格子2' },
+  { id: 3, label: '格子3' },
+  { id: 4, label: '格子4' },
+  { id: 5, label: '格子5' },
+  { id: 6, label: '格子6' }
+]);
+
+const onVerticalDragEnd = (list) => {
+  console.log('垂直拖拽结束', list);
+  verticalList.value = list;
+};
+
+const onHorizontalDragEnd = (list) => {
+  console.log('水平拖拽结束', list);
+  horizontalList.value = list;
+};
+
+const onGridDragEnd = (list) => {
+  console.log('网格拖拽结束', list);
+  gridList.value = list;
+};
+</script>
+```
+
+#### 1. 部分项目禁用拖拽
+
+可以通过给列表项添加 `draggable: false` 属性来禁用特定项目的拖拽功能：
+
+```vue
+<up-dragsort 
+  :initialList="listWithFixedItems" 
+  direction="vertical"
+  @drag-end="onDragEnd"
+>
   <template #default="{ item, index }">
-    <view class="custom-item">
-      <text class="custom-item__text">序号：{{ getDisplayIndex(index) }} - {{ getItemLabel(item) }}</text>
+    <view class="custom-item" :class="{ 'fixed-item': item.draggable === false }">
+      <text>{{ item.label }}</text>
+      <text v-if="item.draggable === false" class="fixed-label">(固定)</text>
     </view>
   </template>
 </up-dragsort>
 ```
 
 ```vue
-<up-dragsort :initial-list="list" @drag-end="handleDragEnd">
-  <template #handler="{ item, index }">
-    <view class="custom-item-handler">
-        <view class="handle"></view>
-    </view>
-  </template>
+<script setup>
+import { ref } from 'vue';
+
+const listWithFixedItems = ref([
+  { id: 1, label: '可拖拽项目1', draggable: true },
+  { id: 2, label: '固定项目', draggable: false },
+  { id: 3, label: '可拖拽项目2', draggable: true },
+  { id: 4, label: '可拖拽项目3', draggable: true }
+]);
+
+const onDragEnd = (list) => {
+  console.log('拖拽结束', list);
+  listWithFixedItems.value = list;
+};
+</script>
+```
+
+#### 2. 自定义网格样式
+
+网格模式下可以实现图标类应用的拖拽排序：
+
+```vue
+<up-dragsort 
+  :initialList="appList" 
+  direction="all"
+  :columns="4"
+  @drag-end="onDragEnd"
+>
   <template #default="{ item, index }">
-    <view class="custom-item">
-      <text class="custom-item__text">序号：{{ getDisplayIndex(index) }} - {{ getItemLabel(item) }}</text>
+    <view class="app-item">
+      <view class="app-icon">
+        <text>{{ item.icon }}</text>
+      </view>
+      <text class="app-label">{{ item.label }}</text>
     </view>
   </template>
 </up-dragsort>
 ```
 
 ```vue
-<up-dragsort
-    :initial-list="list"
-    :draggable="true"
-    :columns="3"
-    direction="all"
-    @drag-end="handleDragEnd">
-  <template #default="{ item, index }">
+<script setup>
+import { ref } from 'vue';
+
+const appList = ref([
+  { id: 1, label: '电话', icon: '📞' },
+  { id: 2, label: '短信', icon: '💬' },
+  { id: 3, label: '相机', icon: '📷' },
+  { id: 4, label: '设置', icon: '⚙️' },
+  { id: 5, label: '音乐', icon: '🎵' },
+  { id: 6, label: '视频', icon: '🎬' }
+]);
+
+const onDragEnd = (list) => {
+  console.log('拖拽结束', list);
+  appList.value = list;
+};
+</script>
+
+<style>
+.app-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+
+.app-icon {
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
+.app-label {
+  font-size: 12px;
+}
+</style>
+```
+
+#### 3. 响应式列数
+
+根据不同屏幕尺寸调整网格列数：
+
+```vue
+<up-dragsort 
+  :initialList="responsiveList" 
+  direction="all"
+  :columns="gridColumns"
+  @drag-end="onDragEnd"
+>
+  <template #default="{ item }">
     <view class="grid-item">
-        <text class="custom-item__text">{{ getItemLabel(item) }}</text>
+      <text>{{ item.label }}</text>
     </view>
   </template>
 </up-dragsort>
 ```
 
 ```vue
-<up-dragsort
-    :initial-list="list2"
-    :draggable="true"
-    direction="horizontal"
-    @drag-end="handleDragEnd">
+<script setup>
+import { ref, computed } from 'vue';
+
+const responsiveList = ref([
+  { id: 1, label: '项目1' },
+  { id: 2, label: '项目2' },
+  { id: 3, label: '项目3' },
+  // ...更多项目
+]);
+
+const gridColumns = computed(() => {
+  // 根据屏幕宽度动态计算列数
+  const screenWidth = uni.getSystemInfoSync().windowWidth;
+  if (screenWidth < 375) {
+    return 2; // 小屏手机
+  } else if (screenWidth < 414) {
+    return 3; // 中屏手机
+  } else {
+    return 4; // 大屏手机/平板
+  }
+});
+
+const onDragEnd = (list) => {
+  console.log('拖拽结束', list);
+  responsiveList.value = list;
+};
+</script>
+```
+
+#### 自定义内容
+
+通过默认插槽可以自定义每个拖拽项的内容：
+
+```vue
+<up-dragsort 
+  :initialList="customList" 
+  direction="vertical"
+  @drag-end="onCustomDragEnd"
+>
   <template #default="{ item, index }">
-    <view class="horizontal-item">
-        <text class="custom-item__text">{{ getItemLabel(item) }}</text>
+    <view class="custom-item">
+      <text>{{ index + 1 }}. {{ item.label }}</text>
     </view>
   </template>
 </up-dragsort>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/dragsort/dragsort.uvue`</small>
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const customList = ref([
+  { id: 1, label: '项目1' },
+  { id: 2, label: '项目2' },
+  { id: 3, label: '项目3' }
+]);
+
+const onCustomDragEnd = (list) => {
+  console.log('自定义拖拽结束', list);
+  customList.value = list;
+};
+</script>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/dragsort.md`</small>
 
 </template>
 

@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -315,179 +315,515 @@ grid-item 的 bgColor
 
 <template #uniapp>
 
-#### 基本案例
+#### 基本使用
+
+- 该组件外层为`up-grid`组件包裹，通过`col`设置内部宫格的列数
+- 内部通过`up-grid-item`组件的`slot`设置宫格的内容
+- 如果不需要宫格的边框，可以设置`border`为`false`
 
 ```vue
-<up-grid
-    :border="false"
-    @click="click"
-    align="center"
->
-    <up-grid-item
-        v-for="(baseListItem, baseListIndex) in baseList"
-        @click="click('test')"
-        :key="baseListIndex"
-    >
-        <up-icon
-            :customStyle="{paddingTop:20+'rpx'}"
-            :name="baseListItem['name']"
-            :size="22"
-        ></up-icon>
-        <text class="grid-text">{{baseListItem['title']}}</text>
-    </up-grid-item>
-</up-grid>
+<template>
+    <view>
+        <up-grid
+                :border="false"
+                @click="click"
+        >
+            <up-grid-item
+                    v-for="(baseListItem,baseListIndex) in baseList"
+                    :key="baseListIndex"
+            >
+                <up-icon
+                        :customStyle="{paddingTop:20+'rpx'}"
+                        :name="baseListItem.name"
+                        :size="22"
+                ></up-icon>
+                <text class="grid-text">{{baseListItem.title}}</text>
+            </up-grid-item>
+        </up-grid>
+        <up-toast ref="uToastRef" />
+    </view>
+</template>
 ```
 
-#### 显示边框
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 创建响应式数据  
+const baseList = ref([  
+    {  
+        name: 'photo',  
+        title: '图片'  
+    },  
+    {  
+        name: 'lock',  
+        title: '锁头'  
+    },  
+    {  
+        name: 'star',  
+        title: '星星'  
+    },  
+]);  
+  
+// 创建对子组件的引用  
+const uToastRef = ref(null);  
+  
+// 定义方法  
+const click = (name) => {  
+    if (uToastRef.value) {  
+        uToastRef.value.success(`点击了第${name}个`);  
+    }  
+};  
+</script>
+```
 
 ```vue
-<up-grid :border="true">
-    <up-grid-item
-        v-for="(listItem, listIndex) in list"
-        :key="listIndex"
-        customStyle="padding-top: 10px; padding-bottom: 10px" 
-    >
-        <up-icon
-            :customStyle="{paddingTop:20+'rpx'}"
-            :name="listItem['name']"
-            :size="22"
-        ></up-icon>
-        <text class="grid-text">{{listItem['title']}}</text>
-    </up-grid-item>
-</up-grid>
+<style lang="scss">
+    .grid-text {
+        font-size: 14px;
+        color: #909399;
+        padding: 10rpx 0 20rpx 0rpx;
+        /* #ifndef APP-PLUS */
+        box-sizing: border-box;
+        /* #endif */
+    }
+</style>
 ```
 
 #### 绑定点击事件&自定义列数
 
 ```vue
-<up-grid
-    :border="false"
-    col="4"
->
-    <up-grid-item
-        v-for="(listItem,listIndex) in list"
-        :key="listIndex"
-        customStyle="padding-top: 10px; padding-bottom: 10px"
-    >
-        <up-icon
-            :customStyle="{paddingTop:20+'rpx'}"
-            :name="listItem['name']"
-            :size="22"
-        ></up-icon>
-        <text class="grid-text">{{listItem['title']}}</text>
-    </up-grid-item>
-</up-grid>
+<template>
+    <view>
+        <up-grid
+                :border="false"
+                col="4"
+        >
+            <up-grid-item
+                    v-for="(listItem,listIndex) in list"
+                    :key="listIndex"
+            >
+                <up-icon
+                        :customStyle="{paddingTop:20+'rpx'}"
+                        :name="listItem.name"
+                        :size="22"
+                ></up-icon>
+                <text class="grid-text">{{listItem.title}}</text>
+            </up-grid-item>
+        </up-grid>
+        <up-toast ref="uToastRef" />
+    </view>
+</template>
 ```
-
-#### 可滑动
 
 ```vue
-<up-grid :border="true">
-    <up-grid-item
-        v-for="(item, index) in swiperList"
-        :index="index"
-        :key="index"
-    >
-        <up-icon
-            :customStyle="{paddingTop:20+'rpx'}"
-            :name="item"
-            :size="22"
-        ></up-icon>
-        <text class="grid-text">{{ '宫格' + (index + 1) }}</text>
-    </up-grid-item>
-</up-grid>
+<script setup>  
+import { ref, reactive } from 'vue';  
+  
+// 创建响应式数据  
+const list = reactive([  
+    {  
+        name: 'photo',  
+        title: '图片'  
+    },  
+    {  
+        name: 'lock',  
+        title: '锁头'  
+    },  
+    {  
+        name: 'star',  
+        title: '星星'  
+    },  
+    {  
+        name: 'hourglass',  
+        title: '沙漏'  
+    },  
+    {  
+        name: 'home',  
+        title: '首页'  
+    },  
+    {  
+        name: 'volume', // 注意：这里修改了 name 从 'star' 改为 'volume'，以避免列表中两个元素具有相同的 name  
+        title: '音量'  
+    },  
+]);  
+  
+// 创建对子组件的引用  
+const uToastRef = ref(null);  
+  
+// 定义方法  
+const click = (name) => {  
+    if (uToastRef.value) {  
+        uToastRef.value.success(`点击了第${name + 1}个`); // 注意：这里加1是因为通常我们是从第1个开始计数的  
+    }  
+};  
+</script>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsA/grid/grid.uvue`</small>
+```vue
+<style lang="scss">
+    .grid-text {
+        font-size: 14px;
+        color: #909399;
+        padding: 10rpx 0 20rpx 0rpx;
+        /* #ifndef APP-PLUS */
+        box-sizing: border-box;
+        /* #endif */
+    }
+</style>
+```
+
+#### 实现宫格的左右滑动
+
+结合uni的swiper组件可以实现宫格的左右滑动，因为`swiper`特性的关系，请指定`swiper`的高度 ，否则`swiper`的高度不会被内容撑开，可以自定义`swiper`的指示器，达到更高的灵活度
+
+```vue
+<template>
+    <view>
+        <swiper
+                :indicator-dots="true"
+                class="swiper"
+        >
+            <swiper-item>
+                <up-grid :border="true">
+                    <up-grid-item
+                            :customStyle="{width:220+'rpx',height:220+'rpx'}"
+                            v-for="(item, index) in swiperList"
+                            :index="index"
+                            :key="index"
+                    >
+                        <up-icon
+                                :customStyle="{paddingTop:20+'rpx'}"
+                                :name="item"
+                                :size="22"
+                        ></up-icon>
+                        <text class="grid-text">{{ '宫格' + (index + 1) }}</text>
+                    </up-grid-item>
+                </up-grid>
+            </swiper-item>
+            <swiper-item>
+                <up-grid :border="true">
+                    <up-grid-item
+                            :customStyle="{width:220+'rpx',height:220+'rpx'}"
+                            v-for="(item, index) in swiperList"
+                            :index="index + 9"
+                            :key="index"
+                    >
+                        <up-icon
+                                :customStyle="{paddingTop:20+'rpx'}"
+                                :name="item"
+                                :size="22"
+                        ></up-icon>
+                        <text class="grid-text">{{ '宫格' + (index + 1) }}</text>
+                    </up-grid-item>
+                </up-grid>
+            </swiper-item>
+            <swiper-item>
+                <up-grid :border="true">
+                    <up-grid-item
+                            :customStyle="{width:220+'rpx',height:220+'rpx'}"
+                            v-for="(item, index) in swiperList"
+                            :index="index + 18"
+                            :key="index"
+                    >
+                        <up-icon
+                                :customStyle="{paddingTop:20+'rpx'}"
+                                :name="item"
+                                :size="22"
+                        ></up-icon>
+                        <text class="grid-text">{{ "宫格" + (index + 1) }}</text>
+                    </up-grid-item>
+                </up-grid>
+            </swiper-item>
+        </swiper>
+    </view>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 创建响应式数据  
+const swiperList = ref(['integral', 'kefu-ermai', 'coupon', 'gift', 'scan', 'pause-circle', 'wifi', 'email', 'list']);  
+</script>
+```
+
+```vue
+<style lang="scss">
+    .swiper {
+        height: 720rpx;
+    }
+
+    .grid-text {
+        font-size: 14px;
+        color: #909399;
+        padding: 10rpx 0 20rpx 0rpx;
+        /* #ifndef APP-PLUS */
+        box-sizing: border-box;
+        /* #endif */
+    }
+</style>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/grid.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 基本案例
+#### 基本使用
+
+- 该组件外层为`up-grid`组件包裹，通过`col`设置内部宫格的列数
+- 内部通过`up-grid-item`组件的`slot`设置宫格的内容
+- 如果不需要宫格的边框，可以设置`border`为`false`
 
 ```vue
-<up-grid
-    :border="false"
-    @click="click"
-    align="center"
->
-    <up-grid-item
-        v-for="(baseListItem, baseListIndex) in baseList"
-        @click="click('test')"
-        :key="baseListIndex"
-    >
-        <up-icon
-            :customStyle="{paddingTop:20+'rpx'}"
-            :name="baseListItem['name']"
-            :size="22"
-        ></up-icon>
-        <text class="grid-text">{{baseListItem['title']}}</text>
-    </up-grid-item>
-</up-grid>
+<template>
+    <view>
+        <up-grid
+                :border="false"
+                @click="click"
+        >
+            <up-grid-item
+                    v-for="(baseListItem,baseListIndex) in baseList"
+                    :key="baseListIndex"
+            >
+                <up-icon
+                        :customStyle="{paddingTop:20+'rpx'}"
+                        :name="baseListItem.name"
+                        :size="22"
+                ></up-icon>
+                <text class="grid-text">{{baseListItem.title}}</text>
+            </up-grid-item>
+        </up-grid>
+        <up-toast ref="uToastRef" />
+    </view>
+</template>
 ```
 
-#### 显示边框
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 创建响应式数据  
+const baseList = ref([  
+    {  
+        name: 'photo',  
+        title: '图片'  
+    },  
+    {  
+        name: 'lock',  
+        title: '锁头'  
+    },  
+    {  
+        name: 'star',  
+        title: '星星'  
+    },  
+]);  
+  
+// 创建对子组件的引用  
+const uToastRef = ref(null);  
+  
+// 定义方法  
+const click = (name) => {  
+    if (uToastRef.value) {  
+        uToastRef.value.success(`点击了第${name}个`);  
+    }  
+};  
+</script>
+```
 
 ```vue
-<up-grid :border="true">
-    <up-grid-item
-        v-for="(listItem, listIndex) in list"
-        :key="listIndex"
-        customStyle="padding-top: 10px; padding-bottom: 10px" 
-    >
-        <up-icon
-            :customStyle="{paddingTop:20+'rpx'}"
-            :name="listItem['name']"
-            :size="22"
-        ></up-icon>
-        <text class="grid-text">{{listItem['title']}}</text>
-    </up-grid-item>
-</up-grid>
+<style lang="scss">
+    .grid-text {
+        font-size: 14px;
+        color: #909399;
+        padding: 10rpx 0 20rpx 0rpx;
+        /* #ifndef APP-PLUS */
+        box-sizing: border-box;
+        /* #endif */
+    }
+</style>
 ```
 
 #### 绑定点击事件&自定义列数
 
 ```vue
-<up-grid
-    :border="false"
-    col="4"
->
-    <up-grid-item
-        v-for="(listItem,listIndex) in list"
-        :key="listIndex"
-        customStyle="padding-top: 10px; padding-bottom: 10px"
-    >
-        <up-icon
-            :customStyle="{paddingTop:20+'rpx'}"
-            :name="listItem['name']"
-            :size="22"
-        ></up-icon>
-        <text class="grid-text">{{listItem['title']}}</text>
-    </up-grid-item>
-</up-grid>
+<template>
+    <view>
+        <up-grid
+                :border="false"
+                col="4"
+        >
+            <up-grid-item
+                    v-for="(listItem,listIndex) in list"
+                    :key="listIndex"
+            >
+                <up-icon
+                        :customStyle="{paddingTop:20+'rpx'}"
+                        :name="listItem.name"
+                        :size="22"
+                ></up-icon>
+                <text class="grid-text">{{listItem.title}}</text>
+            </up-grid-item>
+        </up-grid>
+        <up-toast ref="uToastRef" />
+    </view>
+</template>
 ```
-
-#### 可滑动
 
 ```vue
-<up-grid :border="true">
-    <up-grid-item
-        v-for="(item, index) in swiperList"
-        :index="index"
-        :key="index"
-    >
-        <up-icon
-            :customStyle="{paddingTop:20+'rpx'}"
-            :name="item"
-            :size="22"
-        ></up-icon>
-        <text class="grid-text">{{ '宫格' + (index + 1) }}</text>
-    </up-grid-item>
-</up-grid>
+<script setup>  
+import { ref, reactive } from 'vue';  
+  
+// 创建响应式数据  
+const list = reactive([  
+    {  
+        name: 'photo',  
+        title: '图片'  
+    },  
+    {  
+        name: 'lock',  
+        title: '锁头'  
+    },  
+    {  
+        name: 'star',  
+        title: '星星'  
+    },  
+    {  
+        name: 'hourglass',  
+        title: '沙漏'  
+    },  
+    {  
+        name: 'home',  
+        title: '首页'  
+    },  
+    {  
+        name: 'volume', // 注意：这里修改了 name 从 'star' 改为 'volume'，以避免列表中两个元素具有相同的 name  
+        title: '音量'  
+    },  
+]);  
+  
+// 创建对子组件的引用  
+const uToastRef = ref(null);  
+  
+// 定义方法  
+const click = (name) => {  
+    if (uToastRef.value) {  
+        uToastRef.value.success(`点击了第${name + 1}个`); // 注意：这里加1是因为通常我们是从第1个开始计数的  
+    }  
+};  
+</script>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsA/grid/grid.uvue`</small>
+```vue
+<style lang="scss">
+    .grid-text {
+        font-size: 14px;
+        color: #909399;
+        padding: 10rpx 0 20rpx 0rpx;
+        /* #ifndef APP-PLUS */
+        box-sizing: border-box;
+        /* #endif */
+    }
+</style>
+```
+
+#### 实现宫格的左右滑动
+
+结合uni的swiper组件可以实现宫格的左右滑动，因为`swiper`特性的关系，请指定`swiper`的高度 ，否则`swiper`的高度不会被内容撑开，可以自定义`swiper`的指示器，达到更高的灵活度
+
+```vue
+<template>
+    <view>
+        <swiper
+                :indicator-dots="true"
+                class="swiper"
+        >
+            <swiper-item>
+                <up-grid :border="true">
+                    <up-grid-item
+                            :customStyle="{width:220+'rpx',height:220+'rpx'}"
+                            v-for="(item, index) in swiperList"
+                            :index="index"
+                            :key="index"
+                    >
+                        <up-icon
+                                :customStyle="{paddingTop:20+'rpx'}"
+                                :name="item"
+                                :size="22"
+                        ></up-icon>
+                        <text class="grid-text">{{ '宫格' + (index + 1) }}</text>
+                    </up-grid-item>
+                </up-grid>
+            </swiper-item>
+            <swiper-item>
+                <up-grid :border="true">
+                    <up-grid-item
+                            :customStyle="{width:220+'rpx',height:220+'rpx'}"
+                            v-for="(item, index) in swiperList"
+                            :index="index + 9"
+                            :key="index"
+                    >
+                        <up-icon
+                                :customStyle="{paddingTop:20+'rpx'}"
+                                :name="item"
+                                :size="22"
+                        ></up-icon>
+                        <text class="grid-text">{{ '宫格' + (index + 1) }}</text>
+                    </up-grid-item>
+                </up-grid>
+            </swiper-item>
+            <swiper-item>
+                <up-grid :border="true">
+                    <up-grid-item
+                            :customStyle="{width:220+'rpx',height:220+'rpx'}"
+                            v-for="(item, index) in swiperList"
+                            :index="index + 18"
+                            :key="index"
+                    >
+                        <up-icon
+                                :customStyle="{paddingTop:20+'rpx'}"
+                                :name="item"
+                                :size="22"
+                        ></up-icon>
+                        <text class="grid-text">{{ "宫格" + (index + 1) }}</text>
+                    </up-grid-item>
+                </up-grid>
+            </swiper-item>
+        </swiper>
+    </view>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 创建响应式数据  
+const swiperList = ref(['integral', 'kefu-ermai', 'coupon', 'gift', 'scan', 'pause-circle', 'wifi', 'email', 'list']);  
+</script>
+```
+
+```vue
+<style lang="scss">
+    .swiper {
+        height: 720rpx;
+    }
+
+    .grid-text {
+        font-size: 14px;
+        color: #909399;
+        padding: 10rpx 0 20rpx 0rpx;
+        /* #ifndef APP-PLUS */
+        box-sizing: border-box;
+        /* #endif */
+    }
+</style>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/grid.md`</small>
 
 </template>
 

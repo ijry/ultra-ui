@@ -12,7 +12,7 @@ Text with theming, truncation, masking and formatting for phone numbers, money a
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -293,163 +293,119 @@ lines 指定最大行数
 
 <template #uniapp>
 
-#### 基础功能
+#### 基本使用
 
 ```vue
-<up-text
-    text="我用十年青春,赴你最后之约"
-    @click="test">
-</up-text>
+<up-text text="我用十年青春,赴你最后之约"></up-text>
 ```
 
 #### 设置主题
 
 ```vue
-<up-text
-    text="主色"
-    type="primary"
-></up-text>
+<up-text type="primary" text="主色"></up-text>
+<up-text type="error"   text="错误"></up-text>
+<up-text type="success" text="成功"></up-text>
+<up-text type="warning" text="警告"></up-text>
+<up-text type="info"    text="信息"></up-text>
 ```
 
 #### 拨打电话
 
 ```vue
-<up-text
-    mode="phone"
-    text="15019479320"
-></up-text>
+<up-text mode="phone" text="15019479320"></up-text>
 ```
 
 #### 日期格式化
 
 ```vue
-<up-text
-    mode="date"
-    text="1612959739"
-></up-text>
+<up-text mode="date" text="1612959739"></up-text>
 ```
 
 #### 姓名脱敏
 
 ```vue
-<up-text
-    mode="name"
-    text="张三三"
-    format="encrypt"
-></up-text>
+<up-text mode="name" text="张三三" format="encrypt"></up-text>
 ```
 
 #### 超链接
 
 ```vue
-<up-text
-    mode="link"
-    text="Go to uview-plus docs"
-    href="https://ijry.github.io/uview-plus/"
-></up-text>
+<up-text mode="link" text="Go to uview-plus docs" href="https://www.uviewui.com" ></up-text>
 ```
 
 #### 显示金额
 
 ```vue
-<up-text
-    mode="price"
-    text="728732.32"
-></up-text>
+<up-text mode="price" text="728732.32"></up-text>
 ```
 
 #### 前后图标
 
 ```vue
-<up-text
-    prefixIcon="baidu"
-    iconStyle="font-size: 19px"
-    text="百度一下"
-></up-text>
+<up-text prefixIcon="baidu" iconStyle="font-size: 19px" text="百度一下,你就知道"></up-text>
+<up-text suffixIcon="arrow-leftward" iconStyle="font-size: 18px" text="查看更多"></up-text>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/text/text.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/text.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 基础功能
+#### 基本使用
 
 ```vue
-<up-text
-    text="我用十年青春,赴你最后之约"
-    @click="test">
-</up-text>
+<up-text text="我用十年青春,赴你最后之约"></up-text>
 ```
 
 #### 设置主题
 
 ```vue
-<up-text
-    text="主色"
-    type="primary"
-></up-text>
+<up-text type="primary" text="主色"></up-text>
+<up-text type="error"   text="错误"></up-text>
+<up-text type="success" text="成功"></up-text>
+<up-text type="warning" text="警告"></up-text>
+<up-text type="info"    text="信息"></up-text>
 ```
 
 #### 拨打电话
 
 ```vue
-<up-text
-    mode="phone"
-    text="15019479320"
-></up-text>
+<up-text mode="phone" text="15019479320"></up-text>
 ```
 
 #### 日期格式化
 
 ```vue
-<up-text
-    mode="date"
-    text="1612959739"
-></up-text>
+<up-text mode="date" text="1612959739"></up-text>
 ```
 
 #### 姓名脱敏
 
 ```vue
-<up-text
-    mode="name"
-    text="张三三"
-    format="encrypt"
-></up-text>
+<up-text mode="name" text="张三三" format="encrypt"></up-text>
 ```
 
 #### 超链接
 
 ```vue
-<up-text
-    mode="link"
-    text="Go to uview-plus docs"
-    href="https://ijry.github.io/uview-plus/"
-></up-text>
+<up-text mode="link" text="Go to uview-ultra docs" href="https://www.uviewui.com" ></up-text>
 ```
 
 #### 显示金额
 
 ```vue
-<up-text
-    mode="price"
-    text="728732.32"
-></up-text>
+<up-text mode="price" text="728732.32"></up-text>
 ```
 
 #### 前后图标
 
 ```vue
-<up-text
-    prefixIcon="baidu"
-    iconStyle="font-size: 19px"
-    text="百度一下"
-></up-text>
+<up-text prefixIcon="baidu" iconStyle="font-size: 19px" text="百度一下,你就知道"></up-text>
+<up-text suffixIcon="arrow-leftward" iconStyle="font-size: 18px" text="查看更多"></up-text>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/text/text.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/text.md`</small>
 
 </template>
 

@@ -12,7 +12,7 @@ generated: true
 
 ## 平台用法
 
-切换下面的标签查看对应平台的写法。每段示例都直接摘自该平台示例工程中的真实代码。
+切换下面的标签查看对应平台的写法。uni-app 与 uni-app-x 的示例来自 uview-plus 官方文档，其余平台摘自该平台示例工程中的真实代码。
 
 <PlatformTabs>
 
@@ -284,79 +284,227 @@ paddingHead / paddingBody / paddingFoot 优先于 padding
 
 <template #uniapp>
 
+#### 基本使用
+
+组件的头部信息可以通过参数配置，其他主体和底部的信息，需要通过`slot`传入。
+
+- `title`配置标题
+- `sub-title`配置副标题
+
 ```vue
-<up-card :showHead="false">
-    <template #body>
-        <view class="ts-14 tw5 lh-1-8" >
-            尊敬的客户您好，您有来自的开票。如果有疑问请联系您的客户经理。
-        </view>
-    </template>
-</up-card>
+<template>
+	<up-card :title="title" :sub-title="subTitle" :thumb="thumb">
+        <template #body>
+            <view class="" slot="body">
+                <view class="u-body-item u-flex u-border-bottom u-col-between u-p-t-0">
+                    <view class="u-body-item-title u-line-2">瓶身描绘的牡丹一如你初妆，冉冉檀香透过窗心事我了然，宣纸上走笔至此搁一半</view>
+                    <image src="https://img11.360buyimg.com/n7/jfs/t1/94448/29/2734/524808/5dd4cc16E990dfb6b/59c256f85a8c3757.jpg" mode="aspectFill"></image>
+                </view>
+                <view class="u-body-item u-flex u-row-between u-p-b-0">
+                    <view class="u-body-item-title u-line-2">釉色渲染仕女图韵味被私藏，而你嫣然的一笑如含苞待放</view>
+                    <image src="https://img12.360buyimg.com/n7/jfs/t1/102191/19/9072/330688/5e0af7cfE17698872/c91c00d713bf729a.jpg" mode="aspectFill"></image>
+                </view>
+            </view>
+        </template>
+        <template #foot>
+		    <view>
+                <up-icon name="chat-fill" size="34" color="" label="30评论"></up-icon>
+            </view>
+        </template>
+	</up-card>
+</template>
 ```
 
 ```vue
-<up-card @click="click" @head-click="headClick" :title="title" :showFoot="bottomSlot"
-    :sub-title="subTitle" subTitleSize="12px" :thumb="thumb" :padding="padding" :border="border">
-    <template #body>
-        <view>
-            <view class="up-body-item up-flex up-flex-items-start up-border-bottom up-col-between up-p-t-0">
-                <view class="up-body-item-title up-line-2">瓶身描绘的牡丹一如你初妆，冉冉檀香透过窗心事我了然，宣纸上走笔至此搁一半</view>
-                <image class="image" src="https://uview-plus.jiangruyi.com/uview/ext/59c256f85a8c3757.jpg" mode="aspectFill"></image>
-            </view>
-            <view class="up-body-item up-flex up-row-between up-p-b-0">
-                <view class="up-body-item-title up-line-2">釉色渲染仕女图韵味被私藏，而你嫣然的一笑如含苞待放</view>
-                <image class="image" src="https://uview-plus.jiangruyi.com/uview/ext/59c256f85a8c3757.jpg" mode="aspectFill"></image>
-            </view>
-        </view>
-    </template>
-    <template #foot>
-        <view>
-            <up-icon name="chat-fill" size="16" color="" label="30评论"></up-icon>
-        </view>
-    </template>
-</up-card>
+<script setup>
+import { ref } from 'vue';
+
+const title = ref('素胚勾勒出青花，笔锋浓转淡');
+const subTitle = ref('2020-05-15');
+const thumb = ref('http://pic2.sc.chinaz.com/Files/pic/pic9/202002/hpic2119_s.jpg');
+</script>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsB/card/card.uvue`</small>
+```vue
+<style scoped lang="scss">
+	.u-card-wrap { 
+		background-color: $u-bg-color;
+		padding: 1px;
+	}
+	
+	.u-body-item {
+		font-size: 32rpx;
+		color: #333;
+		padding: 20rpx 10rpx;
+	}
+		
+	.u-body-item image {
+		width: 120rpx;
+		flex: 0 0 120rpx;
+		height: 120rpx;
+		border-radius: 8rpx;
+		margin-left: 12rpx;
+	}
+</style>
+```
+
+#### 配置卡片间距
+
+可以通过`margin`参数配置卡片与屏幕左右的边距，以及上下卡片之间的距离，如: `20rpx 30rpx`、`20rpx 30rpx 30rpx 20rpx`。  
+注意：当设置`full`参数为`true`的时候，也就是卡片占据屏幕总宽度的时候，通过`margin`配置的左右边距会失效。
+
+```vue
+<up-card margin="30rpx"></up-card>
+```
+
+#### 配置卡片左上角的缩略图
+
+这个缩略图是可选的，显示在卡片的左上角位置，如果配置了`thumb`参数(图片路径)，就会显示图片。  
+- `thumb`缩略图路径
+- `thumb-width`缩略图宽度，高等于宽
+- `thumb-circle`缩略图是否为圆形
+
+```vue
+<template>
+	<up-card thumb="xxx.jpg" thumb-width="60"></up-card>
+</template>
+```
+
+#### 配置卡片边框
+
+这里说的边框，有3个：
+
+- `border`配置是否显示整个卡片的外边框
+- `head-border-bottom`配置是否显示卡片内部头部的下边框
+- `foot-border-top`配置是否显示卡片内部底部的上边框
+
+```vue
+<template>
+	<up-card :border="false" :foot-border-top="false"></up-card>
+</template>
+```
+
+#### 设置内边距
+
+默认下，卡片内部的头部，主体，底部都有一个内边距，可以通过配置`padding`参数去覆盖：
+
+```vue
+<template>
+	<up-card padding="30"></up-card>
+</template>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc/docs/components/card.md`</small>
 
 </template>
 
 <template #uniappx>
 
-```vue
-<up-card :showHead="false">
-    <template #body>
-        <view class="ts-14 tw5 lh-1-8" >
-            尊敬的客户您好，您有来自的开票。如果有疑问请联系您的客户经理。
-        </view>
-    </template>
-</up-card>
-```
+#### 基本使用
+
+组件的头部信息可以通过参数配置，其他主体和底部的信息，需要通过`slot`传入。
+
+- `title`配置标题
+- `sub-title`配置副标题
 
 ```vue
-<up-card @click="click" @head-click="headClick" :title="title" :showFoot="bottomSlot"
-    :sub-title="subTitle" subTitleSize="12px" :thumb="thumb" :padding="padding" :border="border">
-    <template #body>
-        <view>
-            <view class="up-body-item up-flex up-flex-items-start up-border-bottom up-col-between up-p-t-0">
-                <view class="up-body-item-title up-line-2">瓶身描绘的牡丹一如你初妆，冉冉檀香透过窗心事我了然，宣纸上走笔至此搁一半</view>
-                <image class="image" src="https://uview-plus.jiangruyi.com/uview/ext/59c256f85a8c3757.jpg" mode="aspectFill"></image>
+<template>
+	<up-card :title="title" :sub-title="subTitle" :thumb="thumb">
+        <template #body>
+            <view class="" slot="body">
+                <view class="u-body-item u-flex u-border-bottom u-col-between u-p-t-0">
+                    <view class="u-body-item-title u-line-2">瓶身描绘的牡丹一如你初妆，冉冉檀香透过窗心事我了然，宣纸上走笔至此搁一半</view>
+                    <image src="https://img11.360buyimg.com/n7/jfs/t1/94448/29/2734/524808/5dd4cc16E990dfb6b/59c256f85a8c3757.jpg" mode="aspectFill"></image>
+                </view>
+                <view class="u-body-item u-flex u-row-between u-p-b-0">
+                    <view class="u-body-item-title u-line-2">釉色渲染仕女图韵味被私藏，而你嫣然的一笑如含苞待放</view>
+                    <image src="https://img12.360buyimg.com/n7/jfs/t1/102191/19/9072/330688/5e0af7cfE17698872/c91c00d713bf729a.jpg" mode="aspectFill"></image>
+                </view>
             </view>
-            <view class="up-body-item up-flex up-row-between up-p-b-0">
-                <view class="up-body-item-title up-line-2">釉色渲染仕女图韵味被私藏，而你嫣然的一笑如含苞待放</view>
-                <image class="image" src="https://uview-plus.jiangruyi.com/uview/ext/59c256f85a8c3757.jpg" mode="aspectFill"></image>
+        </template>
+        <template #foot>
+		    <view>
+                <up-icon name="chat-fill" size="34" color="" label="30评论"></up-icon>
             </view>
-        </view>
-    </template>
-    <template #foot>
-        <view>
-            <up-icon name="chat-fill" size="16" color="" label="30评论"></up-icon>
-        </view>
-    </template>
-</up-card>
+        </template>
+	</up-card>
+</template>
+
+<script>
+export default {
+	data() {
+		return {
+			title: '素胚勾勒出青花，笔锋浓转淡',
+			subTitle: '2020-05-15',
+			thumb: 'http://pic2.sc.chinaz.com/Files/pic/pic9/202002/hpic2119_s.jpg',
+		};
+	}
+};
+</script>
+
+<style scoped lang="scss">
+	.u-card-wrap { 
+		background-color: $up-bg-color;
+		padding: 1px;
+	}
+	
+	.u-body-item {
+		font-size: 32rpx;
+		color: #333;
+		padding: 20rpx 10rpx;
+	}
+		
+	.u-body-item image {
+		width: 120rpx;
+		flex: 0 0 120rpx;
+		height: 120rpx;
+		border-radius: 8rpx;
+		margin-left: 12rpx;
+	}
+</style>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsB/card/card.uvue`</small>
+#### 配置卡片间距
+
+可以通过`margin`参数配置卡片与屏幕左右的边距，以及上下卡片之间的距离，如: `20rpx 30rpx`、`20rpx 30rpx 30rpx 20rpx`。  
+注意：当设置`full`参数为`true`的时候，也就是卡片占据屏幕总宽度的时候，通过`margin`配置的左右边距会失效。
+
+```vue
+<up-card margin="30rpx"></up-card>
+```
+
+#### 配置卡片左上角的缩略图
+
+这个缩略图是可选的，显示在卡片的左上角位置，如果配置了`thumb`参数(图片路径)，就会显示图片。  
+- `thumb`缩略图路径
+- `thumb-width`缩略图宽度，高等于宽
+- `thumb-circle`缩略图是否为圆形
+
+```vue
+<up-card thumb="xxx.jpg" thumb-width="60"></up-card>
+```
+
+#### 配置卡片边框
+
+这里说的边框，有3个：
+
+- `border`配置是否显示整个卡片的外边框
+- `head-border-bottom`配置是否显示卡片内部头部的下边框
+- `foot-border-top`配置是否显示卡片内部底部的上边框
+
+```vue
+<up-card :border="false" :foot-border-top="false"></up-card>
+```
+
+#### 设置内边距
+
+默认下，卡片内部的头部，主体，底部都有一个内边距，可以通过配置`padding`参数去覆盖：
+
+```vue
+<up-card padding="30"></up-card>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus-doc4/docs/components/card.md`</small>
 
 </template>
 

@@ -12,7 +12,7 @@ A horizontal progress bar that can show its percentage inline.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -208,149 +208,175 @@ height
 
 <template #uniapp>
 
-#### 基础功能
+#### 基本使用
 
 ```vue
-<up-line-progress :percentage="percentage1">
-</up-line-progress>
+<template>
+	<up-line-progress :percentage="30" activeColor="#ff0000"></up-line-progress>
+</template>
+```
+
+#### 默认配置
+
+```vue
+<template>
+	<up-line-progress></up-line-progress>
+</template>
 ```
 
 #### 不显示百分比
 
 ```vue
-<up-line-progress
-    :showText="false"
-    :percentage="percentage2"
->
-</up-line-progress>
+<template>
+	<up-line-progress :percentage="30" :showText="false"></up-line-progress>
+</template>
 ```
 
 #### 自定义高度
 
 ```vue
-<up-line-progress
-    height="8"
-    :showText="false"
-    :percentage="percentage3"
->
-</up-line-progress>
+<template>
+	<up-line-progress :percentage="30" height="8"></up-line-progress>
+</template>
 ```
 
-#### 自定义颜色
+#### 从右往左
 
 ```vue
-<up-line-progress
-    height="8"
-    :showText="false"
-    :percentage="percentage4"
-    activeColor="#3c9cff"
-    inactiveColor="#f3f4f6"
->
-</up-line-progress>
+<template>
+	<up-line-progress :percentage="40" :showText="false" :fromRight="true"></up-line-progress>
+</template>
 ```
 
 #### 自定义样式(不支持安卓环境的nvue)
 
 ```vue
-<up-line-progress
-    height="8"
-    :showText="false"
-    :percentage="percentage5"
-    activeColor="#3c9cff"
-    inactiveColor="#f3f4f6"
->
-    <text class="u-percentage-slot">{{percentage4}}%</text>
-</up-line-progress>
+<template>
+	<up-line-progress :percentage="30">
+		<text class="u-percentage-slot">{{30}}%</text>
+	</up-line-progress>
+</template>
+
+<style lang="scss" scoped>
+.u-percentage-slot {
+	padding: 1px 5px;
+	background-color: $u-warning;
+	color: #fff;
+	border-radius: 100px;
+	font-size: 10px;
+	margin-right: -5px;
+}
+</style>
 ```
 
 #### 手动加减
 
 ```vue
-<up-line-progress
-    height="8"
-    :showText="false"
-    :percentage="percentage6"
-    activeColor="#3c9cff"
-    inactiveColor="#f3f4f6"
->
-</up-line-progress>
+<template>
+	<view style="margin-top: 50px;">
+		<up-line-progress :percentage="percentage" />
+		<view style="display: flex;margin-top: 100px;">
+			<button @click="computedWidth('minus')">减少</button>
+			<button @click="computedWidth('plus')">增加</button>
+		</view>
+	</view>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const percentage = ref(30);
+
+const computedWidth = (type) => {
+  if (type === 'plus') {
+    percentage.value = uni.$u.range(0, 100, percentage.value + 10);
+  } else {
+    percentage.value = uni.$u.range(0, 100, percentage.value - 10);
+  }
+};
+</script>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsB/progress/progress.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/lineProgress.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 基础功能
+#### 基本使用
 
 ```vue
-<up-line-progress :percentage="percentage1">
-</up-line-progress>
+<template>
+	<up-line-progress :percentage="30" activeColor="#ff0000"></up-line-progress>
+</template>
 ```
 
 #### 不显示百分比
 
 ```vue
-<up-line-progress
-    :showText="false"
-    :percentage="percentage2"
->
-</up-line-progress>
+<template>
+	<up-line-progress :percentage="30" :showText="false"></up-line-progress>
+</template>
 ```
 
 #### 自定义高度
 
 ```vue
-<up-line-progress
-    height="8"
-    :showText="false"
-    :percentage="percentage3"
->
-</up-line-progress>
-```
-
-#### 自定义颜色
-
-```vue
-<up-line-progress
-    height="8"
-    :showText="false"
-    :percentage="percentage4"
-    activeColor="#3c9cff"
-    inactiveColor="#f3f4f6"
->
-</up-line-progress>
+<template>
+	<up-line-progress :percentage="30" height="8"></up-line-progress>
+</template>
 ```
 
 #### 自定义样式(不支持安卓环境的nvue)
 
 ```vue
-<up-line-progress
-    height="8"
-    :showText="false"
-    :percentage="percentage5"
-    activeColor="#3c9cff"
-    inactiveColor="#f3f4f6"
->
-    <text class="u-percentage-slot">{{percentage4}}%</text>
-</up-line-progress>
+<template>
+	<up-line-progress :percentage="30">
+		<text class="u-percentage-slot">{{30}}%</text>
+	</up-line-progress>
+</template>
+
+<style lang="scss" scoped>
+.u-percentage-slot {
+	padding: 1px 5px;
+	background-color: $up-warning;
+	color: #fff;
+	border-radius: 100px;
+	font-size: 10px;
+	margin-right: -5px;
+}
+</style>
 ```
 
 #### 手动加减
 
 ```vue
-<up-line-progress
-    height="8"
-    :showText="false"
-    :percentage="percentage6"
-    activeColor="#3c9cff"
-    inactiveColor="#f3f4f6"
->
-</up-line-progress>
+<template>
+	<view style="margin-top: 50px;">
+		<up-line-progress :percentage="percentage" />
+		<view style="display: flex;margin-top: 100px;">
+			<button @click="computedWidth('minus')">减少</button>
+			<button @click="computedWidth('plus')">增加</button>
+		</view>
+	</view>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const percentage = ref(30);
+
+computedWidth = (type) => {
+  if (type === 'plus') {
+    percentage.value = uni.$u.range(0, 100, percentage.value + 10);
+  } else {
+    percentage.value = uni.$u.range(0, 100, percentage.value - 10);
+  }
+};
+</script>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsB/progress/progress.uvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/lineProgress.md`</small>
 
 </template>
 

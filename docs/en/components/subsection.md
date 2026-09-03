@@ -12,7 +12,7 @@ A segmented control for switching between a few options.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -297,105 +297,131 @@ keyName='title'
 
 <template #uniapp>
 
-#### 基础使用
+#### 基本使用
 
 ```vue
-<up-subsection
-    :list="list"
-    mode="subsection"
-    :current="current1"
-    @change="change1"
-></up-subsection>
+<template>
+	<up-subsection :list="list" :current="1"></up-subsection>
+</template>
 ```
-
-#### 按钮模式
 
 ```vue
-<up-subsection
-    :list="list"
-    mode="button"
-    :current="current2"
-    @change="change2"
-></up-subsection>
+<script setup>  
+import { ref } from 'vue';  
+  
+const list = ref(['未付款', '待评价', '已付款']);  
+// 或者如果您想要使用对象数组  
+// const list = ref([  
+//   { name: '未付款' },  
+//   { name: '待评价' },  
+//   { name: '已付款' }  
+// ]);  
+  
+const current = ref(1);  
+</script>
 ```
 
-#### 更换主题
+#### 模式选择
 
 ```vue
-<up-subsection
-    :list="list"
-    mode="subsection"
-    :current="current3"
-    activeColor="#f56c6c"
-    @change="change3"
-></up-subsection>
+<up-subsection :list="list" mode="subsection" :current="1"></up-subsection>
 ```
 
-#### 默认位置
+#### 颜色配置
 
 ```vue
-<up-subsection
-    :list="list"
-    mode="button"
-    :current="current4"
-    activeColor="#f9ae3d"
-    @change="change4"
-></up-subsection>
+<up-subsection activeColor="#f56c6c"></up-subsection>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/subsection/subsection.uvue`</small>
+#### 注意事项
+
+```vue
+<template>
+    <up-subsection :list="list" :current="curNow" @change="sectionChange"></up-subsection>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 创建响应式引用  
+const list = ref(['未付款', '待评价', '已付款']);  
+const curNow = ref(0);  
+  
+// 定义方法，注意在 setup 中不需要 this，直接访问响应式引用  
+function sectionChange(index) {  
+  curNow.value = index;  
+}  
+</script>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/subsection.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 基础使用
+#### 基本使用
 
 ```vue
-<up-subsection
-    :list="list"
-    mode="subsection"
-    :current="current1"
-    @change="change1"
-></up-subsection>
+<template>
+	<up-subsection :list="list" :current="1"></up-subsection>
+</template>
 ```
-
-#### 按钮模式
 
 ```vue
-<up-subsection
-    :list="list"
-    mode="button"
-    :current="current2"
-    @change="change2"
-></up-subsection>
+<script setup>  
+import { ref } from 'vue';  
+  
+const list = ref(['未付款', '待评价', '已付款']);  
+// 或者如果您想要使用对象数组  
+// const list = ref([  
+//   { name: '未付款' },  
+//   { name: '待评价' },  
+//   { name: '已付款' }  
+// ]);  
+  
+const current = ref(1);  
+</script>
 ```
 
-#### 更换主题
+#### 模式选择
 
 ```vue
-<up-subsection
-    :list="list"
-    mode="subsection"
-    :current="current3"
-    activeColor="#f56c6c"
-    @change="change3"
-></up-subsection>
+<up-subsection :list="list" mode="subsection" :current="1"></up-subsection>
 ```
 
-#### 默认位置
+#### 颜色配置
 
 ```vue
-<up-subsection
-    :list="list"
-    mode="button"
-    :current="current4"
-    activeColor="#f9ae3d"
-    @change="change4"
-></up-subsection>
+<up-subsection activeColor="#f56c6c"></up-subsection>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/subsection/subsection.uvue`</small>
+#### 注意事项
+
+```vue
+<template>
+    <up-subsection :list="list" :current="curNow" @change="sectionChange"></up-subsection>
+</template>
+```
+
+```vue
+<script setup>  
+import { ref } from 'vue';  
+  
+// 创建响应式引用  
+const list = ref(['未付款', '待评价', '已付款']);  
+const curNow = ref(0);  
+  
+// 定义方法，注意在 setup 中不需要 this，直接访问响应式引用  
+function sectionChange(index) {  
+  curNow.value = index;  
+}  
+</script>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/subsection.md`</small>
 
 </template>
 

@@ -12,7 +12,7 @@ An enhanced image with loading and error placeholders plus a fade-in transition.
 
 ## Usage by platform
 
-Switch tabs to see the syntax for each platform. Every snippet is lifted verbatim from that platform’s own demo app.
+Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examples come from the official uview-plus documentation; every other platform’s are lifted verbatim from its own demo app.
 
 <PlatformTabs>
 
@@ -271,133 +271,167 @@ bgColor 用于占位区与深色背景融合
 
 <template #uniapp>
 
-#### 基本案例
+#### 配置manifest
 
 ```vue
-<up-image
-    :showLoading="true"
-    :src="src"
-    width="80px"
-    height="80px"
-    @click="click"
-></up-image>
+"mp-weixin" : {
+	"appid" : "",
+	...
+	"mergeVirtualHostAttributes" : true
+},
+"mp-toutiao" : {
+	"appid" : "",
+	...
+	"mergeVirtualHostAttributes" : true
+}
 ```
 
-#### 自定义形状
+#### 基本使用
 
 ```vue
-<up-image
-    shape="circle"
-    :src="src"
-    width="80px"
-    height="80px"
-></up-image>
+<template>
+  <up-image :show-loading="true" :src="src" width="80px" height="80px" @click="click"></up-image>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const src = ref('https://cdn.uviewui.com/uview/album/1.jpg');
+
+const click = () => {
+  // 点击事件处理逻辑
+};
+</script>
 ```
 
-#### 自定义圆角
+#### 裁剪模式
 
 ```vue
-<up-image
-    radius="4"
-    :src="src"
-    width="80px"
-    height="80px"
-></up-image>
+<up-image src="https://cdn.uviewui.com/uview/album/1.jpg" mode="widthFix"></up-image>
 ```
 
-#### 图片模式(widthFix)
+#### 图片形状
 
 ```vue
-<up-image
-    :src="src"
-    width="80px"
-    height="80px"
-    mode="widthFix"
-></up-image>
+<up-image src="https://cdn.uviewui.com/uview/album/1.jpg" shape="circle"></up-image>
 ```
 
-#### 自定义图片加载插槽
+#### 懒加载
 
 ```vue
-<up-image
-    :src="src1"
-    width="80px"
-    height="80px"
-    mode="widthFix"
->
-    <template v-slot:loading>
-        <up-loading-icon color="red"></up-loading-icon>
-    </template>
+<up-image src="https://cdn.uviewui.com/uview/album/1.jpg" :lazy-load="true"></up-image>
+```
+
+#### 加载中提示
+
+```vue
+<up-image src="https://cdn.uviewui.com/uview/album/1.jpg">
+  <template v-slot:loading>
+    <up-loading-icon color="red"></up-loading-icon>
+  </template>
 </up-image>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsA/image/image.uvue`</small>
+#### 加载错误提示
+
+```vue
+<up-image src="https://cdn.uviewui.com/uview/album/1.jpg">
+	<template #error>
+		<view style="font-size: 24rpx;">加载失败</view>
+	</template>
+</up-image>
+```
+
+#### 淡入动画
+
+```vue
+<up-image src="https://cdn.uviewui.com/uview/album/1.jpg" :fade="true" duration="450"></up-image>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc/docs/components/image.md`</small>
 
 </template>
 
 <template #uniappx>
 
-#### 基本案例
+#### 配置manifest
 
 ```vue
-<up-image
-    :showLoading="true"
-    :src="src"
-    width="80px"
-    height="80px"
-    @click="click"
-></up-image>
+"mp-weixin" : {
+	"appid" : "",
+	...
+	"mergeVirtualHostAttributes" : true
+},
+"mp-toutiao" : {
+	"appid" : "",
+	...
+	"mergeVirtualHostAttributes" : true
+}
 ```
 
-#### 自定义形状
+#### 基本使用
 
 ```vue
-<up-image
-    shape="circle"
-    :src="src"
-    width="80px"
-    height="80px"
-></up-image>
+<template>
+  <up-image :show-loading="true" :src="src" width="80px" height="80px" @click="click"></up-image>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const src = ref('https://cdn.uviewui.com/uview/album/1.jpg');
+
+const click = () => {
+  // 点击事件处理逻辑
+};
+</script>
 ```
 
-#### 自定义圆角
+#### 裁剪模式
 
 ```vue
-<up-image
-    radius="4"
-    :src="src"
-    width="80px"
-    height="80px"
-></up-image>
+<up-image src="https://cdn.uviewui.com/uview/album/1.jpg" mode="widthFix"></up-image>
 ```
 
-#### 图片模式(widthFix)
+#### 图片形状
 
 ```vue
-<up-image
-    :src="src"
-    width="80px"
-    height="80px"
-    mode="widthFix"
-></up-image>
+<up-image src="https://cdn.uviewui.com/uview/album/1.jpg" shape="circle"></up-image>
 ```
 
-#### 自定义图片加载插槽
+#### 懒加载
 
 ```vue
-<up-image
-    :src="src1"
-    width="80px"
-    height="80px"
-    mode="widthFix"
->
-    <template v-slot:loading>
-        <up-loading-icon color="red"></up-loading-icon>
-    </template>
+<up-image src="https://cdn.uviewui.com/uview/album/1.jpg" :lazy-load="true"></up-image>
+```
+
+#### 加载中提示
+
+```vue
+<up-image src="https://cdn.uviewui.com/uview/album/1.jpg">
+  <template v-slot:loading>
+    <up-loading-icon color="red"></up-loading-icon>
+  </template>
 </up-image>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsA/image/image.uvue`</small>
+#### 加载错误提示
+
+```vue
+<up-image src="https://cdn.uviewui.com/uview/album/1.jpg">
+	<template #error>
+		<view style="font-size: 24rpx;">加载失败</view>
+	</template>
+</up-image>
+```
+
+#### 淡入动画
+
+```vue
+<up-image src="https://cdn.uviewui.com/uview/album/1.jpg" :fade="true" duration="450"></up-image>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus-doc4/docs/components/image.md`</small>
 
 </template>
 
