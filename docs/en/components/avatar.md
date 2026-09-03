@@ -127,7 +127,7 @@ const UPAvatar(
 
 <template #reactnative>
 
-#### 基础演示
+#### Basic demo
 
 ```tsx
 import { UPAvatar } from 'ultra-ui-rn';
@@ -135,31 +135,31 @@ import { UPAvatar } from 'ultra-ui-rn';
 <UPAvatar src={src1} />
 ```
 
-#### 头像形状
+#### Avatar shape
 
 ```tsx
 <UPAvatar src={src3} shape="square" />
 ```
 
-#### 头像尺寸
+#### Avatar size
 
 ```tsx
 <UPAvatar src={src4} size="30" />
 ```
 
-#### 图标头像
+#### Icon avatar
 
 ```tsx
 <UPAvatar icon="red-packet-fill" fontSize="22" />
 ```
 
-#### 文字头像(自动背景色)
+#### Text avatar with a derived background
 
 ```tsx
 <UPAvatar text="U" fontSize="20" randomBgColor colorIndex={0} />
 ```
 
-#### 图片加载失败(显示默认头像)
+#### Image failure falls back to the default avatar
 
 ```tsx
 <UPAvatar src={src7} />
@@ -171,9 +171,7 @@ import { UPAvatar } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 基础用法
-
-src 传图片地址，默认 40px 圆形
+#### Basic usage
 
 ```tsx
 import { UPAvatar } from '@ultra-ui'
@@ -181,57 +179,43 @@ import { UPAvatar } from '@ultra-ui'
 <UPAvatar src={PIC} />
 ```
 
-#### 形状
-
-shape：circle 圆形 / square 方形
+#### Shapes
 
 ```tsx
 <UPAvatar src={PIC} shape='circle' />
 ```
 
-#### 尺寸
-
-size 支持数字（px）与带单位字符串
+#### Sizes
 
 ```tsx
 <UPAvatar src={PIC} size={24} />
 ```
 
-#### 文字头像
-
-text 优先级高于 src，可配 bgColor / color / fontSize
+#### Text avatar
 
 ```tsx
 <UPAvatar text='张' />
 ```
 
-#### 随机背景色
-
-randomBgColor 随机取色，colorIndex 可锁定 0-19 号色
+#### Random background colour
 
 ```tsx
 <UPAvatar text='随' randomBgColor />
 ```
 
-#### 图标头像
-
-icon 优先级高于 src
+#### Icon avatar
 
 ```tsx
 <UPAvatar icon='camera' bgColor='#ebedf0' color='#909399' />
 ```
 
-#### 裁剪模式
-
-mode 取值同 Taro Image
+#### Crop mode
 
 ```tsx
 <UPAvatar src={PIC} size={56} shape='square' mode={mode} />
 ```
 
-#### 加载失败
-
-src 无效时回退 defaultUrl，未配置则用内置兜底头像
+#### Load failure
 
 ```tsx
 <UPAvatar src={BROKEN} />
@@ -243,7 +227,7 @@ src 无效时回退 defaultUrl，未配置则用内置兜底头像
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -263,7 +247,7 @@ const text = ref('无头像');
 </script>
 ```
 
-#### 头像形状
+#### Avatar shape
 
 ```vue
 <template>
@@ -279,7 +263,7 @@ const src = ref('http://pic2.sc.chinaz.com/Files/pic/pic9/202002/hpic2119_s.jpg'
 </script>
 ```
 
-#### 图标头像
+#### Icon avatar
 
 ```vue
 <view class="u-demo-block__content">
@@ -309,7 +293,7 @@ const src = ref('http://pic2.sc.chinaz.com/Files/pic/pic9/202002/hpic2119_s.jpg'
 </style>
 ```
 
-#### 文字头像（自动背景色）
+#### Text avatar with a derived background
 
 ```vue
 <template>
@@ -321,7 +305,7 @@ const src = ref('http://pic2.sc.chinaz.com/Files/pic/pic9/202002/hpic2119_s.jpg'
 </template>
 ```
 
-#### 头像组
+#### Avatar group
 
 ```vue
 <template>
@@ -356,7 +340,7 @@ const urls = reactive([
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -378,7 +362,7 @@ const urls = reactive([
 </script>
 ```
 
-#### 头像形状
+#### Avatar shape
 
 ```vue
 <template>
@@ -396,7 +380,7 @@ const urls = reactive([
 </script>
 ```
 
-#### 图标头像
+#### Icon avatar
 
 ```vue
 <view class="u-demo-block__content">
@@ -426,7 +410,7 @@ const urls = reactive([
 </style>
 ```
 
-#### 文字头像（自动背景色）
+#### Text avatar with a derived background
 
 ```vue
 <template>
@@ -438,7 +422,7 @@ const urls = reactive([
 </template>
 ```
 
-#### 头像组
+#### Avatar group
 
 ```vue
 <template>

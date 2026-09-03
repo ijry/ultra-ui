@@ -18,7 +18,7 @@ Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examp
 
 <template #flutter>
 
-#### 颜色选择器示例
+#### Colour picker
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -33,7 +33,7 @@ UPColorPicker(
 )
 ```
 
-#### 带常用颜色的示例
+#### With a common colour palette
 
 ```dart
 UPColorPicker(
@@ -89,9 +89,7 @@ import { UPColorPicker } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 基础用法
-
-默认纯色选择器
+#### Basic usage
 
 ```tsx
 import { UPColorPicker } from '@ultra-ui'
@@ -99,17 +97,13 @@ import { UPColorPicker } from '@ultra-ui'
 <UPColorPicker value={solidColor} onChange={setSolidColor} />
 ```
 
-#### 渐变色
-
-支持线性渐变
+#### Gradient
 
 ```tsx
 <UPColorPicker value={gradientColor} onChange={setGradientColor} />
 ```
 
-#### 常用颜色
-
-提供快速选择色板
+#### Common colours
 
 ```tsx
 <UPColorPicker
@@ -119,7 +113,7 @@ import { UPColorPicker } from '@ultra-ui'
 />
 ```
 
-#### 自定义触发器
+#### Custom trigger
 
 ```tsx
 <UPColorPicker value={solidColor} onChange={setSolidColor}>
@@ -133,7 +127,7 @@ import { UPColorPicker } from '@ultra-ui'
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -163,7 +157,7 @@ const confirm = (selectedColor) => {
 </script>
 ```
 
-#### 带常用颜色的使用
+#### With common colours
 
 ```vue
 <template>
@@ -210,7 +204,7 @@ const confirm = (selectedColor) => {
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -240,7 +234,7 @@ const confirm = (selectedColor) => {
 </script>
 ```
 
-#### 带常用颜色的使用
+#### With common colours
 
 ```vue
 <template>

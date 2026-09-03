@@ -75,7 +75,7 @@ UPCheckbox({ props: new UPCheckboxProps({ label: '禁用项', checked: true, dis
 
 <template #flutter>
 
-#### 单独使用checkbox
+#### Using a checkbox on its own
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -89,7 +89,7 @@ UPCheckbox(
 )
 ```
 
-#### 横向两端排列形式
+#### Space-between row layout
 
 ```dart
 (option) => UPCheckbox(
@@ -105,7 +105,7 @@ UPCheckbox(
 
 <template #reactnative>
 
-#### 基本案例
+#### Basic example
 
 ```tsx
 import { UPCheckbox } from 'ultra-ui-rn';
@@ -113,7 +113,7 @@ import { UPCheckbox } from 'ultra-ui-rn';
 <UPCheckbox customStyle={s.stacked} key={name} label={name} name={name} />
 ```
 
-#### 单独使用checkbox
+#### Using a checkbox on its own
 
 ```tsx
 <UPCheckbox
@@ -126,13 +126,13 @@ import { UPCheckbox } from 'ultra-ui-rn';
 />
 ```
 
-#### 自定义形状
+#### Custom shape
 
 ```tsx
 <UPCheckbox customStyle={s.stacked} key={name} label={name} name={name} />
 ```
 
-#### 是否禁用
+#### Disabled or not
 
 ```tsx
 <UPCheckbox
@@ -144,25 +144,25 @@ import { UPCheckbox } from 'ultra-ui-rn';
 />
 ```
 
-#### 是否禁止点击提示语选中复选框
+#### Whether the label toggles the checkbox
 
 ```tsx
 <UPCheckbox customStyle={s.stacked} key={name} label={name} name={name} />
 ```
 
-#### 自定义颜色
+#### Custom colour
 
 ```tsx
 <UPCheckbox customStyle={s.stacked} key={name} label={name} name={name} />
 ```
 
-#### 横向排列形式
+#### Row layout
 
 ```tsx
 <UPCheckbox customStyle={s.inline} key={name} label={name} name={name} />
 ```
 
-#### 横向两端排列形式
+#### Space-between row layout
 
 ```tsx
 <UPCheckbox customStyle={s.stackedWide} key={name} label={name} name={name} />
@@ -174,9 +174,7 @@ import { UPCheckbox } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 基础用法
-
-Group 持有选中数组，onChange 回传最新数组
+#### Basic usage
 
 ```tsx
 import { UPCheckbox } from '@ultra-ui'
@@ -184,57 +182,43 @@ import { UPCheckbox } from '@ultra-ui'
 <UPCheckbox key={item} name={item} label={item} />
 ```
 
-#### 形状
-
-shape：square（默认） / circle
+#### Shapes
 
 ```tsx
 <UPCheckbox name='square' label='方形' />
 ```
 
-#### 禁用
-
-Group 整体禁用 / 单项禁用
+#### Disabled
 
 ```tsx
 <UPCheckbox name='已选中' label='已选中' />
 ```
 
-#### 自定义颜色
-
-activeColor / inactiveColor / iconColor
+#### Custom colour
 
 ```tsx
 <UPCheckbox name='红色' label='Group 红色' />
 ```
 
-#### 尺寸与文字
-
-size / iconSize / labelSize / labelColor
+#### Size and text
 
 ```tsx
 <UPCheckbox name='小号' label='小号' size={16} iconSize={10} labelSize={12} />
 ```
 
-#### 竖向排列
-
-placement=column，配合 borderBottom 显示分割线
+#### Vertical layout
 
 ```tsx
 <UPCheckbox key={item} name={item} label={item} />
 ```
 
-#### 图标靠右
-
-iconPlacement=right，整行两端对齐，点击整行即可切换
+#### Icon on the right
 
 ```tsx
 <UPCheckbox key={item} name={item} label={item} />
 ```
 
-#### 禁止点击文字
-
-labelDisabled 时只有图标可点
+#### Ignore taps on the label
 
 ```tsx
 <UPCheckbox name='只能点图标' label='只能点图标' />
@@ -246,7 +230,7 @@ labelDisabled 时只有图标可点
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -294,7 +278,7 @@ const checkboxChange = (n) => {
 </script>
 ```
 
-#### 独立使用up-checkbox
+#### Using up-checkbox on its own
 
 ```vue
 <template>
@@ -314,7 +298,7 @@ const aloneChecked = ref(false)
 </script>
 ```
 
-#### 自定义形状
+#### Custom shape
 
 ```vue
 <template>
@@ -362,7 +346,7 @@ const checkboxChange = (n) => {
 </script>
 ```
 
-#### 禁用checkbox
+#### Disabled checkbox
 
 ```vue
 <template>
@@ -411,7 +395,7 @@ const checkboxChange = (n) => {
 </script>
 ```
 
-#### 自定义形状
+#### Custom shape
 
 ```vue
 <up-checkbox-group>
@@ -419,7 +403,7 @@ const checkboxChange = (n) => {
 </up-checkbox-group>
 ```
 
-#### 自定义颜色
+#### Custom colour
 
 ```vue
 <up-checkbox-group v-model="checked">
@@ -427,7 +411,7 @@ const checkboxChange = (n) => {
 </up-checkbox-group>
 ```
 
-#### 横向排列形式
+#### Row layout
 
 ```vue
 <up-checkbox-group v-model="checked" placement="row">
@@ -436,7 +420,7 @@ const checkboxChange = (n) => {
 </up-checkbox-group>
 ```
 
-#### 横向两端排列形式
+#### Space-between row layout
 
 ```vue
 <up-checkbox-group 
@@ -454,7 +438,7 @@ const checkboxChange = (n) => {
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -502,7 +486,7 @@ const checkboxChange = (n) => {
 </script>
 ```
 
-#### 独立使用up-checkbox
+#### Using up-checkbox on its own
 
 ```vue
 <template>
@@ -522,7 +506,7 @@ const aloneChecked = ref(false)
 </script>
 ```
 
-#### 自定义形状
+#### Custom shape
 
 ```vue
 <template>
@@ -570,7 +554,7 @@ const checkboxChange = (n) => {
 </script>
 ```
 
-#### 禁用checkbox
+#### Disabled checkbox
 
 ```vue
 <template>
@@ -619,7 +603,7 @@ const checkboxChange = (n) => {
 </script>
 ```
 
-#### 自定义形状
+#### Custom shape
 
 ```vue
 <up-checkbox-group>
@@ -627,7 +611,7 @@ const checkboxChange = (n) => {
 </up-checkbox-group>
 ```
 
-#### 自定义颜色
+#### Custom colour
 
 ```vue
 <up-checkbox-group v-model="checked">
@@ -635,7 +619,7 @@ const checkboxChange = (n) => {
 </up-checkbox-group>
 ```
 
-#### 横向排列形式
+#### Row layout
 
 ```vue
 <up-checkbox-group v-model="checked" placement="row">
@@ -644,7 +628,7 @@ const checkboxChange = (n) => {
 </up-checkbox-group>
 ```
 
-#### 横向两端排列形式
+#### Space-between row layout
 
 ```vue
 <up-checkbox-group 

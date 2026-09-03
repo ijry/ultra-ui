@@ -116,7 +116,7 @@ import { UPToast } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 组件式用法
+#### Component-style usage
 
 ```tsx
 import { UPToast } from '@ultra-ui'
@@ -138,7 +138,7 @@ import { UPToast } from '@ultra-ui'
 
 <template #uniapp>
 
-#### Root 全局调用（推荐）
+#### Global call via Root (recommended)
 
 ```js
 // 快捷写法
@@ -152,7 +152,7 @@ uni.$u.rootToast({
 })
 ```
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -261,7 +261,7 @@ function showToast(params) {
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>

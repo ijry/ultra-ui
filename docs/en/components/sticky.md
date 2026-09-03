@@ -30,7 +30,7 @@ No snippet could be extracted automatically — please read the source.
 
 <template #flutter>
 
-#### 基础使用
+#### Basic usage
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -55,7 +55,7 @@ UPSticky(
 
 <template #reactnative>
 
-#### 基础使用
+#### Basic usage
 
 ```tsx
 import { UPSticky } from 'ultra-ui-rn';
@@ -71,9 +71,7 @@ import { UPSticky } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 基础用法
-
-向下滚动，标题会吸顶；onFixed 回调同步状态
+#### Basic usage
 
 ```tsx
 import { UPSticky } from '@ultra-ui'
@@ -91,9 +89,7 @@ import { UPSticky } from '@ultra-ui'
 </UPSticky>
 ```
 
-#### 带偏移
-
-offsetTop={40}，吸顶后距顶部 40px
+#### With an offset
 
 ```tsx
 <UPSticky
@@ -109,9 +105,7 @@ offsetTop={40}，吸顶后距顶部 40px
 </UPSticky>
 ```
 
-#### 禁用
-
-disabled 时内容随页面正常滚动，不吸顶
+#### Disabled
 
 ```tsx
 <UPSticky offsetTop={0} disabled backgroundColor='#f5f5f5'>
@@ -127,7 +121,7 @@ disabled 时内容随页面正常滚动，不吸顶
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -142,7 +136,7 @@ disabled 时内容随页面正常滚动，不吸顶
 </template>
 ```
 
-#### 吸顶距离
+#### Sticky offset
 
 ```vue
 <up-sticky offset-top="200">
@@ -156,7 +150,7 @@ disabled 时内容随页面正常滚动，不吸顶
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -171,7 +165,7 @@ disabled 时内容随页面正常滚动，不吸顶
 </template>
 ```
 
-#### 吸顶距离
+#### Sticky offset
 
 ```vue
 <up-sticky offset-top="200">

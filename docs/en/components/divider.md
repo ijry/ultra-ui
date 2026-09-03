@@ -110,7 +110,7 @@ UPDivider(
 
 <template #reactnative>
 
-#### 基本案例
+#### Basic example
 
 ```tsx
 import { UPDivider } from 'ultra-ui-rn';
@@ -118,37 +118,37 @@ import { UPDivider } from 'ultra-ui-rn';
 <UPDivider text="分割线" />
 ```
 
-#### 是否虚线
+#### Dashed or solid
 
 ```tsx
 <UPDivider dashed text="分割线" />
 ```
 
-#### 是否细线
+#### Hairline or not
 
 ```tsx
 <UPDivider hairline text="分割线" />
 ```
 
-#### 是否以点代替文字
+#### Dots instead of text
 
 ```tsx
 <UPDivider dot text="分割线" />
 ```
 
-#### 文本内容靠左
+#### Text aligned left
 
 ```tsx
 <UPDivider text="分割线" textPosition="left" />
 ```
 
-#### 文本内容靠右
+#### Text aligned right
 
 ```tsx
 <UPDivider text="分割线" textPosition="right" />
 ```
 
-#### 自定义文本颜色
+#### Custom text colour
 
 ```tsx
 <UPDivider lineColor="#2979ff" text="分割线" textColor="#2979ff" />
@@ -160,9 +160,7 @@ import { UPDivider } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 基础用法
-
-不传 text 时是一条纯分割线
+#### Basic usage
 
 ```tsx
 import { UPDivider } from '@ultra-ui'
@@ -170,57 +168,43 @@ import { UPDivider } from '@ultra-ui'
 <UPDivider />
 ```
 
-#### 文字位置
-
-textPosition：left / center / right
+#### Text position
 
 ```tsx
 <UPDivider text='左侧' textPosition='left' />
 ```
 
-#### 虚线
-
-dashed=true
+#### Dashed
 
 ```tsx
 <UPDivider dashed />
 ```
 
-#### 线条粗细
-
-hairline=false 时使用 1px 实线
+#### Line thickness
 
 ```tsx
 <UPDivider text='hairline（默认）' />
 ```
 
-#### 圆点
-
-dot=true，优先级高于 text
+#### Dot
 
 ```tsx
 <UPDivider dot />
 ```
 
-#### 文字样式
-
-textColor / textSize
+#### Text styling
 
 ```tsx
 <UPDivider text='蓝色 16px' textColor='#3c9cff' textSize={16} />
 ```
 
-#### 线条颜色
-
-lineColor
+#### Line colour
 
 ```tsx
 <UPDivider text='蓝色线条' lineColor='#3c9cff' textColor='#3c9cff' />
 ```
 
-#### 自定义内容
-
-children 会替换默认文字
+#### Custom content
 
 ```tsx
 <UPDivider lineColor='#f9ae3d'>
@@ -237,38 +221,38 @@ children 会替换默认文字
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <up-divider text="分割线"></up-divider>
 ```
 
-#### 设置虚线
+#### Dashed line
 
 ```vue
 <up-divider text="分割线" :dashed="true"></up-divider>
 ```
 
-#### 设置细线
+#### Hairline
 
 ```vue
 <up-divider text="分割线" :hairline="true"></up-divider>
 ```
 
-#### 设置以点代替文字
+#### Dots instead of text
 
 ```vue
 <up-divider text="分割线" :dot="true"></up-divider>
 ```
 
-#### 设置文本靠左靠右
+#### Aligning the text left or right
 
 ```vue
 <up-divider text="靠左" textPosition="left"></up-divider>
 <up-divider text="靠右" textPosition="right"></up-divider>
 ```
 
-#### 设置文本颜色和线条颜色
+#### Text and line colours
 
 ```vue
 <up-divider
@@ -284,38 +268,38 @@ children 会替换默认文字
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <up-divider text="分割线"></up-divider>
 ```
 
-#### 设置虚线
+#### Dashed line
 
 ```vue
 <up-divider text="分割线" :dashed="true"></up-divider>
 ```
 
-#### 设置细线
+#### Hairline
 
 ```vue
 <up-divider text="分割线" :hairline="true"></up-divider>
 ```
 
-#### 设置以点代替文字
+#### Dots instead of text
 
 ```vue
 <up-divider text="分割线" :dot="true"></up-divider>
 ```
 
-#### 设置文本靠左靠右
+#### Aligning the text left or right
 
 ```vue
 <up-divider text="靠左" textPosition="left"></up-divider>
 <up-divider text="靠右" textPosition="right"></up-divider>
 ```
 
-#### 设置文本颜色和线条颜色
+#### Text and line colours
 
 ```vue
 <up-divider

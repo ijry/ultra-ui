@@ -18,7 +18,7 @@ Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examp
 
 <template #flutter>
 
-#### 基本使用
+#### Basic usage
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -37,7 +37,7 @@ UPGoodsSku(
 )
 ```
 
-#### 自定义最大购买数量
+#### Cap the quantity
 
 ```dart
 UPGoodsSku(
@@ -55,7 +55,7 @@ UPGoodsSku(
 )
 ```
 
-#### 自定义确认按钮文字
+#### Custom confirm-button text
 
 ```dart
 UPGoodsSku(
@@ -73,7 +73,7 @@ UPGoodsSku(
 )
 ```
 
-#### 无弹窗页面模式
+#### Inline page mode
 
 ```dart
 UPGoodsSku(
@@ -93,7 +93,7 @@ UPGoodsSku(
 
 <template #reactnative>
 
-#### 无弹窗页面模式
+#### Inline page mode
 
 ```tsx
 import { UPGoodsSku } from 'ultra-ui-rn';
@@ -114,9 +114,7 @@ import { UPGoodsSku } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 基础用法
-
-点击按钮弹出规格面板。绿色仅有 L、蓝色无 S、红色 L 零库存，可观察联动禁用
+#### Basic usage
 
 ```tsx
 import { UPGoodsSku } from '@ultra-ui'
@@ -128,9 +126,7 @@ import { UPGoodsSku } from '@ultra-ui'
   triggerSlot={<UPButton type='primary' text='选择规格' />
 ```
 
-#### 三个维度
-
-仅三种组合存在，选择过程中大量选项会被禁用
+#### Three dimensions
 
 ```tsx
 <UPGoodsSku
@@ -141,9 +137,7 @@ import { UPGoodsSku } from '@ultra-ui'
   triggerSlot={<UPButton text='选择配置' />
 ```
 
-#### 限制购买数量
-
-maxBuy 与库存取较小值作为步进器上限
+#### Capping the quantity
 
 ```tsx
 <UPGoodsSku
@@ -154,9 +148,7 @@ maxBuy 与库存取较小值作为步进器上限
   triggerSlot={<UPButton text='最多买 2 件' />
 ```
 
-#### 页面内联
-
-pageInline 直接铺在页面里，不走弹层
+#### Inline in the page
 
 ```tsx
 <UPGoodsSku
@@ -175,7 +167,7 @@ pageInline 直接铺在页面里，不走弹层
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <script setup>
@@ -259,7 +251,7 @@ function confirmSku(e) {
 </script>
 ```
 
-#### 自定义最大购买数量
+#### Cap the quantity
 
 ```vue
 <template>
@@ -279,7 +271,7 @@ function confirmSku(e) {
 </template>
 ```
 
-#### 自定义确认按钮文字
+#### Custom confirm-button text
 
 ```vue
 <template>
@@ -299,7 +291,7 @@ function confirmSku(e) {
 </template>
 ```
 
-#### 页面内联模式
+#### Inline page mode
 
 ```vue
 <template>
@@ -323,7 +315,7 @@ function confirmSku(e) {
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <script setup>
@@ -407,7 +399,7 @@ function confirmSku(e) {
 </script>
 ```
 
-#### 自定义最大购买数量
+#### Cap the quantity
 
 ```vue
 <template>
@@ -427,7 +419,7 @@ function confirmSku(e) {
 </template>
 ```
 
-#### 自定义确认按钮文字
+#### Custom confirm-button text
 
 ```vue
 <template>
@@ -447,7 +439,7 @@ function confirmSku(e) {
 </template>
 ```
 
-#### 页面内联模式
+#### Inline page mode
 
 ```vue
 <template>

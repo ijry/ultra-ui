@@ -47,7 +47,7 @@ UPSubsection({ props: new UPSubsectionProps({ list: this.list, current: this.cur
 
 <template #flutter>
 
-#### 基础使用
+#### Basic usage
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -61,7 +61,7 @@ subsection: UPSubsection(
 )
 ```
 
-#### 按钮模式
+#### Button mode
 
 ```dart
 subsection: UPSubsection(
@@ -73,7 +73,7 @@ subsection: UPSubsection(
 )
 ```
 
-#### 更换主题
+#### Switching theme
 
 ```dart
 subsection: UPSubsection(
@@ -86,7 +86,7 @@ subsection: UPSubsection(
 )
 ```
 
-#### 默认位置
+#### Default position
 
 ```dart
 subsection: UPSubsection(
@@ -99,7 +99,7 @@ subsection: UPSubsection(
 )
 ```
 
-#### 按钮模式通过list自定义颜色
+#### Button mode with per-item colours
 
 ```dart
 subsection: UPSubsection(
@@ -112,7 +112,7 @@ subsection: UPSubsection(
 )
 ```
 
-#### 禁用
+#### Disabled
 
 ```dart
 UPSubsection(
@@ -130,7 +130,7 @@ UPSubsection(
 
 <template #reactnative>
 
-#### 基础使用
+#### Basic usage
 
 ```tsx
 import { UPSubsection } from 'ultra-ui-rn';
@@ -138,13 +138,13 @@ import { UPSubsection } from 'ultra-ui-rn';
 <UPSubsection current={current1} list={list} mode="subsection" onChange={setCurrent1} />
 ```
 
-#### 按钮模式
+#### Button mode
 
 ```tsx
 <UPSubsection current={current2} list={list} mode="button" onChange={setCurrent2} />
 ```
 
-#### 更换主题
+#### Switching theme
 
 ```tsx
 <UPSubsection
@@ -156,7 +156,7 @@ import { UPSubsection } from 'ultra-ui-rn';
 />
 ```
 
-#### 默认位置
+#### Default position
 
 ```tsx
 <UPSubsection
@@ -168,7 +168,7 @@ import { UPSubsection } from 'ultra-ui-rn';
 />
 ```
 
-#### 按钮模式通过list自定义颜色
+#### Button mode with per-item colours
 
 ```tsx
 <UPSubsection
@@ -180,7 +180,7 @@ import { UPSubsection } from 'ultra-ui-rn';
 />
 ```
 
-#### 禁用
+#### Disabled
 
 ```tsx
 <UPSubsection
@@ -199,9 +199,7 @@ import { UPSubsection } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 基础用法
-
-mode 默认为 'button'，list 可直接传字符串数组
+#### Basic usage
 
 ```tsx
 import { UPSubsection } from '@ultra-ui'
@@ -209,9 +207,7 @@ import { UPSubsection } from '@ultra-ui'
 <UPSubsection list={SIMPLE_LIST} current={basic} onChange={setBasic} />
 ```
 
-#### 自定义颜色
-
-activeColor / inactiveColor
+#### Custom colour
 
 ```tsx
 <UPSubsection
@@ -223,9 +219,7 @@ activeColor / inactiveColor
 />
 ```
 
-#### 背景颜色
-
-bgColor，仅 button 模式生效
+#### Background colour
 
 ```tsx
 <UPSubsection
@@ -237,9 +231,7 @@ bgColor，仅 button 模式生效
 />
 ```
 
-#### 字体大小
-
-fontSize，默认 12
+#### Font size
 
 ```tsx
 <UPSubsection
@@ -250,17 +242,13 @@ fontSize，默认 12
 />
 ```
 
-#### 激活项加粗
-
-bold 默认为 true，可关闭
+#### Bold for the active item
 
 ```tsx
 <UPSubsection list={SIMPLE_LIST} current={bold} bold onChange={setBold} />
 ```
 
-#### 自定义读取字段
-
-keyName='title'
+#### Custom field names
 
 ```tsx
 <UPSubsection
@@ -271,9 +259,7 @@ keyName='title'
 />
 ```
 
-#### 逐项配色
-
-元素上的 activeColorKey / inactiveColorKey 字段优先级更高
+#### Per-item colours
 
 ```tsx
 <UPSubsection
@@ -283,9 +269,7 @@ keyName='title'
 />
 ```
 
-#### 项数自适应
-
-滑块宽度按 list 长度等分
+#### Item count adapts
 
 ```tsx
 <UPSubsection list={TWO_LIST} current={two} onChange={setTwo} />
@@ -297,7 +281,7 @@ keyName='title'
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -321,19 +305,19 @@ const current = ref(1);
 </script>
 ```
 
-#### 模式选择
+#### Choosing a mode
 
 ```vue
 <up-subsection :list="list" mode="subsection" :current="1"></up-subsection>
 ```
 
-#### 颜色配置
+#### Colour configuration
 
 ```vue
 <up-subsection activeColor="#f56c6c"></up-subsection>
 ```
 
-#### 注意事项
+#### Notes
 
 ```vue
 <template>
@@ -362,7 +346,7 @@ function sectionChange(index) {
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -386,19 +370,19 @@ const current = ref(1);
 </script>
 ```
 
-#### 模式选择
+#### Choosing a mode
 
 ```vue
 <up-subsection :list="list" mode="subsection" :current="1"></up-subsection>
 ```
 
-#### 颜色配置
+#### Colour configuration
 
 ```vue
 <up-subsection activeColor="#f56c6c"></up-subsection>
 ```
 
-#### 注意事项
+#### Notes
 
 ```vue
 <template>

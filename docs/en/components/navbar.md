@@ -86,9 +86,7 @@ import { UPNavbar } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 基础用法
-
-仅设置 title，默认 fixed={false}
+#### Basic usage
 
 ```tsx
 import { UPNavbar } from '@ultra-ui'
@@ -96,17 +94,13 @@ import { UPNavbar } from '@ultra-ui'
 <UPNavbar safeAreaInsetTop={false} title='个人中心' />
 ```
 
-#### 下边框
-
-border 属性
+#### Bottom border
 
 ```tsx
 <UPNavbar safeAreaInsetTop={false} border title='带下边框' />
 ```
 
-#### 自定义颜色
-
-bgColor / titleColor，bgColor 支持渐变
+#### Custom colour
 
 ```tsx
 <UPNavbar
@@ -118,9 +112,7 @@ bgColor / titleColor，bgColor 支持渐变
 />
 ```
 
-#### 高度与标题样式
-
-height / titleStyle
+#### Height and title styling
 
 ```tsx
 <UPNavbar
@@ -132,9 +124,7 @@ height / titleStyle
 />
 ```
 
-#### 标题宽度
-
-titleWidth 限制宽度，超出以省略号显示
+#### Title width
 
 ```tsx
 <UPNavbar
@@ -145,9 +135,7 @@ titleWidth 限制宽度，超出以省略号显示
 />
 ```
 
-#### 状态栏背景色
-
-safeAreaInsetTop 开启后，statusBarBgColor 可单独设置状态栏背景
+#### Status bar background
 
 ```tsx
 <UPNavbar
@@ -165,7 +153,7 @@ safeAreaInsetTop 开启后，statusBarBgColor 可单独设置状态栏背景
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -196,7 +184,7 @@ const leftClick = () => {
 </script>
 ```
 
-#### 注意事项
+#### Notes
 
 ```js
 // pages.json
@@ -213,7 +201,7 @@ const leftClick = () => {
 ]
 ```
 
-#### 自定义导航栏内容
+#### Custom nav bar content
 
 ```vue
 <template>
@@ -248,7 +236,7 @@ const leftClick = () => {
 </template>
 ```
 
-#### 自定义导航栏背景颜色
+#### Custom nav bar background
 
 ```vue
 <template>
@@ -272,7 +260,7 @@ const bgColor = ref('#001f3f');
 </script>
 ```
 
-#### iOS 大标题模式
+#### iOS large-title mode
 
 ```vue
 <template>
@@ -307,7 +295,7 @@ onPageScroll((e) => {
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -338,7 +326,7 @@ const leftClick = () => {
 </script>
 ```
 
-#### 注意事项
+#### Notes
 
 ```js
 // pages.json
@@ -355,7 +343,7 @@ const leftClick = () => {
 ]
 ```
 
-#### 自定义导航栏内容
+#### Custom nav bar content
 
 ```vue
 <template>
@@ -390,7 +378,7 @@ const leftClick = () => {
 </template>
 ```
 
-#### 自定义导航栏背景颜色
+#### Custom nav bar background
 
 ```vue
 <template>

@@ -84,7 +84,7 @@ UPGap(bgColor: '#f3f4f6', marginTop: 20, marginBottom: 20)
 
 <template #reactnative>
 
-#### 基本案列
+#### Basic example
 
 ```tsx
 import { UPGap } from 'ultra-ui-rn';
@@ -92,19 +92,19 @@ import { UPGap } from 'ultra-ui-rn';
 <UPGap bgColor="#f3f4f6" />
 ```
 
-#### 自定义颜色
+#### Custom colour
 
 ```tsx
 <UPGap bgColor="#2979ff" />
 ```
 
-#### 自定义高度
+#### Custom height
 
 ```tsx
 <UPGap bgColor="#f3f4f6" height="40" />
 ```
 
-#### 自定义上下边距
+#### Custom vertical margins
 
 ```tsx
 <UPGap bgColor="#f3f4f6" marginBottom="20" marginTop="20" />
@@ -116,9 +116,7 @@ import { UPGap } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 基础用法
-
-默认高度 20px，背景透明
+#### Basic usage
 
 ```tsx
 import { UPGap } from '@ultra-ui'
@@ -126,33 +124,25 @@ import { UPGap } from '@ultra-ui'
 <UPGap />
 ```
 
-#### 自定义高度
-
-height 单位 px
+#### Custom height
 
 ```tsx
 <UPGap height={10} bgColor='#ecf5ff' />
 ```
 
-#### 背景颜色
-
-bgColor 支持任意 CSS 颜色
+#### Background colour
 
 ```tsx
 <UPGap height={24} bgColor='#3c9cff' />
 ```
 
-#### 上下外边距
-
-marginTop / marginBottom，与背景色区分开
+#### Vertical margins
 
 ```tsx
 <UPGap height={20} marginTop={10} marginBottom={10} bgColor='#fdf6ec' />
 ```
 
-#### 自定义样式
-
-customStyle 透传到根节点
+#### Custom styling
 
 ```tsx
 <UPGap
@@ -168,7 +158,7 @@ customStyle 透传到根节点
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <up-gap height="80" bgColor="#bbb"></up-gap>
@@ -180,7 +170,7 @@ customStyle 透传到根节点
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <up-gap height="80" bgColor="#bbb"></up-gap>

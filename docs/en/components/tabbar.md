@@ -202,9 +202,7 @@ import { UPTabbar } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 基础用法
-
-UPTabbar 的 value 与 UPTabbarItem 的 name 匹配；onChange 回传被点击项的 name
+#### Basic usage
 
 ```tsx
 import { UPTabbar } from '@ultra-ui'
@@ -215,8 +213,6 @@ import { UPTabbar } from '@ultra-ui'
 ```
 
 #### activeIcon / inactiveIcon
-
-子项自带选中态图标，无需外部判断
 
 ```tsx
 <UPTabbar {...INLINE} value={basic} onChange={setBasic}>
@@ -232,9 +228,7 @@ import { UPTabbar } from '@ultra-ui'
 </UPTabbar>
 ```
 
-#### 徽标
-
-badge 数字角标 / dot 圆点
+#### Badge
 
 ```tsx
 <UPTabbar {...INLINE} value={badge} onChange={setBadge}>
@@ -245,9 +239,7 @@ badge 数字角标 / dot 圆点
 </UPTabbar>
 ```
 
-#### 自定义颜色
-
-activeColor / inactiveColor / backgroundColor / border
+#### Custom colour
 
 ```tsx
 <UPTabbar
@@ -263,9 +255,7 @@ activeColor / inactiveColor / backgroundColor / border
 </UPTabbar>
 ```
 
-#### 选中项背景色
-
-activeBackgroundColor / inactiveBackgroundColor + itemShape
+#### Background colour of the selected item
 
 ```tsx
 <UPTabbar
@@ -281,9 +271,7 @@ activeBackgroundColor / inactiveBackgroundColor + itemShape
 </UPTabbar>
 ```
 
-#### 文字显示模式
-
-textMode='active' 时未选中项文字弱化
+#### Text display mode
 
 ```tsx
 <UPTabbar {...INLINE} value={textMode} textMode='active' onChange={setTextMode}>
@@ -291,9 +279,7 @@ textMode='active' 时未选中项文字弱化
 </UPTabbar>
 ```
 
-#### 中间凸起按钮
-
-子项 mode='midButton'
+#### Raised centre button
 
 ```tsx
 <UPTabbar {...INLINE} value={mid} onChange={setMid}>
@@ -313,9 +299,7 @@ textMode='active' 时未选中项文字弱化
 </UPTabbar>
 ```
 
-#### 整体风格
-
-styleType 共 9 种
+#### Overall style
 
 ```tsx
 <UPTabbar
@@ -334,7 +318,7 @@ styleType 共 9 种
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <up-tabbar
@@ -356,7 +340,7 @@ click1(e) {
 }
 ```
 
-#### 显示徽标
+#### Showing a badge
 
 ```vue
 <up-tabbar
@@ -375,7 +359,7 @@ click1(e) {
 value2: 1,
 ```
 
-#### 匹配标签的名称
+#### Matching by name
 
 ```vue
 <up-tabbar
@@ -394,7 +378,7 @@ value2: 1,
 value3: 'play-right',
 ```
 
-#### 自定义图标/颜色
+#### Custom icon and colour
 
 ```vue
 <up-tabbar
@@ -427,7 +411,7 @@ value3: 'play-right',
 value4: 0,
 ```
 
-#### 双态动态图标
+#### Two-state animated icon
 
 ```vue
 <up-tabbar
@@ -449,7 +433,7 @@ value4: 0,
 value8: 0,
 ```
 
-#### 推荐图标方案
+#### The recommended icon setup
 
 ```vue
 <up-tabbar
@@ -469,7 +453,7 @@ value8: 0,
 </up-tabbar>
 ```
 
-#### 多风格模式
+#### Several styles
 
 ```vue
 <up-tabbar
@@ -491,7 +475,7 @@ value8: 0,
 value9: 1,
 ```
 
-#### 选中态动画
+#### Selection animation
 
 ```vue
 <up-tabbar
@@ -519,7 +503,7 @@ value10: 0,
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <up-tabbar
@@ -541,7 +525,7 @@ click1(e) {
 }
 ```
 
-#### 显示徽标
+#### Showing a badge
 
 ```vue
 <up-tabbar
@@ -560,7 +544,7 @@ click1(e) {
 value2: 1,
 ```
 
-#### 匹配标签的名称
+#### Matching by name
 
 ```vue
 <up-tabbar
@@ -579,7 +563,7 @@ value2: 1,
 value3: 'play-right',
 ```
 
-#### 自定义图标/颜色
+#### Custom icon and colour
 
 ```vue
 <up-tabbar
@@ -612,7 +596,7 @@ value3: 'play-right',
 value4: 0,
 ```
 
-#### 拦截切换事件(点击第二个标签)
+#### Intercepting the switch (tap the second tab)
 
 ```vue
 <up-tabbar
@@ -636,7 +620,7 @@ change5(name) {
 },
 ```
 
-#### 边框
+#### Border
 
 ```vue
 <up-tabbar
@@ -656,7 +640,7 @@ change5(name) {
 value7: 3
 ```
 
-#### 固定在底部(固定在屏幕最下方)
+#### Pinned to the bottom of the screen
 
 ```vue
 <up-tabbar

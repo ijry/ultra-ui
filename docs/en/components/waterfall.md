@@ -53,9 +53,7 @@ No snippet could be extracted automatically — please read the source.
 
 <template #taro>
 
-#### 三列
-
-columns 指定列数，数据在三列间按最矮优先分配
+#### Three columns
 
 ```tsx
 import { UPWaterfall } from '@ultra-ui'
@@ -68,9 +66,7 @@ import { UPWaterfall } from '@ultra-ui'
 />
 ```
 
-#### 自动列数
-
-columns='auto' 时按屏宽与 minColumnWidth 计算列数
+#### Automatic column count
 
 ```tsx
 <UPWaterfall
@@ -89,7 +85,7 @@ columns='auto' 时按屏宽与 minColumnWidth 计算列数
 
 <template #uniapp>
 
-#### 核心代码
+#### Core code
 
 ```vue
 <up-waterfall v-model="flowList" columns="2">
@@ -101,7 +97,7 @@ columns='auto' 时按屏宽与 minColumnWidth 计算列数
 </up-waterfall>
 ```
 
-#### 移除或清空数据
+#### Removing and clearing data
 
 ```js
 let arr = [
@@ -110,7 +106,7 @@ let arr = [
 ]
 ```
 
-#### 完整应用示例
+#### Full application example
 
 ```vue
 <template>
@@ -338,7 +334,7 @@ const onReachBottom = () => {
 
 <template #uniappx>
 
-#### 核心代码
+#### Core code
 
 ```vue
 <up-waterfall v-model="flowList">
@@ -355,7 +351,7 @@ const onReachBottom = () => {
 </up-waterfall>
 ```
 
-#### 移除或清空数据
+#### Removing and clearing data
 
 ```js
 let arr = [
@@ -364,7 +360,7 @@ let arr = [
 ]
 ```
 
-#### 完整应用示例
+#### Full application example
 
 ```vue
 <template>

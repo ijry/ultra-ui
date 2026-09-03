@@ -50,7 +50,7 @@ UPDropdown(
 
 <template #harmony>
 
-#### 下拉菜单
+#### Dropdown menu
 
 ```typescript
 import { UPDropdown, UPDropdownProps } from '@lingyun/ultra-ui-hos';
@@ -150,9 +150,7 @@ import { UPDropdown } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 基础用法
-
-options 渲染可选列表，custom children 渲染自定义面板
+#### Basic usage
 
 ```tsx
 import { UPDropdown } from '@ultra-ui'
@@ -199,7 +197,7 @@ import { UPDropdown } from '@ultra-ui'
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -247,7 +245,7 @@ const options2 = ref([
 </script>
 ```
 
-#### 配置选项卡默认功能
+#### Default tab behaviour
 
 ```vue
 <script setup>
@@ -266,7 +264,7 @@ const options = ref([
 </script>
 ```
 
-#### 配置选项卡自定义功能
+#### Custom tab behaviour
 
 ```vue
 <template>
@@ -295,7 +293,7 @@ const closeDropdown = () => {
 </script>
 ```
 
-#### 配置选项卡内容可滚动
+#### Scrollable tab content
 
 ```vue
 <template>
@@ -332,7 +330,7 @@ const closeDropdown = () => {
 </script>
 ```
 
-#### 如何保持菜单高亮
+#### Keeping a menu item highlighted
 
 ```vue
 <template>
@@ -394,7 +392,7 @@ const change = () => {
 </script>
 ```
 
-#### 兼容性
+#### Compatibility
 
 ```vue
 <up-dropdown class="up-dropdown"></up-dropdown>
@@ -406,7 +404,7 @@ const change = () => {
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -452,7 +450,7 @@ const change = () => {
 </script>
 ```
 
-#### 配置选项卡默认功能
+#### Default tab behaviour
 
 ```js
 let options = [
@@ -467,7 +465,7 @@ let options = [
 ]
 ```
 
-#### 配置选项卡自定义功能
+#### Custom tab behaviour
 
 ```vue
 <template>
@@ -494,7 +492,7 @@ let options = [
 </script>
 ```
 
-#### 配置选项卡内容可滚动
+#### Scrollable tab content
 
 ```vue
 <template>
@@ -529,7 +527,7 @@ let options = [
 </script>
 ```
 
-#### 如何保持菜单高亮
+#### Keeping a menu item highlighted
 
 ```vue
 <template>
@@ -587,7 +585,7 @@ let options = [
 </script>
 ```
 
-#### 兼容性
+#### Compatibility
 
 ```vue
 <up-dropdown class="up-dropdown"></up-dropdown>

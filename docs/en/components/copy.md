@@ -18,7 +18,7 @@ Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examp
 
 <template #flutter>
 
-#### 点击文字复制
+#### Copy from the text
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -31,7 +31,7 @@ UPCopy(
 )
 ```
 
-#### 点击按钮复制
+#### Copy from a button
 
 ```dart
 UPCopy(
@@ -65,9 +65,7 @@ No snippet could be extracted automatically — please read the source.
 
 <template #taro>
 
-#### 基础用法
-
-点击整块区域把 text 复制到剪贴板
+#### Basic usage
 
 ```tsx
 import { UPCopy } from '@ultra-ui'
@@ -77,9 +75,7 @@ import { UPCopy } from '@ultra-ui'
 </UPCopy>
 ```
 
-#### 自定义图标
-
-size / color 控制复制图标
+#### Custom icon
 
 ```tsx
 <UPCopy text={SNIPPET} size={20} color='primary'>
@@ -87,9 +83,7 @@ size / color 控制复制图标
 </UPCopy>
 ```
 
-#### 隐藏图标
-
-icon=false 只保留文案
+#### Hiding the icon
 
 ```tsx
 <UPCopy text={SNIPPET} icon={false}>
@@ -103,7 +97,7 @@ icon=false 只保留文案
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -124,7 +118,7 @@ icon=false 只保留文案
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>

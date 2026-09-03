@@ -60,7 +60,7 @@ UPActionSheet(
 
 <template #harmony>
 
-#### 操作面板
+#### Action panel
 
 ```typescript
 import { UPActionSheet, UPActionSheetProps } from '@lingyun/ultra-ui-hos';
@@ -285,7 +285,7 @@ import { UPActionSheet } from '@ultra-ui'
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -322,7 +322,7 @@ const show = ref(false);
 </script>
 ```
 
-#### 配置点击遮罩关闭和点击某个菜单项时关闭弹窗
+#### Closing on mask tap or option tap
 
 ```vue
 <template>
@@ -347,7 +347,7 @@ const show = ref(false);
 </script>
 ```
 
-#### 点击获取所点击选项name
+#### Reading the tapped option name
 
 ```vue
 <template>
@@ -377,7 +377,7 @@ const selectClick = (index) => {
 </script>
 ```
 
-#### 快捷组件使用
+#### Using the shorthand component
 
 ```vue
 <template>
@@ -406,7 +406,7 @@ const selectClick = (index) => {
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -443,7 +443,7 @@ const show = ref(false);
 </script>
 ```
 
-#### 配置点击遮罩关闭和点击某个菜单项时关闭弹窗
+#### Closing on mask tap or option tap
 
 ```vue
 <template>
@@ -468,7 +468,7 @@ const show = ref(false);
 </script>
 ```
 
-#### 点击获取所点击选项name
+#### Reading the tapped option name
 
 ```vue
 <template>

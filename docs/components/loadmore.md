@@ -264,7 +264,7 @@ const nomoreText = ref('实在没有了');
 </script>
 ```
 
-#### 线条自定义颜色和设置为虚线 <badge text="2.0.32" />
+#### 线条自定义颜色和设置为虚线
 
 - 可以通过配置`dashed`和`lineColor`实现，见如下：
 
@@ -381,7 +381,7 @@ const nomoreText = ref('实在没有了');
 </script>
 ```
 
-#### 线条自定义颜色和设置为虚线 <badge text="2.0.32" />
+#### 线条自定义颜色和设置为虚线
 
 - 可以通过配置`dashed`和`lineColor`实现，见如下：
 

@@ -42,9 +42,7 @@ No snippet could be extracted automatically — please read the source.
 
 <template #taro>
 
-#### 基础用法
-
-点击按钮高亮指定元素并弹出引导气泡
+#### Basic usage
 
 ```tsx
 import { UPGuide } from '@ultra-ui'
@@ -62,9 +60,7 @@ import { UPGuide } from '@ultra-ui'
 />
 ```
 
-#### 带图片
-
-引导内容支持配图
+#### With an image
 
 ```tsx
 <UPGuide
@@ -81,9 +77,7 @@ import { UPGuide } from '@ultra-ui'
 />
 ```
 
-#### 可跳过
-
-showSkip 显示右上角跳过入口
+#### Skippable
 
 ```tsx
 <UPGuide
@@ -107,7 +101,7 @@ showSkip 显示右上角跳过入口
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -144,7 +138,7 @@ const list = ref([
 </script>
 ```
 
-#### 仅展示一次与重置
+#### Show once, and resetting
 
 ```vue
 <template>
@@ -172,7 +166,7 @@ function resetGuide() {
 </script>
 ```
 
-#### 监听事件
+#### Listening for events
 
 ```vue
 <up-guide

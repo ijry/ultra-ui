@@ -92,7 +92,7 @@ album: const UPAlbum(
 
 <template #reactnative>
 
-#### 多图模式
+#### Multiple images
 
 ```tsx
 import { UPAlbum } from 'ultra-ui-rn';
@@ -100,37 +100,37 @@ import { UPAlbum } from 'ultra-ui-rn';
 <UPAlbum urls={urls2} />
 ```
 
-#### 图文对齐
+#### Aligning text with images
 
 ```tsx
 <UPAlbum multipleSize="68" onAlbumWidth={setAlbumWidth} urls={urls2} />
 ```
 
-#### 更改裁剪模式
+#### Changing the crop mode
 
 ```tsx
 <UPAlbum maxCount="4" multipleMode="scaleToFill" rowCount="2" urls={urls3} />
 ```
 
-#### 更改图片大小
+#### Changing the image size
 
 ```tsx
 <UPAlbum maxCount="4" multipleSize="50" rowCount="2" urls={urls4} />
 ```
 
-#### 自定义圆角
+#### Custom corner radius
 
 ```tsx
 <UPAlbum radius="10" urls={urls2} />
 ```
 
-#### 自定义形状
+#### Custom shape
 
 ```tsx
 <UPAlbum shape="circle" urls={urls2} />
 ```
 
-#### 自适应自动换行
+#### Wrapping to fit
 
 ```tsx
 <UPAlbum autoWrap maxCount={9} urls={urls2} />
@@ -142,9 +142,7 @@ import { UPAlbum } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 自定义列数
-
-rowCount 控制每行数量；autoWrap 自适应换行
+#### Custom column count
 
 ```tsx
 import { UPAlbum } from '@ultra-ui'
@@ -152,33 +150,25 @@ import { UPAlbum } from '@ultra-ui'
 <UPAlbum urls={urls1} rowCount={4} />
 ```
 
-#### 更多遮罩 (showMore)
-
-urls 数量超过 maxCount 时，末位显示「+N」
+#### More overlay (showMore)
 
 ```tsx
 <UPAlbum urls={urls2} maxCount={9} />
 ```
 
-#### 对象数组 (keyName)
-
-urls 为对象数组时，用 keyName 指定图片字段
+#### Array of objects (keyName)
 
 ```tsx
 <UPAlbum urls={urls3} keyName='url' />
 ```
 
-#### 单图与形状
-
-单图按原始比例展示；shape / radius 控制圆角
+#### Single image and shape
 
 ```tsx
 <UPAlbum urls={[singleUrl]} />
 ```
 
-#### albumWidth 事件
-
-相册渲染宽度（px）：
+#### The albumWidth event
 
 ```tsx
 <UPAlbum urls={urls1} onAlbumWidth={setWidth} />
@@ -190,7 +180,7 @@ urls 为对象数组时，用 keyName 指定图片字段
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -258,7 +248,7 @@ const urls1 = ref([{
 </style>
 ```
 
-#### 多图模式
+#### Multiple images
 
 ```vue
 <template>
@@ -341,7 +331,7 @@ const urls2 = ref([
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -409,7 +399,7 @@ const urls1 = ref([{
 </style>
 ```
 
-#### 多图模式
+#### Multiple images
 
 ```vue
 <template>

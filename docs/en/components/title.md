@@ -67,7 +67,7 @@ UPTitle({ props: new UPTitleProps({ title: '自定义尺寸', subTitle: '更大�
 
 <template #flutter>
 
-#### 默认
+#### Default
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -78,7 +78,7 @@ UPTitle(
 )
 ```
 
-#### 自定义前缀
+#### Custom prefix
 
 ```dart
 UPTitle(
@@ -110,9 +110,7 @@ import { UPTitle } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 基础用法
-
-带左 accent 条的标题
+#### Basic usage
 
 ```tsx
 import { UPTitle } from '@ultra-ui'
@@ -120,17 +118,13 @@ import { UPTitle } from '@ultra-ui'
 <UPTitle text='标题文字' />
 ```
 
-#### 副标题
-
-sub 属性，显示一行更小的说明文字
+#### Subtitle
 
 ```tsx
 <UPTitle text='订单详情' sub='查看你本月的消费明细' />
 ```
 
-#### 右侧插槽
-
-rightSlot 自动靠右，常用于放置操作按钮
+#### Trailing slot
 
 ```tsx
 <UPTitle
@@ -140,25 +134,19 @@ rightSlot 自动靠右，常用于放置操作按钮
     <UPButton size='mini' type='primary' text='全部已读' />
 ```
 
-#### 自定义 accent 条
-
-prefixColor / prefixWidth / prefixHeight / prefix={false}
+#### Custom accent bar
 
 ```tsx
 <UPTitle text='红色强调' prefixColor='error' prefixWidth={6} prefixHeight={28} />
 ```
 
-#### 对齐方式
-
-align：left / center / right
+#### Alignment
 
 ```tsx
 <UPTitle text='左对齐（默认）' />
 ```
 
-#### 自定义内容
-
-textSlot / subSlot / children 组合
+#### Custom content
 
 ```tsx
 <UPTitle
@@ -178,13 +166,13 @@ textSlot / subSlot / children 组合
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <u-title>这里是标题</u-title>
 ```
 
-#### 自定义前缀
+#### Custom prefix
 
 ```vue
 <u-title>
@@ -195,7 +183,7 @@ textSlot / subSlot / children 组合
 </u-title>
 ```
 
-#### 组合使用
+#### Combined usage
 
 ```vue
 <u-title class="custom-title">
@@ -210,13 +198,13 @@ textSlot / subSlot / children 组合
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <up-title>这里是标题</up-title>
 ```
 
-#### 自定义前缀
+#### Custom prefix
 
 ```vue
 <up-title>
@@ -227,7 +215,7 @@ textSlot / subSlot / children 组合
 </up-title>
 ```
 
-#### 组合使用
+#### Combined usage
 
 ```vue
 <up-title class="custom-title">

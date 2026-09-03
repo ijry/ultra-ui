@@ -155,7 +155,7 @@ No snippet could be extracted automatically — please read the source.
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -175,7 +175,7 @@ const columns = reactive([
 </script>
 ```
 
-#### 单选快捷组件使用
+#### Using the radio shorthand component
 
 ```vue
 <template>
@@ -206,7 +206,7 @@ const cateList = ref([
 </script
 ```
 
-#### 多列模式与多列联动
+#### Multi-column mode and linked columns
 
 ```vue
 <template>
@@ -247,7 +247,7 @@ const confirm = (e) => {
 </script>
 ```
 
-#### 加载状态
+#### Loading state
 
 ```vue
 <template>
@@ -288,7 +288,7 @@ const changeHandler = (e) => {
 </script>
 ```
 
-#### 自定义选项值
+#### Custom option values
 
 ```vue
 <template>
@@ -334,7 +334,7 @@ const columns = reactive([
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -354,7 +354,7 @@ const columns = reactive([
 </script>
 ```
 
-#### 多列模式与多列联动
+#### Multi-column mode and linked columns
 
 ```vue
 <template>
@@ -395,7 +395,7 @@ const confirm = (e) => {
 </script>
 ```
 
-#### 加载状态
+#### Loading state
 
 ```vue
 <template>
@@ -436,7 +436,7 @@ const changeHandler = (e) => {
 </script>
 ```
 
-#### 自定义选项值
+#### Custom option values
 
 ```vue
 <template>

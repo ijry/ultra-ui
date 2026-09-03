@@ -18,7 +18,7 @@ Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examp
 
 <template #flutter>
 
-#### 单列多行模式
+#### One column, several rows
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -32,7 +32,7 @@ UPDragSort(
 )
 ```
 
-#### 自定义拖动句柄
+#### Custom drag handle
 
 ```dart
 UPDragSort(
@@ -57,7 +57,7 @@ UPDragSort(
 )
 ```
 
-#### 多行多列模式
+#### Several rows and columns
 
 ```dart
 UPDragSort(
@@ -71,7 +71,7 @@ UPDragSort(
 )
 ```
 
-#### 单行横向拖动
+#### Single-row horizontal drag
 
 ```dart
 UPDragSort(
@@ -165,9 +165,7 @@ import { UPDragsort } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 基础用法
-
-长按并上下拖拽「列表」图标即可重排
+#### Basic usage
 
 ```tsx
 import { UPDragsort } from '@ultra-ui'
@@ -175,17 +173,13 @@ import { UPDragsort } from '@ultra-ui'
 <UPDragsort list={plain} onChange={setPlain} />
 ```
 
-#### 对象数组
-
-每个条目带 key / label，拖拽后顺序写回数据源
+#### Array of objects
 
 ```tsx
 <UPDragsort list={objects} onChange={setObjects} />
 ```
 
-#### 禁用态
-
-draggable=false 时不可拖拽
+#### Disabled state
 
 ```tsx
 <UPDragsort list={plain} onChange={setPlain} draggable={false} />
@@ -197,7 +191,7 @@ draggable=false 时不可拖拽
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -273,7 +267,7 @@ const onGridDragEnd = (list) => {
 </script>
 ```
 
-#### 1. 部分项目禁用拖拽
+#### 1. Disable dragging for some items
 
 ```vue
 <up-dragsort 
@@ -308,7 +302,7 @@ const onDragEnd = (list) => {
 </script>
 ```
 
-#### 2. 自定义网格样式
+#### 2. Custom grid styling
 
 ```vue
 <up-dragsort 
@@ -366,7 +360,7 @@ const onDragEnd = (list) => {
 </style>
 ```
 
-#### 3. 响应式列数
+#### 3. Responsive column count
 
 ```vue
 <up-dragsort 
@@ -413,7 +407,7 @@ const onDragEnd = (list) => {
 </script>
 ```
 
-#### 自定义内容
+#### Custom content
 
 ```vue
 <up-dragsort 
@@ -452,7 +446,7 @@ const onCustomDragEnd = (list) => {
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -528,7 +522,7 @@ const onGridDragEnd = (list) => {
 </script>
 ```
 
-#### 1. 部分项目禁用拖拽
+#### 1. Disable dragging for some items
 
 ```vue
 <up-dragsort 
@@ -563,7 +557,7 @@ const onDragEnd = (list) => {
 </script>
 ```
 
-#### 2. 自定义网格样式
+#### 2. Custom grid styling
 
 ```vue
 <up-dragsort 
@@ -621,7 +615,7 @@ const onDragEnd = (list) => {
 </style>
 ```
 
-#### 3. 响应式列数
+#### 3. Responsive column count
 
 ```vue
 <up-dragsort 
@@ -668,7 +662,7 @@ const onDragEnd = (list) => {
 </script>
 ```
 
-#### 自定义内容
+#### Custom content
 
 ```vue
 <up-dragsort 

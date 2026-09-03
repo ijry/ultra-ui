@@ -44,7 +44,7 @@ DemoSection("骨架屏") { UPSkeleton(UPSkeletonProps(rows = 3, avatar = true))
 
 <template #harmony>
 
-#### 基础骨架
+#### Basic skeleton
 
 ```typescript
 import { UPSkeleton, UPSkeletonProps } from '@lingyun/ultra-ui-hos';
@@ -52,7 +52,7 @@ import { UPSkeleton, UPSkeletonProps } from '@lingyun/ultra-ui-hos';
 UPSkeleton({ props: new UPSkeletonProps({ rows: 3, title: true }) })
 ```
 
-#### 头像骨架
+#### Avatar skeleton
 
 ```typescript
 UPSkeleton({ props: new UPSkeletonProps({ avatar: true, rows: 4, titleWidth: '55%', rowWidth: ['100%', '92%', '80%', '64%'] }) })
@@ -129,7 +129,7 @@ UPSkeleton(
 
 <template #reactnative>
 
-#### 基础使用
+#### Basic usage
 
 ```tsx
 import { UPSkeleton } from 'ultra-ui-rn';
@@ -137,19 +137,19 @@ import { UPSkeleton } from 'ultra-ui-rn';
 <UPSkeleton loading rows="3" title />
 ```
 
-#### 自定义段落行数
+#### Custom number of paragraph lines
 
 ```tsx
 <UPSkeleton loading rows="2" title />
 ```
 
-#### 设置段落宽度
+#### Paragraph width
 
 ```tsx
 <UPSkeleton loading rows="2" rowsWidth={['100%', '35%']} title />
 ```
 
-#### 设置段落高度
+#### Paragraph height
 
 ```tsx
 <UPSkeleton
@@ -161,19 +161,19 @@ import { UPSkeleton } from 'ultra-ui-rn';
 />
 ```
 
-#### 是否开启动画
+#### Animation on or off
 
 ```tsx
 <UPSkeleton animate={switch1} loading rows="3" title />
 ```
 
-#### 展示头像
+#### Showing an avatar
 
 ```tsx
 <UPSkeleton animate={switch1} avatar loading rows="3" title />
 ```
 
-#### 切换状态
+#### Toggling the state
 
 ```tsx
 <UPSkeleton avatar loading={switch2} rows="2" rowsHeight="14" title>
@@ -200,9 +200,7 @@ import { UPSkeleton } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 基础用法
-
-loading=true 显示骨架，false 显示实际内容
+#### Basic usage
 
 ```tsx
 import { UPSkeleton } from '@ultra-ui'
@@ -220,33 +218,25 @@ import { UPSkeleton } from '@ultra-ui'
 </UPSkeleton>
 ```
 
-#### 显示头像
-
-avatar / avatarShape / avatarSize
+#### Showing an avatar
 
 ```tsx
 <UPSkeleton loading avatar avatarShape='circle' title rows={3} animate={animate} />
 ```
 
-#### 显示标题
-
-title / titleWidth / titleHeight
+#### Showing the title
 
 ```tsx
 <UPSkeleton loading title titleWidth='50%' titleHeight={20} rows={3} animate={animate} />
 ```
 
-#### 自定义行数
-
-rows / rowsWidth（数组逐行）/ rowsHeight
+#### Custom number of rows
 
 ```tsx
 <UPSkeleton loading rows={5} animate={animate} />
 ```
 
-#### 微光动画
-
-animate 控制扫描高光效果
+#### Shimmer animation
 
 ```tsx
 <UPSkeleton loading rows={3} animate={animate} />
@@ -258,7 +248,7 @@ animate 控制扫描高光效果
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -270,19 +260,19 @@ animate 控制扫描高光效果
 </template>
 ```
 
-#### 加载中动画
+#### Loading animation
 
 ```vue
 <up-skeleton :loading="true" :animate="true"></up-skeleton>
 ```
 
-#### 显示头像
+#### Showing an avatar
 
 ```vue
 <up-skeleton :loading="true" avatar rows="1"></up-skeleton>
 ```
 
-#### 插槽内容
+#### Slot content
 
 ```vue
 <template>
@@ -323,7 +313,7 @@ onLoad(() => {
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -335,19 +325,19 @@ onLoad(() => {
 </template>
 ```
 
-#### 加载中动画
+#### Loading animation
 
 ```vue
 <up-skeleton :loading="true" :animate="true"></up-skeleton>
 ```
 
-#### 显示头像
+#### Showing an avatar
 
 ```vue
 <up-skeleton :loading="true" avatar rows="1"></up-skeleton>
 ```
 
-#### 插槽内容
+#### Slot content
 
 ```vue
 <template>

@@ -155,7 +155,7 @@ No snippet could be extracted automatically — please read the source.
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -172,7 +172,7 @@ const show = ref(false);
 </script>
 ```
 
-#### 单月切换模式
+#### Month-switching mode
 
 ```vue
 <up-calendar
@@ -215,7 +215,7 @@ const show = ref(false);
 ></up-calendar>
 ```
 
-#### 单行日历
+#### Single-row calendar
 
 ```vue
 <up-calendar-strip
@@ -256,7 +256,7 @@ const onDateChange = (e) => {
 ></up-calendar-strip>
 ```
 
-#### 时间选择
+#### Time selection
 
 ```vue
 <up-calendar
@@ -268,7 +268,7 @@ const onDateChange = (e) => {
 ></up-calendar>
 ```
 
-#### 单个日期模式
+#### Single date mode
 
 ```js
 ["2021-07-01"]
@@ -291,7 +291,7 @@ const confirm = (e) => {
 </script>
 ```
 
-#### 多个日期模式
+#### Multiple date mode
 
 ```js
  ["2021-07-27", "2021-07-29", "2021-07-30"]
@@ -314,7 +314,7 @@ const confirm = (e) => {
 </script>
 ```
 
-#### 今天按钮与高亮颜色
+#### Today button and highlight colour
 
 ```vue
 <up-calendar
@@ -325,7 +325,7 @@ const confirm = (e) => {
 ></up-calendar>
 ```
 
-#### 日期范围模式
+#### Date range mode
 
 ```js
 ["2021-07-27", "2021-07-28", "2021-07-29", "2021-07-30", "2021-07-31"]
@@ -354,7 +354,7 @@ const confirm = (e) => {
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -371,7 +371,7 @@ const show = ref(false);
 </script>
 ```
 
-#### 单月切换模式
+#### Month-switching mode
 
 ```vue
 <up-calendar
@@ -414,7 +414,7 @@ const show = ref(false);
 ></up-calendar>
 ```
 
-#### 单个日期模式
+#### Single date mode
 
 ```js
 ["2021-07-01"]
@@ -437,7 +437,7 @@ const confirm = (e) => {
 </script>
 ```
 
-#### 多个日期模式
+#### Multiple date mode
 
 ```js
  ["2021-07-27", "2021-07-29", "2021-07-30"]
@@ -460,7 +460,7 @@ const confirm = (e) => {
 </script>
 ```
 
-#### 今天按钮与高亮颜色
+#### Today button and highlight colour
 
 ```vue
 <up-calendar
@@ -471,7 +471,7 @@ const confirm = (e) => {
 ></up-calendar>
 ```
 
-#### 日期范围模式
+#### Date range mode
 
 ```js
 ["2021-07-27", "2021-07-28", "2021-07-29", "2021-07-30", "2021-07-31"]
@@ -494,7 +494,7 @@ const confirm = (e) => {
 </script>
 ```
 
-#### 自定义主题颜色
+#### Custom theme colour
 
 ```vue
 <template>
@@ -514,7 +514,7 @@ const confirm = (e) => {
 </script>
 ```
 
-#### 自定义文案
+#### Custom wording
 
 ```vue
 <template>

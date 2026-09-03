@@ -30,7 +30,7 @@ No snippet could be extracted automatically — please read the source.
 
 <template #reactnative>
 
-#### 隐藏状态
+#### Hidden state
 
 ```tsx
 import { UPToolbar } from 'ultra-ui-rn';
@@ -44,9 +44,7 @@ import { UPToolbar } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 基础用法
-
-三个等宽子项，每个 flex:1；默认主色强调
+#### Basic usage
 
 ```tsx
 import { UPToolbar } from '@ultra-ui'
@@ -58,9 +56,7 @@ import { UPToolbar } from '@ultra-ui'
 </UPToolbar>
 ```
 
-#### 更多子项
-
-子项数量自适应均分，超出自动压缩
+#### More items
 
 ```tsx
 <UPToolbar borderTop>
@@ -72,9 +68,7 @@ import { UPToolbar } from '@ultra-ui'
 </UPToolbar>
 ```
 
-#### 自定义强调色
-
-activeColor 控制子项文字 / 图标颜色
+#### Custom accent colour
 
 ```tsx
 <UPToolbar borderTop activeColor='#3c9cff'>

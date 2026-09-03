@@ -65,7 +65,7 @@ UPPopup(
 
 <template #harmony>
 
-#### 不同方向
+#### Different directions
 
 ```typescript
 import { UPPopup, UPPopupProps } from '@lingyun/ultra-ui-hos';
@@ -233,7 +233,7 @@ import { UPPopup } from '@ultra-ui'
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -275,7 +275,7 @@ function close() {
 </script>
 ```
 
-#### 设置弹出层的方向
+#### Popup direction
 
 ```vue
 <template>
@@ -309,7 +309,7 @@ function close() {
 </script>
 ```
 
-#### 设置弹出层的圆角
+#### Popup corner radius
 
 ```vue
 <template>
@@ -343,7 +343,7 @@ function close() {
 </script>
 ```
 
-#### 弹窗中内容滚动
+#### Scrolling content inside the popup
 
 ```vue
 <template>
@@ -355,7 +355,7 @@ function close() {
 </template>
 ```
 
-#### 底部追加内容
+#### Appending content at the foot
 
 ```vue
 <template>
@@ -378,7 +378,7 @@ function close() {
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -420,7 +420,7 @@ function close() {
 </script>
 ```
 
-#### 设置弹出层的方向
+#### Popup direction
 
 ```vue
 <template>
@@ -454,7 +454,7 @@ function close() {
 </script>
 ```
 
-#### 设置弹出层的圆角
+#### Popup corner radius
 
 ```vue
 <template>

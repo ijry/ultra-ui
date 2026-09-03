@@ -123,7 +123,7 @@ UPImage(src: _image, mode: 'aspectFit', width: 80, height: 80)
 
 <template #reactnative>
 
-#### 自定义形状
+#### Custom shape
 
 ```tsx
 import { UPImage } from 'ultra-ui-rn';
@@ -131,43 +131,43 @@ import { UPImage } from 'ultra-ui-rn';
 <UPImage shape="circle" src={SRC} width="80px" height="80px" />
 ```
 
-#### 自定义圆角
+#### Custom corner radius
 
 ```tsx
 <UPImage radius="12" src={SRC} width="80px" height="80px" />
 ```
 
-#### 宽度100%
+#### Full width
 
 ```tsx
 <UPImage radius="12" src={SRC} width="100%" height="80px" />
 ```
 
-#### 图片模式(widthFix)
+#### Image mode: widthFix
 
 ```tsx
 <UPImage src={SRC} width="80px" height="80px" mode="widthFix" />
 ```
 
-#### 图片模式(heightFix)
+#### Image mode: heightFix
 
 ```tsx
 <UPImage src={SRC} width="80px" height="80px" mode="heightFix" />
 ```
 
-#### 图片模式(scaleToFill)
+#### Image mode: scaleToFill
 
 ```tsx
 <UPImage src={SRC} width="80px" height="80px" mode="scaleToFill" />
 ```
 
-#### 图片模式(aspectFit)
+#### Image mode: aspectFit
 
 ```tsx
 <UPImage src={SRC} width="80px" height="80px" mode="aspectFit" />
 ```
 
-#### 图片模式(aspectFill)
+#### Image mode: aspectFill
 
 ```tsx
 <UPImage src={SRC} width="80px" height="80px" mode="aspectFill" />
@@ -179,9 +179,7 @@ import { UPImage } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 基础用法
-
-width / height，数字按 px 语义处理
+#### Basic usage
 
 ```tsx
 import { UPImage } from '@ultra-ui'
@@ -189,33 +187,25 @@ import { UPImage } from '@ultra-ui'
 <UPImage src={PIC} width='100%' height='160px' />
 ```
 
-#### 裁剪模式
-
-mode 取值同 Taro Image
+#### Crop mode
 
 ```tsx
 <UPImage src={PIC2} mode={mode} width='90px' height='90px' />
 ```
 
-#### 形状
-
-shape：square 方形 / circle 圆形
+#### Shapes
 
 ```tsx
 <UPImage src={PIC} shape='square' width='90px' height='90px' />
 ```
 
-#### 圆角
-
-radius 自定义圆角值
+#### Rounded corners
 
 ```tsx
 <UPImage src={PIC3} radius={0} width='80px' height='80px' />
 ```
 
-#### 加载中占位
-
-showLoading + loadingIcon，加载完成后消失
+#### Loading placeholder
 
 ```tsx
 <UPImage
@@ -227,17 +217,13 @@ showLoading + loadingIcon，加载完成后消失
 />
 ```
 
-#### 加载失败
-
-showError + errorIcon
+#### Load failure
 
 ```tsx
 <UPImage src={BROKEN} width='90px' height='90px' showError />
 ```
 
-#### 淡入效果
-
-fade + duration，点上方「重新挂载」可重复观察
+#### Fade-in
 
 ```tsx
 <UPImage
@@ -250,9 +236,7 @@ fade + duration，点上方「重新挂载」可重复观察
 />
 ```
 
-#### 背景色
-
-bgColor 用于占位区与深色背景融合
+#### Background colour
 
 ```tsx
 <UPImage
@@ -271,7 +255,7 @@ bgColor 用于占位区与深色背景融合
 
 <template #uniapp>
 
-#### 配置manifest
+#### Configuring manifest
 
 ```vue
 "mp-weixin" : {
@@ -286,7 +270,7 @@ bgColor 用于占位区与深色背景融合
 }
 ```
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -304,25 +288,25 @@ const click = () => {
 </script>
 ```
 
-#### 裁剪模式
+#### Crop mode
 
 ```vue
 <up-image src="https://cdn.uviewui.com/uview/album/1.jpg" mode="widthFix"></up-image>
 ```
 
-#### 图片形状
+#### Image shape
 
 ```vue
 <up-image src="https://cdn.uviewui.com/uview/album/1.jpg" shape="circle"></up-image>
 ```
 
-#### 懒加载
+#### Lazy loading
 
 ```vue
 <up-image src="https://cdn.uviewui.com/uview/album/1.jpg" :lazy-load="true"></up-image>
 ```
 
-#### 加载中提示
+#### Loading message
 
 ```vue
 <up-image src="https://cdn.uviewui.com/uview/album/1.jpg">
@@ -332,7 +316,7 @@ const click = () => {
 </up-image>
 ```
 
-#### 加载错误提示
+#### Load-error message
 
 ```vue
 <up-image src="https://cdn.uviewui.com/uview/album/1.jpg">
@@ -342,7 +326,7 @@ const click = () => {
 </up-image>
 ```
 
-#### 淡入动画
+#### Fade-in animation
 
 ```vue
 <up-image src="https://cdn.uviewui.com/uview/album/1.jpg" :fade="true" duration="450"></up-image>
@@ -354,7 +338,7 @@ const click = () => {
 
 <template #uniappx>
 
-#### 配置manifest
+#### Configuring manifest
 
 ```vue
 "mp-weixin" : {
@@ -369,7 +353,7 @@ const click = () => {
 }
 ```
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -387,25 +371,25 @@ const click = () => {
 </script>
 ```
 
-#### 裁剪模式
+#### Crop mode
 
 ```vue
 <up-image src="https://cdn.uviewui.com/uview/album/1.jpg" mode="widthFix"></up-image>
 ```
 
-#### 图片形状
+#### Image shape
 
 ```vue
 <up-image src="https://cdn.uviewui.com/uview/album/1.jpg" shape="circle"></up-image>
 ```
 
-#### 懒加载
+#### Lazy loading
 
 ```vue
 <up-image src="https://cdn.uviewui.com/uview/album/1.jpg" :lazy-load="true"></up-image>
 ```
 
-#### 加载中提示
+#### Loading message
 
 ```vue
 <up-image src="https://cdn.uviewui.com/uview/album/1.jpg">
@@ -415,7 +399,7 @@ const click = () => {
 </up-image>
 ```
 
-#### 加载错误提示
+#### Load-error message
 
 ```vue
 <up-image src="https://cdn.uviewui.com/uview/album/1.jpg">
@@ -425,7 +409,7 @@ const click = () => {
 </up-image>
 ```
 
-#### 淡入动画
+#### Fade-in animation
 
 ```vue
 <up-image src="https://cdn.uviewui.com/uview/album/1.jpg" :fade="true" duration="450"></up-image>

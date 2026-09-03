@@ -34,7 +34,7 @@ UPCascader(
 
 <template #flutter>
 
-#### 基础用法
+#### Basic usage
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -51,7 +51,7 @@ UPCascader(
 )
 ```
 
-#### 带默认值
+#### With a default value
 
 ```dart
 UPCascader(
@@ -64,7 +64,7 @@ UPCascader(
 )
 ```
 
-#### 自定义字段名
+#### Custom field names
 
 ```dart
 UPCascader(
@@ -78,7 +78,7 @@ UPCascader(
 )
 ```
 
-#### 垂直头部及单列选项
+#### Vertical header with a single column
 
 ```dart
 UPCascader(
@@ -122,7 +122,7 @@ No snippet could be extracted automatically — please read the source.
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -164,7 +164,7 @@ const areaData = ref([
 </script>
 ```
 
-#### 设置默认值
+#### Setting a default value
 
 ```vue
 <template>
@@ -219,7 +219,7 @@ const categoryData = ref([
 </script>
 ```
 
-#### 自定义字段名
+#### Custom field names
 
 ```vue
 <template>
@@ -263,7 +263,7 @@ const orgData = ref([
 </script>
 ```
 
-#### 垂直头部及单列选项
+#### Vertical header with a single column
 
 ```vue
 <template>
@@ -320,7 +320,7 @@ const categoryData = ref([
 </script>
 ```
 
-#### 自动关闭
+#### Closing automatically
 
 ```vue
 <up-cascader 
@@ -337,7 +337,7 @@ const categoryData = ref([
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -379,7 +379,7 @@ const areaData = ref([
 </script>
 ```
 
-#### 设置默认值
+#### Setting a default value
 
 ```vue
 <template>
@@ -434,7 +434,7 @@ const categoryData = ref([
 </script>
 ```
 
-#### 自定义字段名
+#### Custom field names
 
 ```vue
 <template>
@@ -478,7 +478,7 @@ const orgData = ref([
 </script>
 ```
 
-#### 垂直头部及单列选项
+#### Vertical header with a single column
 
 ```vue
 <template>
@@ -535,7 +535,7 @@ const categoryData = ref([
 </script>
 ```
 
-#### 自动关闭
+#### Closing automatically
 
 ```vue
 <up-cascader 

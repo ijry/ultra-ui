@@ -18,7 +18,7 @@ Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examp
 
 <template #flutter>
 
-#### CODE128 条形码
+#### CODE128 barcode
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -32,7 +32,7 @@ const UPBarcode(
 )
 ```
 
-#### EAN-13 条形码
+#### EAN-13 barcode
 
 ```dart
 const UPBarcode(
@@ -44,7 +44,7 @@ const UPBarcode(
 )
 ```
 
-#### EAN-8 条形码
+#### EAN-8 barcode
 
 ```dart
 const UPBarcode(
@@ -56,7 +56,7 @@ const UPBarcode(
 )
 ```
 
-#### UPC-A 条形码
+#### UPC-A barcode
 
 ```dart
 const UPBarcode(
@@ -68,7 +68,7 @@ const UPBarcode(
 )
 ```
 
-#### CODE39 条形码
+#### CODE39 barcode
 
 ```dart
 const UPBarcode(
@@ -80,7 +80,7 @@ const UPBarcode(
 )
 ```
 
-#### EAN-5 补充码
+#### EAN-5 supplement
 
 ```dart
 const UPBarcode(
@@ -93,7 +93,7 @@ const UPBarcode(
 )
 ```
 
-#### EAN-2 补充码
+#### EAN-2 supplement
 
 ```dart
 const UPBarcode(
@@ -106,7 +106,7 @@ const UPBarcode(
 )
 ```
 
-#### 自定义样式条形码
+#### Custom barcode styling
 
 ```dart
 const UPBarcode(
@@ -214,9 +214,7 @@ import { UPBarcode } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 基础用法
-
-默认 CODE128，可用扫码软件验证
+#### Basic usage
 
 ```tsx
 import { UPBarcode } from '@ultra-ui'
@@ -224,57 +222,43 @@ import { UPBarcode } from '@ultra-ui'
 <UPBarcode value='ULTRA-UI-2026' />
 ```
 
-#### 自定义内容
-
-输入后条码实时重绘
+#### Custom content
 
 ```tsx
 <UPBarcode value={value} onError={setLastError} />
 ```
 
-#### 商品码 EAN / UPC
-
-EAN13 / EAN8 / UPC 有固定位数与校验位要求
+#### Retail codes: EAN and UPC
 
 ```tsx
 <UPBarcode value='5901234123457' format='EAN13' width={220} />
 ```
 
-#### CODE39 与 CODE93
-
-字母数字混合场景
+#### CODE39 and CODE93
 
 ```tsx
 <UPBarcode value='CODE39' format='CODE39' width={200} />
 ```
 
-#### 物流码 ITF14
-
-交叉二五码，常用于外箱标识
+#### Logistics code: ITF-14
 
 ```tsx
 <UPBarcode value='12345678901231' format='ITF14' width={240} />
 ```
 
-#### 其他码制
-
-MSI / pharmacode / codabar
+#### Other symbologies
 
 ```tsx
 <UPBarcode value='1234' format='MSI' width={140} />
 ```
 
-#### 隐藏文字
-
-displayValue 为 false 时只画条纹
+#### Hiding the label
 
 ```tsx
 <UPBarcode value='NO-TEXT' displayValue={false} />
 ```
 
-#### 文字位置与对齐
-
-textPosition / textAlign
+#### Text position and alignment
 
 ```tsx
 <UPBarcode value='TOP-TEXT' textPosition='top' />
@@ -286,7 +270,7 @@ textPosition / textAlign
 
 <template #uniapp>
 
-#### 设置条形码尺寸
+#### Barcode size
 
 ```vue
 <template>
@@ -306,7 +290,7 @@ textPosition / textAlign
 </script>
 ```
 
-#### 设置条形码颜色
+#### Barcode colour
 
 ```vue
 <template>
@@ -326,7 +310,7 @@ textPosition / textAlign
 </script>
 ```
 
-#### 显示文本
+#### Showing the text
 
 ```vue
 <template>
@@ -346,7 +330,7 @@ textPosition / textAlign
 </script>
 ```
 
-#### 禁用Canvas渲染
+#### Canvas rendering disabled
 
 ```vue
 <template>
@@ -371,7 +355,7 @@ textPosition / textAlign
 
 <template #uniappx>
 
-#### 设置条形码尺寸
+#### Barcode size
 
 ```vue
 <template>
@@ -388,7 +372,7 @@ textPosition / textAlign
 </script>
 ```
 
-#### 设置条形码颜色
+#### Barcode colour
 
 ```vue
 <template>
@@ -405,7 +389,7 @@ textPosition / textAlign
 </script>
 ```
 
-#### 显示文本
+#### Showing the text
 
 ```vue
 <template>
@@ -422,7 +406,7 @@ textPosition / textAlign
 </script>
 ```
 
-#### 禁用Canvas渲染
+#### Canvas rendering disabled
 
 ```vue
 <template>

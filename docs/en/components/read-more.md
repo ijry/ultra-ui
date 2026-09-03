@@ -31,7 +31,7 @@ DemoSection("展开阅读") { UPReadMore(UPReadMoreProps(showHeight = 48)) { Bas
 
 <template #flutter>
 
-#### 基础使用
+#### Basic usage
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -70,9 +70,7 @@ No snippet could be extracted automatically — please read the source.
 
 <template #taro>
 
-#### 基础用法
-
-内容超出 400px 时显示「展开阅读全文」
+#### Basic usage
 
 ```tsx
 import { UPReadMore } from '@ultra-ui'
@@ -87,9 +85,7 @@ import { UPReadMore } from '@ultra-ui'
 </UPReadMore>
 ```
 
-#### 保留切换按钮
-
-toggle 为 true，展开后仍可收起
+#### Keeping the toggle button
 
 ```tsx
 <UPReadMore toggle closeText='展开阅读全文' openText='收起' showHeight={120}>
@@ -97,9 +93,7 @@ toggle 为 true，展开后仍可收起
 </UPReadMore>
 ```
 
-#### 自定义文案
-
-closeText / openText / color
+#### Custom wording
 
 ```tsx
 <UPReadMore
@@ -113,9 +107,7 @@ closeText / openText / color
 </UPReadMore>
 ```
 
-#### 短内容
-
-未超过 showHeight 时不显示按钮
+#### Short content
 
 ```tsx
 <UPReadMore>
@@ -131,7 +123,7 @@ closeText / openText / color
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -151,7 +143,7 @@ const content = ref(`山不在高，有仙则名。水不在深，有龙则灵�
 </script>
 ```
 
-#### 兼容性
+#### Compatibility
 
 ```vue
 <template>
@@ -187,7 +179,7 @@ onMounted(() => {
 </script>
 ```
 
-#### 展开收起
+#### Expand and collapse
 
 ```vue
 <up-read-more :toggle="true">
@@ -195,7 +187,7 @@ onMounted(() => {
 </up-read-more>
 ```
 
-#### 配置展开高度
+#### Expanded height
 
 ```vue
 <up-read-more showHeight="600">
@@ -203,7 +195,7 @@ onMounted(() => {
 </up-read-more>
 ```
 
-#### 异步初始化
+#### Asynchronous initialisation
 
 ```vue
 <template>
@@ -250,7 +242,7 @@ onMounted(async () => {
 </script>
 ```
 
-#### 自定义样式
+#### Custom styling
 
 ```json
 {
@@ -295,7 +287,7 @@ const state = reactive({
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -315,7 +307,7 @@ const content = ref(`山不在高，有仙则名。水不在深，有龙则灵�
 </script>
 ```
 
-#### 兼容性
+#### Compatibility
 
 ```vue
 <template>
@@ -351,7 +343,7 @@ onMounted(() => {
 </script>
 ```
 
-#### 展开收起
+#### Expand and collapse
 
 ```vue
 <up-read-more :toggle="true">
@@ -359,7 +351,7 @@ onMounted(() => {
 </up-read-more>
 ```
 
-#### 配置展开高度
+#### Expanded height
 
 ```vue
 <up-read-more showHeight="600">
@@ -367,7 +359,7 @@ onMounted(() => {
 </up-read-more>
 ```
 
-#### 异步初始化
+#### Asynchronous initialisation
 
 ```vue
 <template>
@@ -414,7 +406,7 @@ onMounted(async () => {
 </script>
 ```
 
-#### 自定义样式
+#### Custom styling
 
 ```json
 {

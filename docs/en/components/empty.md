@@ -115,9 +115,7 @@ import { UPEmpty } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 内置模式
-
-mode 切换不同场景图标与默认文案
+#### Built-in modes
 
 ```tsx
 import { UPEmpty } from '@ultra-ui'
@@ -125,17 +123,13 @@ import { UPEmpty } from '@ultra-ui'
 <UPEmpty mode='list' />
 ```
 
-#### 自定义文案
-
-text 覆盖默认文案
+#### Custom wording
 
 ```tsx
 <UPEmpty mode='car' text='购物车里还没有商品' />
 ```
 
-#### 自定义图标 / 尺寸
-
-icon 传图片地址，iconSize 控制大小
+#### Custom icon and size
 
 ```tsx
 <UPEmpty
@@ -147,9 +141,7 @@ icon 传图片地址，iconSize 控制大小
 />
 ```
 
-#### 带操作按钮
-
-children 作为底部操作区
+#### With action buttons
 
 ```tsx
 <UPEmpty mode='permission' text='您暂无权限访问'>
@@ -168,7 +160,7 @@ children 作为底部操作区
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <up-empty
@@ -183,7 +175,7 @@ children 作为底部操作区
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <up-empty

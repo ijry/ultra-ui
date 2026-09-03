@@ -47,7 +47,7 @@ UPTabs({ props: new UPTabsProps({ list: this.list.slice(0, 3), current: 1, scrol
 
 <template #flutter>
 
-#### 基础演示
+#### Basic demo
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -60,19 +60,19 @@ UPTabs(
 )
 ```
 
-#### 粘性布局
+#### Sticky layout
 
 ```dart
 UPTabs(list: _baseTabs)
 ```
 
-#### 显示徽标
+#### Showing a badge
 
 ```dart
 UPTabs(list: _badgeTabs)
 ```
 
-#### 禁止滚动
+#### Scrolling disabled
 
 ```dart
 UPTabs(
@@ -81,7 +81,7 @@ UPTabs(
 )
 ```
 
-#### 禁用菜单
+#### Disabled menu item
 
 ```dart
 UPTabs(
@@ -90,7 +90,7 @@ UPTabs(
 )
 ```
 
-#### 自定义样式
+#### Custom styling
 
 ```dart
 UPTabs(
@@ -110,7 +110,7 @@ UPTabs(
 )
 ```
 
-#### 右侧自定义插槽
+#### Custom trailing slot
 
 ```dart
 const UPTabs(
@@ -119,7 +119,7 @@ const UPTabs(
 )
 ```
 
-#### 胶囊模式
+#### Pill mode
 
 ```dart
 UPTabs(
@@ -135,7 +135,7 @@ UPTabs(
 
 <template #reactnative>
 
-#### 基础演示
+#### Basic demo
 
 ```tsx
 import { UPTabs } from 'ultra-ui-rn';
@@ -143,31 +143,31 @@ import { UPTabs } from 'ultra-ui-rn';
 <UPTabs current={3} list={list1} onClick={click} />
 ```
 
-#### 粘性布局
+#### Sticky layout
 
 ```tsx
 <UPTabs list={list1} />
 ```
 
-#### 显示徽标
+#### Showing a badge
 
 ```tsx
 <UPTabs list={list2} />
 ```
 
-#### 禁止滚动
+#### Scrolling disabled
 
 ```tsx
 <UPTabs list={list6} scrollable={false} />
 ```
 
-#### 禁用菜单
+#### Disabled menu item
 
 ```tsx
 <UPTabs list={list3} />
 ```
 
-#### 自定义样式
+#### Custom styling
 
 ```tsx
 <UPTabs
@@ -180,7 +180,7 @@ import { UPTabs } from 'ultra-ui-rn';
 />
 ```
 
-#### 滑块设置背景图
+#### Background image on the slider
 
 ```tsx
 <UPTabs
@@ -193,7 +193,7 @@ import { UPTabs } from 'ultra-ui-rn';
 />
 ```
 
-#### 胶囊模式
+#### Pill mode
 
 ```tsx
 <UPTabs list={listShape} scrollable={false} shapeMode="capsule" />
@@ -205,9 +205,7 @@ import { UPTabs } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 基础用法
-
-scrollable={false} 时所有标签等分容器宽度
+#### Basic usage
 
 ```tsx
 import { UPTabs } from '@ultra-ui'
@@ -220,17 +218,13 @@ import { UPTabs } from '@ultra-ui'
 />
 ```
 
-#### 横向滚动
-
-scrollable 默认为 true，标签超出后横向滚动，选中项自动滚到中间
+#### Horizontal scrolling
 
 ```tsx
 <UPTabs list={MANY_LIST} current={many} onChange={handleChange(setMany)} />
 ```
 
-#### 自定义读取字段
-
-keyName='label'，从元素的 label 字段取文字
+#### Custom field names
 
 ```tsx
 <UPTabs
@@ -248,7 +242,7 @@ keyName='label'，从元素的 label 字段取文字
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -280,7 +274,7 @@ function click(item) {
 </script>
 ```
 
-#### 粘性布局
+#### Sticky layout
 
 ```vue
 <template>
@@ -309,7 +303,7 @@ const list1 = reactive([
 </script>
 ```
 
-#### 显示徽标
+#### Showing a badge
 
 ```vue
 <template>
@@ -336,7 +330,7 @@ const list2 = reactive([
 </script>
 ```
 
-#### 禁用
+#### Disabled
 
 ```vue
 <template>
@@ -363,7 +357,7 @@ const list2 = reactive([
 </script>
 ```
 
-#### 自定义样式
+#### Custom styling
 
 ```vue
 <template>
@@ -404,7 +398,7 @@ const list4 = reactive([
 </script>
 ```
 
-#### 滑块设置背景图
+#### Background image on the slider
 
 ```vue
 <template>
@@ -449,7 +443,7 @@ const list4 = reactive([
 </script>
 ```
 
-#### Tab内容自定义插槽
+#### Custom slot for tab content
 
 ```vue
 <up-tabs :list="list1" keyName="name">
@@ -478,7 +472,7 @@ const list1 = reactive([
 </script>
 ```
 
-#### 右侧自定义插槽
+#### Custom trailing slot
 
 ```vue
 <template>
@@ -524,7 +518,7 @@ const list1 = reactive([
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -556,7 +550,7 @@ function click(item) {
 </script>
 ```
 
-#### 粘性布局
+#### Sticky layout
 
 ```vue
 <template>
@@ -585,7 +579,7 @@ const list1 = reactive([
 </script>
 ```
 
-#### 显示徽标
+#### Showing a badge
 
 ```vue
 <template>
@@ -612,7 +606,7 @@ const list2 = reactive([
 </script>
 ```
 
-#### 禁用
+#### Disabled
 
 ```vue
 <template>
@@ -639,7 +633,7 @@ const list2 = reactive([
 </script>
 ```
 
-#### 自定义样式
+#### Custom styling
 
 ```vue
 <template>
@@ -680,7 +674,7 @@ const list4 = reactive([
 </script>
 ```
 
-#### 滑块设置背景图
+#### Background image on the slider
 
 ```vue
 <template>
@@ -725,7 +719,7 @@ const list4 = reactive([
 </script>
 ```
 
-#### 右侧自定义插槽
+#### Custom trailing slot
 
 ```vue
 <template>

@@ -62,7 +62,7 @@ UPForm(model: $model, rules: rules, controller: form) {
 
 <template #harmony>
 
-#### 基础表单
+#### Basic form
 
 ```typescript
 import { UPForm, UPFormProps } from '@lingyun/ultra-ui-hos';
@@ -136,9 +136,7 @@ import { UPForm } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### label 布局
-
-labelPosition 控制上下排列，labelAlign 控制对齐
+#### Label layout
 
 ```tsx
 import { UPForm } from '@ultra-ui'
@@ -155,9 +153,7 @@ import { UPForm } from '@ultra-ui'
 </UPForm>
 ```
 
-#### 左侧图标与必填星号
-
-leftIcon / required
+#### Leading icon and required asterisk
 
 ```tsx
 <UPForm model={{ phone: '' }}>
@@ -173,7 +169,7 @@ leftIcon / required
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -280,7 +276,7 @@ function sexSelect(e) {
 </script>
 ```
 
-#### 验证规则
+#### Validation rules
 
 ```js
 rules: {
@@ -341,7 +337,7 @@ rules: {
 },
 ```
 
-#### uview-plus自带验证规则
+#### The validators bundled with uview-plus
 
 ```js
 rules: {
@@ -367,7 +363,7 @@ rules: {
 }
 ```
 
-#### 综合实战
+#### Putting it together
 
 ```js
 rules: {
@@ -421,7 +417,7 @@ rules: {
 }
 ```
 
-#### 校验错误提示方式
+#### How validation errors are shown
 
 ```vue
 <template>
@@ -445,7 +441,7 @@ function changeErrorType() {
 </script>
 ```
 
-#### 校验
+#### Validation
 
 ```vue
 <template>
@@ -505,7 +501,7 @@ function submit() {
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -612,7 +608,7 @@ function sexSelect(e) {
 </script>
 ```
 
-#### 验证规则
+#### Validation rules
 
 ```js
 rules: {
@@ -673,7 +669,7 @@ rules: {
 },
 ```
 
-#### uview-ultra自带验证规则
+#### The validators bundled with uview-ultra
 
 ```js
 rules: {
@@ -699,7 +695,7 @@ rules: {
 }
 ```
 
-#### 综合实战
+#### Putting it together
 
 ```js
 rules: {
@@ -753,7 +749,7 @@ rules: {
 }
 ```
 
-#### 校验错误提示方式
+#### How validation errors are shown
 
 ```vue
 <template>
@@ -777,7 +773,7 @@ function changeErrorType() {
 </script>
 ```
 
-#### 校验
+#### Validation
 
 ```vue
 <template>

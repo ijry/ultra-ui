@@ -134,7 +134,7 @@ UPSteps(
 
 <template #reactnative>
 
-#### 基础演示
+#### Basic demo
 
 ```tsx
 import { UPSteps } from 'ultra-ui-rn';
@@ -149,7 +149,7 @@ import { UPSteps } from 'ultra-ui-rn';
 </UPSteps>
 ```
 
-#### 显示点类型
+#### Dot styles
 
 ```tsx
 <UPSteps current={1} dot>
@@ -159,7 +159,7 @@ import { UPSteps } from 'ultra-ui-rn';
 </UPSteps>
 ```
 
-#### 错误状态
+#### Error state
 
 ```tsx
 <UPSteps current={1}>
@@ -169,7 +169,7 @@ import { UPSteps } from 'ultra-ui-rn';
 </UPSteps>
 ```
 
-#### 自定义图标
+#### Custom icon
 
 ```tsx
 <UPSteps activeIcon="checkmark" current={1} inactiveIcon="arrow-right">
@@ -179,7 +179,7 @@ import { UPSteps } from 'ultra-ui-rn';
 </UPSteps>
 ```
 
-#### 自定义插槽
+#### Custom slot
 
 ```tsx
 <UPSteps current={1}>
@@ -189,7 +189,7 @@ import { UPSteps } from 'ultra-ui-rn';
 </UPSteps>
 ```
 
-#### 自定义颜色
+#### Custom colour
 
 ```tsx
 <UPSteps activeColor="#3c9cff" current={1}>
@@ -199,7 +199,7 @@ import { UPSteps } from 'ultra-ui-rn';
 </UPSteps>
 ```
 
-#### 竖向展示
+#### Vertical presentation
 
 ```tsx
 <UPSteps current={1} direction="column">
@@ -215,9 +215,7 @@ import { UPSteps } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 横向步骤
-
-direction="row"（默认），点击步骤可切换当前项
+#### Horizontal steps
 
 ```tsx
 import { UPSteps } from '@ultra-ui'
@@ -230,9 +228,7 @@ import { UPSteps } from '@ultra-ui'
 </UPSteps>
 ```
 
-#### 纵向步骤
-
-direction="column"，error 标记异常项
+#### Vertical steps
 
 ```tsx
 <UPSteps direction='column' current={2}>
@@ -243,9 +239,7 @@ direction="column"，error 标记异常项
 </UPSteps>
 ```
 
-#### 圆点模式
-
-dot，以圆点代替数字
+#### Dot mode
 
 ```tsx
 <UPSteps current={1} dot activeColor='#19be6b'>
@@ -256,9 +250,7 @@ dot，以圆点代替数字
 </UPSteps>
 ```
 
-#### 自定义图标
-
-activeIcon / inactiveIcon
+#### Custom icon
 
 ```tsx
 <UPSteps current={1} activeIcon='checkmark-circle-fill' inactiveIcon='more-circle'>
@@ -268,9 +260,7 @@ activeIcon / inactiveIcon
 </UPSteps>
 ```
 
-#### 纵向 + 自定义内容
-
-content 插槽
+#### Vertical, with custom content
 
 ```tsx
 <UPSteps direction='column' current={1}>
@@ -286,7 +276,7 @@ content 插槽
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -299,7 +289,7 @@ content 插槽
 </template>
 ```
 
-#### 错误状态
+#### Error state
 
 ```vue
 <up-steps current="1">
@@ -309,7 +299,7 @@ content 插槽
 </up-steps>
 ```
 
-#### 步骤条模式
+#### Steps mode
 
 ```up-steps```的```dot```参数设置为```true```的话，将会以点状的形式展示步骤条样式。
 
@@ -321,7 +311,7 @@ content 插槽
 </up-steps>
 ```
 
-#### 竖向模式
+#### Vertical mode
 
 ```vue
 
@@ -337,7 +327,7 @@ content 插槽
 </template>
 ```
 
-#### 自定义图标
+#### Custom icon
 
 ```vue
 <up-steps
@@ -348,7 +338,7 @@ content 插槽
 </up-steps>
 ```
 
-#### 通过插槽自定义标题
+#### Custom title through a slot
 
 ```vue
 <up-steps :current="1">
@@ -428,7 +418,7 @@ content 插槽
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -441,7 +431,7 @@ content 插槽
 </template>
 ```
 
-#### 错误状态
+#### Error state
 
 ```vue
 <up-steps current="1">
@@ -451,7 +441,7 @@ content 插槽
 </up-steps>
 ```
 
-#### 步骤条模式
+#### Steps mode
 
 ```up-steps```的```dot```参数设置为```true```的话，将会以点状的形式展示步骤条样式。
 
@@ -463,7 +453,7 @@ content 插槽
 </up-steps>
 ```
 
-#### 竖向模式
+#### Vertical mode
 
 ```vue
 
@@ -479,7 +469,7 @@ content 插槽
 </template>
 ```
 
-#### 自定义图标
+#### Custom icon
 
 ```vue
 <up-steps
@@ -490,7 +480,7 @@ content 插槽
 </up-steps>
 ```
 
-#### 通过插槽自定义样式
+#### Custom styling through a slot
 
 ```vue
 <up-steps :current="1">

@@ -18,7 +18,7 @@ Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examp
 
 <template #flutter>
 
-#### 基础用法
+#### Basic usage
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -70,7 +70,7 @@ No snippet could be extracted automatically — please read the source.
 
 <template #uniapp>
 
-#### 自定义数据结构
+#### Custom data shape
 
 ```vue
 <template>
@@ -94,7 +94,7 @@ const customData = ref([
 </script>
 ```
 
-#### 外部控制当前城市
+#### Setting the current city from outside
 
 ```vue
 <template>
@@ -112,7 +112,7 @@ const userCity = ref('北京');
 </script>
 ```
 
-#### 设置定位类型
+#### Choosing the location source
 
 ```vue
 <template>
@@ -129,7 +129,7 @@ import { ref } from 'vue';
 </script>
 ```
 
-#### 监听定位结果
+#### Reacting to the location result
 
 ```vue
 <template>
@@ -147,7 +147,7 @@ const handleLocationResult = (res) => {
 </script>
 ```
 
-#### 如何获取用户选择的城市？
+#### Reading the city the user picked
 
 ```vue
 <script setup>
@@ -157,7 +157,7 @@ const handleSelectCity = (city) => {
 </script>
 ```
 
-#### 如何自定义热门城市？
+#### Customising the popular cities
 
 ```vue
 <script setup>
@@ -177,7 +177,7 @@ const cityList = ref([[
 
 <template #uniappx>
 
-#### 自定义数据结构
+#### Custom data shape
 
 ```vue
 <template>
@@ -201,7 +201,7 @@ const customData = ref([
 </script>
 ```
 
-#### 外部控制当前城市
+#### Setting the current city from outside
 
 ```vue
 <template>
@@ -219,7 +219,7 @@ const userCity = ref('北京');
 </script>
 ```
 
-#### 设置定位类型
+#### Choosing the location source
 
 ```vue
 <template>
@@ -236,7 +236,7 @@ import { ref } from 'vue';
 </script>
 ```
 
-#### 监听定位结果
+#### Reacting to the location result
 
 ```vue
 <template>
@@ -254,7 +254,7 @@ const handleLocationResult = (res) => {
 </script>
 ```
 
-#### 如何获取用户选择的城市？
+#### Reading the city the user picked
 
 ```vue
 <script setup>
@@ -264,7 +264,7 @@ const handleSelectCity = (city) => {
 </script>
 ```
 
-#### 如何自定义热门城市？
+#### Customising the popular cities
 
 ```vue
 <script setup>

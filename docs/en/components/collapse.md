@@ -58,7 +58,7 @@ UPCollapse(
 
 <template #harmony>
 
-#### 折叠面板
+#### Collapse panel
 
 ```typescript
 import { UPCollapse, UPCollapseProps } from '@lingyun/ultra-ui-hos';
@@ -75,7 +75,7 @@ UPCollapse({ props: new UPCollapseProps({ modelValue: this.value, onValueChange:
 
 <template #flutter>
 
-#### 手风琴模式
+#### Accordion mode
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -99,7 +99,7 @@ UPCollapse(
 )
 ```
 
-#### 移除下划线
+#### Removing the underline
 
 ```dart
 UPCollapse(
@@ -214,9 +214,7 @@ import { UPCollapse } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 基础手风琴
-
-accordion，同时只展开一项，受控 value
+#### Basic accordion
 
 ```tsx
 import { UPCollapse } from '@ultra-ui'
@@ -238,9 +236,7 @@ import { UPCollapse } from '@ultra-ui'
 </UPCollapse>
 ```
 
-#### 多项同时展开
-
-非手风琴，可同时展开多项，受控 value
+#### Several panels open at once
 
 ```tsx
 <UPCollapse value={multiValue}>
@@ -256,9 +252,7 @@ import { UPCollapse } from '@ultra-ui'
 </UPCollapse>
 ```
 
-#### 自定义内容
-
-children 支持任意节点，自定义时长
+#### Custom content
 
 ```tsx
 <UPCollapse border={false}>
@@ -283,7 +277,7 @@ children 支持任意节点，自定义时长
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -333,7 +327,7 @@ const change = (e) => {
 </script>
 ```
 
-#### 控制面板的初始状态，以及是否可以操作
+#### Initial state and whether it can be operated
 
 ```vue
 <template>
@@ -380,7 +374,7 @@ const change = (e) => {
 </script>
 ```
 
-#### 手风琴模式
+#### Accordion mode
 
 ```vue
 <template>
@@ -435,7 +429,7 @@ const change = (e) => {
 </style>
 ```
 
-#### 自定义标题和内容
+#### Custom title and content
 
 ```vue
 <template>
@@ -502,7 +496,7 @@ const change = (e) => {
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -552,7 +546,7 @@ const change = (e) => {
 </script>
 ```
 
-#### 控制面板的初始状态，以及是否可以操作
+#### Initial state and whether it can be operated
 
 ```vue
 <template>
@@ -599,7 +593,7 @@ const change = (e) => {
 </script>
 ```
 
-#### 手风琴模式
+#### Accordion mode
 
 ```vue
 <template>
@@ -654,7 +648,7 @@ const change = (e) => {
 </style>
 ```
 
-#### 自定义标题和内容
+#### Custom title and content
 
 ```vue
 <template>

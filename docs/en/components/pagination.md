@@ -31,7 +31,7 @@ DemoSection("分页") { UPPagination(UPPaginationProps(total = 42))
 
 <template #flutter>
 
-#### 基础
+#### Basics
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -48,7 +48,7 @@ UPPagination(
 )
 ```
 
-#### 上一页下一页文案
+#### Previous / next wording
 
 ```dart
 UPPagination(
@@ -65,7 +65,7 @@ UPPagination(
 )
 ```
 
-#### 显示分页切换
+#### Page switcher
 
 ```dart
 UPPagination(
@@ -86,7 +86,7 @@ UPPagination(
 
 <template #reactnative>
 
-#### 基础
+#### Basics
 
 ```tsx
 import { UPPagination } from 'ultra-ui-rn';
@@ -102,7 +102,7 @@ import { UPPagination } from 'ultra-ui-rn';
 />
 ```
 
-#### 上一页下一页文案
+#### Previous / next wording
 
 ```tsx
 <UPPagination
@@ -118,7 +118,7 @@ import { UPPagination } from 'ultra-ui-rn';
 />
 ```
 
-#### 显示分页切换
+#### Page switcher
 
 ```tsx
 <UPPagination
@@ -138,9 +138,7 @@ import { UPPagination } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 基础用法
-
-total / pageSize / current 受控
+#### Basic usage
 
 ```tsx
 import { UPPagination } from '@ultra-ui'
@@ -153,9 +151,7 @@ import { UPPagination } from '@ultra-ui'
 />
 ```
 
-#### 图标箭头
-
-icon 开启 prev/next 箭头
+#### Icon and chevron
 
 ```tsx
 <UPPagination
@@ -167,9 +163,7 @@ icon 开启 prev/next 箭头
 />
 ```
 
-#### 禁用
-
-disabled 整体禁止交互
+#### Disabled
 
 ```tsx
 <UPPagination total={100} pageSize={10} current={3} disabled />
@@ -181,7 +175,7 @@ disabled 整体禁止交互
 
 <template #uniapp>
 
-#### 使用示例
+#### Example
 
 ```vue
 <template>
@@ -260,7 +254,7 @@ const handleSizeChange = (size) => {
 
 <template #uniappx>
 
-#### 使用示例
+#### Example
 
 ```vue
 <template>

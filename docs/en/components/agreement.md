@@ -18,7 +18,7 @@ Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examp
 
 <template #flutter>
 
-#### 基础用法
+#### Basic usage
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -49,9 +49,7 @@ No snippet could be extracted automatically — please read the source.
 
 <template #taro>
 
-#### 基础用法
-
-受控选中态 + onChange
+#### Basic usage
 
 ```tsx
 import { UPAgreement } from '@ultra-ui'
@@ -63,9 +61,7 @@ import { UPAgreement } from '@ultra-ui'
 />
 ```
 
-#### 禁用状态
-
-disabled 时不可交互
+#### Disabled state
 
 ```tsx
 <UPAgreement
@@ -82,7 +78,7 @@ disabled 时不可交互
 
 <template #uniapp>
 
-#### 基础用法
+#### Basic usage
 
 ```vue
 <template>
@@ -116,7 +112,7 @@ const handleAgree = (status) => {
 </script>
 ```
 
-#### 自定义内容插槽用法
+#### Using the content slot
 
 ```vue
 <template>
@@ -201,7 +197,7 @@ const handleAgree = (status) => {
 
 <template #uniappx>
 
-#### 基础用法
+#### Basic usage
 
 ```vue
 <template>
@@ -235,7 +231,7 @@ const handleAgree = (status) => {
 </script>
 ```
 
-#### 自定义内容插槽用法
+#### Using the content slot
 
 ```vue
 <template>

@@ -18,7 +18,7 @@ Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examp
 
 <template #flutter>
 
-#### 演示效果
+#### Result
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -69,7 +69,7 @@ UPTable(
 
 <template #reactnative>
 
-#### 演示效果
+#### Result
 
 ```tsx
 import { UPTable } from 'ultra-ui-rn';
@@ -97,9 +97,7 @@ import { UPTable } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 基础用法
-
-th 表头行 + td 数据行，列宽 flex 均分
+#### Basic usage
 
 ```tsx
 import { UPTable } from '@ultra-ui'
@@ -120,9 +118,7 @@ import { UPTable } from '@ultra-ui'
 </UPTable>
 ```
 
-#### 指定列宽
-
-width 传百分比，未指定的列按 flex 均分剩余空间
+#### Explicit column widths
 
 ```tsx
 <UPTable>
@@ -139,9 +135,7 @@ width 传百分比，未指定的列按 flex 均分剩余空间
 </UPTable>
 ```
 
-#### 左对齐
-
-align 控制全表对齐方式
+#### Left aligned
 
 ```tsx
 <UPTable align='left'>
@@ -158,9 +152,7 @@ align 控制全表对齐方式
 </UPTable>
 ```
 
-#### 单元格覆盖表格样式
-
-td 的 textAlign / color / fontSize 优先于表格级配置
+#### Cell overriding table styles
 
 ```tsx
 <UPTable align='center'>
@@ -179,9 +171,7 @@ td 的 textAlign / color / fontSize 优先于表格级配置
 </UPTable>
 ```
 
-#### 自定义表头与边框
-
-thStyle 集中配置表头样式，borderColor 改变边框色
+#### Custom header and borders
 
 ```tsx
 <UPTable
@@ -201,9 +191,7 @@ thStyle 集中配置表头样式，borderColor 改变边框色
 </UPTable>
 ```
 
-#### 单元格内嵌组件
-
-td 内可放任意节点，如 Tag
+#### A component inside a cell
 
 ```tsx
 <UPTable align='center'>
@@ -228,9 +216,7 @@ td 内可放任意节点，如 Tag
 </UPTable>
 ```
 
-#### 紧凑与宽松
-
-padding 与 fontSize 控制疏密
+#### Compact and roomy
 
 ```tsx
 <UPTable padding='3px 2px' fontSize='12px'>
@@ -253,7 +239,7 @@ padding 与 fontSize 控制疏密
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -277,7 +263,7 @@ padding 与 fontSize 控制疏密
 </template>
 ```
 
-#### 兼容性
+#### Compatibility
 
 ```vue
 <up-table>
@@ -302,7 +288,7 @@ padding 与 fontSize 控制疏密
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -331,7 +317,7 @@ padding 与 fontSize 控制疏密
 </template>
 ```
 
-#### 兼容性
+#### Compatibility
 
 ```vue
 <up-table>

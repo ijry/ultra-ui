@@ -18,7 +18,7 @@ Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examp
 
 <template #flutter>
 
-#### 滚动模式（源码默认）
+#### Scrolling mode (the source default)
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -48,7 +48,7 @@ UPNovelReader(
 )
 ```
 
-#### 翻页模式 + 夜间主题
+#### Paged mode with the dark theme
 
 ```dart
 UPNovelReader(
@@ -95,7 +95,7 @@ No snippet could be extracted automatically — please read the source.
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```js
 const chapters = [
@@ -132,7 +132,7 @@ const currentChapter = {
 </template>
 ```
 
-#### 受控章节加载
+#### Controlled chapter loading
 
 ```vue
 <script setup>
@@ -162,7 +162,7 @@ function loadChapter({ targetIndex }) {
 </script>
 ```
 
-#### 阅读设置与主题
+#### Reading settings and theme
 
 ```js
 {
@@ -177,7 +177,7 @@ function loadChapter({ targetIndex }) {
 }
 ```
 
-#### 持久化
+#### Persistence
 
 ```txt
 uview-plus:novel-reader:${bookId}
@@ -189,7 +189,7 @@ uview-plus:novel-reader:${bookId}
 
 <template #uniappx>
 
-#### 基础使用
+#### Basic usage
 
 ```vue
 <template>
@@ -221,7 +221,7 @@ function handleChapterRequest(payload) {
 }
 ```
 
-#### 阅读设置
+#### Reading settings
 
 ```js
 {
@@ -236,7 +236,7 @@ function handleChapterRequest(payload) {
 }
 ```
 
-#### 纵向滚动与横向分页
+#### Vertical scrolling and horizontal paging
 
 ```vue
 <up-novel-reader

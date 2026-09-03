@@ -49,7 +49,7 @@ UPCard(
 
 <template #harmony>
 
-#### 默认头部与本地缩略图
+#### Default header with a local thumbnail
 
 ```typescript
 import { UPCard, UPCardProps } from '@lingyun/ultra-ui-hos';
@@ -78,7 +78,7 @@ UPCard({ props: new UPCardProps({
 }
 ```
 
-#### 命名头部与底部 Builder
+#### Named header and footer builders
 
 ```typescript
 UPCard({
@@ -168,9 +168,7 @@ import { UPCard } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 基础用法
-
-title / subTitle / 主体 / footSlot
+#### Basic usage
 
 ```tsx
 import { UPCard } from '@ultra-ui'
@@ -184,9 +182,7 @@ import { UPCard } from '@ultra-ui'
 </UPCard>
 ```
 
-#### 无边框
-
-border=false
+#### No border
 
 ```tsx
 <UPCard title='无边框卡片' subTitle='border=false' border={false}>
@@ -194,9 +190,7 @@ border=false
 </UPCard>
 ```
 
-#### 通栏
-
-full=true，与屏幕两侧不留空隙
+#### Full-bleed
 
 ```tsx
 <UPCard full title='通栏卡片' subTitle='full'>
@@ -204,9 +198,7 @@ full=true，与屏幕两侧不留空隙
 </UPCard>
 ```
 
-#### 隐藏头部 / 底部
-
-showHead、showFoot
+#### Hiding the header and footer
 
 ```tsx
 <UPCard showHead={false} footSlot={<Text className='card-demo__foot'>只有底部</Text>}>
@@ -214,9 +206,7 @@ showHead、showFoot
 </UPCard>
 ```
 
-#### 头尾分割线
-
-headBorderBottom / footBorderTop
+#### Leading and trailing dividers
 
 ```tsx
 <UPCard
@@ -230,9 +220,7 @@ headBorderBottom / footBorderTop
 </UPCard>
 ```
 
-#### 标题样式
-
-titleColor / titleSize / subTitleColor / subTitleSize
+#### Title styling
 
 ```tsx
 <UPCard
@@ -247,9 +235,7 @@ titleColor / titleSize / subTitleColor / subTitleSize
 </UPCard>
 ```
 
-#### 间距与圆角
-
-margin='20px 30px'、padding='20px'、borderRadius=16
+#### Spacing and corner radius
 
 ```tsx
 <UPCard
@@ -262,9 +248,7 @@ margin='20px 30px'、padding='20px'、borderRadius=16
 </UPCard>
 ```
 
-#### 分区内边距
-
-paddingHead / paddingBody / paddingFoot 优先于 padding
+#### Section padding
 
 ```tsx
 <UPCard
@@ -284,7 +268,7 @@ paddingHead / paddingBody / paddingFoot 优先于 padding
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -343,13 +327,13 @@ const thumb = ref('http://pic2.sc.chinaz.com/Files/pic/pic9/202002/hpic2119_s.jp
 </style>
 ```
 
-#### 配置卡片间距
+#### Card spacing
 
 ```vue
 <up-card margin="30rpx"></up-card>
 ```
 
-#### 配置卡片左上角的缩略图
+#### Thumbnail in the card corner
 
 ```vue
 <template>
@@ -357,7 +341,7 @@ const thumb = ref('http://pic2.sc.chinaz.com/Files/pic/pic9/202002/hpic2119_s.jp
 </template>
 ```
 
-#### 配置卡片边框
+#### Card border
 
 ```vue
 <template>
@@ -365,7 +349,7 @@ const thumb = ref('http://pic2.sc.chinaz.com/Files/pic/pic9/202002/hpic2119_s.jp
 </template>
 ```
 
-#### 设置内边距
+#### Setting the padding
 
 ```vue
 <template>
@@ -379,7 +363,7 @@ const thumb = ref('http://pic2.sc.chinaz.com/Files/pic/pic9/202002/hpic2119_s.jp
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -438,25 +422,25 @@ export default {
 </style>
 ```
 
-#### 配置卡片间距
+#### Card spacing
 
 ```vue
 <up-card margin="30rpx"></up-card>
 ```
 
-#### 配置卡片左上角的缩略图
+#### Thumbnail in the card corner
 
 ```vue
 <up-card thumb="xxx.jpg" thumb-width="60"></up-card>
 ```
 
-#### 配置卡片边框
+#### Card border
 
 ```vue
 <up-card :border="false" :foot-border-top="false"></up-card>
 ```
 
-#### 设置内边距
+#### Setting the padding
 
 ```vue
 <up-card padding="30"></up-card>

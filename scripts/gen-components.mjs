@@ -24,6 +24,7 @@ import { scanAll, norm, pascal } from './lib/scan.mjs'
 import { readComponentApi } from './lib/extract.mjs'
 import { findSnippet } from './lib/snippet.mjs'
 import { readUpstreamExamples } from './lib/upstream-doc.mjs'
+import { titleFor } from './lib/i18n-titles.mjs'
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const DOCS = path.join(ROOT, 'docs')
@@ -195,6 +196,22 @@ function fence(lang, code) {
   return ['```' + lang, code, '```'].join('\n')
 }
 
+/** Chinese example headings with no English label yet, for the report. */
+const untranslated = new Set()
+
+/**
+ * The heading to print above one example, or null to print none. English pages
+ * drop a heading rather than show it in Chinese — the code below it still
+ * stands on its own.
+ */
+function label(title, locale) {
+  if (!title) return null
+  if (locale !== 'en') return title
+  const en = titleFor(title, locale)
+  if (!en) untranslated.add(title)
+  return en
+}
+
 /* ------------------------------------------------------------------ *
  * collect
  * ------------------------------------------------------------------ */
@@ -297,8 +314,11 @@ function renderPage(component, locale) {
 
       if (source === 'doc') {
         for (const example of entry.doc.examples) {
-          out.push(`#### ${example.title}`)
-          out.push('')
+          const heading = label(example.title, locale)
+          if (heading) {
+            out.push(`#### ${heading}`)
+            out.push('')
+          }
           for (const chunk of example.chunks) {
             // The upstream prose is Chinese only, so it is dropped from the
             // English pages rather than left half-translated.
@@ -329,12 +349,13 @@ function renderPage(component, locale) {
 
           // h4, not h3: the outline is configured for levels 2-3, and every
           // platform tab repeats these labels — h3 would list all eight.
-          if (section.title) {
-            out.push(`#### ${section.title}`)
+          const heading = label(section.title, locale)
+          if (heading) {
+            out.push(`#### ${heading}`)
             out.push('')
           }
 
-          if (section.desc) {
+          if (section.desc && locale === 'zh') {
             out.push(prose(section.desc))
             out.push('')
           }
@@ -524,6 +545,10 @@ for (const p of platforms) {
 const noApi = collected.filter((c) => c.api.length === 0).map((c) => c.id)
 if (noApi.length) {
   console.log(`\n  no extractable API (${noApi.length}): ${noApi.join(', ')}`)
+}
+if (untranslated.size) {
+  console.log(`\n  headings with no English label (${untranslated.size}):`)
+  console.log(`    ${[...untranslated].join(', ')}`)
 }
 if (skipped.length) {
   console.log(`\n  left alone — hand-authored (${skipped.length}):`)

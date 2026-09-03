@@ -57,7 +57,7 @@ UPBadge(
 
 <template #harmony>
 
-#### 数字徽标
+#### Numeric badge
 
 ```typescript
 import { UPBadge, UPBadgeProps } from '@lingyun/ultra-ui-hos';
@@ -65,7 +65,7 @@ import { UPBadge, UPBadgeProps } from '@lingyun/ultra-ui-hos';
 UPBadge({ props: new UPBadgeProps({ value: 8 }) })
 ```
 
-#### 圆点与反色
+#### Dots and inverted colours
 
 ```typescript
 UPBadge({ props: new UPBadgeProps({ isDot: true, type: 'success' }) })
@@ -77,7 +77,7 @@ UPBadge({ props: new UPBadgeProps({ isDot: true, type: 'success' }) })
 
 <template #flutter>
 
-#### 直角边形状
+#### Square corners
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -85,25 +85,25 @@ import 'package:ultra_ui/ultra_ui.dart';
 UPBadge(value: 1500, shape: 'horn')
 ```
 
-#### 徽标数显示方式
+#### Badge display modes
 
 ```dart
 UPBadge(value: 5132, numberType: 'ellipsis')
 ```
 
-#### 显示圆点
+#### Showing a dot
 
 ```dart
 UPBadge(value: 1011, numberType: 'overflow', isDot: true)
 ```
 
-#### 自定义主题
+#### Custom theme
 
 ```dart
 UPBadge(value: 9, type: 'error')
 ```
 
-#### 反转色
+#### Inverted colours
 
 ```dart
 UPBadge(value: 9, type: 'error', inverted: true)
@@ -115,7 +115,7 @@ UPBadge(value: 9, type: 'error', inverted: true)
 
 <template #reactnative>
 
-#### 直角边形状
+#### Square corners
 
 ```tsx
 import { UPBadge } from 'ultra-ui-rn';
@@ -123,25 +123,25 @@ import { UPBadge } from 'ultra-ui-rn';
 <UPBadge value={1500} shape="horn" />
 ```
 
-#### 徽标数显示方式
+#### Badge display modes
 
 ```tsx
 <UPBadge value={5132} numberType="ellipsis" />
 ```
 
-#### 显示圆点
+#### Showing a dot
 
 ```tsx
 <UPBadge value={1011} numberType="overflow" isDot />
 ```
 
-#### 自定义主题
+#### Custom theme
 
 ```tsx
 <UPBadge value={9} type="error" />
 ```
 
-#### 反转色
+#### Inverted colours
 
 ```tsx
 <UPBadge value={9} type="error" inverted />
@@ -153,9 +153,7 @@ import { UPBadge } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 基础用法
-
-value 为显示内容，支持数字与文字
+#### Basic usage
 
 ```tsx
 import { UPBadge } from '@ultra-ui'
@@ -163,57 +161,43 @@ import { UPBadge } from '@ultra-ui'
 <UPBadge value={1} />
 ```
 
-#### 主题类型
-
-type：error / warning / success / primary / info
+#### Theme types
 
 ```tsx
 <UPBadge type='error' value={8} />
 ```
 
-#### 圆点
-
-isDot 为 true 时忽略 value，只显示小红点
+#### Dot
 
 ```tsx
 <UPBadge isDot />
 ```
 
-#### 反色
-
-inverted 反转背景与文字颜色
+#### Inverted
 
 ```tsx
 <UPBadge inverted type='error' value={9} />
 ```
 
-#### 形状
-
-shape：circle 四角圆润 / horn 左下角为直角
+#### Shapes
 
 ```tsx
 <UPBadge shape='circle' value={12} />
 ```
 
-#### 最大值
-
-numberType=overflow（默认），超过 max 显示 max+
+#### Maximum value
 
 ```tsx
 <UPBadge max={9} value={5} />
 ```
 
-#### 超出显示方式
-
-numberType：overflow / ellipsis / limit
+#### Overflow behaviour
 
 ```tsx
 <UPBadge numberType='overflow' max={99} value={1000} />
 ```
 
-#### 显示零
-
-showZero 决定 value 为 0 时是否展示
+#### Showing leading zeros
 
 ```tsx
 <UPBadge value={0} />
@@ -225,7 +209,7 @@ showZero 决定 value 为 0 时是否展示
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -258,13 +242,13 @@ const value = ref(100);
 </style>
 ```
 
-#### 设置徽标的类型为一个圆点
+#### Badge as a plain dot
 
 ```vue
 <up-badge :isDot="true" type="success"></up-badge>
 ```
 
-#### 设置数字的显示方式 overflow|ellipsis|limit
+#### Number display: overflow, ellipsis, limit
 
 ```vue
 <template>
@@ -309,7 +293,7 @@ const value = ref(99999);
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -342,13 +326,13 @@ const value = ref(100);
 </style>
 ```
 
-#### 设置徽标的类型为一个圆点
+#### Badge as a plain dot
 
 ```vue
 <up-badge :isDot="true" type="success"></up-badge>
 ```
 
-#### 设置数字的显示方式 overflow|ellipsis|limit
+#### Number display: overflow, ellipsis, limit
 
 ```vue
 <template>

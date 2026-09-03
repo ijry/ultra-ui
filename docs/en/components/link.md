@@ -98,7 +98,7 @@ UPLink(
 
 <template #reactnative>
 
-#### 显示下划线
+#### With an underline
 
 ```tsx
 import { UPLink } from 'ultra-ui-rn';
@@ -110,7 +110,7 @@ import { UPLink } from 'ultra-ui-rn';
 />
 ```
 
-#### 自定义颜色
+#### Custom colour
 
 ```tsx
 <UPLink
@@ -121,7 +121,7 @@ import { UPLink } from 'ultra-ui-rn';
 />
 ```
 
-#### 自定义链接内容
+#### Custom link content
 
 ```tsx
 <UPLink href="https://uniapp.dcloud.io/" text="打开uni-app文档" />
@@ -133,9 +133,7 @@ import { UPLink } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 基础用法
-
-text 为文字，href 为跳转链接
+#### Basic usage
 
 ```tsx
 import { UPLink } from '@ultra-ui'
@@ -143,41 +141,31 @@ import { UPLink } from '@ultra-ui'
 <UPLink text='点击复制 uview-plus 官网地址' href={HREF} />
 ```
 
-#### 下划线
-
-underLine 属性
+#### Underline
 
 ```tsx
 <UPLink text='没有下划线' href={HREF} />
 ```
 
-#### 颜色
-
-color 支持主题 token 与任意 CSS 颜色
+#### Colours
 
 ```tsx
 <UPLink text='#3c9cff 默认色' href={HREF} />
 ```
 
-#### 字体大小
-
-fontSize 数字按 px 语义，也可带单位
+#### Font size
 
 ```tsx
 <UPLink text='字号 12' href={HREF} fontSize={12} />
 ```
 
-#### 复制提示语
-
-mpTips 自定义复制成功后的 toast 文案
+#### Copy confirmation message
 
 ```tsx
 <UPLink text='使用默认提示' href={HREF} underLine />
 ```
 
-#### 行内混排
-
-作为段落中的一部分使用
+#### Inline with text
 
 ```tsx
 <UPLink text='《用户服务协议》' href={HREF} fontSize={14} />
@@ -189,7 +177,7 @@ mpTips 自定义复制成功后的 toast 文案
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -206,7 +194,7 @@ function click() {
 </script>
 ```
 
-#### 下划线
+#### Underline
 
 ```vue
 <template>
@@ -214,7 +202,7 @@ function click() {
 </template>
 ```
 
-#### 自定义颜色
+#### Custom colour
 
 ```vue
 <template>
@@ -228,7 +216,7 @@ function click() {
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -245,7 +233,7 @@ function click() {
 </script>
 ```
 
-#### 下划线
+#### Underline
 
 ```vue
 <template>
@@ -253,7 +241,7 @@ function click() {
 </template>
 ```
 
-#### 自定义颜色
+#### Custom colour
 
 ```vue
 <template>

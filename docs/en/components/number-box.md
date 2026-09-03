@@ -179,9 +179,7 @@ rightIconNode={<UPNumberBox disabled onChange={change} step="1" value={value5} /
 
 <template #taro>
 
-#### 基础用法
-
-value + onChange 受控绑定，默认最小值为 1
+#### Basic usage
 
 ```tsx
 import { UPNumberBox } from '@ultra-ui'
@@ -189,25 +187,19 @@ import { UPNumberBox } from '@ultra-ui'
 <UPNumberBox value={basic} onChange={setBasic} />
 ```
 
-#### 步长
-
-step 控制每次加减的幅度
+#### Step
 
 ```tsx
 <UPNumberBox step={2} value={step} onChange={setStep} />
 ```
 
-#### 取值范围
-
-min=3 / max=8，到边界时按钮自动置灰
+#### Value range
 
 ```tsx
 <UPNumberBox min={3} max={8} value={range} onChange={setRange} />
 ```
 
-#### 小数与整数
-
-decimalLength 保留小数位；integer 只允许整数
+#### Decimals and integers
 
 ```tsx
 <UPNumberBox
@@ -219,9 +211,7 @@ decimalLength 保留小数位；integer 只允许整数
 />
 ```
 
-#### 禁用
-
-disabled 整体禁用；disabledInput 只锁输入框
+#### Disabled
 
 ```tsx
 <UPNumberBox
@@ -231,9 +221,7 @@ disabled 整体禁用；disabledInput 只锁输入框
 />
 ```
 
-#### 单独禁用按钮
-
-disableMinus / disablePlus
+#### Disabling one button
 
 ```tsx
 <UPNumberBox
@@ -243,9 +231,7 @@ disableMinus / disablePlus
 />
 ```
 
-#### 颜色
-
-color 图标色 / bgColor 按钮背景 / inputBgColor 输入框背景
+#### Colours
 
 ```tsx
 <UPNumberBox
@@ -257,9 +243,7 @@ color 图标色 / bgColor 按钮背景 / inputBgColor 输入框背景
 />
 ```
 
-#### 尺寸
-
-buttonWidth / buttonSize / inputWidth，单位 px
+#### Sizes
 
 ```tsx
 <UPNumberBox
@@ -277,7 +261,7 @@ buttonWidth / buttonSize / inputWidth，单位 px
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -299,25 +283,25 @@ function valChange(e) {
 </script>
 ```
 
-#### 步长设置
+#### Step size
 
 ```vue
 <up-number-box :step="2"></up-number-box>
 ```
 
-#### 限制输入范围
+#### Restricting the range
 
 ```vue
 <up-number-box :min="1" :max="100"></up-number-box>
 ```
 
-#### 限制只能输入整数
+#### Integers only
 
 ```vue
 <up-number-box integer></up-number-box>
 ```
 
-#### 禁用
+#### Disabled
 
 ```vue
 <!-- 通过设置`disabled`参数来禁用输入框，禁用状态下无法点击加减按钮或修改输入框的值 -->
@@ -336,13 +320,13 @@ function valChange(e) {
 <up-number-box :longPress="false"></up-number-box>
 ```
 
-#### 固定小数位数
+#### Fixed decimal places
 
 ```vue
 <up-number-box step="0.25" decimal-length="1" ></up-number-box>
 ```
 
-#### 异步变更
+#### Asynchronous change
 
 ```vue
 <template>
@@ -366,7 +350,7 @@ function onChange(e) {
 </script>
 ```
 
-#### 自定义颜色和大小
+#### Custom colour and size
 
 ```vue
 <up-number-box 
@@ -383,7 +367,7 @@ function onChange(e) {
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -405,25 +389,25 @@ function valChange(e) {
 </script>
 ```
 
-#### 步长设置
+#### Step size
 
 ```vue
 <up-number-box :step="2"></up-number-box>
 ```
 
-#### 限制输入范围
+#### Restricting the range
 
 ```vue
 <up-number-box :min="1" :max="100"></up-number-box>
 ```
 
-#### 限制只能输入整数
+#### Integers only
 
 ```vue
 <up-number-box integer></up-number-box>
 ```
 
-#### 禁用
+#### Disabled
 
 ```vue
 <!-- 通过设置`disabled`参数来禁用输入框，禁用状态下无法点击加减按钮或修改输入框的值 -->
@@ -442,13 +426,13 @@ function valChange(e) {
 <up-number-box :longPress="false"></up-number-box>
 ```
 
-#### 固定小数位数
+#### Fixed decimal places
 
 ```vue
 <up-number-box step="0.25" decimal-length="1" ></up-number-box>
 ```
 
-#### 异步变更
+#### Asynchronous change
 
 ```vue
 <template>
@@ -472,7 +456,7 @@ function onChange(e) {
 </script>
 ```
 
-#### 自定义颜色和大小
+#### Custom colour and size
 
 ```vue
 <up-number-box 

@@ -128,9 +128,7 @@ import { UPIndexList } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 基础用法
-
-右侧字母栏点击滚动定位，锚点吸顶（sticky）
+#### Basic usage
 
 ```tsx
 import { UPIndexList } from '@ultra-ui'
@@ -163,7 +161,7 @@ import { UPIndexList } from '@ultra-ui'
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -221,7 +219,7 @@ const itemArr = ref([
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>

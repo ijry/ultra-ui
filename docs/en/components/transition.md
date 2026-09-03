@@ -64,9 +64,7 @@ No snippet could be extracted automatically — please read the source.
 
 <template #taro>
 
-#### 基础用法
-
-show 控制显隐，默认 fade 模式
+#### Basic usage
 
 ```tsx
 import { UPTransition } from '@ultra-ui'
@@ -76,9 +74,7 @@ import { UPTransition } from '@ultra-ui'
 </UPTransition>
 ```
 
-#### 动画模式
-
-点击按钮播放对应 mode，再次点击同一按钮切换显隐
+#### Animation modes
 
 ```tsx
 <UPTransition show={modeShow} mode={mode} duration={400}>
@@ -86,9 +82,7 @@ import { UPTransition } from '@ultra-ui'
 </UPTransition>
 ```
 
-#### 执行时间
-
-duration 单位 ms，默认 300
+#### Duration
 
 ```tsx
 <UPTransition show={durationShow} mode='fade-zoom' duration={200}>
@@ -96,9 +90,7 @@ duration 单位 ms，默认 300
 </UPTransition>
 ```
 
-#### 过渡函数
-
-timingFunction 对应 CSS transition-timing-function
+#### Transition function
 
 ```tsx
 <UPTransition
@@ -111,9 +103,7 @@ timingFunction 对应 CSS transition-timing-function
 </UPTransition>
 ```
 
-#### 生命周期
-
-6 个钩子按进场 / 离场顺序触发
+#### Lifecycle
 
 ```tsx
 <UPTransition
@@ -138,7 +128,7 @@ timingFunction 对应 CSS transition-timing-function
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -156,7 +146,7 @@ const show = ref(true);
 </script>
 ```
 
-#### 动画模式
+#### Animation modes
 
 ```vue
 <template>
@@ -180,7 +170,7 @@ const show = ref(true);
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -198,7 +188,7 @@ const show = ref(true);
 </script>
 ```
 
-#### 动画模式
+#### Animation modes
 
 ```vue
 <template>

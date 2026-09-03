@@ -44,7 +44,7 @@ DemoSection("倒计时") { UPCountDown(UPCountDownProps(time = 61000, autoStart 
 
 <template #flutter>
 
-#### 基础用法
+#### Basic usage
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -58,7 +58,7 @@ UPCountDown(
 )
 ```
 
-#### 自定义格式
+#### Custom format
 
 ```dart
 UPCountDown(
@@ -70,7 +70,7 @@ UPCountDown(
 )
 ```
 
-#### 毫秒级渲染
+#### Millisecond rendering
 
 ```dart
 const UPCountDown(
@@ -81,7 +81,7 @@ const UPCountDown(
 )
 ```
 
-#### 自定义样式
+#### Custom styling
 
 ```dart
 UPCountDown(
@@ -93,7 +93,7 @@ UPCountDown(
 )
 ```
 
-#### 手动控制
+#### Manual control
 
 ```dart
 UPCountDown(
@@ -111,7 +111,7 @@ UPCountDown(
 
 <template #reactnative>
 
-#### 自定义格式
+#### Custom format
 
 ```tsx
 import { UPCountDown } from 'ultra-ui-rn';
@@ -130,13 +130,13 @@ import { UPCountDown } from 'ultra-ui-rn';
 </UPCountDown>
 ```
 
-#### 毫秒级渲染
+#### Millisecond rendering
 
 ```tsx
 <UPCountDown autoStart format="HH:mm:ss:SSS" millisecond time={TIME} />
 ```
 
-#### 自定义样式
+#### Custom styling
 
 ```tsx
 <UPCountDown autoStart format="HH:mm:ss" millisecond time={TIME}>
@@ -160,7 +160,7 @@ import { UPCountDown } from 'ultra-ui-rn';
 </UPCountDown>
 ```
 
-#### 手动控制
+#### Manual control
 
 ```tsx
 <UPCountDown
@@ -178,9 +178,7 @@ import { UPCountDown } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 基础用法
-
-time 设置总时长，autoStart 自动开始
+#### Basic usage
 
 ```tsx
 import { UPCountDown } from '@ultra-ui'
@@ -188,17 +186,13 @@ import { UPCountDown } from '@ultra-ui'
 <UPCountDown time={60 * 60 * 1000} format='HH:mm:ss' />
 ```
 
-#### 显示毫秒
-
-millisecond 开启毫秒级刷新
+#### Showing milliseconds
 
 ```tsx
 <UPCountDown time={30 * 1000} format='ss:SSS' millisecond />
 ```
 
-#### 命令式控制
-
-通过 ref 调用 start / pause / reset
+#### Imperative control
 
 ```tsx
 <UPCountDown ref={ref} time={10 * 1000} autoStart={false} onChange={setTimeData} />
@@ -210,7 +204,7 @@ millisecond 开启毫秒级刷新
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -218,7 +212,7 @@ millisecond 开启毫秒级刷新
 </template>
 ```
 
-#### 自定义格式
+#### Custom format
 
 ```vue
 <template>
@@ -268,13 +262,13 @@ const onChange = (e) => {
 </style>
 ```
 
-#### 毫秒级渲染
+#### Millisecond rendering
 
 ```vue
 <up-count-down :time="30 * 60 * 60 * 1000" format="HH:mm:ss:SSS" autoStart millisecond></up-count-down>
 ```
 
-#### 自定义样式
+#### Custom styling
 
 ```vue
 <template>
@@ -355,7 +349,7 @@ const onChange = (e) => {
 </style>
 ```
 
-#### 手动控制
+#### Manual control
 
 ```vue
 <template>
@@ -428,7 +422,7 @@ onUnmounted(() => {
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -436,7 +430,7 @@ onUnmounted(() => {
 </template>
 ```
 
-#### 自定义格式
+#### Custom format
 
 ```vue
 <template>
@@ -486,13 +480,13 @@ const onChange = (e) => {
 </style>
 ```
 
-#### 毫秒级渲染
+#### Millisecond rendering
 
 ```vue
 <up-count-down :time="30 * 60 * 60 * 1000" format="HH:mm:ss:SSS" autoStart millisecond></up-count-down>
 ```
 
-#### 自定义样式
+#### Custom styling
 
 ```vue
 <template>
@@ -573,7 +567,7 @@ const onChange = (e) => {
 </style>
 ```
 
-#### 手动控制
+#### Manual control
 
 ```vue
 <template>

@@ -64,7 +64,7 @@ UPRadio({ props: new UPRadioProps({ name: 'B', label: '选项 B', checked: this.
 
 <template #flutter>
 
-#### 横向两端排列形式
+#### Space-between row layout
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -82,7 +82,7 @@ import 'package:ultra_ui/ultra_ui.dart';
 
 <template #reactnative>
 
-#### 基本案例
+#### Basic example
 
 ```tsx
 import { UPRadio } from 'ultra-ui-rn';
@@ -96,13 +96,13 @@ import { UPRadio } from 'ultra-ui-rn';
 />
 ```
 
-#### 自定义形状
+#### Custom shape
 
 ```tsx
 <UPRadio customStyle={s.stacked} key={name} label={name} name={name} />
 ```
 
-#### 是否禁用
+#### Disabled or not
 
 ```tsx
 <UPRadio
@@ -114,25 +114,25 @@ import { UPRadio } from 'ultra-ui-rn';
 />
 ```
 
-#### 纵向排列
+#### Vertical layout
 
 ```tsx
 <UPRadio customStyle={s.stacked} key={name} label={name} name={name} />
 ```
 
-#### 自定义颜色？
+#### Custom colour
 
 ```tsx
 <UPRadio customStyle={s.stacked} key={name} label={name} name={name} />
 ```
 
-#### 横向排列形式？
+#### Row layout
 
 ```tsx
 <UPRadio customStyle={s.inline} key={name} label={name} name={name} />
 ```
 
-#### 横向两端排列形式？
+#### Space-between row layout
 
 ```tsx
 <UPRadio customStyle={s.stackedWide} key={name} label={name} name={name} />
@@ -144,9 +144,7 @@ import { UPRadio } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 基础用法
-
-Group 持有单个值，onChange 回传选中的 name
+#### Basic usage
 
 ```tsx
 import { UPRadio } from '@ultra-ui'
@@ -154,57 +152,43 @@ import { UPRadio } from '@ultra-ui'
 <UPRadio key={item} name={item} label={item} />
 ```
 
-#### 形状
-
-shape：circle（默认） / square
+#### Shapes
 
 ```tsx
 <UPRadio name='circle' label='圆形' />
 ```
 
-#### 禁用
-
-Group 整体禁用 / 单项禁用
+#### Disabled
 
 ```tsx
 <UPRadio name='已选中' label='已选中' />
 ```
 
-#### 自定义颜色
-
-activeColor / inactiveColor / iconColor
+#### Custom colour
 
 ```tsx
 <UPRadio name='红色' label='Group 红色' />
 ```
 
-#### 尺寸与文字
-
-size / iconSize / labelSize / labelColor
+#### Size and text
 
 ```tsx
 <UPRadio name='小号' label='小号' size={16} iconSize={10} labelSize={12} />
 ```
 
-#### 竖向排列
-
-placement=column，配合 borderBottom 显示分割线
+#### Vertical layout
 
 ```tsx
 <UPRadio key={item} name={item} label={item} />
 ```
 
-#### 图标靠右
-
-iconPlacement=right，整行两端对齐，点击整行即可选中
+#### Icon on the right
 
 ```tsx
 <UPRadio key={item} name={item} label={item} />
 ```
 
-#### 禁止点击文字
-
-labelDisabled 时只有图标可点
+#### Ignore taps on the label
 
 ```tsx
 <UPRadio name='只能点图标' label='只能点图标' />
@@ -216,7 +200,7 @@ labelDisabled 时只有图标可点
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -273,7 +257,7 @@ const radioChange = (n) => {
 </script>
 ```
 
-#### 自定义形状
+#### Custom shape
 
 ```vue
 <up-radio-group v-model="value">
@@ -281,7 +265,7 @@ const radioChange = (n) => {
 </up-radio-group>
 ```
 
-#### 禁用radio
+#### Disabled radio
 
 ```vue
 <up-radio-group v-model="value">
@@ -289,7 +273,7 @@ const radioChange = (n) => {
 </up-radio-group>
 ```
 
-#### 是否禁止点击提示语选中复选框
+#### Whether the label toggles the checkbox
 
 ```vue
 <up-radio-group v-model="value">
@@ -297,7 +281,7 @@ const radioChange = (n) => {
 </up-radio-group>
 ```
 
-#### 自定义颜色
+#### Custom colour
 
 ```vue
 <up-radio-group v-model="value">
@@ -305,7 +289,7 @@ const radioChange = (n) => {
 </up-radio-group>
 ```
 
-#### 横向排列形式
+#### Row layout
 
 ```vue
 <up-radio-group 
@@ -315,7 +299,7 @@ const radioChange = (n) => {
 </up-radio-group>
 ```
 
-#### 横向两端排列形式
+#### Space-between row layout
 
 ```vue
 <up-radio-group 
@@ -331,7 +315,7 @@ const radioChange = (n) => {
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -388,7 +372,7 @@ const radioChange = (n) => {
 </script>
 ```
 
-#### 自定义形状
+#### Custom shape
 
 ```vue
 <up-radio-group v-model="value">
@@ -396,7 +380,7 @@ const radioChange = (n) => {
 </up-radio-group>
 ```
 
-#### 禁用radio
+#### Disabled radio
 
 ```vue
 <up-radio-group v-model="value">
@@ -404,7 +388,7 @@ const radioChange = (n) => {
 </up-radio-group>
 ```
 
-#### 是否禁止点击提示语选中复选框
+#### Whether the label toggles the checkbox
 
 ```vue
 <up-radio-group v-model="value">
@@ -412,7 +396,7 @@ const radioChange = (n) => {
 </up-radio-group>
 ```
 
-#### 自定义颜色
+#### Custom colour
 
 ```vue
 <up-radio-group v-model="value">
@@ -420,7 +404,7 @@ const radioChange = (n) => {
 </up-radio-group>
 ```
 
-#### 横向排列形式
+#### Row layout
 
 ```vue
 <up-radio-group 
@@ -430,7 +414,7 @@ const radioChange = (n) => {
 </up-radio-group>
 ```
 
-#### 横向两端排列形式
+#### Space-between row layout
 
 ```vue
 <up-radio-group 

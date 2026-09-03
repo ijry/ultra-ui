@@ -34,7 +34,7 @@ UPSlider(
 
 <template #flutter>
 
-#### 基本案例
+#### Basic example
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -47,7 +47,7 @@ UPSlider(
 )
 ```
 
-#### 自定义范围(10—50)
+#### Custom range (10–50)
 
 ```dart
 UPSlider(
@@ -61,7 +61,7 @@ UPSlider(
 )
 ```
 
-#### 指定步长(每次步进5)
+#### Explicit step (5)
 
 ```dart
 UPSlider(
@@ -73,7 +73,7 @@ UPSlider(
 )
 ```
 
-#### 小数步长(每次步进0.1)
+#### Fractional step (0.1)
 
 ```dart
 UPSlider(
@@ -88,7 +88,7 @@ UPSlider(
 )
 ```
 
-#### 自定义样式
+#### Custom styling
 
 ```dart
 UPSlider(
@@ -102,7 +102,7 @@ UPSlider(
 )
 ```
 
-#### 自定义样式(图片)
+#### Custom styling with an image
 
 ```dart
 UPSlider(
@@ -116,7 +116,7 @@ UPSlider(
 )
 ```
 
-#### 区间选择(双滑块)
+#### Range selection (two handles)
 
 ```dart
 UPSlider(
@@ -131,7 +131,7 @@ UPSlider(
 )
 ```
 
-#### 垂直方向
+#### Vertical direction
 
 ```dart
 UPSlider(
@@ -151,7 +151,7 @@ UPSlider(
 
 <template #reactnative>
 
-#### 基本案例
+#### Basic example
 
 ```tsx
 import { UPSlider } from 'ultra-ui-rn';
@@ -159,25 +159,25 @@ import { UPSlider } from 'ultra-ui-rn';
 <UPSlider onChange={setValue1} useNative={false} value={value1} />
 ```
 
-#### 自定义范围(10—50)
+#### Custom range (10–50)
 
 ```tsx
 <UPSlider max="50" min="10" onChange={setValue2} showValue useNative={false} value={value2} />
 ```
 
-#### 指定步长(每次步进5)
+#### Explicit step (5)
 
 ```tsx
 <UPSlider onChange={setValue4} step={5} useNative={false} value={value4} />
 ```
 
-#### 小数步长(每次步进0.1)
+#### Fractional step (0.1)
 
 ```tsx
 <UPSlider max={1} min={0} onChange={setValue3} showValue step={0.1} value={value3} />
 ```
 
-#### 自定义样式
+#### Custom styling
 
 ```tsx
 <UPSlider
@@ -189,19 +189,19 @@ import { UPSlider } from 'ultra-ui-rn';
 />
 ```
 
-#### 垂直方向
+#### Vertical direction
 
 ```tsx
 <UPSlider length="200px" onChange={setValue7} size="2px" value={value7} vertical />
 ```
 
-#### 垂直方向区间选择
+#### Vertical range selection
 
 ```tsx
 <UPSlider isRange length="200px" rangeValue={value8} size="2px" vertical />
 ```
 
-#### 在Modal弹窗中使用
+#### Inside a modal
 
 ```tsx
 <UPSlider max="4" min="1" onChange={setSliderValue} showValue value={sliderValue} />
@@ -213,9 +213,7 @@ import { UPSlider } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 基础用法
-
-受控 value + onChange
+#### Basic usage
 
 ```tsx
 import { UPSlider } from '@ultra-ui'
@@ -223,9 +221,7 @@ import { UPSlider } from '@ultra-ui'
 <UPSlider value={basic} onChange={setBasic} />
 ```
 
-#### 自定义范围与步长
-
-min=20 / max=80 / step=5
+#### Custom range and step
 
 ```tsx
 <UPSlider
@@ -237,25 +233,19 @@ min=20 / max=80 / step=5
 />
 ```
 
-#### 显示数值
-
-showValue 显示气泡
+#### Showing the value
 
 ```tsx
 <UPSlider value={withValue} showValue onChange={setWithValue} />
 ```
 
-#### 禁用
-
-disabled 阻止交互
+#### Disabled
 
 ```tsx
 <UPSlider value={45} disabled />
 ```
 
-#### 竖向
-
-vertical + length
+#### Vertical
 
 ```tsx
 <UPSlider
@@ -272,7 +262,7 @@ vertical + length
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -289,13 +279,13 @@ const value = ref(30);
 </script>
 ```
 
-#### 设置最大和最小值
+#### Setting the minimum and maximum
 
 ```vue
 <up-slider v-model="value" min="30" max="80"></up-slider>
 ```
 
-#### 设置步进值
+#### Setting the step
 
 ```vue
 <up-slider v-model="value" step="20" min="20" max="100"></up-slider>
@@ -305,7 +295,7 @@ const value = ref(30);
 <up-slider v-model="value" :step="0.1" :min="0" :max="1" showValue></up-slider>
 ```
 
-#### 在弹窗等初始化不显示的容器中使用
+#### Inside a container that starts hidden
 
 ```vue
 <up-popup v-model:show="popupShow">
@@ -321,25 +311,25 @@ const sliderValue = ref(4);
 </script>
 ```
 
-#### 禁用状态
+#### Disabled state
 
 ```vue
 <up-slider v-model="value" disabled></up-slider>
 ```
 
-#### 垂直方向使用
+#### Vertical orientation
 
 ```vue
 <up-slider v-model="value" vertical length="200px"></up-slider>
 ```
 
-#### 双滑块模式
+#### Two-handle mode
 
 ```vue
 <up-slider :rangeValue="range" isRange></up-slider>
 ```
 
-#### 自定义按钮的内容和样式
+#### Custom button content and styling
 
 ```vue
 <template>
@@ -363,7 +353,7 @@ const value = ref(30);
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -380,19 +370,19 @@ const value = ref(30);
 </script>
 ```
 
-#### 设置最大和最小值
+#### Setting the minimum and maximum
 
 ```vue
 <up-slider v-model="value" min="30" max="80"></up-slider>
 ```
 
-#### 设置步进值
+#### Setting the step
 
 ```vue
 <up-slider v-model="value" step="20" min="30" max="100"></up-slider>
 ```
 
-#### 在弹窗等初始化不显示的容器中使用
+#### Inside a container that starts hidden
 
 ```vue
 <up-popup v-model:show="popupShow">
@@ -408,13 +398,13 @@ const sliderValue = ref(4);
 </script>
 ```
 
-#### 禁用状态
+#### Disabled state
 
 ```vue
 <up-slider v-model="value" disabled></up-slider>
 ```
 
-#### 自定义按钮的内容和样式
+#### Custom button content and styling
 
 ```vue
 <template>
@@ -432,7 +422,7 @@ const value = ref(30);
 </script>
 ```
 
-#### 自定义滑动选择器整体的样式
+#### Restyling the whole picker
 
 ```vue
 <up-slider v-model="value" block-width="40" block-color="red"></up-slider>

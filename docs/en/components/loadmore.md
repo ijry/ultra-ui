@@ -70,7 +70,7 @@ UPLoadmore({ props: new UPLoadmoreProps({ status: 'nomore', nomoreText: '到底�
 
 <template #flutter>
 
-#### 基础使用
+#### Basic usage
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -78,19 +78,19 @@ import 'package:ultra_ui/ultra_ui.dart';
 UPLoadmore(status: 'loading', isDot: true, iconSize: 17)
 ```
 
-#### 无更多数据
+#### Nothing more to load
 
 ```dart
 UPLoadmore(line: true, status: 'nomore')
 ```
 
-#### 自定义图标
+#### Custom icon
 
 ```dart
 UPLoadmore(status: 'loading', loadingIcon: 'circle')
 ```
 
-#### 显示点
+#### Showing dots
 
 ```dart
 UPLoadmore(
@@ -101,7 +101,7 @@ UPLoadmore(
 )
 ```
 
-#### 自定义提示语
+#### Custom hint text
 
 ```dart
 UPLoadmore(
@@ -111,7 +111,7 @@ UPLoadmore(
 )
 ```
 
-#### 自定义线条颜色
+#### Custom line colour
 
 ```dart
 UPLoadmore(
@@ -141,9 +141,7 @@ import { UPLoadmore } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 加载图标
-
-icon / iconSize / loadingIcon
+#### Loading icon
 
 ```tsx
 import { UPLoadmore } from '@ultra-ui'
@@ -151,25 +149,19 @@ import { UPLoadmore } from '@ultra-ui'
 <UPLoadmore status='loading' icon loadingText='加载中' />
 ```
 
-#### 分割线
-
-line / dashed / lineColor
+#### Divider
 
 ```tsx
 <UPLoadmore status='nomore' nomoreText='没有更多了' line />
 ```
 
-#### 点状结尾
-
-isDot，nomore 时以粗点替代文字
+#### Dotted cap
 
 ```tsx
 <UPLoadmore status='nomore' isDot />
 ```
 
-#### 自定义颜色
-
-color / bgColor
+#### Custom colour
 
 ```tsx
 <UPLoadmore status='loadmore' color='#3c9cff' loadmoreText='加载更多' />
@@ -181,7 +173,7 @@ color / bgColor
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -231,7 +223,7 @@ function onReachBottom() {
 </style>
 ```
 
-#### 控制组件的提示以及动画效果
+#### Controlling the message and the animation
 
 ```vue
 <template>
@@ -256,7 +248,7 @@ const nomoreText = ref('实在没有了');
 </script>
 ```
 
-#### 线条自定义颜色和设置为虚线 <badge text="2.0.32" />
+#### Custom line colour, dashed
 
 ```vue
 <template>
@@ -288,7 +280,7 @@ const nomoreText = ref('实在没有了');
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -338,7 +330,7 @@ function onReachBottom() {
 </style>
 ```
 
-#### 控制组件的提示以及动画效果
+#### Controlling the message and the animation
 
 ```vue
 <template>
@@ -363,7 +355,7 @@ const nomoreText = ref('实在没有了');
 </script>
 ```
 
-#### 线条自定义颜色和设置为虚线 <badge text="2.0.32" />
+#### Custom line colour, dashed
 
 ```vue
 <template>

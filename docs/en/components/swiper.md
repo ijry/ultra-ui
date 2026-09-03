@@ -31,7 +31,7 @@ DemoSection("轮播图") { UPSwiper(UPSwiperProps(list = listOf("第一页", "�
 
 <template #flutter>
 
-#### 基础功能
+#### Basic features
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -45,7 +45,7 @@ UPSwiper(
 )
 ```
 
-#### 纵向滑动
+#### Vertical swiping
 
 ```dart
 UPSwiper(
@@ -59,7 +59,7 @@ UPSwiper(
 )
 ```
 
-#### 带标题
+#### With a title
 
 ```dart
 UPSwiper(
@@ -72,7 +72,7 @@ UPSwiper(
 )
 ```
 
-#### 带指示器
+#### With indicators
 
 ```dart
 UPSwiper(
@@ -84,7 +84,7 @@ UPSwiper(
 )
 ```
 
-#### 加载中
+#### Loading
 
 ```dart
 UPSwiper(
@@ -95,7 +95,7 @@ UPSwiper(
 )
 ```
 
-#### 嵌入视频
+#### Embedded video
 
 ```dart
 UPSwiper(
@@ -106,7 +106,7 @@ UPSwiper(
 )
 ```
 
-#### 自定义内容
+#### Custom content
 
 ```dart
 UPSwiper(
@@ -120,7 +120,7 @@ UPSwiper(
 )
 ```
 
-#### 自定义指示器
+#### Custom indicator
 
 ```dart
 UPSwiper(
@@ -151,7 +151,7 @@ UPSwiper(
 
 <template #reactnative>
 
-#### 纵向滑动
+#### Vertical swiping
 
 ```tsx
 import { UPSwiper } from 'ultra-ui-rn';
@@ -166,31 +166,31 @@ import { UPSwiper } from 'ultra-ui-rn';
 />
 ```
 
-#### 带标题
+#### With a title
 
 ```tsx
 <UPSwiper autoplay={false} circular keyName="image" list={list2} showTitle />
 ```
 
-#### 带指示器
+#### With indicators
 
 ```tsx
 <UPSwiper circular indicator indicatorMode="line" list={list3} />
 ```
 
-#### 加载中
+#### Loading
 
 ```tsx
 <UPSwiper list={list3} loading />
 ```
 
-#### 嵌入视频
+#### Embedded video
 
 ```tsx
 <UPSwiper autoplay={false} keyName="url" list={list4} />
 ```
 
-#### 卡片式
+#### Card style
 
 ```tsx
 <UPSwiper
@@ -209,9 +209,7 @@ import { UPSwiper } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 基础用法
-
-list 传图片地址数组，默认自动播放
+#### Basic usage
 
 ```tsx
 import { UPSwiper } from '@ultra-ui'
@@ -219,17 +217,13 @@ import { UPSwiper } from '@ultra-ui'
 <UPSwiper list={LIST} />
 ```
 
-#### 指示器
-
-indicator 开启，indicatorMode：line / dot
+#### Indicator
 
 ```tsx
 <UPSwiper list={LIST} indicator indicatorMode='line' />
 ```
 
-#### 指示器颜色与位置
-
-indicatorActiveColor / indicatorInactiveColor / indicatorStyle
+#### Indicator colour and position
 
 ```tsx
 <UPSwiper
@@ -242,25 +236,19 @@ indicatorActiveColor / indicatorInactiveColor / indicatorStyle
 />
 ```
 
-#### 高度与圆角
-
-height 控制高度，radius 控制圆角
+#### Height and corner radius
 
 ```tsx
 <UPSwiper list={LIST} height={180} radius={16} indicator />
 ```
 
-#### 背景色
-
-bgColor 为图片未加载出来时的底色
+#### Background colour
 
 ```tsx
 <UPSwiper list={LIST} bgColor='#1f2937' height={110} />
 ```
 
-#### 左右留白
-
-previousMargin / nextMargin 露出前后项，非当前项自动缩放
+#### Horizontal padding
 
 ```tsx
 <UPSwiper
@@ -273,17 +261,13 @@ previousMargin / nextMargin 露出前后项，非当前项自动缩放
 />
 ```
 
-#### 纵向滚动
-
-vertical 为 true 时上下切换
+#### Vertical scrolling
 
 ```tsx
 <UPSwiper list={LIST} vertical circular indicator height={150} />
 ```
 
-#### 标题
-
-showTitle 需要 list 元素带 title 字段
+#### Title
 
 ```tsx
 <UPSwiper list={TITLE_LIST} showTitle circular height={160} />
@@ -295,7 +279,7 @@ showTitle 需要 list 元素带 title 字段
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -320,7 +304,7 @@ const list1 = reactive([
 </script>
 ```
 
-#### 带标题
+#### With a title
 
 ```vue
 <template>
@@ -356,7 +340,7 @@ const list2 = reactive([
 </script>
 ```
 
-#### 带指示器
+#### With indicators
 
 ```vue
 <template>
@@ -382,7 +366,7 @@ const list3 = ref([
 </script>
 ```
 
-#### 加载中
+#### Loading
 
 ```vue
 <template>
@@ -406,7 +390,7 @@ const list3 = ref([
 </script>
 ```
 
-#### 插槽自定义内容
+#### Custom slot content
 
 ```vue
 <template>
@@ -435,7 +419,7 @@ const list1 = reactive([
 </script>
 ```
 
-#### 嵌入视频
+#### Embedded video
 
 ```vue
 <template>
@@ -474,7 +458,7 @@ const list4 = reactive([
 </script>
 ```
 
-#### 指定类型
+#### Choosing the type
 
 ```vue
 <template>
@@ -512,7 +496,7 @@ const list4 = reactive([
 </script>
 ```
 
-#### 自定义指示器
+#### Custom indicator
 
 ```vue
 <template>
@@ -619,7 +603,7 @@ const list6 = reactive([
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -644,7 +628,7 @@ const list1 = reactive([
 </script>
 ```
 
-#### 纵向滑动
+#### Vertical swiping
 
 ```vue
 <template>
@@ -659,7 +643,7 @@ const list1 = reactive([
 </template>
 ```
 
-#### 带标题
+#### With a title
 
 ```vue
 <template>
@@ -695,7 +679,7 @@ const list2 = reactive([
 </script>
 ```
 
-#### 带指示器
+#### With indicators
 
 ```vue
 <template>
@@ -721,7 +705,7 @@ const list3 = ref([
 </script>
 ```
 
-#### 加载中
+#### Loading
 
 ```vue
 <template>
@@ -745,7 +729,7 @@ const list3 = ref([
 </script>
 ```
 
-#### 嵌入视频
+#### Embedded video
 
 ```vue
 <template>
@@ -784,7 +768,7 @@ const list4 = reactive([
 </script>
 ```
 
-#### 指定类型
+#### Choosing the type
 
 ```vue
 <template>
@@ -822,7 +806,7 @@ const list4 = reactive([
 </script>
 ```
 
-#### 自定义指示器
+#### Custom indicator
 
 ```vue
 <template>

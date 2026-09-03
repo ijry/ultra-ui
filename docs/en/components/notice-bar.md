@@ -38,7 +38,7 @@ UPNoticeBar(
 
 <template #harmony>
 
-#### 公告栏
+#### Notice bar
 
 ```typescript
 import { UPNoticeBar, UPNoticeBarProps } from '@lingyun/ultra-ui-hos';
@@ -52,7 +52,7 @@ UPNoticeBar({ props: new UPNoticeBarProps({ show: this.show, text: ['HarmonyOS N
 
 <template #flutter>
 
-#### 基础功能
+#### Basic features
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -63,7 +63,7 @@ UPNoticeBar(
 )
 ```
 
-#### 自定义横向滚动速度
+#### Custom horizontal scroll speed
 
 ```dart
 UPNoticeBar(
@@ -73,7 +73,7 @@ UPNoticeBar(
 )
 ```
 
-#### 可跳转(点击右箭头)
+#### Navigable via the chevron
 
 ```dart
 UPNoticeBar(
@@ -84,7 +84,7 @@ UPNoticeBar(
 )
 ```
 
-#### 横向步进滚动
+#### Stepped horizontal scrolling
 
 ```dart
 UPNoticeBar(
@@ -94,7 +94,7 @@ UPNoticeBar(
 )
 ```
 
-#### 纵向滚动
+#### Vertical scrolling
 
 ```dart
 UPNoticeBar(
@@ -104,7 +104,7 @@ UPNoticeBar(
 )
 ```
 
-#### 纵向滚动(文字居中)
+#### Vertical scrolling with centred text
 
 ```dart
 UPNoticeBar(
@@ -115,7 +115,7 @@ UPNoticeBar(
 )
 ```
 
-#### 自定义样式
+#### Custom styling
 
 ```dart
 UPNoticeBar(
@@ -143,9 +143,7 @@ No snippet could be extracted automatically — please read the source.
 
 <template #taro>
 
-#### 横向滚动
-
-mode="horizontal"（默认），内容超出时自动跑马灯
+#### Horizontal scrolling
 
 ```tsx
 import { UPNoticeBar } from '@ultra-ui'
@@ -157,9 +155,7 @@ import { UPNoticeBar } from '@ultra-ui'
 />
 ```
 
-#### 纵向轮播
-
-mode="vertical"，text 传数组逐条切换
+#### Vertical carousel
 
 ```tsx
 <UPNoticeBar
@@ -168,9 +164,7 @@ mode="vertical"，text 传数组逐条切换
 />
 ```
 
-#### 自定义样式
-
-color / bgColor / fontSize / speed
+#### Custom styling
 
 ```tsx
 <UPNoticeBar
@@ -190,7 +184,7 @@ color / bgColor / fontSize / speed
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -209,7 +203,7 @@ const text1 = ref('uview-plus UI众多组件覆盖开发过程的各个需求，
 </script>
 ```
 
-#### 可关闭
+#### Closable
 
 ```vue
 <template>
@@ -228,7 +222,7 @@ const text1 = ref('uview-plus UI众多组件覆盖开发过程的各个需求，
 </script>
 ```
 
-#### 配置滚动速度和跳转
+#### Scroll speed and jumping
 
 ```vue
 <template>
@@ -253,7 +247,7 @@ const text1 = ref('uview-plus UI众多组件覆盖开发过程的各个需求，
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -272,7 +266,7 @@ const text1 = ref('uview-ultra UI众多组件覆盖开发过程的各个需求�
 </script>
 ```
 
-#### 可关闭
+#### Closable
 
 ```vue
 <template>
@@ -291,7 +285,7 @@ const text1 = ref('uview-ultra UI众多组件覆盖开发过程的各个需求�
 </script>
 ```
 
-#### 配置滚动速度和跳转
+#### Scroll speed and jumping
 
 ```vue
 <template>

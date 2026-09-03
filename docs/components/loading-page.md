@@ -206,7 +206,7 @@ children 覆盖默认图标 + 文本
 <up-loading-page font-size="24"></up-loading-page>
 ```
 
-#### 图标大小 <badge text="2.0.32" />
+#### 图标大小
 
 `icon-size`可以指定图标大小
 
@@ -279,7 +279,7 @@ children 覆盖默认图标 + 文本
 <up-loading-page font-size="24"></up-loading-page>
 ```
 
-#### 图标大小 <badge text="2.0.32" />
+#### 图标大小
 
 `icon-size`可以指定图标大小
 

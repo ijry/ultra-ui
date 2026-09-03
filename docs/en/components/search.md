@@ -88,7 +88,7 @@ UPSearch({ props: new UPSearchProps({
 
 <template #flutter>
 
-#### 基础功能
+#### Basic features
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -100,7 +100,7 @@ UPSearch(
 )
 ```
 
-#### 设置初始值
+#### Setting an initial value
 
 ```dart
 UPSearch(
@@ -110,7 +110,7 @@ UPSearch(
 )
 ```
 
-#### 搜索框形状
+#### Search box shape
 
 ```dart
 UPSearch(
@@ -121,7 +121,7 @@ UPSearch(
 )
 ```
 
-#### 右侧控件
+#### Trailing control
 
 ```dart
 UPSearch(
@@ -131,7 +131,7 @@ UPSearch(
 )
 ```
 
-#### 可清空内容(仅focus时显示清除图标)
+#### Clearable (clear icon on focus only)
 
 ```dart
 UPSearch(
@@ -142,7 +142,7 @@ UPSearch(
 )
 ```
 
-#### 可清空内容(始终显示清除图标)
+#### Clearable (clear icon always visible)
 
 ```dart
 UPSearch(
@@ -154,7 +154,7 @@ UPSearch(
 )
 ```
 
-#### 禁用输入框
+#### Disabled input
 
 ```dart
 UPSearch(
@@ -164,7 +164,7 @@ UPSearch(
 )
 ```
 
-#### 点击左侧图标
+#### Tapping the leading icon
 
 ```dart
 UPSearch(
@@ -181,7 +181,7 @@ UPSearch(
 
 <template #reactnative>
 
-#### 设置初始值
+#### Setting an initial value
 
 ```tsx
 import { UPSearch } from 'ultra-ui-rn';
@@ -189,25 +189,25 @@ import { UPSearch } from 'ultra-ui-rn';
 <UPSearch onChange={setValue2} showAction={false} value={value2} />
 ```
 
-#### 搜索框形状
+#### Search box shape
 
 ```tsx
 <UPSearch onChange={setValue3} shape="round" showAction={false} value={value3} />
 ```
 
-#### 右侧控件
+#### Trailing control
 
 ```tsx
 <UPSearch animation onChange={setValue5} value={value5} />
 ```
 
-#### 可清空内容(仅focus时显示清除图标)
+#### Clearable (clear icon on focus only)
 
 ```tsx
 <UPSearch clearabled onChange={setValue2} showAction={false} value={value2} />
 ```
 
-#### 可清空内容(始终显示清除图标)
+#### Clearable (clear icon always visible)
 
 ```tsx
 <UPSearch
@@ -219,7 +219,7 @@ import { UPSearch } from 'ultra-ui-rn';
 />
 ```
 
-#### 禁用输入框
+#### Disabled input
 
 ```tsx
 <UPSearch
@@ -229,13 +229,13 @@ import { UPSearch } from 'ultra-ui-rn';
 />
 ```
 
-#### 点击左侧图标
+#### Tapping the leading icon
 
 ```tsx
 <UPSearch onChange={setValue6} onClickIcon={clickIcon} showAction={false} value={value6} />
 ```
 
-#### 搜索框内容水平对齐
+#### Horizontal alignment inside the search box
 
 ```tsx
 <UPSearch inputAlign="left" onChange={setValue7} showAction={false} value={value7} />
@@ -247,9 +247,7 @@ import { UPSearch } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 基础用法
-
-value + onChange 受控绑定
+#### Basic usage
 
 ```tsx
 import { UPSearch } from '@ultra-ui'
@@ -257,9 +255,7 @@ import { UPSearch } from '@ultra-ui'
 <UPSearch value={basic} onChange={setBasic} />
 ```
 
-#### 形状
-
-shape：round（默认圆角） / square 方角
+#### Shapes
 
 ```tsx
 <UPSearch
@@ -270,9 +266,7 @@ shape：round（默认圆角） / square 方角
 />
 ```
 
-#### 隐藏搜索按钮
-
-showAction=false
+#### Hiding the search button
 
 ```tsx
 <UPSearch
@@ -283,9 +277,7 @@ showAction=false
 />
 ```
 
-#### 背景色
-
-bgColor 自定义输入区背景
+#### Background colour
 
 ```tsx
 <UPSearch
@@ -296,9 +288,7 @@ bgColor 自定义输入区背景
 />
 ```
 
-#### 边框
-
-borderColor 给输入区加一圈描边
+#### Border
 
 ```tsx
 <UPSearch
@@ -310,9 +300,7 @@ borderColor 给输入区加一圈描边
 />
 ```
 
-#### 图标位置
-
-iconPosition：left（默认） / right
+#### Icon position
 
 ```tsx
 <UPSearch
@@ -323,9 +311,7 @@ iconPosition：left（默认） / right
 />
 ```
 
-#### 自定义图标
-
-searchIcon / searchIconColor / searchIconSize
+#### Custom icon
 
 ```tsx
 <UPSearch
@@ -338,9 +324,7 @@ searchIcon / searchIconColor / searchIconSize
 />
 ```
 
-#### 文字对齐
-
-inputAlign：left / center / right
+#### Text alignment
 
 ```tsx
 <UPSearch
@@ -357,7 +341,7 @@ inputAlign：left / center / right
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -374,25 +358,25 @@ const keyword = ref('遥看瀑布挂前川');
 </script>
 ```
 
-#### 设置输入框形状
+#### Input shape
 
 ```vue
 <up-search shape="round"></up-search>
 ```
 
-#### 是否开启清除控件
+#### Whether the clear button shows
 
 ```vue
 <up-search :clearabled="true"></up-search>
 ```
 
-#### 是否开启右边控件
+#### Whether the trailing control shows
 
 ```vue
 <up-search :show-action="true" actionText="搜索" :animation="true"></up-search>
 ```
 
-#### 自定义样式
+#### Custom styling
 
 ```vue
 <up-search inputAlign="center" height="70"></up-search>
@@ -404,7 +388,7 @@ const keyword = ref('遥看瀑布挂前川');
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -421,25 +405,25 @@ const keyword = ref('遥看瀑布挂前川');
 </script>
 ```
 
-#### 设置输入框形状
+#### Input shape
 
 ```vue
 <up-search shape="round"></up-search>
 ```
 
-#### 是否开启清除控件
+#### Whether the clear button shows
 
 ```vue
 <up-search :clearabled="true"></up-search>
 ```
 
-#### 是否开启右边控件
+#### Whether the trailing control shows
 
 ```vue
 <up-search :show-action="true" actionText="搜索" :animation="true"></up-search>
 ```
 
-#### 自定义样式
+#### Custom styling
 
 ```vue
 <up-search inputAlign="center" height="70"></up-search>

@@ -18,7 +18,7 @@ Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examp
 
 <template #flutter>
 
-#### 默认
+#### Default
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -51,9 +51,7 @@ No snippet could be extracted automatically — please read the source.
 
 <template #taro>
 
-#### 自定义地址
-
-输入其他 PDF 链接后重新加载
+#### Custom address
 
 ```tsx
 import { UPPdfReader } from '@ultra-ui'
@@ -61,9 +59,7 @@ import { UPPdfReader } from '@ultra-ui'
 <UPPdfReader src={src} height='360px' />
 ```
 
-#### 自定义高度
-
-height 控制容器高度
+#### Custom height
 
 ```tsx
 <UPPdfReader src={SAMPLE} height='240px' />
@@ -75,7 +71,7 @@ height 控制容器高度
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -95,7 +91,7 @@ const pdfUrl = ref('https://example.com/sample.pdf')
 </script>
 ```
 
-#### 自定义高度
+#### Custom height
 
 ```vue
 <template>
@@ -108,7 +104,7 @@ const pdfUrl = ref('https://example.com/sample.pdf')
 </template>
 ```
 
-#### 使用自定义pdf.js
+#### Using your own pdf.js
 
 ```vue
 <template>
@@ -127,7 +123,7 @@ const pdfUrl = ref('https://example.com/sample.pdf')
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -147,7 +143,7 @@ const pdfUrl = ref('https://example.com/sample.pdf')
 </script>
 ```
 
-#### 自定义高度
+#### Custom height
 
 ```vue
 <template>
@@ -160,7 +156,7 @@ const pdfUrl = ref('https://example.com/sample.pdf')
 </template>
 ```
 
-#### 使用自定义pdf.js
+#### Using your own pdf.js
 
 ```vue
 <template>

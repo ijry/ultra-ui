@@ -31,7 +31,7 @@ No snippet could be extracted automatically — please read the source.
 
 <template #flutter>
 
-#### 基础功能
+#### Basic features
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -46,7 +46,7 @@ UPCode(
 )
 ```
 
-#### 文本样式
+#### Text styling
 
 ```dart
 UPCode(
@@ -64,7 +64,7 @@ UPCode(
 
 <template #reactnative>
 
-#### 文本样式
+#### Text styling
 
 ```tsx
 import { UPCode } from 'ultra-ui-rn';
@@ -84,9 +84,7 @@ import { UPCode } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 重置（reset）
-
-通过 ref.reset() 立即结束倒计时并回到 endText
+#### Reset
 
 ```tsx
 import { UPCode } from '@ultra-ui'
@@ -100,7 +98,7 @@ import { UPCode } from '@ultra-ui'
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -157,7 +155,7 @@ const start = () => {
 </style>
 ```
 
-#### 保持倒计时
+#### Persisting the countdown
 
 ```vue
 /* A.vue */
@@ -173,7 +171,7 @@ const start = () => {
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -230,7 +228,7 @@ const start = () => {
 </style>
 ```
 
-#### 保持倒计时
+#### Persisting the countdown
 
 ```vue
 /* A.vue */

@@ -31,7 +31,7 @@ No snippet could be extracted automatically — please read the source.
 
 <template #flutter>
 
-#### 基础功能
+#### Basic features
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -43,7 +43,7 @@ const UPBox(
 )
 ```
 
-#### 自定义插槽
+#### Custom slot
 
 ```dart
 const UPBox(
@@ -77,9 +77,7 @@ import { UPBox } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 基础用法
-
-带内边距/背景/圆角的 2x2 布局容器
+#### Basic usage
 
 ```tsx
 import { UPBox } from '@ultra-ui'
@@ -98,9 +96,7 @@ import { UPBox } from '@ultra-ui'
 />
 ```
 
-#### 纯标题（无图标）
-
-只传 title，图标留空
+#### Title only, no icon
 
 ```tsx
 <UPBox
@@ -114,9 +110,7 @@ import { UPBox } from '@ultra-ui'
 />
 ```
 
-#### 渐变背景
-
-bgColors 支持任意 CSS 颜色（含渐变）
+#### Gradient background
 
 ```tsx
 <UPBox
@@ -134,9 +128,7 @@ bgColors 支持任意 CSS 颜色（含渐变）
 />
 ```
 
-#### 尺寸与间距
-
-通过 height / gap / borderRadius 调整
+#### Size and spacing
 
 ```tsx
 <UPBox
@@ -156,7 +148,7 @@ bgColors 支持任意 CSS 颜色（含渐变）
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -182,7 +174,7 @@ bgColors 支持任意 CSS 颜色（含渐变）
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>

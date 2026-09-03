@@ -18,7 +18,7 @@ Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examp
 
 <template #flutter>
 
-#### 基本使用
+#### Basic usage
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -67,9 +67,7 @@ import { UPVirtualList } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 一万条数据
-
-滚动时观察渲染项数是否恒定，内存与帧率不随总量增长
+#### Ten thousand rows
 
 ```tsx
 import { UPVirtualList } from '@ultra-ui'
@@ -85,9 +83,7 @@ import { UPVirtualList } from '@ultra-ui'
 />
 ```
 
-#### 数据量小于一屏
-
-仅 5 条数据，底部不应出现多余空白
+#### Fewer items than fill the screen
 
 ```tsx
 <UPVirtualList
@@ -98,9 +94,7 @@ import { UPVirtualList } from '@ultra-ui'
 />
 ```
 
-#### 缓冲区
-
-buffer 越大预渲染越多，滚动时空白概率越低但开销略增
+#### Buffer
 
 ```tsx
 <UPVirtualList
@@ -118,7 +112,7 @@ buffer 越大预渲染越多，滚动时空白概率越低但开销略增
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -162,7 +156,7 @@ onMounted(() => {
 </script>
 ```
 
-#### 设置列表高度
+#### List height
 
 ```vue
 <template>
@@ -193,7 +187,7 @@ const list = ref(Array.from({ length: 1000 }, (_, index) => ({
 </script>
 ```
 
-#### 自定义缓冲区
+#### Custom buffer
 
 ```vue
 <template>
@@ -224,7 +218,7 @@ const list = ref(Array.from({ length: 5000 }, (_, index) => ({
 </script>
 ```
 
-#### 监听滚动事件
+#### Listening for scroll events
 
 ```vue
 <template>
@@ -285,7 +279,7 @@ const handleScroll = (scrollTop) => {
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -329,7 +323,7 @@ onMounted(() => {
 </script>
 ```
 
-#### 设置列表高度
+#### List height
 
 ```vue
 <template>
@@ -360,7 +354,7 @@ const list = ref(Array.from({ length: 1000 }, (_, index) => ({
 </script>
 ```
 
-#### 自定义缓冲区
+#### Custom buffer
 
 ```vue
 <template>
@@ -391,7 +385,7 @@ const list = ref(Array.from({ length: 5000 }, (_, index) => ({
 </script>
 ```
 
-#### 监听滚动事件
+#### Listening for scroll events
 
 ```vue
 <template>

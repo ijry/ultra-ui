@@ -18,7 +18,7 @@ Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examp
 
 <template #ios>
 
-#### 主题类型
+#### Theme types
 
 ```swift
 import SwiftUI
@@ -27,13 +27,13 @@ import UltraUI
 UPButton(type: "primary", size: "large", text: "主按钮")
 ```
 
-#### 形状和状态
+#### Shape and state
 
 ```swift
 UPButton(type: "primary", shape: "circle", text: "胶囊按钮")
 ```
 
-#### 尺寸和图标
+#### Size and icon
 
 ```swift
 UPButton(type: "primary", size: "small", text: "Small")
@@ -61,7 +61,7 @@ UPButton(
 
 <template #harmony>
 
-#### 基础类型
+#### Basic types
 
 ```typescript
 import { UPButton, UPButtonProps } from '@lingyun/ultra-ui-hos';
@@ -75,7 +75,7 @@ UPButton({ props: new UPButtonProps({
 }) })
 ```
 
-#### 加载与禁用
+#### Loading and disabled
 
 ```typescript
 UPButton({ props: new UPButtonProps({
@@ -95,7 +95,7 @@ UPButton({ props: new UPButtonProps({
 
 <template #flutter>
 
-#### 按钮类型
+#### Button types
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -107,26 +107,26 @@ UPButton(
 )
 ```
 
-#### 镂空按钮
+#### Plain button
 
 ```dart
 UPButton(text: '镂空按钮', type: 'info', plain: true)
 ```
 
-#### 细边按钮
+#### Hairline button
 
 ```dart
 UPButton(
     text: '细边按钮', type: 'info', plain: true, hairline: true)
 ```
 
-#### 禁用按钮
+#### Disabled button
 
 ```dart
 UPButton(text: '禁用按钮', type: 'info', disabled: true)
 ```
 
-#### 加载中
+#### Loading
 
 ```dart
 UPButton(
@@ -137,7 +137,7 @@ UPButton(
 )
 ```
 
-#### 按钮图标&按钮形状
+#### Button icon and shape
 
 ```dart
 UPButton(
@@ -148,7 +148,7 @@ UPButton(
 )
 ```
 
-#### 自定义颜色
+#### Custom colour
 
 ```dart
 UPButton(
@@ -161,7 +161,7 @@ UPButton(
 )
 ```
 
-#### 自定义大小
+#### Custom size
 
 ```dart
 UPButton(text: '超大尺寸', size: 'large', type: 'success')
@@ -173,7 +173,7 @@ UPButton(text: '超大尺寸', size: 'large', type: 'success')
 
 <template #reactnative>
 
-#### 按钮类型
+#### Button types
 
 ```tsx
 import { UPButton } from 'ultra-ui-rn';
@@ -181,37 +181,37 @@ import { UPButton } from 'ultra-ui-rn';
 <UPButton text="成功按钮" size="normal" type="success" />
 ```
 
-#### 镂空按钮
+#### Plain button
 
 ```tsx
 <UPButton text="镂空按钮" size="normal" type="info" plain />
 ```
 
-#### 细边按钮
+#### Hairline button
 
 ```tsx
 <UPButton text="细边按钮" size="normal" type="info" plain hairline />
 ```
 
-#### 禁用按钮
+#### Disabled button
 
 ```tsx
 <UPButton disabled text="禁用按钮" size="normal" type="info" />
 ```
 
-#### 加载中
+#### Loading
 
 ```tsx
 <UPButton loadingText="加载中" size="normal" loading loadingMode="circle" type="success" />
 ```
 
-#### 按钮图标&按钮形状
+#### Button icon and shape
 
 ```tsx
 <UPButton text="按钮图标" size="normal" icon="map" plain type="warning" />
 ```
 
-#### 自定义颜色
+#### Custom colour
 
 ```tsx
 <UPButton
@@ -221,7 +221,7 @@ import { UPButton } from 'ultra-ui-rn';
 />
 ```
 
-#### 自定义大小
+#### Custom size
 
 ```tsx
 <UPButton text="超大尺寸" size="large" type="success" />
@@ -233,9 +233,7 @@ import { UPButton } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 主题
-
-type 属性，共 5 种
+#### Themes
 
 ```tsx
 import { UPButton } from '@ultra-ui'
@@ -243,53 +241,43 @@ import { UPButton } from '@ultra-ui'
 <UPButton text='info' />
 ```
 
-#### 镂空
-
-plain 属性，背景透明
+#### Plain
 
 ```tsx
 <UPButton plain text='info' />
 ```
 
-#### 细边框
-
-hairline 配合 plain 使用
+#### Hairline border
 
 ```tsx
 <UPButton plain hairline type='primary' text='primary' />
 ```
 
-#### 禁用
+#### Disabled
 
 ```tsx
 <UPButton disabled text='info' />
 ```
 
-#### 形状
-
-shape=circle 圆角 / square 方角
+#### Shapes
 
 ```tsx
 <UPButton shape='circle' type='primary' text='circle' />
 ```
 
-#### 尺寸
-
-size：large / normal / small / mini
+#### Sizes
 
 ```tsx
 <UPButton size='large' type='primary' text='large' />
 ```
 
-#### 图标
+#### Icons
 
 ```tsx
 <UPButton icon='star' type='primary' text='收藏' />
 ```
 
-#### 加载中
-
-loading / loadingText / loadingMode
+#### Loading
 
 ```tsx
 <UPButton loading loadingMode='circle' loadingText='加载中' />
@@ -301,13 +289,13 @@ loading / loadingText / loadingMode
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <up-button text="月落"></up-button>
 ```
 
-#### 设置按钮的多种形态
+#### Every button variant
 
 ```vue
 <template>
@@ -333,7 +321,7 @@ const disabled = ref(true);
 </script>
 ```
 
-#### 定义需要用到的外部样式
+#### Defining external styles
 
 ```vue
 <template>
@@ -367,13 +355,13 @@ const customStyle = reactive({
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <up-button text="月落"></up-button>
 ```
 
-#### 设置按钮的多种形态
+#### Every button variant
 
 ```vue
 <template>
@@ -399,7 +387,7 @@ const disabled = ref(true);
 </script>
 ```
 
-#### 定义需要用到的外部样式
+#### Defining external styles
 
 ```vue
 <template>

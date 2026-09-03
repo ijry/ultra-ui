@@ -31,7 +31,7 @@ DemoSection("下拉选择") { UPSelect(UPSelectProps(options = listOf(mapOf("id"
 
 <template #flutter>
 
-#### 默认
+#### Default
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -47,7 +47,7 @@ UPSelect(
 )
 ```
 
-#### 插槽
+#### Slots
 
 ```dart
 UPSelect(
@@ -66,7 +66,7 @@ UPSelect(
 )
 ```
 
-#### 边框与下拉宽度
+#### Border and dropdown width
 
 ```dart
 UPSelect(
@@ -112,7 +112,7 @@ No snippet could be extracted automatically — please read the source.
 
 <template #uniapp>
 
-#### 点击获取所点击选项ID
+#### Reading the tapped option id
 
 ```vue
 <template>
@@ -157,7 +157,7 @@ const selectItem = (item) => {
 
 <template #uniappx>
 
-#### 点击获取所点击选项ID
+#### Reading the tapped option id
 
 ```vue
 <template>

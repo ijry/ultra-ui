@@ -161,8 +161,8 @@ function sections(text) {
     const heading = line.match(/^(#{3,4})\s+(.+?)\s*$/)
     if (heading) {
       const title = heading[2]
-        .replace(/<Badge[^>]*\/?>/g, '')
-        .replace(/<to-api\s*\/?>/g, '')
+        .replace(/<badge[^>]*\/?>/gi, '')
+        .replace(/<to-api\s*\/?>/gi, '')
         .trim()
       current = { title, lines: [] }
       out.push(current)

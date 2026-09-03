@@ -30,7 +30,7 @@ No snippet could be extracted automatically — please read the source.
 
 <template #flutter>
 
-#### 演示案例
+#### Worked example
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -54,7 +54,7 @@ UPSwipeAction(
 )
 ```
 
-#### 按钮组
+#### Button group
 
 ```dart
 UPSwipeAction(
@@ -80,7 +80,7 @@ UPSwipeAction(
 )
 ```
 
-#### 带图标
+#### With an icon
 
 ```dart
 UPSwipeAction(
@@ -102,7 +102,7 @@ UPSwipeAction(
 )
 ```
 
-#### 组合使用
+#### Combined usage
 
 ```dart
 UPSwipeAction(
@@ -120,7 +120,7 @@ UPSwipeAction(
 
 <template #reactnative>
 
-#### 演示案例
+#### Worked example
 
 ```tsx
 import { UPSwipeAction } from 'ultra-ui-rn';
@@ -142,7 +142,7 @@ import { UPSwipeAction } from 'ultra-ui-rn';
 </UPSwipeAction>
 ```
 
-#### 按钮组
+#### Button group
 
 ```tsx
 <UPSwipeAction>
@@ -154,7 +154,7 @@ import { UPSwipeAction } from 'ultra-ui-rn';
 </UPSwipeAction>
 ```
 
-#### 带图标
+#### With an icon
 
 ```tsx
 <UPSwipeAction>
@@ -166,7 +166,7 @@ import { UPSwipeAction } from 'ultra-ui-rn';
 </UPSwipeAction>
 ```
 
-#### 组合使用
+#### Combined usage
 
 ```tsx
 <UPSwipeAction>
@@ -180,7 +180,7 @@ import { UPSwipeAction } from 'ultra-ui-rn';
 </UPSwipeAction>
 ```
 
-#### 自定义按钮形状
+#### Custom button shape
 
 ```tsx
 <UPSwipeAction>
@@ -198,9 +198,7 @@ import { UPSwipeAction } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 基础用法
-
-向左滑动行露出操作按钮，最多同时展开一行
+#### Basic usage
 
 ```tsx
 import { UPSwipeAction } from '@ultra-ui'
@@ -220,9 +218,7 @@ import { UPSwipeAction } from '@ultra-ui'
 </UPSwipeAction>
 ```
 
-#### 多行列表
-
-每行独立，展开一行会自动收起其它行
+#### Multi-line list
 
 ```tsx
 <UPSwipeAction>
@@ -243,9 +239,7 @@ import { UPSwipeAction } from '@ultra-ui'
 </UPSwipeAction>
 ```
 
-#### 禁用滑动
-
-disabled 时不可滑动展开
+#### Swiping disabled
 
 ```tsx
 <UPSwipeAction>
@@ -266,7 +260,7 @@ disabled 时不可滑动展开
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -323,7 +317,7 @@ const options1 = reactive([{
 </style>
 ```
 
-#### 防止页面或容器滚动
+#### Preventing the page from scrolling
 
 ```vue
 <template>
@@ -370,7 +364,7 @@ const swipeScrolling = ref(false)
 </script>
 ```
 
-#### 多个按钮并列
+#### Several buttons side by side
 
 ```vue
 <template>
@@ -434,7 +428,7 @@ const options2 = reactive([
 </style>
 ```
 
-#### 组合使用
+#### Combined usage
 
 ```vue
 <template>
@@ -543,7 +537,7 @@ const options4 = reactive([
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -600,7 +594,7 @@ const options1 = reactive([{
 </style>
 ```
 
-#### 防止页面或容器滚动
+#### Preventing the page from scrolling
 
 ```vue
 <template>
@@ -647,7 +641,7 @@ const swipeScrolling = ref(false)
 </script>
 ```
 
-#### 多个按钮并列
+#### Several buttons side by side
 
 ```vue
 <template>
@@ -711,7 +705,7 @@ const options2 = reactive([
 </style>
 ```
 
-#### 组合使用
+#### Combined usage
 
 ```vue
 <template>

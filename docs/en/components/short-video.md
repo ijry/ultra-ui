@@ -54,7 +54,7 @@ No snippet could be extracted automatically — please read the source.
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -167,7 +167,7 @@ const onCollect = ({ item, index }) => {
 </script>
 ```
 
-#### 自定义插槽示例
+#### Custom slot
 
 ```vue
 <template>
@@ -329,7 +329,7 @@ const onCollect = ({ item, index }) => {
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -442,7 +442,7 @@ const onCollect = ({ item, index }) => {
 </script>
 ```
 
-#### 自定义插槽示例
+#### Custom slot
 
 ```vue
 <template>

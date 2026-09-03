@@ -52,7 +52,7 @@ UPLine(props = UPLineProps(color = "#2979ff", length = "100%", margin = "8px"))
 
 <template #harmony>
 
-#### 基础线条
+#### Basic line
 
 ```typescript
 import { UPLine, UPLineProps } from '@lingyun/ultra-ui-hos';
@@ -60,7 +60,7 @@ import { UPLine, UPLineProps } from '@lingyun/ultra-ui-hos';
 UPLine({ props: new UPLineProps() })
 ```
 
-#### 竖向线条与虚线兼容
+#### Vertical and dashed together
 
 ```typescript
 UPLine({ props: new UPLineProps({ direction: 'col', length: 48, color: 'success' }) })
@@ -109,7 +109,7 @@ _LineBlock('是否虚线', UPLine(color: '#2979ff', dashed: true)
 
 <template #reactnative>
 
-#### 基本案例
+#### Basic example
 
 ```tsx
 import { UPLine } from 'ultra-ui-rn';
@@ -117,37 +117,37 @@ import { UPLine } from 'ultra-ui-rn';
 <UPLine />
 ```
 
-#### 自定义颜色
+#### Custom colour
 
 ```tsx
 <UPLine color="#2979ff" />
 ```
 
-#### 自定义长度
+#### Custom length
 
 ```tsx
 <UPLine length="200" />
 ```
 
-#### 自定义方向
+#### Custom direction
 
 ```tsx
 <UPLine color="#2979ff" direction="col" length="30" />
 ```
 
-#### 是否显示1px粗线条
+#### Showing a 1px line
 
 ```tsx
 <UPLine hairline={false} />
 ```
 
-#### 线条与上下左右元素的间距
+#### Spacing around the line
 
 ```tsx
 <UPLine margin="20" />
 ```
 
-#### 是否虚线
+#### Dashed or solid
 
 ```tsx
 <UPLine color="#2979ff" dashed />
@@ -159,9 +159,7 @@ import { UPLine } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 基础用法
-
-默认横向、100% 长度、0.5px 细线
+#### Basic usage
 
 ```tsx
 import { UPLine } from '@ultra-ui'
@@ -169,57 +167,43 @@ import { UPLine } from '@ultra-ui'
 <UPLine />
 ```
 
-#### 长度
-
-length 支持百分比与带单位的值
+#### Length
 
 ```tsx
 <UPLine length='100%' />
 ```
 
-#### 颜色
-
-color 支持主题 token 与任意 CSS 颜色
+#### Colours
 
 ```tsx
 <UPLine />
 ```
 
-#### 虚线
-
-dashed 属性
+#### Dashed
 
 ```tsx
 <UPLine />
 ```
 
-#### 线条粗细
-
-hairline=true 为 0.5px 细线，false 为 1px
+#### Line thickness
 
 ```tsx
 <UPLine hairline />
 ```
 
-#### 间距
-
-margin 支持 CSS margin 简写
+#### Spacing
 
 ```tsx
 <UPLine />
 ```
 
-#### 竖向线条
-
-direction=col，length 表现为高度
+#### Vertical line
 
 ```tsx
 <UPLine direction='col' length='24px' />
 ```
 
-#### 应用场景
-
-作为列表项之间的分割线
+#### When to use it
 
 ```tsx
 <UPLine />
@@ -231,7 +215,7 @@ direction=col，length 表现为高度
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -249,7 +233,7 @@ direction=col，length 表现为高度
 </template>
 ```
 
-#### 是否虚线
+#### Dashed or solid
 
 ```vue
 <template>
@@ -263,7 +247,7 @@ direction=col，length 表现为高度
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -281,7 +265,7 @@ direction=col，length 表现为高度
 </template>
 ```
 
-#### 是否虚线
+#### Dashed or solid
 
 ```vue
 <template>

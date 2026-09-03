@@ -30,7 +30,7 @@ No snippet could be extracted automatically — please read the source.
 
 <template #reactnative>
 
-#### 基础视图
+#### Basic view
 
 ```tsx
 import { UPView } from 'ultra-ui-rn';
@@ -50,7 +50,7 @@ import { UPView } from 'ultra-ui-rn';
 </UPView>
 ```
 
-#### 居中 + 边框
+#### Centred with a border
 
 ```tsx
 <UPView backgroundColor="#e8f5e9" justifyContent="center" alignItems="center" height={100} borderColor="#4caf50">
@@ -58,7 +58,7 @@ import { UPView } from 'ultra-ui-rn';
 </UPView>
 ```
 
-#### flex1 等分
+#### Equal columns with flex: 1
 
 ```tsx
 <UPView flexDirection="row" height={60}>
@@ -73,9 +73,7 @@ import { UPView } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 基础用法
-
-通用视图容器，可承载任意子节点
+#### Basic usage
 
 ```tsx
 import { UPView } from '@ultra-ui'
@@ -85,9 +83,7 @@ import { UPView } from '@ultra-ui'
 </UPView>
 ```
 
-#### 布局
-
-flexDirection / justifyContent / alignItems
+#### Layout
 
 ```tsx
 <UPView
@@ -104,9 +100,7 @@ flexDirection / justifyContent / alignItems
 </UPView>
 ```
 
-#### 尺寸与圆角
-
-width / height / radius / margin
+#### Size and corner radius
 
 ```tsx
 <UPView
@@ -124,9 +118,7 @@ width / height / radius / margin
 </UPView>
 ```
 
-#### 占满剩余空间
-
-flex1 撑满父容器剩余高度
+#### Filling the remaining space
 
 ```tsx
 <UPView customClass='view-demo__fill-wrap' flexDirection='column' height='200'>
@@ -135,9 +127,7 @@ flex1 撑满父容器剩余高度
   </UPView>
 ```
 
-#### 可点击
-
-onClick 触发，带按压反馈
+#### Tappable
 
 ```tsx
 <UPView
@@ -153,9 +143,7 @@ onClick 触发，带按压反馈
 </UPView>
 ```
 
-#### 边框与内边距
-
-borderColor / padding 简写
+#### Border and padding
 
 ```tsx
 <UPView

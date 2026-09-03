@@ -107,7 +107,7 @@ _LoadingBlock('自定义文字', UPLoadingIcon(vertical: true, text: '加载中'
 
 <template #reactnative>
 
-#### 自定义图片加载插槽
+#### Custom image-loading slot
 
 ```tsx
 import { UPLoadingIcon } from 'ultra-ui-rn';
@@ -121,9 +121,7 @@ loading={<UPLoadingIcon color="red" />
 
 <template #taro>
 
-#### 模式
-
-mode：spinner（默认）/ circle / semicircle
+#### Modes
 
 ```tsx
 import { UPLoadingIcon } from '@ultra-ui'
@@ -131,57 +129,43 @@ import { UPLoadingIcon } from '@ultra-ui'
 <UPLoadingIcon mode='spinner' />
 ```
 
-#### 颜色
-
-color 控制活动区域颜色
+#### Colours
 
 ```tsx
 <UPLoadingIcon mode='circle' color='#3c9cff' />
 ```
 
-#### 暗边颜色
-
-inactiveColor，仅 mode=circle 生效
+#### Shadow colour
 
 ```tsx
 <UPLoadingIcon mode='circle' color='#3c9cff' />
 ```
 
-#### 尺寸
-
-size，单位默认 px
+#### Sizes
 
 ```tsx
 <UPLoadingIcon mode='circle' size={18} color='#3c9cff' />
 ```
 
-#### 文字
-
-text / textSize / textColor
+#### Text
 
 ```tsx
 <UPLoadingIcon text='加载中' />
 ```
 
-#### 垂直排列
-
-vertical=true，文字排在图标下方
+#### Vertical layout
 
 ```tsx
 <UPLoadingIcon vertical text='加载中' />
 ```
 
-#### 动画速度
-
-duration，单位 ms，值越小转得越快
+#### Animation speed
 
 ```tsx
 <UPLoadingIcon mode='circle' color='#3c9cff' duration={400} />
 ```
 
-#### 动画曲线
-
-timingFunction，仅 circle / semicircle 生效
+#### Easing curve
 
 ```tsx
 <UPLoadingIcon mode='semicircle' color='#3c9cff' timingFunction='ease-in-out' />
@@ -193,7 +177,7 @@ timingFunction，仅 circle / semicircle 生效
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -203,13 +187,13 @@ timingFunction，仅 circle / semicircle 生效
 </template>
 ```
 
-#### 动画文字
+#### Animated text
 
 ```vue
 <up-loading-icon text="加载中" textSize="18"></up-loading-icon>
 ```
 
-#### 模式类型
+#### Modes
 
 ```vue
 <up-loading-icon text="花朵形"></up-loading-icon>
@@ -217,25 +201,25 @@ timingFunction，仅 circle / semicircle 生效
 <up-loading-icon mode="circle" text="圆型"></up-loading-icon>
 ```
 
-#### 排列类型
+#### Layout types
 
 ```vue
 <up-loading-icon :vertical="true"></up-loading-icon>
 ```
 
-#### 动画模式
+#### Animation modes
 
 ```vue
 <up-loading-icon timing-function="linear"></up-loading-icon>
 ```
 
-#### 动画运行时间
+#### Animation duration
 
 ```vue
 <up-loading-icon duration="2000"></up-loading-icon>
 ```
 
-#### 图标颜色
+#### Icon colour
 
 ```vue
 <up-loading-icon color="red"></up-loading-icon>
@@ -243,7 +227,7 @@ timingFunction，仅 circle / semicircle 生效
 <up-loading-icon mode="circle" inactive-color="red"></up-loading-icon>
 ```
 
-#### 图标尺寸
+#### Icon size
 
 ```vue
 <up-loading-icon size="36"></up-loading-icon>
@@ -255,7 +239,7 @@ timingFunction，仅 circle / semicircle 生效
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -265,13 +249,13 @@ timingFunction，仅 circle / semicircle 生效
 </template>
 ```
 
-#### 动画文字
+#### Animated text
 
 ```vue
 <up-loading-icon text="加载中" textSize="18"></up-loading-icon>
 ```
 
-#### 模式类型
+#### Modes
 
 ```vue
 <up-loading-icon text="花朵形"></up-loading-icon>
@@ -279,25 +263,25 @@ timingFunction，仅 circle / semicircle 生效
 <up-loading-icon mode="circle" text="圆型"></up-loading-icon>
 ```
 
-#### 排列类型
+#### Layout types
 
 ```vue
 <up-loading-icon :vertical="true"></up-loading-icon>
 ```
 
-#### 动画模式
+#### Animation modes
 
 ```vue
 <up-loading-icon timing-function="linear"></up-loading-icon>
 ```
 
-#### 动画运行时间
+#### Animation duration
 
 ```vue
 <up-loading-icon duration="2000"></up-loading-icon>
 ```
 
-#### 图标颜色
+#### Icon colour
 
 ```vue
 <up-loading-icon color="red"></up-loading-icon>
@@ -305,7 +289,7 @@ timingFunction，仅 circle / semicircle 生效
 <up-loading-icon mode="circle" inactive-color="red"></up-loading-icon>
 ```
 
-#### 图标尺寸
+#### Icon size
 
 ```vue
 <up-loading-icon size="36"></up-loading-icon>

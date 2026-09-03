@@ -18,7 +18,7 @@ Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examp
 
 <template #flutter>
 
-#### 不带logo
+#### Without a logo
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -31,13 +31,13 @@ const UPQrcode(
 )
 ```
 
-#### 带logo
+#### With a logo
 
 ```dart
 UPQrcode(cid: 'up2', size: 150, val: _sourceValue)
 ```
 
-#### 二维码颜色
+#### QR code colours
 
 ```dart
 const UPQrcode(
@@ -81,9 +81,7 @@ import { UPQrcode } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 基础用法
-
-val 为二维码内容，可用手机扫码验证
+#### Basic usage
 
 ```tsx
 import { UPQrcode } from '@ultra-ui'
@@ -91,25 +89,19 @@ import { UPQrcode } from '@ultra-ui'
 <UPQrcode val={text} size={200} showLoading={false} />
 ```
 
-#### 自定义内容
-
-输入后二维码实时重绘
+#### Custom content
 
 ```tsx
 <UPQrcode val={dynamic} size={180} showLoading={false} />
 ```
 
-#### 尺寸
-
-size 控制边长
+#### Sizes
 
 ```tsx
 <UPQrcode val='size 120' size={120} showLoading={false} />
 ```
 
-#### 自定义配色
-
-foreground 码点色，background 底色，pdground 三个定位角单独配色
+#### Custom palette
 
 ```tsx
 <UPQrcode
@@ -120,17 +112,13 @@ foreground 码点色，background 底色，pdground 三个定位角单独配色
 />
 ```
 
-#### 纠错等级
-
-lv 0-3，等级越高容错越强、码点越密
+#### Error-correction level
 
 ```tsx
 <UPQrcode val='level 0' size={130} lv={0} showLoading={false} />
 ```
 
-#### 静默区
-
-quietZone 控制四周留白圈数
+#### Quiet zone
 
 ```tsx
 <UPQrcode
@@ -141,9 +129,7 @@ quietZone 控制四周留白圈数
 />
 ```
 
-#### 中心图标
-
-icon 在码中心叠加图标，底部自动垫背景避免遮挡码点
+#### Centre icon
 
 ```tsx
 <UPQrcode
@@ -155,9 +141,7 @@ icon 在码中心叠加图标，底部自动垫背景避免遮挡码点
 />
 ```
 
-#### 点击预览
-
-allowPreview 开启后点击可全屏查看
+#### Tap to preview
 
 ```tsx
 <UPQrcode
@@ -174,7 +158,7 @@ allowPreview 开启后点击可全屏查看
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -186,7 +170,7 @@ allowPreview 开启后点击可全屏查看
 </template>
 ```
 
-#### 加载状态
+#### Loading state
 
 ```vue
 <template>
@@ -202,7 +186,7 @@ allowPreview 开启后点击可全屏查看
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -214,7 +198,7 @@ allowPreview 开启后点击可全屏查看
 </template>
 ```
 
-#### 加载状态
+#### Loading state
 
 ```vue
 <template>

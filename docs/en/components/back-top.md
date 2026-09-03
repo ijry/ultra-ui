@@ -47,7 +47,7 @@ UPBackTop(
 
 <template #harmony>
 
-#### 返回顶部
+#### Back to top
 
 ```typescript
 import { UPBackTop, UPBackTopProps } from '@lingyun/ultra-ui-hos';
@@ -61,7 +61,7 @@ UPBackTop({ props: new UPBackTopProps({ scrollTop: this.scrollTop, top: 400, bot
 
 <template #flutter>
 
-#### 自定义backTop(滚动页面即可在右下角看到图标)
+#### Custom back-to-top button
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -101,9 +101,7 @@ No snippet could be extracted automatically — please read the source.
 
 <template #taro>
 
-#### 滚动内容
-
-本页使用页面原生滚动，右下角浮动返回顶部按钮
+#### Scrolling content
 
 ```tsx
 import { UPBackTop } from '@ultra-ui'
@@ -117,7 +115,7 @@ import { UPBackTop } from '@ultra-ui'
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -151,19 +149,19 @@ onPageScroll((e) => {
 </style>
 ```
 
-#### 改变返回顶部按钮的出现时机
+#### Changing when back-to-top appears
 
 ```vue
 <up-back-top :scroll-top="scrollTop" top="600"></up-back-top>
 ```
 
-#### 自定义返回顶部的图标和提示
+#### Custom back-to-top icon and label
 
 ```vue
 <up-back-top :scroll-top="scrollTop" icon="arrow-up" text="返回"></up-back-top>
 ```
 
-#### 其他自定义样式
+#### Other custom styles
 
 ```vue
 <template>
@@ -210,7 +208,7 @@ onPageScroll((e) => {
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -244,19 +242,19 @@ onPageScroll((e) => {
 </style>
 ```
 
-#### 改变返回顶部按钮的出现时机
+#### Changing when back-to-top appears
 
 ```vue
 <up-back-top :scroll-top="scrollTop" top="600"></up-back-top>
 ```
 
-#### 自定义返回顶部的图标和提示
+#### Custom back-to-top icon and label
 
 ```vue
 <up-back-top :scroll-top="scrollTop" icon="arrow-up" text="返回"></up-back-top>
 ```
 
-#### 其他自定义样式
+#### Other custom styles
 
 ```vue
 <template>

@@ -85,7 +85,7 @@ UPTextarea({ props: new UPTextareaProps({ value: '禁用态文本域', disabled:
 
 <template #flutter>
 
-#### 字数统计
+#### Character counter
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -98,7 +98,7 @@ UPTextarea(
 )
 ```
 
-#### 自动增高
+#### Auto-growing height
 
 ```dart
 UPTextarea(
@@ -109,7 +109,7 @@ UPTextarea(
 )
 ```
 
-#### 禁用状态
+#### Disabled state
 
 ```dart
 UPTextarea(
@@ -121,7 +121,7 @@ UPTextarea(
 )
 ```
 
-#### 下划线模式
+#### Underline mode
 
 ```dart
 UPTextarea(
@@ -138,7 +138,7 @@ UPTextarea(
 
 <template #reactnative>
 
-#### 基础使用
+#### Basic usage
 
 ```tsx
 import { UPTextarea } from 'ultra-ui-rn';
@@ -146,25 +146,25 @@ import { UPTextarea } from 'ultra-ui-rn';
 <UPTextarea onChange={setValue1} placeholder="请输入内容" value={value1} />
 ```
 
-#### 字数统计
+#### Character counter
 
 ```tsx
 <UPTextarea count onChange={setValue2} placeholder="请输入内容" value={value2} />
 ```
 
-#### 自动增高
+#### Auto-growing height
 
 ```tsx
 <UPTextarea autoHeight onChange={setValue3} placeholder="请输入内容" value={value3} />
 ```
 
-#### 禁用状态
+#### Disabled state
 
 ```tsx
 <UPTextarea count disabled onChange={setValue4} placeholder="文本域已被禁用" value={value4} />
 ```
 
-#### 下划线模式
+#### Underline mode
 
 ```tsx
 <UPTextarea border="bottom" onChange={setValue5} placeholder="请输入内容" value={value5} />
@@ -176,9 +176,7 @@ import { UPTextarea } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 基础用法
-
-value + onChange 受控绑定
+#### Basic usage
 
 ```tsx
 import { UPTextarea } from '@ultra-ui'
@@ -190,9 +188,7 @@ import { UPTextarea } from '@ultra-ui'
 />
 ```
 
-#### 字数统计
-
-count 显示右下角计数，配合 maxlength
+#### Character counter
 
 ```tsx
 <UPTextarea
@@ -204,17 +200,13 @@ count 显示右下角计数，配合 maxlength
 />
 ```
 
-#### 自定义高度
-
-height 指定固定高度，单位 px
+#### Custom height
 
 ```tsx
 <UPTextarea height={140} value={tall} onChange={setTall} />
 ```
 
-#### 自动增高
-
-autoHeight：内容变多时高度自动撑开，height 变为最小高度
+#### Auto-growing height
 
 ```tsx
 <UPTextarea
@@ -226,25 +218,19 @@ autoHeight：内容变多时高度自动撑开，height 变为最小高度
 />
 ```
 
-#### 边框
-
-border：surround（默认） / bottom / none
+#### Border
 
 ```tsx
 <UPTextarea border='bottom' value={bottom} onChange={setBottom} />
 ```
 
-#### 禁用
-
-disabled 不可编辑且背景置灰
+#### Disabled
 
 ```tsx
 <UPTextarea disabled value={disabled} onChange={setDisabled} />
 ```
 
-#### 占位符样式
-
-placeholderStyle 支持对象或字符串
+#### Placeholder styling
 
 ```tsx
 <UPTextarea
@@ -261,7 +247,7 @@ placeholderStyle 支持对象或字符串
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <up-textarea v-model="value1" placeholder="请输入内容" ></up-textarea>
@@ -276,7 +262,7 @@ const value1 = ref('');
 </script>
 ```
 
-#### 字数统计
+#### Character counter
 
 ```vue
 <up-textarea v-model="value2" placeholder="请输入内容" count ></up-textarea>
@@ -289,7 +275,7 @@ import { ref } from 'vue';
 const value2 = ref('统计字数');
 ```
 
-#### 自动增高
+#### Auto-growing height
 
 ```vue
 <up-textarea v-model="value3" placeholder="请输入内容" autoHeight ></up-textarea>
@@ -302,7 +288,7 @@ import { ref } from 'vue';
 const value3 = ref('');
 ```
 
-#### 禁用状态
+#### Disabled state
 
 ```vue
 <up-textarea v-model="value4" placeholder="文本域已被禁用" disabled count></up-textarea>
@@ -315,7 +301,7 @@ import { ref } from 'vue';
 const value4 = ref('');
 ```
 
-#### 下划线模式
+#### Underline mode
 
 ```vue
 <up-textarea v-model="value5" placeholder="请输入内容" border="bottom"></up-textarea>
@@ -328,7 +314,7 @@ import { ref } from 'vue';
 const value5 = ref('');
 ```
 
-#### 格式化处理
+#### Formatting
 
 ```vue
 <template>
@@ -368,7 +354,7 @@ onReady(() => {
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <up-textarea v-model="value1" placeholder="请输入内容"></up-textarea>
@@ -383,7 +369,7 @@ const value1 = ref('');
 </script>
 ```
 
-#### 字数统计
+#### Character counter
 
 ```vue
 <up-textarea v-model="value2" placeholder="请输入内容" count ></up-textarea>
@@ -396,7 +382,7 @@ import { ref } from 'vue';
 const value2 = ref('统计字数');
 ```
 
-#### 自动增高
+#### Auto-growing height
 
 ```vue
 <up-textarea v-model="value3" placeholder="请输入内容" autoHeight ></up-textarea>
@@ -409,7 +395,7 @@ import { ref } from 'vue';
 const value3 = ref('');
 ```
 
-#### 禁用状态
+#### Disabled state
 
 ```vue
 <up-textarea v-model="value4" placeholder="文本域已被禁用" disabled count></up-textarea>
@@ -422,7 +408,7 @@ import { ref } from 'vue';
 const value4 = ref('');
 ```
 
-#### 下划线模式
+#### Underline mode
 
 ```vue
 <up-textarea v-model="value5" placeholder="请输入内容" border="bottom"></up-textarea>
@@ -435,7 +421,7 @@ import { ref } from 'vue';
 const value5 = ref('');
 ```
 
-#### 格式化处理
+#### Formatting
 
 ```vue
 <template>

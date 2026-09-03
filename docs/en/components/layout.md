@@ -54,7 +54,7 @@ UPRow(gutter = 8) {
 
 <template #harmony>
 
-#### 12 栅格基础行
+#### A basic 12-column row
 
 ```typescript
 import { UPRow, UPRowProps } from '@lingyun/ultra-ui-hos';
@@ -73,7 +73,7 @@ UPRow({ props: new UPRowProps({ gutter: 12 }) }) {
 }
 ```
 
-#### 偏移与换行
+#### Offset and wrapping
 
 ```typescript
 UPRow({ props: new UPRowProps({ gutter: 8 }) }) {
@@ -95,7 +95,7 @@ UPRow({ props: new UPRowProps({ gutter: 8 }) }) {
 }
 ```
 
-#### 对齐方式
+#### Alignment
 
 ```typescript
 UPRow({ props: new UPRowProps({ justify: 'space-between', align: 'center' }) }) {
@@ -258,7 +258,7 @@ No snippet could be extracted automatically — please read the source.
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -328,7 +328,7 @@ No snippet could be extracted automatically — please read the source.
 </style>
 ```
 
-#### 分栏间隔
+#### Column gutter
 
 ```vue
 <view class="u-demo-block__content">
@@ -375,7 +375,7 @@ No snippet could be extracted automatically — please read the source.
 </style>
 ```
 
-#### 混合布局
+#### Mixed layout
 
 ```vue
 <view class="u-demo-block__content">
@@ -419,7 +419,7 @@ No snippet could be extracted automatically — please read the source.
 </style>
 ```
 
-#### 分栏偏移
+#### Column offset
 
 ```vue
 <view class="u-demo-block__content">
@@ -454,7 +454,7 @@ No snippet could be extracted automatically — please read the source.
 </view>
 ```
 
-#### 对齐方式
+#### Alignment
 
 ```vue
 <view class="u-demo-block__content">
@@ -492,7 +492,7 @@ No snippet could be extracted automatically — please read the source.
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -562,7 +562,7 @@ No snippet could be extracted automatically — please read the source.
 </style>
 ```
 
-#### 分栏间隔
+#### Column gutter
 
 ```vue
 <view class="u-demo-block__content">
@@ -609,7 +609,7 @@ No snippet could be extracted automatically — please read the source.
 </style>
 ```
 
-#### 混合布局
+#### Mixed layout
 
 ```vue
 <view class="u-demo-block__content">
@@ -653,7 +653,7 @@ No snippet could be extracted automatically — please read the source.
 </style>
 ```
 
-#### 分栏偏移
+#### Column offset
 
 ```vue
 <view class="u-demo-block__content">
@@ -688,7 +688,7 @@ No snippet could be extracted automatically — please read the source.
 </view>
 ```
 
-#### 对齐方式
+#### Alignment
 
 ```vue
 <view class="u-demo-block__content">

@@ -18,7 +18,7 @@ Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examp
 
 <template #flutter>
 
-#### 基础用法
+#### Basic usage
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -33,7 +33,7 @@ UPTree(
 )
 ```
 
-#### 复选框
+#### Checkbox
 
 ```dart
 UPTree(
@@ -48,7 +48,7 @@ UPTree(
 )
 ```
 
-#### 手风琴模式
+#### Accordion mode
 
 ```dart
 UPTree(
@@ -78,9 +78,7 @@ No snippet could be extracted automatically — please read the source.
 
 <template #taro>
 
-#### 手风琴 + 严格模式
-
-accordion（同级只展开一项）+ checkStrictly（父子不级联）
+#### Accordion with strict mode
 
 ```tsx
 import { UPTree } from '@ultra-ui'
@@ -102,7 +100,7 @@ import { UPTree } from '@ultra-ui'
 
 <template #uniapp>
 
-#### 微信小程序插槽说明
+#### Slots on WeChat mini programs
 
 ```vue
 <template>
@@ -242,7 +240,7 @@ const setChecked = () => {
 
 <template #uniappx>
 
-#### 微信小程序插槽说明
+#### Slots on WeChat mini programs
 
 ```vue
 <template>

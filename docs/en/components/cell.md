@@ -157,7 +157,7 @@ UPCell(
 
 <template #reactnative>
 
-#### 基础用法
+#### Basic usage
 
 ```tsx
 import { UPCell } from 'ultra-ui-rn';
@@ -165,13 +165,13 @@ import { UPCell } from 'ultra-ui-rn';
 <UPCell title="单元格" value="内容" />
 ```
 
-#### 无标题
+#### No title
 
 ```tsx
 <UPCell title="单元格" value="内容" />
 ```
 
-#### 无边框
+#### No border
 
 ```tsx
 <UPCell title="单元格" value="内容" />
@@ -183,9 +183,7 @@ import { UPCell } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 基础用法
-
-title / value / label
+#### Basic usage
 
 ```tsx
 import { UPCell } from '@ultra-ui'
@@ -193,57 +191,43 @@ import { UPCell } from '@ultra-ui'
 <UPCell title='单元格' />
 ```
 
-#### 分组标题
-
-cell-group 的 title
+#### Group heading
 
 ```tsx
 <UPCell title='单元格一' value='内容' />
 ```
 
-#### 左侧图标
-
-icon / iconStyle
+#### Leading icon
 
 ```tsx
 <UPCell icon='setting' title='设置' />
 ```
 
-#### 右侧箭头
-
-isLink / rightIcon / arrowDirection
+#### Trailing chevron
 
 ```tsx
 <UPCell title='默认箭头' isLink />
 ```
 
-#### 单元格大小
-
-size：normal（默认） / large
+#### Cell size
 
 ```tsx
 <UPCell icon='photo' title='默认大小' label='描述信息' value='内容' />
 ```
 
-#### 垂直居中
-
-center=true
+#### Vertically centred
 
 ```tsx
 <UPCell title='未居中' label='右侧内容顶部对齐' value='内容' />
 ```
 
-#### 必填与禁用
-
-required / disabled
+#### Required and disabled
 
 ```tsx
 <UPCell required title='必填项' value='标题前有红色星号' />
 ```
 
-#### 下边框
-
-cell 的 border 优先于 cell-group 的 border
+#### Bottom border
 
 ```tsx
 <UPCell title='分组关闭边框' value='border=false' />
@@ -255,7 +239,7 @@ cell 的 border 优先于 cell-group 的 border
 
 <template #uniapp>
 
-#### 基础功能
+#### Basic features
 
 ```vue
 <template>
@@ -266,7 +250,7 @@ cell 的 border 优先于 cell-group 的 border
 </template>
 ```
 
-#### 自定义内容
+#### Custom content
 
 ```vue
 <up-cell-group>
@@ -283,7 +267,7 @@ cell 的 border 优先于 cell-group 的 border
 </up-cell-group>
 ```
 
-#### 自定义大小
+#### Custom size
 
 ```vue
 
@@ -303,7 +287,7 @@ cell 的 border 优先于 cell-group 的 border
 </up-cell-group>
 ```
 
-#### 展示右箭头
+#### Showing the chevron
 
 ```vue
 <up-cell-group>
@@ -312,7 +296,7 @@ cell 的 border 优先于 cell-group 的 border
 </up-cell-group>
 ```
 
-#### 跳转页面
+#### Navigating to a page
 
 ```vue
 <up-cell-group>
@@ -329,7 +313,7 @@ cell 的 border 优先于 cell-group 的 border
 </up-cell-group>
 ```
 
-#### 右侧内容垂直居中
+#### Trailing content centred vertically
 
 ```vue
 <up-cell-group>
@@ -342,7 +326,7 @@ cell 的 border 优先于 cell-group 的 border
 </up-cell-group>
 ```
 
-#### 自定义插槽
+#### Custom slot
 
 ```vue
 <up-cell-group>
@@ -393,7 +377,7 @@ cell 的 border 优先于 cell-group 的 border
 
 <template #uniappx>
 
-#### 基础功能
+#### Basic features
 
 ```vue
 <template>
@@ -404,7 +388,7 @@ cell 的 border 优先于 cell-group 的 border
 </template>
 ```
 
-#### 自定义内容
+#### Custom content
 
 ```vue
 <up-cell-group>
@@ -421,7 +405,7 @@ cell 的 border 优先于 cell-group 的 border
 </up-cell-group>
 ```
 
-#### 自定义大小
+#### Custom size
 
 ```vue
 
@@ -441,7 +425,7 @@ cell 的 border 优先于 cell-group 的 border
 </up-cell-group>
 ```
 
-#### 展示右箭头
+#### Showing the chevron
 
 ```vue
 <up-cell-group>
@@ -450,7 +434,7 @@ cell 的 border 优先于 cell-group 的 border
 </up-cell-group>
 ```
 
-#### 跳转页面
+#### Navigating to a page
 
 ```vue
 <up-cell-group>
@@ -467,7 +451,7 @@ cell 的 border 优先于 cell-group 的 border
 </up-cell-group>
 ```
 
-#### 右侧内容垂直居中
+#### Trailing content centred vertically
 
 ```vue
 <up-cell-group>
@@ -480,7 +464,7 @@ cell 的 border 优先于 cell-group 的 border
 </up-cell-group>
 ```
 
-#### 自定义插槽
+#### Custom slot
 
 ```vue
 <up-cell-group>

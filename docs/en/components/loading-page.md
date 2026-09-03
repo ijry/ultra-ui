@@ -47,7 +47,7 @@ UPLoadingPage(
 
 <template #harmony>
 
-#### 加载页
+#### Loading page
 
 ```typescript
 import { UPLoadingPage, UPLoadingPageProps } from '@lingyun/ultra-ui-hos';
@@ -108,9 +108,7 @@ import { UPLoadingPage } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 基础用法
-
-loading 为 true 时展示全屏遮罩
+#### Basic usage
 
 ```tsx
 import { UPLoadingPage } from '@ultra-ui'
@@ -118,9 +116,7 @@ import { UPLoadingPage } from '@ultra-ui'
 <UPLoadingPage loading={loading} text='加载中...' />
 ```
 
-#### 自定义颜色
-
-color / bgColor
+#### Custom colour
 
 ```tsx
 <UPLoadingPage
@@ -131,9 +127,7 @@ color / bgColor
 />
 ```
 
-#### 自定义内容
-
-children 覆盖默认图标 + 文本
+#### Custom content
 
 ```tsx
 <UPLoadingPage loading={custom}>
@@ -147,7 +141,7 @@ children 覆盖默认图标 + 文本
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -157,44 +151,44 @@ children 覆盖默认图标 + 文本
 </template>
 ```
 
-#### 显示或隐藏
+#### Showing and hiding
 
 ```vue
 <up-loading-page :loading="true"></up-loading-page>
 ```
 
-#### 文字内容
+#### Text content
 
 ```vue
 <up-loading-page loading-text="loading..."></up-loading-page>
 ```
 
-#### 动画模式
+#### Animation modes
 
 ```vue
 <up-loading-page loading-mode="spinner"></up-loading-page>
 <up-loading-page loading-mode="semicircle"></up-loading-page>
 ```
 
-#### 动画图片
+#### Animated image
 
 ```vue
 <up-loading-page image="/static/logo.png"></up-loading-page>
 ```
 
-#### 文字颜色
+#### Text colour
 
 ```vue
 <up-loading-page color="#666"></up-loading-page>
 ```
 
-#### 文字大小
+#### Text size
 
 ```vue
 <up-loading-page font-size="24"></up-loading-page>
 ```
 
-#### 图标大小 <badge text="2.0.32" />
+#### Icon size
 
 ```vue
 <up-loading-page icon-size="36"></up-loading-page>
@@ -206,7 +200,7 @@ children 覆盖默认图标 + 文本
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -216,44 +210,44 @@ children 覆盖默认图标 + 文本
 </template>
 ```
 
-#### 显示或隐藏
+#### Showing and hiding
 
 ```vue
 <up-loading-page :loading="true"></up-loading-page>
 ```
 
-#### 文字内容
+#### Text content
 
 ```vue
 <up-loading-page loading-text="loading..."></up-loading-page>
 ```
 
-#### 动画模式
+#### Animation modes
 
 ```vue
 <up-loading-page loading-mode="spinner"></up-loading-page>
 <up-loading-page loading-mode="semicircle"></up-loading-page>
 ```
 
-#### 动画图片
+#### Animated image
 
 ```vue
 <up-loading-page image="/static/logo.png"></up-loading-page>
 ```
 
-#### 文字颜色
+#### Text colour
 
 ```vue
 <up-loading-page color="#666"></up-loading-page>
 ```
 
-#### 文字大小
+#### Text size
 
 ```vue
 <up-loading-page font-size="24"></up-loading-page>
 ```
 
-#### 图标大小 <badge text="2.0.32" />
+#### Icon size
 
 ```vue
 <up-loading-page icon-size="36"></up-loading-page>

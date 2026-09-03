@@ -30,7 +30,7 @@ No snippet could be extracted automatically — please read the source.
 
 <template #harmony>
 
-#### 原生 ListItem 分组
+#### Native ListItem groups
 
 ```typescript
 import { UPList, UPListProps } from '@lingyun/ultra-ui-hos';
@@ -94,9 +94,7 @@ import { UPList } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 基础用法
-
-列表容器 + 列表项（标题与说明）
+#### Basic usage
 
 ```tsx
 import { UPList } from '@ultra-ui'
@@ -108,9 +106,7 @@ import { UPList } from '@ultra-ui'
 </UPList>
 ```
 
-#### 带图标 / 头像
-
-左侧 thumb 缩略图或 icon 图标
+#### With an icon or avatar
 
 ```tsx
 <UPList>
@@ -120,9 +116,7 @@ import { UPList } from '@ultra-ui'
 </UPList>
 ```
 
-#### 右侧内容与点击
-
-value 文本、箭头、可点击反馈
+#### Trailing content and taps
 
 ```tsx
 <UPList>
@@ -134,9 +128,7 @@ value 文本、箭头、可点击反馈
 </UPList>
 ```
 
-#### 分组吸顶
-
-UPList sticky + UPListItem group，滚动时分组头吸顶
+#### Sticky group headings
 
 ```tsx
 <UPList sticky height='520rpx'>
@@ -151,9 +143,7 @@ UPList sticky + UPListItem group，滚动时分组头吸顶
 </UPList>
 ```
 
-#### 滚动与锚点
-
-scrollIntoView 定位到指定 anchor
+#### Scrolling and anchors
 
 ```tsx
 <UPList
@@ -176,7 +166,7 @@ scrollIntoView 定位到指定 anchor
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -247,7 +237,7 @@ const loadmore = () => {
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>

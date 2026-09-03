@@ -70,7 +70,7 @@ UPSwitch({ props: new UPSwitchProps({ value: true, loading: true }) })
 
 <template #flutter>
 
-#### 异步控制
+#### Asynchronous control
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -94,7 +94,7 @@ UPSwitch(
 
 <template #reactnative>
 
-#### 禁用状态
+#### Disabled state
 
 ```tsx
 import { UPSwitch } from 'ultra-ui-rn';
@@ -102,7 +102,7 @@ import { UPSwitch } from 'ultra-ui-rn';
 <UPSwitch disabled value={value5} />
 ```
 
-#### 异步控制
+#### Asynchronous control
 
 ```tsx
 <UPSwitch asyncChange onChange={asyncChange} value={value13} />
@@ -114,9 +114,7 @@ import { UPSwitch } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 基础用法
-
-value + onChange 受控绑定
+#### Basic usage
 
 ```tsx
 import { UPSwitch } from '@ultra-ui'
@@ -124,25 +122,19 @@ import { UPSwitch } from '@ultra-ui'
 <UPSwitch value={basic} onChange={setBasic} />
 ```
 
-#### 尺寸
-
-size 单位 px，默认 25
+#### Sizes
 
 ```tsx
 <UPSwitch size={18} value={small} onChange={setSmall} />
 ```
 
-#### 加载中
-
-loading 时圆点显示 loading 图标且不可点
+#### Loading
 
 ```tsx
 <UPSwitch loading value={loading} onChange={setLoading} />
 ```
 
-#### 自定义颜色
-
-activeColor / inactiveColor
+#### Custom colour
 
 ```tsx
 <UPSwitch
@@ -152,9 +144,7 @@ activeColor / inactiveColor
 />
 ```
 
-#### 圆点颜色
-
-dotActiveColor / dotInactiveColor 单独设置圆点
+#### Dot colour
 
 ```tsx
 <UPSwitch
@@ -167,17 +157,13 @@ dotActiveColor / dotInactiveColor 单独设置圆点
 />
 ```
 
-#### 圆点间距
-
-space 拉开圆点与外框的距离
+#### Dot spacing
 
 ```tsx
 <UPSwitch space={3} value={spaced} onChange={setSpaced} />
 ```
 
-#### 自定义绑定值
-
-activeValue='开' / inactiveValue='关'，onChange 回传的是它们
+#### Custom bound value
 
 ```tsx
 <UPSwitch
@@ -188,9 +174,7 @@ activeValue='开' / inactiveValue='关'，onChange 回传的是它们
 />
 ```
 
-#### 异步变更
-
-asyncChange 时组件不自动切换，等外部请求成功后再更新 value
+#### Asynchronous change
 
 ```tsx
 <UPSwitch
@@ -207,7 +191,7 @@ asyncChange 时组件不自动切换，等外部请求成功后再更新 value
 
 <template #uniapp>
 
-#### 基础使用
+#### Basic usage
 
 ```vue
 <template>
@@ -225,7 +209,7 @@ const change = (e) => {
 </script>
 ```
 
-#### 加载中
+#### Loading
 
 ```vue
 <template>
@@ -241,7 +225,7 @@ const value4 = ref(true)
 </script>
 ```
 
-#### 禁用switch
+#### Disabled switch
 
 ```vue
 <template>
@@ -255,7 +239,7 @@ const value = ref(false)
 </script>
 ```
 
-#### 自定义尺寸
+#### Custom size
 
 ```vue
 <template>
@@ -271,7 +255,7 @@ const value4 = ref(true)
 </script>
 ```
 
-#### 自定义颜色
+#### Custom colour
 
 ```vue
 <template>
@@ -287,7 +271,7 @@ const value1 = ref(true)
 </script>
 ```
 
-#### 自定义样式
+#### Custom styling
 
 ```vue
 <template>
@@ -303,7 +287,7 @@ const value12 = ref(true)
 </script>
 ```
 
-#### 异步控制
+#### Asynchronous control
 
 ```vue
 <template>
@@ -334,7 +318,7 @@ const asyncChange = (e) => {
 
 <template #uniappx>
 
-#### 基础使用
+#### Basic usage
 
 ```vue
 <up-switch v-model="value" @change="change"></up-switch>
@@ -344,7 +328,7 @@ change(e) {
 },
 ```
 
-#### 加载中
+#### Loading
 
 ```vue
 <up-switch v-model="value3" loading ></up-switch>
@@ -354,13 +338,13 @@ value3: false,
 value4: true,
 ```
 
-#### 禁用switch
+#### Disabled switch
 
 ```vue
 <up-switch v-model="value" disabled ></up-switch>
 ```
 
-#### 自定义尺寸
+#### Custom size
 
 ```vue
 <up-switch v-model="value3" size="28" ></up-switch>
@@ -370,7 +354,7 @@ value3: false,
 value4: true,
 ```
 
-#### 自定义颜色
+#### Custom colour
 
 ```vue
 <up-switch v-model="value" activeColor="#f56c6c" loading ></up-switch>
@@ -380,7 +364,7 @@ value: true,
 value1: true,
 ```
 
-#### 自定义样式
+#### Custom styling
 
 ```vue
 <up-switch
@@ -396,7 +380,7 @@ value11: false,
 value12: true,
 ```
 
-#### 异步控制
+#### Asynchronous control
 
 ```vue
 <template>

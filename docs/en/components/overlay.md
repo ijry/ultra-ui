@@ -46,7 +46,7 @@ UPOverlay(props = UPOverlayProps(show = true, opacity = 0.35), onClick = { event
 
 <template #harmony>
 
-#### 点击按钮显示遮罩层
+#### Showing the overlay from a button
 
 ```typescript
 import { UPOverlay, UPOverlayProps } from '@lingyun/ultra-ui-hos';
@@ -179,7 +179,7 @@ import { UPOverlay } from '@ultra-ui'
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -195,7 +195,7 @@ const show = ref(true);
 </script>
 ```
 
-#### 嵌入内容
+#### Embedded content
 
 ```vue
 <template>
@@ -232,7 +232,7 @@ const show = ref(true);
 </style>
 ```
 
-#### 遮罩样式
+#### Mask styling
 
 ```vue
 <up-overlay :show="show" :duration="400" :z-index ="999" :opacity="0.3"></up-overlay>
@@ -244,7 +244,7 @@ const show = ref(true);
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -260,7 +260,7 @@ const show = ref(true);
 </script>
 ```
 
-#### 嵌入内容
+#### Embedded content
 
 ```vue
 <template>
@@ -297,7 +297,7 @@ const show = ref(true);
 </style>
 ```
 
-#### 遮罩样式
+#### Mask styling
 
 ```vue
 <up-overlay :show="show" :duration="400" :z-index ="999" :opacity="0.3"></up-overlay>

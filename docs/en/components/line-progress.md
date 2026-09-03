@@ -79,7 +79,7 @@ No snippet could be extracted automatically — please read the source.
 
 <template #reactnative>
 
-#### 默认配置
+#### Default configuration
 
 ```tsx
 import { UPLineProgress } from 'ultra-ui-rn';
@@ -87,31 +87,31 @@ import { UPLineProgress } from 'ultra-ui-rn';
 <UPLineProgress />
 ```
 
-#### 基础功能
+#### Basic features
 
 ```tsx
 <UPLineProgress percentage={percentage1} />
 ```
 
-#### 不显示百分比
+#### Hiding the percentage
 
 ```tsx
 <UPLineProgress percentage={40} showText={false} />
 ```
 
-#### 从右往左
+#### Right to left
 
 ```tsx
 <UPLineProgress fromRight percentage={40} showText={false} />
 ```
 
-#### 自定义高度
+#### Custom height
 
 ```tsx
 <UPLineProgress height="8" percentage={50} showText={false} />
 ```
 
-#### 自定义颜色
+#### Custom colour
 
 ```tsx
 <UPLineProgress
@@ -123,7 +123,7 @@ import { UPLineProgress } from 'ultra-ui-rn';
 />
 ```
 
-#### 自定义样式
+#### Custom styling
 
 ```tsx
 <UPLineProgress
@@ -137,7 +137,7 @@ import { UPLineProgress } from 'ultra-ui-rn';
 </UPLineProgress>
 ```
 
-#### 手动加减
+#### Manual increment and decrement
 
 ```tsx
 <UPLineProgress
@@ -155,9 +155,7 @@ import { UPLineProgress } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 基础用法
-
-percentage 控制进度，默认显示在右侧外部
+#### Basic usage
 
 ```tsx
 import { UPLineProgress } from '@ultra-ui'
@@ -165,33 +163,25 @@ import { UPLineProgress } from '@ultra-ui'
 <UPLineProgress percentage={30} customClass='line-progress-demo__item' />
 ```
 
-#### 文字内显
-
-textInside，百分比文字显示在进度条内部
+#### Text inside
 
 ```tsx
 <UPLineProgress percentage={45} textInside customClass='line-progress-demo__item' />
 ```
 
-#### 圆角与斑马纹
-
-round 胶囊形，striped 动态条纹
+#### Rounded corners and zebra striping
 
 ```tsx
 <UPLineProgress percentage={70} round striped customClass='line-progress-demo__item' />
 ```
 
-#### 自定义高度
-
-height
+#### Custom height
 
 ```tsx
 <UPLineProgress percentage={40} height={24} customClass='line-progress-demo__item' />
 ```
 
-#### 受控动画
-
-定时器驱动 percentage 自动增长
+#### Controlled animation
 
 ```tsx
 <UPLineProgress
@@ -208,7 +198,7 @@ height
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -216,7 +206,7 @@ height
 </template>
 ```
 
-#### 默认配置
+#### Default configuration
 
 ```vue
 <template>
@@ -224,7 +214,7 @@ height
 </template>
 ```
 
-#### 不显示百分比
+#### Hiding the percentage
 
 ```vue
 <template>
@@ -232,7 +222,7 @@ height
 </template>
 ```
 
-#### 自定义高度
+#### Custom height
 
 ```vue
 <template>
@@ -240,7 +230,7 @@ height
 </template>
 ```
 
-#### 从右往左
+#### Right to left
 
 ```vue
 <template>
@@ -248,7 +238,7 @@ height
 </template>
 ```
 
-#### 自定义样式(不支持安卓环境的nvue)
+#### Custom styling (not supported in nvue on Android)
 
 ```vue
 <template>
@@ -269,7 +259,7 @@ height
 </style>
 ```
 
-#### 手动加减
+#### Manual increment and decrement
 
 ```vue
 <template>
@@ -303,7 +293,7 @@ const computedWidth = (type) => {
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -311,7 +301,7 @@ const computedWidth = (type) => {
 </template>
 ```
 
-#### 不显示百分比
+#### Hiding the percentage
 
 ```vue
 <template>
@@ -319,7 +309,7 @@ const computedWidth = (type) => {
 </template>
 ```
 
-#### 自定义高度
+#### Custom height
 
 ```vue
 <template>
@@ -327,7 +317,7 @@ const computedWidth = (type) => {
 </template>
 ```
 
-#### 自定义样式(不支持安卓环境的nvue)
+#### Custom styling (not supported in nvue on Android)
 
 ```vue
 <template>
@@ -348,7 +338,7 @@ const computedWidth = (type) => {
 </style>
 ```
 
-#### 手动加减
+#### Manual increment and decrement
 
 ```vue
 <template>

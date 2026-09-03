@@ -62,9 +62,7 @@ import { UPParse } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 基础用法
-
-标题、段落与行内标签
+#### Basic usage
 
 ```tsx
 import { UPParse } from '@ultra-ui'
@@ -72,49 +70,37 @@ import { UPParse } from '@ultra-ui'
 <UPParse content={basicHtml} />
 ```
 
-#### 列表与引用
-
-ul / ol / blockquote
+#### Lists and blockquotes
 
 ```tsx
 <UPParse content={listHtml} />
 ```
 
-#### 表格
-
-table / thead / tbody / th / td
+#### Table
 
 ```tsx
 <UPParse content={tableHtml} />
 ```
 
-#### 内容净化
-
-script / style 整树丢弃，事件属性与危险协议链接剔除
+#### Content sanitising
 
 ```tsx
 <UPParse content={unsafeHtml} />
 ```
 
-#### HTML 实体
-
-实体自动解码且文本不碎片化
+#### HTML entities
 
 ```tsx
 <UPParse content={entityHtml} />
 ```
 
-#### 相对路径补全
-
-domain 指定主域名
+#### Resolving relative paths
 
 ```tsx
 <UPParse content={relativeHtml} domain='https://cdn.uviewui.com' />
 ```
 
-#### 空内容兜底
-
-content 为空时渲染 children
+#### Empty-state fallback
 
 ```tsx
 <UPParse content=''>
@@ -130,7 +116,7 @@ content 为空时渲染 children
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -160,13 +146,13 @@ const content = ref(`
 </style>
 ```
 
-#### 长按复制
+#### Long-press to copy
 
 ```vue
 <up-parse :content="content" :selectable="true"></up-parse>
 ```
 
-#### 设置样式
+#### Styling it
 
 ```vue
 <template>
@@ -220,13 +206,13 @@ const content = ref(`
 </style>
 ```
 
-#### 懒加载和占位图
+#### Lazy loading with a placeholder
 
 ```vue
 <up-parse :content="content" :lazyLoad="true" :loadingImg="/xxx/xxx.jpg"></up-parse>
 ```
 
-#### 链接跳转/锚点
+#### Links and anchors
 
 ```vue
 <a href="#">跳转到顶部</a>
@@ -241,7 +227,7 @@ const content = ref(`
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -271,13 +257,13 @@ const content = ref(`
 </style>
 ```
 
-#### 长按复制
+#### Long-press to copy
 
 ```vue
 <up-parse :content="content" :selectable="true"></up-parse>
 ```
 
-#### 设置样式
+#### Styling it
 
 ```vue
 <template>
@@ -339,13 +325,13 @@ const content = ref(`
 </style>
 ```
 
-#### 懒加载和占位图
+#### Lazy loading with a placeholder
 
 ```vue
 <up-parse :content="content" :lazyLoad="true" :loadingImg="/xxx/xxx.jpg"></up-parse>
 ```
 
-#### 链接跳转/锚点
+#### Links and anchors
 
 ```vue
 <a href="#">跳转到顶部</a>

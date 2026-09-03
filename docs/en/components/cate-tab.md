@@ -18,7 +18,7 @@ Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examp
 
 <template #flutter>
 
-#### 左右联动
+#### Linked left and right
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -37,7 +37,7 @@ UPCateTab(
 )
 ```
 
-#### 左右独立
+#### Independent left and right
 
 ```dart
 UPCateTab(
@@ -78,9 +78,7 @@ No snippet could be extracted automatically — please read the source.
 
 <template #taro>
 
-#### 基础两栏
-
-follow 模式：滚动右侧自动联动左侧
+#### Two basic columns
 
 ```tsx
 import { UPCateTab } from '@ultra-ui'
@@ -88,9 +86,7 @@ import { UPCateTab } from '@ultra-ui'
 <UPCateTab height='70vh' tabList={basicTabs} />
 ```
 
-#### 带图标
-
-子项通过 icon 字段渲染缩略图
+#### With an icon
 
 ```tsx
 <UPCateTab height='70vh' tabList={iconTabs} />
@@ -102,7 +98,7 @@ import { UPCateTab } from '@ultra-ui'
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <style lang='scss' scoped>
@@ -178,7 +174,7 @@ const tabList = ref([
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <style lang='scss' scoped>

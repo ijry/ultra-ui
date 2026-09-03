@@ -49,9 +49,7 @@ No snippet could be extracted automatically — please read the source.
 
 <template #taro>
 
-#### 自定义占位色
-
-placeholder 传颜色字符串
+#### Custom placeholder colour
 
 ```tsx
 import { UPLazyLoad } from '@ultra-ui'
@@ -71,7 +69,7 @@ import { UPLazyLoad } from '@ultra-ui'
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -103,7 +101,7 @@ const list = ref([
 </script>
 ```
 
-#### 配置占位图
+#### Placeholder image
 
 ```vue
 <template>
@@ -123,7 +121,7 @@ const errorImg = ref('/static/uView/load_error.png');
 </script>
 ```
 
-#### 图片加载位置
+#### Where the image loads
 
 ```vue
 <up-lazy-load :image="image" threshold="300"></up-lazy-load>
@@ -143,7 +141,7 @@ const image = ref("https://gtd.alicdn.com/sns_logo/i1/TB124_3NXXXXXasXVXXSutbFXX
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -176,7 +174,7 @@ const image = ref("https://gtd.alicdn.com/sns_logo/i1/TB124_3NXXXXXasXVXXSutbFXX
 </script>
 ```
 
-#### 配置占位图
+#### Placeholder image
 
 ```vue
 <template>
@@ -197,7 +195,7 @@ const image = ref("https://gtd.alicdn.com/sns_logo/i1/TB124_3NXXXXXasXVXXSutbFXX
 </script>
 ```
 
-#### 图片加载位置
+#### Where the image loads
 
 ```vue
 <up-lazy-load :image="image" threshold="300"></up-lazy-load>

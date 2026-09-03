@@ -18,7 +18,7 @@ Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examp
 
 <template #flutter>
 
-#### 基础用法
+#### Basic usage
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -38,7 +38,7 @@ UPUpload(
 )
 ```
 
-#### 上传视频
+#### Uploading video
 
 ```dart
 UPUpload(
@@ -54,7 +54,7 @@ UPUpload(
 )
 ```
 
-#### 文件预览
+#### File preview
 
 ```dart
 UPUpload(
@@ -70,7 +70,7 @@ UPUpload(
 )
 ```
 
-#### 隐藏上传按钮
+#### Hiding the upload button
 
 ```dart
 UPUpload(
@@ -85,7 +85,7 @@ UPUpload(
 )
 ```
 
-#### 限制上传数量
+#### Capping the number of uploads
 
 ```dart
 UPUpload(
@@ -100,7 +100,7 @@ UPUpload(
 )
 ```
 
-#### 自定义上传样式
+#### Custom upload trigger
 
 ```dart
 UPUpload(
@@ -141,9 +141,7 @@ No snippet could be extracted automatically — please read the source.
 
 <template #taro>
 
-#### 基础用法
-
-点击加号选择图片，deletable 默认开启可删除
+#### Basic usage
 
 ```tsx
 import { UPUpload } from '@ultra-ui'
@@ -155,9 +153,7 @@ import { UPUpload } from '@ultra-ui'
 />
 ```
 
-#### 多选与数量限制
-
-multiple 开启多选，maxCount=4 达到上限后隐藏选择区
+#### Multi-select with a cap
 
 ```tsx
 <UPUpload
@@ -169,17 +165,13 @@ multiple 开启多选，maxCount=4 达到上限后隐藏选择区
 />
 ```
 
-#### 上传状态
-
-status 为 uploading / failed / success 时的三种呈现
+#### Upload state
 
 ```tsx
 <UPUpload fileList={status} deletable={false} previewFullImage={false} />
 ```
 
-#### 自定义选择区
-
-triggerSlot 替换默认加号方块
+#### Custom selection area
 
 ```tsx
 <UPUpload
@@ -188,9 +180,7 @@ triggerSlot 替换默认加号方块
   triggerSlot={<UPButton type='primary' size='small' text='选择图片' />
 ```
 
-#### 选择视频
-
-accept=video，点击预览图会内嵌播放
+#### Picking a video
 
 ```tsx
 <UPUpload
@@ -201,9 +191,7 @@ accept=video，点击预览图会内嵌播放
 />
 ```
 
-#### 选择文件
-
-accept=file，非图片以图标 + 文件名呈现（微信小程序 / H5 支持）
+#### Picking a file
 
 ```tsx
 <UPUpload
@@ -214,17 +202,13 @@ accept=file，非图片以图标 + 文件名呈现（微信小程序 / H5 支持
 />
 ```
 
-#### 禁用
-
-disabled 后不响应点击
+#### Disabled
 
 ```tsx
 <UPUpload fileList={[]} disabled />
 ```
 
-#### 自定义尺寸与文字
-
-width / height 控制方块大小，uploadText 显示提示语
+#### Custom size and text
 
 ```tsx
 <UPUpload
@@ -242,7 +226,7 @@ width / height 控制方块大小，uploadText 显示提示语
 
 <template #uniapp>
 
-#### 基础用法
+#### Basic usage
 
 ```vue
 <template>
@@ -311,7 +295,7 @@ const uploadFilePromise = (url) => {
 </script>
 ```
 
-#### 读取前处理程序
+#### Before-read hook
 
 ```vue
 <up-upload
@@ -346,7 +330,7 @@ methods:{
 }
 ```
 
-#### 上传视频
+#### Uploading video
 
 ```vue
 <up-upload
@@ -366,7 +350,7 @@ data(){
 }
 ```
 
-#### 文件预览
+#### File preview
 
 ```vue
 <up-upload
@@ -389,7 +373,7 @@ data(){
 }
 ```
 
-#### 隐藏上传按钮
+#### Hiding the upload button
 
 ```vue
 <up-upload
@@ -416,7 +400,7 @@ data(){
 }
 ```
 
-#### 限制上传数量
+#### Capping the number of uploads
 
 ```vue
 <up-upload
@@ -435,7 +419,7 @@ data(){
 }
 ```
 
-#### 自定义上传样式
+#### Custom upload trigger
 
 ```vue
 <up-upload
@@ -459,7 +443,7 @@ data(){
 }
 ```
 
-#### 示例
+#### Example
 
 ```vue
 <up-upload
@@ -500,7 +484,7 @@ data(){
 
 <template #uniappx>
 
-#### 基础用法
+#### Basic usage
 
 ```vue
 <template>
@@ -569,7 +553,7 @@ const uploadFilePromise = (url) => {
 </script>
 ```
 
-#### 上传视频
+#### Uploading video
 
 ```vue
 <up-upload
@@ -589,7 +573,7 @@ data(){
 }
 ```
 
-#### 文件预览
+#### File preview
 
 ```vue
 <up-upload
@@ -611,7 +595,7 @@ data(){
 }
 ```
 
-#### 隐藏上传按钮
+#### Hiding the upload button
 
 ```vue
 <up-upload
@@ -636,7 +620,7 @@ data(){
 }
 ```
 
-#### 限制上传数量
+#### Capping the number of uploads
 
 ```vue
 <up-upload
@@ -655,7 +639,7 @@ data(){
 }
 ```
 
-#### 自定义上传样式
+#### Custom upload trigger
 
 ```vue
 <up-upload

@@ -30,7 +30,7 @@ No snippet could be extracted automatically — please read the source.
 
 <template #harmony>
 
-#### 横向滚动与比例指示器
+#### Horizontal scrolling with a proportional indicator
 
 ```typescript
 import { UPScrollList, UPScrollListProps } from '@lingyun/ultra-ui-hos';
@@ -57,7 +57,7 @@ UPScrollList({
 
 <template #flutter>
 
-#### 基础使用
+#### Basic usage
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -72,7 +72,7 @@ UPScrollList(
 )
 ```
 
-#### 多菜单扩展
+#### Several menus
 
 ```dart
 UPScrollList(
@@ -110,9 +110,7 @@ No snippet could be extracted automatically — please read the source.
 
 <template #taro>
 
-#### 胶囊指示点
-
-mode="round"，当前指示点拉成胶囊
+#### Pill indicators
 
 ```tsx
 import { UPScrollList } from '@ultra-ui'
@@ -120,9 +118,7 @@ import { UPScrollList } from '@ultra-ui'
 <UPScrollList list={LIST} indicator mode='round' indicatorActiveColor='#ff6b6b' />
 ```
 
-#### 固定宽度条目
-
-itemWidth 统一每条宽度
+#### Fixed-width items
 
 ```tsx
 <UPScrollList list={LIST} indicator itemWidth={120} indicatorActiveColor='#34c759' />
@@ -134,7 +130,7 @@ itemWidth 统一每条宽度
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -205,7 +201,7 @@ const list = reactive([
 </script>
 ```
 
-#### 兼容性与性能
+#### Compatibility and performance
 
 ```vue
 <template>
@@ -307,7 +303,7 @@ function right() {
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -378,7 +374,7 @@ const list = reactive([
 </script>
 ```
 
-#### 兼容性与性能
+#### Compatibility and performance
 
 ```vue
 <template>

@@ -54,7 +54,7 @@ No snippet could be extracted automatically — please read the source.
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -99,7 +99,7 @@ const exportImage = async () => {
 </script>
 ```
 
-#### 绘制图片
+#### Drawing an image
 
 ```js
 const canvas = canvasRef.value
@@ -107,7 +107,7 @@ await canvas.drawImage('/static/logo.png', 20, 20, 80, 80)
 canvas.draw(false)
 ```
 
-#### 导出图片
+#### Exporting an image
 
 ```js
 const res = await canvasRef.value.toTempFilePath({

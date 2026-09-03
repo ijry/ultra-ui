@@ -52,7 +52,7 @@ UPTag(props = UPTagProps(text = "plain", type = "primary", plain = true))
 
 <template #harmony>
 
-#### 类型与朴素样式
+#### Types and the plain style
 
 ```typescript
 import { UPTag, UPTagProps } from '@lingyun/ultra-ui-hos';
@@ -60,7 +60,7 @@ import { UPTag, UPTagProps } from '@lingyun/ultra-ui-hos';
 UPTag({ props: new UPTagProps({ text: '主要', type: 'primary' }) })
 ```
 
-#### 可关闭标签
+#### Closable tag
 
 ```typescript
 UPTag({ props: new UPTagProps({
@@ -81,7 +81,7 @@ UPTag({ props: new UPTagProps({
 
 <template #flutter>
 
-#### 基础功能
+#### Basic features
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -89,43 +89,43 @@ import 'package:ultra_ui/ultra_ui.dart';
 UPTag(text: '标签', plain: true, size: 'mini', type: 'warning')
 ```
 
-#### 自定义主题
+#### Custom theme
 
 ```dart
 UPTag(text: '标签')
 ```
 
-#### 圆形标签
+#### Pill tag
 
 ```dart
 UPTag(text: '标签', plain: true, shape: 'circle')
 ```
 
-#### 镂空标签
+#### Plain tag
 
 ```dart
 UPTag(text: '标签', plain: true)
 ```
 
-#### 镂空带背景色
+#### Plain with a background
 
 ```dart
 UPTag(text: '标签', plain: true, plainFill: true)
 ```
 
-#### 自定义尺寸
+#### Custom size
 
 ```dart
 UPTag(text: '标签', plain: true, size: 'mini')
 ```
 
-#### 带图片和图标
+#### With an image and an icon
 
 ```dart
 UPTag(text: '标签', size: 'mini', icon: 'map', plain: true)
 ```
 
-#### 单选标签
+#### Single-select tags
 
 ```dart
 UPTag(
@@ -143,7 +143,7 @@ UPTag(
 
 <template #reactnative>
 
-#### 基础功能
+#### Basic features
 
 ```tsx
 import { UPTag } from 'ultra-ui-rn';
@@ -151,43 +151,43 @@ import { UPTag } from 'ultra-ui-rn';
 <UPTag text="标签" plain size="mini" type="warning" />
 ```
 
-#### 自定义主题
+#### Custom theme
 
 ```tsx
 <UPTag text="标签" />
 ```
 
-#### 圆形标签
+#### Pill tag
 
 ```tsx
 <UPTag text="标签" plain shape="circle" />
 ```
 
-#### 镂空标签
+#### Plain tag
 
 ```tsx
 <UPTag text="标签" plain />
 ```
 
-#### 镂空带背景色
+#### Plain with a background
 
 ```tsx
 <UPTag text="标签" plain plainFill />
 ```
 
-#### 自定义尺寸
+#### Custom size
 
 ```tsx
 <UPTag text="标签" plain size="mini" />
 ```
 
-#### 带图片和图标
+#### With an image and an icon
 
 ```tsx
 <UPTag text="标签" size="mini" icon="map" plain />
 ```
 
-#### 单选标签
+#### Single-select tags
 
 ```tsx
 <UPTag
@@ -205,9 +205,7 @@ import { UPTag } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 主题
-
-type：primary / info / success / warning / error
+#### Themes
 
 ```tsx
 import { UPTag } from '@ultra-ui'
@@ -215,57 +213,43 @@ import { UPTag } from '@ultra-ui'
 <UPTag key={type} type={type} text={type} />
 ```
 
-#### 镂空
-
-plain 背景透明、文字与边框同色
+#### Plain
 
 ```tsx
 <UPTag key={type} plain type={type} text={type} />
 ```
 
-#### 镂空填充
-
-plain 配合 plainFill 填充浅色背景
+#### Plain fill
 
 ```tsx
 <UPTag key={type} plain plainFill type={type} text={type} />
 ```
 
-#### 形状
-
-shape：square 方形圆角 / circle 两端半圆
+#### Shapes
 
 ```tsx
 <UPTag shape='square' text='square' />
 ```
 
-#### 尺寸
-
-size：large / medium / mini
+#### Sizes
 
 ```tsx
 <UPTag size='large' text='large' />
 ```
 
-#### 图标
-
-icon 传内置图标名，iconColor 可单独指定颜色
+#### Icons
 
 ```tsx
 <UPTag icon='star-fill' text='收藏' />
 ```
 
-#### 禁用
-
-disabled 后置灰且不响应点击
+#### Disabled
 
 ```tsx
 <UPTag disabled text='disabled' />
 ```
 
-#### 自定义颜色
-
-bgColor / color / borderColor
+#### Custom colour
 
 ```tsx
 <UPTag bgColor='#7232dd' color='#ffffff' text='紫色' />
@@ -277,13 +261,13 @@ bgColor / color / borderColor
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <up-tag text="标签" plain size="mini" type="warning"></up-tag>
 ```
 
-#### 自定义主题
+#### Custom theme
 
 ```vue
 <up-tag text="标签"></up-tag>
@@ -292,14 +276,14 @@ bgColor / color / borderColor
 <up-tag text="标签" type="error"></up-tag>
 ```
 
-#### 圆形标签
+#### Pill tag
 
 ```vue
 <up-tag text="标签" plain shape="circle"></up-tag>
 <up-tag text="标签" type="warning" shape="circle"></up-tag>
 ```
 
-#### 镂空标签
+#### Plain tag
 
 ```vue
 <up-tag text="标签" plain > </up-tag>
@@ -308,7 +292,7 @@ bgColor / color / borderColor
 <up-tag text="标签" type="error" plain></up-tag>
 ```
 
-#### 镂空带背景色
+#### Plain with a background
 
 ```vue
 <up-tag text="标签" plain > </up-tag>
@@ -317,7 +301,7 @@ bgColor / color / borderColor
 <up-tag text="标签" type="error" plain plainFill></up-tag>
 ```
 
-#### 镂空带背景色不带边框
+#### Plain with a background, no border
 
 ```vue
 <up-tag text="标签" plain > </up-tag>
@@ -326,7 +310,7 @@ bgColor / color / borderColor
 <up-tag text="标签" type="error" plain plainFill borderColor="transparent"></up-tag>
 ```
 
-#### 镂空自动计算背景色
+#### Plain with a derived background
 
 ```vue
 <up-tag text="标签" plain > </up-tag>
@@ -335,7 +319,7 @@ bgColor / color / borderColor
 <up-tag text="标签" type="error" plain plainFill borderColor="transparent" color="#D56E14" :autoBgColor="85"></up-tag>
 ```
 
-#### 自定义尺寸
+#### Custom size
 
 ```vue
 <up-tag text="标签" plain size="mini"></up-tag>
@@ -349,13 +333,13 @@ bgColor / color / borderColor
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <up-tag text="标签" plain size="mini" type="warning"></up-tag>
 ```
 
-#### 自定义主题
+#### Custom theme
 
 ```vue
 <up-tag text="标签"></up-tag>
@@ -364,14 +348,14 @@ bgColor / color / borderColor
 <up-tag text="标签" type="error"></up-tag>
 ```
 
-#### 圆形标签
+#### Pill tag
 
 ```vue
 <up-tag text="标签" plain shape="circle"></up-tag>
 <up-tag text="标签" type="warning" shape="circle"></up-tag>
 ```
 
-#### 镂空标签
+#### Plain tag
 
 ```vue
 <up-tag text="标签" plain > </up-tag>
@@ -380,7 +364,7 @@ bgColor / color / borderColor
 <up-tag text="标签" type="error" plain></up-tag>
 ```
 
-#### 镂空带背景色
+#### Plain with a background
 
 ```vue
 <up-tag text="标签" plain > </up-tag>
@@ -389,7 +373,7 @@ bgColor / color / borderColor
 <up-tag text="标签" type="error" plain plainFill></up-tag>
 ```
 
-#### 自定义尺寸
+#### Custom size
 
 ```vue
 <up-tag text="标签" plain size="mini"></up-tag>
@@ -397,7 +381,7 @@ bgColor / color / borderColor
 <up-tag text="标签" type="success" plain size="large"></up-tag>
 ```
 
-#### 可关闭标签
+#### Closable tag
 
 ```vue
 <up-tag text="标签" size="mini" closable :show="close1" @close="close1 = false"></up-tag>
@@ -424,7 +408,7 @@ const checkboxs = reactive ([
 </script>
 ```
 
-#### 带图片和图标
+#### With an image and an icon
 
 ```vue
 <up-tag text="标签" size="mini" icon="map" plain></up-tag>

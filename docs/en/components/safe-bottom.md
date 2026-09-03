@@ -58,7 +58,7 @@ No snippet could be extracted automatically — please read the source.
 
 <template #reactnative>
 
-#### 底部安全区域占位
+#### Bottom safe-area spacer
 
 ```tsx
 import { UPSafeBottom } from 'ultra-ui-rn';
@@ -66,7 +66,7 @@ import { UPSafeBottom } from 'ultra-ui-rn';
 <UPSafeBottom />
 ```
 
-#### 自定义背景色
+#### Custom background colour
 
 ```tsx
 <UPSafeBottom customStyle={{ backgroundColor: '#333' }} />
@@ -90,7 +90,7 @@ No snippet could be extracted automatically — please read the source.
 
 <template #uniapp>
 
-#### 底部安全区
+#### Bottom safe area
 
 ```json
 "app-plus": {
@@ -121,7 +121,7 @@ No snippet could be extracted automatically — please read the source.
 </template>
 ```
 
-#### 顶部安全区
+#### Top safe area
 
 ```vue
 <template>
@@ -138,7 +138,7 @@ No snippet could be extracted automatically — please read the source.
 
 <template #uniappx>
 
-#### 底部安全区
+#### Bottom safe area
 
 ```json
 "app-plus": {
@@ -169,7 +169,7 @@ No snippet could be extracted automatically — please read the source.
 </template>
 ```
 
-#### 顶部安全区
+#### Top safe area
 
 ```vue
 <template>

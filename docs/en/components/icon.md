@@ -64,7 +64,7 @@ UPIcon(
 
 <template #harmony>
 
-#### 常用图标
+#### Common icons
 
 ```typescript
 import { UPIcon, UPIconProps } from '@lingyun/ultra-ui-hos';
@@ -77,7 +77,7 @@ UPIcon({ props: new UPIconProps({
 }) })
 ```
 
-#### 标签方向
+#### Label position
 
 ```typescript
 UPIcon({ props: new UPIconProps({ name: 'info', color: 'primary', label: '标签在左侧', labelPos: 'left', size: 22 }) })
@@ -113,9 +113,7 @@ import { UPIcon } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 基础用法
-
-name 指定内置图标名
+#### Basic usage
 
 ```tsx
 import { UPIcon } from '@ultra-ui'
@@ -123,57 +121,43 @@ import { UPIcon } from '@ultra-ui'
 <UPIcon name='home' />
 ```
 
-#### 尺寸
-
-size 支持数字（px 语义）与带单位字符串
+#### Sizes
 
 ```tsx
 <UPIcon name='star-fill' size={14} />
 ```
 
-#### 颜色
-
-color 支持主题 token 与任意 CSS 颜色
+#### Colours
 
 ```tsx
 <UPIcon name='heart-fill' size='26px' color='primary' />
 ```
 
-#### 加粗
-
-bold 属性
+#### Bold
 
 ```tsx
 <UPIcon name='checkmark' size='28px' />
 ```
 
-#### 文字标签
-
-label + labelPos 控制文字位置
+#### Text label
 
 ```tsx
 <UPIcon name='photo' size='22px' label='右侧' labelPos='right' />
 ```
 
-#### 标签样式
-
-labelSize / labelColor / space
+#### Label styling
 
 ```tsx
 <UPIcon name='bell' size='20px' label='通知' />
 ```
 
-#### 垂直微调
-
-top 让图标相对基线上下偏移
+#### Vertical nudge
 
 ```tsx
 <UPIcon name='clock' size='24px' label='top=0' />
 ```
 
-#### 图片图标
-
-name 含 / 时按图片渲染，用 width / height / imgMode 控制
+#### Image as icon
 
 ```tsx
 <UPIcon
@@ -189,7 +173,7 @@ name 含 / 时按图片渲染，用 width / height / imgMode 控制
 
 <template #uniapp>
 
-#### 新版本全局加载兼容性
+#### Global loading in newer versions
 
 ```js
 app.use(store)
@@ -207,7 +191,7 @@ app.use(store)
 	})
 ```
 
-#### 微信小程序图标加载异常处理
+#### Icon loading failures on WeChat mini programs
 
 ```vue
 <script>
@@ -221,7 +205,7 @@ export default {
 </script>
 ```
 
-#### 自定义默认字体图标自托管资源
+#### Self-hosting the default icon font
 
 ```js
 app.use(store)
@@ -239,7 +223,7 @@ app.use(store)
 	})
 ```
 
-#### 扩充自定义字体图标
+#### Adding your own icon font
 
 ```js
 app.use(store)
@@ -273,19 +257,19 @@ app.use(store)
 <up-icon customPrefix="xyicon" name="light-mode"></up-icon>
 ```
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <up-icon name="photo"></up-icon>
 ```
 
-#### 修改图标的样式
+#### Restyling the icon
 
 ```vue
 <up-icon name="photo" color="#2979ff" size="28"></up-icon>
 ```
 
-#### 图片图标
+#### Image as icon
 
 ```vue
 <up-icon label="uview-plus" size="40" name="https://cdn.uviewui.com/uview/example/button.png"></up-icon>
@@ -297,7 +281,7 @@ app.use(store)
 
 <template #uniappx>
 
-#### 新版本全局加载兼容性
+#### Global loading in newer versions
 
 ```js
 app.use(store)
@@ -315,7 +299,7 @@ app.use(store)
 	})
 ```
 
-#### 自定义默认字体图标自托管资源
+#### Self-hosting the default icon font
 
 ```js
 app.use(store)
@@ -333,7 +317,7 @@ app.use(store)
 	})
 ```
 
-#### 扩充自定义字体图标
+#### Adding your own icon font
 
 ```js
 app.use(store)
@@ -367,19 +351,19 @@ app.use(store)
 <up-icon customPrefix="xyicon" name="light-mode"></up-icon>
 ```
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <up-icon name="photo"></up-icon>
 ```
 
-#### 修改图标的样式
+#### Restyling the icon
 
 ```vue
 <up-icon name="photo" color="#2979ff" size="28"></up-icon>
 ```
 
-#### 图片图标
+#### Image as icon
 
 ```vue
 <up-icon label="uview-ultra" size="40" name="https://cdn.uviewui.com/uview/example/button.png"></up-icon>

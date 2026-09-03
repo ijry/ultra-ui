@@ -18,7 +18,7 @@ Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examp
 
 <template #flutter>
 
-#### 带子菜单模式
+#### With sub-menus
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -40,7 +40,7 @@ UPFloatButton(
 )
 ```
 
-#### 自定义插槽
+#### Custom slot
 
 ```dart
 UPFloatButton(
@@ -85,7 +85,7 @@ No snippet could be extracted automatically — please read the source.
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <style lang='scss' scoped>
@@ -107,7 +107,7 @@ const list = ref([
 </script>
 ```
 
-#### 带子菜单模式
+#### With sub-menus
 
 ```vue
 <style lang='scss' scoped>
@@ -142,7 +142,7 @@ const itemClick = (e) => {
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <style lang='scss' scoped>
@@ -164,7 +164,7 @@ const list = ref([
 </script>
 ```
 
-#### 带子菜单模式
+#### With sub-menus
 
 ```vue
 <style lang='scss' scoped>

@@ -42,7 +42,7 @@ UPDatetimePicker(
 
 <template #flutter>
 
-#### 输入模式
+#### Input mode
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -59,7 +59,7 @@ UPDatetimePicker(
 )
 ```
 
-#### 页面内联
+#### Inline in the page
 
 ```dart
 UPDatetimePicker(
@@ -204,7 +204,7 @@ No snippet could be extracted automatically — please read the source.
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -227,7 +227,7 @@ const value1 = ref(Date.now());
 </script>
 ```
 
-#### 年 月 日
+#### Year, month and day
 
 ```vue
 <template>
@@ -250,7 +250,7 @@ const value1 = ref(Date.now());
 </script>
 ```
 
-#### 格式化
+#### Formatting
 
 ```vue
 <template>
@@ -294,7 +294,7 @@ onReady(() => {
 </script>
 ```
 
-#### 限制最大最小值
+#### Clamping to a range
 
 ```vue
 <template>
@@ -324,7 +324,7 @@ const value1 = ref(Date.now());
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -347,7 +347,7 @@ const value1 = ref(Date.now());
 </script>
 ```
 
-#### 年 月 日
+#### Year, month and day
 
 ```vue
 <template>
@@ -370,7 +370,7 @@ const value1 = ref(Date.now());
 </script>
 ```
 
-#### 格式化
+#### Formatting
 
 ```vue
 <template>
@@ -414,7 +414,7 @@ onReady(() => {
 </script>
 ```
 
-#### 限制最大最小值
+#### Clamping to a range
 
 ```vue
 <template>

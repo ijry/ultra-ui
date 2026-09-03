@@ -62,7 +62,7 @@ UPGrid(col = 2, border = true, gap = 8) {
 
 <template #harmony>
 
-#### 末行对齐
+#### Last-line alignment
 
 ```typescript
 import { UPGrid, UPGridProps } from '@lingyun/ultra-ui-hos';
@@ -153,7 +153,7 @@ UPGrid(
 
 <template #reactnative>
 
-#### 自定义背景色
+#### Custom background colour
 
 ```tsx
 import { UPGrid } from 'ultra-ui-rn';
@@ -171,7 +171,7 @@ import { UPGrid } from 'ultra-ui-rn';
 </UPGrid>
 ```
 
-#### 点击事件
+#### Tap event
 
 ```tsx
 <UPGrid col={2} onClick={(name) => console.log('clicked:', name)}>
@@ -191,9 +191,7 @@ import { UPGrid } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 基础用法
-
-默认 col=3，三列排列
+#### Basic usage
 
 ```tsx
 import { UPGrid } from '@ultra-ui'
@@ -207,9 +205,7 @@ import { UPGrid } from '@ultra-ui'
 </UPGrid>
 ```
 
-#### 自定义列数
-
-col=4
+#### Custom column count
 
 ```tsx
 <UPGrid col={4}>
@@ -221,9 +217,7 @@ col=4
 </UPGrid>
 ```
 
-#### 自定义列数
-
-col=5
+#### Custom column count
 
 ```tsx
 <UPGrid col={5}>
@@ -235,9 +229,7 @@ col=5
 </UPGrid>
 ```
 
-#### 显示边框
-
-border=true，最后一行/列不画线
+#### Showing the border
 
 ```tsx
 <UPGrid col={3} border>
@@ -249,9 +241,7 @@ border=true，最后一行/列不画线
 </UPGrid>
 ```
 
-#### 宫格间隔
-
-gap='10px'，行列同间距
+#### Grid gutter
 
 ```tsx
 <UPGrid col={3} gap='10px'>
@@ -263,9 +253,7 @@ gap='10px'，行列同间距
 </UPGrid>
 ```
 
-#### 宫格间隔
-
-gap='20px 8px'，先行后列
+#### Grid gutter
 
 ```tsx
 <UPGrid col={3} gap='20px 8px'>
@@ -277,9 +265,7 @@ gap='20px 8px'，先行后列
 </UPGrid>
 ```
 
-#### 对齐方式
-
-align：left / center / right
+#### Alignment
 
 ```tsx
 <UPGrid col={4} align='center'>
@@ -291,9 +277,7 @@ align：left / center / right
 </UPGrid>
 ```
 
-#### 自定义背景色
-
-grid-item 的 bgColor
+#### Custom background colour
 
 ```tsx
 <UPGrid col={3} gap='8px'>
@@ -315,7 +299,7 @@ grid-item 的 bgColor
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -386,7 +370,7 @@ const click = (name) => {
 </style>
 ```
 
-#### 绑定点击事件&自定义列数
+#### Click events and custom column count
 
 ```vue
 <template>
@@ -469,7 +453,7 @@ const click = (name) => {
 </style>
 ```
 
-#### 实现宫格的左右滑动
+#### Swiping the grid horizontally
 
 ```vue
 <template>
@@ -566,7 +550,7 @@ const swiperList = ref(['integral', 'kefu-ermai', 'coupon', 'gift', 'scan', 'pau
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -637,7 +621,7 @@ const click = (name) => {
 </style>
 ```
 
-#### 绑定点击事件&自定义列数
+#### Click events and custom column count
 
 ```vue
 <template>
@@ -720,7 +704,7 @@ const click = (name) => {
 </style>
 ```
 
-#### 实现宫格的左右滑动
+#### Swiping the grid horizontally
 
 ```vue
 <template>

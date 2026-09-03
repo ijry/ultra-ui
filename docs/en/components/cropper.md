@@ -18,7 +18,7 @@ Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examp
 
 <template #flutter>
 
-#### 头像裁剪
+#### Avatar cropping
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -40,7 +40,7 @@ UPCropper(
 )
 ```
 
-#### 可变大小
+#### Variable size
 
 ```dart
 UPCropper(
@@ -59,7 +59,7 @@ UPCropper(
 )
 ```
 
-#### 限制在图片内
+#### Constrained to the image
 
 ```dart
 UPCropper(
@@ -79,7 +79,7 @@ UPCropper(
 )
 ```
 
-#### 裁剪已有临时图片
+#### Cropping an existing temp image
 
 ```dart
 UPCropper(
@@ -203,7 +203,7 @@ import { UPCropper } from '@ultra-ui'
 
 <template #uniapp>
 
-#### 头像裁剪模式
+#### Avatar crop mode
 
 ```vue
 <template>
@@ -238,7 +238,7 @@ const onAvatarConfirm = (rsp) => {
 </script>
 ```
 
-#### 裁剪已有临时图片
+#### Cropping an existing temp image
 
 ```vue
 <template>
@@ -379,7 +379,7 @@ const onCustomConfirm = (rsp) => {
 
 <template #uniappx>
 
-#### 头像裁剪模式
+#### Avatar crop mode
 
 ```vue
 <template>

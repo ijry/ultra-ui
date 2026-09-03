@@ -75,7 +75,7 @@ No snippet could be extracted automatically — please read the source.
 
 <template #reactnative>
 
-#### 基础用法
+#### Basic usage
 
 ```tsx
 import { UPCircleProgress } from 'ultra-ui-rn';
@@ -85,7 +85,7 @@ import { UPCircleProgress } from 'ultra-ui-rn';
 </UPCircleProgress>
 ```
 
-#### 不同进度
+#### Different progress values
 
 ```tsx
 <UPCircleProgress percentage={25}>
@@ -93,7 +93,7 @@ import { UPCircleProgress } from 'ultra-ui-rn';
 </UPCircleProgress>
 ```
 
-#### 自定义内容
+#### Custom content
 
 ```tsx
 <UPCircleProgress percentage={80}>
@@ -110,9 +110,7 @@ import { UPCircleProgress } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 基础用法
-
-percentage 控制进度，中心默认显示百分比
+#### Basic usage
 
 ```tsx
 import { UPCircleProgress } from '@ultra-ui'
@@ -120,41 +118,31 @@ import { UPCircleProgress } from '@ultra-ui'
 <UPCircleProgress percentage={25} />
 ```
 
-#### 自定义颜色
-
-activeColor / inactiveColor
+#### Custom colour
 
 ```tsx
 <UPCircleProgress percentage={60} activeColor='#19be6b' />
 ```
 
-#### 尺寸与线宽
-
-width 控制直径，borderWidth 控制线宽
+#### Size and stroke width
 
 ```tsx
 <UPCircleProgress percentage={70} width={70} borderWidth={4} />
 ```
 
-#### 端点样式
-
-round 为 false 时为平头
+#### Line cap style
 
 ```tsx
 <UPCircleProgress percentage={45} round />
 ```
 
-#### 起始角度
-
-startAngle，0 为 12 点方向顺时针
+#### Start angle
 
 ```tsx
 <UPCircleProgress percentage={30} startAngle={0} />
 ```
 
-#### 自定义中心内容
-
-children 替换默认百分比文字
+#### Custom centre content
 
 ```tsx
 <UPCircleProgress percentage={80} activeColor='#2979ff'>
@@ -165,17 +153,13 @@ children 替换默认百分比文字
 </UPCircleProgress>
 ```
 
-#### 动态改变
-
-进度变化时从当前值平滑过渡
+#### Changing it at runtime
 
 ```tsx
 <UPCircleProgress percentage={percentage} activeColor='#19be6b' />
 ```
 
-#### 关闭动画
-
-duration 为 0 时直接跳变
+#### Animation off
 
 ```tsx
 <UPCircleProgress percentage={auto} duration={0} />

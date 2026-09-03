@@ -31,7 +31,7 @@ DemoSection("文字提示") { UPTooltip(UPTooltipProps(text = "提示内容", tr
 
 <template #flutter>
 
-#### 基础使用
+#### Basic usage
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -42,7 +42,7 @@ UPTooltip(
 )
 ```
 
-#### 下方显示
+#### Shown below
 
 ```dart
 UPTooltip(
@@ -51,7 +51,7 @@ UPTooltip(
 )
 ```
 
-#### 扩展按钮
+#### Extra buttons
 
 ```dart
 UPTooltip(
@@ -63,7 +63,7 @@ UPTooltip(
 )
 ```
 
-#### 自动调整位置
+#### Auto-repositioning
 
 ```dart
 UPTooltip(
@@ -72,7 +72,7 @@ UPTooltip(
 )
 ```
 
-#### 高亮选中文本背景色
+#### Highlight colour for selected text
 
 ```dart
 UPTooltip(
@@ -84,7 +84,7 @@ UPTooltip(
 )
 ```
 
-#### 单例打开
+#### One panel at a time
 
 ```dart
 const UPTooltip(
@@ -94,7 +94,7 @@ const UPTooltip(
 )
 ```
 
-#### 自定义触发器
+#### Custom trigger
 
 ```dart
 UPTooltip(
@@ -117,7 +117,7 @@ UPTooltip(
 )
 ```
 
-#### 左侧弹出
+#### Opens from the left
 
 ```dart
 UPTooltip(
@@ -148,7 +148,7 @@ UPTooltip(
 
 <template #reactnative>
 
-#### 基础使用
+#### Basic usage
 
 ```tsx
 import { UPTooltip } from 'ultra-ui-rn';
@@ -156,25 +156,25 @@ import { UPTooltip } from 'ultra-ui-rn';
 <UPTooltip overlay text="长按文本，上方提示" />
 ```
 
-#### 下方显示
+#### Shown below
 
 ```tsx
 <UPTooltip direction="bottom" text="长按文本，下方提示" />
 ```
 
-#### 扩展按钮
+#### Extra buttons
 
 ```tsx
 <UPTooltip buttons={['扩展']} onClick={click} text="显示多个扩展按钮" />
 ```
 
-#### 自动调整位置
+#### Auto-repositioning
 
 ```tsx
 <UPTooltip buttons={['扩展', '搜索', '翻译']} text="自动调整气泡位置" />
 ```
 
-#### 高亮选中文本背景色
+#### Highlight colour for selected text
 
 ```tsx
 <UPTooltip
@@ -186,7 +186,7 @@ import { UPTooltip } from 'ultra-ui-rn';
 />
 ```
 
-#### 单例打开
+#### One panel at a time
 
 ```tsx
 <UPTooltip singleton text="第一个" triggerMode="click" />
@@ -198,9 +198,7 @@ import { UPTooltip } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 上方提示
-
-placement="top"（默认），点击文字弹出气泡
+#### Hint above
 
 ```tsx
 import { UPTooltip } from '@ultra-ui'
@@ -210,9 +208,7 @@ import { UPTooltip } from '@ultra-ui'
 </UPTooltip>
 ```
 
-#### 下方提示
-
-placement="bottom"
+#### Hint below
 
 ```tsx
 <UPTooltip text='这是一条下方的文字提示' placement='bottom'>
@@ -220,9 +216,7 @@ placement="bottom"
 </UPTooltip>
 ```
 
-#### 左右提示
-
-placement="left" / "right"
+#### Hints on both sides
 
 ```tsx
 <UPTooltip text='我在左边' placement='left'>
@@ -230,9 +224,7 @@ placement="left" / "right"
 </UPTooltip>
 ```
 
-#### 自定义颜色 / 禁用
-
-color / bgColor / disabled
+#### Custom colour and disabled
 
 ```tsx
 <UPTooltip
@@ -251,7 +243,7 @@ color / bgColor / disabled
 
 <template #uniapp>
 
-#### 基本使用.
+#### Basic usage
 
 ```vue
 <template>
@@ -259,7 +251,7 @@ color / bgColor / disabled
 </template>
 ```
 
-#### 下方显示
+#### Shown below
 
 ```vue
 <template>
@@ -267,7 +259,7 @@ color / bgColor / disabled
 </template>
 ```
 
-#### 扩展按钮
+#### Extra buttons
 
 ```vue
 <template>
@@ -275,7 +267,7 @@ color / bgColor / disabled
 </template>
 ```
 
-#### 高亮选中文本背景色
+#### Highlight colour for selected text
 
 ```vue
 <template>
@@ -283,7 +275,7 @@ color / bgColor / disabled
 </template>
 ```
 
-#### 单例打开
+#### One panel at a time
 
 ```vue
 <template>
@@ -292,7 +284,7 @@ color / bgColor / disabled
 </template>
 ```
 
-#### 左侧弹出及强制定位
+#### Opens from the left, position forced
 
 ```vue
 <template>
@@ -315,7 +307,7 @@ color / bgColor / disabled
 </template>
 ```
 
-#### 右侧弹出
+#### Opens from the right
 
 ```vue
 <template>
@@ -343,7 +335,7 @@ color / bgColor / disabled
 
 <template #uniappx>
 
-#### 基本使用.
+#### Basic usage
 
 ```vue
 <template>
@@ -351,7 +343,7 @@ color / bgColor / disabled
 </template>
 ```
 
-#### 下方显示
+#### Shown below
 
 ```vue
 <template>
@@ -359,7 +351,7 @@ color / bgColor / disabled
 </template>
 ```
 
-#### 扩展按钮
+#### Extra buttons
 
 ```vue
 <template>
@@ -367,7 +359,7 @@ color / bgColor / disabled
 </template>
 ```
 
-#### 高亮选中文本背景色
+#### Highlight colour for selected text
 
 ```vue
 <template>

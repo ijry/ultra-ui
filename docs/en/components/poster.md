@@ -18,7 +18,7 @@ Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examp
 
 <template #flutter>
 
-#### 基础示例
+#### Basic example
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -47,9 +47,7 @@ No snippet could be extracted automatically — please read the source.
 
 <template #taro>
 
-#### 基础用法
-
-view 色块 + text 多行截断 + qrcode 二维码
+#### Basic usage
 
 ```tsx
 import { UPPoster } from '@ultra-ui'
@@ -57,9 +55,7 @@ import { UPPoster } from '@ultra-ui'
 <UPPoster ref={basicRef} json={basicJson} />
 ```
 
-#### 渐变与圆角
-
-linear-gradient 背景、圆角卡片、圆角图片裁剪
+#### Gradient and corner radius
 
 ```tsx
 <UPPoster ref={gradientRef} json={gradientJson} />
@@ -71,7 +67,7 @@ linear-gradient 背景、圆角卡片、圆角图片裁剪
 
 <template #uniapp>
 
-#### 基础用法
+#### Basic usage
 
 ```vue
 <template>
@@ -161,7 +157,7 @@ const generatePoster = async () => {
 </script>
 ```
 
-#### 自定义背景图海报
+#### Poster on a custom background image
 
 ```vue
 <template>
@@ -251,7 +247,7 @@ const generatePoster = async () => {
 </script>
 ```
 
-#### 渐变背景海报
+#### Poster on a gradient background
 
 ```vue
 <template>
@@ -347,7 +343,7 @@ const generatePoster = async () => {
 
 <template #uniappx>
 
-#### 基础用法
+#### Basic usage
 
 ```vue
 <template>
@@ -437,7 +433,7 @@ const generatePoster = async () => {
 </script>
 ```
 
-#### 自定义背景图海报
+#### Poster on a custom background image
 
 ```vue
 <template>
@@ -527,7 +523,7 @@ const generatePoster = async () => {
 </script>
 ```
 
-#### 渐变背景海报
+#### Poster on a gradient background
 
 ```vue
 <template>

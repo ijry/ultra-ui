@@ -18,7 +18,7 @@ Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examp
 
 <template #flutter>
 
-#### 基础签名示例
+#### Basic signature
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -35,7 +35,7 @@ UPSignature(
 )
 ```
 
-#### 自定义颜色和工具栏示例
+#### Custom colours and toolbar
 
 ```dart
 UPSignature(
@@ -89,9 +89,7 @@ import { UPSignature } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 自定义笔画
-
-color 与 thickness 设置初始笔形
+#### Custom stroke
 
 ```tsx
 import { UPSignature } from '@ultra-ui'
@@ -104,9 +102,7 @@ import { UPSignature } from '@ultra-ui'
 />
 ```
 
-#### 自定义背景
-
-bgColor 改变画布底色
+#### Custom background
 
 ```tsx
 <UPSignature
@@ -117,9 +113,7 @@ bgColor 改变画布底色
 />
 ```
 
-#### 隐藏工具栏
-
-showToolbar 为 false，改由外部通过 ref 控制
+#### Hiding the toolbar
 
 ```tsx
 <UPSignature
@@ -130,9 +124,7 @@ showToolbar 为 false，改由外部通过 ref 控制
 />
 ```
 
-#### 尺寸
-
-width / height 控制画布大小
+#### Sizes
 
 ```tsx
 <UPSignature width={240} height={140} />
@@ -144,7 +136,7 @@ width / height 控制画布大小
 
 <template #uniapp>
 
-#### 基础用法
+#### Basic usage
 
 ```vue
 <template>
@@ -182,7 +174,7 @@ const onError1 = (err) => {
 </script>
 ```
 
-#### 自定义样式
+#### Custom styling
 
 ```vue
 <template>
@@ -221,7 +213,7 @@ const onError = (err) => {
 </script>
 ```
 
-#### 隐藏工具栏
+#### Hiding the toolbar
 
 ```vue
 <template>
@@ -259,7 +251,7 @@ const onError = (err) => {
 </script>
 ```
 
-#### 完整示例
+#### Full example
 
 ```vue
 <template>
@@ -363,7 +355,7 @@ const clearSignature2 = () => {
 
 <template #uniappx>
 
-#### 基础用法
+#### Basic usage
 
 ```vue
 <template>
@@ -401,7 +393,7 @@ const onError1 = (err) => {
 </script>
 ```
 
-#### 自定义样式
+#### Custom styling
 
 ```vue
 <template>
@@ -440,7 +432,7 @@ const onError = (err) => {
 </script>
 ```
 
-#### 隐藏工具栏
+#### Hiding the toolbar
 
 ```vue
 <template>
@@ -478,7 +470,7 @@ const onError = (err) => {
 </script>
 ```
 
-#### 完整示例
+#### Full example
 
 ```vue
 <template>

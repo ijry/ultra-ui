@@ -30,7 +30,7 @@ No snippet could be extracted automatically — please read the source.
 
 <template #reactnative>
 
-#### 加粗 + 自定义颜色
+#### Bold with a custom colour
 
 ```tsx
 import { UPMessageInput } from 'ultra-ui-rn';
@@ -51,9 +51,7 @@ breathe={false}
 
 <template #taro>
 
-#### 禁用状态
-
-disabled 同时禁用输入框与按钮
+#### Disabled state
 
 ```tsx
 import { UPMessageInput } from '@ultra-ui'

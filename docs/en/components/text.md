@@ -94,7 +94,7 @@ UPText({ props: new UPTextProps({
 
 <template #flutter>
 
-#### 基础功能
+#### Basic features
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -102,31 +102,31 @@ import 'package:ultra_ui/ultra_ui.dart';
 UPText(text: '我用十年青春,赴你最后之约')
 ```
 
-#### 设置主题
+#### Setting the theme
 
 ```dart
 UPText(text: '主色', type: 'primary')
 ```
 
-#### 拨打电话
+#### Dial a phone number
 
 ```dart
 UPText(mode: 'phone', text: '15019479320')
 ```
 
-#### 日期格式化
+#### Date formatting
 
 ```dart
 UPText(mode: 'date', text: '1612959739')
 ```
 
-#### 姓名脱敏
+#### Masking a name
 
 ```dart
 UPText(mode: 'name', text: '张三三', format: 'encrypt')
 ```
 
-#### 超链接
+#### Hyperlink
 
 ```dart
 UPText(
@@ -136,13 +136,13 @@ UPText(
 )
 ```
 
-#### 显示金额
+#### Showing an amount
 
 ```dart
 UPText(mode: 'price', text: '728732.32')
 ```
 
-#### 前后图标
+#### Leading and trailing icons
 
 ```dart
 UPText(
@@ -158,7 +158,7 @@ UPText(
 
 <template #reactnative>
 
-#### 设置主题
+#### Setting the theme
 
 ```tsx
 import { UPText } from 'ultra-ui-rn';
@@ -166,25 +166,25 @@ import { UPText } from 'ultra-ui-rn';
 <UPText text="主色" type="primary" />
 ```
 
-#### 拨打电话
+#### Dial a phone number
 
 ```tsx
 <UPText mode="phone" text="15019479320" />
 ```
 
-#### 日期格式化
+#### Date formatting
 
 ```tsx
 <UPText mode="date" text="1612959739" />
 ```
 
-#### 姓名脱敏
+#### Masking a name
 
 ```tsx
 <UPText mode="name" text="张三三" format="encrypt" />
 ```
 
-#### 超链接
+#### Hyperlink
 
 ```tsx
 <UPText
@@ -194,19 +194,19 @@ import { UPText } from 'ultra-ui-rn';
 />
 ```
 
-#### 显示金额
+#### Showing an amount
 
 ```tsx
 <UPText mode="price" text="728732.32" />
 ```
 
-#### 前后图标
+#### Leading and trailing icons
 
 ```tsx
 <UPText prefixIcon="baidu" iconStyle={{ fontSize: 19 }} text="百度一下" />
 ```
 
-#### 超出隐藏
+#### Clipping the overflow
 
 ```tsx
 <UPText
@@ -221,9 +221,7 @@ import { UPText } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 基础用法
-
-text 指定显示内容
+#### Basic usage
 
 ```tsx
 import { UPText } from '@ultra-ui'
@@ -231,57 +229,43 @@ import { UPText } from '@ultra-ui'
 <UPText text='行到水穷处，坐看云起时' />
 ```
 
-#### 主题
-
-type 共 9 种预设颜色
+#### Themes
 
 ```tsx
 <UPText type='primary' text='primary 主色' flex1={false} />
 ```
 
-#### 字体大小
-
-size 数字按 px 语义，也可带单位
+#### Font size
 
 ```tsx
 <UPText text='字号 12' size={12} flex1={false} />
 ```
 
-#### 粗体与装饰
-
-bold / decoration
+#### Bold and decoration
 
 ```tsx
 <UPText bold text='加粗文本' flex1={false} />
 ```
 
-#### 自定义颜色
-
-color 优先级低于 type，可传 token 或 CSS 颜色
+#### Custom colour
 
 ```tsx
 <UPText color='#7232dd' text='紫色文本' flex1={false} />
 ```
 
-#### 前后图标
-
-prefixIcon / suffixIcon，iconStyle 控制图标样式
+#### Leading and trailing icons
 
 ```tsx
 <UPText prefixIcon='map' text='深圳市南山区' flex1={false} />
 ```
 
-#### 对齐方式
-
-align 需要占满宽度（flex1 默认 true）
+#### Alignment
 
 ```tsx
 <UPText align='left' text='左对齐 left' />
 ```
 
-#### 多行省略
-
-lines 指定最大行数
+#### Multi-line truncation
 
 ```tsx
 <UPText lines={1} text={LONG_TEXT} />
@@ -293,13 +277,13 @@ lines 指定最大行数
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <up-text text="我用十年青春,赴你最后之约"></up-text>
 ```
 
-#### 设置主题
+#### Setting the theme
 
 ```vue
 <up-text type="primary" text="主色"></up-text>
@@ -309,37 +293,37 @@ lines 指定最大行数
 <up-text type="info"    text="信息"></up-text>
 ```
 
-#### 拨打电话
+#### Dial a phone number
 
 ```vue
 <up-text mode="phone" text="15019479320"></up-text>
 ```
 
-#### 日期格式化
+#### Date formatting
 
 ```vue
 <up-text mode="date" text="1612959739"></up-text>
 ```
 
-#### 姓名脱敏
+#### Masking a name
 
 ```vue
 <up-text mode="name" text="张三三" format="encrypt"></up-text>
 ```
 
-#### 超链接
+#### Hyperlink
 
 ```vue
 <up-text mode="link" text="Go to uview-plus docs" href="https://www.uviewui.com" ></up-text>
 ```
 
-#### 显示金额
+#### Showing an amount
 
 ```vue
 <up-text mode="price" text="728732.32"></up-text>
 ```
 
-#### 前后图标
+#### Leading and trailing icons
 
 ```vue
 <up-text prefixIcon="baidu" iconStyle="font-size: 19px" text="百度一下,你就知道"></up-text>
@@ -352,13 +336,13 @@ lines 指定最大行数
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <up-text text="我用十年青春,赴你最后之约"></up-text>
 ```
 
-#### 设置主题
+#### Setting the theme
 
 ```vue
 <up-text type="primary" text="主色"></up-text>
@@ -368,37 +352,37 @@ lines 指定最大行数
 <up-text type="info"    text="信息"></up-text>
 ```
 
-#### 拨打电话
+#### Dial a phone number
 
 ```vue
 <up-text mode="phone" text="15019479320"></up-text>
 ```
 
-#### 日期格式化
+#### Date formatting
 
 ```vue
 <up-text mode="date" text="1612959739"></up-text>
 ```
 
-#### 姓名脱敏
+#### Masking a name
 
 ```vue
 <up-text mode="name" text="张三三" format="encrypt"></up-text>
 ```
 
-#### 超链接
+#### Hyperlink
 
 ```vue
 <up-text mode="link" text="Go to uview-ultra docs" href="https://www.uviewui.com" ></up-text>
 ```
 
-#### 显示金额
+#### Showing an amount
 
 ```vue
 <up-text mode="price" text="728732.32"></up-text>
 ```
 
-#### 前后图标
+#### Leading and trailing icons
 
 ```vue
 <up-text prefixIcon="baidu" iconStyle="font-size: 19px" text="百度一下,你就知道"></up-text>

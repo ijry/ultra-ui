@@ -58,7 +58,7 @@ UPAlert(
 
 <template #harmony>
 
-#### 提示条
+#### Hint bar
 
 ```typescript
 import { UPAlert, UPAlertProps } from '@lingyun/ultra-ui-hos';
@@ -72,7 +72,7 @@ UPAlert({ props: new UPAlertProps({ title: '操作成功', description: '页面�
 
 <template #flutter>
 
-#### 基础功能
+#### Basic features
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -80,7 +80,7 @@ import 'package:ultra_ui/ultra_ui.dart';
 const UPAlert(description: '山不在于高，有了神仙就出名')
 ```
 
-#### 深浅色
+#### Light and dark
 
 ```dart
 const UPAlert(
@@ -89,7 +89,7 @@ const UPAlert(
 )
 ```
 
-#### 显示图标
+#### Showing an icon
 
 ```dart
 const UPAlert(
@@ -99,7 +99,7 @@ const UPAlert(
 )
 ```
 
-#### 可关闭
+#### Closable
 
 ```dart
 UPAlert(
@@ -111,7 +111,7 @@ UPAlert(
 )
 ```
 
-#### 带标题
+#### With a title
 
 ```dart
 const UPAlert(
@@ -129,7 +129,7 @@ const UPAlert(
 
 <template #reactnative>
 
-#### 基础功能
+#### Basic features
 
 ```tsx
 import { UPAlert } from 'ultra-ui-rn';
@@ -137,19 +137,19 @@ import { UPAlert } from 'ultra-ui-rn';
 <UPAlert description="山不在于高，有了神仙就出名" />
 ```
 
-#### 深浅色
+#### Light and dark
 
 ```tsx
 <UPAlert description="无丝竹之乱耳，无案牍之劳形" type="warning" />
 ```
 
-#### 显示图标
+#### Showing an icon
 
 ```tsx
 <UPAlert description="六王毕，四海一；蜀山兀，阿房出" showIcon type="error" />
 ```
 
-#### 可关闭
+#### Closable
 
 ```tsx
 <UPAlert
@@ -160,7 +160,7 @@ import { UPAlert } from 'ultra-ui-rn';
 />
 ```
 
-#### 带标题
+#### With a title
 
 ```tsx
 <UPAlert
@@ -178,9 +178,7 @@ import { UPAlert } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 基础用法
-
-title 为主文字，type 决定配色
+#### Basic usage
 
 ```tsx
 import { UPAlert } from '@ultra-ui'
@@ -188,17 +186,13 @@ import { UPAlert } from '@ultra-ui'
 <UPAlert type='primary' title='primary 主要提示' />
 ```
 
-#### 深色主题
-
-effect='dark'，背景填充为主题色
+#### Dark theme
 
 ```tsx
 <UPAlert effect='dark' type='primary' title='primary 主要提示' />
 ```
 
-#### 辅助描述
-
-description 字号更小、颜色更浅
+#### Supporting description
 
 ```tsx
 <UPAlert
@@ -208,41 +202,31 @@ description 字号更小、颜色更浅
 />
 ```
 
-#### 显示图标
-
-showIcon，图标由 type 自动推导
+#### Showing an icon
 
 ```tsx
 <UPAlert showIcon type='primary' title='primary 主要提示' />
 ```
 
-#### 自定义图标
-
-icon 优先级高于 type 的默认图标
+#### Custom icon
 
 ```tsx
 <UPAlert showIcon icon='bell' type='primary' title='使用 bell 图标' />
 ```
 
-#### 文字居中
-
-center=true
+#### Centred text
 
 ```tsx
 <UPAlert center type='primary' title='这是一条居中的提示' />
 ```
 
-#### 字体大小
-
-fontSize，单位默认 px
+#### Font size
 
 ```tsx
 <UPAlert type='primary' fontSize={12} title='fontSize = 12' />
 ```
 
-#### 自定义关闭区域
-
-closeSlot 替换默认叉号
+#### Custom close area
 
 ```tsx
 <UPAlert
@@ -258,7 +242,7 @@ closeSlot 替换默认叉号
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -280,13 +264,13 @@ const description = ref('uview-plus是uni-app生态专用的UI框架');
 </script>
 ```
 
-#### 图标
+#### Icons
 
 ```vue
 <up-alert type="warning" :show-icon="true"></up-alert>
 ```
 
-#### 可关闭的警告提示
+#### Closable alert
 
 ```vue
 <template>
@@ -327,7 +311,7 @@ onShow(() => {
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -349,13 +333,13 @@ const description = ref('uview-ultra是uni-app生态专用的UI框架');
 </script>
 ```
 
-#### 图标
+#### Icons
 
 ```vue
 <up-alert type="warning" :show-icon="true"></up-alert>
 ```
 
-#### 可关闭的警告提示
+#### Closable alert
 
 ```vue
 <template>

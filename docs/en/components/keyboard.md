@@ -55,9 +55,7 @@ No snippet could be extracted automatically — please read the source.
 
 <template #taro>
 
-#### 打乱顺序
-
-random 打乱字母排列
+#### Shuffled order
 
 ```tsx
 import { UPKeyboard } from '@ultra-ui'
@@ -65,9 +63,7 @@ import { UPKeyboard } from '@ultra-ui'
 <UPKeyboard mode='letter' random onChange={append} onBackspace={backspace} />
 ```
 
-#### 安全区
-
-safe 显示底部安全区占位
+#### Safe area
 
 ```tsx
 <UPKeyboard mode='letter' safe onChange={append} onBackspace={backspace} />
@@ -79,7 +75,7 @@ safe 显示底部安全区占位
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -96,19 +92,19 @@ const show = ref(false);
 </script>
 ```
 
-#### 隐藏键盘"."符号
+#### Hiding the decimal point key
 
 ```vue
 <up-keyboard mode="number" :dotDisabled="true"></up-keyboard>
 ```
 
-#### 是否打乱按键的顺序
+#### Randomising the key order
 
 ```vue
 <up-keyboard ref="uKeyboard" mode="number" :random="true" :show="show"></up-keyboard>
 ```
 
-#### 如何控制键盘的打开和关闭？
+#### Opening and closing the keyboard
 
 ```vue
 <template>
@@ -133,7 +129,7 @@ onLoad(() => {
 </script>
 ```
 
-#### 如何监听键盘按键被点击？
+#### Listening for key presses
 
 ```vue
 <template>
@@ -168,7 +164,7 @@ const backspace = () => {
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -185,19 +181,19 @@ const show = ref(false);
 </script>
 ```
 
-#### 隐藏键盘"."符号
+#### Hiding the decimal point key
 
 ```vue
 <up-keyboard mode="number" :dotDisabled="true"></up-keyboard>
 ```
 
-#### 是否打乱按键的顺序
+#### Randomising the key order
 
 ```vue
 <up-keyboard ref="uKeyboard" mode="number" :random="true" :show="show"></up-keyboard>
 ```
 
-#### 如何控制键盘的打开和关闭？
+#### Opening and closing the keyboard
 
 ```vue
 <template>
@@ -222,7 +218,7 @@ onLoad(() => {
 </script>
 ```
 
-#### 如何监听键盘按键被点击？
+#### Listening for key presses
 
 ```vue
 <template>

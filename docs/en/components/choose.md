@@ -18,7 +18,7 @@ Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examp
 
 <template #flutter>
 
-#### 基本用法
+#### Basic usage
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -32,7 +32,7 @@ UPChoose(
 )
 ```
 
-#### 不换行显示
+#### No wrapping
 
 ```dart
 UPChoose(
@@ -45,7 +45,7 @@ UPChoose(
 )
 ```
 
-#### 时间选择
+#### Time selection
 
 ```dart
 UPChoose(
@@ -59,7 +59,7 @@ UPChoose(
 )
 ```
 
-#### 快递上门时间预约
+#### Booking a delivery slot
 
 ```dart
 UPChoose(
@@ -74,7 +74,7 @@ UPChoose(
 )
 ```
 
-#### 自定义尺寸
+#### Custom size
 
 ```dart
 UPChoose(
@@ -95,7 +95,7 @@ UPChoose(
 
 <template #reactnative>
 
-#### 基本用法
+#### Basic usage
 
 ```tsx
 import { UPChoose } from 'ultra-ui-rn';
@@ -103,7 +103,7 @@ import { UPChoose } from 'ultra-ui-rn';
 <UPChoose modelValue={value1} onUpdateModelValue={setValue1} options={options1} />
 ```
 
-#### 不换行显示
+#### No wrapping
 
 ```tsx
 <UPChoose
@@ -114,7 +114,7 @@ import { UPChoose } from 'ultra-ui-rn';
 />
 ```
 
-#### 时间选择
+#### Time selection
 
 ```tsx
 <UPChoose
@@ -126,7 +126,7 @@ import { UPChoose } from 'ultra-ui-rn';
 />
 ```
 
-#### 自定义尺寸
+#### Custom size
 
 ```tsx
 <UPChoose
@@ -157,7 +157,7 @@ No snippet could be extracted automatically — please read the source.
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -181,7 +181,7 @@ const options = ref([
 </script>
 ```
 
-#### 不换行显示
+#### No wrapping
 
 ```vue
 <template>
@@ -189,7 +189,7 @@ const options = ref([
 </template>
 ```
 
-#### 自定义尺寸
+#### Custom size
 
 ```vue
 <template>
@@ -202,7 +202,7 @@ const options = ref([
 </template>
 ```
 
-#### 快递上门时间预约
+#### Booking a delivery slot
 
 ```vue
 <template>
@@ -227,7 +227,7 @@ const options = ref([
 </template>
 ```
 
-#### 自定义选项插槽
+#### Custom option slot
 
 ```vue
 <template>
@@ -241,7 +241,7 @@ const options = ref([
 </template>
 ```
 
-#### 自定义点击事件
+#### Custom tap handler
 
 ```vue
 <template>
@@ -278,7 +278,7 @@ function onCustomClick(index) {
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -302,7 +302,7 @@ const options = ref([
 </script>
 ```
 
-#### 不换行显示
+#### No wrapping
 
 ```vue
 <template>
@@ -310,7 +310,7 @@ const options = ref([
 </template>
 ```
 
-#### 自定义尺寸
+#### Custom size
 
 ```vue
 <template>
@@ -323,7 +323,7 @@ const options = ref([
 </template>
 ```
 
-#### 快递上门时间预约
+#### Booking a delivery slot
 
 ```vue
 <template>
@@ -348,7 +348,7 @@ const options = ref([
 </template>
 ```
 
-#### 自定义选项插槽
+#### Custom option slot
 
 ```vue
 <template>
@@ -362,7 +362,7 @@ const options = ref([
 </template>
 ```
 
-#### 自定义点击事件
+#### Custom tap handler
 
 ```vue
 <template>

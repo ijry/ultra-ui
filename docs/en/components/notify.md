@@ -38,7 +38,7 @@ UPNotify(
 
 <template #harmony>
 
-#### 顶部通知
+#### Top notification
 
 ```typescript
 import { UPNotify, UPNotifyProps } from '@lingyun/ultra-ui-hos';
@@ -76,7 +76,7 @@ import { UPNotify } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 组件式用法
+#### Component-style usage
 
 ```tsx
 import { UPNotify } from '@ultra-ui'
@@ -101,7 +101,7 @@ import { UPNotify } from '@ultra-ui'
 
 <template #uniapp>
 
-#### Root 全局调用（推荐）
+#### Global call via Root (recommended)
 
 ```js
 // 快捷写法
@@ -116,7 +116,7 @@ uni.$u.rootNotify({
 })
 ```
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -133,7 +133,7 @@ const show = ref(true);
 </script>
 ```
 
-#### ref调用
+#### Calling through a ref
 
 ```vue
 <template>
@@ -180,7 +180,7 @@ onUnmounted(() => {
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -197,7 +197,7 @@ const show = ref(true);
 </script>
 ```
 
-#### ref调用
+#### Calling through a ref
 
 ```vue
 <template>

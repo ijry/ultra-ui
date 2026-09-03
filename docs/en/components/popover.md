@@ -31,7 +31,7 @@ DemoSection("气泡弹出") { UPPopover(UPPopoverProps(text = "气泡内容"))
 
 <template #flutter>
 
-#### 右侧弹出
+#### Opens from the right
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -55,7 +55,7 @@ UPPopover(
 )
 ```
 
-#### 左侧弹出及强制定位
+#### Opens from the left, position forced
 
 ```dart
 UPPopover(
@@ -96,9 +96,7 @@ No snippet could be extracted automatically — please read the source.
 
 <template #taro>
 
-#### 顶部弹出
-
-placement="top"
+#### Opens from the top
 
 ```tsx
 import { UPPopover } from '@ultra-ui'
@@ -108,9 +106,7 @@ import { UPPopover } from '@ultra-ui'
 </UPPopover>
 ```
 
-#### 底部弹出
-
-placement="bottom"
+#### Opens from the bottom
 
 ```tsx
 <UPPopover placement='bottom' content='这是底部弹出的气泡内容'>
@@ -118,9 +114,7 @@ placement="bottom"
 </UPPopover>
 ```
 
-#### 左侧弹出
-
-placement="left"
+#### Opens from the left
 
 ```tsx
 <UPPopover placement='left' content='这是左侧弹出的气泡内容'>
@@ -128,9 +122,7 @@ placement="left"
 </UPPopover>
 ```
 
-#### 右侧弹出
-
-placement="right"
+#### Opens from the right
 
 ```tsx
 <UPPopover placement='right' content='这是右侧弹出的气泡内容'>
@@ -138,9 +130,7 @@ placement="right"
 </UPPopover>
 ```
 
-#### 对齐变体
-
-top-start / bottom-end 等
+#### Alignment variants
 
 ```tsx
 <UPPopover placement='top-start' content='top-start 对齐触发元素左缘'>
@@ -148,9 +138,7 @@ top-start / bottom-end 等
 </UPPopover>
 ```
 
-#### 自定义样式
-
-bgColor / color / offset
+#### Custom styling
 
 ```tsx
 <UPPopover
@@ -164,9 +152,7 @@ bgColor / color / offset
 </UPPopover>
 ```
 
-#### 禁用
-
-disabled 不响应点击
+#### Disabled
 
 ```tsx
 <UPPopover placement='top' content='disabled 时不会弹出' disabled>
@@ -174,9 +160,7 @@ disabled 不响应点击
 </UPPopover>
 ```
 
-#### 回调
-
-onOpen / onClose
+#### Callbacks
 
 ```tsx
 <UPPopover
@@ -195,7 +179,7 @@ onOpen / onClose
 
 <template #uniapp>
 
-#### 上方弹出
+#### Opens upwards
 
 ```vue
 <template>
@@ -216,7 +200,7 @@ onOpen / onClose
 </template>
 ```
 
-#### 下方弹出
+#### Opens downwards
 
 ```vue
 <template>
@@ -237,7 +221,7 @@ onOpen / onClose
 </template>
 ```
 
-#### 左侧弹出及强制定位
+#### Opens from the left, position forced
 
 ```vue
 <template>
@@ -259,7 +243,7 @@ onOpen / onClose
 </template>
 ```
 
-#### 右侧弹出
+#### Opens from the right
 
 ```vue
 <template>
@@ -286,7 +270,7 @@ onOpen / onClose
 
 <template #uniappx>
 
-#### 上方弹出
+#### Opens upwards
 
 ```vue
 <template>
@@ -307,7 +291,7 @@ onOpen / onClose
 </template>
 ```
 
-#### 下方弹出
+#### Opens downwards
 
 ```vue
 <template>
@@ -328,7 +312,7 @@ onOpen / onClose
 </template>
 ```
 
-#### 左侧弹出及强制定位
+#### Opens from the left, position forced
 
 ```vue
 <template>
@@ -350,7 +334,7 @@ onOpen / onClose
 </template>
 ```
 
-#### 右侧弹出
+#### Opens from the right
 
 ```vue
 <template>

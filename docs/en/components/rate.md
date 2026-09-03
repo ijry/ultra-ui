@@ -71,7 +71,7 @@ UPRate({ props: new UPRateProps({ value: 2, disabled: true }) })
 
 <template #flutter>
 
-#### 是否禁用评分
+#### Disabling the rating
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -79,19 +79,19 @@ import 'package:ultra_ui/ultra_ui.dart';
 const UPRate(size: 20, disabled: true)
 ```
 
-#### 是否只读评分
+#### Read-only rating
 
 ```dart
 const UPRate(size: 20, readonly: true)
 ```
 
-#### 禁止触摸选择
+#### Disallow touch selection
 
 ```dart
 const UPRate(size: 20, touchable: false)
 ```
 
-#### 自定义选中的图标
+#### Custom checked icon
 
 ```dart
 UPRate(
@@ -115,7 +115,7 @@ UPRate(
 
 <template #reactnative>
 
-#### 基本案例
+#### Basic example
 
 ```tsx
 import { UPRate } from 'ultra-ui-rn';
@@ -123,25 +123,25 @@ import { UPRate } from 'ultra-ui-rn';
 <UPRate size="20" />
 ```
 
-#### 自定义星星大小
+#### Custom star size
 
 ```tsx
 <UPRate count="4" size="30" />
 ```
 
-#### 是否禁用评分
+#### Disabling the rating
 
 ```tsx
 <UPRate disabled size="20" />
 ```
 
-#### 是否只读评分
+#### Read-only rating
 
 ```tsx
 <UPRate readonly size="20" />
 ```
 
-#### 自定义选中星星颜色
+#### Custom colour for selected stars
 
 ```tsx
 <UPRate
@@ -152,7 +152,7 @@ import { UPRate } from 'ultra-ui-rn';
 />
 ```
 
-#### 自定义未选中星星颜色
+#### Custom colour for unselected stars
 
 ```tsx
 <UPRate
@@ -163,13 +163,13 @@ import { UPRate } from 'ultra-ui-rn';
 />
 ```
 
-#### 禁止触摸选择
+#### Disallow touch selection
 
 ```tsx
 <UPRate size="20" touchable={false} />
 ```
 
-#### 允许触摸选择
+#### Allow touch selection
 
 ```tsx
 <UPRate size="20" touchable />
@@ -181,9 +181,7 @@ import { UPRate } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 基础用法
-
-value + onChange 受控绑定，默认 5 颗星
+#### Basic usage
 
 ```tsx
 import { UPRate } from '@ultra-ui'
@@ -191,33 +189,25 @@ import { UPRate } from '@ultra-ui'
 <UPRate value={basic} onChange={setBasic} />
 ```
 
-#### 星星数量
-
-count 指定总数
+#### Number of stars
 
 ```tsx
 <UPRate count={3} value={count3} onChange={setCount3} />
 ```
 
-#### 尺寸
-
-size 单位 px，默认 18
+#### Sizes
 
 ```tsx
 <UPRate size={14} value={small} onChange={setSmall} />
 ```
 
-#### 间距
-
-gutter 控制星星之间的距离，默认 4
+#### Spacing
 
 ```tsx
 <UPRate gutter={0} value={gutter0} onChange={setGutter0} />
 ```
 
-#### 自定义颜色
-
-activeColor / inactiveColor
+#### Custom colour
 
 ```tsx
 <UPRate
@@ -228,9 +218,7 @@ activeColor / inactiveColor
 />
 ```
 
-#### 自定义图标
-
-activeIcon / inactiveIcon 换成爱心
+#### Custom icon
 
 ```tsx
 <UPRate
@@ -243,17 +231,13 @@ activeIcon / inactiveIcon 换成爱心
 />
 ```
 
-#### 半星
-
-allowHalf，需要滑动到星星左半边
+#### Half stars
 
 ```tsx
 <UPRate allowHalf size={26} value={half} onChange={setHalf} />
 ```
 
-#### 最少选择数
-
-minCount=0 时允许取消到 0 分
+#### Minimum selection
 
 ```tsx
 <UPRate minCount={0} value={zero} onChange={setZero} />
@@ -265,7 +249,7 @@ minCount=0 时允许取消到 0 分
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -282,31 +266,31 @@ const value = ref(2);
 </script>
 ```
 
-#### 自定义样式
+#### Custom styling
 
 ```vue
 <up-rate active-color="#FA3534" inactive-color="#b2b2b2" gutter="20"></up-rate>
 ```
 
-#### 自定义图标
+#### Custom icon
 
 ```vue
 <up-rate activeIcon="heart-fill" inactiveIcon="heart"></up-rate>
 ```
 
-#### 最少选中的数量
+#### Minimum number selected
 
 ```vue
 <up-rate :minCount="5"></up-rate>
 ```
 
-#### 禁用状态
+#### Disabled state
 
 ```vue
 <up-rate :value="3.7" disabled></up-rate>
 ```
 
-#### 只读状态
+#### Read-only state
 
 ```vue
 <up-rate :value="3.7" readonly></up-rate>
@@ -318,7 +302,7 @@ const value = ref(2);
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -335,31 +319,31 @@ const value = ref(2);
 </script>
 ```
 
-#### 自定义样式
+#### Custom styling
 
 ```vue
 <up-rate active-color="#FA3534" inactive-color="#b2b2b2" gutter="20"></up-rate>
 ```
 
-#### 自定义图标
+#### Custom icon
 
 ```vue
 <up-rate activeIcon="heart-fill" inactiveIcon="heart"></up-rate>
 ```
 
-#### 最少选中的数量
+#### Minimum number selected
 
 ```vue
 <up-rate :minCount="5"></up-rate>
 ```
 
-#### 禁用状态
+#### Disabled state
 
 ```vue
 <up-rate :value="3.7" disabled></up-rate>
 ```
 
-#### 只读状态
+#### Read-only state
 
 ```vue
 <up-rate :value="3.7" readonly></up-rate>

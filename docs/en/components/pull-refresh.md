@@ -18,7 +18,7 @@ Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examp
 
 <template #flutter>
 
-#### 基本使用
+#### Basic usage
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -32,7 +32,7 @@ UPPullRefresh(
 )
 ```
 
-#### 自定义下拉动画
+#### Custom dropdown animation
 
 ```dart
 UPPullRefresh(
@@ -56,7 +56,7 @@ UPPullRefresh(
 )
 ```
 
-#### 结合虚拟列表
+#### Together with a virtual list
 
 ```dart
 UPPullRefresh(
@@ -75,7 +75,7 @@ UPPullRefresh(
 )
 ```
 
-#### 上拉加载
+#### Load on pull-up
 
 ```dart
 UPPullRefresh(
@@ -166,9 +166,7 @@ import { UPPullRefresh } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 基础用法
-
-下拉到阈值松手触发 onRefresh；高度固定，内部可滚动
+#### Basic usage
 
 ```tsx
 import { UPPullRefresh } from '@ultra-ui'
@@ -191,9 +189,7 @@ import { UPPullRefresh } from '@ultra-ui'
 </UPPullRefresh>
 ```
 
-#### 自定义文案
-
-通过 pullSlot / releaseSlot 自定义下拉文案
+#### Custom wording
 
 ```tsx
 <UPPullRefresh
@@ -212,9 +208,7 @@ import { UPPullRefresh } from '@ultra-ui'
 </UPPullRefresh>
 ```
 
-#### 触底加载
-
-showLoadmore + onLoadmore 组合上拉加载更多
+#### Load on reaching the bottom
 
 ```tsx
 <UPPullRefresh
@@ -238,7 +232,7 @@ showLoadmore + onLoadmore 组合上拉加载更多
 
 <template #uniapp>
 
-#### 1. 自定义下拉动画
+#### Custom dropdown animation
 
 ```vue
 <template>
@@ -316,7 +310,7 @@ const loadData = () => {
 </script>
 ```
 
-#### 2. 结合虚拟列表
+#### 2. With virtual scrolling
 
 ```vue
 <template>
@@ -363,7 +357,7 @@ export default {
 </script>
 ```
 
-#### 3. 结合上拉加载
+#### 3. With pull-to-load
 
 ```vue
 <template>
@@ -442,7 +436,7 @@ const loadData = () => {
 </script>
 ```
 
-#### 自定义内容
+#### Custom content
 
 ```vue
 <template>
@@ -493,7 +487,7 @@ const onRefresh = () => {
 
 <template #uniappx>
 
-#### 1. 自定义下拉动画
+#### Custom dropdown animation
 
 ```vue
 <template>
@@ -571,7 +565,7 @@ const loadData = () => {
 </script>
 ```
 
-#### 2. 结合虚拟列表
+#### 2. With virtual scrolling
 
 ```vue
 <template>
@@ -613,7 +607,7 @@ const onScroll = () => {};
 </script>
 ```
 
-#### 3. 结合上拉加载
+#### 3. With pull-to-load
 
 ```vue
 <template>
@@ -692,7 +686,7 @@ const loadData = () => {
 </script>
 ```
 
-#### 自定义内容
+#### Custom content
 
 ```vue
 <template>

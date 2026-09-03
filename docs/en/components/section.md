@@ -30,7 +30,7 @@ No snippet could be extracted automatically — please read the source.
 
 <template #reactnative>
 
-#### 基础用法
+#### Basic usage
 
 ```tsx
 import { UPSection } from 'ultra-ui-rn';
@@ -42,7 +42,7 @@ import { UPSection } from 'ultra-ui-rn';
 </UPSection>
 ```
 
-#### 副标题 + 右箭头
+#### Subtitle with a chevron
 
 ```tsx
 <UPSection title="我的订单" subTitle="查看全部" arrow>
@@ -52,7 +52,7 @@ import { UPSection } from 'ultra-ui-rn';
 </UPSection>
 ```
 
-#### 标题靠右
+#### Title on the right
 
 ```tsx
 <UPSection title="右侧标题" right>
@@ -62,7 +62,7 @@ import { UPSection } from 'ultra-ui-rn';
 </UPSection>
 ```
 
-#### 自定义颜色和字号
+#### Custom colour and font size
 
 ```tsx
 <UPSection title="自定义样式" color="#3c9cff" fontSize={18} lineColor="#3c9cff">
@@ -72,7 +72,7 @@ import { UPSection } from 'ultra-ui-rn';
 </UPSection>
 ```
 
-#### 无左侧线条
+#### No leading line
 
 ```tsx
 <UPSection title="无线条" showLine={false}>
@@ -88,9 +88,7 @@ import { UPSection } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 基础用法
-
-带标题的分节卡片
+#### Basic usage
 
 ```tsx
 import { UPSection } from '@ultra-ui'
@@ -98,9 +96,7 @@ import { UPSection } from '@ultra-ui'
 <UPSection title='标题'>内容区</UPSection>
 ```
 
-#### 隐藏右侧入口
-
-right=false 只保留标题与内容
+#### Hiding the trailing entry point
 
 ```tsx
 <UPSection title='系统通知' right={false}>

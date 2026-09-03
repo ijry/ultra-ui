@@ -44,7 +44,7 @@ DemoSection("数字滚动") { UPCountTo(UPCountToProps(startVal = 0, endVal = 12
 
 <template #flutter>
 
-#### 基础功能
+#### Basic features
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -52,13 +52,13 @@ import 'package:ultra_ui/ultra_ui.dart';
 UPCountTo(endVal: 3000, onEnd: _end)
 ```
 
-#### 倒计数
+#### Counting down
 
 ```dart
 UPCountTo(startVal: 300)
 ```
 
-#### 显示小数位
+#### Showing decimals
 
 ```dart
 UPCountTo(
@@ -68,7 +68,7 @@ UPCountTo(
 )
 ```
 
-#### 千分位分隔符
+#### Thousands separator
 
 ```dart
 UPCountTo(
@@ -79,7 +79,7 @@ UPCountTo(
 )
 ```
 
-#### 自定义控制
+#### Custom control
 
 ```dart
 UPCountTo(
@@ -89,7 +89,7 @@ UPCountTo(
 )
 ```
 
-#### 自定义
+#### Customising it
 
 ```dart
 UPCountTo(
@@ -106,7 +106,7 @@ UPCountTo(
 
 <template #reactnative>
 
-#### 基础功能
+#### Basic features
 
 ```tsx
 import { UPCountTo } from 'ultra-ui-rn';
@@ -114,31 +114,31 @@ import { UPCountTo } from 'ultra-ui-rn';
 <UPCountTo endVal={3000} />
 ```
 
-#### 倒计数
+#### Counting down
 
 ```tsx
 <UPCountTo startVal={300} />
 ```
 
-#### 显示小数位
+#### Showing decimals
 
 ```tsx
 <UPCountTo decimals={2} endVal={10.55} startVal={100.0} />
 ```
 
-#### 千分位分隔符
+#### Thousands separator
 
 ```tsx
 <UPCountTo decimals={2} endVal={1542} separator="," startVal={2000} />
 ```
 
-#### 自定义控制
+#### Custom control
 
 ```tsx
 <UPCountTo autoplay={false} endVal={3000} ref={countTo} />
 ```
 
-#### 自定义
+#### Customising it
 
 ```tsx
 <UPCountTo bold color="#909399" endVal={3000} fontSize={40} />
@@ -150,9 +150,7 @@ import { UPCountTo } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 自动滚动
-
-autoplay 加载即滚动到目标值
+#### Auto-scrolling
 
 ```tsx
 import { UPCountTo } from '@ultra-ui'
@@ -160,9 +158,7 @@ import { UPCountTo } from '@ultra-ui'
 <UPCountTo startVal={0} endVal={2000} duration={2000} autoplay separator=',' />
 ```
 
-#### 小数与千位分隔
-
-decimals / separator
+#### Decimals and thousands separators
 
 ```tsx
 <UPCountTo
@@ -177,9 +173,7 @@ decimals / separator
 />
 ```
 
-#### 受控与命令式
-
-value 绑定 + ref 控制 start / reset
+#### Controlled and imperative
 
 ```tsx
 <UPCountTo ref={ref} startVal={0} endVal={val} duration={1500} />
@@ -191,31 +185,31 @@ value 绑定 + ref 控制 start / reset
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <up-count-to :startVal="30" :endVal="500"></up-count-to>
 ```
 
-#### 设置滚动相关参数
+#### Scrolling options
 
 ```vue
 <up-count-to :start-val="30" :end-val="500" :duration="2000" :useEasing="false"></up-count-to>
 ```
 
-#### 是否显示小数位
+#### Showing decimals
 
 ```vue
 <up-count-to :startVal="30" :endVal="500.55" :decimals="2"></up-count-to>
 ```
 
-#### 千分位分隔符
+#### Thousands separator
 
 ```vue
 <up-count-to :endVal="1542" separator=","></up-count-to>
 ```
 
-#### 滚动执行的时机
+#### When scrolling fires
 
 ```vue
 <template>
@@ -261,31 +255,31 @@ const reStart = () => {
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <up-count-to :startVal="30" :endVal="500"></up-count-to>
 ```
 
-#### 设置滚动相关参数
+#### Scrolling options
 
 ```vue
 <up-count-to :start-val="30" :end-val="500" :duration="2000" :useEasing="false"></up-count-to>
 ```
 
-#### 是否显示小数位
+#### Showing decimals
 
 ```vue
 <up-count-to :startVal="30" :endVal="500.55" :decimals="2"></up-count-to>
 ```
 
-#### 千分位分隔符
+#### Thousands separator
 
 ```vue
 <up-count-to :endVal="1542" separator=","></up-count-to>
 ```
 
-#### 滚动执行的时机
+#### When scrolling fires
 
 ```vue
 <template>

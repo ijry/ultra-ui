@@ -188,7 +188,7 @@ const UPInput(
 
 <template #reactnative>
 
-#### 颜色
+#### Colours
 
 ```tsx
 import { UPInput } from 'ultra-ui-rn';
@@ -202,19 +202,19 @@ import { UPInput } from 'ultra-ui-rn';
 />
 ```
 
-#### 可清空内容(仅focus时显示清除图标)
+#### Clearable (clear icon on focus only)
 
 ```tsx
 <UPInput border="surround" clearable placeholder="请输入内容" />
 ```
 
-#### 可清空内容(始终显示清除图标)
+#### Clearable (clear icon always visible)
 
 ```tsx
 <UPInput border="surround" clearable onlyClearableOnFocused={false} placeholder="请输入内容" />
 ```
 
-#### 数字键盘
+#### Number keyboard
 
 ```tsx
 <UPInput
@@ -227,7 +227,7 @@ import { UPInput } from 'ultra-ui-rn';
 />
 ```
 
-#### 密码类型
+#### Password input
 
 ```tsx
 <UPInput
@@ -241,19 +241,19 @@ import { UPInput } from 'ultra-ui-rn';
 />
 ```
 
-#### 显示下划线
+#### With an underline
 
 ```tsx
 <UPInput border="bottom" clearable placeholder="请输入内容" />
 ```
 
-#### 禁用状态
+#### Disabled state
 
 ```tsx
 <UPInput border="surround" disabled placeholder="禁用状态" />
 ```
 
-#### 圆形
+#### Circular
 
 ```tsx
 <UPInput border="surround" placeholder="请输入内容" shape="circle" />
@@ -265,9 +265,7 @@ import { UPInput } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 基础用法
-
-value + onChange 受控绑定
+#### Basic usage
 
 ```tsx
 import { UPInput } from '@ultra-ui'
@@ -275,9 +273,7 @@ import { UPInput } from '@ultra-ui'
 <UPInput value={basic} placeholder='请输入内容' onChange={setBasic} />
 ```
 
-#### 输入类型
-
-type：text / number / digit / idcard / password
+#### Input types
 
 ```tsx
 <UPInput
@@ -288,17 +284,13 @@ type：text / number / digit / idcard / password
 />
 ```
 
-#### 边框
-
-border：surround / bottom / none
+#### Border
 
 ```tsx
 <UPInput border='surround' value={surround} onChange={setSurround} />
 ```
 
-#### 形状
-
-shape：square 方形 / circle 圆形
+#### Shapes
 
 ```tsx
 <UPInput
@@ -309,9 +301,7 @@ shape：square 方形 / circle 圆形
 />
 ```
 
-#### 对齐方式
-
-inputAlign：left / center / right
+#### Alignment
 
 ```tsx
 <UPInput
@@ -321,17 +311,13 @@ inputAlign：left / center / right
 />
 ```
 
-#### 禁用与只读
-
-disabled 会置灰，readonly 不会
+#### Disabled and read-only
 
 ```tsx
 <UPInput disabled value={disabled} onChange={setDisabled} />
 ```
 
-#### 清除按钮
-
-clearable 开启；onlyClearableOnFocused 控制是否仅聚焦时显示
+#### Clear button
 
 ```tsx
 <UPInput
@@ -342,9 +328,7 @@ clearable 开启；onlyClearableOnFocused 控制是否仅聚焦时显示
 />
 ```
 
-#### 前后缀图标
-
-prefixIcon / suffixIcon
+#### Prefix and suffix icons
 
 ```tsx
 <UPInput
@@ -361,7 +345,7 @@ prefixIcon / suffixIcon
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -384,7 +368,7 @@ const change = (e) => {
 </script>
 ```
 
-#### 可清空字符
+#### Clearable input
 
 ```vue
 <template>
@@ -396,7 +380,7 @@ const change = (e) => {
 </template>
 ```
 
-#### 下划线
+#### Underline
 
 ```vue
 <template>
@@ -408,7 +392,7 @@ const change = (e) => {
 </template>
 ```
 
-#### 前后图标
+#### Leading and trailing icons
 
 ```vue
 <template>
@@ -428,7 +412,7 @@ const change = (e) => {
 </script>
 ```
 
-#### 前后插槽
+#### Leading and trailing slots
 
 ```vue
 <template>
@@ -536,7 +520,7 @@ const change = (e) => {
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -559,7 +543,7 @@ const change = (e) => {
 </script>
 ```
 
-#### 可清空字符
+#### Clearable input
 
 ```vue
 <template>
@@ -571,7 +555,7 @@ const change = (e) => {
 </template>
 ```
 
-#### 下划线
+#### Underline
 
 ```vue
 <template>
@@ -583,7 +567,7 @@ const change = (e) => {
 </template>
 ```
 
-#### 前后图标
+#### Leading and trailing icons
 
 ```vue
 <template>
@@ -603,7 +587,7 @@ const change = (e) => {
 </script>
 ```
 
-#### 前后插槽
+#### Leading and trailing slots
 
 ```vue
 <template>

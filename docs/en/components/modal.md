@@ -79,7 +79,7 @@ UPModal(
 
 <template #harmony>
 
-#### 确认与取消
+#### Confirm and cancel
 
 ```typescript
 import { UPModal, UPModalProps } from '@lingyun/ultra-ui-hos';
@@ -398,7 +398,7 @@ import { UPModal } from '@ultra-ui'
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -420,7 +420,7 @@ const content = ref('uview-plus的目标是成为uni-app生态最优秀的UI框�
 </script>
 ```
 
-#### 传入富文本内容
+#### Passing rich text
 
 ```vue
 <template>
@@ -447,7 +447,7 @@ const content = ref(`空山新雨后<br>
 </script>
 ```
 
-#### 异步关闭
+#### Closing asynchronously
 
 ```vue
 <template>
@@ -491,25 +491,25 @@ onShow(() => {
 </script>
 ```
 
-#### 点击遮罩关闭
+#### Close on mask tap
 
 ```vue
 <up-modal :show="show" :closeOnClickOverlay="true"></up-modal>
 ```
 
-#### 控制模态框宽度
+#### Modal width
 
 ```vue
 <up-modal v-model:show="show" width="300px"></up-modal>
 ```
 
-#### 缩放效果
+#### Zoom effect
 
 ```vue
 <up-modal v-model:show="show" :zoom="false"></up-modal>
 ```
 
-#### 带底部关闭按钮
+#### With a close button at the foot
 
 ```vue
 <up-modal
@@ -531,7 +531,7 @@ onShow(() => {
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <template>
@@ -553,7 +553,7 @@ const content = ref('uview-ultra的目标是成为uni-app生态最优秀的UI框
 </script>
 ```
 
-#### 传入富文本内容
+#### Passing rich text
 
 ```vue
 <template>
@@ -580,7 +580,7 @@ const content = ref(`空山新雨后<br>
 </script>
 ```
 
-#### 异步关闭
+#### Closing asynchronously
 
 ```vue
 <template>
@@ -624,19 +624,19 @@ onShow(() => {
 </script>
 ```
 
-#### 点击遮罩关闭
+#### Close on mask tap
 
 ```vue
 <up-modal :show="show" :closeOnClickOverlay="true"></up-modal>
 ```
 
-#### 控制模态框宽度
+#### Modal width
 
 ```vue
 <up-modal v-model="show" width="300px"></up-modal>
 ```
 
-#### 缩放效果
+#### Zoom effect
 
 ```vue
 <up-modal v-model="show" :zoom="false"></up-modal>

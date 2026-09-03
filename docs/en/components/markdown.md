@@ -18,7 +18,7 @@ Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examp
 
 <template #flutter>
 
-#### 基础用法
+#### Basic usage
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -29,7 +29,7 @@ UPMarkdown(
 )
 ```
 
-#### 带代码块行号
+#### Code blocks with line numbers
 
 ```dart
 UPMarkdown(
@@ -39,7 +39,7 @@ UPMarkdown(
 )
 ```
 
-#### 深色主题
+#### Dark theme
 
 ```dart
 UPMarkdown(
@@ -49,7 +49,7 @@ UPMarkdown(
 )
 ```
 
-#### AI流式内容显示
+#### Streaming AI content
 
 ```dart
 UPMarkdown(
@@ -89,9 +89,7 @@ import { UPMarkdown } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 基础用法
-
-标题、正文、行内标记与链接
+#### Basic usage
 
 ```tsx
 import { UPMarkdown } from '@ultra-ui'
@@ -99,49 +97,37 @@ import { UPMarkdown } from '@ultra-ui'
 <UPMarkdown content={basicMd} />
 ```
 
-#### 列表与引用
-
-有序、无序、嵌套与引用块
+#### Lists and blockquotes
 
 ```tsx
 <UPMarkdown content={listMd} />
 ```
 
-#### 代码块
-
-围栏代码块保留缩进，可切换行号显示
+#### Code blocks
 
 ```tsx
 <UPMarkdown content={codeMd} showLineNumber={showLineNumber} />
 ```
 
-#### 表格
-
-GFM 表格语法
+#### Table
 
 ```tsx
 <UPMarkdown content={tableMd} />
 ```
 
-#### 深色主题
-
-theme='dark' 时改写代码块、引用与链接配色
+#### Dark theme
 
 ```tsx
 <UPMarkdown content={codeMd} theme={dark ? 'dark' : 'light'} />
 ```
 
-#### 文本可选
-
-selectable 允许长按选中
+#### Selectable text
 
 ```tsx
 <UPMarkdown content='可以长按选中这段 **markdown** 文字。' selectable />
 ```
 
-#### 空内容
-
-content 为空时不渲染任何节点
+#### Empty content
 
 ```tsx
 <UPMarkdown content='' />
@@ -153,7 +139,7 @@ content 为空时不渲染任何节点
 
 <template #uniapp>
 
-#### 基础用法
+#### Basic usage
 
 ```vue
 <template>
@@ -188,7 +174,7 @@ const basicContent = ref(`# 标题1
 </script>
 ```
 
-#### 显示代码块行号
+#### Line numbers in code blocks
 
 ```vue
 <template>
@@ -227,7 +213,7 @@ hello("World")
 </script>
 ```
 
-#### 深色主题
+#### Dark theme
 
 ```vue
 <template>
@@ -262,7 +248,7 @@ const basicContent = ref(`# 标题1
 </script>
 ```
 
-#### AI流式内容显示
+#### Streaming AI content
 
 ```vue
 <template>
@@ -403,7 +389,7 @@ onBeforeUnmount(() => {
 
 <template #uniappx>
 
-#### 基础用法
+#### Basic usage
 
 ```vue
 <template>
@@ -438,7 +424,7 @@ const basicContent = ref(`# 标题1
 </script>
 ```
 
-#### 显示代码块行号
+#### Line numbers in code blocks
 
 ```vue
 <template>
@@ -477,7 +463,7 @@ hello("World")
 </script>
 ```
 
-#### 深色主题
+#### Dark theme
 
 ```vue
 <template>
@@ -512,7 +498,7 @@ const basicContent = ref(`# 标题1
 </script>
 ```
 
-#### AI流式内容显示
+#### Streaming AI content
 
 ```vue
 <template>

@@ -18,7 +18,7 @@ Switch tabs to see the syntax for each platform. The uni-app and uni-app-x examp
 
 <template #flutter>
 
-#### 基础优惠券
+#### Basic coupon
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -33,7 +33,7 @@ UPCoupon(
 )
 ```
 
-#### 小尺寸
+#### Small size
 
 ```dart
 UPCoupon(
@@ -45,7 +45,7 @@ UPCoupon(
 )
 ```
 
-#### 大尺寸
+#### Large size
 
 ```dart
 UPCoupon(
@@ -61,7 +61,7 @@ UPCoupon(
 )
 ```
 
-#### 圆形按钮
+#### Circular button
 
 ```dart
 UPCoupon(
@@ -74,7 +74,7 @@ UPCoupon(
 )
 ```
 
-#### 禁用状态
+#### Disabled state
 
 ```dart
 UPCoupon(
@@ -87,7 +87,7 @@ UPCoupon(
 )
 ```
 
-#### 红包样式
+#### Red-packet style
 
 ```dart
 UPCoupon(
@@ -101,7 +101,7 @@ UPCoupon(
 )
 ```
 
-#### 卡片样式
+#### Card style
 
 ```dart
 UPCoupon(
@@ -205,9 +205,7 @@ import { UPCoupon } from 'ultra-ui-rn';
 
 <template #taro>
 
-#### 基础用法
-
-amount 金额 + limit 使用限制 + title 标题
+#### Basic usage
 
 ```tsx
 import { UPCoupon } from '@ultra-ui'
@@ -221,17 +219,13 @@ import { UPCoupon } from '@ultra-ui'
 />
 ```
 
-#### 形状
-
-shape：coupon 优惠券 / envelope 红包 / card 卡片
+#### Shapes
 
 ```tsx
 <UPCoupon shape='coupon' amount={10} limit='满 50 元可用' title='shape=coupon' />
 ```
 
-#### 主题
-
-type：primary / success / warning / error
+#### Themes
 
 ```tsx
 <UPCoupon
@@ -243,25 +237,19 @@ type：primary / success / warning / error
 />
 ```
 
-#### 尺寸
-
-size：small / medium / large
+#### Sizes
 
 ```tsx
 <UPCoupon size='small' amount={5} limit='无门槛' title='small' />
 ```
 
-#### 单位
-
-unit 单位文字，unitPosition 控制其在金额左右
+#### Unit
 
 ```tsx
 <UPCoupon amount={20} unit='￥' unitPosition='left' title='unitPosition=left' />
 ```
 
-#### 自定义颜色
-
-bgColor 背景 / color 文字颜色
+#### Custom colour
 
 ```tsx
 <UPCoupon
@@ -280,7 +268,7 @@ bgColor 背景 / color 文字颜色
 
 <template #uniapp>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <script setup>  
@@ -295,7 +283,7 @@ const time = ref('2023-12-31前使用');
 </script>
 ```
 
-#### 尺寸
+#### Sizes
 
 ```vue
 <up-coupon 
@@ -306,7 +294,7 @@ const time = ref('2023-12-31前使用');
 </up-coupon>
 ```
 
-#### 自定义样式
+#### Custom styling
 
 ```vue
 <up-coupon 
@@ -321,7 +309,7 @@ const time = ref('2023-12-31前使用');
 </up-coupon>
 ```
 
-#### 形状
+#### Shapes
 
 ```vue
 <up-coupon 
@@ -334,7 +322,7 @@ const time = ref('2023-12-31前使用');
 </up-coupon>
 ```
 
-#### 禁用状态
+#### Disabled state
 
 ```vue
 <up-coupon 
@@ -346,7 +334,7 @@ const time = ref('2023-12-31前使用');
 </up-coupon>
 ```
 
-#### 插槽使用
+#### Using slots
 
 ```vue
 <up-coupon 
@@ -374,7 +362,7 @@ const time = ref('2023-12-31前使用');
 
 <template #uniappx>
 
-#### 基本使用
+#### Basic usage
 
 ```vue
 <script setup>  
@@ -389,7 +377,7 @@ const time = ref('2023-12-31前使用');
 </script>
 ```
 
-#### 尺寸
+#### Sizes
 
 ```vue
 <up-coupon 
@@ -400,7 +388,7 @@ const time = ref('2023-12-31前使用');
 </up-coupon>
 ```
 
-#### 自定义样式
+#### Custom styling
 
 ```vue
 <up-coupon 
@@ -415,7 +403,7 @@ const time = ref('2023-12-31前使用');
 </up-coupon>
 ```
 
-#### 形状
+#### Shapes
 
 ```vue
 <up-coupon 
@@ -428,7 +416,7 @@ const time = ref('2023-12-31前使用');
 </up-coupon>
 ```
 
-#### 禁用状态
+#### Disabled state
 
 ```vue
 <up-coupon 
@@ -440,7 +428,7 @@ const time = ref('2023-12-31前使用');
 </up-coupon>
 ```
 
-#### 插槽使用
+#### Using slots
 
 ```vue
 <up-coupon 
