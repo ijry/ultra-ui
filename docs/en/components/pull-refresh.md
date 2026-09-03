@@ -39,11 +39,20 @@ UPPullRefresh(
 ```tsx
 import { UPPullRefresh } from 'ultra-ui-rn';
 
-<UPPullRefresh refreshing={refreshing} onRefresh={handleRefresh}>
-<View style={pr.content}>
-<Text style={pr.text}>下拉刷新试试</Text>
-<Text style={pr.count}>已刷新 {count} 次</Text>
-</View>
+<UPPullRefresh
+  height={200}
+  refreshing={refreshing}
+  threshold={50}
+  useScrollView
+  onRefresh={onRefresh}
+>
+  <View style={s.listContent}>
+    {listData.map((item) => (
+      <View key={item.id} style={s.listItem}>
+        <Text style={s.listItemText}>{item.name}</Text>
+      </View>
+    ))}
+  </View>
 </UPPullRefresh>
 ```
 
@@ -52,6 +61,10 @@ import { UPPullRefresh } from 'ultra-ui-rn';
 </template>
 
 <template #taro>
+
+### 基础用法
+
+下拉到阈值松手触发 onRefresh；高度固定，内部可滚动
 
 ```tsx
 import { UPPullRefresh } from '@ultra-ui'
@@ -74,6 +87,47 @@ import { UPPullRefresh } from '@ultra-ui'
 </UPPullRefresh>
 ```
 
+### 自定义文案
+
+通过 pullSlot / releaseSlot 自定义下拉文案
+
+```tsx
+<UPPullRefresh
+  customClass="pull-refresh-demo__box"
+  height="360px"
+  refreshing={customRefreshing}
+  onRefresh={handleCustomRefresh}
+  pullSlot={renderCustomIndicator}
+  releaseSlot={renderCustomIndicator}
+>
+  {Array.from({ length: 6 }, (_, i) => (
+    <View key={i} className="pull-refresh-demo__cell pull-refresh-demo__cell--plain">
+      <Text className="pull-refresh-demo__cell-text">内容 #{i + 1}</Text>
+    </View>
+  ))}
+</UPPullRefresh>
+```
+
+### 触底加载
+
+showLoadmore + onLoadmore 组合上拉加载更多
+
+```tsx
+<UPPullRefresh
+  customClass="pull-refresh-demo__box"
+  height="460px"
+  showLoadmore
+  loadmoreProps={{ status: loadStatus, loadmoreText: '上拉加载更多' }}
+  onLoadmore={handleLoadmore}
+>
+  {loadList.map((item) => (
+    <View key={item} className="pull-refresh-demo__cell pull-refresh-demo__cell--plain">
+      <Text className="pull-refresh-demo__cell-text">记录 #{item}</Text>
+    </View>
+  ))}
+</UPPullRefresh>
+```
+
 <small>Snippet from `ultra-ui-taro/src/pages/components/pull-refresh/index.tsx`</small>
 
 </template>
@@ -88,18 +142,18 @@ import { UPPullRefresh } from '@ultra-ui'
   >
     <!-- 列表内容 -->
     <view class="list-content">
-          <view
-            v-for="item in listData"
-            :key="item.id"
+          <view 
+            v-for="item in listData" 
+            :key="getItemId(item)"
             class="list-item"
           >
-            <text class="list-item__text">{{ item.name }}</text>
+            <text>{{ getItemName(item) }}</text>
           </view>
       </view>
   </up-pull-refresh>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus/src/pages/componentsD/pullRefresh/pullRefresh.vue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/pullRefresh/pullRefresh.uvue`</small>
 
 </template>
 
@@ -134,21 +188,6 @@ import { UPPullRefresh } from '@ultra-ui'
 
 The reference below is extracted from the uview-plus source, whose property names the other ports keep. For per-platform differences, compare the tabs above.
 
-### Props
-
-| Prop | Description | Type | Default |
-| --- | --- | --- | --- |
-| `refreshing` | 是否正在刷新 | `Boolean` | `—` |
-| `threshold` | 下拉刷新阈值 | `Number` | `—` |
-| `damping` | 阻尼系数 | `Number` | `—` |
-| `maxDistance` | 最大下拉距离 | `Number` | `—` |
-| `showLoadmore` | 是否显示加载更多 | `Boolean` | `—` |
-| `loadmoreProps` | u-loadmore 组件的 props 配置 | `Object` | `—` |
-| `useScrollView` | 是否使用 scroll-view 包装内容 | `Boolean` | `—` |
-| `enableBackToTop` | scroll-view 相关属性 | `Boolean` | `—` |
-| `lowerThreshold` | — | `Number / String` | `—` |
-| `scrollTop` | — | `Number / String` | `—` |
-
 ### Events
 
 | Event |
@@ -173,6 +212,6 @@ The reference below is extracted from the uview-plus source, whose property name
 | Flutter · Dart | `UPPullRefresh` | `packages/ultra_ui/lib/src/widgets/up_pull_refresh.dart` |
 | React Native · TypeScript | `UPPullRefresh` | `src/components/pull-refresh` |
 | Taro · React + TypeScript | `UPPullRefresh` | `src/ultra-ui/components/up-pull-refresh` |
-| uni-app · Vue 3 | `up-pull-refresh` | `src/uni_modules/uview-plus/components/u-pull-refresh` |
+| uni-app · Vue 3 | `up-pull-refresh` | `uni_modules/uview-ultra/components/up-pull-refresh` |
 | uni-app-x · UTS / UVUE | `up-pull-refresh` | `uni_modules/uview-ultra/components/up-pull-refresh` |
 

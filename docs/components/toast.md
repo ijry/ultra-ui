@@ -109,10 +109,10 @@ import { UPToast } from '@ultra-ui'
 <template #uniapp>
 
 ```vue
-<up-toast ref="uToastRef"></up-toast>
+<up-toast ref="upToastRef"></up-toast>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus/src/pages/componentsB/toast/toast.nvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsB/toast/toast.uvue`</small>
 
 </template>
 
@@ -146,6 +146,6 @@ import { UPToast } from '@ultra-ui'
 | Flutter · Dart | `UPToast` | `packages/ultra_ui/lib/src/widgets/up_toast.dart` |
 | React Native · TypeScript | `UPToast` | `src/components/toast` |
 | Taro · React + TypeScript | `UPToast` | `src/ultra-ui/components/up-toast` |
-| uni-app · Vue 3 | `up-toast` | `src/uni_modules/uview-plus/components/u-toast` |
+| uni-app · Vue 3 | `up-toast` | `uni_modules/uview-ultra/components/up-toast` |
 | uni-app-x · UTS / UVUE | `up-toast` | `uni_modules/uview-ultra/components/up-toast` |
 

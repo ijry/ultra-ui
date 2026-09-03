@@ -88,7 +88,7 @@ import { UPCascader } from '@ultra-ui'
 ></up-cascader>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus/src/pages/componentsD/cascader/cascader.nvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/cascader/cascader.uvue`</small>
 
 </template>
 
@@ -113,23 +113,6 @@ import { UPCascader } from '@ultra-ui'
 
 接口以 uview-plus 源码为准，各平台移植时保持了同名属性；平台间的差异请对照上方的示例标签。
 
-### 属性
-
-| 属性 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
-| `show` | 通过双向绑定控制组件的弹出与收起 | `Boolean` | `—` |
-| `data` | 级联数据 | `Array` | `—` |
-| `modelValue` | 默认选中的值 | `Array` | `—` |
-| `valueKey` | 指定选项的值为选项对象中的哪个属性值 | `String` | `—` |
-| `labelKey` | 指定选项标签为选项对象中的哪个属性值 | `String` | `—` |
-| `childrenKey` | 指定选项的子选项为选项对象中的哪个属性值 | `String` | `—` |
-| `maskCloseAble` | 是否允许通过点击遮罩关闭Picker | `Boolean` | `—` |
-| `zIndex` | 弹出的z-index值 | `String / Number` | `—` |
-| `autoClose` | 是否在选择最后一级时自动关闭并触发confirm | `Boolean` | `—` |
-| `headerDirection` | 选中项目的展示方向direction垂直方向适合文字长度过长 | `String` | `—` |
-| `optionsCols` | 选项区域列数，支持1列和2列，默认为2列 | `Number` | `—` |
-| `closeable` | 是否显示关闭图标 | `Boolean` | `—` |
-
 ### 事件
 
 | 事件名 |
@@ -147,6 +130,6 @@ import { UPCascader } from '@ultra-ui'
 | Flutter · Dart | `UPCascader` | `packages/ultra_ui/lib/src/widgets/up_cascader.dart` |
 | React Native · TypeScript | `UPCascader` | `src/components/cascader` |
 | Taro · React + TypeScript | `UPCascader` | `src/ultra-ui/components/up-cascader` |
-| uni-app · Vue 3 | `up-cascader` | `src/uni_modules/uview-plus/components/u-cascader` |
+| uni-app · Vue 3 | `up-cascader` | `uni_modules/uview-ultra/components/up-cascader` |
 | uni-app-x · UTS / UVUE | `up-cascader` | `uni_modules/uview-ultra/components/up-cascader` |
 

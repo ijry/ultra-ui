@@ -78,15 +78,6 @@ No snippet could be extracted automatically — please read the source.
 
 The reference below is extracted from the uview-plus source, whose property names the other ports keep. For per-platform differences, compare the tabs above.
 
-### Props
-
-| Prop | Description | Type | Default |
-| --- | --- | --- | --- |
-| `tabsList` | tabs标签列表 | `Array` | `—` |
-| `videoList` | 视频列表数据 | `Array` | `—` |
-| `currentTab` | 当前选中的tab索引 | `Number` | `—` |
-| `currentVideo` | 当前播放的视频索引 | `Number` | `—` |
-
 ### Events
 
 | Event |
@@ -121,6 +112,6 @@ The reference below is extracted from the uview-plus source, whose property name
 | Flutter · Dart | `UPShortVideo` | `packages/ultra_ui/lib/src/widgets/up_short_video.dart` |
 | React Native · TypeScript | `UPShortVideo` | `src/components/short-video` |
 | Taro · React + TypeScript | `UPShortVideo` | `src/ultra-ui/components/up-short-video` |
-| uni-app · Vue 3 | `up-short-video` | `src/uni_modules/uview-plus/components/u-short-video` |
+| uni-app · Vue 3 | `up-short-video` | `uni_modules/uview-ultra/components/up-short-video` |
 | uni-app-x · UTS / UVUE | `up-short-video` | `uni_modules/uview-ultra/components/up-short-video` |
 

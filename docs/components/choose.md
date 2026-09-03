@@ -36,10 +36,48 @@ UPChoose(
 
 <template #reactnative>
 
+### 基本用法
+
 ```tsx
 import { UPChoose } from 'ultra-ui-rn';
 
 <UPChoose modelValue={value1} onUpdateModelValue={setValue1} options={options1} />
+```
+
+### 不换行显示
+
+```tsx
+<UPChoose
+  modelValue={value2}
+  onUpdateModelValue={setValue2}
+  options={options2}
+  wrap={false}
+/>
+```
+
+### 时间选择
+
+```tsx
+<UPChoose
+  itemHeight="35px"
+  itemWidth="170px"
+  modelValue={value5}
+  onUpdateModelValue={setValue5}
+  options={options3}
+/>
+```
+
+### 自定义尺寸
+
+```tsx
+<UPChoose
+  itemHeight="110px"
+  itemWidth="125px"
+  modelValue={value5}
+  onUpdateModelValue={setValue5}
+  options={options4}
+  wrap={false}
+/>
 ```
 
 <small>示例来源 `ultra-ui-rn/example/pages/components/form/ChooseDemo.tsx`</small>
@@ -64,7 +102,7 @@ import { UPChoose } from '@ultra-ui'
 <up-choose v-model="value1" :options="options1"></up-choose>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus/src/pages/componentsD/choose/choose.nvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/choose/choose.uvue`</small>
 
 </template>
 
@@ -83,21 +121,6 @@ import { UPChoose } from '@ultra-ui'
 ## API
 
 接口以 uview-plus 源码为准，各平台移植时保持了同名属性；平台间的差异请对照上方的示例标签。
-
-### 属性
-
-| 属性 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
-| `options` | — | `Array` | `—` |
-| `modelValue` | — | `Number / String / Array` | `—` |
-| `type` | — | `String` | `—` |
-| `itemWidth` | — | `String` | `—` |
-| `itemHeight` | — | `String` | `—` |
-| `itemPadding` | — | `String` | `—` |
-| `labelName` | — | `String` | `—` |
-| `valueName` | — | `String` | `—` |
-| `customClick` | — | `Boolean` | `—` |
-| `wrap` | 是否换行 | `Boolean` | `—` |
 
 ### 事件
 
@@ -118,6 +141,6 @@ import { UPChoose } from '@ultra-ui'
 | Flutter · Dart | `UPChoose` | `packages/ultra_ui/lib/src/widgets/up_choose.dart` |
 | React Native · TypeScript | `UPChoose` | `src/components/choose` |
 | Taro · React + TypeScript | `UPChoose` | `src/ultra-ui/components/up-choose` |
-| uni-app · Vue 3 | `up-choose` | `src/uni_modules/uview-plus/components/u-choose` |
+| uni-app · Vue 3 | `up-choose` | `uni_modules/uview-ultra/components/up-choose` |
 | uni-app-x · UTS / UVUE | `up-choose` | `uni_modules/uview-ultra/components/up-choose` |
 

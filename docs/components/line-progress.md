@@ -31,6 +31,8 @@ import UltraUI
 
 <template #android>
 
+### 线性进度
+
 ```kotlin
 import net.lingyun.ultraui.android.components.UPLineProgress
 
@@ -79,10 +81,51 @@ import { UPLineProgress } from 'ultra-ui-rn';
 
 <template #taro>
 
+### 基础用法
+
+percentage 控制进度，默认显示在右侧外部
+
 ```tsx
 import { UPLineProgress } from '@ultra-ui'
 
 <UPLineProgress percentage={30} customClass='line-progress-demo__item' />
+```
+
+### 文字内显
+
+textInside，百分比文字显示在进度条内部
+
+```tsx
+<UPLineProgress percentage={45} textInside customClass='line-progress-demo__item' />
+```
+
+### 圆角与斑马纹
+
+round 胶囊形，striped 动态条纹
+
+```tsx
+<UPLineProgress percentage={70} round striped customClass='line-progress-demo__item' />
+```
+
+### 自定义高度
+
+height
+
+```tsx
+<UPLineProgress percentage={40} height={24} customClass='line-progress-demo__item' />
+```
+
+### 受控动画
+
+定时器驱动 percentage 自动增长
+
+```tsx
+<UPLineProgress
+  percentage={percent}
+  round
+  showText={false}
+  customClass='line-progress-demo__item'
+/>
 ```
 
 <small>示例来源 `ultra-ui-taro/src/pages/components/line-progress/index.tsx`</small>
@@ -92,11 +135,11 @@ import { UPLineProgress } from '@ultra-ui'
 <template #uniapp>
 
 ```vue
-<up-line-progress>
+<up-line-progress :percentage="percentage1">
 </up-line-progress>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus/src/pages/componentsB/progress/progress.nvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsB/progress/progress.uvue`</small>
 
 </template>
 
@@ -143,6 +186,6 @@ import { UPLineProgress } from '@ultra-ui'
 | Flutter · Dart | `UPLineProgress` | `packages/ultra_ui/lib/src/widgets/up_line_progress.dart` |
 | React Native · TypeScript | `UPLineProgress` | `src/components/line-progress` |
 | Taro · React + TypeScript | `UPLineProgress` | `src/ultra-ui/components/up-line-progress` |
-| uni-app · Vue 3 | `up-line-progress` | `src/uni_modules/uview-plus/components/u-line-progress` |
+| uni-app · Vue 3 | `up-line-progress` | `uni_modules/uview-ultra/components/up-line-progress` |
 | uni-app-x · UTS / UVUE | `up-line-progress` | `uni_modules/uview-ultra/components/up-line-progress` |
 

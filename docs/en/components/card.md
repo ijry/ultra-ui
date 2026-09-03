@@ -31,6 +31,8 @@ No snippet could be extracted automatically — please read the source.
 
 <template #android>
 
+### 卡片
+
 ```kotlin
 import net.lingyun.ultraui.android.components.UPCard
 import net.lingyun.ultraui.android.components.UPCardProps
@@ -150,7 +152,7 @@ import { UPCard } from '@ultra-ui'
 </up-card>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus/src/pages/componentsB/card/card.vue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsB/card/card.uvue`</small>
 
 </template>
 
@@ -180,32 +182,32 @@ The reference below is extracted from the uview-plus source, whose property name
 
 | Prop | Description | Type | Default |
 | --- | --- | --- | --- |
-| `full` | 与屏幕两侧是否留空隙 | `Boolean` | `false` |
-| `title` | 标题 | `String` | `''` |
-| `titleColor` | 标题颜色 | `String` | `'#303133'` |
-| `titleSize` | 标题字体大小 | `Number / String` | `'15px'` |
-| `subTitle` | 副标题 | `String` | `''` |
-| `subTitleColor` | 副标题颜色 | `String` | `'#909399'` |
-| `subTitleSize` | 副标题字体大小 | `Number / String` | `'13px'` |
-| `border` | 是否显示外部边框，只对full=false时有效(卡片与边框有空隙时) | `Boolean` | `true` |
-| `index` | 用于标识点击了第几个 | `Number / String / Object` | `''` |
-| `margin` | 用于隔开上下左右的边距，带单位的写法，如："30px 30px"，"20px 20px 30px 30px" | `String` | `'15px'` |
-| `borderRadius` | card卡片的圆角 | `Number / String` | `'8px'` |
-| `headStyle` | 头部自定义样式，对象形式 | `Object` | `{}` |
-| `bodyStyle` | 主体自定义样式，对象形式 | `Object` | `{}` |
-| `footStyle` | 底部自定义样式，对象形式 | `Object` | `{}` |
-| `headBorderBottom` | 头部是否下边框 | `Boolean` | `true` |
-| `footBorderTop` | 底部是否有上边框 | `Boolean` | `true` |
-| `thumb` | 标题左边的缩略图 | `String` | `''` |
-| `thumbWidth` | 缩略图宽高 | `String / Number` | `'30px'` |
-| `thumbCircle` | 缩略图是否为圆形 | `Boolean` | `false` |
-| `padding` | 给head，body，foot的内边距 | `String / Number` | `'15px'` |
-| `paddingHead` | — | `String / Number` | `''` |
-| `paddingBody` | — | `String / Number` | `''` |
-| `paddingFoot` | — | `String / Number` | `''` |
-| `showHead` | 是否显示头部 | `Boolean` | `true` |
-| `showFoot` | 是否显示尾部 | `Boolean` | `true` |
-| `boxShadow` | 卡片外围阴影，字符串形式 | `String` | `'none'` |
+| `full` | 与屏幕两侧是否留空隙 | `Boolean` | `—` |
+| `title` | 标题 | `String` | `—` |
+| `titleColor` | 标题颜色 | `String` | `—` |
+| `titleSize` | 标题字体大小 | `Number / String` | `—` |
+| `subTitle` | 副标题 | `String` | `—` |
+| `subTitleColor` | 副标题颜色 | `String` | `—` |
+| `subTitleSize` | 副标题字体大小 | `Number / String` | `—` |
+| `border` | 是否显示外部边框，只对full=false时有效(卡片与边框有空隙时) | `Boolean` | `—` |
+| `index` | 用于标识点击了第几个 | `Number / String / Object` | `—` |
+| `margin` | 用于隔开上下左右的边距，带单位的写法，如："30px 30px"，"20px 20px 30px 30px" | `String` | `—` |
+| `borderRadius` | card卡片的圆角 | `Number / String` | `—` |
+| `headStyle` | 头部自定义样式，对象形式 | `Object` | `—` |
+| `bodyStyle` | 主体自定义样式，对象形式 | `Object` | `—` |
+| `footStyle` | 底部自定义样式，对象形式 | `Object` | `—` |
+| `headBorderBottom` | 头部是否下边框 | `Boolean` | `—` |
+| `footBorderTop` | 底部是否有上边框 | `Boolean` | `—` |
+| `thumb` | 标题左边的缩略图 | `String` | `—` |
+| `thumbWidth` | 缩略图宽高 | `String / Number` | `—` |
+| `thumbCircle` | 缩略图是否为圆形 | `Boolean` | `—` |
+| `padding` | 给head，body，foot的内边距 | `String / Number` | `—` |
+| `paddingHead` | — | `String / Number` | `—` |
+| `paddingBody` | — | `String / Number` | `—` |
+| `paddingFoot` | — | `String / Number` | `—` |
+| `showHead` | 是否显示头部 | `Boolean` | `—` |
+| `showFoot` | 是否显示尾部 | `Boolean` | `—` |
+| `boxShadow` | 卡片外围阴影，字符串形式 | `String` | `—` |
 
 ### Events
 
@@ -234,6 +236,6 @@ The reference below is extracted from the uview-plus source, whose property name
 | Flutter · Dart | `UPCard` | `packages/ultra_ui/lib/src/widgets/up_card.dart` |
 | React Native · TypeScript | `UPCard` | `src/components/card` |
 | Taro · React + TypeScript | `UPCard` | `src/ultra-ui/components/up-card` |
-| uni-app · Vue 3 | `up-card` | `src/uni_modules/uview-plus/components/u-card` |
+| uni-app · Vue 3 | `up-card` | `uni_modules/uview-ultra/components/up-card` |
 | uni-app-x · UTS / UVUE | `up-card` | `uni_modules/uview-ultra/components/up-card` |
 

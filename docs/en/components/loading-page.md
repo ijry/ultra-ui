@@ -31,6 +31,8 @@ No snippet could be extracted automatically — please read the source.
 
 <template #android>
 
+### 加载页
+
 ```kotlin
 import net.lingyun.ultraui.android.components.UPLoadingPage
 import net.lingyun.ultraui.android.components.UPLoadingPageProps
@@ -88,7 +90,16 @@ UPLoadingPage(
 ```tsx
 import { UPLoadingPage } from 'ultra-ui-rn';
 
-<UPLoadingPage loading={show} loadingText="加载中..." />
+<UPLoadingPage
+  bgColor={data.bgColor}
+  color={data.color}
+  iconSize={data.iconSize}
+  image={data.image}
+  loading={loading}
+  loadingColor={data.loadingColor}
+  loadingMode={data.loadingMode}
+  loadingText={data.loadingText}
+/>
 ```
 
 <small>Snippet from `ultra-ui-rn/example/pages/components/feedback/LoadingPageDemo.tsx`</small>
@@ -97,10 +108,37 @@ import { UPLoadingPage } from 'ultra-ui-rn';
 
 <template #taro>
 
+### 基础用法
+
+loading 为 true 时展示全屏遮罩
+
 ```tsx
 import { UPLoadingPage } from '@ultra-ui'
 
 <UPLoadingPage loading={loading} text='加载中...' />
+```
+
+### 自定义颜色
+
+color / bgColor
+
+```tsx
+<UPLoadingPage
+  loading={colored}
+  text='加载中...'
+  color='#2979ff'
+  bgColor='#ecf5ff'
+/>
+```
+
+### 自定义内容
+
+children 覆盖默认图标 + 文本
+
+```tsx
+<UPLoadingPage loading={custom}>
+  <UPButton size='small' type='primary' text='自定义内容' />
+</UPLoadingPage>
 ```
 
 <small>Snippet from `ultra-ui-taro/src/pages/components/loading-page/index.tsx`</small>
@@ -111,19 +149,19 @@ import { UPLoadingPage } from '@ultra-ui'
 
 ```vue
 <up-loading-page
-    :loadingText="loadingPageData.loadingText"
-    :image="loadingPageData.image"
-    :iconSize="loadingPageData.iconSize"
-    :loadingMode="loadingPageData.loadingMode"
-    :bgColor="loadingPageData.bgColor"
+    :loadingText="loadingPageData['loadingText']"
+    :image="loadingPageData['image']"
+    :iconSize="loadingPageData['iconSize']"
+    :loadingMode="loadingPageData['loadingMode']"
+    :bgColor="loadingPageData['bgColor']"
     :loading="loading"
-    :color="loadingPageData.color"
-    :loadingColor="loadingPageData.loadingColor"
+    :color="loadingPageData['color']"
+    :loadingColor="loadingPageData['loadingColor']"
 >
 </up-loading-page>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus/src/pages/componentsA/loading-page/loading-page.nvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsA/loading-page/loading-page.uvue`</small>
 
 </template>
 
@@ -157,11 +195,11 @@ The reference below is extracted from the uview-plus source, whose property name
 
 | Prop | Description | Type | Default |
 | --- | --- | --- | --- |
-| `loadingText` | 提示内容 | `String / Number` | `t("up.common.loading2")` |
+| `loadingText` | 提示内容 | `String / Number` | `'正在加载'` |
 | `image` | 文字上方用于替换loading动画的图片 | `String` | `''` |
 | `loadingMode` | 加载动画的模式，circle-圆形，spinner-花朵形，semicircle-半圆形 | `String` | `'circle'` |
 | `loading` | 是否加载中 | `Boolean` | `false` |
-| `bgColor` | 背景色 | `String` | `''` |
+| `bgColor` | 背景色 | `String` | `'#ffffff'` |
 | `color` | 文字颜色 | `String` | `'#C8C8C8'` |
 | `fontSize` | 文字大小 | `String / Number` | `19` |
 | `iconSize` | 图标大小 | `String / Number` | `28` |
@@ -184,6 +222,6 @@ The reference below is extracted from the uview-plus source, whose property name
 | Flutter · Dart | `UPLoadingPage` | `packages/ultra_ui/lib/src/widgets/up_loading_page.dart` |
 | React Native · TypeScript | `UPLoadingPage` | `src/components/loading-page` |
 | Taro · React + TypeScript | `UPLoadingPage` | `src/ultra-ui/components/up-loading-page` |
-| uni-app · Vue 3 | `up-loading-page` | `src/uni_modules/uview-plus/components/u-loading-page` |
+| uni-app · Vue 3 | `up-loading-page` | `uni_modules/uview-ultra/components/up-loading-page` |
 | uni-app-x · UTS / UVUE | `up-loading-page` | `uni_modules/uview-ultra/components/up-loading-page` |
 

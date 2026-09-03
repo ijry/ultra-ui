@@ -45,15 +45,29 @@ UPVirtualList(
 
 ```tsx
 import { UPVirtualList } from 'ultra-ui-rn';
+
+<UPVirtualList
+  height="800px"
+  itemHeight={49}
+  listData={listData3}
+  onUpdateScrollTop={(top) => {
+    scrollTop.current = top;
+  }}
+>
+  {/* 上游 `@scroll="onScroll3"` 为空实现，无可复刻的反馈 */}
+  {({ item }) => <UPCell title={`Item${item.id}`} />}
+</UPVirtualList>
 ```
 
-::: tip
-暂无自动提取到的示例代码，请参考源码。
-:::
+<small>示例来源 `ultra-ui-rn/example/pages/components/advanced/VirtualListDemo.tsx`</small>
 
 </template>
 
 <template #taro>
+
+### 一万条数据
+
+滚动时观察渲染项数是否恒定，内存与帧率不随总量增长
 
 ```tsx
 import { UPVirtualList } from '@ultra-ui'
@@ -69,6 +83,33 @@ import { UPVirtualList } from '@ultra-ui'
 />
 ```
 
+### 数据量小于一屏
+
+仅 5 条数据，底部不应出现多余空白
+
+```tsx
+<UPVirtualList
+  listData={SMALL}
+  itemHeight={64}
+  height={320}
+  renderItem={renderRow}
+/>
+```
+
+### 缓冲区
+
+buffer 越大预渲染越多，滚动时空白概率越低但开销略增
+
+```tsx
+<UPVirtualList
+  listData={BIG}
+  itemHeight={48}
+  height={200}
+  buffer={10}
+  renderItem={renderRow}
+/>
+```
+
 <small>示例来源 `ultra-ui-taro/src/pages/components/virtual-list/index.tsx`</small>
 
 </template>
@@ -76,21 +117,20 @@ import { UPVirtualList } from '@ultra-ui'
 <template #uniapp>
 
 ```vue
-<up-virtual-list class=""
-    :list-data="listData3"
-    :item-height="49"
-    height="800px"
-    v-model:scrollTop="scrollTop"
-    @scroll="onScroll3"
-  >
-    <template #default="{ item, index }">
-      <up-cell class="list-item" :title="'Item' + item.id">
-      </up-cell>
-    </template>
-  </up-virtual-list>
+<up-virtual-list
+  :list-data="listData"
+  :item-height="49"
+  height="800px"
+  v-model:scrollTop="scrollTop"
+  @scroll="onScroll"
+>
+  <template #default="{ item, index }">
+    <up-cell class="list-item" :title="getItemTitle(item)"></up-cell>
+  </template>
+</up-virtual-list>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus/src/pages/componentsD/virtualList/virtualList.nvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/virtualList/virtualList.uvue`</small>
 
 </template>
 
@@ -122,17 +162,6 @@ import { UPVirtualList } from '@ultra-ui'
 
 ### `<up-virtual-list>`
 
-#### 属性
-
-| 属性 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
-| `listData` | 数据源 | `Array` | `—` |
-| `itemHeight` | 每项高度（固定高度模式） | `Number` | `—` |
-| `height` | 容器高度 | `String / Number` | `—` |
-| `buffer` | 缓冲区项数 | `Number` | `—` |
-| `keyField` | 索引键名 | `String` | `—` |
-| `scrollTop` | 当前滚动位置 | `Number` | `—` |
-
 #### 事件
 
 | 事件名 |
@@ -147,16 +176,6 @@ import { UPVirtualList } from '@ultra-ui'
 | `default` |
 
 ### `<up-refresh-virtual-list>`
-
-#### 属性
-
-| 属性 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
-| `listData` | 数据源 | `Array` | `—` |
-| `itemHeight` | 每项高度（固定高度模式） | `Number` | `—` |
-| `height` | 容器高度 | `String / Number` | `—` |
-| `buffer` | 缓冲区项数 | `Number` | `—` |
-| `keyField` | 索引键名 | `String` | `—` |
 
 #### 事件
 
@@ -178,6 +197,6 @@ import { UPVirtualList } from '@ultra-ui'
 | Flutter · Dart | `UPVirtualList` | `packages/ultra_ui/lib/src/widgets/up_virtual_list.dart` |
 | React Native · TypeScript | `UPVirtualList` | `src/components/virtual-list` |
 | Taro · React + TypeScript | `UPVirtualList` | `src/ultra-ui/components/up-virtual-list` |
-| uni-app · Vue 3 | `up-virtual-list` | `src/uni_modules/uview-plus/components/u-virtual-list` |
+| uni-app · Vue 3 | `up-virtual-list` | `uni_modules/uview-ultra/components/up-virtual-list` |
 | uni-app-x · UTS / UVUE | `up-virtual-list` | `uni_modules/uview-ultra/components/up-virtual-list` |
 

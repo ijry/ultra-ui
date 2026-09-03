@@ -78,23 +78,10 @@ import { UPCanvas } from '@ultra-ui'
 
 接口以 uview-plus 源码为准，各平台移植时保持了同名属性；平台间的差异请对照上方的示例标签。
 
-### 属性
-
-| 属性 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
-| `canvasId` | — | `String` | `—` |
-| `width` | — | `String / Number` | `—` |
-| `height` | — | `String / Number` | `—` |
-| `unit` | — | `String` | `—` |
-| `useRootHeightAndWidth` | — | `Boolean` | `—` |
-| `bgColor` | — | `String` | `—` |
-| `disableScroll` | — | `Boolean` | `—` |
-
 ### 事件
 
 | 事件名 |
 | --- |
-| `ready` |
 | `touchend` |
 | `touchmove` |
 | `touchstart` |
@@ -106,6 +93,6 @@ import { UPCanvas } from '@ultra-ui'
 | Flutter · Dart | `UPCanvas` | `packages/ultra_ui/lib/src/widgets/up_canvas.dart` |
 | React Native · TypeScript | `UPCanvas` | `src/components/canvas` |
 | Taro · React + TypeScript | `UPCanvas` | `src/ultra-ui/components/up-canvas` |
-| uni-app · Vue 3 | `up-canvas` | `src/uni_modules/uview-plus/components/u-canvas` |
+| uni-app · Vue 3 | `up-canvas` | `uni_modules/uview-ultra/components/up-canvas` |
 | uni-app-x · UTS / UVUE | `up-canvas` | `uni_modules/uview-ultra/components/up-canvas` |
 

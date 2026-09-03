@@ -33,6 +33,8 @@ UPOverlay(show: true) {
 
 <template #android>
 
+### 遮罩
+
 ```kotlin
 import net.lingyun.ultraui.android.components.UPOverlay
 import net.lingyun.ultraui.android.components.UPOverlayProps
@@ -114,7 +116,7 @@ import { UPOverlay } from '@ultra-ui'
 ></up-overlay>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus/src/pages/componentsA/overlay/overlay.nvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsA/overlay/overlay.uvue`</small>
 
 </template>
 
@@ -168,6 +170,6 @@ import { UPOverlay } from '@ultra-ui'
 | Flutter · Dart | `UPOverlay` | `packages/ultra_ui/lib/src/widgets/up_overlay.dart` |
 | React Native · TypeScript | `UPOverlay` | `src/components/overlay` |
 | Taro · React + TypeScript | `UPOverlay` | `src/ultra-ui/components/up-overlay` |
-| uni-app · Vue 3 | `up-overlay` | `src/uni_modules/uview-plus/components/u-overlay` |
+| uni-app · Vue 3 | `up-overlay` | `uni_modules/uview-ultra/components/up-overlay` |
 | uni-app-x · UTS / UVUE | `up-overlay` | `uni_modules/uview-ultra/components/up-overlay` |
 

@@ -76,11 +76,11 @@ No snippet could be extracted automatically — please read the source.
 <template #uniapp>
 
 ```vue
-<up-select v-model:current="cateId" label="分类" :showOptionsLabel="true"
+<up-select v-model:current="cateId" label="分类"
     :options="scenesList"></up-select>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus/src/pages/componentsD/select/select.vue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/select/select.uvue`</small>
 
 </template>
 
@@ -100,30 +100,6 @@ No snippet could be extracted automatically — please read the source.
 ## API
 
 The reference below is extracted from the uview-plus source, whose property names the other ports keep. For per-platform differences, compare the tabs above.
-
-### Props
-
-| Prop | Description | Type | Default |
-| --- | --- | --- | --- |
-| `maxHeight` | — | `String` | `—` |
-| `overlay` | — | `Boolean` | `—` |
-| `overlayOpacity` | — | `String / Number` | `—` |
-| `overlayStyle` | — | `Object` | `—` |
-| `closeOnClickOverlay` | 点击遮罩是否关闭下拉面板 | `Boolean` | `—` |
-| `duration` | — | `Number` | `—` |
-| `label` | — | `String` | `—` |
-| `options` | — | `Array` | `—` |
-| `keyName` | — | `String` | `—` |
-| `labelName` | — | `String` | `—` |
-| `showOptionsLabel` | — | `Boolean` | `—` |
-| `current` | — | `String / Number` | `—` |
-| `zIndex` | — | `Number` | `—` |
-| `itemColor` | — | `String` | `—` |
-| `iconColor` | — | `String` | `—` |
-| `iconSize` | — | `String` | `—` |
-| `disabled` | 是否禁用 | `Boolean` | `—` |
-| `border` | 是否显示触发区边框 | `Boolean` | `—` |
-| `optionsWidth` | 下拉面板宽度，支持 px/rpx/% 等，如 240px 或 300rpx | `String / Number` | `—` |
 
 ### Events
 
@@ -149,6 +125,6 @@ The reference below is extracted from the uview-plus source, whose property name
 | Flutter · Dart | `UPSelect` | `packages/ultra_ui/lib/src/widgets/up_select.dart` |
 | React Native · TypeScript | `UPSelect` | `src/components/select` |
 | Taro · React + TypeScript | `UPSelect` | `src/ultra-ui/components/up-select` |
-| uni-app · Vue 3 | `up-select` | `src/uni_modules/uview-plus/components/u-select` |
+| uni-app · Vue 3 | `up-select` | `uni_modules/uview-ultra/components/up-select` |
 | uni-app-x · UTS / UVUE | `up-select` | `uni_modules/uview-ultra/components/up-select` |
 

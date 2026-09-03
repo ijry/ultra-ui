@@ -67,6 +67,8 @@ _LoadingBlock('基本案例', UPLoadingIcon()
 
 <template #reactnative>
 
+### 自定义图片加载插槽
+
 ```tsx
 import { UPLoadingIcon } from 'ultra-ui-rn';
 
@@ -79,10 +81,61 @@ loading={<UPLoadingIcon color="red" />
 
 <template #taro>
 
+### 模式
+
+mode：spinner（默认）/ circle / semicircle
+
 ```tsx
 import { UPLoadingIcon } from '@ultra-ui'
 
 <UPLoadingIcon mode='spinner' />
+```
+
+### 文字
+
+text / textSize / textColor
+
+```tsx
+<UPLoadingIcon text='加载中' />
+```
+
+### 动画速度
+
+duration，单位 ms，值越小转得越快
+
+```tsx
+<UPLoadingIcon mode='circle' color='#3c9cff' duration={400} />
+```
+
+### 动画曲线
+
+timingFunction，仅 circle / semicircle 生效
+
+```tsx
+<UPLoadingIcon mode='semicircle' color='#3c9cff' timingFunction='ease-in-out' />
+```
+
+### 深色背景
+
+customStyle / customClass 自定义外层容器
+
+```tsx
+<UPLoadingIcon
+  mode='circle'
+  color='#ffffff'
+  inactiveColor='rgb(120, 120, 120)'
+  text='加载中'
+  textColor='#ffffff'
+  customStyle={{ padding: '4px' }}
+/>
+```
+
+### 显示与隐藏
+
+show=false 时组件不渲染
+
+```tsx
+<UPLoadingIcon show={show} mode='circle' color='#3c9cff' text='正在加载' />
 ```
 
 <small>示例来源 `ultra-ui-taro/src/pages/components/loading-icon/index.tsx`</small>
@@ -91,18 +144,88 @@ import { UPLoadingIcon } from '@ultra-ui'
 
 <template #uniapp>
 
+### 基本案列
+
 ```vue
 <up-loading-icon></up-loading-icon>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus/src/pages/componentsA/loading-icon/loading-icon.nvue`</small>
+### 半圆loading
+
+```vue
+<up-loading-icon mode="semicircle"></up-loading-icon>
+```
+
+### 圆形loading
+
+```vue
+<up-loading-icon mode="circle"></up-loading-icon>
+```
+
+### 自定义动画
+
+```vue
+<up-loading-icon mode="circle" timingFunction="linear"></up-loading-icon>
+```
+
+### 自定义颜色
+
+```vue
+<up-loading-icon color="#19be6b"></up-loading-icon>
+```
+
+### 自定义文字
+
+```vue
+<up-loading-icon
+    :vertical="true"
+    text="加载中"
+></up-loading-icon>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsA/loading-icon/loading-icon.uvue`</small>
 
 </template>
 
 <template #uniappx>
 
+### 基本案列
+
 ```vue
 <up-loading-icon></up-loading-icon>
+```
+
+### 半圆loading
+
+```vue
+<up-loading-icon mode="semicircle"></up-loading-icon>
+```
+
+### 圆形loading
+
+```vue
+<up-loading-icon mode="circle"></up-loading-icon>
+```
+
+### 自定义动画
+
+```vue
+<up-loading-icon mode="circle" timingFunction="linear"></up-loading-icon>
+```
+
+### 自定义颜色
+
+```vue
+<up-loading-icon color="#19be6b"></up-loading-icon>
+```
+
+### 自定义文字
+
+```vue
+<up-loading-icon
+    :vertical="true"
+    text="加载中"
+></up-loading-icon>
 ```
 
 <small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsA/loading-icon/loading-icon.uvue`</small>
@@ -120,8 +243,8 @@ import { UPLoadingIcon } from '@ultra-ui'
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | `show` | 是否显示组件 | `Boolean` | `true` |
-| `color` | 颜色 | `String` | `color['u-tips-color']` |
-| `textColor` | 提示文字颜色 | `String` | `color['u-tips-color']` |
+| `color` | 颜色 | `String` | `color['up-tips-color']` |
+| `textColor` | 提示文字颜色 | `String` | `color['up-tips-color']` |
 | `vertical` | 文字和图标是否垂直排列 | `Boolean` | `false` |
 | `mode` | 模式选择，circle-圆形，spinner-花朵形，semicircle-半圆形 | `String` | `'spinner'` |
 | `size` | 图标大小，单位默认px | `String / Number` | `24` |
@@ -141,6 +264,6 @@ import { UPLoadingIcon } from '@ultra-ui'
 | Flutter · Dart | `UPLoadingIcon` | `packages/ultra_ui/lib/src/widgets/up_loading_icon.dart` |
 | React Native · TypeScript | `UPLoadingIcon` | `src/components/loading-icon` |
 | Taro · React + TypeScript | `UPLoadingIcon` | `src/ultra-ui/components/up-loading-icon` |
-| uni-app · Vue 3 | `up-loading-icon` | `src/uni_modules/uview-plus/components/u-loading-icon` |
+| uni-app · Vue 3 | `up-loading-icon` | `uni_modules/uview-ultra/components/up-loading-icon` |
 | uni-app-x · UTS / UVUE | `up-loading-icon` | `uni_modules/uview-ultra/components/up-loading-icon` |
 

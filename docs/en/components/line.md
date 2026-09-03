@@ -31,6 +31,8 @@ UPLine()
 
 <template #android>
 
+### 线条
+
 ```kotlin
 import net.lingyun.ultraui.android.components.UPLine
 import net.lingyun.ultraui.android.components.UPLineProps
@@ -80,9 +82,69 @@ import { UPLine } from 'ultra-ui-rn';
 
 <template #taro>
 
+### 基础用法
+
+默认横向、100% 长度、0.5px 细线
+
 ```tsx
 import { UPLine } from '@ultra-ui'
 
+<UPLine />
+```
+
+### 长度
+
+length 支持百分比与带单位的值
+
+```tsx
+<UPLine length='100%' />
+```
+
+### 颜色
+
+color 支持主题 token 与任意 CSS 颜色
+
+```tsx
+<UPLine />
+```
+
+### 虚线
+
+dashed 属性
+
+```tsx
+<UPLine />
+```
+
+### 线条粗细
+
+hairline=true 为 0.5px 细线，false 为 1px
+
+```tsx
+<UPLine hairline />
+```
+
+### 间距
+
+margin 支持 CSS margin 简写
+
+```tsx
+<UPLine />
+```
+
+### 竖向线条
+
+direction=col，length 表现为高度
+
+```tsx
+<UPLine direction='col' length='24px' />
+```
+
+### 应用场景
+
+作为列表项之间的分割线
+
+```tsx
 <UPLine />
 ```
 
@@ -92,18 +154,108 @@ import { UPLine } from '@ultra-ui'
 
 <template #uniapp>
 
+### 基本案例
+
 ```vue
 <up-line></up-line>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus/src/pages/componentsA/line/line.nvue`</small>
+### 自定义颜色
+
+```vue
+<up-line color="#2979ff"></up-line>
+```
+
+### 自定义长度
+
+```vue
+<up-line length="200"></up-line>
+```
+
+### 自定义方向
+
+```vue
+<up-line
+    length="30"
+    color="#2979ff"
+    direction="col"
+></up-line>
+```
+
+### 是否显示1px粗线条
+
+```vue
+<up-line :hairline="false"></up-line>
+```
+
+### 线条与上下左右元素的间距
+
+```vue
+<up-line margin="20"></up-line>
+```
+
+### 是否虚线
+
+```vue
+<up-line
+    color="#2979ff"
+    :dashed="true"
+></up-line>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsA/line/line.uvue`</small>
 
 </template>
 
 <template #uniappx>
 
+### 基本案例
+
 ```vue
 <up-line></up-line>
+```
+
+### 自定义颜色
+
+```vue
+<up-line color="#2979ff"></up-line>
+```
+
+### 自定义长度
+
+```vue
+<up-line length="200"></up-line>
+```
+
+### 自定义方向
+
+```vue
+<up-line
+    length="30"
+    color="#2979ff"
+    direction="col"
+></up-line>
+```
+
+### 是否显示1px粗线条
+
+```vue
+<up-line :hairline="false"></up-line>
+```
+
+### 线条与上下左右元素的间距
+
+```vue
+<up-line margin="20"></up-line>
+```
+
+### 是否虚线
+
+```vue
+<up-line
+    color="#2979ff"
+    :dashed="true"
+></up-line>
 ```
 
 <small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsA/line/line.uvue`</small>
@@ -137,6 +289,6 @@ The reference below is extracted from the uview-plus source, whose property name
 | Flutter · Dart | `UPLine` | `packages/ultra_ui/lib/src/widgets/up_layout.dart` |
 | React Native · TypeScript | `UPLine` | `src/components/line` |
 | Taro · React + TypeScript | `UPLine` | `src/ultra-ui/components/up-line` |
-| uni-app · Vue 3 | `up-line` | `src/uni_modules/uview-plus/components/u-line` |
+| uni-app · Vue 3 | `up-line` | `uni_modules/uview-ultra/components/up-line` |
 | uni-app-x · UTS / UVUE | `up-line` | `uni_modules/uview-ultra/components/up-line` |
 

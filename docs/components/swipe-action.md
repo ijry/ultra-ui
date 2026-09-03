@@ -84,6 +84,10 @@ import { UPSwipeAction } from 'ultra-ui-rn';
 
 <template #taro>
 
+### 基础用法
+
+向左滑动行露出操作按钮，最多同时展开一行
+
 ```tsx
 import { UPSwipeAction } from '@ultra-ui'
 
@@ -102,36 +106,53 @@ import { UPSwipeAction } from '@ultra-ui'
 </UPSwipeAction>
 ```
 
+### 多行列表
+
+每行独立，展开一行会自动收起其它行
+
+```tsx
+<UPSwipeAction>
+  <UPSwipeActionItem
+    options={[{ text: '删除', style: { backgroundColor: '#f56c6c' }, onSelect: () => console.log('删除 A') }]}
+  >
+    <View className='swipe-action-demo__row'>
+      <Text className='swipe-action-demo__title'>消息 A</Text>
+    </View>
+  </UPSwipeActionItem>
+  <UPSwipeActionItem
+    options={[{ text: '删除', style: { backgroundColor: '#f56c6c' }, onSelect: () => console.log('删除 B') }]}
+  >
+    <View className='swipe-action-demo__row'>
+      <Text className='swipe-action-demo__title'>消息 B</Text>
+    </View>
+  </UPSwipeActionItem>
+</UPSwipeAction>
+```
+
+### 禁用滑动
+
+disabled 时不可滑动展开
+
+```tsx
+<UPSwipeAction>
+  <UPSwipeActionItem
+    disabled
+    options={[{ text: '删除', style: { backgroundColor: '#f56c6c' } }]}
+  >
+    <View className='swipe-action-demo__row'>
+      <Text className='swipe-action-demo__title'>禁用滑动的行</Text>
+    </View>
+  </UPSwipeActionItem>
+</UPSwipeAction>
+```
+
 <small>示例来源 `ultra-ui-taro/src/pages/components/swipe-action/index.tsx`</small>
 
 </template>
 
 <template #uniapp>
 
-```vue
-<up-swipe-action>
-    <up-swipe-action-item
-        v-if="show1"
-        :closeOnClick="false"
-        v-model:show="swshow1"
-        v-model:scrolling="swipeScrolling"
-        :options="options1"
-        @click="click"
-    >
-        <view class="swipe-action u-border-top u-border-bottom">
-            <view class="swipe-action__content">
-                <text class="swipe-action__content__text">基础使用</text>
-            </view>
-        </view>
-    </up-swipe-action-item>
-</up-swipe-action>
-```
-
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus/src/pages/componentsA/swipeAction/swipeAction.nvue`</small>
-
-</template>
-
-<template #uniappx>
+### 演示案例
 
 ```vue
 <up-swipe-action>
@@ -145,6 +166,160 @@ import { UPSwipeAction } from '@ultra-ui'
         <view class="swipe-action u-border-top u-border-bottom">
             <view class="swipe-action__content">
                 <text class="swipe-action__content__text">基础使用</text>
+            </view>
+        </view>
+    </up-swipe-action-item>
+</up-swipe-action>
+```
+
+### 按钮组
+
+```vue
+<up-swipe-action>
+    <up-swipe-action-item :options="options2">
+        <view class="swipe-action u-border-top u-border-bottom">
+            <view class="swipe-action__content">
+                <text class="swipe-action__content__text">两个按钮并列</text>
+            </view>
+        </view>
+    </up-swipe-action-item>
+</up-swipe-action>
+```
+
+### 带图标
+
+```vue
+<up-swipe-action>
+    <up-swipe-action-item :options="options3">
+        <view class="swipe-action u-border-top u-border-bottom">
+            <view class="swipe-action__content">
+                <text class="swipe-action__content__text">自定义图标</text>
+            </view>
+        </view>
+    </up-swipe-action-item>
+</up-swipe-action>
+```
+
+### 组合使用
+
+```vue
+<up-swipe-action>
+    <up-swipe-action-item
+        :options="item['options']"
+        v-for="(item, index) in options4"
+        :disabled="item['disabled']"
+        :key="index"
+    >
+        <view
+            class="swipe-action u-border-top"
+            :class="[index === options4.length - 1 ? 'u-border-bottom' : '']"
+        >
+            <view class="swipe-action__content">
+                <text class="swipe-action__content__text">{{ item['text'] }}</text>
+            </view>
+        </view>
+    </up-swipe-action-item>
+</up-swipe-action>
+```
+
+### 自定义按钮形状
+
+```vue
+<up-swipe-action>
+    <up-swipe-action-item :options="options5">
+        <view class="swipe-action u-border-top u-border-bottom">
+            <view class="swipe-action__content">
+                <text class="swipe-action__content__text">圆形按钮</text>
+            </view>
+        </view>
+    </up-swipe-action-item>
+</up-swipe-action>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsA/swipeAction/swipeAction.uvue`</small>
+
+</template>
+
+<template #uniappx>
+
+### 演示案例
+
+```vue
+<up-swipe-action>
+    <up-swipe-action-item
+        v-if="show1"
+        :show="true"
+        v-model:scrolling="swipeScrolling"
+        :options="options1"
+        @click="click"
+    >
+        <view class="swipe-action u-border-top u-border-bottom">
+            <view class="swipe-action__content">
+                <text class="swipe-action__content__text">基础使用</text>
+            </view>
+        </view>
+    </up-swipe-action-item>
+</up-swipe-action>
+```
+
+### 按钮组
+
+```vue
+<up-swipe-action>
+    <up-swipe-action-item :options="options2">
+        <view class="swipe-action u-border-top u-border-bottom">
+            <view class="swipe-action__content">
+                <text class="swipe-action__content__text">两个按钮并列</text>
+            </view>
+        </view>
+    </up-swipe-action-item>
+</up-swipe-action>
+```
+
+### 带图标
+
+```vue
+<up-swipe-action>
+    <up-swipe-action-item :options="options3">
+        <view class="swipe-action u-border-top u-border-bottom">
+            <view class="swipe-action__content">
+                <text class="swipe-action__content__text">自定义图标</text>
+            </view>
+        </view>
+    </up-swipe-action-item>
+</up-swipe-action>
+```
+
+### 组合使用
+
+```vue
+<up-swipe-action>
+    <up-swipe-action-item
+        :options="item['options']"
+        v-for="(item, index) in options4"
+        :disabled="item['disabled']"
+        :key="index"
+    >
+        <view
+            class="swipe-action u-border-top"
+            :class="[index === options4.length - 1 ? 'u-border-bottom' : '']"
+        >
+            <view class="swipe-action__content">
+                <text class="swipe-action__content__text">{{ item['text'] }}</text>
+            </view>
+        </view>
+    </up-swipe-action-item>
+</up-swipe-action>
+```
+
+### 自定义按钮形状
+
+```vue
+<up-swipe-action>
+    <up-swipe-action-item :options="options5">
+        <view class="swipe-action u-border-top u-border-bottom">
+            <view class="swipe-action__content">
+                <text class="swipe-action__content__text">圆形按钮</text>
             </view>
         </view>
     </up-swipe-action-item>
@@ -193,7 +368,7 @@ import { UPSwipeAction } from '@ultra-ui'
 | `name` | 标识符，如果是v-for，可用index索引值 | `String / Number` | `—` |
 | `disabled` | 是否禁用 | `Boolean` | `—` |
 | `autoClose` | 是否自动关闭其他swipe按钮组 | `Boolean` | `—` |
-| `scrolling` | 是否正在横向滑动，用于外部通过v-model:scrolling暂停页面或容器滚动 | `Boolean` | `—` |
+| `scrolling` | 是否正在横向滑动，可用于 v-model:scrolling 暂停外部滚动 | `Boolean` | `—` |
 | `threshold` | 滑动距离阈值，只有大于此值，才被认为是要打开菜单 | `Number` | `—` |
 | `options` | 右侧按钮内容 | `Array` | `—` |
 | `duration` | 动画过渡时间，单位ms | `String / Number` | `—` |
@@ -222,6 +397,6 @@ import { UPSwipeAction } from '@ultra-ui'
 | Flutter · Dart | `UPSwipeAction` | `packages/ultra_ui/lib/src/widgets/up_swipe_action.dart` |
 | React Native · TypeScript | `UPSwipeAction` | `src/components/swipe-action` |
 | Taro · React + TypeScript | `UPSwipeAction` | `src/ultra-ui/components/up-swipe-action` |
-| uni-app · Vue 3 | `up-swipe-action` | `src/uni_modules/uview-plus/components/u-swipe-action` |
+| uni-app · Vue 3 | `up-swipe-action` | `uni_modules/uview-ultra/components/up-swipe-action` |
 | uni-app-x · UTS / UVUE | `up-swipe-action` | `uni_modules/uview-ultra/components/up-swipe-action` |
 

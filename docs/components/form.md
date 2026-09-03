@@ -77,6 +77,10 @@ import { UPForm } from 'ultra-ui-rn';
 
 <template #taro>
 
+### label 布局
+
+labelPosition 控制上下排列，labelAlign 控制对齐
+
 ```tsx
 import { UPForm } from '@ultra-ui'
 
@@ -88,6 +92,18 @@ import { UPForm } from '@ultra-ui'
 >
   <UPFormItem label='label 在上方' prop='top'>
     <UPInput value='' border='surround' placeholder='labelPosition=top' />
+  </UPFormItem>
+</UPForm>
+```
+
+### 左侧图标与必填星号
+
+leftIcon / required
+
+```tsx
+<UPForm model={{ phone: '' }}>
+  <UPFormItem label='手机号' prop='phone' leftIcon='phone' required>
+    <UPInput value='' border='none' placeholder='required 仅作展示' />
   </UPFormItem>
 </UPForm>
 ```
@@ -184,6 +200,6 @@ import { UPForm } from '@ultra-ui'
 | Flutter · Dart | `UPForm` | `packages/ultra_ui/lib/src/widgets/up_form.dart` |
 | React Native · TypeScript | `UPForm` | `src/components/form` |
 | Taro · React + TypeScript | `UPForm` | `src/ultra-ui/components/up-form` |
-| uni-app · Vue 3 | `up-form` | `src/uni_modules/uview-plus/components/u-form` |
+| uni-app · Vue 3 | `up-form` | `uni_modules/uview-ultra/components/up-form` |
 | uni-app-x · UTS / UVUE | `up-form` | `uni_modules/uview-ultra/components/up-form` |
 

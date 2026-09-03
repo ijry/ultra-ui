@@ -68,10 +68,115 @@ import { UPSwiper } from 'ultra-ui-rn';
 
 <template #taro>
 
+### 基础用法
+
+list 传图片地址数组，默认自动播放
+
 ```tsx
 import { UPSwiper } from '@ultra-ui'
 
 <UPSwiper list={LIST} />
+```
+
+### 指示器
+
+indicator 开启，indicatorMode：line / dot
+
+```tsx
+<UPSwiper list={LIST} indicator indicatorMode='line' />
+```
+
+### 指示器颜色与位置
+
+indicatorActiveColor / indicatorInactiveColor / indicatorStyle
+
+```tsx
+<UPSwiper
+  list={LIST}
+  indicator
+  indicatorMode='dot'
+  indicatorActiveColor='#3c9cff'
+  indicatorInactiveColor='rgba(255, 255, 255, 0.6)'
+  indicatorStyle={{ bottom: '20px', right: '20px', left: 'auto' }}
+/>
+```
+
+### 高度与圆角
+
+height 控制高度，radius 控制圆角
+
+```tsx
+<UPSwiper list={LIST} height={180} radius={16} indicator />
+```
+
+### 背景色
+
+bgColor 为图片未加载出来时的底色
+
+```tsx
+<UPSwiper list={LIST} bgColor='#1f2937' height={110} />
+```
+
+### 左右留白
+
+previousMargin / nextMargin 露出前后项，非当前项自动缩放
+
+```tsx
+<UPSwiper
+  list={LIST}
+  circular
+  previousMargin={30}
+  nextMargin={30}
+  height={150}
+  radius={8}
+/>
+```
+
+### 纵向滚动
+
+vertical 为 true 时上下切换
+
+```tsx
+<UPSwiper list={LIST} vertical circular indicator height={150} />
+```
+
+### 标题
+
+showTitle 需要 list 元素带 title 字段
+
+```tsx
+<UPSwiper list={TITLE_LIST} showTitle circular height={160} />
+```
+
+### 取值字段
+
+keyName 指定对象中作为图片地址的字段
+
+```tsx
+<UPSwiper list={KEY_LIST} keyName='image' indicator height={150} />
+```
+
+### 切换参数
+
+interval 间隔、duration 时长、circular 衔接、autoplay 自动播放
+
+```tsx
+<UPSwiper
+  list={LIST}
+  interval={1500}
+  duration={800}
+  circular
+  indicator
+  indicatorMode='dot'
+/>
+```
+
+### 加载中
+
+loading 为 true 时展示加载图标
+
+```tsx
+<UPSwiper list={LIST} loading />
 ```
 
 <small>示例来源 `ultra-ui-taro/src/pages/components/swiper/index.tsx`</small>
@@ -79,6 +184,8 @@ import { UPSwiper } from '@ultra-ui'
 </template>
 
 <template #uniapp>
+
+### 基础功能
 
 ```vue
 <up-swiper
@@ -88,17 +195,205 @@ import { UPSwiper } from '@ultra-ui'
 ></up-swiper>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus/src/pages/componentsC/swiper/swiper.nvue`</small>
+### 纵向滑动
+
+```vue
+<up-swiper
+    :list="list1"
+    vertical
+    indicator
+    indicatorMode="dot"
+    :autoplay="false"
+    height="200"
+></up-swiper>
+```
+
+### 带标题
+
+```vue
+<up-swiper
+    :list="list2"
+    keyName="image"
+    showTitle
+    :autoplay="false"
+    circular
+></up-swiper>
+```
+
+### 带指示器
+
+```vue
+<up-swiper
+    :list="list3"
+    indicator
+    indicatorMode="line"
+    circular
+></up-swiper>
+```
+
+### 加载中
+
+```vue
+<up-swiper
+    :list="list3"
+    loading
+></up-swiper>
+```
+
+### 嵌入视频
+
+```vue
+<up-swiper
+    :list="list4"
+    keyName="url"
+    :autoplay="false"
+></up-swiper>
+```
+
+### 自定义指示器
+
+```vue
+<up-swiper
+    :list="list5"
+    @change="(e: UniSwiperChangeEventDetail) => {current = e.current}"
+    :autoplay="false"
+>
+    <template #indicator>
+        <view
+            class="indicator"
+        >
+            <view
+                class="indicator__dot"
+                v-for="(item, index) in list5"
+                :key="index"
+                :class="[index === current ? 'indicator__dot--active' : '']"
+            >
+            </view>
+        </view>
+    </template>
+</up-swiper>
+```
+
+### 卡片式
+
+```vue
+<up-swiper
+    :list="list3"
+    previousMargin="30"
+    nextMargin="30"
+    circular
+    :autoplay="false"
+    radius="5"
+    bgColor="#ffffff"
+></up-swiper>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsC/swiper/swiper.uvue`</small>
 
 </template>
 
 <template #uniappx>
+
+### 基础功能
 
 ```vue
 <up-swiper
     :list="list1"
     @change="change"
     @click="click"
+></up-swiper>
+```
+
+### 纵向滑动
+
+```vue
+<up-swiper
+    :list="list1"
+    vertical
+    indicator
+    indicatorMode="dot"
+    :autoplay="false"
+    height="200"
+></up-swiper>
+```
+
+### 带标题
+
+```vue
+<up-swiper
+    :list="list2"
+    keyName="image"
+    showTitle
+    :autoplay="false"
+    circular
+></up-swiper>
+```
+
+### 带指示器
+
+```vue
+<up-swiper
+    :list="list3"
+    indicator
+    indicatorMode="line"
+    circular
+></up-swiper>
+```
+
+### 加载中
+
+```vue
+<up-swiper
+    :list="list3"
+    loading
+></up-swiper>
+```
+
+### 嵌入视频
+
+```vue
+<up-swiper
+    :list="list4"
+    keyName="url"
+    :autoplay="false"
+></up-swiper>
+```
+
+### 自定义指示器
+
+```vue
+<up-swiper
+    :list="list5"
+    @change="(e: UniSwiperChangeEventDetail) => {current = e.current}"
+    :autoplay="false"
+>
+    <template #indicator>
+        <view
+            class="indicator"
+        >
+            <view
+                class="indicator__dot"
+                v-for="(item, index) in list5"
+                :key="index"
+                :class="[index === current ? 'indicator__dot--active' : '']"
+            >
+            </view>
+        </view>
+    </template>
+</up-swiper>
+```
+
+### 卡片式
+
+```vue
+<up-swiper
+    :list="list3"
+    previousMargin="30"
+    nextMargin="30"
+    circular
+    :autoplay="false"
+    radius="5"
+    bgColor="#ffffff"
 ></up-swiper>
 ```
 
@@ -179,6 +474,6 @@ import { UPSwiper } from '@ultra-ui'
 | Flutter · Dart | `UPSwiper` | `packages/ultra_ui/lib/src/widgets/up_swiper.dart` |
 | React Native · TypeScript | `UPSwiper` | `src/components/swiper` |
 | Taro · React + TypeScript | `UPSwiper` | `src/ultra-ui/components/up-swiper` |
-| uni-app · Vue 3 | `up-swiper` | `src/uni_modules/uview-plus/components/u-swiper` |
+| uni-app · Vue 3 | `up-swiper` | `uni_modules/uview-ultra/components/up-swiper` |
 | uni-app-x · UTS / UVUE | `up-swiper` | `uni_modules/uview-ultra/components/up-swiper` |
 

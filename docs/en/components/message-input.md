@@ -30,6 +30,8 @@ No snippet could be extracted automatically — please read the source.
 
 <template #reactnative>
 
+### 加粗 + 自定义颜色
+
 ```tsx
 import { UPMessageInput } from 'ultra-ui-rn';
 
@@ -49,6 +51,10 @@ breathe={false}
 
 <template #taro>
 
+### 禁用状态
+
+disabled 同时禁用输入框与按钮
+
 ```tsx
 import { UPMessageInput } from '@ultra-ui'
 
@@ -61,11 +67,17 @@ import { UPMessageInput } from '@ultra-ui'
 
 <template #uniapp>
 
-::: tip
-No snippet could be extracted automatically — please read the source.
-:::
+```vue
+<up-message-input
+    v-model="boxValue"
+    :maxlength="4"
+    mode="box"
+    @change="onChange"
+    @finish="onFinish"
+></up-message-input>
+```
 
-<small>Auto-imported through easycom — no import statement needed.</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/messageInput/messageInput.uvue`</small>
 
 </template>
 
@@ -91,23 +103,6 @@ No snippet could be extracted automatically — please read the source.
 
 The reference below is extracted from the uview-plus source, whose property names the other ports keep. For per-platform differences, compare the tabs above.
 
-### Props
-
-| Prop | Description | Type | Default |
-| --- | --- | --- | --- |
-| `maxlength` | 最大输入长度 | `Number / String` | `—` |
-| `dotFill` | 是否用圆点填充 | `Boolean` | `—` |
-| `mode` | 显示模式，box-盒子模式，bottomLine-横线在底部模式，middleLine-横线在中部模式 | `String` | `—` |
-| `modelValue` | 预置值 | `String / Number` | `—` |
-| `breathe` | 当前激活输入item，是否带有呼吸效果 | `Boolean` | `—` |
-| `focus` | 是否自动获取焦点 | `Boolean` | `—` |
-| `bold` | 字体是否加粗 | `Boolean` | `—` |
-| `fontSize` | 字体大小 | `String / Number` | `—` |
-| `activeColor` | 激活样式 | `String` | `—` |
-| `inactiveColor` | 未激活的样式 | `String` | `—` |
-| `width` | 输入框的大小，单位rpx，宽等于高 | `Number / String` | `—` |
-| `disabledKeyboard` | 是否隐藏原生键盘，如果想用自定义键盘的话，需设置此参数为true | `Boolean` | `—` |
-
 ### Events
 
 | Event |
@@ -122,6 +117,6 @@ The reference below is extracted from the uview-plus source, whose property name
 | Flutter · Dart | `UPMessageInput` | `packages/ultra_ui/lib/src/widgets/up_message_input.dart` |
 | React Native · TypeScript | `UPMessageInput` | `src/components/message-input` |
 | Taro · React + TypeScript | `UPMessageInput` | `src/ultra-ui/components/up-message-input` |
-| uni-app · Vue 3 | `up-message-input` | `src/uni_modules/uview-plus/components/u-message-input` |
+| uni-app · Vue 3 | `up-message-input` | `uni_modules/uview-ultra/components/up-message-input` |
 | uni-app-x · UTS / UVUE | `up-message-input` | `uni_modules/uview-ultra/components/up-message-input` |
 

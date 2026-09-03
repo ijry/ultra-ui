@@ -18,6 +18,8 @@ generated: true
 
 <template #android>
 
+### 滚动通知
+
 ```kotlin
 import net.lingyun.ultraui.android.components.UPNoticeBar
 import net.lingyun.ultraui.android.components.UPNoticeBarProps
@@ -50,12 +52,76 @@ UPNoticeBar({ props: new UPNoticeBarProps({ show: this.show, text: ['HarmonyOS N
 
 <template #flutter>
 
+### 基础功能
+
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
 
 UPNoticeBar(
   text: _text1,
   fontSize: '30px',
+)
+```
+
+### 自定义横向滚动速度
+
+```dart
+UPNoticeBar(
+  text: _text2,
+  speed: 250,
+  mode: 'closable',
+)
+```
+
+### 可跳转(点击右箭头)
+
+```dart
+UPNoticeBar(
+  key: ValueKey('notice-page-link'),
+  text: _text3,
+  mode: 'link',
+  url: '/pages/componentsB/tag/tag',
+)
+```
+
+### 横向步进滚动
+
+```dart
+UPNoticeBar(
+  text: _text4,
+  step: true,
+  onClick: _recordClick,
+)
+```
+
+### 纵向滚动
+
+```dart
+UPNoticeBar(
+  text: _text4,
+  direction: 'column',
+  onClick: _recordClick,
+)
+```
+
+### 纵向滚动(文字居中)
+
+```dart
+UPNoticeBar(
+  text: _text4,
+  direction: 'column',
+  justifyContent: 'center',
+  onClick: _recordClick,
+)
+```
+
+### 自定义样式
+
+```dart
+UPNoticeBar(
+  text: _text1,
+  color: '#ffffff',
+  bgColor: '#f56c6c',
 )
 ```
 
@@ -77,13 +143,21 @@ import { UPNoticeBar } from 'ultra-ui-rn';
 
 <template #taro>
 
+### 自定义样式
+
+color / bgColor / fontSize / speed
+
 ```tsx
 import { UPNoticeBar } from '@ultra-ui'
 
 <UPNoticeBar
-  text='ultra-ui 是 uview-plus 的 Taro + React 复刻版，前缀 up-，全端兼容。'
+  text='自定义颜色与滚动速度的通知栏示例。'
   mode='horizontal'
   icon
+  color='#3c9cff'
+  bgColor='#ecf5ff'
+  fontSize={14}
+  speed={60}
 />
 ```
 
@@ -93,22 +167,143 @@ import { UPNoticeBar } from '@ultra-ui'
 
 <template #uniapp>
 
+### 基础功能
+
 ```vue
 <up-notice-bar
-    fontSize="30px"
     :text="text1"
 ></up-notice-bar>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus/src/pages/componentsB/noticeBar/noticeBar.nvue`</small>
+### 可关闭
+
+```vue
+<up-notice-bar
+    :text="text5"
+    mode="closable"
+></up-notice-bar>
+```
+
+### 自定义横向滚动速度
+
+```vue
+<up-notice-bar
+    :text="text2"
+    speed="250"
+    mode="closable"
+></up-notice-bar>
+```
+
+### 可跳转(点击右箭头)
+
+```vue
+<up-notice-bar
+    :text="text3"
+    mode="link"
+    url="/pages/componentsB/tag/tag"
+></up-notice-bar>
+```
+
+### 横向步进滚动
+
+```vue
+<up-notice-bar
+    :text="text4"
+    :step="true"
+    @click="click"
+></up-notice-bar>
+```
+
+### 纵向滚动
+
+```vue
+<up-notice-bar
+    :text="text4"
+    direction="column"
+    @click="click"
+></up-notice-bar>
+```
+
+### 自定义样式
+
+```vue
+<up-notice-bar
+    :text="text1"
+    color="#ffffff"
+    bgColor="#f56c6c"
+></up-notice-bar>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsB/noticeBar/noticeBar.uvue`</small>
 
 </template>
 
 <template #uniappx>
 
+### 基础功能
+
 ```vue
 <up-notice-bar
     :text="text1"
+></up-notice-bar>
+```
+
+### 可关闭
+
+```vue
+<up-notice-bar
+    :text="text5"
+    mode="closable"
+></up-notice-bar>
+```
+
+### 自定义横向滚动速度
+
+```vue
+<up-notice-bar
+    :text="text2"
+    speed="250"
+    mode="closable"
+></up-notice-bar>
+```
+
+### 可跳转(点击右箭头)
+
+```vue
+<up-notice-bar
+    :text="text3"
+    mode="link"
+    url="/pages/componentsB/tag/tag"
+></up-notice-bar>
+```
+
+### 横向步进滚动
+
+```vue
+<up-notice-bar
+    :text="text4"
+    :step="true"
+    @click="click"
+></up-notice-bar>
+```
+
+### 纵向滚动
+
+```vue
+<up-notice-bar
+    :text="text4"
+    direction="column"
+    @click="click"
+></up-notice-bar>
+```
+
+### 自定义样式
+
+```vue
+<up-notice-bar
+    :text="text1"
+    color="#ffffff"
+    bgColor="#f56c6c"
 ></up-notice-bar>
 ```
 
@@ -133,8 +328,8 @@ import { UPNoticeBar } from '@ultra-ui'
 | `step` | direction = row时，是否使用步进形式滚动 | `Boolean` | `false` |
 | `icon` | 是否显示左侧的音量图标 | `String` | `'volume'` |
 | `mode` | 通告模式，link-显示右箭头，closable-显示右侧关闭图标 | `String` | `''` |
-| `color` | 文字颜色，各图标也会使用文字颜色 | `String` | `'#f9ae3d'` |
-| `bgColor` | 背景颜色 | `String` | `'#fdf6ec'` |
+| `color` | 文字颜色，各图标也会使用文字颜色 | `String` | `'var(--up-warning, #f9ae3d)'` |
+| `bgColor` | 背景颜色 | `String` | `'var(--up-warning-light, #fdf6ec)'` |
 | `speed` | 水平滚动时的滚动速度，即每秒滚动多少px(px)，这有利于控制文字无论多少时，都能有一个恒定的速度 | `String / Number` | `80` |
 | `fontSize` | 字体大小 | `String / Number` | `14` |
 | `duration` | 滚动一个周期的时间长，单位ms | `String / Number` | `2000` |
@@ -192,7 +387,6 @@ import { UPNoticeBar } from '@ultra-ui'
 | `step` | direction = row时，是否使用步进形式滚动 | `Boolean` | `false` |
 | `duration` | 滚动一个周期的时间长，单位ms | `String / Number` | `1500` |
 | `disableTouch` | 是否禁止用手滑动切换 目前HX2.6.11，只支持App 2.5.5+、H5 2.5.5+、支付宝小程序、字节跳动小程序 | `Boolean` | `true` |
-| `justifyContent` | — | `String` | `'flex-start'` |
 
 #### 事件
 
@@ -216,6 +410,6 @@ import { UPNoticeBar } from '@ultra-ui'
 | Flutter · Dart | `UPNoticeBar` | `packages/ultra_ui/lib/src/widgets/up_notice_bar.dart` |
 | React Native · TypeScript | `UPNoticeBar` | `src/components/notice-bar` |
 | Taro · React + TypeScript | `UPNoticeBar` | `src/ultra-ui/components/up-notice-bar` |
-| uni-app · Vue 3 | `up-notice-bar` | `src/uni_modules/uview-plus/components/u-notice-bar` |
+| uni-app · Vue 3 | `up-notice-bar` | `uni_modules/uview-ultra/components/up-notice-bar` |
 | uni-app-x · UTS / UVUE | `up-notice-bar` | `uni_modules/uview-ultra/components/up-notice-bar` |
 

@@ -92,6 +92,10 @@ import { UPList } from 'ultra-ui-rn';
 
 <template #taro>
 
+### 基础用法
+
+列表容器 + 列表项（标题与说明）
+
 ```tsx
 import { UPList } from '@ultra-ui'
 
@@ -99,6 +103,68 @@ import { UPList } from '@ultra-ui'
   <UPListItem title='选项一' />
   <UPListItem title='选项二' note='这是一段说明文字' />
   <UPListItem title='选项三' note='较长的说明文字会被截断处理展示两行' />
+</UPList>
+```
+
+### 带图标 / 头像
+
+左侧 thumb 缩略图或 icon 图标
+
+```tsx
+<UPList>
+  <UPListItem title='头像列表项' note='使用 thumb 展示方形头像' thumb='https://uview-plus.jiangruyi.com/github/logo.png' />
+  <UPListItem title='图标列表项' note='使用内置 icon' icon='photo' />
+  <UPListItem title='必填项' note='标题前带红色星号' required icon='star' />
+</UPList>
+```
+
+### 右侧内容与点击
+
+value 文本、箭头、可点击反馈
+
+```tsx
+<UPList>
+  <UPListItem title='收货地址' value='未设置' isLink onClick={() => toast.show({ message: '点击了收货地址', type: 'primary' })} />
+  <UPListItem title='我的优惠券' value='3 张' isLink />
+  <UPListItem title='客服中心' note='点击跳转页面' isLink />
+  <UPListItem title='禁用项' value='不可点击' disabled isLink />
+  <UPListItem title='自定右图标' value='>' rightIcon='arrow-right' clickable />
+</UPList>
+```
+
+### 分组吸顶
+
+UPList sticky + UPListItem group，滚动时分组头吸顶
+
+```tsx
+<UPList sticky height='520rpx'>
+  {groups.map((group) => (
+    <View key={group.name}>
+      <UPListItem group={`分组 ${group.name}`} title={`分组 ${group.name} 首行`} />
+      {group.items.map((item) => (
+        <UPListItem key={item} title={item} note={`来自分组 ${group.name}`} isLink />
+      ))}
+    </View>
+  ))}
+</UPList>
+```
+
+### 滚动与锚点
+
+scrollIntoView 定位到指定 anchor
+
+```tsx
+<UPList
+  height='420rpx'
+  scrollIntoView='item-3'
+  scrollWithAnimation
+>
+  <UPListItem anchor='item-1' title='锚点 item-1' note='anchor="item-1"' />
+  <UPListItem anchor='item-2' title='锚点 item-2' note='anchor="item-2"' />
+  <UPListItem anchor='item-3' title='锚点 item-3' note='初始滚动到这里' />
+  <UPListItem anchor='item-4' title='锚点 item-4' note='anchor="item-4"' />
+  <UPListItem anchor='item-5' title='锚点 item-5' note='anchor="item-5"' />
+  <UPListItem anchor='item-6' title='锚点 item-6' note='anchor="item-6"' />
 </UPList>
 ```
 
@@ -132,7 +198,7 @@ import { UPList } from '@ultra-ui'
 </up-list>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus/src/pages/componentsC/list/list.nvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/list/list.uvue`</small>
 
 </template>
 
@@ -241,6 +307,6 @@ The reference below is extracted from the uview-plus source, whose property name
 | Flutter · Dart | `UPList` | `packages/ultra_ui/lib/src/widgets/up_list.dart` |
 | React Native · TypeScript | `UPList` | `src/components/list` |
 | Taro · React + TypeScript | `UPList` | `src/ultra-ui/components/up-list` |
-| uni-app · Vue 3 | `up-list` | `src/uni_modules/uview-plus/components/u-list` |
+| uni-app · Vue 3 | `up-list` | `uni_modules/uview-ultra/components/up-list` |
 | uni-app-x · UTS / UVUE | `up-list` | `uni_modules/uview-ultra/components/up-list` |
 

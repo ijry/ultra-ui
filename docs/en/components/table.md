@@ -30,6 +30,8 @@ No snippet could be extracted automatically — please read the source.
 
 <template #reactnative>
 
+### 演示效果
+
 ```tsx
 import { UPTable } from 'ultra-ui-rn';
 
@@ -56,6 +58,10 @@ import { UPTable } from 'ultra-ui-rn';
 
 <template #taro>
 
+### 基础用法
+
+th 表头行 + td 数据行，列宽 flex 均分
+
 ```tsx
 import { UPTable } from '@ultra-ui'
 
@@ -75,11 +81,140 @@ import { UPTable } from '@ultra-ui'
 </UPTable>
 ```
 
+### 指定列宽
+
+width 传百分比，未指定的列按 flex 均分剩余空间
+
+```tsx
+<UPTable>
+  <UPTr>
+    <UPTh width='40%'>订单号</UPTh>
+    <UPTh>商品</UPTh>
+  </UPTr>
+  {ORDERS.map((item) => (
+    <UPTr key={item.id}>
+      <UPTd width='40%'>{item.id}</UPTd>
+      <UPTd>{item.product}</UPTd>
+    </UPTr>
+  ))}
+</UPTable>
+```
+
+### 左对齐
+
+align 控制全表对齐方式
+
+```tsx
+<UPTable align='left'>
+  <UPTr>
+    <UPTh>商品</UPTh>
+    <UPTh>金额</UPTh>
+  </UPTr>
+  {ORDERS.map((item) => (
+    <UPTr key={item.id}>
+      <UPTd>{item.product}</UPTd>
+      <UPTd>{item.amount}</UPTd>
+    </UPTr>
+  ))}
+</UPTable>
+```
+
+### 单元格覆盖表格样式
+
+td 的 textAlign / color / fontSize 优先于表格级配置
+
+```tsx
+<UPTable align='center'>
+  <UPTr>
+    <UPTh>商品</UPTh>
+    <UPTh>金额</UPTh>
+  </UPTr>
+  {ORDERS.map((item) => (
+    <UPTr key={item.id}>
+      <UPTd textAlign='left'>{item.product}</UPTd>
+      <UPTd color='#fa3534' fontSize='15px'>
+        {item.amount}
+      </UPTd>
+    </UPTr>
+  ))}
+</UPTable>
+```
+
+### 自定义表头与边框
+
+thStyle 集中配置表头样式，borderColor 改变边框色
+
+```tsx
+<UPTable
+  borderColor='#2979ff'
+  thStyle={{ backgroundColor: '#ecf5ff', color: '#2979ff' }}
+>
+  <UPTr>
+    <UPTh>订单号</UPTh>
+    <UPTh>状态</UPTh>
+  </UPTr>
+  {ORDERS.map((item) => (
+    <UPTr key={item.id}>
+      <UPTd>{item.id}</UPTd>
+      <UPTd>{item.status}</UPTd>
+    </UPTr>
+  ))}
+</UPTable>
+```
+
+### 单元格内嵌组件
+
+td 内可放任意节点，如 Tag
+
+```tsx
+<UPTable align='center'>
+  <UPTr>
+    <UPTh width='45%'>商品</UPTh>
+    <UPTh>状态</UPTh>
+  </UPTr>
+  {ORDERS.map((item) => (
+    <UPTr key={item.id}>
+      <UPTd width='45%'>{item.product}</UPTd>
+      <UPTd>
+        <View className='table-demo__cell'>
+          <UPTag
+            text={item.status}
+            type={STATUS_TYPE[item.status]}
+            size='mini'
+          />
+        </View>
+      </UPTd>
+    </UPTr>
+  ))}
+</UPTable>
+```
+
+### 紧凑与宽松
+
+padding 与 fontSize 控制疏密
+
+```tsx
+<UPTable padding='3px 2px' fontSize='12px'>
+  <UPTr>
+    <UPTh>学校</UPTh>
+    <UPTh>城市</UPTh>
+  </UPTr>
+  {SCHOOLS.slice(0, 2).map((item) => (
+    <UPTr key={item.name}>
+      <UPTd>{item.name}</UPTd>
+      <UPTd>{item.city}</UPTd>
+    </UPTr>
+  ))}
+</UPTable>
+```
+
 <small>Snippet from `ultra-ui-taro/src/pages/components/table/index.tsx`</small>
 
 </template>
 
 <template #uniapp>
+
+### 演示效果
 
 ```vue
 <up-table :align="align" :borderColor="borderColor">
@@ -110,11 +245,13 @@ import { UPTable } from '@ultra-ui'
 </up-table>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus/src/pages/componentsB/table/table.nvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsB/table/table.uvue`</small>
 
 </template>
 
 <template #uniappx>
+
+### 演示效果
 
 ```vue
 <up-table :align="align" :borderColor="borderColor">
@@ -157,18 +294,6 @@ The reference below is extracted from the uview-plus source, whose property name
 
 ### `<up-table>`
 
-#### Props
-
-| Prop | Description | Type | Default |
-| --- | --- | --- | --- |
-| `borderColor` | — | `String` | `—` |
-| `align` | — | `String` | `—` |
-| `padding` | td的内边距 | `String` | `—` |
-| `fontSize` | 字体大小 | `String` | `—` |
-| `color` | 字体颜色 | `String` | `—` |
-| `thStyle` | th的自定义样式 | `Object` | `—` |
-| `bgColor` | table的背景颜色 | `String` | `—` |
-
 #### Slots
 
 | Slot |
@@ -176,45 +301,6 @@ The reference below is extracted from the uview-plus source, whose property name
 | `default` |
 
 ### `<up-table2>`
-
-#### Props
-
-| Prop | Description | Type | Default |
-| --- | --- | --- | --- |
-| `data` | — | `Array` | `—` |
-| `columns` | — | `Array` | `—` |
-| `stripe` | — | `Boolean` | `—` |
-| `border` | — | `Boolean` | `—` |
-| `height` | — | `String / Number` | `—` |
-| `maxHeight` | — | `String / Number` | `—` |
-| `showHeader` | — | `Boolean` | `—` |
-| `highlightCurrentRow` | — | `Boolean` | `—` |
-| `rowKey` | — | `String` | `—` |
-| `currentRowKey` | — | `String / Number` | `—` |
-| `rowStyle` | — | `Object / Function` | `—` |
-| `cellClassName` | — | `Function` | `—` |
-| `cellStyle` | — | `Function` | `—` |
-| `headerCellClassName` | — | `Function` | `—` |
-| `rowClassName` | — | `Function` | `—` |
-| `context` | — | `Object` | `—` |
-| `showOverflowTooltip` | — | `Boolean / Object` | `—` |
-| `lazy` | — | `Boolean` | `—` |
-| `load` | — | `Function` | `—` |
-| `treeProps` | — | `Object` | `—` |
-| `defaultExpandAll` | — | `Boolean` | `—` |
-| `expandRowKeys` | — | `Array` | `—` |
-| `sortOrders` | — | `Array` | `—` |
-| `sortable` | — | `Boolean / String` | `—` |
-| `multiSort` | — | `Boolean` | `—` |
-| `sortBy` | — | `String` | `—` |
-| `sortMethod` | — | `Function` | `—` |
-| `filters` | — | `Object` | `—` |
-| `fixedHeader` | — | `Boolean` | `—` |
-| `emptyText` | — | `String` | `—` |
-| `mainCol` | 添加mainCol属性，用于指定树形结构展开控制图标所在的列 | `String` | `—` |
-| `expandWidth` | — | `String` | `—` |
-| `rowHeight` | — | `String` | `—` |
-| `spanMethod` | 添加spanMethod属性，用于合并单元格 | `Function` | `—` |
 
 #### Events
 
@@ -243,16 +329,6 @@ The reference below is extracted from the uview-plus source, whose property name
 
 ### `<up-td>`
 
-#### Props
-
-| Prop | Description | Type | Default |
-| --- | --- | --- | --- |
-| `width` | 宽度，百分比或者具体带单位的值，如30%， 200rpx等，一般使用百分比 | `String` | `—` |
-| `textAlign` | — | `String` | `—` |
-| `fontSize` | — | `String` | `—` |
-| `borderColor` | — | `String` | `—` |
-| `color` | — | `String` | `—` |
-
 #### Slots
 
 | Slot |
@@ -260,12 +336,6 @@ The reference below is extracted from the uview-plus source, whose property name
 | `default` |
 
 ### `<up-th>`
-
-#### Props
-
-| Prop | Description | Type | Default |
-| --- | --- | --- | --- |
-| `width` | 宽度，百分比或者具体带单位的值，如30%， 200rpx等，一般使用百分比 | `String` | `—` |
 
 #### Slots
 
@@ -288,6 +358,6 @@ The reference below is extracted from the uview-plus source, whose property name
 | Flutter · Dart | `UPTable` | `packages/ultra_ui/lib/src/widgets/up_table.dart` |
 | React Native · TypeScript | `UPTable` | `src/components/table` |
 | Taro · React + TypeScript | `UPTable` | `src/ultra-ui/components/up-table` |
-| uni-app · Vue 3 | `up-table` | `src/uni_modules/uview-plus/components/u-table` |
+| uni-app · Vue 3 | `up-table` | `uni_modules/uview-ultra/components/up-table` |
 | uni-app-x · UTS / UVUE | `up-table` | `uni_modules/uview-ultra/components/up-table` |
 

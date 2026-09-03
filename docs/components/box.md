@@ -62,6 +62,10 @@ import { UPBox } from 'ultra-ui-rn';
 
 <template #taro>
 
+### 基础用法
+
+带内边距/背景/圆角的 2x2 布局容器
+
 ```tsx
 import { UPBox } from '@ultra-ui'
 
@@ -76,6 +80,58 @@ import { UPBox } from '@ultra-ui'
   rightTopTitle='收藏'
   rightBottomIcon='setting'
   rightBottomTitle='设置'
+/>
+```
+
+### 纯标题（无图标）
+
+只传 title，图标留空
+
+```tsx
+<UPBox
+  bgColors={['#ecf5ff', '#f0f9eb', '#fef0f0']}
+  height={140}
+  borderRadius={12}
+  gap={16}
+  leftTitle='消息'
+  rightTopTitle='任务'
+  rightBottomTitle='我的'
+/>
+```
+
+### 渐变背景
+
+bgColors 支持任意 CSS 颜色（含渐变）
+
+```tsx
+<UPBox
+  bgColors={[
+    'linear-gradient(135deg, #667eea, #764ba2)',
+    'linear-gradient(135deg, #f093fb, #f5576c)',
+    'linear-gradient(135deg, #4facfe, #00f2fe)',
+  ]}
+  height={160}
+  borderRadius={16}
+  gap={20}
+  leftTitle='渐变 A'
+  rightTopTitle='渐变 B'
+  rightBottomTitle='渐变 C'
+/>
+```
+
+### 尺寸与间距
+
+通过 height / gap / borderRadius 调整
+
+```tsx
+<UPBox
+  bgColors={['#f3f4f6', '#e5e7eb', '#d1d5db']}
+  height={120}
+  borderRadius={8}
+  gap={10}
+  leftTitle='左'
+  rightTopTitle='右上'
+  rightBottomTitle='右下'
 />
 ```
 
@@ -99,7 +155,7 @@ import { UPBox } from '@ultra-ui'
 </up-box>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus/src/pages/componentsD/box/box.nvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/box/box.uvue`</small>
 
 </template>
 
@@ -160,6 +216,6 @@ import { UPBox } from '@ultra-ui'
 | Flutter · Dart | `UPBox` | `packages/ultra_ui/lib/src/widgets/up_box.dart` |
 | React Native · TypeScript | `UPBox` | `src/components/box` |
 | Taro · React + TypeScript | `UPBox` | `src/ultra-ui/components/up-box` |
-| uni-app · Vue 3 | `up-box` | `src/uni_modules/uview-plus/components/u-box` |
+| uni-app · Vue 3 | `up-box` | `uni_modules/uview-ultra/components/up-box` |
 | uni-app-x · UTS / UVUE | `up-box` | `uni_modules/uview-ultra/components/up-box` |
 

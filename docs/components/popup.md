@@ -46,6 +46,8 @@ UPPopup(show: $showPopup,
 
 <template #android>
 
+### 弹窗
+
 ```kotlin
 import net.lingyun.ultraui.android.components.UPPopup
 import net.lingyun.ultraui.android.components.UPPopupProps
@@ -185,14 +187,11 @@ import { UPPopup } from '@ultra-ui'
 | `safeAreaInsetBottom` | 是否为iPhoneX留出底部安全距离 | `Boolean` | `true` |
 | `safeAreaInsetTop` | 是否留出顶部安全距离（状态栏高度） | `Boolean` | `false` |
 | `closeIconPos` | 自定义关闭图标位置，top-left为左上角，top-right为右上角，bottom-left为左下角，bottom-right为右下角 | `String` | `'top-right'` |
-| `round` | 是否显示圆角 | `Boolean / String / Number` | `'20px'` |
+| `round` | 是否显示圆角 | `Boolean / String / Number` | `0` |
 | `zoom` | mode=center，也即中部弹出时，是否使用缩放模式 | `Boolean` | `true` |
 | `bgColor` | 弹窗背景色，设置为transparent可去除白色背景 | `String` | `''` |
 | `overlayOpacity` | 遮罩的透明度，0-1之间 | `Number / String` | `0.5` |
-| `pageInline` | 是否页面内展示 | `Boolean` | `false` |
-| `touchable` | 是否页开启手势滑动 | `Boolean` | `false` |
-| `minHeight` | 手势滑动最小高度 | `String` | `'200px'` |
-| `maxHeight` | 手势滑动最大高度 | `String` | `'600px'` |
+| `pageInline` | 是否内联在页面中（不使用弹窗形式） | `Boolean` | `false` |
 
 ### 事件
 
@@ -208,9 +207,7 @@ import { UPPopup } from '@ultra-ui'
 
 | 插槽名 |
 | --- |
-| `bottom` |
 | `default` |
-| `trigger` |
 
 ## 各平台源码
 
@@ -222,6 +219,6 @@ import { UPPopup } from '@ultra-ui'
 | Flutter · Dart | `UPPopup` | `packages/ultra_ui/lib/src/widgets/up_popup.dart` |
 | React Native · TypeScript | `UPPopup` | `src/components/popup` |
 | Taro · React + TypeScript | `UPPopup` | `src/ultra-ui/components/up-popup` |
-| uni-app · Vue 3 | `up-popup` | `src/uni_modules/uview-plus/components/u-popup` |
+| uni-app · Vue 3 | `up-popup` | `uni_modules/uview-ultra/components/up-popup` |
 | uni-app-x · UTS / UVUE | `up-popup` | `uni_modules/uview-ultra/components/up-popup` |
 

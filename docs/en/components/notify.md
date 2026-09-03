@@ -18,6 +18,8 @@ Switch tabs to see the syntax for each platform. Every snippet is lifted verbati
 
 <template #android>
 
+### 通知
+
 ```kotlin
 import net.lingyun.ultraui.android.components.UPNotify
 import net.lingyun.ultraui.android.components.UPNotifyProps
@@ -98,10 +100,10 @@ import { UPNotify } from '@ultra-ui'
 <template #uniapp>
 
 ```vue
-<up-notify ref="uNotify"></up-notify>
+<up-notify ref="upNotifyRef"></up-notify>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus/src/pages/componentsB/notify/notify.nvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsB/notify/notify.uvue`</small>
 
 </template>
 
@@ -149,6 +151,6 @@ The reference below is extracted from the uview-plus source, whose property name
 | Flutter · Dart | `UPNotify` | `packages/ultra_ui/lib/src/widgets/up_notify.dart` |
 | React Native · TypeScript | `UPNotify` | `src/components/notify` |
 | Taro · React + TypeScript | `UPNotify` | `src/ultra-ui/components/up-notify` |
-| uni-app · Vue 3 | `up-notify` | `src/uni_modules/uview-plus/components/u-notify` |
+| uni-app · Vue 3 | `up-notify` | `uni_modules/uview-ultra/components/up-notify` |
 | uni-app-x · UTS / UVUE | `up-notify` | `uni_modules/uview-ultra/components/up-notify` |
 

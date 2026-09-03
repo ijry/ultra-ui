@@ -55,10 +55,22 @@ import { UPKeyboard } from 'ultra-ui-rn';
 
 <template #taro>
 
+### 打乱顺序
+
+random 打乱字母排列
+
 ```tsx
 import { UPKeyboard } from '@ultra-ui'
 
 <UPKeyboard mode='letter' random onChange={append} onBackspace={backspace} />
+```
+
+### 安全区
+
+safe 显示底部安全区占位
+
+```tsx
+<UPKeyboard mode='letter' safe onChange={append} onBackspace={backspace} />
 ```
 
 <small>示例来源 `ultra-ui-taro/src/pages/components/keyboard/index.tsx`</small>
@@ -71,7 +83,7 @@ import { UPKeyboard } from '@ultra-ui'
 <up-keyboard
     :mode="keyData.mode"
     :dotDisabled="keyData.dotDisabled"
-    :random='keyData.random'
+    :random="keyData.random"
     :show="show"
     @close="close"
     @cancel="cancel"
@@ -81,7 +93,7 @@ import { UPKeyboard } from '@ultra-ui'
 ></up-keyboard>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus/src/pages/componentsB/keyboard/keyboard.nvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsB/keyboard/keyboard.uvue`</small>
 
 </template>
 
@@ -130,8 +142,8 @@ import { UPKeyboard } from '@ultra-ui'
 | `show` | 控制键盘的弹出与收起 | `Boolean` | `false` |
 | `overlay` | 是否显示遮罩，某些时候数字键盘时，用户希望看到自己的数值，所以可能不想要遮罩 | `Boolean` | `true` |
 | `zIndex` | z-index值 | `String / Number` | `10075` |
-| `cancelText` | 取消按钮的文字 | `String` | `t("up.common.cancel")` |
-| `confirmText` | 确认按钮的文字 | `String` | `t("up.common.confirm")` |
+| `cancelText` | 取消按钮的文字 | `String` | `'取消'` |
+| `confirmText` | 确认按钮的文字 | `String` | `'确定'` |
 | `autoChange` | 输入一个中文后，是否自动切换到英文 | `Boolean` | `false` |
 
 #### 事件
@@ -191,6 +203,6 @@ import { UPKeyboard } from '@ultra-ui'
 | Flutter · Dart | `UPKeyboard` | `packages/ultra_ui/lib/src/widgets/up_keyboard.dart` |
 | React Native · TypeScript | `UPKeyboard` | `src/components/keyboard` |
 | Taro · React + TypeScript | `UPKeyboard` | `src/ultra-ui/components/up-keyboard` |
-| uni-app · Vue 3 | `up-keyboard` | `src/uni_modules/uview-plus/components/u-keyboard` |
+| uni-app · Vue 3 | `up-keyboard` | `uni_modules/uview-ultra/components/up-keyboard` |
 | uni-app-x · UTS / UVUE | `up-keyboard` | `uni_modules/uview-ultra/components/up-keyboard` |
 

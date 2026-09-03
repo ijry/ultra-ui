@@ -53,10 +53,22 @@ import { UPCateTab } from 'ultra-ui-rn';
 
 <template #taro>
 
+### 基础两栏
+
+follow 模式：滚动右侧自动联动左侧
+
 ```tsx
 import { UPCateTab } from '@ultra-ui'
 
 <UPCateTab height='70vh' tabList={basicTabs} />
+```
+
+### 带图标
+
+子项通过 icon 字段渲染缩略图
+
+```tsx
+<UPCateTab height='70vh' tabList={iconTabs} />
 ```
 
 <small>示例来源 `ultra-ui-taro/src/pages/components/cate-tab/index.tsx`</small>
@@ -65,11 +77,12 @@ import { UPCateTab } from '@ultra-ui'
 
 <template #uniapp>
 
-::: tip
-暂无自动提取到的示例代码，请参考源码。
-:::
+```vue
+<up-cate-tab class="cate-tab" mode="follow" :height="height" :tabList="tabList"
+    tabKeyName="title" itemKeyName="title"></up-cate-tab>
+```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/cateTab/cateTab.uvue`</small>
 
 </template>
 
@@ -112,6 +125,6 @@ import { UPCateTab } from '@ultra-ui'
 | Flutter · Dart | `UPCateTab` | `packages/ultra_ui/lib/src/widgets/up_cate_tab.dart` |
 | React Native · TypeScript | `UPCateTab` | `src/components/cate-tab` |
 | Taro · React + TypeScript | `UPCateTab` | `src/ultra-ui/components/up-cate-tab` |
-| uni-app · Vue 3 | `up-cate-tab` | `src/uni_modules/uview-plus/components/u-cate-tab` |
+| uni-app · Vue 3 | `up-cate-tab` | `uni_modules/uview-ultra/components/up-cate-tab` |
 | uni-app-x · UTS / UVUE | `up-cate-tab` | `uni_modules/uview-ultra/components/up-cate-tab` |
 

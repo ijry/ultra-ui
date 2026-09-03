@@ -31,6 +31,8 @@ No snippet could be extracted automatically — please read the source.
 
 <template #android>
 
+### 头像
+
 ```kotlin
 import net.lingyun.ultraui.android.components.UPAvatar
 import net.lingyun.ultraui.android.components.UPAvatarProps
@@ -73,10 +75,42 @@ const UPAvatar(
 
 <template #reactnative>
 
+### 基础演示
+
 ```tsx
 import { UPAvatar } from 'ultra-ui-rn';
 
 <UPAvatar src={src1} />
+```
+
+### 头像形状
+
+```tsx
+<UPAvatar src={src3} shape="square" />
+```
+
+### 头像尺寸
+
+```tsx
+<UPAvatar src={src4} size="30" />
+```
+
+### 图标头像
+
+```tsx
+<UPAvatar icon="red-packet-fill" fontSize="22" />
+```
+
+### 文字头像(自动背景色)
+
+```tsx
+<UPAvatar text="U" fontSize="20" randomBgColor colorIndex={0} />
+```
+
+### 图片加载失败(显示默认头像)
+
+```tsx
+<UPAvatar src={src7} />
 ```
 
 <small>Snippet from `ultra-ui-rn/example/pages/components/basic/AvatarDemo.tsx`</small>
@@ -85,10 +119,14 @@ import { UPAvatar } from 'ultra-ui-rn';
 
 <template #taro>
 
+### 裁剪模式
+
+mode 取值同 Taro Image
+
 ```tsx
 import { UPAvatar } from '@ultra-ui'
 
-<UPAvatar src={PIC} />
+<UPAvatar src={PIC} size={56} shape='square' mode={mode} />
 ```
 
 <small>Snippet from `ultra-ui-taro/src/pages/components/avatar/index.tsx`</small>
@@ -97,18 +135,130 @@ import { UPAvatar } from '@ultra-ui'
 
 <template #uniapp>
 
+### 基础演示
+
 ```vue
 <up-avatar :src="src1"></up-avatar>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus/src/pages/componentsC/avatar/avatar.nvue`</small>
+### 头像形状
+
+```vue
+<up-avatar
+    :src="src2"
+    shape="circle"
+    @click="click"
+></up-avatar>
+```
+
+### 头像尺寸
+
+```vue
+<up-avatar
+    :src="src4"
+    size="30"
+></up-avatar>
+```
+
+### 图标头像
+
+```vue
+<up-avatar
+    icon="red-packet-fill"
+    fontSize="22"
+></up-avatar>
+```
+
+### 文字头像(自动背景色)
+
+```vue
+<up-avatar
+    text="U"
+    fontSize="20"
+    randomBgColor
+    :colorIndex="0"
+></up-avatar>
+```
+
+### 图片加载失败(显示默认头像)
+
+```vue
+<up-avatar :src="src7"></up-avatar>
+```
+
+### 小程序开放能力
+
+```vue
+<up-avatar
+    mpAvatar
+    size="60"
+></up-avatar>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/avatar/avatar.uvue`</small>
 
 </template>
 
 <template #uniappx>
 
+### 基础演示
+
 ```vue
 <up-avatar :src="src1"></up-avatar>
+```
+
+### 头像形状
+
+```vue
+<up-avatar
+    :src="src2"
+    shape="circle"
+    @click="click"
+></up-avatar>
+```
+
+### 头像尺寸
+
+```vue
+<up-avatar
+    :src="src4"
+    size="30"
+></up-avatar>
+```
+
+### 图标头像
+
+```vue
+<up-avatar
+    icon="red-packet-fill"
+    fontSize="22"
+></up-avatar>
+```
+
+### 文字头像(自动背景色)
+
+```vue
+<up-avatar
+    text="U"
+    fontSize="20"
+    randomBgColor
+    :colorIndex="0"
+></up-avatar>
+```
+
+### 图片加载失败(显示默认头像)
+
+```vue
+<up-avatar :src="src7"></up-avatar>
+```
+
+### 小程序开放能力
+
+```vue
+<up-avatar
+    mpAvatar
+    size="60"
+></up-avatar>
 ```
 
 <small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/avatar/avatar.uvue`</small>
@@ -186,6 +336,6 @@ The reference below is extracted from the uview-plus source, whose property name
 | Flutter · Dart | `UPAvatar` | `packages/ultra_ui/lib/src/widgets/up_avatar.dart` |
 | React Native · TypeScript | `UPAvatar` | `src/components/avatar` |
 | Taro · React + TypeScript | `UPAvatar` | `src/ultra-ui/components/up-avatar` |
-| uni-app · Vue 3 | `up-avatar` | `src/uni_modules/uview-plus/components/u-avatar` |
+| uni-app · Vue 3 | `up-avatar` | `uni_modules/uview-ultra/components/up-avatar` |
 | uni-app-x · UTS / UVUE | `up-avatar` | `uni_modules/uview-ultra/components/up-avatar` |
 

@@ -78,23 +78,10 @@ No snippet could be extracted automatically — please read the source.
 
 The reference below is extracted from the uview-plus source, whose property names the other ports keep. For per-platform differences, compare the tabs above.
 
-### Props
-
-| Prop | Description | Type | Default |
-| --- | --- | --- | --- |
-| `canvasId` | — | `String` | `—` |
-| `width` | — | `String / Number` | `—` |
-| `height` | — | `String / Number` | `—` |
-| `unit` | — | `String` | `—` |
-| `useRootHeightAndWidth` | — | `Boolean` | `—` |
-| `bgColor` | — | `String` | `—` |
-| `disableScroll` | — | `Boolean` | `—` |
-
 ### Events
 
 | Event |
 | --- |
-| `ready` |
 | `touchend` |
 | `touchmove` |
 | `touchstart` |
@@ -106,6 +93,6 @@ The reference below is extracted from the uview-plus source, whose property name
 | Flutter · Dart | `UPCanvas` | `packages/ultra_ui/lib/src/widgets/up_canvas.dart` |
 | React Native · TypeScript | `UPCanvas` | `src/components/canvas` |
 | Taro · React + TypeScript | `UPCanvas` | `src/ultra-ui/components/up-canvas` |
-| uni-app · Vue 3 | `up-canvas` | `src/uni_modules/uview-plus/components/u-canvas` |
+| uni-app · Vue 3 | `up-canvas` | `uni_modules/uview-ultra/components/up-canvas` |
 | uni-app-x · UTS / UVUE | `up-canvas` | `uni_modules/uview-ultra/components/up-canvas` |
 

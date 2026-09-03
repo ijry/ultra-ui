@@ -35,6 +35,8 @@ UPInput(
 
 <template #android>
 
+### 输入框
+
 ```kotlin
 import net.lingyun.ultraui.android.components.UPInput
 import net.lingyun.ultraui.android.components.UPInputProps
@@ -100,6 +102,8 @@ UPInput(
 
 <template #reactnative>
 
+### 颜色
+
 ```tsx
 import { UPInput } from 'ultra-ui-rn';
 
@@ -112,16 +116,199 @@ import { UPInput } from 'ultra-ui-rn';
 />
 ```
 
+### 可清空内容(仅focus时显示清除图标)
+
+```tsx
+<UPInput border="surround" clearable placeholder="请输入内容" />
+```
+
+### 可清空内容(始终显示清除图标)
+
+```tsx
+<UPInput border="surround" clearable onlyClearableOnFocused={false} placeholder="请输入内容" />
+```
+
+### 数字键盘
+
+```tsx
+<UPInput
+  border="surround"
+  clearable
+  onChange={setInputNumber}
+  placeholder="请输入内容"
+  type="number"
+  value={inputNumber}
+/>
+```
+
+### 密码类型
+
+```tsx
+<UPInput
+  border="surround"
+  clearable
+  onChange={setInputPassword}
+  password
+  passwordVisibilityToggle
+  placeholder="请输入内容"
+  value={inputPassword}
+/>
+```
+
+### 显示下划线
+
+```tsx
+<UPInput border="bottom" clearable placeholder="请输入内容" />
+```
+
+### 禁用状态
+
+```tsx
+<UPInput border="surround" disabled placeholder="禁用状态" />
+```
+
+### 圆形
+
+```tsx
+<UPInput border="surround" placeholder="请输入内容" shape="circle" />
+```
+
+### 前后图标
+
+```tsx
+<UPInput placeholder="前置图标" prefixIcon="search" prefixIconStyle={s.prefixIcon} />
+```
+
+### 前后插槽
+
+```tsx
+<UPInput
+  placeholder="前置插槽"
+  prefix={<UPText customStyle={s.prefixText} text="http://" type="tips" />
+```
+
 <small>Snippet from `ultra-ui-rn/example/pages/components/form/InputDemo.tsx`</small>
 
 </template>
 
 <template #taro>
 
+### 基础用法
+
+value + onChange 受控绑定
+
 ```tsx
 import { UPInput } from '@ultra-ui'
 
 <UPInput value={basic} placeholder='请输入内容' onChange={setBasic} />
+```
+
+### 输入类型
+
+type：text / number / digit / idcard / password
+
+```tsx
+<UPInput
+  type='number'
+  value={numberValue}
+  placeholder='只能输入整数'
+  onChange={setNumberValue}
+/>
+```
+
+### 边框
+
+border：surround / bottom / none
+
+```tsx
+<UPInput border='surround' value={surround} onChange={setSurround} />
+```
+
+### 形状
+
+shape：square 方形 / circle 圆形
+
+```tsx
+<UPInput
+  shape='square'
+  value={square}
+  placeholder='方形输入框'
+  onChange={setSquare}
+/>
+```
+
+### 对齐方式
+
+inputAlign：left / center / right
+
+```tsx
+<UPInput
+  inputAlign='center'
+  value={alignCenter}
+  onChange={setAlignCenter}
+/>
+```
+
+### 禁用与只读
+
+disabled 会置灰，readonly 不会
+
+```tsx
+<UPInput disabled value={disabled} onChange={setDisabled} />
+```
+
+### 清除按钮
+
+clearable 开启；onlyClearableOnFocused 控制是否仅聚焦时显示
+
+```tsx
+<UPInput
+  clearable
+  onlyClearableOnFocused={false}
+  value={clearAlways}
+  onChange={setClearAlways}
+/>
+```
+
+### 前后缀图标
+
+prefixIcon / suffixIcon
+
+```tsx
+<UPInput
+  prefixIcon='search'
+  value={prefix}
+  placeholder='请输入关键字'
+  onChange={setPrefix}
+/>
+```
+
+### 字体样式
+
+fontSize / color / placeholderStyle
+
+```tsx
+<UPInput
+  fontSize={18}
+  color='#7232dd'
+  placeholderStyle={{ color: '#c0c4cc' }}
+  value={styled}
+  placeholder='占位符也换了颜色'
+  onChange={setStyled}
+/>
+```
+
+### 最大长度
+
+maxlength=10，超出无法继续输入
+
+```tsx
+<UPInput
+  maxlength={10}
+  value={limited}
+  placeholder='最多 10 个字符'
+  onChange={setLimited}
+/>
 ```
 
 <small>Snippet from `ultra-ui-taro/src/pages/components/input/index.tsx`</small>
@@ -130,23 +317,111 @@ import { UPInput } from '@ultra-ui'
 
 <template #uniapp>
 
+### 基础使用
+
 ```vue
 <up-input
     placeholder="请输入内容"
     border="surround"
     v-model="value"
     @change="change"
-    confirmType="search"
-    @confirm="handleSearch"
 ></up-input>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus/src/pages/componentsC/input/input.nvue`</small>
+### 可清空内容
+
+```vue
+<up-input
+    placeholder="请输入内容"
+    border="surround"
+    clearable
+></up-input>
+```
+
+### 数字键盘
+
+```vue
+<up-input
+    placeholder="请输入内容"
+    border="surround"
+    type="number"
+    clearable
+></up-input>
+```
+
+### 密码类型
+
+```vue
+<up-input
+    placeholder="请输入内容"
+    border="surround"
+    password
+    clearable
+></up-input>
+```
+
+### 显示下划线
+
+```vue
+<up-input
+    placeholder="请输入内容"
+    border="bottom"
+    clearable
+></up-input>
+```
+
+### 禁用状态
+
+```vue
+<up-input
+    placeholder="禁用状态"
+    border="surround"
+    disabled
+></up-input>
+```
+
+### 圆形
+
+```vue
+<up-input
+    placeholder="请输入内容"
+    border="surround"
+    shape="circle"
+></up-input>
+```
+
+### 前后图标
+
+```vue
+<up-input
+    placeholder="前置图标"
+    prefixIcon="search"
+    prefixIconStyle="font-size: 22px;color: #909399"
+></up-input>
+```
+
+### 前后插槽
+
+```vue
+<up-input placeholder="前置插槽">
+    <template #prefix>
+        <up-text
+            text="http://"
+            margin="0 3px 0 0"
+            type="tips"
+        ></up-text>
+    </template>
+</up-input>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/input/input.uvue`</small>
 
 </template>
 
 <template #uniappx>
 
+### 基础使用
+
 ```vue
 <up-input
     placeholder="请输入内容"
@@ -154,6 +429,92 @@ import { UPInput } from '@ultra-ui'
     v-model="value"
     @change="change"
 ></up-input>
+```
+
+### 可清空内容
+
+```vue
+<up-input
+    placeholder="请输入内容"
+    border="surround"
+    clearable
+></up-input>
+```
+
+### 数字键盘
+
+```vue
+<up-input
+    placeholder="请输入内容"
+    border="surround"
+    type="number"
+    clearable
+></up-input>
+```
+
+### 密码类型
+
+```vue
+<up-input
+    placeholder="请输入内容"
+    border="surround"
+    password
+    clearable
+></up-input>
+```
+
+### 显示下划线
+
+```vue
+<up-input
+    placeholder="请输入内容"
+    border="bottom"
+    clearable
+></up-input>
+```
+
+### 禁用状态
+
+```vue
+<up-input
+    placeholder="禁用状态"
+    border="surround"
+    disabled
+></up-input>
+```
+
+### 圆形
+
+```vue
+<up-input
+    placeholder="请输入内容"
+    border="surround"
+    shape="circle"
+></up-input>
+```
+
+### 前后图标
+
+```vue
+<up-input
+    placeholder="前置图标"
+    prefixIcon="search"
+    prefixIconStyle="font-size: 22px;color: #909399"
+></up-input>
+```
+
+### 前后插槽
+
+```vue
+<up-input placeholder="前置插槽">
+    <template #prefix>
+        <up-text
+            text="http://"
+            margin="0 3px 0 0"
+            type="tips"
+        ></up-text>
+    </template>
+</up-input>
 ```
 
 <small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/input/input.uvue`</small>
@@ -175,14 +536,13 @@ The reference below is extracted from the uview-plus source, whose property name
 | `type` | number-数字输入键盘，app-vue下可以输入浮点数，app-nvue和小程序平台下只能输入整数 idcard-身份证输入键盘，微信、支付宝、百度、QQ小程序 digit-带小数点的数字键盘，App的nvue页面、微信、支付宝、百度、头条、QQ小程序 text-文本输入键盘 | `String` | `'text'` |
 | `fixed` | 如果 textarea 是在一个 position:fixed 的区域，需要显示指定属性 fixed 为 true， 兼容性：微信小程序、百度小程序、字节跳动小程序、QQ小程序 | `Boolean` | `false` |
 | `disabled` | 是否禁用输入框 | `Boolean` | `false` |
-| `disabledColor` | 禁用状态时的背景色 | `String` | `''` |
+| `disabledColor` | 禁用状态时的背景色 | `String` | `'#f5f7fa'` |
 | `clearable` | 是否显示清除控件 | `Boolean` | `false` |
-| `onlyClearableOnFocused` | 是否仅在聚焦时显示清除控件 | `Boolean` | `—` |
 | `password` | 是否密码类型 | `Boolean` | `false` |
 | `maxlength` | 最大输入长度，设置为 -1 的时候不限制最大长度 | `String / Number` | `140` |
 | `placeholder` | 输入框为空时的占位符 | `String` | `null` |
 | `placeholderClass` | 指定placeholder的样式类，注意页面或组件的style中写了scoped时，需要在类名前写/deep/ | `String` | `'input-placeholder'` |
-| `placeholderStyle` | 指定placeholder的样式 | `String / Object` | `''` |
+| `placeholderStyle` | 指定placeholder的样式 | `String / Object` | `'color: #c0c4cc'` |
 | `showWordLimit` | 是否显示输入字数统计，只在 type ="text"或type ="textarea"时有效 | `Boolean` | `false` |
 | `confirmType` | 设置右下角按钮的文字，有效值：send&#124;search&#124;next&#124;go&#124;done，兼容性详见uni-app文档 https://uniapp.dcloud.io/component/input https://uniapp.dcloud.io/component/textarea | `String` | `'done'` |
 | `confirmHold` | 点击键盘右下角按钮时是否保持键盘不收起，H5无效 | `Boolean` | `false` |
@@ -197,7 +557,7 @@ The reference below is extracted from the uview-plus source, whose property name
 | `adjustPosition` | 键盘弹起时，是否自动上推页面 | `Boolean` | `true` |
 | `inputAlign` | 输入框内容对齐方式，可选值为：left&#124;center&#124;right | `String` | `'left'` |
 | `fontSize` | 输入框字体的大小 | `String / Number` | `'15px'` |
-| `color` | 输入框字体颜色 | `String` | `''` |
+| `color` | 输入框字体颜色 | `String` | `'#303133'` |
 | `prefixIcon` | 输入框前置图标 | `String` | `''` |
 | `prefixIconStyle` | 前置图标样式，对象或字符串 | `String / Object` | `''` |
 | `suffixIcon` | 输入框后置图标 | `String` | `''` |
@@ -207,8 +567,6 @@ The reference below is extracted from the uview-plus source, whose property name
 | `shape` | 输入框形状，circle-圆形，square-方形 | `String` | `'square'` |
 | `formatter` | 用于处理或者过滤输入框内容的方法 | `Function / null` | `null` |
 | `ignoreCompositionEvent` | 是否忽略组件内对文本合成系统事件的处理 | `Boolean` | `—` |
-| `cursorColor` | 光标颜色 | `String` | `'#53c21d'` |
-| `passwordVisibilityToggle` | 密码类型可见性切换 | `Boolean` | `true` |
 
 ### Events
 
@@ -221,7 +579,6 @@ The reference below is extracted from the uview-plus source, whose property name
 | `focus` |
 | `input` |
 | `keyboardheightchange` |
-| `nicknamereview` |
 
 ### Slots
 
@@ -240,6 +597,6 @@ The reference below is extracted from the uview-plus source, whose property name
 | Flutter · Dart | `UPInput` | `packages/ultra_ui/lib/src/widgets/up_input.dart` |
 | React Native · TypeScript | `UPInput` | `src/components/input` |
 | Taro · React + TypeScript | `UPInput` | `src/ultra-ui/components/up-input` |
-| uni-app · Vue 3 | `up-input` | `src/uni_modules/uview-plus/components/u-input` |
+| uni-app · Vue 3 | `up-input` | `uni_modules/uview-ultra/components/up-input` |
 | uni-app-x · UTS / UVUE | `up-input` | `uni_modules/uview-ultra/components/up-input` |
 

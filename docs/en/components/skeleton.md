@@ -68,10 +68,36 @@ UPSkeleton(rows: 3, title: true, loading: true)
 
 <template #reactnative>
 
+### 基础使用
+
 ```tsx
 import { UPSkeleton } from 'ultra-ui-rn';
 
 <UPSkeleton loading rows="3" title />
+```
+
+### 自定义段落行数
+
+```tsx
+<UPSkeleton loading rows="2" title />
+```
+
+### 设置段落宽度
+
+```tsx
+<UPSkeleton loading rows="2" rowsWidth={['100%', '35%']} title />
+```
+
+### 设置段落高度
+
+```tsx
+<UPSkeleton
+  loading
+  rows="3"
+  rowsHeight={['18px', '18px', '80px']}
+  rowsWidth={['100%', '100%', '100%']}
+  title
+/>
 ```
 
 <small>Snippet from `ultra-ui-rn/example/pages/components/display/SkeletonDemo.tsx`</small>
@@ -79,6 +105,10 @@ import { UPSkeleton } from 'ultra-ui-rn';
 </template>
 
 <template #taro>
+
+### 基础用法
+
+loading=true 显示骨架，false 显示实际内容
 
 ```tsx
 import { UPSkeleton } from '@ultra-ui'
@@ -96,11 +126,45 @@ import { UPSkeleton } from '@ultra-ui'
 </UPSkeleton>
 ```
 
+### 显示头像
+
+avatar / avatarShape / avatarSize
+
+```tsx
+<UPSkeleton loading avatar avatarShape='circle' title rows={3} animate={animate} />
+```
+
+### 显示标题
+
+title / titleWidth / titleHeight
+
+```tsx
+<UPSkeleton loading title titleWidth='50%' titleHeight={20} rows={3} animate={animate} />
+```
+
+### 自定义行数
+
+rows / rowsWidth（数组逐行）/ rowsHeight
+
+```tsx
+<UPSkeleton loading rows={5} animate={animate} />
+```
+
+### 微光动画
+
+animate 控制扫描高光效果
+
+```tsx
+<UPSkeleton loading rows={3} animate={animate} />
+```
+
 <small>Snippet from `ultra-ui-taro/src/pages/components/skeleton/index.tsx`</small>
 
 </template>
 
 <template #uniapp>
+
+### 基础使用
 
 ```vue
 <up-skeleton
@@ -110,17 +174,131 @@ import { UPSkeleton } from '@ultra-ui'
 ></up-skeleton>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus/src/pages/componentsC/skeleton/skeleton.nvue`</small>
+### 自定义段落行数
+
+```vue
+<up-skeleton
+    rows="2"
+    title
+    loading
+></up-skeleton>
+```
+
+### 设置段落宽度
+
+```vue
+<up-skeleton
+    rows="2"
+    title
+    :rowsWidth="['100%', '35%']"
+    loading
+></up-skeleton>
+```
+
+### 设置段落高度
+
+```vue
+<up-skeleton
+    rows="3"
+    title
+    :rowsWidth="['100%', '100%', '100%']"
+    :rowsHeight="['18px', '18px', '80px']"
+    loading
+></up-skeleton>
+```
+
+### 是否开启动画
+
+```vue
+<up-skeleton
+    :animate="switch1"
+    rows="3"
+    title
+    loading
+></up-skeleton>
+```
+
+### 展示头像
+
+```vue
+<up-skeleton
+    :animate="switch1"
+    rows="3"
+    title
+    loading
+    avatar
+></up-skeleton>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/skeleton/skeleton.uvue`</small>
 
 </template>
 
 <template #uniappx>
+
+### 基础使用
 
 ```vue
 <up-skeleton
     rows="3"
     title
     loading
+></up-skeleton>
+```
+
+### 自定义段落行数
+
+```vue
+<up-skeleton
+    rows="2"
+    title
+    loading
+></up-skeleton>
+```
+
+### 设置段落宽度
+
+```vue
+<up-skeleton
+    rows="2"
+    title
+    :rowsWidth="['100%', '35%']"
+    loading
+></up-skeleton>
+```
+
+### 设置段落高度
+
+```vue
+<up-skeleton
+    rows="3"
+    title
+    :rowsWidth="['100%', '100%', '100%']"
+    :rowsHeight="['18px', '18px', '80px']"
+    loading
+></up-skeleton>
+```
+
+### 是否开启动画
+
+```vue
+<up-skeleton
+    :animate="switch1"
+    rows="3"
+    title
+    loading
+></up-skeleton>
+```
+
+### 展示头像
+
+```vue
+<up-skeleton
+    :animate="switch1"
+    rows="3"
+    title
+    loading
+    avatar
 ></up-skeleton>
 ```
 
@@ -166,6 +344,6 @@ The reference below is extracted from the uview-plus source, whose property name
 | Flutter · Dart | `UPSkeleton` | `packages/ultra_ui/lib/src/widgets/up_skeleton.dart` |
 | React Native · TypeScript | `UPSkeleton` | `src/components/skeleton` |
 | Taro · React + TypeScript | `UPSkeleton` | `src/ultra-ui/components/up-skeleton` |
-| uni-app · Vue 3 | `up-skeleton` | `src/uni_modules/uview-plus/components/u-skeleton` |
+| uni-app · Vue 3 | `up-skeleton` | `uni_modules/uview-ultra/components/up-skeleton` |
 | uni-app-x · UTS / UVUE | `up-skeleton` | `uni_modules/uview-ultra/components/up-skeleton` |
 

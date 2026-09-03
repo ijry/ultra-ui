@@ -44,10 +44,60 @@ DemoSection("数字滚动") { UPCountTo(UPCountToProps(startVal = 0, endVal = 12
 
 <template #flutter>
 
+### 基础功能
+
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
 
 UPCountTo(endVal: 3000, onEnd: _end)
+```
+
+### 倒计数
+
+```dart
+UPCountTo(startVal: 300)
+```
+
+### 显示小数位
+
+```dart
+UPCountTo(
+  startVal: 100.00,
+  endVal: 10.55,
+  decimals: 2,
+)
+```
+
+### 千分位分隔符
+
+```dart
+UPCountTo(
+  startVal: 2000,
+  endVal: 1542,
+  separator: ',',
+  decimals: 2,
+)
+```
+
+### 自定义控制
+
+```dart
+UPCountTo(
+  key: _manualKey,
+  endVal: 3000,
+  autoplay: false,
+)
+```
+
+### 自定义
+
+```dart
+UPCountTo(
+  endVal: 3000,
+  color: '#909399',
+  fontSize: 40,
+  bold: true,
+)
 ```
 
 <small>示例来源 `ultra-ui-flutter/example/lib/pages/components_b/count_to_page.dart`</small>
@@ -68,10 +118,39 @@ import { UPCountTo } from 'ultra-ui-rn';
 
 <template #taro>
 
+### 自动滚动
+
+autoplay 加载即滚动到目标值
+
 ```tsx
 import { UPCountTo } from '@ultra-ui'
 
 <UPCountTo startVal={0} endVal={2000} duration={2000} autoplay separator=',' />
+```
+
+### 小数与千位分隔
+
+decimals / separator
+
+```tsx
+<UPCountTo
+  startVal={0}
+  endVal={1234.567}
+  decimals={3}
+  separator=','
+  duration={2500}
+  autoplay
+  color='#5ac725'
+  fontSize={24}
+/>
+```
+
+### 受控与命令式
+
+value 绑定 + ref 控制 start / reset
+
+```tsx
+<UPCountTo ref={ref} startVal={0} endVal={val} duration={1500} />
 ```
 
 <small>示例来源 `ultra-ui-taro/src/pages/components/count-to/index.tsx`</small>
@@ -80,6 +159,8 @@ import { UPCountTo } from '@ultra-ui'
 
 <template #uniapp>
 
+### 基础功能
+
 ```vue
 <up-count-to
     :endVal="value"
@@ -87,16 +168,114 @@ import { UPCountTo } from '@ultra-ui'
 ></up-count-to>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus/src/pages/componentsB/countTo/countTo.nvue`</small>
+### 倒计数
+
+```vue
+<up-count-to :startVal="startVal1"></up-count-to>
+```
+
+### 显示小数位
+
+```vue
+<up-count-to
+    :startVal="startVal2"
+    :endVal="endVal"
+    :decimals="decimals"
+></up-count-to>
+```
+
+### 千分位分隔符
+
+```vue
+<up-count-to
+    :startVal="startVal3"
+    :endVal="endVal2"
+    separator=","
+    :decimals="decimals"
+></up-count-to>
+```
+
+### 自定义控制
+
+```vue
+<up-count-to
+    ref="uCountToRef"
+    :endVal="endVal3"
+    :autoplay="autoplay"
+></up-count-to>
+```
+
+### 自定义
+
+```vue
+<up-count-to
+    :endVal="value"
+    color="#909399"
+    :fontSize="fontSize"
+    :bold="true"
+></up-count-to>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsB/countTo/countTo.uvue`</small>
 
 </template>
 
 <template #uniappx>
 
+### 基础功能
+
 ```vue
 <up-count-to
     :endVal="value"
     @end="end"
+></up-count-to>
+```
+
+### 倒计数
+
+```vue
+<up-count-to :startVal="startVal1"></up-count-to>
+```
+
+### 显示小数位
+
+```vue
+<up-count-to
+    :startVal="startVal2"
+    :endVal="endVal"
+    :decimals="decimals"
+></up-count-to>
+```
+
+### 千分位分隔符
+
+```vue
+<up-count-to
+    :startVal="startVal3"
+    :endVal="endVal2"
+    separator=","
+    :decimals="decimals"
+></up-count-to>
+```
+
+### 自定义控制
+
+```vue
+<up-count-to
+    ref="uCountToRef"
+    :endVal="endVal3"
+    :autoplay="autoplay"
+></up-count-to>
+```
+
+### 自定义
+
+```vue
+<up-count-to
+    :endVal="value"
+    color="#909399"
+    :fontSize="fontSize"
+    :bold="true"
 ></up-count-to>
 ```
 
@@ -141,6 +320,6 @@ import { UPCountTo } from '@ultra-ui'
 | Flutter · Dart | `UPCountTo` | `packages/ultra_ui/lib/src/widgets/up_count_to.dart` |
 | React Native · TypeScript | `UPCountTo` | `src/components/count-to` |
 | Taro · React + TypeScript | `UPCountTo` | `src/ultra-ui/components/up-count-to` |
-| uni-app · Vue 3 | `up-count-to` | `src/uni_modules/uview-plus/components/u-count-to` |
+| uni-app · Vue 3 | `up-count-to` | `uni_modules/uview-ultra/components/up-count-to` |
 | uni-app-x · UTS / UVUE | `up-count-to` | `uni_modules/uview-ultra/components/up-count-to` |
 

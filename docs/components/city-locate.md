@@ -70,17 +70,16 @@ import { UPCityLocate } from '@ultra-ui'
 
 ```vue
 <up-city-locate
-    :currentCity="currentCity"
-    locationType="wgs84"
-    :indexList="indexList"
-    :hotCity="hotCity"
-    :cityList="cityList"
-    @location-success="locationSuccess"
-    @select-city="selectCity">
+  :currentCity="currentCity"
+  locationType="wgs84"
+  :indexList="indexList"
+  :cityList="cityList"
+  @location-success="locationSuccess"
+  @select-city="selectCity">
 </up-city-locate>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus/src/pages/componentsD/cityLocate/cityLocate.nvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/cityLocate/cityLocate.uvue`</small>
 
 </template>
 
@@ -107,16 +106,6 @@ import { UPCityLocate } from '@ultra-ui'
 
 接口以 uview-plus 源码为准，各平台移植时保持了同名属性；平台间的差异请对照上方的示例标签。
 
-### 属性
-
-| 属性 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
-| `indexList` | — | `Array` | `—` |
-| `cityList` | — | `Array` | `—` |
-| `locationType` | — | `String` | `—` |
-| `currentCity` | — | `String` | `—` |
-| `nameKey` | — | `String` | `—` |
-
 ### 事件
 
 | 事件名 |
@@ -131,6 +120,6 @@ import { UPCityLocate } from '@ultra-ui'
 | Flutter · Dart | `UPCityLocate` | `packages/ultra_ui/lib/src/widgets/up_city_locate.dart` |
 | React Native · TypeScript | `UPCityLocate` | `src/components/city-locate` |
 | Taro · React + TypeScript | `UPCityLocate` | `src/ultra-ui/components/up-city-locate` |
-| uni-app · Vue 3 | `up-city-locate` | `src/uni_modules/uview-plus/components/u-city-locate` |
+| uni-app · Vue 3 | `up-city-locate` | `uni_modules/uview-ultra/components/up-city-locate` |
 | uni-app-x · UTS / UVUE | `up-city-locate` | `uni_modules/uview-ultra/components/up-city-locate` |
 

@@ -31,6 +31,8 @@ import UltraUI
 
 <template #android>
 
+### 链接
+
 ```kotlin
 import net.lingyun.ultraui.android.components.UPLink
 import net.lingyun.ultraui.android.components.UPLinkProps
@@ -77,6 +79,8 @@ UPLink(text: '禁用链接', color: '#909399')
 
 <template #reactnative>
 
+### 显示下划线
+
 ```tsx
 import { UPLink } from 'ultra-ui-rn';
 
@@ -87,16 +91,77 @@ import { UPLink } from 'ultra-ui-rn';
 />
 ```
 
+### 自定义颜色
+
+```tsx
+<UPLink
+  href="https://uview-plus.jiangruyi.com/"
+  lineColor="#19be6b"
+  color="#19be6b"
+  text="打开uview-plus文档"
+/>
+```
+
+### 自定义链接内容
+
+```tsx
+<UPLink href="https://uniapp.dcloud.io/" text="打开uni-app文档" />
+```
+
 <small>示例来源 `ultra-ui-rn/example/pages/components/basic/LinkDemo.tsx`</small>
 
 </template>
 
 <template #taro>
 
+### 基础用法
+
+text 为文字，href 为跳转链接
+
 ```tsx
 import { UPLink } from '@ultra-ui'
 
 <UPLink text='点击复制 uview-plus 官网地址' href={HREF} />
+```
+
+### 下划线
+
+underLine 属性
+
+```tsx
+<UPLink text='没有下划线' href={HREF} />
+```
+
+### 颜色
+
+color 支持主题 token 与任意 CSS 颜色
+
+```tsx
+<UPLink text='#3c9cff 默认色' href={HREF} />
+```
+
+### 字体大小
+
+fontSize 数字按 px 语义，也可带单位
+
+```tsx
+<UPLink text='字号 12' href={HREF} fontSize={12} />
+```
+
+### 复制提示语
+
+mpTips 自定义复制成功后的 toast 文案
+
+```tsx
+<UPLink text='使用默认提示' href={HREF} underLine />
+```
+
+### 行内混排
+
+作为段落中的一部分使用
+
+```tsx
+<UPLink text='《用户服务协议》' href={HREF} fontSize={14} />
 ```
 
 <small>示例来源 `ultra-ui-taro/src/pages/components/link/index.tsx`</small>
@@ -105,25 +170,89 @@ import { UPLink } from '@ultra-ui'
 
 <template #uniapp>
 
-```vue
-<up-link
-    href="https://uview-plus.jiangruyi.com/"
-    text="打开uview-plus文档"
-    @click="click"
-></up-link>
-```
-
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus/src/pages/componentsA/link/link.nvue`</small>
-
-</template>
-
-<template #uniappx>
+### 基本案例
 
 ```vue
 <up-link
     href="https://uviewui.com/"
     text="打开uView UI文档"
     @click="click"
+></up-link>
+```
+
+### 显示下划线
+
+```vue
+<up-link
+    href="https://uviewui.com/"
+    :underLine="true"
+    text="Go to uView doc"
+></up-link>
+```
+
+### 自定义颜色
+
+```vue
+<up-link
+    href="https://uviewui.com/"
+    lineColor="#19be6b"
+    color="#19be6b"
+    text="打开uView UI文档"
+></up-link>
+```
+
+### 自定义链接内容
+
+```vue
+<up-link
+    href="https://uniapp.dcloud.io/"
+    text="打开uni-app文档"
+></up-link>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsA/link/link.uvue`</small>
+
+</template>
+
+<template #uniappx>
+
+### 基本案例
+
+```vue
+<up-link
+    href="https://uviewui.com/"
+    text="打开uView UI文档"
+    @click="click"
+></up-link>
+```
+
+### 显示下划线
+
+```vue
+<up-link
+    href="https://uviewui.com/"
+    :underLine="true"
+    text="Go to uView doc"
+></up-link>
+```
+
+### 自定义颜色
+
+```vue
+<up-link
+    href="https://uviewui.com/"
+    lineColor="#19be6b"
+    color="#19be6b"
+    text="打开uView UI文档"
+></up-link>
+```
+
+### 自定义链接内容
+
+```vue
+<up-link
+    href="https://uniapp.dcloud.io/"
+    text="打开uni-app文档"
 ></up-link>
 ```
 
@@ -141,11 +270,11 @@ import { UPLink } from '@ultra-ui'
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| `color` | 文字颜色 | `String` | `color['u-primary']` |
+| `color` | 文字颜色 | `String` | `color['up-primary']` |
 | `fontSize` | 字体大小，单位px | `String / Number` | `15` |
 | `underLine` | 是否显示下划线 | `Boolean` | `false` |
 | `href` | 要跳转的链接 | `String` | `''` |
-| `mpTips` | 小程序中复制到粘贴板的提示语 | `String` | `t("up.link.copyed")` |
+| `mpTips` | 小程序中复制到粘贴板的提示语 | `String` | `'链接已复制，请在浏览器打开'` |
 | `lineColor` | 下划线颜色 | `String` | `''` |
 | `text` | 超链接的问题，不使用slot形式传入，是因为nvue下无法修改颜色 | `String` | `''` |
 
@@ -165,6 +294,6 @@ import { UPLink } from '@ultra-ui'
 | Flutter · Dart | `UPLink` | `packages/ultra_ui/lib/src/widgets/up_link.dart` |
 | React Native · TypeScript | `UPLink` | `src/components/link` |
 | Taro · React + TypeScript | `UPLink` | `src/ultra-ui/components/up-link` |
-| uni-app · Vue 3 | `up-link` | `src/uni_modules/uview-plus/components/u-link` |
+| uni-app · Vue 3 | `up-link` | `uni_modules/uview-ultra/components/up-link` |
 | uni-app-x · UTS / UVUE | `up-link` | `uni_modules/uview-ultra/components/up-link` |
 

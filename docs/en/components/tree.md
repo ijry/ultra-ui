@@ -49,6 +49,10 @@ No snippet could be extracted automatically — please read the source.
 
 <template #taro>
 
+### 手风琴 + 严格模式
+
+accordion（同级只展开一项）+ checkStrictly（父子不级联）
+
 ```tsx
 import { UPTree } from '@ultra-ui'
 
@@ -73,7 +77,7 @@ import { UPTree } from '@ultra-ui'
 <up-tree
   :data="treeData"
   :props="defaultProps"
-  :default-expanded-keys="['1']"
+  :default-expanded-keys="expandedKeys"
   highlight-current
   current-node-key="1"
   @node-click="handleNodeClick"
@@ -81,7 +85,7 @@ import { UPTree } from '@ultra-ui'
 />
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus/src/pages/componentsD/tree/tree.nvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/tree/tree.uvue`</small>
 
 </template>
 
@@ -109,29 +113,6 @@ import { UPTree } from '@ultra-ui'
 
 The reference below is extracted from the uview-plus source, whose property names the other ports keep. For per-platform differences, compare the tabs above.
 
-### Props
-
-| Prop | Description | Type | Default |
-| --- | --- | --- | --- |
-| `data` | — | `Array` | `—` |
-| `props` | — | `Object` | `—` |
-| `nodeKey` | — | `String` | `—` |
-| `showCheckbox` | — | `Boolean` | `—` |
-| `defaultExpandAll` | — | `Boolean` | `—` |
-| `defaultExpandedKeys` | — | `Array` | `—` |
-| `defaultCheckedKeys` | — | `Array` | `—` |
-| `expandOnClickNode` | — | `Boolean` | `—` |
-| `checkOnClickNode` | — | `Boolean` | `—` |
-| `checkStrictly` | — | `Boolean` | `—` |
-| `accordion` | — | `Boolean` | `—` |
-| `highlightCurrent` | — | `Boolean` | `—` |
-| `currentNodeKey` | — | `String / Number` | `—` |
-| `indent` | — | `String / Number` | `—` |
-| `iconSize` | — | `String / Number` | `—` |
-| `checkboxSize` | — | `String / Number` | `—` |
-| `expandIcon` | — | `String` | `—` |
-| `collapseIcon` | — | `String` | `—` |
-
 ### Events
 
 | Event |
@@ -156,6 +137,6 @@ The reference below is extracted from the uview-plus source, whose property name
 | Flutter · Dart | `UPTree` | `packages/ultra_ui/lib/src/widgets/up_tree.dart` |
 | React Native · TypeScript | `UPTree` | `src/components/tree` |
 | Taro · React + TypeScript | `UPTree` | `src/ultra-ui/components/up-tree` |
-| uni-app · Vue 3 | `up-tree` | `src/uni_modules/uview-plus/components/u-tree` |
+| uni-app · Vue 3 | `up-tree` | `uni_modules/uview-ultra/components/up-tree` |
 | uni-app-x · UTS / UVUE | `up-tree` | `uni_modules/uview-ultra/components/up-tree` |
 

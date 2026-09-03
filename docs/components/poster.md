@@ -45,10 +45,22 @@ import { UPPoster } from 'ultra-ui-rn';
 
 <template #taro>
 
+### 基础用法
+
+view 色块 + text 多行截断 + qrcode 二维码
+
 ```tsx
 import { UPPoster } from '@ultra-ui'
 
 <UPPoster ref={basicRef} json={basicJson} />
+```
+
+### 渐变与圆角
+
+linear-gradient 背景、圆角卡片、圆角图片裁剪
+
+```tsx
+<UPPoster ref={gradientRef} json={gradientJson} />
 ```
 
 <small>示例来源 `ultra-ui-taro/src/pages/components/poster/index.tsx`</small>
@@ -58,14 +70,15 @@ import { UPPoster } from '@ultra-ui'
 <template #uniapp>
 
 ```vue
-<up-poster 
-    ref="poster" 
+<up-poster
+    ref="poster"
     :json="posterConfig"
     @export="onPosterExport"
+    @error="onPosterError"
 ></up-poster>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus/src/pages/componentsD/poster/poster.nvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/poster/poster.uvue`</small>
 
 </template>
 
@@ -90,11 +103,9 @@ import { UPPoster } from '@ultra-ui'
 
 接口以 uview-plus 源码为准，各平台移植时保持了同名属性；平台间的差异请对照上方的示例标签。
 
-### 属性
-
-| 属性 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
-| `json` | — | `Object` | `—` |
+::: tip
+该组件通过命令式方法调用，没有声明式属性；调用参数请参考上方示例与源码。
+:::
 
 ## 各平台源码
 
@@ -103,6 +114,6 @@ import { UPPoster } from '@ultra-ui'
 | Flutter · Dart | `UPPoster` | `packages/ultra_ui/lib/src/widgets/up_poster.dart` |
 | React Native · TypeScript | `UPPoster` | `src/components/poster` |
 | Taro · React + TypeScript | `UPPoster` | `src/ultra-ui/components/up-poster` |
-| uni-app · Vue 3 | `up-poster` | `src/uni_modules/uview-plus/components/u-poster` |
+| uni-app · Vue 3 | `up-poster` | `uni_modules/uview-ultra/components/up-poster` |
 | uni-app-x · UTS / UVUE | `up-poster` | `uni_modules/uview-ultra/components/up-poster` |
 

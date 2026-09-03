@@ -40,7 +40,13 @@ UPCoupon(
 ```tsx
 import { UPCoupon } from 'ultra-ui-rn';
 
-<UPCoupon amount="100" title="满500减100" desc="全品类可用" time="2026.12.31" />
+<UPCoupon
+  amount={100}
+  color="#333"
+  limit="满200可用"
+  time="2023-12-31前使用"
+  title="满减券"
+/>
 ```
 
 <small>示例来源 `ultra-ui-rn/example/pages/components/advanced/CouponDemo.tsx`</small>
@@ -48,6 +54,10 @@ import { UPCoupon } from 'ultra-ui-rn';
 </template>
 
 <template #taro>
+
+### 基础用法
+
+amount 金额 + limit 使用限制 + title 标题
 
 ```tsx
 import { UPCoupon } from '@ultra-ui'
@@ -61,6 +71,59 @@ import { UPCoupon } from '@ultra-ui'
 />
 ```
 
+### 形状
+
+shape：coupon 优惠券 / envelope 红包 / card 卡片
+
+```tsx
+<UPCoupon shape='coupon' amount={10} limit='满 50 元可用' title='shape=coupon' />
+```
+
+### 主题
+
+type：primary / success / warning / error
+
+```tsx
+<UPCoupon
+  type={type}
+  amount={50}
+  limit='满 300 元可用'
+  title={`type=${type}`}
+  desc='全品类可用'
+/>
+```
+
+### 尺寸
+
+size：small / medium / large
+
+```tsx
+<UPCoupon size='small' amount={5} limit='无门槛' title='small' />
+```
+
+### 单位
+
+unit 单位文字，unitPosition 控制其在金额左右
+
+```tsx
+<UPCoupon amount={20} unit='￥' unitPosition='left' title='unitPosition=left' />
+```
+
+### 自定义颜色
+
+bgColor 背景 / color 文字颜色
+
+```tsx
+<UPCoupon
+  bgColor='linear-gradient(90deg, #b18cff, #7232dd)'
+  color='#ffffff'
+  amount={100}
+  limit='满 1000 元可用'
+  title='大额满减券'
+  desc='部分商品不可用'
+/>
+```
+
 <small>示例来源 `ultra-ui-taro/src/pages/components/coupon/index.tsx`</small>
 
 </template>
@@ -68,16 +131,16 @@ import { UPCoupon } from '@ultra-ui'
 <template #uniapp>
 
 ```vue
-<up-coupon
-    :amount="100"
-    title="满减券"
+<up-coupon 
+    :amount="100" 
+    title="满减券" 
     color="#333"
-    limit="满200可用"
+    limit="满200可用" 
     time="2023-12-31前使用">
 </up-coupon>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus/src/pages/componentsD/coupon/coupon.nvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/coupon/coupon.uvue`</small>
 
 </template>
 
@@ -102,26 +165,6 @@ import { UPCoupon } from '@ultra-ui'
 ## API
 
 接口以 uview-plus 源码为准，各平台移植时保持了同名属性；平台间的差异请对照上方的示例标签。
-
-### 属性
-
-| 属性 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
-| `amount` | 金额 | `String / Number` | `—` |
-| `unit` | 金额单位 | `String` | `—` |
-| `unitPosition` | 单位位置 | `String` | `—` |
-| `limit` | 使用限制 | `String` | `—` |
-| `title` | 标题 | `String` | `—` |
-| `desc` | 描述 | `String` | `—` |
-| `time` | 有效期 | `String` | `—` |
-| `actionText` | 操作按钮文字 | `String` | `—` |
-| `shape` | 形状：coupon-优惠券, envelope-红包, card-卡片 | `String` | `—` |
-| `size` | 尺寸：small, medium, large | `String` | `—` |
-| `circle` | 是否圆形按钮 | `Boolean` | `—` |
-| `disabled` | 是否禁用 | `Boolean` | `—` |
-| `bgColor` | 背景颜色 | `String` | `—` |
-| `color` | 文字颜色 | `String` | `—` |
-| `type` | 内置背景类型 | `String` | `—` |
 
 ### 事件
 
@@ -149,6 +192,6 @@ import { UPCoupon } from '@ultra-ui'
 | Flutter · Dart | `UPCoupon` | `packages/ultra_ui/lib/src/widgets/up_coupon.dart` |
 | React Native · TypeScript | `UPCoupon` | `src/components/coupon` |
 | Taro · React + TypeScript | `UPCoupon` | `src/ultra-ui/components/up-coupon` |
-| uni-app · Vue 3 | `up-coupon` | `src/uni_modules/uview-plus/components/u-coupon` |
+| uni-app · Vue 3 | `up-coupon` | `uni_modules/uview-ultra/components/up-coupon` |
 | uni-app-x · UTS / UVUE | `up-coupon` | `uni_modules/uview-ultra/components/up-coupon` |
 

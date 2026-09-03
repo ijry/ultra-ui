@@ -31,6 +31,8 @@ UPGap(bgColor: "bg", height: 30)
 
 <template #android>
 
+### 间隔
+
 ```kotlin
 import net.lingyun.ultraui.android.components.UPGap
 import net.lingyun.ultraui.android.components.UPGapProps
@@ -80,10 +82,50 @@ import { UPGap } from 'ultra-ui-rn';
 
 <template #taro>
 
+### 基础用法
+
+默认高度 20px，背景透明
+
 ```tsx
 import { UPGap } from '@ultra-ui'
 
 <UPGap />
+```
+
+### 自定义高度
+
+height 单位 px
+
+```tsx
+<UPGap height={10} bgColor='#ecf5ff' />
+```
+
+### 背景颜色
+
+bgColor 支持任意 CSS 颜色
+
+```tsx
+<UPGap height={24} bgColor='#3c9cff' />
+```
+
+### 上下外边距
+
+marginTop / marginBottom，与背景色区分开
+
+```tsx
+<UPGap height={20} marginTop={10} marginBottom={10} bgColor='#fdf6ec' />
+```
+
+### 自定义样式
+
+customStyle 透传到根节点
+
+```tsx
+<UPGap
+  height={30}
+  bgColor='#ecf5ff'
+  customStyle={{ borderRadius: '6px' }}
+/>
 ```
 
 <small>示例来源 `ultra-ui-taro/src/pages/components/gap/index.tsx`</small>
@@ -92,18 +134,66 @@ import { UPGap } from '@ultra-ui'
 
 <template #uniapp>
 
+### 基本案列
+
 ```vue
-<up-gap :bgColor="upThemeVar('--up-bg-color', '#f3f4f6')"></up-gap>
+<up-gap bgColor="#f3f4f6"></up-gap>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus/src/pages/componentsA/gap/gap.nvue`</small>
+### 自定义颜色
+
+```vue
+<up-gap bgColor="#2979ff"></up-gap>
+```
+
+### 自定义高度
+
+```vue
+<up-gap bgColor="#f3f4f6" height="40"></up-gap>
+```
+
+### 自定义上下边距
+
+```vue
+<up-gap
+    bgColor="#f3f4f6"
+    marginTop="20"
+    marginBottom="20"
+></up-gap>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsA/gap/gap.uvue`</small>
 
 </template>
 
 <template #uniappx>
 
+### 基本案列
+
 ```vue
 <up-gap bgColor="#f3f4f6"></up-gap>
+```
+
+### 自定义颜色
+
+```vue
+<up-gap bgColor="#2979ff"></up-gap>
+```
+
+### 自定义高度
+
+```vue
+<up-gap bgColor="#f3f4f6" height="40"></up-gap>
+```
+
+### 自定义上下边距
+
+```vue
+<up-gap
+    bgColor="#f3f4f6"
+    marginTop="20"
+    marginBottom="20"
+></up-gap>
 ```
 
 <small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsA/gap/gap.uvue`</small>
@@ -120,7 +210,7 @@ import { UPGap } from '@ultra-ui'
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| `bgColor` | 背景颜色（默认transparent） | `String` | `'transparent'` |
+| `bgColor` | 背景颜色（默认transparent） | `String` | `'var(--up-gap-bg-color, #f3f4f6)'` |
 | `height` | 分割槽高度，单位px（默认30） | `String / Number` | `20` |
 | `marginTop` | 与上一个组件的距离 | `String / Number` | `0` |
 | `marginBottom` | 与下一个组件的距离 | `String / Number` | `0` |
@@ -135,6 +225,6 @@ import { UPGap } from '@ultra-ui'
 | Flutter · Dart | `UPGap` | `packages/ultra_ui/lib/src/widgets/up_layout.dart` |
 | React Native · TypeScript | `UPGap` | `src/components/gap` |
 | Taro · React + TypeScript | `UPGap` | `src/ultra-ui/components/up-gap` |
-| uni-app · Vue 3 | `up-gap` | `src/uni_modules/uview-plus/components/u-gap` |
+| uni-app · Vue 3 | `up-gap` | `uni_modules/uview-ultra/components/up-gap` |
 | uni-app-x · UTS / UVUE | `up-gap` | `uni_modules/uview-ultra/components/up-gap` |
 

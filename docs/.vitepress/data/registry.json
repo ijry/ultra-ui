@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-02T18:28:45.480Z",
+  "generatedAt": "2026-09-03T05:34:18.457Z",
   "components": [
     {
       "id": "button",
@@ -39,7 +39,7 @@
         },
         "uniapp": {
           "symbol": "up-button",
-          "file": "u-button"
+          "file": "up-button"
         },
         "uniappx": {
           "symbol": "up-button",
@@ -85,7 +85,7 @@
         },
         "uniapp": {
           "symbol": "up-icon",
-          "file": "u-icon"
+          "file": "up-icon"
         },
         "uniappx": {
           "symbol": "up-icon",
@@ -131,7 +131,7 @@
         },
         "uniapp": {
           "symbol": "up-image",
-          "file": "u-image"
+          "file": "up-image"
         },
         "uniappx": {
           "symbol": "up-image",
@@ -177,7 +177,7 @@
         },
         "uniapp": {
           "symbol": "up-text",
-          "file": "u-text"
+          "file": "up-text"
         },
         "uniappx": {
           "symbol": "up-text",
@@ -223,7 +223,7 @@
         },
         "uniapp": {
           "symbol": "up-tag",
-          "file": "u-tag"
+          "file": "up-tag"
         },
         "uniappx": {
           "symbol": "up-tag",
@@ -269,7 +269,7 @@
         },
         "uniapp": {
           "symbol": "up-badge",
-          "file": "u-badge"
+          "file": "up-badge"
         },
         "uniappx": {
           "symbol": "up-badge",
@@ -315,7 +315,7 @@
         },
         "uniapp": {
           "symbol": "up-avatar",
-          "file": "u-avatar"
+          "file": "up-avatar"
         },
         "uniappx": {
           "symbol": "up-avatar",
@@ -361,7 +361,7 @@
         },
         "uniapp": {
           "symbol": "up-link",
-          "file": "u-link"
+          "file": "up-link"
         },
         "uniappx": {
           "symbol": "up-link",
@@ -407,7 +407,7 @@
         },
         "uniapp": {
           "symbol": "up-title",
-          "file": "u-title"
+          "file": "up-title"
         },
         "uniappx": {
           "symbol": "up-title",
@@ -453,7 +453,7 @@
         },
         "uniapp": {
           "symbol": "up-loading-icon",
-          "file": "u-loading-icon"
+          "file": "up-loading-icon"
         },
         "uniappx": {
           "symbol": "up-loading-icon",
@@ -499,7 +499,7 @@
         },
         "uniapp": {
           "symbol": "up-loading-page",
-          "file": "u-loading-page"
+          "file": "up-loading-page"
         },
         "uniappx": {
           "symbol": "up-loading-page",
@@ -537,7 +537,7 @@
         },
         "uniapp": {
           "symbol": "up-transition",
-          "file": "u-transition"
+          "file": "up-transition"
         },
         "uniappx": {
           "symbol": "up-transition",
@@ -571,7 +571,7 @@
         },
         "uniapp": {
           "symbol": "up-copy",
-          "file": "u-copy"
+          "file": "up-copy"
         },
         "uniappx": {
           "symbol": "up-copy",
@@ -617,7 +617,7 @@
         },
         "uniapp": {
           "symbol": "up-row",
-          "file": "u-row"
+          "file": "up-row"
         },
         "uniappx": {
           "symbol": "up-row",
@@ -663,7 +663,7 @@
         },
         "uniapp": {
           "symbol": "up-cell",
-          "file": "u-cell"
+          "file": "up-cell"
         },
         "uniappx": {
           "symbol": "up-cell",
@@ -709,7 +709,7 @@
         },
         "uniapp": {
           "symbol": "up-card",
-          "file": "u-card"
+          "file": "up-card"
         },
         "uniappx": {
           "symbol": "up-card",
@@ -755,7 +755,7 @@
         },
         "uniapp": {
           "symbol": "up-grid",
-          "file": "u-grid"
+          "file": "up-grid"
         },
         "uniappx": {
           "symbol": "up-grid",
@@ -801,7 +801,7 @@
         },
         "uniapp": {
           "symbol": "up-line",
-          "file": "u-line"
+          "file": "up-line"
         },
         "uniappx": {
           "symbol": "up-line",
@@ -847,7 +847,7 @@
         },
         "uniapp": {
           "symbol": "up-divider",
-          "file": "u-divider"
+          "file": "up-divider"
         },
         "uniappx": {
           "symbol": "up-divider",
@@ -893,7 +893,7 @@
         },
         "uniapp": {
           "symbol": "up-gap",
-          "file": "u-gap"
+          "file": "up-gap"
         },
         "uniappx": {
           "symbol": "up-gap",
@@ -931,7 +931,7 @@
         },
         "uniapp": {
           "symbol": "up-box",
-          "file": "u-box"
+          "file": "up-box"
         },
         "uniappx": {
           "symbol": "up-box",
@@ -969,7 +969,7 @@
         },
         "uniapp": {
           "symbol": "up-sticky",
-          "file": "u-sticky"
+          "file": "up-sticky"
         },
         "uniappx": {
           "symbol": "up-sticky",
@@ -1007,7 +1007,7 @@
         },
         "uniapp": {
           "symbol": "up-swiper",
-          "file": "u-swiper"
+          "file": "up-swiper"
         },
         "uniappx": {
           "symbol": "up-swiper",
@@ -1049,7 +1049,7 @@
         },
         "uniapp": {
           "symbol": "up-scroll-list",
-          "file": "u-scroll-list"
+          "file": "up-scroll-list"
         },
         "uniappx": {
           "symbol": "up-scroll-list",
@@ -1083,7 +1083,7 @@
         },
         "uniapp": {
           "symbol": "up-waterfall",
-          "file": "u-waterfall"
+          "file": "up-waterfall"
         },
         "uniappx": {
           "symbol": "up-waterfall",
@@ -1125,7 +1125,7 @@
         },
         "uniapp": {
           "symbol": "up-safe-bottom",
-          "file": "u-safe-bottom"
+          "file": "up-safe-bottom"
         },
         "uniappx": {
           "symbol": "up-safe-bottom",
@@ -1167,7 +1167,7 @@
         },
         "uniapp": {
           "symbol": "up-status-bar",
-          "file": "u-status-bar"
+          "file": "up-status-bar"
         },
         "uniappx": {
           "symbol": "up-status-bar",
@@ -1209,7 +1209,7 @@
         },
         "uniapp": {
           "symbol": "up-form",
-          "file": "u-form"
+          "file": "up-form"
         },
         "uniappx": {
           "symbol": "up-form",
@@ -1255,7 +1255,7 @@
         },
         "uniapp": {
           "symbol": "up-input",
-          "file": "u-input"
+          "file": "up-input"
         },
         "uniappx": {
           "symbol": "up-input",
@@ -1301,7 +1301,7 @@
         },
         "uniapp": {
           "symbol": "up-textarea",
-          "file": "u-textarea"
+          "file": "up-textarea"
         },
         "uniappx": {
           "symbol": "up-textarea",
@@ -1347,7 +1347,7 @@
         },
         "uniapp": {
           "symbol": "up-checkbox",
-          "file": "u-checkbox"
+          "file": "up-checkbox"
         },
         "uniappx": {
           "symbol": "up-checkbox",
@@ -1393,7 +1393,7 @@
         },
         "uniapp": {
           "symbol": "up-radio",
-          "file": "u-radio"
+          "file": "up-radio"
         },
         "uniappx": {
           "symbol": "up-radio",
@@ -1439,7 +1439,7 @@
         },
         "uniapp": {
           "symbol": "up-switch",
-          "file": "u-switch"
+          "file": "up-switch"
         },
         "uniappx": {
           "symbol": "up-switch",
@@ -1477,7 +1477,7 @@
         },
         "uniapp": {
           "symbol": "up-slider",
-          "file": "u-slider"
+          "file": "up-slider"
         },
         "uniappx": {
           "symbol": "up-slider",
@@ -1523,7 +1523,7 @@
         },
         "uniapp": {
           "symbol": "up-rate",
-          "file": "u-rate"
+          "file": "up-rate"
         },
         "uniappx": {
           "symbol": "up-rate",
@@ -1569,7 +1569,7 @@
         },
         "uniapp": {
           "symbol": "up-search",
-          "file": "u-search"
+          "file": "up-search"
         },
         "uniappx": {
           "symbol": "up-search",
@@ -1615,7 +1615,7 @@
         },
         "uniapp": {
           "symbol": "up-number-box",
-          "file": "u-number-box"
+          "file": "up-number-box"
         },
         "uniappx": {
           "symbol": "up-number-box",
@@ -1649,7 +1649,7 @@
         },
         "uniapp": {
           "symbol": "up-upload",
-          "file": "u-upload"
+          "file": "up-upload"
         },
         "uniappx": {
           "symbol": "up-upload",
@@ -1687,7 +1687,7 @@
         },
         "uniapp": {
           "symbol": "up-picker",
-          "file": "u-picker"
+          "file": "up-picker"
         },
         "uniappx": {
           "symbol": "up-picker",
@@ -1725,7 +1725,7 @@
         },
         "uniapp": {
           "symbol": "up-datetime-picker",
-          "file": "u-datetime-picker"
+          "file": "up-datetime-picker"
         },
         "uniappx": {
           "symbol": "up-datetime-picker",
@@ -1763,7 +1763,7 @@
         },
         "uniapp": {
           "symbol": "up-calendar",
-          "file": "u-calendar"
+          "file": "up-calendar"
         },
         "uniappx": {
           "symbol": "up-calendar",
@@ -1797,7 +1797,7 @@
         },
         "uniapp": {
           "symbol": "up-keyboard",
-          "file": "u-keyboard"
+          "file": "up-keyboard"
         },
         "uniappx": {
           "symbol": "up-keyboard",
@@ -1835,7 +1835,7 @@
         },
         "uniapp": {
           "symbol": "up-code",
-          "file": "u-code"
+          "file": "up-code"
         },
         "uniappx": {
           "symbol": "up-code",
@@ -1881,7 +1881,7 @@
         },
         "uniapp": {
           "symbol": "up-code-input",
-          "file": "u-code-input"
+          "file": "up-code-input"
         },
         "uniappx": {
           "symbol": "up-code-input",
@@ -1915,7 +1915,7 @@
         },
         "uniapp": {
           "symbol": "up-message-input",
-          "file": "u-message-input"
+          "file": "up-message-input"
         },
         "uniappx": {
           "symbol": "up-message-input",
@@ -1953,7 +1953,7 @@
         },
         "uniapp": {
           "symbol": "up-select",
-          "file": "u-select"
+          "file": "up-select"
         },
         "uniappx": {
           "symbol": "up-select",
@@ -1991,7 +1991,7 @@
         },
         "uniapp": {
           "symbol": "up-cascader",
-          "file": "u-cascader"
+          "file": "up-cascader"
         },
         "uniappx": {
           "symbol": "up-cascader",
@@ -2025,7 +2025,7 @@
         },
         "uniapp": {
           "symbol": "up-choose",
-          "file": "u-choose"
+          "file": "up-choose"
         },
         "uniappx": {
           "symbol": "up-choose",
@@ -2059,7 +2059,7 @@
         },
         "uniapp": {
           "symbol": "up-color-picker",
-          "file": "u-color-picker"
+          "file": "up-color-picker"
         },
         "uniappx": {
           "symbol": "up-color-picker",
@@ -2093,7 +2093,7 @@
         },
         "uniapp": {
           "symbol": "up-album",
-          "file": "u-album"
+          "file": "up-album"
         },
         "uniappx": {
           "symbol": "up-album",
@@ -2127,7 +2127,7 @@
         },
         "uniapp": {
           "symbol": "up-signature",
-          "file": "u-signature"
+          "file": "up-signature"
         },
         "uniappx": {
           "symbol": "up-signature",
@@ -2155,9 +2155,13 @@
           "symbol": "UPCropper",
           "file": "cropper"
         },
+        "taro": {
+          "symbol": "UPCropper",
+          "file": "up-cropper"
+        },
         "uniapp": {
           "symbol": "up-cropper",
-          "file": "u-cropper"
+          "file": "up-cropper"
         },
         "uniappx": {
           "symbol": "up-cropper",
@@ -2191,7 +2195,7 @@
         },
         "uniapp": {
           "symbol": "up-city-locate",
-          "file": "u-city-locate"
+          "file": "up-city-locate"
         },
         "uniappx": {
           "symbol": "up-city-locate",
@@ -2225,7 +2229,7 @@
         },
         "uniapp": {
           "symbol": "up-agreement",
-          "file": "u-agreement"
+          "file": "up-agreement"
         },
         "uniappx": {
           "symbol": "up-agreement",
@@ -2271,7 +2275,7 @@
         },
         "uniapp": {
           "symbol": "up-toast",
-          "file": "u-toast"
+          "file": "up-toast"
         },
         "uniappx": {
           "symbol": "up-toast",
@@ -2313,7 +2317,7 @@
         },
         "uniapp": {
           "symbol": "up-notify",
-          "file": "u-notify"
+          "file": "up-notify"
         },
         "uniappx": {
           "symbol": "up-notify",
@@ -2359,7 +2363,7 @@
         },
         "uniapp": {
           "symbol": "up-modal",
-          "file": "u-modal"
+          "file": "up-modal"
         },
         "uniappx": {
           "symbol": "up-modal",
@@ -2405,7 +2409,7 @@
         },
         "uniapp": {
           "symbol": "up-popup",
-          "file": "u-popup"
+          "file": "up-popup"
         },
         "uniappx": {
           "symbol": "up-popup",
@@ -2451,7 +2455,7 @@
         },
         "uniapp": {
           "symbol": "up-overlay",
-          "file": "u-overlay"
+          "file": "up-overlay"
         },
         "uniappx": {
           "symbol": "up-overlay",
@@ -2497,7 +2501,7 @@
         },
         "uniapp": {
           "symbol": "up-action-sheet",
-          "file": "u-action-sheet"
+          "file": "up-action-sheet"
         },
         "uniappx": {
           "symbol": "up-action-sheet",
@@ -2543,7 +2547,7 @@
         },
         "uniapp": {
           "symbol": "up-alert",
-          "file": "u-alert"
+          "file": "up-alert"
         },
         "uniappx": {
           "symbol": "up-alert",
@@ -2585,7 +2589,7 @@
         },
         "uniapp": {
           "symbol": "up-notice-bar",
-          "file": "u-notice-bar"
+          "file": "up-notice-bar"
         },
         "uniappx": {
           "symbol": "up-notice-bar",
@@ -2623,7 +2627,7 @@
         },
         "uniapp": {
           "symbol": "up-tooltip",
-          "file": "u-tooltip"
+          "file": "up-tooltip"
         },
         "uniappx": {
           "symbol": "up-tooltip",
@@ -2661,7 +2665,7 @@
         },
         "uniapp": {
           "symbol": "up-popover",
-          "file": "u-popover"
+          "file": "up-popover"
         },
         "uniappx": {
           "symbol": "up-popover",
@@ -2699,7 +2703,7 @@
         },
         "uniapp": {
           "symbol": "up-swipe-action",
-          "file": "u-swipe-action"
+          "file": "up-swipe-action"
         },
         "uniappx": {
           "symbol": "up-swipe-action",
@@ -2745,7 +2749,7 @@
         },
         "uniapp": {
           "symbol": "up-collapse",
-          "file": "u-collapse"
+          "file": "up-collapse"
         },
         "uniappx": {
           "symbol": "up-collapse",
@@ -2779,7 +2783,7 @@
         },
         "uniapp": {
           "symbol": "up-guide",
-          "file": "u-guide"
+          "file": "up-guide"
         },
         "uniappx": {
           "symbol": "up-guide",
@@ -2813,7 +2817,7 @@
         },
         "uniapp": {
           "symbol": "up-float-button",
-          "file": "u-float-button"
+          "file": "up-float-button"
         },
         "uniappx": {
           "symbol": "up-float-button",
@@ -2847,7 +2851,7 @@
         },
         "uniapp": {
           "symbol": "up-toolbar",
-          "file": "u-toolbar"
+          "file": "up-toolbar"
         },
         "uniappx": {
           "symbol": "up-toolbar",
@@ -2881,7 +2885,7 @@
         },
         "uniapp": {
           "symbol": "up-goods-sku",
-          "file": "u-goods-sku"
+          "file": "up-goods-sku"
         },
         "uniappx": {
           "symbol": "up-goods-sku",
@@ -2923,7 +2927,7 @@
         },
         "uniapp": {
           "symbol": "up-navbar",
-          "file": "u-navbar"
+          "file": "up-navbar"
         },
         "uniappx": {
           "symbol": "up-navbar",
@@ -2961,7 +2965,7 @@
         },
         "uniapp": {
           "symbol": "up-tabbar",
-          "file": "u-tabbar"
+          "file": "up-tabbar"
         },
         "uniappx": {
           "symbol": "up-tabbar",
@@ -3003,7 +3007,7 @@
         },
         "uniapp": {
           "symbol": "up-tabs",
-          "file": "u-tabs"
+          "file": "up-tabs"
         },
         "uniappx": {
           "symbol": "up-tabs",
@@ -3045,7 +3049,7 @@
         },
         "uniapp": {
           "symbol": "up-subsection",
-          "file": "u-subsection"
+          "file": "up-subsection"
         },
         "uniappx": {
           "symbol": "up-subsection",
@@ -3087,7 +3091,7 @@
         },
         "uniapp": {
           "symbol": "up-steps",
-          "file": "u-steps"
+          "file": "up-steps"
         },
         "uniappx": {
           "symbol": "up-steps",
@@ -3129,7 +3133,7 @@
         },
         "uniapp": {
           "symbol": "up-dropdown",
-          "file": "u-dropdown"
+          "file": "up-dropdown"
         },
         "uniappx": {
           "symbol": "up-dropdown",
@@ -3171,7 +3175,7 @@
         },
         "uniapp": {
           "symbol": "up-index-list",
-          "file": "u-index-list"
+          "file": "up-index-list"
         },
         "uniappx": {
           "symbol": "up-index-list",
@@ -3217,7 +3221,7 @@
         },
         "uniapp": {
           "symbol": "up-back-top",
-          "file": "u-back-top"
+          "file": "up-back-top"
         },
         "uniappx": {
           "symbol": "up-back-top",
@@ -3255,7 +3259,7 @@
         },
         "uniapp": {
           "symbol": "up-pagination",
-          "file": "u-pagination"
+          "file": "up-pagination"
         },
         "uniappx": {
           "symbol": "up-pagination",
@@ -3301,7 +3305,7 @@
         },
         "uniapp": {
           "symbol": "up-empty",
-          "file": "u-empty"
+          "file": "up-empty"
         },
         "uniappx": {
           "symbol": "up-empty",
@@ -3335,7 +3339,7 @@
         },
         "uniapp": {
           "symbol": "up-no-network",
-          "file": "u-no-network"
+          "file": "up-no-network"
         },
         "uniappx": {
           "symbol": "up-no-network",
@@ -3369,7 +3373,7 @@
         },
         "uniapp": {
           "symbol": "up-cate-tab",
-          "file": "u-cate-tab"
+          "file": "up-cate-tab"
         },
         "uniappx": {
           "symbol": "up-cate-tab",
@@ -3403,7 +3407,7 @@
         },
         "uniapp": {
           "symbol": "up-section",
-          "file": "u-section"
+          "file": "up-section"
         },
         "uniappx": {
           "symbol": "up-section",
@@ -3437,7 +3441,7 @@
         },
         "uniapp": {
           "symbol": "up-tree",
-          "file": "u-tree"
+          "file": "up-tree"
         },
         "uniappx": {
           "symbol": "up-tree",
@@ -3479,7 +3483,7 @@
         },
         "uniapp": {
           "symbol": "up-list",
-          "file": "u-list"
+          "file": "up-list"
         },
         "uniappx": {
           "symbol": "up-list",
@@ -3513,7 +3517,7 @@
         },
         "uniapp": {
           "symbol": "up-virtual-list",
-          "file": "u-virtual-list"
+          "file": "up-virtual-list"
         },
         "uniappx": {
           "symbol": "up-virtual-list",
@@ -3547,7 +3551,7 @@
         },
         "uniapp": {
           "symbol": "up-table",
-          "file": "u-table"
+          "file": "up-table"
         },
         "uniappx": {
           "symbol": "up-table",
@@ -3593,7 +3597,7 @@
         },
         "uniapp": {
           "symbol": "up-skeleton",
-          "file": "u-skeleton"
+          "file": "up-skeleton"
         },
         "uniappx": {
           "symbol": "up-skeleton",
@@ -3639,7 +3643,7 @@
         },
         "uniapp": {
           "symbol": "up-line-progress",
-          "file": "u-line-progress"
+          "file": "up-line-progress"
         },
         "uniappx": {
           "symbol": "up-line-progress",
@@ -3685,7 +3689,7 @@
         },
         "uniapp": {
           "symbol": "up-circle-progress",
-          "file": "u-circle-progress"
+          "file": "up-circle-progress"
         },
         "uniappx": {
           "symbol": "up-circle-progress",
@@ -3727,7 +3731,7 @@
         },
         "uniapp": {
           "symbol": "up-count-down",
-          "file": "u-count-down"
+          "file": "up-count-down"
         },
         "uniappx": {
           "symbol": "up-count-down",
@@ -3769,7 +3773,7 @@
         },
         "uniapp": {
           "symbol": "up-count-to",
-          "file": "u-count-to"
+          "file": "up-count-to"
         },
         "uniappx": {
           "symbol": "up-count-to",
@@ -3815,7 +3819,7 @@
         },
         "uniapp": {
           "symbol": "up-loadmore",
-          "file": "u-loadmore"
+          "file": "up-loadmore"
         },
         "uniappx": {
           "symbol": "up-loadmore",
@@ -3853,7 +3857,7 @@
         },
         "uniapp": {
           "symbol": "up-read-more",
-          "file": "u-read-more"
+          "file": "up-read-more"
         },
         "uniappx": {
           "symbol": "up-read-more",
@@ -3887,7 +3891,7 @@
         },
         "uniapp": {
           "symbol": "up-lazy-load",
-          "file": "u-lazy-load"
+          "file": "up-lazy-load"
         },
         "uniappx": {
           "symbol": "up-lazy-load",
@@ -3921,7 +3925,7 @@
         },
         "uniapp": {
           "symbol": "up-pull-refresh",
-          "file": "u-pull-refresh"
+          "file": "up-pull-refresh"
         },
         "uniappx": {
           "symbol": "up-pull-refresh",
@@ -3955,7 +3959,7 @@
         },
         "uniapp": {
           "symbol": "up-dragsort",
-          "file": "u-dragsort"
+          "file": "up-dragsort"
         },
         "uniappx": {
           "symbol": "up-dragsort",
@@ -3989,7 +3993,7 @@
         },
         "uniapp": {
           "symbol": "up-coupon",
-          "file": "u-coupon"
+          "file": "up-coupon"
         },
         "uniappx": {
           "symbol": "up-coupon",
@@ -4023,7 +4027,7 @@
         },
         "uniapp": {
           "symbol": "up-parse",
-          "file": "u-parse"
+          "file": "up-parse"
         },
         "uniappx": {
           "symbol": "up-parse",
@@ -4057,7 +4061,7 @@
         },
         "uniapp": {
           "symbol": "up-markdown",
-          "file": "u-markdown"
+          "file": "up-markdown"
         },
         "uniappx": {
           "symbol": "up-markdown",
@@ -4091,7 +4095,7 @@
         },
         "uniapp": {
           "symbol": "up-qrcode",
-          "file": "u-qrcode"
+          "file": "up-qrcode"
         },
         "uniappx": {
           "symbol": "up-qrcode",
@@ -4125,7 +4129,7 @@
         },
         "uniapp": {
           "symbol": "up-barcode",
-          "file": "u-barcode"
+          "file": "up-barcode"
         },
         "uniappx": {
           "symbol": "up-barcode",
@@ -4159,7 +4163,7 @@
         },
         "uniapp": {
           "symbol": "up-poster",
-          "file": "u-poster"
+          "file": "up-poster"
         },
         "uniappx": {
           "symbol": "up-poster",
@@ -4193,7 +4197,7 @@
         },
         "uniapp": {
           "symbol": "up-canvas",
-          "file": "u-canvas"
+          "file": "up-canvas"
         },
         "uniappx": {
           "symbol": "up-canvas",
@@ -4227,7 +4231,7 @@
         },
         "uniapp": {
           "symbol": "up-pdf-reader",
-          "file": "u-pdf-reader"
+          "file": "up-pdf-reader"
         },
         "uniappx": {
           "symbol": "up-pdf-reader",
@@ -4261,7 +4265,7 @@
         },
         "uniapp": {
           "symbol": "up-short-video",
-          "file": "u-short-video"
+          "file": "up-short-video"
         },
         "uniappx": {
           "symbol": "up-short-video",
@@ -4295,7 +4299,7 @@
         },
         "uniapp": {
           "symbol": "up-novel-reader",
-          "file": "u-novel-reader"
+          "file": "up-novel-reader"
         },
         "uniappx": {
           "symbol": "up-novel-reader",
@@ -4329,7 +4333,7 @@
         },
         "uniapp": {
           "symbol": "up-view",
-          "file": "u-view"
+          "file": "up-view"
         },
         "uniappx": {
           "symbol": "up-view",

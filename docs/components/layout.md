@@ -31,6 +31,8 @@ import UltraUI
 
 <template #android>
 
+### 行布局
+
 ```kotlin
 import net.lingyun.ultraui.android.components.UPRow
 
@@ -38,6 +40,15 @@ UPRow(gutter = 8, justify = "between", onClick = { eventText = "行布局：点�
     UPCol(span = 4) { DemoTile("span 4") }
     UPCol(span = 4) { DemoTile("span 4") }
     UPCol(span = 4) { DemoTile("span 4") }
+}
+```
+
+### 列布局
+
+```kotlin
+UPRow(gutter = 8) {
+    UPCol(span = 6, onClick = { eventText = "列布局：左列" }) { DemoTile("左列") }
+    UPCol(span = 6, onClick = { eventText = "列布局：右列" }) { DemoTile("右列") }
 }
 ```
 
@@ -112,8 +123,10 @@ import { UPLayout } from '@ultra-ui'
 
 <template #uniapp>
 
+### 基础使用
+
 ```vue
-<up-row customStyle="margin-bottom: 10px">
+<up-row :customStyle="{marginBottom: '10px'}">
     <up-col span="6">
         <view class="demo-layout bg-purple-light"></view>
     </up-col>
@@ -123,11 +136,80 @@ import { UPLayout } from '@ultra-ui'
 </up-row>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus/src/pages/componentsC/layout/layout.nvue`</small>
+### 分栏间隔
+
+```vue
+<up-row justify="space-between" gutter="10">
+    <up-col span="3">
+        <view class="demo-layout bg-purple"></view>
+    </up-col>
+    <up-col span="3">
+        <view class="demo-layout bg-purple-light"></view>
+    </up-col>
+    <up-col span="3">
+        <view class="demo-layout bg-purple"></view>
+    </up-col>
+    <up-col span="3">
+        <view class="demo-layout bg-purple-light"></view>
+    </up-col>
+</up-row>
+```
+
+### 混合布局
+
+```vue
+<up-row justify="space-between" gutter="10">
+    <up-col span="2">
+        <view class="demo-layout bg-purple-light"></view>
+    </up-col>
+    <up-col span="4">
+        <view class="demo-layout bg-purple"></view>
+    </up-col>
+    <up-col span="6">
+        <view class="demo-layout bg-purple-dark"></view>
+    </up-col>
+</up-row>
+```
+
+### 分栏偏移
+
+```vue
+<up-row
+    justify="space-between"
+    :customStyle="{marginBottom: '10px'}"
+>
+    <up-col span="3" offset="3">
+        <view class="demo-layout bg-purple-light"></view>
+    </up-col>
+    <up-col span="3" offset="3">
+        <view class="demo-layout bg-purple"></view>
+    </up-col>
+</up-row>
+```
+
+### 对齐方式
+
+```vue
+<up-row
+    justify="space-between"
+    :customStyle="{marginBottom: '10px'}"
+>
+    <up-col span="3">
+        <view class="demo-layout bg-purple-light"></view>
+    </up-col>
+    <up-col span="3">
+        <view class="demo-layout bg-purple"></view>
+    </up-col>
+</up-row>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsC/layout/layout.uvue`</small>
 
 </template>
 
 <template #uniappx>
+
+### 基础使用
 
 ```vue
 <up-row :customStyle="{marginBottom: '10px'}">
@@ -135,6 +217,73 @@ import { UPLayout } from '@ultra-ui'
         <view class="demo-layout bg-purple-light"></view>
     </up-col>
     <up-col span="6">
+        <view class="demo-layout bg-purple"></view>
+    </up-col>
+</up-row>
+```
+
+### 分栏间隔
+
+```vue
+<up-row justify="space-between" gutter="10">
+    <up-col span="3">
+        <view class="demo-layout bg-purple"></view>
+    </up-col>
+    <up-col span="3">
+        <view class="demo-layout bg-purple-light"></view>
+    </up-col>
+    <up-col span="3">
+        <view class="demo-layout bg-purple"></view>
+    </up-col>
+    <up-col span="3">
+        <view class="demo-layout bg-purple-light"></view>
+    </up-col>
+</up-row>
+```
+
+### 混合布局
+
+```vue
+<up-row justify="space-between" gutter="10">
+    <up-col span="2">
+        <view class="demo-layout bg-purple-light"></view>
+    </up-col>
+    <up-col span="4">
+        <view class="demo-layout bg-purple"></view>
+    </up-col>
+    <up-col span="6">
+        <view class="demo-layout bg-purple-dark"></view>
+    </up-col>
+</up-row>
+```
+
+### 分栏偏移
+
+```vue
+<up-row
+    justify="space-between"
+    :customStyle="{marginBottom: '10px'}"
+>
+    <up-col span="3" offset="3">
+        <view class="demo-layout bg-purple-light"></view>
+    </up-col>
+    <up-col span="3" offset="3">
+        <view class="demo-layout bg-purple"></view>
+    </up-col>
+</up-row>
+```
+
+### 对齐方式
+
+```vue
+<up-row
+    justify="space-between"
+    :customStyle="{marginBottom: '10px'}"
+>
+    <up-col span="3">
+        <view class="demo-layout bg-purple-light"></view>
+    </up-col>
+    <up-col span="3">
         <view class="demo-layout bg-purple"></view>
     </up-col>
 </up-row>
@@ -206,6 +355,6 @@ import { UPLayout } from '@ultra-ui'
 | Flutter · Dart | `UPRow` | `packages/ultra_ui/lib/src/widgets/up_layout.dart` |
 | React Native · TypeScript | `UPLayout` | `src/components/row` |
 | Taro · React + TypeScript | `UPLayout` | `src/ultra-ui/components/up-row` |
-| uni-app · Vue 3 | `up-row` | `src/uni_modules/uview-plus/components/u-row` |
+| uni-app · Vue 3 | `up-row` | `uni_modules/uview-ultra/components/up-row` |
 | uni-app-x · UTS / UVUE | `up-row` | `uni_modules/uview-ultra/components/up-row` |
 

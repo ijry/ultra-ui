@@ -49,6 +49,10 @@ import { UPTree } from 'ultra-ui-rn';
 
 <template #taro>
 
+### 手风琴 + 严格模式
+
+accordion（同级只展开一项）+ checkStrictly（父子不级联）
+
 ```tsx
 import { UPTree } from '@ultra-ui'
 
@@ -73,7 +77,7 @@ import { UPTree } from '@ultra-ui'
 <up-tree
   :data="treeData"
   :props="defaultProps"
-  :default-expanded-keys="['1']"
+  :default-expanded-keys="expandedKeys"
   highlight-current
   current-node-key="1"
   @node-click="handleNodeClick"
@@ -81,7 +85,7 @@ import { UPTree } from '@ultra-ui'
 />
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus/src/pages/componentsD/tree/tree.nvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/tree/tree.uvue`</small>
 
 </template>
 
@@ -109,29 +113,6 @@ import { UPTree } from '@ultra-ui'
 
 接口以 uview-plus 源码为准，各平台移植时保持了同名属性；平台间的差异请对照上方的示例标签。
 
-### 属性
-
-| 属性 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
-| `data` | — | `Array` | `—` |
-| `props` | — | `Object` | `—` |
-| `nodeKey` | — | `String` | `—` |
-| `showCheckbox` | — | `Boolean` | `—` |
-| `defaultExpandAll` | — | `Boolean` | `—` |
-| `defaultExpandedKeys` | — | `Array` | `—` |
-| `defaultCheckedKeys` | — | `Array` | `—` |
-| `expandOnClickNode` | — | `Boolean` | `—` |
-| `checkOnClickNode` | — | `Boolean` | `—` |
-| `checkStrictly` | — | `Boolean` | `—` |
-| `accordion` | — | `Boolean` | `—` |
-| `highlightCurrent` | — | `Boolean` | `—` |
-| `currentNodeKey` | — | `String / Number` | `—` |
-| `indent` | — | `String / Number` | `—` |
-| `iconSize` | — | `String / Number` | `—` |
-| `checkboxSize` | — | `String / Number` | `—` |
-| `expandIcon` | — | `String` | `—` |
-| `collapseIcon` | — | `String` | `—` |
-
 ### 事件
 
 | 事件名 |
@@ -156,6 +137,6 @@ import { UPTree } from '@ultra-ui'
 | Flutter · Dart | `UPTree` | `packages/ultra_ui/lib/src/widgets/up_tree.dart` |
 | React Native · TypeScript | `UPTree` | `src/components/tree` |
 | Taro · React + TypeScript | `UPTree` | `src/ultra-ui/components/up-tree` |
-| uni-app · Vue 3 | `up-tree` | `src/uni_modules/uview-plus/components/u-tree` |
+| uni-app · Vue 3 | `up-tree` | `uni_modules/uview-ultra/components/up-tree` |
 | uni-app-x · UTS / UVUE | `up-tree` | `uni_modules/uview-ultra/components/up-tree` |
 

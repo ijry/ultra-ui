@@ -41,17 +41,30 @@ UPGoodsSku(
 
 <template #reactnative>
 
+### 无弹窗页面模式
+
 ```tsx
 import { UPGoodsSku } from 'ultra-ui-rn';
+
+<UPGoodsSku
+  confirmText="立即购买"
+  goodsInfo={goodsInfo}
+  onConfirm={confirmSku}
+  pageInline
+  skuList={skuList}
+  skuTree={skuTree}
+/>
 ```
 
-::: tip
-No snippet could be extracted automatically — please read the source.
-:::
+<small>Snippet from `ultra-ui-rn/example/pages/components/advanced/GoodsSkuDemo.tsx`</small>
 
 </template>
 
 <template #taro>
+
+### 基础用法
+
+点击按钮弹出规格面板。绿色仅有 L、蓝色无 S、红色 L 零库存，可观察联动禁用
 
 ```tsx
 import { UPGoodsSku } from '@ultra-ui'
@@ -61,6 +74,47 @@ import { UPGoodsSku } from '@ultra-ui'
   skuTree={skuTree}
   skuList={skuList}
   triggerSlot={<UPButton type='primary' text='选择规格' />
+```
+
+### 三个维度
+
+仅三种组合存在，选择过程中大量选项会被禁用
+
+```tsx
+<UPGoodsSku
+  goodsInfo={{ image: THUMB, price: 3999, stock: 21 }}
+  skuTree={bigTree}
+  skuList={bigList}
+  confirmText='立即购买'
+  triggerSlot={<UPButton text='选择配置' />
+```
+
+### 限制购买数量
+
+maxBuy 与库存取较小值作为步进器上限
+
+```tsx
+<UPGoodsSku
+  goodsInfo={goodsInfo}
+  skuTree={skuTree}
+  skuList={skuList}
+  maxBuy={2}
+  triggerSlot={<UPButton text='最多买 2 件' />
+```
+
+### 页面内联
+
+pageInline 直接铺在页面里，不走弹层
+
+```tsx
+<UPGoodsSku
+  ref={inlineRef}
+  pageInline
+  goodsInfo={goodsInfo}
+  skuTree={skuTree}
+  skuList={skuList}
+  onConfirm={handleConfirm('内联')}
+/>
 ```
 
 <small>Snippet from `ultra-ui-taro/src/pages/components/goods-sku/index.tsx`</small>
@@ -82,7 +136,7 @@ import { UPGoodsSku } from '@ultra-ui'
 </up-goods-sku>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus/src/pages/componentsD/goodsSku/goodsSku.nvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/goodsSku/goodsSku.uvue`</small>
 
 </template>
 
@@ -111,18 +165,6 @@ import { UPGoodsSku } from '@ultra-ui'
 
 The reference below is extracted from the uview-plus source, whose property names the other ports keep. For per-platform differences, compare the tabs above.
 
-### Props
-
-| Prop | Description | Type | Default |
-| --- | --- | --- | --- |
-| `goodsInfo` | 商品信息 | `Object` | `—` |
-| `skuTree` | SKU树形结构 | `Array` | `—` |
-| `skuList` | SKU列表 | `Array` | `—` |
-| `maxBuy` | 最大购买数量 | `Number` | `—` |
-| `confirmText` | 确认按钮文字 | `String` | `—` |
-| `closeable` | 是否显示关闭弹窗按钮 | `Boolean` | `—` |
-| `pageInline` | 是否页面内联模式 | `Boolean` | `—` |
-
 ### Events
 
 | Event |
@@ -146,6 +188,6 @@ The reference below is extracted from the uview-plus source, whose property name
 | Flutter · Dart | `UPGoodsSku` | `packages/ultra_ui/lib/src/widgets/up_goods_sku.dart` |
 | React Native · TypeScript | `UPGoodsSku` | `src/components/goods-sku` |
 | Taro · React + TypeScript | `UPGoodsSku` | `src/ultra-ui/components/up-goods-sku` |
-| uni-app · Vue 3 | `up-goods-sku` | `src/uni_modules/uview-plus/components/u-goods-sku` |
+| uni-app · Vue 3 | `up-goods-sku` | `uni_modules/uview-ultra/components/up-goods-sku` |
 | uni-app-x · UTS / UVUE | `up-goods-sku` | `uni_modules/uview-ultra/components/up-goods-sku` |
 

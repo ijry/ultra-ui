@@ -31,6 +31,8 @@ import UltraUI
 
 <template #android>
 
+### 加载更多
+
 ```kotlin
 import net.lingyun.ultraui.android.components.UPLoadmore
 import net.lingyun.ultraui.android.components.UPLoadmoreProps
@@ -62,10 +64,57 @@ UPLoadmore({ props: new UPLoadmoreProps({ status: 'loadmore', line: true }) })
 
 <template #flutter>
 
+### 基础使用
+
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
 
 UPLoadmore(status: 'loading', isDot: true, iconSize: 17)
+```
+
+### 无更多数据
+
+```dart
+UPLoadmore(line: true, status: 'nomore')
+```
+
+### 自定义图标
+
+```dart
+UPLoadmore(status: 'loading', loadingIcon: 'circle')
+```
+
+### 显示点
+
+```dart
+UPLoadmore(
+  status: 'nomore',
+  isDot: true,
+  line: true,
+  color: '#909399',
+)
+```
+
+### 自定义提示语
+
+```dart
+UPLoadmore(
+  status: 'loading',
+  loadingText: '努力加载中,先喝杯茶',
+  color: '#909399',
+)
+```
+
+### 自定义线条颜色
+
+```dart
+UPLoadmore(
+  loadmoreText: '看,我和别人不一样',
+  color: '#1CD29B',
+  lineColor: '#1CD29B',
+  dashed: true,
+  line: true,
+)
 ```
 
 <small>示例来源 `ultra-ui-flutter/example/lib/pages/components_c/loadmore_page.dart`</small>
@@ -76,15 +125,19 @@ UPLoadmore(status: 'loading', isDot: true, iconSize: 17)
 
 ```tsx
 import { UPLoadmore } from 'ultra-ui-rn';
+
+<UPLoadmore status={status} onLoadmore={getData} />
 ```
 
-::: tip
-暂无自动提取到的示例代码，请参考源码。
-:::
+<small>示例来源 `ultra-ui-rn/example/pages/components/advanced/LazyLoadDemo.tsx`</small>
 
 </template>
 
 <template #taro>
+
+### 加载图标
+
+icon / iconSize / loadingIcon
 
 ```tsx
 import { UPLoadmore } from '@ultra-ui'
@@ -92,11 +145,37 @@ import { UPLoadmore } from '@ultra-ui'
 <UPLoadmore status='loading' icon loadingText='加载中' />
 ```
 
+### 分割线
+
+line / dashed / lineColor
+
+```tsx
+<UPLoadmore status='nomore' nomoreText='没有更多了' line />
+```
+
+### 点状结尾
+
+isDot，nomore 时以粗点替代文字
+
+```tsx
+<UPLoadmore status='nomore' isDot />
+```
+
+### 自定义颜色
+
+color / bgColor
+
+```tsx
+<UPLoadmore status='loadmore' color='#3c9cff' loadmoreText='加载更多' />
+```
+
 <small>示例来源 `ultra-ui-taro/src/pages/components/loadmore/index.tsx`</small>
 
 </template>
 
 <template #uniapp>
+
+### 基础使用
 
 ```vue
 <up-loadmore
@@ -106,17 +185,141 @@ import { UPLoadmore } from '@ultra-ui'
 ></up-loadmore>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus/src/pages/componentsC/loadmore/loadmore.nvue`</small>
+### 无更多数据
+
+```vue
+<up-loadmore
+    :line="true"
+    status="nomore"
+></up-loadmore>
+```
+
+### 加载更多(点击触发事件)
+
+```vue
+<up-loadmore
+    :line="true"
+    status="loadmore"
+    @loadmore="loadmore"
+></up-loadmore>
+```
+
+### 自定义图标
+
+```vue
+<up-loadmore
+    status="loading"
+    loadingIcon="circle"
+></up-loadmore>
+```
+
+### 显示点
+
+```vue
+<up-loadmore
+    status="nomore"
+    :isDot="true"
+    :line="true"
+    color="#909399"
+></up-loadmore>
+```
+
+### 自定义提示语
+
+```vue
+<up-loadmore
+    status="loading"
+    loadingText="努力加载中,先喝杯茶"
+    color="#909399"
+></up-loadmore>
+```
+
+### 自定义线条颜色
+
+```vue
+<up-loadmore
+    loadmoreText="看,我和别人不一样"
+    color="#1CD29B"
+    lineColor="#1CD29B"
+    dashed
+    :line="true"
+></up-loadmore>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsC/loadmore/loadmore.uvue`</small>
 
 </template>
 
 <template #uniappx>
+
+### 基础使用
 
 ```vue
 <up-loadmore
     status="loading"
     :isDot="true"
     :iconSize="17"
+></up-loadmore>
+```
+
+### 无更多数据
+
+```vue
+<up-loadmore
+    :line="true"
+    status="nomore"
+></up-loadmore>
+```
+
+### 加载更多(点击触发事件)
+
+```vue
+<up-loadmore
+    :line="true"
+    status="loadmore"
+    @loadmore="loadmore"
+></up-loadmore>
+```
+
+### 自定义图标
+
+```vue
+<up-loadmore
+    status="loading"
+    loadingIcon="circle"
+></up-loadmore>
+```
+
+### 显示点
+
+```vue
+<up-loadmore
+    status="nomore"
+    :isDot="true"
+    :line="true"
+    color="#909399"
+></up-loadmore>
+```
+
+### 自定义提示语
+
+```vue
+<up-loadmore
+    status="loading"
+    loadingText="努力加载中,先喝杯茶"
+    color="#909399"
+></up-loadmore>
+```
+
+### 自定义线条颜色
+
+```vue
+<up-loadmore
+    loadmoreText="看,我和别人不一样"
+    color="#1CD29B"
+    lineColor="#1CD29B"
+    dashed
+    :line="true"
 ></up-loadmore>
 ```
 
@@ -141,9 +344,9 @@ import { UPLoadmore } from '@ultra-ui'
 | `iconSize` | 图标大小 | `String / Number` | `17` |
 | `color` | 字体颜色 | `String` | `'#606266'` |
 | `loadingIcon` | 加载中状态的图标，spinner-花朵状图标，circle-圆圈状，semicircle-半圆 | `String` | `'spinner'` |
-| `loadmoreText` | 加载前的提示语 | `String` | `t("up.loadmoe.loadmore")` |
-| `loadingText` | 加载中提示语 | `String` | `t("up.common.loading2") + '...'` |
-| `nomoreText` | 没有更多的提示语 | `String` | `t("up.loadmoe.nomore")` |
+| `loadmoreText` | 加载前的提示语 | `String` | `'加载更多'` |
+| `loadingText` | 加载中提示语 | `String` | `'正在加载...'` |
+| `nomoreText` | 没有更多的提示语 | `String` | `'没有更多了'` |
 | `isDot` | 在“没有更多”状态下，是否显示粗点 | `Boolean` | `false` |
 | `iconColor` | 加载中图标的颜色 | `String` | `'#b7b7b7'` |
 | `marginTop` | 上边距 | `String / Number` | `10` |
@@ -169,6 +372,6 @@ import { UPLoadmore } from '@ultra-ui'
 | Flutter · Dart | `UPLoadmore` | `packages/ultra_ui/lib/src/widgets/up_loadmore.dart` |
 | React Native · TypeScript | `UPLoadmore` | `src/components/loadmore` |
 | Taro · React + TypeScript | `UPLoadmore` | `src/ultra-ui/components/up-loadmore` |
-| uni-app · Vue 3 | `up-loadmore` | `src/uni_modules/uview-plus/components/u-loadmore` |
+| uni-app · Vue 3 | `up-loadmore` | `uni_modules/uview-ultra/components/up-loadmore` |
 | uni-app-x · UTS / UVUE | `up-loadmore` | `uni_modules/uview-ultra/components/up-loadmore` |
 

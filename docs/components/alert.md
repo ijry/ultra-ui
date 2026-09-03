@@ -31,6 +31,8 @@ import UltraUI
 
 <template #android>
 
+### 警告提示
+
 ```kotlin
 import net.lingyun.ultraui.android.components.UPAlert
 import net.lingyun.ultraui.android.components.UPAlertProps
@@ -70,10 +72,55 @@ UPAlert({ props: new UPAlertProps({ title: '操作成功', description: '页面�
 
 <template #flutter>
 
+### 基础功能
+
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
 
 const UPAlert(description: '山不在于高，有了神仙就出名')
+```
+
+### 深浅色
+
+```dart
+const UPAlert(
+  description: '无丝竹之乱耳，无案牍之劳形',
+  type: 'warning',
+)
+```
+
+### 显示图标
+
+```dart
+const UPAlert(
+  description: '六王毕，四海一；蜀山兀，阿房出',
+  type: 'error',
+  showIcon: true,
+)
+```
+
+### 可关闭
+
+```dart
+UPAlert(
+  description: '五步一楼，十步一阁；廊腰缦回，檐牙高啄；各抱地势，钩心斗角',
+  type: 'success',
+  showIcon: true,
+  closable: true,
+  onClose: () => setState(() => _closeable[0] = false),
+)
+```
+
+### 带标题
+
+```dart
+const UPAlert(
+  title: '妃嫔媵嫱，王子皇孙，辞楼下殿',
+  description: '长桥卧波，未云何龙？复道行空，不霁何虹',
+  type: 'info',
+  showIcon: true,
+  closable: true,
+)
 ```
 
 <small>示例来源 `ultra-ui-flutter/example/lib/pages/components_b/alert_page.dart`</small>
@@ -94,10 +141,96 @@ import { UPAlert } from 'ultra-ui-rn';
 
 <template #taro>
 
+### 基础用法
+
+title 为主文字，type 决定配色
+
 ```tsx
 import { UPAlert } from '@ultra-ui'
 
 <UPAlert type='primary' title='primary 主要提示' />
+```
+
+### 辅助描述
+
+description 字号更小、颜色更浅
+
+```tsx
+<UPAlert
+  type='warning'
+  title='标题：账号存在风险'
+  description='描述：检测到你的账号在异地登录，如非本人操作请及时修改密码。'
+/>
+```
+
+### 显示图标
+
+showIcon，图标由 type 自动推导
+
+```tsx
+<UPAlert showIcon type='primary' title='primary 主要提示' />
+```
+
+### 自定义图标
+
+icon 优先级高于 type 的默认图标
+
+```tsx
+<UPAlert showIcon icon='bell' type='primary' title='使用 bell 图标' />
+```
+
+### 文字居中
+
+center=true
+
+```tsx
+<UPAlert center type='primary' title='这是一条居中的提示' />
+```
+
+### 字体大小
+
+fontSize，单位默认 px
+
+```tsx
+<UPAlert type='primary' fontSize={12} title='fontSize = 12' />
+```
+
+### 自定义关闭区域
+
+closeSlot 替换默认叉号
+
+```tsx
+<UPAlert
+  closable
+  type='primary'
+  title='右侧是自定义的关闭内容'
+  closeSlot={<UPIcon name='trash' size={15} color='primary' />
+```
+
+### 过渡动画
+
+transitionMode 控制显示/隐藏动画
+
+```tsx
+<UPAlert
+  closable
+  transitionMode='fade'
+  type='primary'
+  title="transitionMode='fade'（默认）"
+/>
+```
+
+### 自定义样式
+
+customStyle / customClass
+
+```tsx
+<UPAlert
+  showIcon
+  type='primary'
+  title='通过 customStyle 加大圆角'
+  customStyle={{ borderRadius: '12px' }}
+/>
 ```
 
 <small>示例来源 `ultra-ui-taro/src/pages/components/alert/index.tsx`</small>
@@ -106,22 +239,111 @@ import { UPAlert } from '@ultra-ui'
 
 <template #uniapp>
 
-```vue
-<up-alert
-    description="山不在于高，有了神仙就出名"
-></up-alert>
-```
-
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus/src/pages/componentsB/alert/alert.nvue`</small>
-
-</template>
-
-<template #uniappx>
+### 基础功能
 
 ```vue
 <up-alert
     description="山不在于高，有了神仙就出名"
     type="warning"
+></up-alert>
+```
+
+### 深浅色
+
+```vue
+<up-alert
+    description="无丝竹之乱耳，无案牍之劳形"
+    type="warning"
+></up-alert>
+```
+
+### 显示图标
+
+```vue
+<up-alert
+    description="六王毕，四海一；蜀山兀，阿房出"
+    type="error"
+    showIcon
+></up-alert>
+```
+
+### 可关闭
+
+```vue
+<up-alert
+    description="五步一楼，十步一阁；廊腰缦回，檐牙高啄；各抱地势，钩心斗角"
+    type="success"
+    showIcon
+    closable
+></up-alert>
+```
+
+### 带标题
+
+```vue
+<up-alert
+    title="妃嫔媵嫱，王子皇孙，辞楼下殿"
+    description="长桥卧波，未云何龙？复道行空，不霁何虹"
+    type="info"
+    showIcon
+    closable
+></up-alert>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsB/alert/alert.uvue`</small>
+
+</template>
+
+<template #uniappx>
+
+### 基础功能
+
+```vue
+<up-alert
+    description="山不在于高，有了神仙就出名"
+    type="warning"
+></up-alert>
+```
+
+### 深浅色
+
+```vue
+<up-alert
+    description="无丝竹之乱耳，无案牍之劳形"
+    type="warning"
+></up-alert>
+```
+
+### 显示图标
+
+```vue
+<up-alert
+    description="六王毕，四海一；蜀山兀，阿房出"
+    type="error"
+    showIcon
+></up-alert>
+```
+
+### 可关闭
+
+```vue
+<up-alert
+    description="五步一楼，十步一阁；廊腰缦回，檐牙高啄；各抱地势，钩心斗角"
+    type="success"
+    showIcon
+    closable
+></up-alert>
+```
+
+### 带标题
+
+```vue
+<up-alert
+    title="妃嫔媵嫱，王子皇孙，辞楼下殿"
+    description="长桥卧波，未云何龙？复道行空，不霁何虹"
+    type="info"
+    showIcon
+    closable
 ></up-alert>
 ```
 
@@ -147,24 +369,12 @@ import { UPAlert } from '@ultra-ui'
 | `effect` | 浅或深色调，light-浅色，dark-深色 | `String` | `'light'` |
 | `center` | 文字是否居中 | `Boolean` | `false` |
 | `fontSize` | 字体大小 | `String / Number` | `14` |
-| `transitionMode` | 动画类型 | `String` | `'fade'` |
-| `duration` | 自动定时关闭毫秒 | `Number` | `0` |
-| `icon` | 自定义图标 | `String` | `''` |
-| `modelValue` | 是否显示 | `Boolean` | `—` |
 
 ### 事件
 
 | 事件名 |
 | --- |
 | `click` |
-| `close` |
-| `closed` |
-
-### 插槽
-
-| 插槽名 |
-| --- |
-| `close` |
 
 ## 各平台源码
 
@@ -176,6 +386,6 @@ import { UPAlert } from '@ultra-ui'
 | Flutter · Dart | `UPAlert` | `packages/ultra_ui/lib/src/widgets/up_alert.dart` |
 | React Native · TypeScript | `UPAlert` | `src/components/alert` |
 | Taro · React + TypeScript | `UPAlert` | `src/ultra-ui/components/up-alert` |
-| uni-app · Vue 3 | `up-alert` | `src/uni_modules/uview-plus/components/u-alert` |
+| uni-app · Vue 3 | `up-alert` | `uni_modules/uview-ultra/components/up-alert` |
 | uni-app-x · UTS / UVUE | `up-alert` | `uni_modules/uview-ultra/components/up-alert` |
 

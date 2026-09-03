@@ -88,7 +88,7 @@ No snippet could be extracted automatically — please read the source.
 ></up-cascader>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus/src/pages/componentsD/cascader/cascader.nvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/cascader/cascader.uvue`</small>
 
 </template>
 
@@ -113,23 +113,6 @@ No snippet could be extracted automatically — please read the source.
 
 The reference below is extracted from the uview-plus source, whose property names the other ports keep. For per-platform differences, compare the tabs above.
 
-### Props
-
-| Prop | Description | Type | Default |
-| --- | --- | --- | --- |
-| `show` | 通过双向绑定控制组件的弹出与收起 | `Boolean` | `—` |
-| `data` | 级联数据 | `Array` | `—` |
-| `modelValue` | 默认选中的值 | `Array` | `—` |
-| `valueKey` | 指定选项的值为选项对象中的哪个属性值 | `String` | `—` |
-| `labelKey` | 指定选项标签为选项对象中的哪个属性值 | `String` | `—` |
-| `childrenKey` | 指定选项的子选项为选项对象中的哪个属性值 | `String` | `—` |
-| `maskCloseAble` | 是否允许通过点击遮罩关闭Picker | `Boolean` | `—` |
-| `zIndex` | 弹出的z-index值 | `String / Number` | `—` |
-| `autoClose` | 是否在选择最后一级时自动关闭并触发confirm | `Boolean` | `—` |
-| `headerDirection` | 选中项目的展示方向direction垂直方向适合文字长度过长 | `String` | `—` |
-| `optionsCols` | 选项区域列数，支持1列和2列，默认为2列 | `Number` | `—` |
-| `closeable` | 是否显示关闭图标 | `Boolean` | `—` |
-
 ### Events
 
 | Event |
@@ -147,6 +130,6 @@ The reference below is extracted from the uview-plus source, whose property name
 | Flutter · Dart | `UPCascader` | `packages/ultra_ui/lib/src/widgets/up_cascader.dart` |
 | React Native · TypeScript | `UPCascader` | `src/components/cascader` |
 | Taro · React + TypeScript | `UPCascader` | `src/ultra-ui/components/up-cascader` |
-| uni-app · Vue 3 | `up-cascader` | `src/uni_modules/uview-plus/components/u-cascader` |
+| uni-app · Vue 3 | `up-cascader` | `uni_modules/uview-ultra/components/up-cascader` |
 | uni-app-x · UTS / UVUE | `up-cascader` | `uni_modules/uview-ultra/components/up-cascader` |
 

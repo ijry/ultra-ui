@@ -47,6 +47,10 @@ No snippet could be extracted automatically — please read the source.
 
 <template #taro>
 
+### 基础用法
+
+受控选中态 + onChange
+
 ```tsx
 import { UPAgreement } from '@ultra-ui'
 
@@ -54,6 +58,19 @@ import { UPAgreement } from '@ultra-ui'
   text='我已阅读并同意相关服务条款'
   value={agreed}
   onChange={setAgreed}
+/>
+```
+
+### 禁用状态
+
+disabled 时不可交互
+
+```tsx
+<UPAgreement
+  text='禁用状态下的协议勾选'
+  protocolName='《隐私政策》'
+  value={false}
+  disabled
 />
 ```
 
@@ -69,7 +86,7 @@ import { UPAgreement } from '@ultra-ui'
     url-privacy="/pages/user_agreement/agreement/info?title=隐私政策"></up-agreement>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus/src/pages/componentsD/agreement/agreement.nvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/agreement/agreement.uvue`</small>
 
 </template>
 
@@ -91,13 +108,6 @@ import { UPAgreement } from '@ultra-ui'
 
 The reference below is extracted from the uview-plus source, whose property names the other ports keep. For per-platform differences, compare the tabs above.
 
-### Props
-
-| Prop | Description | Type | Default |
-| --- | --- | --- | --- |
-| `urlProtocol` | — | `String` | `—` |
-| `urlPrivacy` | — | `String` | `—` |
-
 ### Events
 
 | Event |
@@ -117,6 +127,6 @@ The reference below is extracted from the uview-plus source, whose property name
 | Flutter · Dart | `UPAgreement` | `packages/ultra_ui/lib/src/widgets/up_agreement.dart` |
 | React Native · TypeScript | `UPAgreement` | `src/components/agreement` |
 | Taro · React + TypeScript | `UPAgreement` | `src/ultra-ui/components/up-agreement` |
-| uni-app · Vue 3 | `up-agreement` | `src/uni_modules/uview-plus/components/u-agreement` |
+| uni-app · Vue 3 | `up-agreement` | `uni_modules/uview-ultra/components/up-agreement` |
 | uni-app-x · UTS / UVUE | `up-agreement` | `uni_modules/uview-ultra/components/up-agreement` |
 

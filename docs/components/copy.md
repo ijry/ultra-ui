@@ -47,10 +47,34 @@ import { UPCopy } from 'ultra-ui-rn';
 
 <template #taro>
 
+### 基础用法
+
+点击整块区域把 text 复制到剪贴板
+
 ```tsx
 import { UPCopy } from '@ultra-ui'
 
 <UPCopy text={SNIPPET}>
+  <View className='copy-demo__snippet'>{SNIPPET}</View>
+</UPCopy>
+```
+
+### 自定义图标
+
+size / color 控制复制图标
+
+```tsx
+<UPCopy text={SNIPPET} size={20} color='primary'>
+  <View className='copy-demo__snippet'>{SNIPPET}</View>
+</UPCopy>
+```
+
+### 隐藏图标
+
+icon=false 只保留文案
+
+```tsx
+<UPCopy text={SNIPPET} icon={false}>
   <View className='copy-demo__snippet'>{SNIPPET}</View>
 </UPCopy>
 ```
@@ -67,7 +91,7 @@ import { UPCopy } from '@ultra-ui'
 </up-copy>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus/src/pages/componentsD/copy/copy.nvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/copy/copy.uvue`</small>
 
 </template>
 
@@ -89,14 +113,6 @@ import { UPCopy } from '@ultra-ui'
 
 接口以 uview-plus 源码为准，各平台移植时保持了同名属性；平台间的差异请对照上方的示例标签。
 
-### 属性
-
-| 属性 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
-| `content` | — | `String` | `—` |
-| `alertStyle` | — | `String` | `—` |
-| `notice` | — | `String` | `—` |
-
 ### 事件
 
 | 事件名 |
@@ -116,6 +132,6 @@ import { UPCopy } from '@ultra-ui'
 | Flutter · Dart | `UPCopy` | `packages/ultra_ui/lib/src/widgets/up_copy.dart` |
 | React Native · TypeScript | `UPCopy` | `src/components/copy` |
 | Taro · React + TypeScript | `UPCopy` | `src/ultra-ui/components/up-copy` |
-| uni-app · Vue 3 | `up-copy` | `src/uni_modules/uview-plus/components/u-copy` |
+| uni-app · Vue 3 | `up-copy` | `uni_modules/uview-ultra/components/up-copy` |
 | uni-app-x · UTS / UVUE | `up-copy` | `uni_modules/uview-ultra/components/up-copy` |
 

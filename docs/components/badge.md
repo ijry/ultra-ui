@@ -31,6 +31,8 @@ import UltraUI
 
 <template #android>
 
+### 徽标
+
 ```kotlin
 import net.lingyun.ultraui.android.components.UPBadge
 import net.lingyun.ultraui.android.components.UPBadgeProps
@@ -69,10 +71,36 @@ UPBadge({ props: new UPBadgeProps({ value: 8 }) })
 
 <template #flutter>
 
+### 直角边形状
+
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
 
 UPBadge(value: 1500, shape: 'horn')
+```
+
+### 徽标数显示方式
+
+```dart
+UPBadge(value: 5132, numberType: 'ellipsis')
+```
+
+### 显示圆点
+
+```dart
+UPBadge(value: 1011, numberType: 'overflow', isDot: true)
+```
+
+### 自定义主题
+
+```dart
+UPBadge(value: 9, type: 'error')
+```
+
+### 反转色
+
+```dart
+UPBadge(value: 9, type: 'error', inverted: true)
 ```
 
 <small>示例来源 `ultra-ui-flutter/example/lib/pages/components_b/badge_page.dart`</small>
@@ -81,10 +109,36 @@ UPBadge(value: 1500, shape: 'horn')
 
 <template #reactnative>
 
+### 直角边形状
+
 ```tsx
 import { UPBadge } from 'ultra-ui-rn';
 
 <UPBadge value={1500} shape="horn" />
+```
+
+### 徽标数显示方式
+
+```tsx
+<UPBadge value={5132} numberType="ellipsis" />
+```
+
+### 显示圆点
+
+```tsx
+<UPBadge value={1011} numberType="overflow" isDot />
+```
+
+### 自定义主题
+
+```tsx
+<UPBadge value={9} type="error" />
+```
+
+### 反转色
+
+```tsx
+<UPBadge value={9} type="error" inverted />
 ```
 
 <small>示例来源 `ultra-ui-rn/example/pages/components/basic/BadgeDemo.tsx`</small>
@@ -93,10 +147,54 @@ import { UPBadge } from 'ultra-ui-rn';
 
 <template #taro>
 
+### 最大值
+
+numberType=overflow（默认），超过 max 显示 max+
+
 ```tsx
 import { UPBadge } from '@ultra-ui'
 
-<UPBadge value={1} />
+<UPBadge max={9} value={5} />
+```
+
+### 超出显示方式
+
+numberType：overflow / ellipsis / limit
+
+```tsx
+<UPBadge numberType='overflow' max={99} value={1000} />
+```
+
+### 显示零
+
+showZero 决定 value 为 0 时是否展示
+
+```tsx
+<UPBadge value={0} />
+```
+
+### 绝对定位
+
+absolute + offset=[top, right]，父元素需为相对定位
+
+```tsx
+<UPBadge absolute offset={[-4, -4]} value={9} />
+```
+
+### 动态数值
+
+value 变化时徽标实时更新
+
+```tsx
+<UPBadge type='primary' value={count} max={99} />
+```
+
+### 显隐控制
+
+show 为 false 时不渲染
+
+```tsx
+<UPBadge show={show} type='error' value={5} />
 ```
 
 <small>示例来源 `ultra-ui-taro/src/pages/components/badge/index.tsx`</small>
@@ -105,6 +203,8 @@ import { UPBadge } from '@ultra-ui'
 
 <template #uniapp>
 
+### 直角边形状
+
 ```vue
 <up-badge
     :value="1500"
@@ -112,17 +212,101 @@ import { UPBadge } from '@ultra-ui'
 ></up-badge>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus/src/pages/componentsB/badge/badge.nvue`</small>
+### 徽标数显示方式
+
+```vue
+<up-badge
+    :value="5132"
+    numberType="ellipsis"
+></up-badge>
+```
+
+### 显示圆点
+
+```vue
+<up-badge
+    :value="1011"
+    numberType="overflow"
+    isDot
+>
+</up-badge>
+```
+
+### 自定义主题
+
+```vue
+<up-badge
+    :value="9"
+    type="error"
+>
+</up-badge>
+```
+
+### 反转色
+
+```vue
+<up-badge
+    :value="9"
+    type="error"
+    inverted
+>
+</up-badge>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsB/badge/badge.uvue`</small>
 
 </template>
 
 <template #uniappx>
+
+### 直角边形状
 
 ```vue
 <up-badge
     :value="1500"
     shape="horn"
 ></up-badge>
+```
+
+### 徽标数显示方式
+
+```vue
+<up-badge
+    :value="5132"
+    numberType="ellipsis"
+></up-badge>
+```
+
+### 显示圆点
+
+```vue
+<up-badge
+    :value="1011"
+    numberType="overflow"
+    isDot
+>
+</up-badge>
+```
+
+### 自定义主题
+
+```vue
+<up-badge
+    :value="9"
+    type="error"
+>
+</up-badge>
+```
+
+### 反转色
+
+```vue
+<up-badge
+    :value="9"
+    type="error"
+    inverted
+>
+</up-badge>
 ```
 
 <small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsB/badge/badge.uvue`</small>
@@ -164,6 +348,6 @@ import { UPBadge } from '@ultra-ui'
 | Flutter · Dart | `UPBadge` | `packages/ultra_ui/lib/src/widgets/up_badge.dart` |
 | React Native · TypeScript | `UPBadge` | `src/components/badge` |
 | Taro · React + TypeScript | `UPBadge` | `src/ultra-ui/components/up-badge` |
-| uni-app · Vue 3 | `up-badge` | `src/uni_modules/uview-plus/components/u-badge` |
+| uni-app · Vue 3 | `up-badge` | `uni_modules/uview-ultra/components/up-badge` |
 | uni-app-x · UTS / UVUE | `up-badge` | `uni_modules/uview-ultra/components/up-badge` |
 

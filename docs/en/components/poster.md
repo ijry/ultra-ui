@@ -45,10 +45,22 @@ No snippet could be extracted automatically — please read the source.
 
 <template #taro>
 
+### 基础用法
+
+view 色块 + text 多行截断 + qrcode 二维码
+
 ```tsx
 import { UPPoster } from '@ultra-ui'
 
 <UPPoster ref={basicRef} json={basicJson} />
+```
+
+### 渐变与圆角
+
+linear-gradient 背景、圆角卡片、圆角图片裁剪
+
+```tsx
+<UPPoster ref={gradientRef} json={gradientJson} />
 ```
 
 <small>Snippet from `ultra-ui-taro/src/pages/components/poster/index.tsx`</small>
@@ -58,14 +70,15 @@ import { UPPoster } from '@ultra-ui'
 <template #uniapp>
 
 ```vue
-<up-poster 
-    ref="poster" 
+<up-poster
+    ref="poster"
     :json="posterConfig"
     @export="onPosterExport"
+    @error="onPosterError"
 ></up-poster>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus/src/pages/componentsD/poster/poster.nvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/poster/poster.uvue`</small>
 
 </template>
 
@@ -90,11 +103,9 @@ import { UPPoster } from '@ultra-ui'
 
 The reference below is extracted from the uview-plus source, whose property names the other ports keep. For per-platform differences, compare the tabs above.
 
-### Props
-
-| Prop | Description | Type | Default |
-| --- | --- | --- | --- |
-| `json` | — | `Object` | `—` |
+::: tip
+This component is driven by imperative method calls rather than declarative props; see the snippets and source above for its parameters.
+:::
 
 ## Source on each platform
 
@@ -103,6 +114,6 @@ The reference below is extracted from the uview-plus source, whose property name
 | Flutter · Dart | `UPPoster` | `packages/ultra_ui/lib/src/widgets/up_poster.dart` |
 | React Native · TypeScript | `UPPoster` | `src/components/poster` |
 | Taro · React + TypeScript | `UPPoster` | `src/ultra-ui/components/up-poster` |
-| uni-app · Vue 3 | `up-poster` | `src/uni_modules/uview-plus/components/u-poster` |
+| uni-app · Vue 3 | `up-poster` | `uni_modules/uview-ultra/components/up-poster` |
 | uni-app-x · UTS / UVUE | `up-poster` | `uni_modules/uview-ultra/components/up-poster` |
 

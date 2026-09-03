@@ -31,6 +31,8 @@ import UltraUI
 
 <template #android>
 
+### 折叠面板
+
 ```kotlin
 import net.lingyun.ultraui.android.components.UPCollapse
 import net.lingyun.ultraui.android.components.UPCollapseProps
@@ -73,28 +75,47 @@ UPCollapse({ props: new UPCollapseProps({ modelValue: this.value, onValueChange:
 
 <template #flutter>
 
+### 手风琴模式
+
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
 
 UPCollapse(
-  value: _basicValue,
-  onUpdateValue: _updateBasicValue,
-  onChange: _recordChange,
-  children: const <Widget>[
+  accordion: true,
+  children: <Widget>[
     UPCollapseItem(
       title: '文档指南',
-      name: 'Docs guide',
       child: Text(_docsContent),
     ),
     UPCollapseItem(
       title: '组件全面',
-      name: 'Variety components',
       child: Text(_componentsContent),
     ),
     UPCollapseItem(
       title: '众多利器',
-      name: 'Numerous tools',
-      showRight: false,
+      child: Text(_toolsContent),
+    ),
+  ],
+)
+```
+
+### 移除下划线
+
+```dart
+UPCollapse(
+  accordion: true,
+  border: false,
+  children: <Widget>[
+    UPCollapseItem(
+      title: '文档指南',
+      child: Text(_docsContent),
+    ),
+    UPCollapseItem(
+      title: '组件全面',
+      child: Text(_componentsContent),
+    ),
+    UPCollapseItem(
+      title: '众多利器',
       child: Text(_toolsContent),
     ),
   ],
@@ -133,6 +154,10 @@ import { UPCollapse } from 'ultra-ui-rn';
 
 <template #taro>
 
+### 基础手风琴
+
+accordion，同时只展开一项，受控 value
+
 ```tsx
 import { UPCollapse } from '@ultra-ui'
 
@@ -149,6 +174,45 @@ import { UPCollapse } from '@ultra-ui'
   </UPCollapseItem>
   <UPCollapseItem name='3' title='有赞客' disabled>
     该功能暂未对当前账号开放（disabled 演示）。
+  </UPCollapseItem>
+</UPCollapse>
+```
+
+### 多项同时展开
+
+非手风琴，可同时展开多项，受控 value
+
+```tsx
+<UPCollapse value={multiValue}>
+  <UPCollapseItem name='1' title='关于我们' icon='info-circle'>
+    ultra-ui 是 uview-plus 的 Taro + React 复刻版，全端兼容。
+  </UPCollapseItem>
+  <UPCollapseItem name='2' title='服务协议' icon='order'>
+    本服务协议约定了平台与用户之间的权利与义务。
+  </UPCollapseItem>
+  <UPCollapseItem name='3' title='隐私政策' icon='lock'>
+    我们严格保护用户隐私，未经授权绝不向第三方提供个人信息。
+  </UPCollapseItem>
+</UPCollapse>
+```
+
+### 自定义内容
+
+children 支持任意节点，自定义时长
+
+```tsx
+<UPCollapse border={false}>
+  <UPCollapseItem name='1' title='收货地址' value='上海市' duration={500}>
+    <View className='collapse-demo__card'>
+      <View className='collapse-demo__row'>收货人：张三　138****8888</View>
+      <View className='collapse-demo__row'>上海市浦东新区世纪大道 100 号</View>
+    </View>
+  </UPCollapseItem>
+  <UPCollapseItem name='2' title='发票信息' value='电子发票'>
+    <View className='collapse-demo__card'>
+      <View className='collapse-demo__row'>抬头：个人</View>
+      <View className='collapse-demo__row'>类型：电子普通发票</View>
+    </View>
   </UPCollapseItem>
 </UPCollapse>
 ```
@@ -173,7 +237,7 @@ import { UPCollapse } from '@ultra-ui'
 </up-collapse>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus/src/pages/componentsB/collapse/collapse.nvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsB/collapse/collapse.uvue`</small>
 
 </template>
 
@@ -234,7 +298,6 @@ import { UPCollapse } from '@ultra-ui'
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | `title` | 标题 | `String` | `''` |
-| `titleStyle` | 标题的样式 | `Object / String` | `{}` |
 | `value` | 标题右侧内容 | `String` | `''` |
 | `label` | 标题下方的描述信息 | `String` | `''` |
 | `disabled` | 是否禁用折叠面板 | `Boolean` | `false` |
@@ -246,10 +309,6 @@ import { UPCollapse } from '@ultra-ui'
 | `icon` | 标题左侧图片，可为绝对路径的图片或内置图标 | `String` | `''` |
 | `duration` | 面板展开收起的过渡时间，单位ms | `Number` | `300` |
 | `showRight` | 显示右侧图标 | `Boolean` | `true` |
-| `iconStyle` | 左侧图标样式 | `Object / String` | `{}` |
-| `rightIconStyle` | 右侧箭头图标的样式 | `Object / String` | `{}` |
-| `cellCustomStyle` | — | `Object / String` | `{}` |
-| `cellCustomClass` | — | `String` | `''` |
 
 #### 插槽
 
@@ -271,6 +330,6 @@ import { UPCollapse } from '@ultra-ui'
 | Flutter · Dart | `UPCollapse` | `packages/ultra_ui/lib/src/widgets/up_collapse.dart` |
 | React Native · TypeScript | `UPCollapse` | `src/components/collapse` |
 | Taro · React + TypeScript | `UPCollapse` | `src/ultra-ui/components/up-collapse` |
-| uni-app · Vue 3 | `up-collapse` | `src/uni_modules/uview-plus/components/u-collapse` |
+| uni-app · Vue 3 | `up-collapse` | `uni_modules/uview-ultra/components/up-collapse` |
 | uni-app-x · UTS / UVUE | `up-collapse` | `uni_modules/uview-ultra/components/up-collapse` |
 

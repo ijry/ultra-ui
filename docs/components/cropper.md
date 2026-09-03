@@ -54,18 +54,45 @@ import { UPCropper } from 'ultra-ui-rn';
 
 </template>
 
+<template #taro>
+
+```tsx
+import { UPCropper } from '@ultra-ui'
+
+<UPCropper onConfirm={handleConfirm} onAvtinit={handleAvtinit}>
+  <View className="cropper-demo__avatar-wrapper">
+    {avatarUrl ? (
+      <Image src={avatarUrl} className="cropper-demo__avatar" mode="aspectFill" />
+    ) : (
+      <View className="cropper-demo__avatar-placeholder">点击选择图片</View>
+    )}
+  </View>
+</UPCropper>
+```
+
+<small>示例来源 `ultra-ui-taro/src/pages/components/cropper/index.tsx`</small>
+
+</template>
+
 <template #uniapp>
 
 ```vue
-<up-cropper @confirm="cutImage" ref="avatarRef0" :canChangeSize="false"
-    areaWidth="300rpx" areaHeight="300rpx" exportWidth="260rpx" exportHeight="260rpx">
+<up-cropper
+    ref="avatarRef0"
+    :can-change-size="false"
+    area-width="300rpx"
+    area-height="300rpx"
+    export-width="260rpx"
+    export-height="260rpx"
+    @confirm="cutImage"
+>
     <view class="avatar-wrapper">
-        <up-avatar class="avatar" :src="urls[0]" size="120px"></up-avatar>
+        <up-avatar :src="avatarUrl" size="120px"></up-avatar>
     </view>
 </up-cropper>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus/src/pages/componentsD/cropper/cropper.nvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/cropper/cropper.uvue`</small>
 
 </template>
 
@@ -97,12 +124,6 @@ import { UPCropper } from 'ultra-ui-rn';
 
 接口以 uview-plus 源码为准，各平台移植时保持了同名属性；平台间的差异请对照上方的示例标签。
 
-### 属性
-
-| 属性 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
-| `fillColor` | 画布填充色，默认透明，可传 'black'、'#ffffff' 等 | `String` | `—` |
-
 ### 事件
 
 | 事件名 |
@@ -123,6 +144,7 @@ import { UPCropper } from 'ultra-ui-rn';
 | --- | --- | --- |
 | Flutter · Dart | `UPCropper` | `packages/ultra_ui/lib/src/widgets/up_cropper.dart` |
 | React Native · TypeScript | `UPCropper` | `src/components/cropper` |
-| uni-app · Vue 3 | `up-cropper` | `src/uni_modules/uview-plus/components/u-cropper` |
+| Taro · React + TypeScript | `UPCropper` | `src/ultra-ui/components/up-cropper` |
+| uni-app · Vue 3 | `up-cropper` | `uni_modules/uview-ultra/components/up-cropper` |
 | uni-app-x · UTS / UVUE | `up-cropper` | `uni_modules/uview-ultra/components/up-cropper` |
 

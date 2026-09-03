@@ -71,11 +71,56 @@ No snippet could be extracted automatically — please read the source.
 
 <template #taro>
 
+### 对齐变体
+
+top-start / bottom-end 等
+
 ```tsx
 import { UPPopover } from '@ultra-ui'
 
-<UPPopover placement='top' content='这是顶部弹出的气泡内容'>
-  <View className='popover-demo__trigger'>上</View>
+<UPPopover placement='top-start' content='top-start 对齐触发元素左缘'>
+  <View className='popover-demo__trigger'>左上</View>
+</UPPopover>
+```
+
+### 自定义样式
+
+bgColor / color / offset
+
+```tsx
+<UPPopover
+  placement='top'
+  content='自定义主题色的气泡'
+  bgColor='#3c9cff'
+  color='#ffffff'
+  offset={12}
+>
+  <View className='popover-demo__trigger'>主题</View>
+</UPPopover>
+```
+
+### 禁用
+
+disabled 不响应点击
+
+```tsx
+<UPPopover placement='top' content='disabled 时不会弹出' disabled>
+  <View className='popover-demo__trigger popover-demo__trigger--disabled'>禁用</View>
+</UPPopover>
+```
+
+### 回调
+
+onOpen / onClose
+
+```tsx
+<UPPopover
+  placement='top'
+  content='监听 onOpen / onClose'
+  onOpen={() => console.log('popover open')}
+  onClose={() => console.log('popover close')}
+>
+  <View className='popover-demo__trigger'>事件</View>
 </UPPopover>
 ```
 
@@ -87,9 +132,9 @@ import { UPPopover } from '@ultra-ui'
 
 ```vue
 <up-popover
-    :color="upThemeVar('--up-main-color', '#333')"
-    :bgColor="upThemeVar('--up-bg-color', '#e3e4e6')"
-    :popupBgColor="upThemeVar('--up-card-bg-color', '#f7f7f7')"
+    color="#333"
+    bgColor="#e3e4e6"
+    popupBgColor="#f7f7f7"
     direction="right"
 >
     <template #trigger>
@@ -101,7 +146,7 @@ import { UPPopover } from '@ultra-ui'
 </up-popover>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus/src/pages/componentsC/popover/popover.vue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/popover/popover.uvue`</small>
 
 </template>
 
@@ -171,6 +216,6 @@ The reference below is extracted from the uview-plus source, whose property name
 | Flutter · Dart | `UPPopover` | `packages/ultra_ui/lib/src/widgets/up_popover.dart` |
 | React Native · TypeScript | `UPPopover` | `src/components/popover` |
 | Taro · React + TypeScript | `UPPopover` | `src/ultra-ui/components/up-popover` |
-| uni-app · Vue 3 | `up-popover` | `src/uni_modules/uview-plus/components/u-popover` |
+| uni-app · Vue 3 | `up-popover` | `uni_modules/uview-ultra/components/up-popover` |
 | uni-app-x · UTS / UVUE | `up-popover` | `uni_modules/uview-ultra/components/up-popover` |
 

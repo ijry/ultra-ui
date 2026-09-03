@@ -18,6 +18,8 @@ Switch tabs to see the syntax for each platform. Every snippet is lifted verbati
 
 <template #ios>
 
+### 主题类型
+
 ```swift
 import SwiftUI
 import UltraUI
@@ -25,11 +27,25 @@ import UltraUI
 UPButton(type: "primary", size: "large", text: "主按钮")
 ```
 
+### 形状和状态
+
+```swift
+UPButton(type: "primary", shape: "circle", text: "胶囊按钮")
+```
+
+### 尺寸和图标
+
+```swift
+UPButton(type: "primary", size: "small", text: "Small")
+```
+
 <small>Snippet from `ultra-ui-ios/Demo/ButtonDemoView.swift`</small>
 
 </template>
 
 <template #android>
+
+### 按钮
 
 ```kotlin
 import net.lingyun.ultraui.android.components.UPButton
@@ -65,14 +81,76 @@ UPButton({ props: new UPButtonProps({
 
 <template #flutter>
 
+### 按钮类型
+
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
 
 UPButton(
-  text: '打开上拉菜单',
-  type: 'primary',
+  text: '默认按钮',
+  type: 'info',
   onClick: () => setState(() => _showActionSheet = true),
 )
+```
+
+### 镂空按钮
+
+```dart
+UPButton(text: '镂空按钮', type: 'info', plain: true)
+```
+
+### 细边按钮
+
+```dart
+UPButton(
+    text: '细边按钮', type: 'info', plain: true, hairline: true)
+```
+
+### 禁用按钮
+
+```dart
+UPButton(text: '禁用按钮', type: 'info', disabled: true)
+```
+
+### 加载中
+
+```dart
+UPButton(
+  loading: true,
+  loadingText: '加载中',
+  loadingMode: 'circle',
+  type: 'success',
+)
+```
+
+### 按钮图标&按钮形状
+
+```dart
+UPButton(
+  text: '按钮图标',
+  icon: 'map',
+  plain: true,
+  type: 'warning',
+)
+```
+
+### 自定义颜色
+
+```dart
+UPButton(
+  text: '渐变色按钮',
+  customStyle: BoxDecoration(
+    gradient: LinearGradient(
+      colors: <Color>[Color(0xFF4253D8), Color(0xFFD333BA)],
+    ),
+  ),
+)
+```
+
+### 自定义大小
+
+```dart
+UPButton(text: '超大尺寸', size: 'large', type: 'success')
 ```
 
 <small>Snippet from `ultra-ui-flutter/example/lib/pages/components_a/button_page.dart`</small>
@@ -81,10 +159,58 @@ UPButton(
 
 <template #reactnative>
 
+### 按钮类型
+
 ```tsx
 import { UPButton } from 'ultra-ui-rn';
 
 <UPButton text="成功按钮" size="normal" type="success" />
+```
+
+### 镂空按钮
+
+```tsx
+<UPButton text="镂空按钮" size="normal" type="info" plain />
+```
+
+### 细边按钮
+
+```tsx
+<UPButton text="细边按钮" size="normal" type="info" plain hairline />
+```
+
+### 禁用按钮
+
+```tsx
+<UPButton disabled text="禁用按钮" size="normal" type="info" />
+```
+
+### 加载中
+
+```tsx
+<UPButton loadingText="加载中" size="normal" loading loadingMode="circle" type="success" />
+```
+
+### 按钮图标&按钮形状
+
+```tsx
+<UPButton text="按钮图标" size="normal" icon="map" plain type="warning" />
+```
+
+### 自定义颜色
+
+```tsx
+<UPButton
+  text="渐变色按钮"
+  size="normal"
+  color="linear-gradient(to right, rgb(66, 83, 216), rgb(213, 51, 186))"
+/>
+```
+
+### 自定义大小
+
+```tsx
+<UPButton text="超大尺寸" size="large" type="success" />
 ```
 
 <small>Snippet from `ultra-ui-rn/example/pages/components/basic/ButtonDemo.tsx`</small>
@@ -93,10 +219,34 @@ import { UPButton } from 'ultra-ui-rn';
 
 <template #taro>
 
+### 尺寸
+
+size：large / normal / small / mini
+
 ```tsx
 import { UPButton } from '@ultra-ui'
 
-<UPButton text='info' />
+<UPButton size='large' type='primary' text='large' />
+```
+
+### 加载中
+
+loading / loadingText / loadingMode
+
+```tsx
+<UPButton loading loadingMode='circle' loadingText='加载中' />
+```
+
+### 块级
+
+通过 customStyle 撑满宽度
+
+```tsx
+<UPButton
+  type='primary'
+  text='占满整行'
+  customStyle={{ width: '100%' }}
+/>
 ```
 
 <small>Snippet from `ultra-ui-taro/src/pages/components/button/index.tsx`</small>
@@ -104,6 +254,8 @@ import { UPButton } from '@ultra-ui'
 </template>
 
 <template #uniapp>
+
+### 按钮类型
 
 ```vue
 <up-button
@@ -114,11 +266,91 @@ import { UPButton } from '@ultra-ui'
 ></up-button>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus/src/pages/componentsA/button/button.nvue`</small>
+### 镂空按钮
+
+```vue
+<up-button
+    text="镂空按钮"
+    size="normal"
+    type="info"
+    plain
+></up-button>
+```
+
+### 细边按钮
+
+```vue
+<up-button
+    text="细边按钮"
+    size="normal"
+    type="info"
+    plain
+    hairline
+></up-button>
+```
+
+### 禁用按钮
+
+```vue
+<up-button
+    disabled
+    text="禁用按钮"
+    size="normal"
+    type="info"
+></up-button>
+```
+
+### 加载中
+
+```vue
+<up-button
+    loadingText="加载中"
+    size="normal"
+    loading
+    loadingMode="circle"
+    type="success"
+></up-button>
+```
+
+### 按钮图标&按钮形状
+
+```vue
+<up-button
+    text="按钮图标"
+    size="normal"
+    icon="map"
+    plain
+    type="warning"
+></up-button>
+```
+
+### 自定义颜色
+
+```vue
+<up-button
+    text="渐变色按钮"
+    size="normal"
+    color="linear-gradient(to right, rgb(66, 83, 216), rgb(213, 51, 186))"
+></up-button>
+```
+
+### 自定义大小
+
+```vue
+<up-button
+    text="超大尺寸"
+    size="large"
+    type="success"
+></up-button>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsA/button/button.uvue`</small>
 
 </template>
 
 <template #uniappx>
+
+### 按钮类型
 
 ```vue
 <up-button
@@ -126,6 +358,84 @@ import { UPButton } from '@ultra-ui'
     size="normal"
     type="info"
     @click="click"
+></up-button>
+```
+
+### 镂空按钮
+
+```vue
+<up-button
+    text="镂空按钮"
+    size="normal"
+    type="info"
+    plain
+></up-button>
+```
+
+### 细边按钮
+
+```vue
+<up-button
+    text="细边按钮"
+    size="normal"
+    type="info"
+    plain
+    hairline
+></up-button>
+```
+
+### 禁用按钮
+
+```vue
+<up-button
+    disabled
+    text="禁用按钮"
+    size="normal"
+    type="info"
+></up-button>
+```
+
+### 加载中
+
+```vue
+<up-button
+    loadingText="加载中"
+    size="normal"
+    loading
+    loadingMode="circle"
+    type="success"
+></up-button>
+```
+
+### 按钮图标&按钮形状
+
+```vue
+<up-button
+    text="按钮图标"
+    size="normal"
+    icon="map"
+    plain
+    type="warning"
+></up-button>
+```
+
+### 自定义颜色
+
+```vue
+<up-button
+    text="渐变色按钮"
+    size="normal"
+    color="linear-gradient(to right, rgb(66, 83, 216), rgb(213, 51, 186))"
+></up-button>
+```
+
+### 自定义大小
+
+```vue
+<up-button
+    text="超大尺寸"
+    size="large"
+    type="success"
 ></up-button>
 ```
 
@@ -171,7 +481,6 @@ The reference below is extracted from the uview-plus source, whose property name
 | `icon` | 按钮图标 | `String` | `''` |
 | `iconColor` | 按钮图标 | `String` | `''` |
 | `color` | 按钮颜色，支持传入linear-gradient渐变色 | `String` | `''` |
-| `stop` | 停止冒泡 | `Boolean` | `true` |
 
 ### Events
 
@@ -201,6 +510,6 @@ The reference below is extracted from the uview-plus source, whose property name
 | Flutter · Dart | `UPButton` | `packages/ultra_ui/lib/src/widgets/up_button.dart` |
 | React Native · TypeScript | `UPButton` | `src/components/button` |
 | Taro · React + TypeScript | `UPButton` | `src/ultra-ui/components/up-button` |
-| uni-app · Vue 3 | `up-button` | `src/uni_modules/uview-plus/components/u-button` |
+| uni-app · Vue 3 | `up-button` | `uni_modules/uview-ultra/components/up-button` |
 | uni-app-x · UTS / UVUE | `up-button` | `uni_modules/uview-ultra/components/up-button` |
 

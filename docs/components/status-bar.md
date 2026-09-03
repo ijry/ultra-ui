@@ -107,13 +107,6 @@ import { UPStatusBar } from '@ultra-ui'
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | `bgColor` | — | `String` | `'transparent'` |
-| `height` | 状态栏获取得高度 | `Number` | `0` |
-
-### 事件
-
-| 事件名 |
-| --- |
-| `update:height` |
 
 ### 插槽
 
@@ -130,6 +123,6 @@ import { UPStatusBar } from '@ultra-ui'
 | Flutter · Dart | `UPStatusBar` | `packages/ultra_ui/lib/src/widgets/up_status_bar.dart` |
 | React Native · TypeScript | `UPStatusBar` | `src/components/status-bar` |
 | Taro · React + TypeScript | `UPStatusBar` | `src/ultra-ui/components/up-status-bar` |
-| uni-app · Vue 3 | `up-status-bar` | `src/uni_modules/uview-plus/components/u-status-bar` |
+| uni-app · Vue 3 | `up-status-bar` | `uni_modules/uview-ultra/components/up-status-bar` |
 | uni-app-x · UTS / UVUE | `up-status-bar` | `uni_modules/uview-ultra/components/up-status-bar` |
 

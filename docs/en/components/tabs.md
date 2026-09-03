@@ -60,10 +60,80 @@ UPTabs(
 
 <template #reactnative>
 
+### 基础演示
+
 ```tsx
 import { UPTabs } from 'ultra-ui-rn';
 
 <UPTabs current={3} list={list1} onClick={click} />
+```
+
+### 显示徽标
+
+```tsx
+<UPTabs list={list2} />
+```
+
+### 禁止滚动
+
+```tsx
+<UPTabs list={list6} scrollable={false} />
+```
+
+### 禁用菜单
+
+```tsx
+<UPTabs list={list3} />
+```
+
+### 自定义样式
+
+```tsx
+<UPTabs
+  activeStyle={ACTIVE_STYLE}
+  inactiveStyle={INACTIVE_STYLE}
+  itemStyle={s.itemStyle}
+  lineColor="#f56c6c"
+  lineWidth="30"
+  list={list4}
+/>
+```
+
+### 滑块设置背景图
+
+```tsx
+<UPTabs
+  activeStyle={ACTIVE_STYLE}
+  inactiveStyle={INACTIVE_STYLE}
+  itemStyle={s.itemStyle}
+  lineHeight="7"
+  lineWidth="20"
+  list={list4}
+/>
+```
+
+### 胶囊模式
+
+```tsx
+<UPTabs list={listShape} scrollable={false} shapeMode="capsule" />
+```
+
+### 卡片模式
+
+```tsx
+<UPTabs list={listCard} lineWidth="26" scrollable={false} shapeMode="card" />
+```
+
+### 圆角矩形箭头模式
+
+```tsx
+<UPTabs list={listPillArrow} scrollable={false} shapeMode="pill-arrow" />
+```
+
+### Tag模式
+
+```tsx
+<UPTabs list={listTag} shapeMode="tag" />
 ```
 
 <small>Snippet from `ultra-ui-rn/example/pages/components/navigation/TabsDemo.tsx`</small>
@@ -71,6 +141,10 @@ import { UPTabs } from 'ultra-ui-rn';
 </template>
 
 <template #taro>
+
+### 基础用法
+
+scrollable={false} 时所有标签等分容器宽度
 
 ```tsx
 import { UPTabs } from '@ultra-ui'
@@ -83,25 +157,273 @@ import { UPTabs } from '@ultra-ui'
 />
 ```
 
+### 横向滚动
+
+scrollable 默认为 true，标签超出后横向滚动，选中项自动滚到中间
+
+```tsx
+<UPTabs list={MANY_LIST} current={many} onChange={handleChange(setMany)} />
+```
+
 <small>Snippet from `ultra-ui-taro/src/pages/components/tabs/index.tsx`</small>
 
 </template>
 
 <template #uniapp>
 
+### 基础演示
+
 ```vue
 <up-tabs :list="list1" @click="click" :current="3">
 </up-tabs>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus/src/pages/componentsC/tabs/tabs.nvue`</small>
+### 粘性布局
+
+```vue
+<up-tabs
+    :list="list1"
+>
+</up-tabs>
+```
+
+### 显示徽标
+
+```vue
+<up-tabs :list="list2">
+</up-tabs>
+```
+
+### 禁止滚动
+
+```vue
+<up-tabs :list="list6" :scrollable="false">
+</up-tabs>
+```
+
+### 禁用菜单
+
+```vue
+<up-tabs :list="list3">
+</up-tabs>
+```
+
+### 自定义样式
+
+```vue
+<up-tabs
+    :list="list4"
+    lineWidth="30"
+    lineColor="#f56c6c"
+    :activeStyle="{
+        color: '#303133',
+        fontWeight: 'bold',
+        transform: 'scale(1.05)'
+    }"
+    :inactiveStyle="{
+        color: '#606266',
+        transform: 'scale(1)'
+    }"
+    itemStyle="padding-left: 15px; padding-right: 15px; height: 34px;"
+>
+</up-tabs>
+```
+
+### 滑块设置背景图
+
+```vue
+<up-tabs
+    :list="list4"
+    lineWidth="20"
+    lineHeight="7"
+    :lineColor="`url(${lineBg}) 100% 100%`"
+    :activeStyle="{
+        color: '#303133',
+        fontWeight: 'bold',
+        transform: 'scale(1.05)'
+    }"
+    :inactiveStyle="{
+        color: '#606266',
+        transform: 'scale(1)'
+    }"
+    itemStyle="padding-left: 15px; padding-right: 15px; height: 34px;"
+>
+</up-tabs>
+```
+
+### 自定义内容插槽
+
+```vue
+<up-tabs :list="list1">
+    <template #default="{item, keyName}">
+        <text class="u-tabs__wrapper__nav__item__text"
+            style="color: red">
+            {{item != null ? (item as UTSJSONObject)[keyName as string] : '-'}}
+        </text>
+    </template>
+</up-tabs>
+```
+
+### 右侧自定义插槽
+
+```vue
+<up-tabs :list="list1" v-model:current="list1Current">
+    <template #right>
+        <view
+            style="padding-left: 4px;"
+            @tap="toastSlotClick"
+        >
+            <up-icon
+                name="list"
+                size="21"
+                bold
+            ></up-icon>
+        </view>
+    </template>
+</up-tabs>
+```
+
+### 在swiper中使用
+
+```vue
+<up-tabs :list="list1">
+    <template #default="{item, keyName}">
+        <text class="u-tabs__wrapper__nav__item__text"
+            style="color: red">
+            {{item != null ? (item as UTSJSONObject)[keyName as string] : '-'}}
+        </text>
+    </template>
+</up-tabs>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/tabs/tabs.uvue`</small>
 
 </template>
 
 <template #uniappx>
 
+### 基础演示
+
 ```vue
 <up-tabs :list="list1" @click="click" :current="3">
+</up-tabs>
+```
+
+### 粘性布局
+
+```vue
+<up-tabs
+    :list="list1"
+>
+</up-tabs>
+```
+
+### 显示徽标
+
+```vue
+<up-tabs :list="list2">
+</up-tabs>
+```
+
+### 禁止滚动
+
+```vue
+<up-tabs :list="list6" :scrollable="false">
+</up-tabs>
+```
+
+### 禁用菜单
+
+```vue
+<up-tabs :list="list3">
+</up-tabs>
+```
+
+### 自定义样式
+
+```vue
+<up-tabs
+    :list="list4"
+    lineWidth="30"
+    lineColor="#f56c6c"
+    :activeStyle="{
+        color: '#303133',
+        fontWeight: 'bold',
+        transform: 'scale(1.05)'
+    }"
+    :inactiveStyle="{
+        color: '#606266',
+        transform: 'scale(1)'
+    }"
+    itemStyle="padding-left: 15px; padding-right: 15px; height: 34px;"
+>
+</up-tabs>
+```
+
+### 滑块设置背景图
+
+```vue
+<up-tabs
+    :list="list4"
+    lineWidth="20"
+    lineHeight="7"
+    :lineColor="`url(${lineBg}) 100% 100%`"
+    :activeStyle="{
+        color: '#303133',
+        fontWeight: 'bold',
+        transform: 'scale(1.05)'
+    }"
+    :inactiveStyle="{
+        color: '#606266',
+        transform: 'scale(1)'
+    }"
+    itemStyle="padding-left: 15px; padding-right: 15px; height: 34px;"
+>
+</up-tabs>
+```
+
+### 自定义内容插槽
+
+```vue
+<up-tabs :list="list1">
+    <template #default="{item, keyName}">
+        <text class="u-tabs__wrapper__nav__item__text"
+            style="color: red">
+            {{item != null ? (item as UTSJSONObject)[keyName as string] : '-'}}
+        </text>
+    </template>
+</up-tabs>
+```
+
+### 右侧自定义插槽
+
+```vue
+<up-tabs :list="list1" v-model:current="list1Current">
+    <template #right>
+        <view
+            style="padding-left: 4px;"
+            @tap="toastSlotClick"
+        >
+            <up-icon
+                name="list"
+                size="21"
+                bold
+            ></up-icon>
+        </view>
+    </template>
+</up-tabs>
+```
+
+### 在swiper中使用
+
+```vue
+<up-tabs :list="list1">
+    <template #default="{item, keyName}">
+        <text class="u-tabs__wrapper__nav__item__text"
+            style="color: red">
+            {{item != null ? (item as UTSJSONObject)[keyName as string] : '-'}}
+        </text>
+    </template>
 </up-tabs>
 ```
 
@@ -165,30 +487,6 @@ The reference below is extracted from the uview-plus source, whose property name
 
 ### `<up-tabs-pro>`
 
-#### Props
-
-| Prop | Description | Type | Default |
-| --- | --- | --- | --- |
-| `list` | — | `Array` | `—` |
-| `keyName` | — | `String` | `—` |
-| `current` | — | `Number / String` | `—` |
-| `contentMode` | — | `String` | `—` |
-| `lineColor` | — | `String` | `—` |
-| `activeStyle` | — | `String / Object` | `—` |
-| `inactiveStyle` | — | `String / Object` | `—` |
-| `lineWidth` | — | `String / Number` | `—` |
-| `lineHeight` | — | `String / Number` | `—` |
-| `lineBgSize` | — | `String` | `—` |
-| `itemStyle` | — | `String / Object` | `—` |
-| `scrollable` | — | `Boolean` | `—` |
-| `duration` | — | `Number / String` | `—` |
-| `iconStyle` | — | `String / Object` | `—` |
-| `shapeMode` | — | `String` | `—` |
-| `showContent` | — | `Boolean` | `—` |
-| `contentClass` | — | `String` | `—` |
-| `contentStyle` | — | `String / Object / Array` | `—` |
-| `bindIndexRef` | — | `String` | `—` |
-
 #### Events
 
 | Event |
@@ -218,6 +516,6 @@ The reference below is extracted from the uview-plus source, whose property name
 | Flutter · Dart | `UPTabs` | `packages/ultra_ui/lib/src/widgets/up_tabs.dart` |
 | React Native · TypeScript | `UPTabs` | `src/components/tabs` |
 | Taro · React + TypeScript | `UPTabs` | `src/ultra-ui/components/up-tabs` |
-| uni-app · Vue 3 | `up-tabs` | `src/uni_modules/uview-plus/components/u-tabs` |
+| uni-app · Vue 3 | `up-tabs` | `uni_modules/uview-ultra/components/up-tabs` |
 | uni-app-x · UTS / UVUE | `up-tabs` | `uni_modules/uview-ultra/components/up-tabs` |
 

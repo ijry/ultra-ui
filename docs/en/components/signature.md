@@ -41,15 +41,27 @@ UPSignature(
 
 ```tsx
 import { UPSignature } from 'ultra-ui-rn';
+
+<UPSignature
+  bgColor="#f5f5f5"
+  height={200}
+  onConfirm={onConfirm1}
+  onError={onError1}
+  ref={signature1}
+  showToolbar={false}
+  width={700}
+/>
 ```
 
-::: tip
-No snippet could be extracted automatically — please read the source.
-:::
+<small>Snippet from `ultra-ui-rn/example/pages/components/advanced/SignatureDemo.tsx`</small>
 
 </template>
 
 <template #taro>
+
+### 自定义笔画
+
+color 与 thickness 设置初始笔形
 
 ```tsx
 import { UPSignature } from '@ultra-ui'
@@ -62,6 +74,40 @@ import { UPSignature } from '@ultra-ui'
 />
 ```
 
+### 自定义背景
+
+bgColor 改变画布底色
+
+```tsx
+<UPSignature
+  width={320}
+  height={180}
+  bgColor='#fffbe6'
+  color='#ad6800'
+/>
+```
+
+### 隐藏工具栏
+
+showToolbar 为 false，改由外部通过 ref 控制
+
+```tsx
+<UPSignature
+  ref={manualRef}
+  width={320}
+  height={180}
+  showToolbar={false}
+/>
+```
+
+### 尺寸
+
+width / height 控制画布大小
+
+```tsx
+<UPSignature width={240} height={140} />
+```
+
 <small>Snippet from `ultra-ui-taro/src/pages/components/signature/index.tsx`</small>
 
 </template>
@@ -69,18 +115,18 @@ import { UPSignature } from '@ultra-ui'
 <template #uniapp>
 
 ```vue
-<up-signature
-    ref="signature1"
-    :width="700"
-    :height="200"
-    :bg-color="upThemeIsDark ? '#1c1c1e' : '#f5f5f5'"
+<up-signature 
+    ref="signature1" 
+    :width="700" 
+    :height="200" 
+    bg-color="#f5f5f5"
     :show-toolbar="false"
     @confirm="onConfirm1"
     @error="onError1"
 ></up-signature>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus/src/pages/componentsD/signature/signature.nvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/signature/signature.uvue`</small>
 
 </template>
 
@@ -108,22 +154,10 @@ import { UPSignature } from '@ultra-ui'
 
 The reference below is extracted from the uview-plus source, whose property names the other ports keep. For per-platform differences, compare the tabs above.
 
-### Props
-
-| Prop | Description | Type | Default |
-| --- | --- | --- | --- |
-| `width` | 画布宽度 | `String / Number` | `—` |
-| `height` | 画布高度 | `String / Number` | `—` |
-| `bgColor` | 背景颜色 | `String` | `—` |
-| `color` | 默认笔画颜色 | `String` | `—` |
-| `thickness` | 默认笔画粗细 | `String / Number` | `—` |
-| `showToolbar` | 是否显示工具栏 | `Boolean` | `—` |
-
 ### Events
 
 | Event |
 | --- |
-| `clear` |
 | `confirm` |
 | `error` |
 
@@ -134,6 +168,6 @@ The reference below is extracted from the uview-plus source, whose property name
 | Flutter · Dart | `UPSignature` | `packages/ultra_ui/lib/src/widgets/up_signature.dart` |
 | React Native · TypeScript | `UPSignature` | `src/components/signature` |
 | Taro · React + TypeScript | `UPSignature` | `src/ultra-ui/components/up-signature` |
-| uni-app · Vue 3 | `up-signature` | `src/uni_modules/uview-plus/components/u-signature` |
+| uni-app · Vue 3 | `up-signature` | `uni_modules/uview-ultra/components/up-signature` |
 | uni-app-x · UTS / UVUE | `up-signature` | `uni_modules/uview-ultra/components/up-signature` |
 

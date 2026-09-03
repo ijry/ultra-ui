@@ -102,21 +102,18 @@ import { UPDatetimePicker } from '@ultra-ui'
 
 ```vue
 <up-datetime-picker
-    hasInput
-    placeholder="请选择日期"
+    :show="show1"
+    v-model="value1"
     mode="datetime"
-    :inputProps="{
-        border: 'surround',
-        shape: 'square',
-        inputAlign: 'center',
-        suffixIcon: 'calendar'
-    }"
-    :modelValue="1714266792000"
-    >
-</up-datetime-picker>
+    closeOnClickOverlay
+    @confirm="confirm"
+    @cancel="cancel"
+    @change="change"
+    @close="close"
+></up-datetime-picker>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus/src/pages/componentsC/datetimePicker/datetimePicker.nvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsC/datetimePicker/datetimePicker.uvue`</small>
 
 </template>
 
@@ -150,10 +147,7 @@ import { UPDatetimePicker } from '@ultra-ui'
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | `hasInput` | 是否显示input | `Boolean` | `—` |
-| `inputProps` | — | `Object` | `{}` |
-| `inputBorder` | — | `String` | `'surround'` |
-| `disabled` | — | `String` | `false` |
-| `placeholder` | — | `String` | `t("up.common.pleaseChoose")` |
+| `placeholder` | — | `String` | `—` |
 | `format` | — | `String` | `—` |
 | `show` | 是否打开组件 | `Boolean` | `false` |
 | `popupMode` | 弹出的方向，可选值为 top bottom right left center | `String` | `'bottom'` |
@@ -175,16 +169,14 @@ import { UPDatetimePicker } from '@ultra-ui'
 | `formatter` | 选项格式化函数 | `Function / null` | `null` |
 | `loading` | 是否显示加载中状态 | `Boolean` | `false` |
 | `itemHeight` | 各列中，单个选项的高度 | `String / Number` | `44` |
-| `cancelText` | 取消按钮的文字 | `String` | `t("up.common.cancel")` |
-| `confirmText` | 确认按钮的文字 | `String` | `t("up.common.confirm")` |
+| `cancelText` | 取消按钮的文字 | `String` | `'取消'` |
+| `confirmText` | 确认按钮的文字 | `String` | `'确认'` |
 | `cancelColor` | 取消按钮的颜色 | `String` | `'#909193'` |
 | `confirmColor` | 确认按钮的颜色 | `String` | `'#3c9cff'` |
 | `visibleItemCount` | 每列中可见选项的数量 | `String / Number` | `5` |
 | `closeOnClickOverlay` | 是否允许点击遮罩关闭选择器 | `Boolean` | `false` |
 | `defaultIndex` | 各列的默认索引 | `Array` | `[]` |
-| `pageInline` | 是否页面内展示 | `Boolean` | `false` |
-| `maskClass` | 蒙层样式样式 | `String` | `—` |
-| `maskStyle` | 蒙层样式样式 | `String` | `—` |
+| `pageInline` | 是否内联在页面中（不使用弹窗形式） | `Boolean` | `false` |
 
 ### 事件
 
@@ -203,7 +195,6 @@ import { UPDatetimePicker } from '@ultra-ui'
 | --- |
 | `toolbar-bottom` |
 | `toolbar-right` |
-| `trigger` |
 
 ## 各平台源码
 
@@ -213,6 +204,6 @@ import { UPDatetimePicker } from '@ultra-ui'
 | Flutter · Dart | `UPDatetimePicker` | `packages/ultra_ui/lib/src/widgets/up_datetime_picker.dart` |
 | React Native · TypeScript | `UPDatetimePicker` | `src/components/datetime-picker` |
 | Taro · React + TypeScript | `UPDatetimePicker` | `src/ultra-ui/components/up-datetime-picker` |
-| uni-app · Vue 3 | `up-datetime-picker` | `src/uni_modules/uview-plus/components/u-datetime-picker` |
+| uni-app · Vue 3 | `up-datetime-picker` | `uni_modules/uview-ultra/components/up-datetime-picker` |
 | uni-app-x · UTS / UVUE | `up-datetime-picker` | `uni_modules/uview-ultra/components/up-datetime-picker` |
 

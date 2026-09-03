@@ -53,6 +53,10 @@ import { UPWaterfall } from 'ultra-ui-rn';
 
 <template #taro>
 
+### 三列
+
+columns 指定列数，数据在三列间按最矮优先分配
+
 ```tsx
 import { UPWaterfall } from '@ultra-ui'
 
@@ -72,14 +76,14 @@ import { UPWaterfall } from '@ultra-ui'
 
 ```vue
 <up-waterfall v-model="flowList" columns="auto" ref="uWaterfallRef">
-    <template v-slot:column="{ colList, colIndex }">
-        <view class="demo-warter" v-for="(item, index) in colList" :key="index" :style="{ backgroundColor: upThemeVar('--up-card-bg-color') }">
+    <template v-slot:column="{ colList }">
+        <view class="demo-warter" v-for="(item, index) in (colList as UTSJSONObject[])" :key="index">
             <!-- 微信小程序需要hx2.8.11版本才支持在template中引入其他组件，比如下方的u-lazy-load组件 -->
             <!-- <up-lazy-load threshold="-450" height="120" border-radius="10" :image="item.image"
                 :index="index"></up-lazy-load> -->
-            <image style="width: 100%" mode="widthFix" :src="item.image"></image>
-            <view class="demo-title">{{ item.title }}</view>
-            <view class="demo-price">{{ item.price }}元</view>
+            <image style="width: 100%" mode="widthFix" :src="item['image']"></image>
+            <view class="demo-title">{{ item['title'] }}</view>
+            <view class="demo-price">{{ item['price'] }}元</view>
             <view class="demo-tag">
                 <view class="demo-tag-owner">
                     <text class="text">自营</text>
@@ -88,16 +92,17 @@ import { UPWaterfall } from '@ultra-ui'
                     <text class="text">放心购</text>
                 </view>
             </view>
-            <view class="demo-shop">{{ item.shop }}</view>
+            <view class="demo-shop">{{ item['shop'] }}</view>
             <view class="u-close">
-                <up-icon name="close-circle-fill" color="#fa3534" size="16" @click="remove(item.id)"></up-icon>
+                <up-icon name="close-circle-fill" color="#fa3534"
+                    size="16" @click="remove(item['id'] ?? '')"></up-icon>
             </view>
         </view>
     </template>
 </up-waterfall>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus/src/pages/componentsB/waterfall/waterfall.nvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsB/waterfall/waterfall.uvue`</small>
 
 </template>
 
@@ -141,18 +146,6 @@ import { UPWaterfall } from '@ultra-ui'
 
 接口以 uview-plus 源码为准，各平台移植时保持了同名属性；平台间的差异请对照上方的示例标签。
 
-### 属性
-
-| 属性 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
-| `value` | — | `Array` | `—` |
-| `modelValue` | — | `Array` | `—` |
-| `addTime` | 每次向结构插入数据的时间间隔，单位ms 单位ms | `Number / String` | `—` |
-| `idKey` | id值，用于清除某一条数据时，根据此idKey名称找到并移除，如数据为{idx: 22, name: 'lisa'} 那么该把idKey设置为idx | `String` | `—` |
-| `columns` | 瀑布流列数 | `Number / String` | `—` |
-| `columnsMin` | 瀑布流最小列数 | `Number / String` | `—` |
-| `minColumnWidth` | 最小列宽 | `Number` | `—` |
-
 ### 事件
 
 | 事件名 |
@@ -176,6 +169,6 @@ import { UPWaterfall } from '@ultra-ui'
 | Flutter · Dart | `UPWaterfall` | `packages/ultra_ui/lib/src/widgets/up_waterfall.dart` |
 | React Native · TypeScript | `UPWaterfall` | `src/components/waterfall` |
 | Taro · React + TypeScript | `UPWaterfall` | `src/ultra-ui/components/up-waterfall` |
-| uni-app · Vue 3 | `up-waterfall` | `src/uni_modules/uview-plus/components/u-waterfall` |
+| uni-app · Vue 3 | `up-waterfall` | `uni_modules/uview-ultra/components/up-waterfall` |
 | uni-app-x · UTS / UVUE | `up-waterfall` | `uni_modules/uview-ultra/components/up-waterfall` |
 

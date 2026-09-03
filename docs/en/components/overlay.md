@@ -33,6 +33,8 @@ UPOverlay(show: true) {
 
 <template #android>
 
+### 遮罩
+
 ```kotlin
 import net.lingyun.ultraui.android.components.UPOverlay
 import net.lingyun.ultraui.android.components.UPOverlayProps
@@ -114,7 +116,7 @@ import { UPOverlay } from '@ultra-ui'
 ></up-overlay>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus/src/pages/componentsA/overlay/overlay.nvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsA/overlay/overlay.uvue`</small>
 
 </template>
 
@@ -168,6 +170,6 @@ The reference below is extracted from the uview-plus source, whose property name
 | Flutter · Dart | `UPOverlay` | `packages/ultra_ui/lib/src/widgets/up_overlay.dart` |
 | React Native · TypeScript | `UPOverlay` | `src/components/overlay` |
 | Taro · React + TypeScript | `UPOverlay` | `src/ultra-ui/components/up-overlay` |
-| uni-app · Vue 3 | `up-overlay` | `src/uni_modules/uview-plus/components/u-overlay` |
+| uni-app · Vue 3 | `up-overlay` | `uni_modules/uview-ultra/components/up-overlay` |
 | uni-app-x · UTS / UVUE | `up-overlay` | `uni_modules/uview-ultra/components/up-overlay` |
 

@@ -31,6 +31,8 @@ No snippet could be extracted automatically — please read the source.
 
 <template #android>
 
+### 标题
+
 ```kotlin
 import net.lingyun.ultraui.android.components.UPTitle
 
@@ -82,10 +84,66 @@ import { UPTitle } from 'ultra-ui-rn';
 
 <template #taro>
 
+### 基础用法
+
+带左 accent 条的标题
+
 ```tsx
 import { UPTitle } from '@ultra-ui'
 
 <UPTitle text='标题文字' />
+```
+
+### 副标题
+
+sub 属性，显示一行更小的说明文字
+
+```tsx
+<UPTitle text='订单详情' sub='查看你本月的消费明细' />
+```
+
+### 右侧插槽
+
+rightSlot 自动靠右，常用于放置操作按钮
+
+```tsx
+<UPTitle
+  text='消息通知'
+  sub='共 3 条未读'
+  rightSlot={
+    <UPButton size='mini' type='primary' text='全部已读' />
+```
+
+### 自定义 accent 条
+
+prefixColor / prefixWidth / prefixHeight / prefix={false}
+
+```tsx
+<UPTitle text='红色强调' prefixColor='error' prefixWidth={6} prefixHeight={28} />
+```
+
+### 对齐方式
+
+align：left / center / right
+
+```tsx
+<UPTitle text='左对齐（默认）' />
+```
+
+### 自定义内容
+
+textSlot / subSlot / children 组合
+
+```tsx
+<UPTitle
+  prefixColor='success'
+  textSlot={<View className='title-demo__custom'>自定义标题节点</View>}
+/>
+</DemoRow>
+<DemoRow label='children'>
+<UPTitle prefixColor='info'>
+  <View className='title-demo__custom'>children 渲染的位置</View>
+</UPTitle>
 ```
 
 <small>Snippet from `ultra-ui-taro/src/pages/components/title/index.tsx`</small>
@@ -100,7 +158,7 @@ import { UPTitle } from '@ultra-ui'
 </up-title>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus/src/pages/componentsD/title/title.nvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/title/title.uvue`</small>
 
 </template>
 
@@ -139,6 +197,6 @@ The reference below is extracted from the uview-plus source, whose property name
 | Flutter · Dart | `UPTitle` | `packages/ultra_ui/lib/src/widgets/up_title.dart` |
 | React Native · TypeScript | `UPTitle` | `src/components/title` |
 | Taro · React + TypeScript | `UPTitle` | `src/ultra-ui/components/up-title` |
-| uni-app · Vue 3 | `up-title` | `src/uni_modules/uview-plus/components/u-title` |
+| uni-app · Vue 3 | `up-title` | `uni_modules/uview-ultra/components/up-title` |
 | uni-app-x · UTS / UVUE | `up-title` | `uni_modules/uview-ultra/components/up-title` |
 

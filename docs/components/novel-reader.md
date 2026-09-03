@@ -56,10 +56,19 @@ UPNovelReader(
 import { UPNovelReader } from 'ultra-ui-rn';
 
 <UPNovelReader
-chapters={CHAPTERS}
-currentChapter={chapter}
-mode="scroll"
-showBack
+  bookId="demo-novel"
+  chapters={CHAPTERS}
+  currentChapter={currentChapter}
+  error={error}
+  loading={loading}
+  mode="scroll"
+  progress={progress}
+  settings={settings}
+  onChapterPrefetch={handleChapterPrefetch}
+  onChapterRequest={handleChapterRequest}
+  onProgressChange={handleProgressChange}
+  onRetry={handleRetry}
+  onSettingsChange={handleSettingsChange}
 />
 ```
 
@@ -83,32 +92,29 @@ import { UPNovelReader } from '@ultra-ui'
 
 ```vue
 <up-novel-reader
-    book-id="demo-novel"
     :chapters="chapters"
     :current-chapter="currentChapter"
-    :loading="loading"
-    :error="error"
-    :progress="progress"
-    :settings="settings"
+    book-id="demo-novel"
     :mode="mode"
+    :initial-bookmarks="bookmarks"
     @chapter-request="handleChapterRequest"
     @chapter-prefetch="handleChapterPrefetch"
     @progress-change="handleProgressChange"
     @settings-change="handleSettingsChange"
-    @retry="handleRetry"
+    @bookmark-change="handleBookmarkChange"
+    @reading-time-change="handleReadingTimeChange"
+    @mode-change="handleModeChange"
+    @back="handleBack"
 >
     <template #toolbar-extra>
-        <view
-            class="novel-reader-demo__mode"
-            @tap.stop="mode = mode === 'scroll' ? 'page' : 'scroll'"
-        >
+        <view class="novel-reader-demo__mode" @tap.stop="toggleMode">
             <up-icon name="order" size="18" color="#2979ff"></up-icon>
         </view>
     </template>
 </up-novel-reader>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus/src/pages/componentsD/novelReader/novelReader.nvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/novelReader/novelReader.uvue`</small>
 
 </template>
 
@@ -211,6 +217,6 @@ import { UPNovelReader } from '@ultra-ui'
 | Flutter · Dart | `UPNovelReader` | `packages/ultra_ui/lib/src/widgets/up_novel_reader.dart` |
 | React Native · TypeScript | `UPNovelReader` | `src/components/novel-reader` |
 | Taro · React + TypeScript | `UPNovelReader` | `src/ultra-ui/components/up-novel-reader` |
-| uni-app · Vue 3 | `up-novel-reader` | `src/uni_modules/uview-plus/components/u-novel-reader` |
+| uni-app · Vue 3 | `up-novel-reader` | `uni_modules/uview-ultra/components/up-novel-reader` |
 | uni-app-x · UTS / UVUE | `up-novel-reader` | `uni_modules/uview-ultra/components/up-novel-reader` |
 

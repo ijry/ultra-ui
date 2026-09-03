@@ -36,7 +36,7 @@ UPMarkdown(
 ```tsx
 import { UPMarkdown } from 'ultra-ui-rn';
 
-<UPMarkdown content={CONTENT} />
+<UPMarkdown content={basicContent} />
 ```
 
 <small>示例来源 `ultra-ui-rn/example/pages/components/advanced/MarkdownDemo.tsx`</small>
@@ -45,10 +45,54 @@ import { UPMarkdown } from 'ultra-ui-rn';
 
 <template #taro>
 
+### 基础用法
+
+标题、正文、行内标记与链接
+
 ```tsx
 import { UPMarkdown } from '@ultra-ui'
 
 <UPMarkdown content={basicMd} />
+```
+
+### 列表与引用
+
+有序、无序、嵌套与引用块
+
+```tsx
+<UPMarkdown content={listMd} />
+```
+
+### 代码块
+
+围栏代码块保留缩进，可切换行号显示
+
+```tsx
+<UPMarkdown content={codeMd} showLineNumber={showLineNumber} />
+```
+
+### 表格
+
+GFM 表格语法
+
+```tsx
+<UPMarkdown content={tableMd} />
+```
+
+### 文本可选
+
+selectable 允许长按选中
+
+```tsx
+<UPMarkdown content='可以长按选中这段 **markdown** 文字。' selectable />
+```
+
+### 空内容
+
+content 为空时不渲染任何节点
+
+```tsx
+<UPMarkdown content='' />
 ```
 
 <small>示例来源 `ultra-ui-taro/src/pages/components/markdown/index.tsx`</small>
@@ -61,7 +105,7 @@ import { UPMarkdown } from '@ultra-ui'
 <up-markdown :content="basicContent"></up-markdown>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus/src/pages/componentsD/markdown/markdown.nvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/markdown/markdown.uvue`</small>
 
 </template>
 
@@ -81,27 +125,9 @@ import { UPMarkdown } from '@ultra-ui'
 
 接口以 uview-plus 源码为准，各平台移植时保持了同名属性；平台间的差异请对照上方的示例标签。
 
-### 属性
-
-| 属性 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
-| `content` | markdown内容 | `String` | `—` |
-| `previewImg` | 是否启用图片预览 | `Boolean` | `—` |
-| `copyLink` | 是否允许外部链接被点击时自动打开 | `Boolean / String` | `—` |
-| `domain` | 主域名，用于 up-parse 处理相对链接 | `String` | `—` |
-| `showLineNumber` | 是否显示代码块行号 | `Boolean` | `—` |
-| `theme` | 主题样式 'light' &#124; 'dark' | `String` | `—` |
-
-### 事件
-
-| 事件名 |
-| --- |
-| `error` |
-| `imgtap` |
-| `linktap` |
-| `load` |
-| `play` |
-| `ready` |
+::: tip
+该组件通过命令式方法调用，没有声明式属性；调用参数请参考上方示例与源码。
+:::
 
 ## 各平台源码
 
@@ -110,6 +136,6 @@ import { UPMarkdown } from '@ultra-ui'
 | Flutter · Dart | `UPMarkdown` | `packages/ultra_ui/lib/src/widgets/up_markdown.dart` |
 | React Native · TypeScript | `UPMarkdown` | `src/components/markdown` |
 | Taro · React + TypeScript | `UPMarkdown` | `src/ultra-ui/components/up-markdown` |
-| uni-app · Vue 3 | `up-markdown` | `src/uni_modules/uview-plus/components/u-markdown` |
+| uni-app · Vue 3 | `up-markdown` | `uni_modules/uview-ultra/components/up-markdown` |
 | uni-app-x · UTS / UVUE | `up-markdown` | `uni_modules/uview-ultra/components/up-markdown` |
 

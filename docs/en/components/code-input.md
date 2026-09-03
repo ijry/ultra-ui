@@ -31,6 +31,8 @@ No snippet could be extracted automatically — please read the source.
 
 <template #android>
 
+### 验证码输入
+
 ```kotlin
 import net.lingyun.ultraui.android.components.UPCodeInput
 import net.lingyun.ultraui.android.components.UPCodeInputProps
@@ -88,10 +90,80 @@ UPCodeInput(
 
 <template #reactnative>
 
+### 横线模式
+
 ```tsx
 import { UPCodeInput } from 'ultra-ui-rn';
 
 <UPCodeInput bold maxlength={4} mode="line" onChange={setValue2} value={value2} />
+```
+
+### 设置长度
+
+```tsx
+<UPCodeInput maxlength={6} onChange={setValue3} value={value3} />
+```
+
+### 设置间距
+
+```tsx
+<UPCodeInput maxlength={4} mode="box" onChange={setValue4} space={0} value={value4} />
+```
+
+### 细边框
+
+```tsx
+<UPCodeInput
+  hairline
+  maxlength={4}
+  mode="box"
+  onChange={setValue5}
+  space={0}
+  value={value5}
+/>
+```
+
+### 调整颜色
+
+```tsx
+<UPCodeInput
+  borderColor="#f56c6c"
+  color="#f56c6c"
+  hairline
+  maxlength={4}
+  mode="box"
+  onChange={setValue7}
+  space={0}
+  value={value7}
+/>
+```
+
+### 点模式
+
+```tsx
+<UPCodeInput
+  dot
+  hairline
+  maxlength={4}
+  mode="box"
+  onChange={setValue8}
+  space={0}
+  value={value8}
+/>
+```
+
+### 预置内容
+
+```tsx
+<UPCodeInput
+  fontSize="17"
+  hairline
+  maxlength={4}
+  mode="box"
+  onChange={setValue9}
+  space={0}
+  value={value9}
+/>
 ```
 
 <small>Snippet from `ultra-ui-rn/example/pages/components/form/CodeInputDemo.tsx`</small>
@@ -121,7 +193,7 @@ No snippet could be extracted automatically — please read the source.
 ></up-code-input>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus/src/pages/componentsC/codeInput/codeInput.nvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/codeInput/codeInput.uvue`</small>
 
 </template>
 
@@ -185,6 +257,6 @@ The reference below is extracted from the uview-plus source, whose property name
 | Flutter · Dart | `UPCodeInput` | `packages/ultra_ui/lib/src/widgets/up_code_input.dart` |
 | React Native · TypeScript | `UPCodeInput` | `src/components/code-input` |
 | Taro · React + TypeScript | `UPCodeInput` | `src/ultra-ui/components/up-code-input` |
-| uni-app · Vue 3 | `up-code-input` | `src/uni_modules/uview-plus/components/u-code-input` |
+| uni-app · Vue 3 | `up-code-input` | `uni_modules/uview-ultra/components/up-code-input` |
 | uni-app-x · UTS / UVUE | `up-code-input` | `uni_modules/uview-ultra/components/up-code-input` |
 

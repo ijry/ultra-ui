@@ -40,6 +40,8 @@ UPModal(show: $showConfirm,
 
 <template #android>
 
+### 加载更多
+
 ```kotlin
 import net.lingyun.ultraui.android.components.UPModal
 import net.lingyun.ultraui.android.components.UPModalProps
@@ -148,13 +150,11 @@ import { UPModal } from '@ultra-ui'
     :content="content"
     title="标题"
     :show="show1"
-    contentTextAlign="left"
-    @confirm="() => show1 = false"
->
-</up-modal>
+    @confirm="() => {show1 = false}"
+></up-modal>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus/src/pages/componentsC/modal/modal.nvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/modal/modal.uvue`</small>
 
 </template>
 
@@ -233,6 +233,6 @@ The reference below is extracted from the uview-plus source, whose property name
 | Flutter · Dart | `UPModal` | `packages/ultra_ui/lib/src/widgets/up_modal.dart` |
 | React Native · TypeScript | `UPModal` | `src/components/modal` |
 | Taro · React + TypeScript | `UPModal` | `src/ultra-ui/components/up-modal` |
-| uni-app · Vue 3 | `up-modal` | `src/uni_modules/uview-plus/components/u-modal` |
+| uni-app · Vue 3 | `up-modal` | `uni_modules/uview-ultra/components/up-modal` |
 | uni-app-x · UTS / UVUE | `up-modal` | `uni_modules/uview-ultra/components/up-modal` |
 

@@ -52,6 +52,8 @@ UPPagination(
 
 <template #reactnative>
 
+### 基础
+
 ```tsx
 import { UPPagination } from 'ultra-ui-rn';
 
@@ -66,11 +68,45 @@ import { UPPagination } from 'ultra-ui-rn';
 />
 ```
 
+### 上一页下一页文案
+
+```tsx
+<UPPagination
+  currentPage={currentPage}
+  layout="prev, total, next"
+  nextText="下一页"
+  onCurrentChange={handleCurrentChange}
+  onSizeChange={handleSizeChange}
+  pageSize={pageSize}
+  pageSizes={pageSizes}
+  prevText="上一页"
+  total={100}
+/>
+```
+
+### 显示分页切换
+
+```tsx
+<UPPagination
+  currentPage={currentPage}
+  layout="prev, pager, next"
+  onCurrentChange={handleCurrentChange}
+  onSizeChange={handleSizeChange}
+  pageSize={pageSize}
+  pageSizes={pageSizes}
+  total={100}
+/>
+```
+
 <small>Snippet from `ultra-ui-rn/example/pages/components/navigation/PaginationDemo.tsx`</small>
 
 </template>
 
 <template #taro>
+
+### 基础用法
+
+total / pageSize / current 受控
 
 ```tsx
 import { UPPagination } from '@ultra-ui'
@@ -83,6 +119,28 @@ import { UPPagination } from '@ultra-ui'
 />
 ```
 
+### 图标箭头
+
+icon 开启 prev/next 箭头
+
+```tsx
+<UPPagination
+  total={200}
+  pageSize={20}
+  current={iconCurrent}
+  icon
+  onChange={setIconCurrent}
+/>
+```
+
+### 禁用
+
+disabled 整体禁止交互
+
+```tsx
+<UPPagination total={100} pageSize={10} current={3} disabled />
+```
+
 <small>Snippet from `ultra-ui-taro/src/pages/components/pagination/index.tsx`</small>
 
 </template>
@@ -90,7 +148,7 @@ import { UPPagination } from '@ultra-ui'
 <template #uniapp>
 
 ```vue
-<u-pagination
+<up-pagination
     :current-page="currentPage"
     :page-size="pageSize"
     :total="total"
@@ -101,7 +159,7 @@ import { UPPagination } from '@ultra-ui'
   />
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus/src/pages/componentsD/pagination/pagination.nvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/pagination/pagination.uvue`</small>
 
 </template>
 
@@ -129,21 +187,6 @@ import { UPPagination } from '@ultra-ui'
 
 The reference below is extracted from the uview-plus source, whose property names the other ports keep. For per-platform differences, compare the tabs above.
 
-### Props
-
-| Prop | Description | Type | Default |
-| --- | --- | --- | --- |
-| `currentPage` | 当前页码 | `Number` | `—` |
-| `pageSize` | 每页条目数 | `Number` | `—` |
-| `total` | 总数据条目数 | `Number` | `—` |
-| `prevText` | 上一页按钮文案 | `String` | `—` |
-| `nextText` | 下一页按钮文案 | `String` | `—` |
-| `buttonBgColor` | — | `String` | `—` |
-| `buttonBorderColor` | — | `String` | `—` |
-| `pageSizes` | 可选的每页条目数 | `Array` | `—` |
-| `layout` | 布局方式（类似 el-pagination） | `String` | `—` |
-| `hideOnSinglePage` | 是否隐藏只有一个页面时的分页控件 | `Boolean` | `—` |
-
 ### Events
 
 | Event |
@@ -161,6 +204,6 @@ The reference below is extracted from the uview-plus source, whose property name
 | Flutter · Dart | `UPPagination` | `packages/ultra_ui/lib/src/widgets/up_pagination.dart` |
 | React Native · TypeScript | `UPPagination` | `src/components/pagination` |
 | Taro · React + TypeScript | `UPPagination` | `src/ultra-ui/components/up-pagination` |
-| uni-app · Vue 3 | `up-pagination` | `src/uni_modules/uview-plus/components/u-pagination` |
+| uni-app · Vue 3 | `up-pagination` | `uni_modules/uview-ultra/components/up-pagination` |
 | uni-app-x · UTS / UVUE | `up-pagination` | `uni_modules/uview-ultra/components/up-pagination` |
 

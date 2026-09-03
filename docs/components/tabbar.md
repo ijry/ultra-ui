@@ -38,6 +38,8 @@ UPTabbar(
 
 <template #flutter>
 
+### 固定在底部(固定在屏幕最下方)
+
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
 
@@ -87,11 +89,146 @@ import { UPTabbar } from 'ultra-ui-rn';
 
 <template #taro>
 
+### 基础用法
+
+UPTabbar 的 value 与 UPTabbarItem 的 name 匹配；onChange 回传被点击项的 name
+
 ```tsx
 import { UPTabbar } from '@ultra-ui'
 
 <UPTabbar {...INLINE} value={basic} onChange={setBasic}>
   {renderItems(basic)}
+</UPTabbar>
+```
+
+### activeIcon / inactiveIcon
+
+子项自带选中态图标，无需外部判断
+
+```tsx
+<UPTabbar {...INLINE} value={basic} onChange={setBasic}>
+  {ITEMS.map((item) => (
+    <UPTabbarItem
+      key={item.name}
+      name={item.name}
+      text={item.text}
+      inactiveIcon={item.icon}
+      activeIcon={item.activeIcon}
+    />
+  ))}
+</UPTabbar>
+```
+
+### 徽标
+
+badge 数字角标 / dot 圆点
+
+```tsx
+<UPTabbar {...INLINE} value={badge} onChange={setBadge}>
+  <UPTabbarItem name='home' text='首页' icon='home' />
+  <UPTabbarItem name='cart' text='购物车' icon='bag' badge={5} />
+  <UPTabbarItem name='chat' text='消息' icon='chat' badge={128} />
+  <UPTabbarItem name='mine' text='我的' icon='account' dot />
+</UPTabbar>
+```
+
+### 自定义颜色
+
+activeColor / inactiveColor / backgroundColor / border
+
+```tsx
+<UPTabbar
+  {...INLINE}
+  value={color}
+  activeColor='#f56c6c'
+  inactiveColor='#c0c4cc'
+  backgroundColor='#fff8f8'
+  border={false}
+  onChange={setColor}
+>
+  {renderItems(color)}
+</UPTabbar>
+```
+
+### 选中项背景色
+
+activeBackgroundColor / inactiveBackgroundColor + itemShape
+
+```tsx
+<UPTabbar
+  {...INLINE}
+  value={shape}
+  itemShape='round'
+  activeColor='#ffffff'
+  activeBackgroundColor='#3c9cff'
+  inactiveBackgroundColor='#f4f4f5'
+  onChange={setShape}
+>
+  {renderItems(shape)}
+</UPTabbar>
+```
+
+### 整体风格
+
+styleType 共 9 种
+
+```tsx
+<UPTabbar
+  {...INLINE}
+  styleType={type}
+  value={styleValue[type] ?? 'home'}
+  onChange={(name) => setStyleValue((prev) => ({ ...prev, [type]: name }))}
+>
+  {renderItems(styleValue[type] ?? 'home')}
+</UPTabbar>
+```
+
+### 选中动画
+
+animationType + iconScale，点上面的按钮切换动画类型后再点标签
+
+```tsx
+<UPTabbar
+  {...INLINE}
+  value={animation}
+  animationType={animationType}
+  iconScale={1.3}
+  onChange={setAnimation}
+>
+  {renderItems(animation)}
+</UPTabbar>
+```
+
+### 不设置 name
+
+子项未设置 name 时，以自身在 Tabbar 中的序号作为标识
+
+```tsx
+<UPTabbar {...INLINE} value={noName} onChange={setNoName}>
+  <UPTabbarItem text='第一项' icon='home' />
+  <UPTabbarItem text='第二项' icon='bag' />
+  <UPTabbarItem text='第三项' icon='account' />
+</UPTabbar>
+```
+
+### 自定义图标插槽
+
+activeIconSlot / inactiveIconSlot / textSlot
+
+```tsx
+<UPTabbar {...INLINE} value={basic} onChange={setBasic}>
+  <UPTabbarItem
+    name='home'
+    text='首页'
+    activeIconSlot={<UPIcon name='home-fill' size={24} color='#7232dd' />}
+    inactiveIconSlot={<UPIcon name='home' size={24} color='#c0c4cc' />}
+  />
+  <UPTabbarItem
+    name='cart'
+    icon='bag'
+    textSlot={<Text className='tabbar-demo__slot-text'>购物车</Text>}
+  />
+  <UPTabbarItem name='mine' text='我的' icon='account' />
 </UPTabbar>
 ```
 
@@ -105,7 +242,7 @@ import { UPTabbar } from '@ultra-ui'
 <up-tabbar
     :value="value2"
     :placeholder="false"
-    @change="name => value2 = name"
+    @change="(name: string | number | null) => {value2 = name}"
     :fixed="false"
     :safeAreaInsetBottom="false"
 >
@@ -130,7 +267,7 @@ import { UPTabbar } from '@ultra-ui'
 </up-tabbar>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus/src/pages/componentsB/tabbar/tabbar.nvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsB/tabbar/tabbar.uvue`</small>
 
 </template>
 
@@ -181,7 +318,7 @@ import { UPTabbar } from '@ultra-ui'
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| `value` | 当前匹配项的name | `String / Number / null` | `null` |
+| `value` | 当前匹配项的name | `String / Number` | `null` |
 | `safeAreaInsetBottom` | 是否为iPhoneX留出底部安全距离 | `Boolean` | `true` |
 | `border` | 是否显示上方边框 | `Boolean` | `true` |
 | `borderColor` | 上方边框颜色 | `String` | `''` |
@@ -191,13 +328,12 @@ import { UPTabbar } from '@ultra-ui'
 | `fixed` | 是否固定在底部 | `Boolean` | `true` |
 | `placeholder` | fixed定位固定在底部时，是否生成一个等高元素防止塌陷 | `Boolean` | `true` |
 | `backgroundColor` | 背景色 | `String` | `''` |
-| `styleType` | 风格类型 | `String` | `'default'` |
-| `animationType` | 激活动画类型 | `String` | `'none'` |
-| `activeBackgroundColor` | 选中项背景色 | `String` | `''` |
-| `inactiveBackgroundColor` | 未选中项背景色 | `String` | `''` |
-| `itemShape` | item 形状 | `String` | `'default'` |
-| `iconScale` | 图标缩放比例 | `String / Number` | `1.1` |
-| `textMode` | 文本显示模式 | `String` | `'always'` |
+
+#### 事件
+
+| 事件名 |
+| --- |
+| `change` |
 
 #### 插槽
 
@@ -211,17 +347,13 @@ import { UPTabbar } from '@ultra-ui'
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| `name` | item标签的名称，作为与u-tabbar的value参数匹配的标识符 | `String / Number / null` | `—` |
+| `name` | item标签的名称，作为与u-tabbar的value参数匹配的标识符 | `String / Number` | `—` |
 | `icon` | uview-plus内置图标或者绝对路径的图片 | `String` | `—` |
-| `activeIcon` | 激活态图标 | `String` | `—` |
-| `inactiveIcon` | 未激活态图标 | `String` | `—` |
-| `badge` | 右上角的角标提示信息 | `String / Number / null` | `—` |
+| `badge` | 右上角的角标提示信息 | `String / Number` | `—` |
 | `dot` | 是否显示圆点，将会覆盖badge参数 | `Boolean` | `—` |
 | `text` | 描述文本 | `String` | `—` |
 | `badgeStyle` | 控制徽标的位置，对象或者字符串形式，可以设置top和right属性 | `Object / String` | `—` |
 | `mode` | 模式，默认普通模式，midButton中间按钮模式 | `String` | `—` |
-| `activeClass` | 激活态附加类名 | `String` | `—` |
-| `inactiveClass` | 未激活态附加类名 | `String` | `—` |
 | `midButtonBgColor` | 中间按钮背景色 | `String` | `—` |
 | `midButtonIconColor` | 中间按钮图标颜色 | `String` | `—` |
 | `midButtonIconSize` | 中间按钮图标大小 | `String / Number` | `—` |
@@ -252,6 +384,6 @@ import { UPTabbar } from '@ultra-ui'
 | Flutter · Dart | `UPTabbar` | `packages/ultra_ui/lib/src/widgets/up_tabbar.dart` |
 | React Native · TypeScript | `UPTabbar` | `src/components/tabbar` |
 | Taro · React + TypeScript | `UPTabbar` | `src/ultra-ui/components/up-tabbar` |
-| uni-app · Vue 3 | `up-tabbar` | `src/uni_modules/uview-plus/components/u-tabbar` |
+| uni-app · Vue 3 | `up-tabbar` | `uni_modules/uview-ultra/components/up-tabbar` |
 | uni-app-x · UTS / UVUE | `up-tabbar` | `uni_modules/uview-ultra/components/up-tabbar` |
 

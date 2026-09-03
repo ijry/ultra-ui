@@ -73,7 +73,7 @@ import { UPFloatButton } from '@ultra-ui'
 </up-float-button>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus/src/pages/componentsD/floatButton/floatButton.nvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/floatButton/floatButton.uvue`</small>
 
 </template>
 
@@ -93,21 +93,6 @@ import { UPFloatButton } from '@ultra-ui'
 ## API
 
 接口以 uview-plus 源码为准，各平台移植时保持了同名属性；平台间的差异请对照上方的示例标签。
-
-### 属性
-
-| 属性 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
-| `backgroundColor` | 背景颜色 | `String` | `—` |
-| `color` | 文字颜色 | `String` | `—` |
-| `width` | 宽度 | `String` | `—` |
-| `height` | 高度 | `String` | `—` |
-| `borderColor` | 边框颜色，默认为空字符串表示无边框 | `String` | `—` |
-| `right` | 右侧偏移量 | `String / Number` | `—` |
-| `top` | 顶部偏移量，未提供默认值，可能需要根据具体情况设置 | `String / Number` | `—` |
-| `bottom` | 底部偏移量 | `String` | `—` |
-| `isMenu` | 是否为菜单项 | `Boolean` | `—` |
-| `list` | — | `Array` | `—` |
 
 ### 事件
 
@@ -130,6 +115,6 @@ import { UPFloatButton } from '@ultra-ui'
 | Flutter · Dart | `UPFloatButton` | `packages/ultra_ui/lib/src/widgets/up_float_button.dart` |
 | React Native · TypeScript | `UPFloatButton` | `src/components/float-button` |
 | Taro · React + TypeScript | `UPFloatButton` | `src/ultra-ui/components/up-float-button` |
-| uni-app · Vue 3 | `up-float-button` | `src/uni_modules/uview-plus/components/u-float-button` |
+| uni-app · Vue 3 | `up-float-button` | `uni_modules/uview-ultra/components/up-float-button` |
 | uni-app-x · UTS / UVUE | `up-float-button` | `uni_modules/uview-ultra/components/up-float-button` |
 

@@ -142,7 +142,7 @@ export function scanAll(rootDir) {
       scanDirs(dirOf('taro'), 'up-'),
       scanSymbols(dirOf('taro'), ['.tsx', '.ts'], DECL.taro)
     ),
-    uniapp: scanDirs(dirOf('uniapp'), 'u-'),
+    uniapp: scanDirs(dirOf('uniapp'), 'up-'),
     uniappx: scanDirs(dirOf('uniappx'), 'up-')
   }
 }

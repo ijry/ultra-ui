@@ -86,10 +86,14 @@ import { UPScrollList } from 'ultra-ui-rn';
 
 <template #taro>
 
+### 固定宽度条目
+
+itemWidth 统一每条宽度
+
 ```tsx
 import { UPScrollList } from '@ultra-ui'
 
-<UPScrollList list={LIST} indicator mode='round' indicatorActiveColor='#ff6b6b' />
+<UPScrollList list={LIST} indicator itemWidth={120} indicatorActiveColor='#34c759' />
 ```
 
 <small>示例来源 `ultra-ui-taro/src/pages/components/scroll-list/index.tsx`</small>
@@ -97,6 +101,8 @@ import { UPScrollList } from '@ultra-ui'
 </template>
 
 <template #uniapp>
+
+### 多菜单扩展
 
 ```vue
 <up-scroll-list>
@@ -110,25 +116,27 @@ import { UPScrollList } from '@ultra-ui'
                 class="scroll-list__line__item"
                 v-for="(item1, index1) in item"
                 :key="index1"
-                :class="[(index1 === item.length - 1) && 'scroll-list__line__item--no-margin-right']"
+                :class="[(index1 === item.length - 1) ? 'scroll-list__line__item--no-margin-right' : '']"
             >
                 <image
                     class="scroll-list__line__item__image"
-                    :src="menuBaseUrl + item1.icon"
+                    :src="menuBaseUrl + item1['icon']"
                     mode=""
                 ></image>
-                <text class="scroll-list__line__item__text">{{ item1.name }}</text>
+                <text class="scroll-list__line__item__text">{{ item1['name'] }}</text>
             </view>
         </view>
     </view>
 </up-scroll-list>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus/src/pages/componentsC/scrollList/scrollList.nvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsC/scrollList/scrollList.uvue`</small>
 
 </template>
 
 <template #uniappx>
+
+### 多菜单扩展
 
 ```vue
 <up-scroll-list>
@@ -199,6 +207,6 @@ import { UPScrollList } from '@ultra-ui'
 | Flutter · Dart | `UPScrollList` | `packages/ultra_ui/lib/src/widgets/up_scroll_list.dart` |
 | React Native · TypeScript | `UPScrollList` | `src/components/scroll-list` |
 | Taro · React + TypeScript | `UPScrollList` | `src/ultra-ui/components/up-scroll-list` |
-| uni-app · Vue 3 | `up-scroll-list` | `src/uni_modules/uview-plus/components/u-scroll-list` |
+| uni-app · Vue 3 | `up-scroll-list` | `uni_modules/uview-ultra/components/up-scroll-list` |
 | uni-app-x · UTS / UVUE | `up-scroll-list` | `uni_modules/uview-ultra/components/up-scroll-list` |
 

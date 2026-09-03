@@ -54,10 +54,18 @@ import 'package:ultra_ui/ultra_ui.dart';
 
 <template #reactnative>
 
+### 底部安全区域占位
+
 ```tsx
 import { UPSafeBottom } from 'ultra-ui-rn';
 
 <UPSafeBottom />
+```
+
+### 自定义背景色
+
+```tsx
+<UPSafeBottom customStyle={{ backgroundColor: '#333' }} />
 ```
 
 <small>示例来源 `ultra-ui-rn/example/pages/components/layout/SafeBottomDemo.tsx`</small>
@@ -115,6 +123,6 @@ import { UPSafeBottom } from '@ultra-ui'
 | Flutter · Dart | `UPSafeBottom` | `packages/ultra_ui/lib/src/widgets/up_safe_bottom.dart` |
 | React Native · TypeScript | `UPSafeBottom` | `src/components/safe-bottom` |
 | Taro · React + TypeScript | `UPSafeBottom` | `src/ultra-ui/components/up-safe-bottom` |
-| uni-app · Vue 3 | `up-safe-bottom` | `src/uni_modules/uview-plus/components/u-safe-bottom` |
+| uni-app · Vue 3 | `up-safe-bottom` | `uni_modules/uview-ultra/components/up-safe-bottom` |
 | uni-app-x · UTS / UVUE | `up-safe-bottom` | `uni_modules/uview-ultra/components/up-safe-bottom` |
 

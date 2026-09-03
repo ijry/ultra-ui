@@ -67,6 +67,10 @@ import { UPSticky } from 'ultra-ui-rn';
 
 <template #taro>
 
+### 基础用法
+
+向下滚动，标题会吸顶；onFixed 回调同步状态
+
 ```tsx
 import { UPSticky } from '@ultra-ui'
 
@@ -83,14 +87,46 @@ import { UPSticky } from '@ultra-ui'
 </UPSticky>
 ```
 
+### 带偏移
+
+offsetTop={40}，吸顶后距顶部 40px
+
+```tsx
+<UPSticky
+  offsetTop={40}
+  backgroundColor='#ecf5ff'
+  onFixed={setOffsetFixed}
+>
+  <View className='sticky-demo__header sticky-demo__header--blue'>
+    <Text className='sticky-demo__title'>
+      偏移吸顶{offsetFixed ? '（已吸顶）' : ''}
+    </Text>
+  </View>
+</UPSticky>
+```
+
+### 禁用
+
+disabled 时内容随页面正常滚动，不吸顶
+
+```tsx
+<UPSticky offsetTop={0} disabled backgroundColor='#f5f5f5'>
+  <View className='sticky-demo__header'>
+    <Text className='sticky-demo__title'>禁用吸顶</Text>
+  </View>
+</UPSticky>
+```
+
 <small>示例来源 `ultra-ui-taro/src/pages/components/sticky/index.tsx`</small>
 
 </template>
 
 <template #uniapp>
 
+### 基础使用
+
 ```vue
-<up-sticky>
+<up-sticky ref="stickyRef" :offsetTop="0">
     <up-button
         text="吸顶按钮"
         type="success"
@@ -98,11 +134,13 @@ import { UPSticky } from '@ultra-ui'
 </up-sticky>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus/src/pages/componentsA/sticky/sticky.nvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsA/sticky/sticky.uvue`</small>
 
 </template>
 
 <template #uniappx>
+
+### 基础使用
 
 ```vue
 <up-sticky ref="stickyRef" :offsetTop="0">
@@ -134,6 +172,13 @@ import { UPSticky } from '@ultra-ui'
 | `zIndex` | z-index值 | `String / Number` | `''` |
 | `index` | 列表中的索引值 | `String / Number` | `''` |
 
+### 事件
+
+| 事件名 |
+| --- |
+| `fixed` |
+| `unfixed` |
+
 ### 插槽
 
 | 插槽名 |
@@ -148,6 +193,6 @@ import { UPSticky } from '@ultra-ui'
 | Flutter · Dart | `UPSticky` | `packages/ultra_ui/lib/src/widgets/up_sticky.dart` |
 | React Native · TypeScript | `UPSticky` | `src/components/sticky` |
 | Taro · React + TypeScript | `UPSticky` | `src/ultra-ui/components/up-sticky` |
-| uni-app · Vue 3 | `up-sticky` | `src/uni_modules/uview-plus/components/u-sticky` |
+| uni-app · Vue 3 | `up-sticky` | `uni_modules/uview-ultra/components/up-sticky` |
 | uni-app-x · UTS / UVUE | `up-sticky` | `uni_modules/uview-ultra/components/up-sticky` |
 

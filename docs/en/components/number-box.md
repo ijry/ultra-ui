@@ -31,6 +31,8 @@ No snippet could be extracted automatically — please read the source.
 
 <template #android>
 
+### 步进器
+
 ```kotlin
 import net.lingyun.ultraui.android.components.UPNumberBox
 import net.lingyun.ultraui.android.components.UPNumberBoxProps
@@ -92,10 +94,129 @@ rightIconNode={<UPNumberBox disabled onChange={change} step="1" value={value5} /
 
 <template #taro>
 
+### 基础用法
+
+value + onChange 受控绑定，默认最小值为 1
+
 ```tsx
 import { UPNumberBox } from '@ultra-ui'
 
 <UPNumberBox value={basic} onChange={setBasic} />
+```
+
+### 步长
+
+step 控制每次加减的幅度
+
+```tsx
+<UPNumberBox step={2} value={step} onChange={setStep} />
+```
+
+### 取值范围
+
+min=3 / max=8，到边界时按钮自动置灰
+
+```tsx
+<UPNumberBox min={3} max={8} value={range} onChange={setRange} />
+```
+
+### 小数与整数
+
+decimalLength 保留小数位；integer 只允许整数
+
+```tsx
+<UPNumberBox
+  min={0}
+  step={0.5}
+  decimalLength={1}
+  value={decimal}
+  onChange={setDecimal}
+/>
+```
+
+### 禁用
+
+disabled 整体禁用；disabledInput 只锁输入框
+
+```tsx
+<UPNumberBox
+  disabledInput
+  value={disabledInput}
+  onChange={setDisabledInput}
+/>
+```
+
+### 单独禁用按钮
+
+disableMinus / disablePlus
+
+```tsx
+<UPNumberBox
+  disableMinus
+  value={disableMinus}
+  onChange={setDisableMinus}
+/>
+```
+
+### 颜色
+
+color 图标色 / bgColor 按钮背景 / inputBgColor 输入框背景
+
+```tsx
+<UPNumberBox
+  color='#ffffff'
+  bgColor='#2979ff'
+  inputBgColor='#eaf2ff'
+  value={colored}
+  onChange={setColored}
+/>
+```
+
+### 尺寸
+
+buttonWidth / buttonSize / inputWidth，单位 px
+
+```tsx
+<UPNumberBox
+  buttonWidth={40}
+  buttonSize={40}
+  inputWidth={50}
+  value={sized}
+  onChange={setSized}
+/>
+```
+
+### 迷你模式
+
+miniMode 收紧整体尺寸
+
+```tsx
+<UPNumberBox miniMode value={mini} onChange={setMini} />
+```
+
+### 隐藏按钮
+
+showMinus / showPlus
+
+```tsx
+<UPNumberBox
+  showMinus={false}
+  value={onlyPlus}
+  onChange={setOnlyPlus}
+/>
+```
+
+### 长按连续加减
+
+longPress 默认开启，按住加号别松手试试
+
+```tsx
+<UPNumberBox
+  longPress
+  max={99}
+  value={longPress}
+  onChange={setLongPress}
+/>
 ```
 
 <small>Snippet from `ultra-ui-taro/src/pages/components/number-box/index.tsx`</small>
@@ -113,7 +234,7 @@ import { UPNumberBox } from '@ultra-ui'
 </up-number-box>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus/src/pages/componentsB/numberBox/numberBox.nvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsB/numberBox/numberBox.uvue`</small>
 
 </template>
 
@@ -155,15 +276,15 @@ The reference below is extracted from the uview-plus source, whose property name
 | `inputWidth` | 输入框宽度，单位为px | `String / Number` | `35` |
 | `showMinus` | 是否显示减少按钮 | `Boolean` | `true` |
 | `showPlus` | 是否显示增加按钮 | `Boolean` | `true` |
-| `decimalLength` | 显示的小数位数 | `String / Number / null` | `null` |
+| `decimalLength` | 显示的小数位数 | `String / Number` | `null` |
 | `longPress` | 是否开启长按加减手势 | `Boolean` | `true` |
-| `color` | 输入框文字和加减按钮图标的颜色 | `String` | `''` |
+| `color` | 输入框文字和加减按钮图标的颜色 | `String` | `'#323233'` |
 | `buttonWidth` | 按钮宽度 | `String / Number` | `30` |
 | `buttonSize` | 按钮大小，宽高等于此值，单位px，输入框高度和此值保持一致 | `String / Number` | `30` |
 | `buttonRadius` | 按钮圆角 | `String` | `'0px'` |
-| `bgColor` | 输入框和按钮的背景颜色 | `String` | `''` |
-| `disabledBgColor` | 按钮禁用背景色 | `String` | `''` |
-| `inputBgColor` | 输入框背景颜色 | `String` | `''` |
+| `bgColor` | 输入框和按钮的背景颜色 | `String` | `'#EBECEE'` |
+| `disabledBgColor` | 按钮禁用背景色 | `String` | `'#f7f8fa'` |
+| `inputBgColor` | 输入框背景颜色 | `String` | `'#EBECEE'` |
 | `cursorSpacing` | 指定光标于键盘的距离，避免键盘遮挡输入框，单位px | `String / Number` | `100` |
 | `disablePlus` | 是否禁用增加按钮 | `Boolean` | `false` |
 | `disableMinus` | 是否禁用减少按钮 | `Boolean` | `false` |
@@ -174,6 +295,8 @@ The reference below is extracted from the uview-plus source, whose property name
 
 | Event |
 | --- |
+| `// #endif 	'focus` |
+| `// #ifdef VUE3 	'update:modelValue` |
 | `blur` |
 | `change` |
 | `focus` |
@@ -200,6 +323,6 @@ The reference below is extracted from the uview-plus source, whose property name
 | Flutter · Dart | `UPNumberBox` | `packages/ultra_ui/lib/src/widgets/up_number_box.dart` |
 | React Native · TypeScript | `UPNumberBox` | `src/components/number-box` |
 | Taro · React + TypeScript | `UPNumberBox` | `src/ultra-ui/components/up-number-box` |
-| uni-app · Vue 3 | `up-number-box` | `src/uni_modules/uview-plus/components/u-number-box` |
+| uni-app · Vue 3 | `up-number-box` | `uni_modules/uview-ultra/components/up-number-box` |
 | uni-app-x · UTS / UVUE | `up-number-box` | `uni_modules/uview-ultra/components/up-number-box` |
 

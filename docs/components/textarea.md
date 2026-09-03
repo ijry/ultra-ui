@@ -38,6 +38,8 @@ UPTextarea(
 
 <template #android>
 
+### 文本域
+
 ```kotlin
 import net.lingyun.ultraui.android.components.UPTextarea
 import net.lingyun.ultraui.android.components.UPTextareaProps
@@ -77,13 +79,50 @@ UPTextarea({ props: new UPTextareaProps({
 
 <template #flutter>
 
+### 字数统计
+
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
 
 UPTextarea(
-  value: _value1,
+  value: _value2,
   placeholder: '请输入内容',
-  onUpdateValue: (value) => setState(() => _value1 = value),
+  count: true,
+  onUpdateValue: (value) => setState(() => _value2 = value),
+)
+```
+
+### 自动增高
+
+```dart
+UPTextarea(
+  value: _value3,
+  placeholder: '请输入内容',
+  autoHeight: true,
+  onUpdateValue: (value) => setState(() => _value3 = value),
+)
+```
+
+### 禁用状态
+
+```dart
+UPTextarea(
+  value: _value4,
+  placeholder: '文本域已被禁用',
+  disabled: true,
+  count: true,
+  onUpdateValue: (value) => setState(() => _value4 = value),
+)
+```
+
+### 下划线模式
+
+```dart
+UPTextarea(
+  value: _value5,
+  placeholder: '请输入内容',
+  border: 'bottom',
+  onUpdateValue: (value) => setState(() => _value5 = value),
 )
 ```
 
@@ -93,16 +132,36 @@ UPTextarea(
 
 <template #reactnative>
 
+### 基础使用
+
 ```tsx
 import { UPTextarea } from 'ultra-ui-rn';
 
-<UPTextarea
-placeholder="最多200个字符"
-maxlength={200}
-count
-value={v1}
-onChange={setV1}
-/>
+<UPTextarea onChange={setValue1} placeholder="请输入内容" value={value1} />
+```
+
+### 字数统计
+
+```tsx
+<UPTextarea count onChange={setValue2} placeholder="请输入内容" value={value2} />
+```
+
+### 自动增高
+
+```tsx
+<UPTextarea autoHeight onChange={setValue3} placeholder="请输入内容" value={value3} />
+```
+
+### 禁用状态
+
+```tsx
+<UPTextarea count disabled onChange={setValue4} placeholder="文本域已被禁用" value={value4} />
+```
+
+### 下划线模式
+
+```tsx
+<UPTextarea border="bottom" onChange={setValue5} placeholder="请输入内容" value={value5} />
 ```
 
 <small>示例来源 `ultra-ui-rn/example/pages/components/form/TextareaDemo.tsx`</small>
@@ -110,6 +169,10 @@ onChange={setV1}
 </template>
 
 <template #taro>
+
+### 基础用法
+
+value + onChange 受控绑定
 
 ```tsx
 import { UPTextarea } from '@ultra-ui'
@@ -121,11 +184,78 @@ import { UPTextarea } from '@ultra-ui'
 />
 ```
 
+### 字数统计
+
+count 显示右下角计数，配合 maxlength
+
+```tsx
+<UPTextarea
+  value={counted}
+  count
+  maxlength={50}
+  placeholder='最多输入 50 个字'
+  onChange={setCounted}
+/>
+```
+
+### 自定义高度
+
+height 指定固定高度，单位 px
+
+```tsx
+<UPTextarea height={140} value={tall} onChange={setTall} />
+```
+
+### 自动增高
+
+autoHeight：内容变多时高度自动撑开，height 变为最小高度
+
+```tsx
+<UPTextarea
+  autoHeight
+  height={50}
+  value={autoHeight}
+  placeholder='多敲几行回车试试'
+  onChange={setAutoHeight}
+/>
+```
+
+### 边框
+
+border：surround（默认） / bottom / none
+
+```tsx
+<UPTextarea border='bottom' value={bottom} onChange={setBottom} />
+```
+
+### 禁用
+
+disabled 不可编辑且背景置灰
+
+```tsx
+<UPTextarea disabled value={disabled} onChange={setDisabled} />
+```
+
+### 占位符样式
+
+placeholderStyle 支持对象或字符串
+
+```tsx
+<UPTextarea
+  value={placeholder}
+  placeholder='占位符是紫色的'
+  placeholderStyle={{ color: '#7232dd', fontSize: '15px' }}
+  onChange={setPlaceholder}
+/>
+```
+
 <small>示例来源 `ultra-ui-taro/src/pages/components/textarea/index.tsx`</small>
 
 </template>
 
 <template #uniapp>
+
+### 基础使用
 
 ```vue
 <up-textarea
@@ -134,16 +264,100 @@ import { UPTextarea } from '@ultra-ui'
 ></up-textarea>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus/src/pages/componentsC/textarea/textarea.nvue`</small>
+### 字数统计
+
+```vue
+<up-textarea
+    v-model="value2"
+    placeholder="请输入内容"
+    count
+></up-textarea>
+```
+
+### 自动增高
+
+```vue
+<up-textarea
+    v-model="value3"
+    placeholder="请输入内容"
+    autoHeight
+></up-textarea>
+```
+
+### 禁用状态
+
+```vue
+<up-textarea
+    v-model="value4"
+    placeholder="文本域已被禁用"
+    disabled
+    count
+></up-textarea>
+```
+
+### 下划线模式
+
+```vue
+<up-textarea
+    v-model="value5"
+    placeholder="请输入内容"
+    border="bottom"
+></up-textarea>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsC/textarea/textarea.uvue`</small>
 
 </template>
 
 <template #uniappx>
 
+### 基础使用
+
 ```vue
 <up-textarea
     v-model="value1"
     placeholder="请输入内容"
+></up-textarea>
+```
+
+### 字数统计
+
+```vue
+<up-textarea
+    v-model="value2"
+    placeholder="请输入内容"
+    count
+></up-textarea>
+```
+
+### 自动增高
+
+```vue
+<up-textarea
+    v-model="value3"
+    placeholder="请输入内容"
+    autoHeight
+></up-textarea>
+```
+
+### 禁用状态
+
+```vue
+<up-textarea
+    v-model="value4"
+    placeholder="文本域已被禁用"
+    disabled
+    count
+></up-textarea>
+```
+
+### 下划线模式
+
+```vue
+<up-textarea
+    v-model="value5"
+    placeholder="请输入内容"
+    border="bottom"
 ></up-textarea>
 ```
 
@@ -165,7 +379,7 @@ import { UPTextarea } from '@ultra-ui'
 | `modelValue` | 输入框的内容 | `String / Number` | `—` |
 | `placeholder` | 输入框为空时占位符 | `String / Number` | `''` |
 | `placeholderClass` | 指定placeholder的样式类，注意页面或组件的style中写了scoped时，需要在类名前写/deep/ | `String` | `'textarea-placeholder'` |
-| `placeholderStyle` | 指定placeholder的样式 | `String / Object` | `''` |
+| `placeholderStyle` | 指定placeholder的样式 | `String / Object` | `'color: #c0c4cc'` |
 | `height` | 输入框高度 | `String / Number` | `70` |
 | `confirmType` | 设置键盘右下角按钮的文字，仅微信小程序，App-vue和H5有效 | `String` | `'done'` |
 | `disabled` | 是否禁用 | `Boolean` | `false` |
@@ -208,6 +422,6 @@ import { UPTextarea } from '@ultra-ui'
 | Flutter · Dart | `UPTextarea` | `packages/ultra_ui/lib/src/widgets/up_textarea.dart` |
 | React Native · TypeScript | `UPTextarea` | `src/components/textarea` |
 | Taro · React + TypeScript | `UPTextarea` | `src/ultra-ui/components/up-textarea` |
-| uni-app · Vue 3 | `up-textarea` | `src/uni_modules/uview-plus/components/u-textarea` |
+| uni-app · Vue 3 | `up-textarea` | `uni_modules/uview-ultra/components/up-textarea` |
 | uni-app-x · UTS / UVUE | `up-textarea` | `uni_modules/uview-ultra/components/up-textarea` |
 

@@ -38,7 +38,7 @@ const UPQrcode(
 ```tsx
 import { UPQrcode } from 'ultra-ui-rn';
 
-<UPQrcode val="https://ultra-ui-rn.example.com" size={160} />
+<UPQrcode cid="up1" size={150} val={VAL} />
 ```
 
 <small>示例来源 `ultra-ui-rn/example/pages/components/advanced/QrcodeDemo.tsx`</small>
@@ -47,10 +47,106 @@ import { UPQrcode } from 'ultra-ui-rn';
 
 <template #taro>
 
+### 基础用法
+
+val 为二维码内容，可用手机扫码验证
+
 ```tsx
 import { UPQrcode } from '@ultra-ui'
 
 <UPQrcode val={text} size={200} showLoading={false} />
+```
+
+### 自定义内容
+
+输入后二维码实时重绘
+
+```tsx
+<UPQrcode val={dynamic} size={180} showLoading={false} />
+```
+
+### 尺寸
+
+size 控制边长
+
+```tsx
+<UPQrcode val='size 120' size={120} showLoading={false} />
+```
+
+### 自定义配色
+
+foreground 码点色，background 底色，pdground 三个定位角单独配色
+
+```tsx
+<UPQrcode
+  val='foreground'
+  size={150}
+  foreground='#2979ff'
+  showLoading={false}
+/>
+```
+
+### 纠错等级
+
+lv 0-3，等级越高容错越强、码点越密
+
+```tsx
+<UPQrcode val='level 0' size={130} lv={0} showLoading={false} />
+```
+
+### 静默区
+
+quietZone 控制四周留白圈数
+
+```tsx
+<UPQrcode
+  val='quietZone 0'
+  size={150}
+  quietZone={0}
+  showLoading={false}
+/>
+```
+
+### 中心图标
+
+icon 在码中心叠加图标，底部自动垫背景避免遮挡码点
+
+```tsx
+<UPQrcode
+  val='https://uview-plus.jiangruyi.com'
+  size={200}
+  icon='https://cdn.uviewui.com/uview/common/logo.png'
+  iconSize={44}
+  showLoading={false}
+/>
+```
+
+### 点击预览
+
+allowPreview 开启后点击可全屏查看
+
+```tsx
+<UPQrcode
+  val='allowPreview'
+  size={160}
+  allowPreview
+  showLoading={false}
+/>
+```
+
+### 手动绘制与导出
+
+loadMake=false 时不自动绘制，通过 ref 调用 make / toTempFilePath
+
+```tsx
+<UPQrcode
+  ref={manualRef}
+  val='manual make'
+  size={160}
+  loadMake={false}
+  onval={false}
+  showLoading={false}
+/>
 ```
 
 <small>示例来源 `ultra-ui-taro/src/pages/components/qrcode/index.tsx`</small>
@@ -60,10 +156,10 @@ import { UPQrcode } from '@ultra-ui'
 <template #uniapp>
 
 ```vue
-<up-qrcode :cid="'up1'" :size="150" val="https://click.meituan.com/t?t=1&c=2&p=WhaD2b5zGU-h"></up-qrcode>
+<up-qrcode cid="up-qrcode-basic" :size="200" :val="qrValue"></up-qrcode>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus/src/pages/componentsD/qrcode/qrcode.nvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/qrcode/qrcode.uvue`</small>
 
 </template>
 
@@ -83,30 +179,6 @@ import { UPQrcode } from '@ultra-ui'
 
 接口以 uview-plus 源码为准，各平台移植时保持了同名属性；平台间的差异请对照上方的示例标签。
 
-### 属性
-
-| 属性 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
-| `cid` | — | `String` | `—` |
-| `size` | — | `Number` | `—` |
-| `unit` | — | `String` | `—` |
-| `show` | — | `Boolean` | `—` |
-| `val` | — | `String` | `—` |
-| `background` | — | `String` | `—` |
-| `foreground` | — | `String` | `—` |
-| `pdground` | — | `String` | `—` |
-| `icon` | — | `String` | `—` |
-| `iconSize` | — | `Number` | `—` |
-| `lv` | — | `Number` | `—` |
-| `quietZone` | — | `Number` | `—` |
-| `onval` | — | `Boolean` | `—` |
-| `loadMake` | — | `Boolean` | `—` |
-| `usingComponents` | — | `Boolean` | `—` |
-| `showLoading` | — | `Boolean` | `—` |
-| `loadingText` | — | `String` | `—` |
-| `allowPreview` | — | `Boolean` | `—` |
-| `useRootHeightAndWidth` | 是否使用根节点宽高 | `Boolean` | `—` |
-
 ### 事件
 
 | 事件名 |
@@ -122,6 +194,6 @@ import { UPQrcode } from '@ultra-ui'
 | Flutter · Dart | `UPQrcode` | `packages/ultra_ui/lib/src/widgets/up_qrcode.dart` |
 | React Native · TypeScript | `UPQrcode` | `src/components/qrcode` |
 | Taro · React + TypeScript | `UPQrcode` | `src/ultra-ui/components/up-qrcode` |
-| uni-app · Vue 3 | `up-qrcode` | `src/uni_modules/uview-plus/components/u-qrcode` |
+| uni-app · Vue 3 | `up-qrcode` | `uni_modules/uview-ultra/components/up-qrcode` |
 | uni-app-x · UTS / UVUE | `up-qrcode` | `uni_modules/uview-ultra/components/up-qrcode` |
 

@@ -78,15 +78,6 @@ import { UPShortVideo } from '@ultra-ui'
 
 接口以 uview-plus 源码为准，各平台移植时保持了同名属性；平台间的差异请对照上方的示例标签。
 
-### 属性
-
-| 属性 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
-| `tabsList` | tabs标签列表 | `Array` | `—` |
-| `videoList` | 视频列表数据 | `Array` | `—` |
-| `currentTab` | 当前选中的tab索引 | `Number` | `—` |
-| `currentVideo` | 当前播放的视频索引 | `Number` | `—` |
-
 ### 事件
 
 | 事件名 |
@@ -121,6 +112,6 @@ import { UPShortVideo } from '@ultra-ui'
 | Flutter · Dart | `UPShortVideo` | `packages/ultra_ui/lib/src/widgets/up_short_video.dart` |
 | React Native · TypeScript | `UPShortVideo` | `src/components/short-video` |
 | Taro · React + TypeScript | `UPShortVideo` | `src/ultra-ui/components/up-short-video` |
-| uni-app · Vue 3 | `up-short-video` | `src/uni_modules/uview-plus/components/u-short-video` |
+| uni-app · Vue 3 | `up-short-video` | `uni_modules/uview-ultra/components/up-short-video` |
 | uni-app-x · UTS / UVUE | `up-short-video` | `uni_modules/uview-ultra/components/up-short-video` |
 

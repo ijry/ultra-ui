@@ -60,10 +60,32 @@ No snippet could be extracted automatically — please read the source.
 
 <template #taro>
 
+### 占位展示（演示用 force）
+
+force 强制展示，真实场景由网络状态自动显隐
+
 ```tsx
 import { UPNoNetwork } from '@ultra-ui'
 
 <UPNoNetwork force tips='网络不可用，请检查网络设置' />
+```
+
+### 自定义图标与文案
+
+icon / tips 可覆盖默认占位
+
+```tsx
+<UPNoNetwork force icon='error-circle' tips='网络连接已断开' />
+```
+
+### 自定义占位内容
+
+children 完全接管占位渲染
+
+```tsx
+<UPNoNetwork force>
+  <View className='no-network-demo__custom'>这是自定义占位内容</View>
+</UPNoNetwork>
 ```
 
 <small>Snippet from `ultra-ui-taro/src/pages/components/no-network/index.tsx`</small>
@@ -80,7 +102,7 @@ import { UPNoNetwork } from '@ultra-ui'
 ></up-no-network>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus/src/pages/componentsC/noNetwork/noNetwork.nvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/noNetwork/noNetwork.uvue`</small>
 
 </template>
 
@@ -127,6 +149,6 @@ The reference below is extracted from the uview-plus source, whose property name
 | Flutter · Dart | `UPNoNetwork` | `packages/ultra_ui/lib/src/widgets/up_no_network.dart` |
 | React Native · TypeScript | `UPNoNetwork` | `src/components/no-network` |
 | Taro · React + TypeScript | `UPNoNetwork` | `src/ultra-ui/components/up-no-network` |
-| uni-app · Vue 3 | `up-no-network` | `src/uni_modules/uview-plus/components/u-no-network` |
+| uni-app · Vue 3 | `up-no-network` | `uni_modules/uview-ultra/components/up-no-network` |
 | uni-app-x · UTS / UVUE | `up-no-network` | `uni_modules/uview-ultra/components/up-no-network` |
 

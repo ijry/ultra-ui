@@ -47,6 +47,10 @@ import { UPAgreement } from 'ultra-ui-rn';
 
 <template #taro>
 
+### 基础用法
+
+受控选中态 + onChange
+
 ```tsx
 import { UPAgreement } from '@ultra-ui'
 
@@ -54,6 +58,19 @@ import { UPAgreement } from '@ultra-ui'
   text='我已阅读并同意相关服务条款'
   value={agreed}
   onChange={setAgreed}
+/>
+```
+
+### 禁用状态
+
+disabled 时不可交互
+
+```tsx
+<UPAgreement
+  text='禁用状态下的协议勾选'
+  protocolName='《隐私政策》'
+  value={false}
+  disabled
 />
 ```
 
@@ -69,7 +86,7 @@ import { UPAgreement } from '@ultra-ui'
     url-privacy="/pages/user_agreement/agreement/info?title=隐私政策"></up-agreement>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus/src/pages/componentsD/agreement/agreement.nvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsD/agreement/agreement.uvue`</small>
 
 </template>
 
@@ -91,13 +108,6 @@ import { UPAgreement } from '@ultra-ui'
 
 接口以 uview-plus 源码为准，各平台移植时保持了同名属性；平台间的差异请对照上方的示例标签。
 
-### 属性
-
-| 属性 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
-| `urlProtocol` | — | `String` | `—` |
-| `urlPrivacy` | — | `String` | `—` |
-
 ### 事件
 
 | 事件名 |
@@ -117,6 +127,6 @@ import { UPAgreement } from '@ultra-ui'
 | Flutter · Dart | `UPAgreement` | `packages/ultra_ui/lib/src/widgets/up_agreement.dart` |
 | React Native · TypeScript | `UPAgreement` | `src/components/agreement` |
 | Taro · React + TypeScript | `UPAgreement` | `src/ultra-ui/components/up-agreement` |
-| uni-app · Vue 3 | `up-agreement` | `src/uni_modules/uview-plus/components/u-agreement` |
+| uni-app · Vue 3 | `up-agreement` | `uni_modules/uview-ultra/components/up-agreement` |
 | uni-app-x · UTS / UVUE | `up-agreement` | `uni_modules/uview-ultra/components/up-agreement` |
 

@@ -18,6 +18,8 @@ Switch tabs to see the syntax for each platform. Every snippet is lifted verbati
 
 <template #flutter>
 
+### 基础用法
+
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
 
@@ -33,6 +35,91 @@ UPUpload(
   onBeforeRead: _beforeRead,
   onDelete: (index, item) => _deleteFile('1', index),
   onUpdateFileList: (list) => _setFileList('1', list),
+)
+```
+
+### 上传视频
+
+```dart
+UPUpload(
+  fileList: _fileList2,
+  name: '2',
+  multiple: true,
+  maxCount: 10,
+  accept: 'video',
+  autoUpload: true,
+  picker: () => _pickFile('2', 'video'),
+  onDelete: (index, item) => _deleteFile('2', index),
+  onUpdateFileList: (list) => _setFileList('2', list),
+)
+```
+
+### 文件预览
+
+```dart
+UPUpload(
+  fileList: _fileList3,
+  name: '3',
+  multiple: true,
+  maxCount: 10,
+  previewFullImage: true,
+  autoUpload: true,
+  picker: () => _pickFile('3', 'image'),
+  onDelete: (index, item) => _deleteFile('3', index),
+  onUpdateFileList: (list) => _setFileList('3', list),
+)
+```
+
+### 隐藏上传按钮
+
+```dart
+UPUpload(
+  fileList: _fileList4,
+  name: '4',
+  multiple: true,
+  maxCount: 2,
+  autoUpload: true,
+  picker: () => _pickFile('4', 'image'),
+  onDelete: (index, item) => _deleteFile('4', index),
+  onUpdateFileList: (list) => _setFileList('4', list),
+)
+```
+
+### 限制上传数量
+
+```dart
+UPUpload(
+  fileList: _fileList5,
+  name: '5',
+  multiple: true,
+  maxCount: 3,
+  autoUpload: true,
+  picker: () => _pickFile('5', 'image'),
+  onDelete: (index, item) => _deleteFile('5', index),
+  onUpdateFileList: (list) => _setFileList('5', list),
+)
+```
+
+### 自定义上传样式
+
+```dart
+UPUpload(
+  fileList: _fileList6,
+  name: '6',
+  multiple: true,
+  maxCount: 1,
+  width: 250,
+  height: 150,
+  autoUpload: true,
+  picker: () => _pickFile('6', 'image'),
+  trigger: Image.asset(
+    'assets/uview/demo/upload/positive.png',
+    width: 250,
+    height: 150,
+    fit: BoxFit.cover,
+  ),
+  onDelete: (index, item) => _deleteFile('6', index),
+  onUpdateFileList: (list) => _setFileList('6', list),
 )
 ```
 
@@ -54,6 +141,10 @@ No snippet could be extracted automatically — please read the source.
 
 <template #taro>
 
+### 基础用法
+
+点击加号选择图片，deletable 默认开启可删除
+
 ```tsx
 import { UPUpload } from '@ultra-ui'
 
@@ -64,11 +155,94 @@ import { UPUpload } from '@ultra-ui'
 />
 ```
 
+### 多选与数量限制
+
+multiple 开启多选，maxCount=4 达到上限后隐藏选择区
+
+```tsx
+<UPUpload
+  fileList={multiple}
+  multiple
+  maxCount={4}
+  autoDelete
+  onChange={setMultiple}
+/>
+```
+
+### 上传状态
+
+status 为 uploading / failed / success 时的三种呈现
+
+```tsx
+<UPUpload fileList={status} deletable={false} previewFullImage={false} />
+```
+
+### 自定义选择区
+
+triggerSlot 替换默认加号方块
+
+```tsx
+<UPUpload
+  fileList={custom}
+  autoDelete
+  triggerSlot={<UPButton type='primary' size='small' text='选择图片' />
+```
+
+### 选择视频
+
+accept=video，点击预览图会内嵌播放
+
+```tsx
+<UPUpload
+  fileList={videoMode}
+  accept='video'
+  autoDelete
+  onChange={setVideoMode}
+/>
+```
+
+### 选择文件
+
+accept=file，非图片以图标 + 文件名呈现（微信小程序 / H5 支持）
+
+```tsx
+<UPUpload
+  fileList={fileMode}
+  accept='file'
+  autoDelete
+  onChange={setFileMode}
+/>
+```
+
+### 禁用
+
+disabled 后不响应点击
+
+```tsx
+<UPUpload fileList={[]} disabled />
+```
+
+### 自定义尺寸与文字
+
+width / height 控制方块大小，uploadText 显示提示语
+
+```tsx
+<UPUpload
+  fileList={[]}
+  width={100}
+  height={100}
+  uploadText='上传图片'
+  uploadIcon='plus'
+/>
+```
+
 <small>Snippet from `ultra-ui-taro/src/pages/components/upload/index.tsx`</small>
 
 </template>
 
 <template #uniapp>
+
+### 基础用法
 
 ```vue
 <up-upload
@@ -83,11 +257,84 @@ import { UPUpload } from '@ultra-ui'
 ></up-upload>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus/src/pages/componentsB/upload/upload.nvue`</small>
+### 上传视频
+
+```vue
+<up-upload
+    :fileList="fileList2"
+    @afterRead="afterRead"
+    @delete="deletePic"
+    name="2"
+    multiple
+    :maxCount="10"
+    accept="video"
+></up-upload>
+```
+
+### 文件预览
+
+```vue
+<up-upload
+    :fileList="fileList3"
+    @afterRead="afterRead"
+    @delete="deletePic"
+    name="3"
+    multiple
+    :maxCount="10"
+    :previewFullImage="true"
+></up-upload>
+```
+
+### 隐藏上传按钮
+
+```vue
+<up-upload
+    :fileList="fileList4"
+    @afterRead="afterRead"
+    @delete="deletePic"
+    name="4"
+    multiple
+    :maxCount="2"
+></up-upload>
+```
+
+### 限制上传数量
+
+```vue
+<up-upload
+    :fileList="fileList5"
+    @afterRead="afterRead"
+    @delete="deletePic"
+    name="5"
+    multiple
+    :maxCount="3"
+></up-upload>
+```
+
+### 自定义上传样式
+
+```vue
+<up-upload
+    :fileList="fileList6"
+    @afterRead="afterRead"
+    @delete="deletePic"
+    name="6"
+    multiple
+    :maxCount="1"
+    width="250"
+    height="150"
+>
+    <image src="https://cdn.uviewui.com/uview/demo/upload/positive.png" mode="widthFix" style="width: 250px;height: 150px;"></image>
+</up-upload>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsB/upload/upload.uvue`</small>
 
 </template>
 
 <template #uniappx>
+
+### 基础用法
 
 ```vue
 <up-upload
@@ -100,6 +347,77 @@ import { UPUpload } from '@ultra-ui'
     multiple
     :maxCount="10"
 ></up-upload>
+```
+
+### 上传视频
+
+```vue
+<up-upload
+    :fileList="fileList2"
+    @afterRead="afterRead"
+    @delete="deletePic"
+    name="2"
+    multiple
+    :maxCount="10"
+    accept="video"
+></up-upload>
+```
+
+### 文件预览
+
+```vue
+<up-upload
+    :fileList="fileList3"
+    @afterRead="afterRead"
+    @delete="deletePic"
+    name="3"
+    multiple
+    :maxCount="10"
+    :previewFullImage="true"
+></up-upload>
+```
+
+### 隐藏上传按钮
+
+```vue
+<up-upload
+    :fileList="fileList4"
+    @afterRead="afterRead"
+    @delete="deletePic"
+    name="4"
+    multiple
+    :maxCount="2"
+></up-upload>
+```
+
+### 限制上传数量
+
+```vue
+<up-upload
+    :fileList="fileList5"
+    @afterRead="afterRead"
+    @delete="deletePic"
+    name="5"
+    multiple
+    :maxCount="3"
+></up-upload>
+```
+
+### 自定义上传样式
+
+```vue
+<up-upload
+    :fileList="fileList6"
+    @afterRead="afterRead"
+    @delete="deletePic"
+    name="6"
+    multiple
+    :maxCount="1"
+    width="250"
+    height="150"
+>
+    <image src="https://cdn.uviewui.com/uview/demo/upload/positive.png" mode="widthFix" style="width: 250px;height: 150px;"></image>
+</up-upload>
 ```
 
 <small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsB/upload/upload.uvue`</small>
@@ -180,6 +498,6 @@ The reference below is extracted from the uview-plus source, whose property name
 | Flutter · Dart | `UPUpload` | `packages/ultra_ui/lib/src/widgets/up_upload.dart` |
 | React Native · TypeScript | `UPUpload` | `src/components/upload` |
 | Taro · React + TypeScript | `UPUpload` | `src/ultra-ui/components/up-upload` |
-| uni-app · Vue 3 | `up-upload` | `src/uni_modules/uview-plus/components/u-upload` |
+| uni-app · Vue 3 | `up-upload` | `uni_modules/uview-ultra/components/up-upload` |
 | uni-app-x · UTS / UVUE | `up-upload` | `uni_modules/uview-ultra/components/up-upload` |
 

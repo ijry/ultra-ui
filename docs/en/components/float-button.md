@@ -73,7 +73,7 @@ No snippet could be extracted automatically — please read the source.
 </up-float-button>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus/src/pages/componentsD/floatButton/floatButton.nvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/floatButton/floatButton.uvue`</small>
 
 </template>
 
@@ -93,21 +93,6 @@ No snippet could be extracted automatically — please read the source.
 ## API
 
 The reference below is extracted from the uview-plus source, whose property names the other ports keep. For per-platform differences, compare the tabs above.
-
-### Props
-
-| Prop | Description | Type | Default |
-| --- | --- | --- | --- |
-| `backgroundColor` | 背景颜色 | `String` | `—` |
-| `color` | 文字颜色 | `String` | `—` |
-| `width` | 宽度 | `String` | `—` |
-| `height` | 高度 | `String` | `—` |
-| `borderColor` | 边框颜色，默认为空字符串表示无边框 | `String` | `—` |
-| `right` | 右侧偏移量 | `String / Number` | `—` |
-| `top` | 顶部偏移量，未提供默认值，可能需要根据具体情况设置 | `String / Number` | `—` |
-| `bottom` | 底部偏移量 | `String` | `—` |
-| `isMenu` | 是否为菜单项 | `Boolean` | `—` |
-| `list` | — | `Array` | `—` |
 
 ### Events
 
@@ -130,6 +115,6 @@ The reference below is extracted from the uview-plus source, whose property name
 | Flutter · Dart | `UPFloatButton` | `packages/ultra_ui/lib/src/widgets/up_float_button.dart` |
 | React Native · TypeScript | `UPFloatButton` | `src/components/float-button` |
 | Taro · React + TypeScript | `UPFloatButton` | `src/ultra-ui/components/up-float-button` |
-| uni-app · Vue 3 | `up-float-button` | `src/uni_modules/uview-plus/components/u-float-button` |
+| uni-app · Vue 3 | `up-float-button` | `uni_modules/uview-ultra/components/up-float-button` |
 | uni-app-x · UTS / UVUE | `up-float-button` | `uni_modules/uview-ultra/components/up-float-button` |
 

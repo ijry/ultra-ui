@@ -68,6 +68,10 @@ No snippet could be extracted automatically — please read the source.
 
 <template #taro>
 
+### 基础用法
+
+内容超出 400px 时显示「展开阅读全文」
+
 ```tsx
 import { UPReadMore } from '@ultra-ui'
 
@@ -81,6 +85,44 @@ import { UPReadMore } from '@ultra-ui'
 </UPReadMore>
 ```
 
+### 保留切换按钮
+
+toggle 为 true，展开后仍可收起
+
+```tsx
+<UPReadMore toggle closeText='展开阅读全文' openText='收起' showHeight={120}>
+  <Text className='read-more-demo__text'>{LONG_TEXT}</Text>
+</UPReadMore>
+```
+
+### 自定义文案
+
+closeText / openText / color
+
+```tsx
+<UPReadMore
+  toggle
+  closeText='查看更多'
+  openText='收起详情'
+  color='#3c9cff'
+  showHeight={120}
+>
+  <Text className='read-more-demo__text'>{LONG_TEXT}</Text>
+</UPReadMore>
+```
+
+### 短内容
+
+未超过 showHeight 时不显示按钮
+
+```tsx
+<UPReadMore>
+  <Text className='read-more-demo__text'>
+    这是一段很短的内容，远小于 400px，因此不会显示展开按钮。
+  </Text>
+</UPReadMore>
+```
+
 <small>Snippet from `ultra-ui-taro/src/pages/components/read-more/index.tsx`</small>
 
 </template>
@@ -89,21 +131,22 @@ import { UPReadMore } from '@ultra-ui'
 
 ```vue
 <up-read-more
-    ref="uReadMoreRef"
+    ref="uReadMore"
     :showHeight="showHeight"
     toggle
     @open="open"
     @close="close"
 >
-    <up-parse
+    <rich-text :nodes="content"></rich-text>
+    <!-- <up-parse
         :content="content"
         @load="load"
         :tag-style="tagStyle"
-    ></up-parse>
+    ></up-parse> -->
 </up-read-more>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus/src/pages/componentsC/readMore/readMore.nvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/readMore/readMore.uvue`</small>
 
 </template>
 
@@ -172,6 +215,6 @@ The reference below is extracted from the uview-plus source, whose property name
 | Flutter · Dart | `UPReadMore` | `packages/ultra_ui/lib/src/widgets/up_read_more.dart` |
 | React Native · TypeScript | `UPReadMore` | `src/components/read-more` |
 | Taro · React + TypeScript | `UPReadMore` | `src/ultra-ui/components/up-read-more` |
-| uni-app · Vue 3 | `up-read-more` | `src/uni_modules/uview-plus/components/u-read-more` |
+| uni-app · Vue 3 | `up-read-more` | `uni_modules/uview-ultra/components/up-read-more` |
 | uni-app-x · UTS / UVUE | `up-read-more` | `uni_modules/uview-ultra/components/up-read-more` |
 

@@ -18,6 +18,8 @@ generated: true
 
 <template #android>
 
+### 通知
+
 ```kotlin
 import net.lingyun.ultraui.android.components.UPNotify
 import net.lingyun.ultraui.android.components.UPNotifyProps
@@ -98,10 +100,10 @@ import { UPNotify } from '@ultra-ui'
 <template #uniapp>
 
 ```vue
-<up-notify ref="uNotify"></up-notify>
+<up-notify ref="upNotifyRef"></up-notify>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus/src/pages/componentsB/notify/notify.nvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsB/notify/notify.uvue`</small>
 
 </template>
 
@@ -149,6 +151,6 @@ import { UPNotify } from '@ultra-ui'
 | Flutter · Dart | `UPNotify` | `packages/ultra_ui/lib/src/widgets/up_notify.dart` |
 | React Native · TypeScript | `UPNotify` | `src/components/notify` |
 | Taro · React + TypeScript | `UPNotify` | `src/ultra-ui/components/up-notify` |
-| uni-app · Vue 3 | `up-notify` | `src/uni_modules/uview-plus/components/u-notify` |
+| uni-app · Vue 3 | `up-notify` | `uni_modules/uview-ultra/components/up-notify` |
 | uni-app-x · UTS / UVUE | `up-notify` | `uni_modules/uview-ultra/components/up-notify` |
 

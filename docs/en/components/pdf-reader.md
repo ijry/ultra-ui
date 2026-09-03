@@ -49,10 +49,22 @@ No snippet could be extracted automatically — please read the source.
 
 <template #taro>
 
+### 自定义地址
+
+输入其他 PDF 链接后重新加载
+
 ```tsx
 import { UPPdfReader } from '@ultra-ui'
 
 <UPPdfReader src={src} height='360px' />
+```
+
+### 自定义高度
+
+height 控制容器高度
+
+```tsx
+<UPPdfReader src={SAMPLE} height='240px' />
 ```
 
 <small>Snippet from `ultra-ui-taro/src/pages/components/pdf-reader/index.tsx`</small>
@@ -62,10 +74,10 @@ import { UPPdfReader } from '@ultra-ui'
 <template #uniapp>
 
 ```vue
-<up-pdf-reader :src="pdfFileUrl" baseUrl=""></up-pdf-reader>
+<up-pdf-reader :src="pdfFileUrl"></up-pdf-reader>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus/src/pages/componentsD/pdfReader/pdfReader.nvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/pdfReader/pdfReader.uvue`</small>
 
 </template>
 
@@ -100,6 +112,6 @@ The reference below is extracted from the uview-plus source, whose property name
 | Flutter · Dart | `UPPdfReader` | `packages/ultra_ui/lib/src/widgets/up_pdf_reader.dart` |
 | React Native · TypeScript | `UPPdfReader` | `src/components/pdf-reader` |
 | Taro · React + TypeScript | `UPPdfReader` | `src/ultra-ui/components/up-pdf-reader` |
-| uni-app · Vue 3 | `up-pdf-reader` | `src/uni_modules/uview-plus/components/u-pdf-reader` |
+| uni-app · Vue 3 | `up-pdf-reader` | `uni_modules/uview-ultra/components/up-pdf-reader` |
 | uni-app-x · UTS / UVUE | `up-pdf-reader` | `uni_modules/uview-ultra/components/up-pdf-reader` |
 

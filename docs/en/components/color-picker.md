@@ -49,13 +49,45 @@ No snippet could be extracted automatically — please read the source.
 
 <template #taro>
 
+### 基础用法
+
+默认纯色选择器
+
 ```tsx
 import { UPColorPicker } from '@ultra-ui'
+
+<UPColorPicker value={solidColor} onChange={setSolidColor} />
 ```
 
-::: tip
-No snippet could be extracted automatically — please read the source.
-:::
+### 渐变色
+
+支持线性渐变
+
+```tsx
+<UPColorPicker value={gradientColor} onChange={setGradientColor} />
+```
+
+### 常用颜色
+
+提供快速选择色板
+
+```tsx
+<UPColorPicker
+  value={customColor}
+  onChange={setCustomColor}
+  commonColors={commonColors}
+/>
+```
+
+### 自定义触发器
+
+```tsx
+<UPColorPicker value={solidColor} onChange={setSolidColor}>
+  <View className="color-picker-demo__trigger-btn">点击选择颜色</View>
+</UPColorPicker>
+```
+
+<small>Snippet from `ultra-ui-taro/src/pages/components/color-picker/index.tsx`</small>
 
 </template>
 
@@ -64,18 +96,16 @@ No snippet could be extracted automatically — please read the source.
 ```vue
 <up-color-picker
     v-model="selectedColor"
-    :show="showColorPicker"
     @confirm="confirmColor"
-    @close="showColorPicker = false"
 >
-<view class="color-preview" :style="{ backgroundColor: upThemeVar('--up-bg-color') }">
-<view class="color-block" :style="{ backgroundColor: selectedColor, borderColor: upThemeVar('--up-border-color') }"></view>
-<text class="color-text" :style="{ color: upThemeVar('--up-content-color') }">{{ selectedColor }}</text>
+    <view class="color-preview">
+        <view class="color-block" :style="{ backgroundColor: selectedColor }"></view>
+        <text class="color-text">{{ selectedColor }}</text>
     </view>
 </up-color-picker>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus/src/pages/componentsD/colorPicker/colorPicker.nvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/colorPicker/colorPicker.uvue`</small>
 
 </template>
 
@@ -103,13 +133,6 @@ No snippet could be extracted automatically — please read the source.
 
 The reference below is extracted from the uview-plus source, whose property names the other ports keep. For per-platform differences, compare the tabs above.
 
-### Props
-
-| Prop | Description | Type | Default |
-| --- | --- | --- | --- |
-| `modelValue` | 初始颜色值 | `String` | `—` |
-| `commonColors` | 常用颜色列表 | `Array` | `—` |
-
 ### Events
 
 | Event |
@@ -131,6 +154,6 @@ The reference below is extracted from the uview-plus source, whose property name
 | Flutter · Dart | `UPColorPicker` | `packages/ultra_ui/lib/src/widgets/up_color_picker.dart` |
 | React Native · TypeScript | `UPColorPicker` | `src/components/color-picker` |
 | Taro · React + TypeScript | `UPColorPicker` | `src/ultra-ui/components/up-color-picker` |
-| uni-app · Vue 3 | `up-color-picker` | `src/uni_modules/uview-plus/components/u-color-picker` |
+| uni-app · Vue 3 | `up-color-picker` | `uni_modules/uview-ultra/components/up-color-picker` |
 | uni-app-x · UTS / UVUE | `up-color-picker` | `uni_modules/uview-ultra/components/up-color-picker` |
 

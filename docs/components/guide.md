@@ -42,6 +42,10 @@ import { UPGuide } from 'ultra-ui-rn';
 
 <template #taro>
 
+### 基础用法
+
+点击按钮高亮指定元素并弹出引导气泡
+
 ```tsx
 import { UPGuide } from '@ultra-ui'
 
@@ -58,25 +62,56 @@ import { UPGuide } from '@ultra-ui'
 />
 ```
 
+### 带图片
+
+引导内容支持配图
+
+```tsx
+<UPGuide
+  show={showImage}
+  onUpdateShow={setShowImage}
+  list={[
+    {
+      selector: '#up-guide-demo-image',
+      image: DEMO_IMAGE,
+      title: '功能图解',
+      desc: '通过配图可以更直观地说明这个功能的使用场景。',
+    },
+  ]}
+/>
+```
+
+### 可跳过
+
+showSkip 显示右上角跳过入口
+
+```tsx
+<UPGuide
+  show={showSkip}
+  onUpdateShow={setShowSkip}
+  showSkip
+  skipText='跳过'
+  list={[
+    {
+      selector: '#up-guide-demo-skip',
+      title: '可跳过的引导',
+      desc: '右上角的「跳过」可以一次性关闭全部引导。',
+    },
+  ]}
+/>
+```
+
 <small>示例来源 `ultra-ui-taro/src/pages/components/guide/index.tsx`</small>
 
 </template>
 
 <template #uniapp>
 
-```vue
-<up-guide
-    ref="guideRef"
-    v-model:show="show"
-    storage-key="demo-up-guide-once"
-    :list="list"
-    @change="onChange"
-    @skip="onSkip"
-    @finish="onFinish"
-/>
-```
+::: tip
+暂无自动提取到的示例代码，请参考源码。
+:::
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus/src/pages/componentsC/guide/guide.vue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small>
 
 </template>
 
@@ -129,6 +164,6 @@ import { UPGuide } from '@ultra-ui'
 | Flutter · Dart | `UPGuide` | `packages/ultra_ui/lib/src/widgets/up_guide.dart` |
 | React Native · TypeScript | `UPGuide` | `src/components/guide` |
 | Taro · React + TypeScript | `UPGuide` | `src/ultra-ui/components/up-guide` |
-| uni-app · Vue 3 | `up-guide` | `src/uni_modules/uview-plus/components/u-guide` |
+| uni-app · Vue 3 | `up-guide` | `uni_modules/uview-ultra/components/up-guide` |
 | uni-app-x · UTS / UVUE | `up-guide` | `uni_modules/uview-ultra/components/up-guide` |
 

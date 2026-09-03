@@ -40,8 +40,8 @@ const ALIASES = {
 
 const UPSTREAM = path.join(
   ROOT,
-  'uview-plus',
-  'src/uni_modules/uview-plus/components'
+  'uview-plus4',
+  'uni_modules/uview-ultra/components'
 )
 
 const t = {
@@ -227,9 +227,9 @@ const collected = meta.map((component) => {
   // API, one section per upstream folder this page covers
   const api = []
   for (const id of component.detect) {
-    const dir = path.join(UPSTREAM, `u-${id}`)
+    const dir = path.join(UPSTREAM, `up-${id}`)
     if (!fs.existsSync(dir)) continue
-    const found = readComponentApi(dir, `u-${id}`)
+    const found = readComponentApi(dir, `up-${id}`)
     if (found.props.length || found.events.length || found.slots.length) {
       api.push({ id, tag: `up-${id}`, ...found })
     }
@@ -277,22 +277,50 @@ function renderPage(component, locale) {
       out.push(`<template #${platform.id}>`)
       out.push('')
 
-      const code = entry.snippet?.code ?? ''
-      const imports = importLines(platform.id, entry.symbol, code)
+      const sections = entry.snippet?.sections ?? []
+      const hasMultipleSections = sections.length > 1
 
-      if (code) {
-        out.push(fence(platform.lang, [imports?.join('\n'), code].filter(Boolean).join('\n\n')))
-        out.push('')
-      } else {
+      if (sections.length === 0) {
+        // 没有提取到任何示例
+        const imports = importLines(platform.id, entry.symbol, '')
         if (imports) {
           out.push(fence(platform.lang, imports.join('\n')))
           out.push('')
         }
         out.push(`::: tip\n${L.noneYet}\n:::`)
         out.push('')
+      } else {
+        // 渲染所有示例段落
+        for (let i = 0; i < sections.length; i++) {
+          const section = sections[i]
+          const code = section.code || ''
+          const imports = i === 0 ? importLines(platform.id, entry.symbol, code) : null
+
+          // 如果有标题，添加三级标题
+          if (section.title) {
+            out.push(`### ${section.title}`)
+            out.push('')
+          }
+
+          // 如果有说明文字，添加说明
+          if (section.desc) {
+            out.push(section.desc)
+            out.push('')
+          }
+
+          // 渲染代码块
+          if (code) {
+            const codeWithImports = [imports?.join('\n'), code].filter(Boolean).join('\n\n')
+            out.push(fence(platform.lang, codeWithImports))
+            out.push('')
+          }
+        }
       }
 
+      // 底部注释
       const notes = []
+      const firstCode = sections[0]?.code ?? ''
+      const imports = importLines(platform.id, entry.symbol, firstCode)
       if (!imports) notes.push(L.easycom)
       if (entry.snippet) {
         notes.push(`${L.from} \`${platform.dir}/${entry.snippet.file.replace(/\\/g, '/')}\``)

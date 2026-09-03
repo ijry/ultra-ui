@@ -31,10 +31,18 @@ No snippet could be extracted automatically — please read the source.
 
 <template #android>
 
+### 单选框
+
 ```kotlin
 import net.lingyun.ultraui.android.components.UPRadio
 import net.lingyun.ultraui.android.components.UPRadioProps
 
+UPRadio(props = UPRadioProps(name = "android", label = "Android"))
+```
+
+### 单选框组
+
+```kotlin
 UPRadio(props = UPRadioProps(name = "android", label = "Android"))
 ```
 
@@ -55,6 +63,8 @@ UPRadio({ props: new UPRadioProps({ name: 'A', label: '选项 A', checked: this.
 </template>
 
 <template #flutter>
+
+### 横向两端排列形式
 
 ```dart
 import 'package:ultra_ui/ultra_ui.dart';
@@ -90,10 +100,78 @@ import { UPRadio } from 'ultra-ui-rn';
 
 <template #taro>
 
+### 基础用法
+
+Group 持有单个值，onChange 回传选中的 name
+
 ```tsx
 import { UPRadio } from '@ultra-ui'
 
 <UPRadio key={item} name={item} label={item} />
+```
+
+### 形状
+
+shape：circle（默认） / square
+
+```tsx
+<UPRadio name='circle' label='圆形' />
+```
+
+### 禁用
+
+Group 整体禁用 / 单项禁用
+
+```tsx
+<UPRadio name='已选中' label='已选中' />
+```
+
+### 自定义颜色
+
+activeColor / inactiveColor / iconColor
+
+```tsx
+<UPRadio name='红色' label='Group 红色' />
+```
+
+### 尺寸与文字
+
+size / iconSize / labelSize / labelColor
+
+```tsx
+<UPRadio name='小号' label='小号' size={16} iconSize={10} labelSize={12} />
+```
+
+### 竖向排列
+
+placement=column，配合 borderBottom 显示分割线
+
+```tsx
+<UPRadio key={item} name={item} label={item} />
+```
+
+### 图标靠右
+
+iconPlacement=right，整行两端对齐，点击整行即可选中
+
+```tsx
+<UPRadio key={item} name={item} label={item} />
+```
+
+### 禁止点击文字
+
+labelDisabled 时只有图标可点
+
+```tsx
+<UPRadio name='只能点图标' label='只能点图标' />
+```
+
+### 子项间距
+
+placement=row 时用 gap 控制横向间距
+
+```tsx
+<UPRadio name='A' label='选项 A' />
 ```
 
 <small>Snippet from `ultra-ui-taro/src/pages/components/radio/index.tsx`</small>
@@ -102,23 +180,7 @@ import { UPRadio } from '@ultra-ui'
 
 <template #uniapp>
 
-```vue
-<up-radio
-    :customStyle="{marginBottom: '8px'}"
-    v-for="(item, index) in radiolist1"
-    :key="index"
-    :label="item.name"
-    :name="item.name"
-    @change="radioChange"
->
-</up-radio>
-```
-
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus/src/pages/componentsA/radio/radio.nvue`</small>
-
-</template>
-
-<template #uniappx>
+### 基本案例
 
 ```vue
 <up-radio
@@ -128,6 +190,184 @@ import { UPRadio } from '@ultra-ui'
     :label="item['name']"
     :name="item['name']"
     @change="radioChange"
+>
+</up-radio>
+```
+
+### 自定义形状
+
+```vue
+<up-radio
+    :customStyle="{marginBottom: '8px'}"
+    v-for="(item, index) in radiolist2"
+    :key="index"
+    :label="item['name']"
+    :name="item['name']"
+>
+</up-radio>
+```
+
+### 是否禁用
+
+```vue
+<up-radio
+    :customStyle="{marginBottom: '8px'}"
+    v-for="(item, index) in radiolist3"
+    :key="index"
+    :label="item['name']"
+    :name="item['name']"
+    :disabled="index == 0"
+>
+</up-radio>
+```
+
+### 纵向排列
+
+```vue
+<up-radio
+    :customStyle="{marginBottom:'8px'}"
+    v-for="(item, index) in radiolist4"
+    :key="index"
+    :label="item['name']"
+    :name="item['name']"
+>
+</up-radio>
+```
+
+### 自定义颜色？
+
+```vue
+<up-radio
+    :customStyle="{marginBottom: '8px'}"
+    v-for="(item, index) in radiolist5"
+    :key="index"
+    :label="item['name']"
+    :name="item['name']"
+>
+</up-radio>
+```
+
+### 横向排列形式？
+
+```vue
+<up-radio
+    :customStyle="{marginRight: '16px'}"
+    v-for="(item, index) in radiolist6"
+    :key="index"
+    :label="item['name']"
+    :name="item['name']"
+>
+</up-radio>
+```
+
+### 横向两端排列形式？
+
+```vue
+<up-radio
+    :customStyle="{marginBottom: '16px'}"
+    v-for="(item, index) in radiolist7"
+    :key="index"
+    :label="item['name']"
+    :name="item['name']"
+>
+</up-radio>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsA/radio/radio.uvue`</small>
+
+</template>
+
+<template #uniappx>
+
+### 基本案例
+
+```vue
+<up-radio
+    :customStyle="{marginBottom: '8px'}"
+    v-for="(item, index) in radiolist1"
+    :key="index"
+    :label="item['name']"
+    :name="item['name']"
+    @change="radioChange"
+>
+</up-radio>
+```
+
+### 自定义形状
+
+```vue
+<up-radio
+    :customStyle="{marginBottom: '8px'}"
+    v-for="(item, index) in radiolist2"
+    :key="index"
+    :label="item['name']"
+    :name="item['name']"
+>
+</up-radio>
+```
+
+### 是否禁用
+
+```vue
+<up-radio
+    :customStyle="{marginBottom: '8px'}"
+    v-for="(item, index) in radiolist3"
+    :key="index"
+    :label="item['name']"
+    :name="item['name']"
+    :disabled="index == 0"
+>
+</up-radio>
+```
+
+### 纵向排列
+
+```vue
+<up-radio
+    :customStyle="{marginBottom:'8px'}"
+    v-for="(item, index) in radiolist4"
+    :key="index"
+    :label="item['name']"
+    :name="item['name']"
+>
+</up-radio>
+```
+
+### 自定义颜色？
+
+```vue
+<up-radio
+    :customStyle="{marginBottom: '8px'}"
+    v-for="(item, index) in radiolist5"
+    :key="index"
+    :label="item['name']"
+    :name="item['name']"
+>
+</up-radio>
+```
+
+### 横向排列形式？
+
+```vue
+<up-radio
+    :customStyle="{marginRight: '16px'}"
+    v-for="(item, index) in radiolist6"
+    :key="index"
+    :label="item['name']"
+    :name="item['name']"
+>
+</up-radio>
+```
+
+### 横向两端排列形式？
+
+```vue
+<up-radio
+    :customStyle="{marginBottom: '16px'}"
+    v-for="(item, index) in radiolist7"
+    :key="index"
+    :label="item['name']"
+    :name="item['name']"
 >
 </up-radio>
 ```
@@ -198,7 +438,6 @@ The reference below is extracted from the uview-plus source, whose property name
 | `iconSize` | 图标的大小，单位px | `String / Number` | `12` |
 | `borderBottom` | 竖向配列时，是否显示下划线 | `Boolean` | `false` |
 | `iconPlacement` | 图标与文字的对齐方式 | `String` | `'left'` |
-| `gap` | item 之间的间距 | `String / Number` | `"10px"` |
 
 #### Events
 
@@ -223,6 +462,6 @@ The reference below is extracted from the uview-plus source, whose property name
 | Flutter · Dart | `UPRadio` | `packages/ultra_ui/lib/src/widgets/up_radio.dart` |
 | React Native · TypeScript | `UPRadio` | `src/components/radio` |
 | Taro · React + TypeScript | `UPRadio` | `src/ultra-ui/components/up-radio` |
-| uni-app · Vue 3 | `up-radio` | `src/uni_modules/uview-plus/components/u-radio` |
+| uni-app · Vue 3 | `up-radio` | `uni_modules/uview-ultra/components/up-radio` |
 | uni-app-x · UTS / UVUE | `up-radio` | `uni_modules/uview-ultra/components/up-radio` |
 

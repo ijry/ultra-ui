@@ -31,6 +31,8 @@ No snippet could be extracted automatically — please read the source.
 
 <template #android>
 
+### 空状态
+
 ```kotlin
 import net.lingyun.ultraui.android.components.UPEmpty
 import net.lingyun.ultraui.android.components.UPEmptyProps
@@ -104,10 +106,43 @@ import { UPEmpty } from 'ultra-ui-rn';
 
 <template #taro>
 
+### 自定义文案
+
+text 覆盖默认文案
+
 ```tsx
 import { UPEmpty } from '@ultra-ui'
 
-<UPEmpty mode='list' />
+<UPEmpty mode='car' text='购物车里还没有商品' />
+```
+
+### 自定义图标 / 尺寸
+
+icon 传图片地址，iconSize 控制大小
+
+```tsx
+<UPEmpty
+  icon='https://cdn.uviewui.com/uview/empty/data.png'
+  text='暂无数据'
+  iconSize={120}
+  width={200}
+  height={160}
+/>
+```
+
+### 带操作按钮
+
+children 作为底部操作区
+
+```tsx
+<UPEmpty mode='permission' text='您暂无权限访问'>
+  <UPButton
+    type='primary'
+    size='mini'
+    text='去申请'
+    onClick={() => toast.show({ message: '申请权限' })}
+  />
+</UPEmpty>
 ```
 
 <small>Snippet from `ultra-ui-taro/src/pages/components/empty/index.tsx`</small>
@@ -115,6 +150,8 @@ import { UPEmpty } from '@ultra-ui'
 </template>
 
 <template #uniapp>
+
+### 演示效果
 
 ```vue
 <up-empty
@@ -132,11 +169,13 @@ import { UPEmpty } from '@ultra-ui'
 </up-empty>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus/src/pages/componentsA/empty/empty.nvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsA/empty/empty.uvue`</small>
 
 </template>
 
 <template #uniappx>
+
+### 演示效果
 
 ```vue
 <up-empty
@@ -196,6 +235,6 @@ The reference below is extracted from the uview-plus source, whose property name
 | Flutter · Dart | `UPEmpty` | `packages/ultra_ui/lib/src/widgets/up_empty.dart` |
 | React Native · TypeScript | `UPEmpty` | `src/components/empty` |
 | Taro · React + TypeScript | `UPEmpty` | `src/ultra-ui/components/up-empty` |
-| uni-app · Vue 3 | `up-empty` | `src/uni_modules/uview-plus/components/u-empty` |
+| uni-app · Vue 3 | `up-empty` | `uni_modules/uview-ultra/components/up-empty` |
 | uni-app-x · UTS / UVUE | `up-empty` | `uni_modules/uview-ultra/components/up-empty` |
 

@@ -31,6 +31,8 @@ No snippet could be extracted automatically — please read the source.
 
 <template #android>
 
+### 环形进度
+
 ```kotlin
 import net.lingyun.ultraui.android.components.UPCircleProgress
 
@@ -67,11 +69,32 @@ No snippet could be extracted automatically — please read the source.
 
 <template #reactnative>
 
+### 基础用法
+
 ```tsx
 import { UPCircleProgress } from 'ultra-ui-rn';
 
 <UPCircleProgress percentage={50}>
 <Text style={{ fontSize: 16, fontWeight: '600' }}>50%</Text>
+</UPCircleProgress>
+```
+
+### 不同进度
+
+```tsx
+<UPCircleProgress percentage={25}>
+<Text style={{ fontSize: 14 }}>25%</Text>
+</UPCircleProgress>
+```
+
+### 自定义内容
+
+```tsx
+<UPCircleProgress percentage={80}>
+<View style={{ alignItems: 'center' }}>
+<Text style={{ fontSize: 20, fontWeight: '700', color: '#303133' }}>80</Text>
+<Text style={{ fontSize: 10, color: '#909399' }}>完成率</Text>
+</View>
 </UPCircleProgress>
 ```
 
@@ -81,10 +104,75 @@ import { UPCircleProgress } from 'ultra-ui-rn';
 
 <template #taro>
 
+### 基础用法
+
+percentage 控制进度，中心默认显示百分比
+
 ```tsx
 import { UPCircleProgress } from '@ultra-ui'
 
 <UPCircleProgress percentage={25} />
+```
+
+### 自定义颜色
+
+activeColor / inactiveColor
+
+```tsx
+<UPCircleProgress percentage={60} activeColor='#19be6b' />
+```
+
+### 尺寸与线宽
+
+width 控制直径，borderWidth 控制线宽
+
+```tsx
+<UPCircleProgress percentage={70} width={70} borderWidth={4} />
+```
+
+### 端点样式
+
+round 为 false 时为平头
+
+```tsx
+<UPCircleProgress percentage={45} round />
+```
+
+### 起始角度
+
+startAngle，0 为 12 点方向顺时针
+
+```tsx
+<UPCircleProgress percentage={30} startAngle={0} />
+```
+
+### 自定义中心内容
+
+children 替换默认百分比文字
+
+```tsx
+<UPCircleProgress percentage={80} activeColor='#2979ff'>
+  <View className='circle-progress-demo__center'>
+    <Text className='circle-progress-demo__value'>80</Text>
+    <Text className='circle-progress-demo__label'>已完成</Text>
+  </View>
+</UPCircleProgress>
+```
+
+### 动态改变
+
+进度变化时从当前值平滑过渡
+
+```tsx
+<UPCircleProgress percentage={percentage} activeColor='#19be6b' />
+```
+
+### 关闭动画
+
+duration 为 0 时直接跳变
+
+```tsx
+<UPCircleProgress percentage={auto} duration={0} />
 ```
 
 <small>Snippet from `ultra-ui-taro/src/pages/components/circle-progress/index.tsx`</small>
@@ -133,6 +221,6 @@ The reference below is extracted from the uview-plus source, whose property name
 | Flutter · Dart | `UPCircleProgress` | `packages/ultra_ui/lib/src/widgets/up_circle_progress.dart` |
 | React Native · TypeScript | `UPCircleProgress` | `src/components/circle-progress` |
 | Taro · React + TypeScript | `UPCircleProgress` | `src/ultra-ui/components/up-circle-progress` |
-| uni-app · Vue 3 | `up-circle-progress` | `src/uni_modules/uview-plus/components/u-circle-progress` |
+| uni-app · Vue 3 | `up-circle-progress` | `uni_modules/uview-ultra/components/up-circle-progress` |
 | uni-app-x · UTS / UVUE | `up-circle-progress` | `uni_modules/uview-ultra/components/up-circle-progress` |
 

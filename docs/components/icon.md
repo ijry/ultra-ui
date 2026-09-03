@@ -93,17 +93,33 @@ import { UPIcon } from 'ultra-ui-rn';
 
 <template #taro>
 
+### 文字标签
+
+label + labelPos 控制文字位置
+
 ```tsx
 import { UPIcon } from '@ultra-ui'
 
+<UPIcon name='photo' size='22px' label='右侧' labelPos='right' />
+```
+
+### 标签样式
+
+labelSize / labelColor / space
+
+```tsx
+<UPIcon name='bell' size='20px' label='通知' />
+```
+
+### 图片图标
+
+name 含 / 时按图片渲染，用 width / height / imgMode 控制
+
+```tsx
 <UPIcon
-  name={name}
-  size='26px'
-  label={name}
-  labelPos='bottom'
-  labelSize='10px'
-  labelColor='tipsColor'
-  space='6px'
+  name='https://cdn.uviewui.com/uview/common/logo.png'
+  width='40px'
+  height='40px'
 />
 ```
 
@@ -115,15 +131,14 @@ import { UPIcon } from '@ultra-ui'
 
 ```vue
 <up-icon
-    stop
     :name="item.name"
-    size="30"
+    size="30px"
     color="#909399"
     @click="test"
 ></up-icon>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus/src/pages/componentsA/icon/icon.nvue`</small>
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsA/icon/icon.uvue`</small>
 
 </template>
 
@@ -153,21 +168,21 @@ import { UPIcon } from '@ultra-ui'
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | `name` | 图标类名 | `String` | `''` |
-| `color` | 图标颜色，可接受主题色 | `String` | `color['u-content-color']` |
+| `color` | 图标颜色，可接受主题色 | `String` | `color['up-content-color']` |
 | `size` | 字体大小，单位px | `String / Number` | `'16px'` |
 | `bold` | 是否显示粗体 | `Boolean` | `false` |
 | `index` | 点击图标的时候传递事件出去的index（用于区分点击了哪一个） | `String / Number` | `''` |
 | `hoverClass` | 触摸图标时的类名 | `String` | `''` |
-| `customPrefix` | 自定义扩展前缀，方便用户扩展自己的图标库 | `String` | `'uicon'` |
+| `customPrefix` | 自定义扩展前缀，方便用户扩展自己的图标库 | `String` | `'upicon'` |
 | `label` | 图标右边或者下面的文字 | `String / Number` | `''` |
 | `labelPos` | label的位置，只能右边或者下边 | `String` | `'right'` |
 | `labelSize` | label的大小 | `String / Number` | `'15px'` |
-| `labelColor` | label的颜色 | `String` | `color['u-content-color']` |
+| `labelColor` | label的颜色 | `String` | `color['up-content-color']` |
 | `space` | label与图标的距离 | `String / Number` | `'3px'` |
 | `imgMode` | 图片的mode | `String` | `''` |
 | `width` | 用于显示图片小图标时，图片的宽度 | `String / Number` | `''` |
 | `height` | 用于显示图片小图标时，图片的高度 | `String / Number` | `''` |
-| `top` | 用于解决某些情况下，让图标垂直居中的用途 | `String / Number` | `0` |
+| `top` | 用于解决某些情况下，让图标垂直居中的用途 | `String / Number` | `'0'` |
 | `stop` | 是否阻止事件传播 | `Boolean` | `false` |
 
 ### 事件
@@ -186,6 +201,6 @@ import { UPIcon } from '@ultra-ui'
 | Flutter · Dart | `UPIcon` | `packages/ultra_ui/lib/src/widgets/up_icon.dart` |
 | React Native · TypeScript | `UPIcon` | `src/components/icon` |
 | Taro · React + TypeScript | `UPIcon` | `src/ultra-ui/components/up-icon` |
-| uni-app · Vue 3 | `up-icon` | `src/uni_modules/uview-plus/components/u-icon` |
+| uni-app · Vue 3 | `up-icon` | `uni_modules/uview-ultra/components/up-icon` |
 | uni-app-x · UTS / UVUE | `up-icon` | `uni_modules/uview-ultra/components/up-icon` |
 

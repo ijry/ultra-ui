@@ -31,6 +31,8 @@ No snippet could be extracted automatically — please read the source.
 
 <template #android>
 
+### 操作菜单
+
 ```kotlin
 import net.lingyun.ultraui.android.components.UPActionSheet
 import net.lingyun.ultraui.android.components.UPActionSheetProps
@@ -153,7 +155,7 @@ import { UPActionSheet } from '@ultra-ui'
 </up-action-sheet>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus/src/pages/componentsB/actionSheet/actionSheet.nvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsB/actionSheet/actionSheet.uvue`</small>
 
 </template>
 
@@ -190,8 +192,6 @@ The reference below is extracted from the uview-plus source, whose property name
 | `title` | 标题 | `String` | `''` |
 | `description` | 选项上方的描述信息 | `String` | `''` |
 | `actions` | 数据 | `Array` | `[]` |
-| `nameKey` | 选项名称key | `String` | `'name'` |
-| `subnameKey` | 选项子名称key | `String` | `'subnameKey'` |
 | `cancelText` | 取消按钮的文字，不为空时显示按钮 | `String` | `''` |
 | `closeOnClickAction` | 点击某个菜单项时是否关闭弹窗 | `Boolean` | `true` |
 | `safeAreaInsetBottom` | 处理底部安全区（默认true） | `Boolean` | `true` |
@@ -206,6 +206,12 @@ The reference below is extracted from the uview-plus source, whose property name
 | --- |
 | `close` |
 | `closed` |
+| `contact` |
+| `error` |
+| `getphonenumber` |
+| `getuserinfo` |
+| `launchapp` |
+| `opensetting` |
 | `select` |
 | `update:show` |
 
@@ -216,17 +222,6 @@ The reference below is extracted from the uview-plus source, whose property name
 | `default` |
 
 ### `<up-action-sheet-data>`
-
-#### Props
-
-| Prop | Description | Type | Default |
-| --- | --- | --- | --- |
-| `modelValue` | — | `String / Number` | `—` |
-| `title` | — | `String` | `—` |
-| `description` | — | `String` | `—` |
-| `options` | — | `Array` | `—` |
-| `valueKey` | — | `String` | `—` |
-| `labelKey` | — | `String` | `—` |
 
 #### Slots
 
@@ -244,6 +239,6 @@ The reference below is extracted from the uview-plus source, whose property name
 | Flutter · Dart | `UPActionSheet` | `packages/ultra_ui/lib/src/widgets/up_action_sheet.dart` |
 | React Native · TypeScript | `UPActionSheet` | `src/components/action-sheet` |
 | Taro · React + TypeScript | `UPActionSheet` | `src/ultra-ui/components/up-action-sheet` |
-| uni-app · Vue 3 | `up-action-sheet` | `src/uni_modules/uview-plus/components/u-action-sheet` |
+| uni-app · Vue 3 | `up-action-sheet` | `uni_modules/uview-ultra/components/up-action-sheet` |
 | uni-app-x · UTS / UVUE | `up-action-sheet` | `uni_modules/uview-ultra/components/up-action-sheet` |
 

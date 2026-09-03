@@ -31,6 +31,8 @@ No snippet could be extracted automatically — please read the source.
 
 <template #android>
 
+### 返回顶部
+
 ```kotlin
 import net.lingyun.ultraui.android.components.UPBackTop
 import net.lingyun.ultraui.android.components.UPBackTopProps
@@ -109,25 +111,29 @@ import { UPBackTop } from '@ultra-ui'
 
 <template #uniapp>
 
+### 自定义backTop(滚动页面即可在右下角看到图标)
+
 ```vue
 <up-back-top
-    :right="backTopData.right"
-    :customStyle="backTopData.customStyle"
-    :bottom="backTopData.bottom"
-    :icon="backTopData.icon"
-    :mode="backTopData.mode"
-    :iconStyle="backTopData.iconStyle"
-    :duration="backTopData.duration"
+    :right="backTopData['right']"
+    :customStyle="backTopData['customStyle']"
+    :bottom="backTopData['bottom']"
+    :icon="backTopData['icon']"
+    :mode="backTopData['mode']"
+    :iconStyle="backTopData['iconStyle']"
+    :duration="backTopData['duration']"
     :scrollTop="scrollTop"
     @click="click"
 ></up-back-top>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus/src/pages/componentsA/backtop/backtop.nvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsA/backtop/backtop.uvue`</small>
 
 </template>
 
 <template #uniappx>
+
+### 自定义backTop(滚动页面即可在右下角看到图标)
 
 ```vue
 <up-back-top
@@ -190,6 +196,6 @@ The reference below is extracted from the uview-plus source, whose property name
 | Flutter · Dart | `UPBackTop` | `packages/ultra_ui/lib/src/widgets/up_back_top.dart` |
 | React Native · TypeScript | `UPBackTop` | `src/components/back-top` |
 | Taro · React + TypeScript | `UPBackTop` | `src/ultra-ui/components/up-back-top` |
-| uni-app · Vue 3 | `up-back-top` | `src/uni_modules/uview-plus/components/u-back-top` |
+| uni-app · Vue 3 | `up-back-top` | `uni_modules/uview-ultra/components/up-back-top` |
 | uni-app-x · UTS / UVUE | `up-back-top` | `uni_modules/uview-ultra/components/up-back-top` |
 

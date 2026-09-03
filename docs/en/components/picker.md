@@ -95,17 +95,10 @@ No snippet could be extracted automatically — please read the source.
     @change="change"
     @cancel="cancel"
     @confirm="confirm"
-    toolbarRightSlot
->
-<template #toolbar-right>
-    <view style="padding-right: 10px;">右侧</view>
-</template>
-<template #toolbar-bottom>
-</template>
-</up-picker>
+></up-picker>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus/src/pages/componentsC/picker/picker.nvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/picker/picker.uvue`</small>
 
 </template>
 
@@ -139,11 +132,7 @@ The reference below is extracted from the uview-plus source, whose property name
 | --- | --- | --- | --- |
 | `modelValue` | — | `Array` | `—` |
 | `hasInput` | — | `Boolean` | `—` |
-| `inputProps` | — | `Object` | `{}` |
-| `inputBorder` | — | `String` | `—` |
-| `disabled` | — | `Boolean` | `false` |
-| `disabledColor` | — | `String` | `''` |
-| `placeholder` | — | `String` | `t('up.common.pleaseChoose')` |
+| `placeholder` | — | `String` | `—` |
 | `show` | 是否展示picker弹窗 | `Boolean` | `false` |
 | `popupMode` | 弹出的方向，可选值为 top bottom right left center | `String` | `'bottom'` |
 | `showToolbar` | 是否展示顶部的操作栏 | `Boolean` | `true` |
@@ -151,25 +140,17 @@ The reference below is extracted from the uview-plus source, whose property name
 | `columns` | 对象数组，设置每一列的数据 | `Array` | `[]` |
 | `loading` | 是否显示加载中状态 | `Boolean` | `false` |
 | `itemHeight` | 各列中，单个选项的高度 | `String / Number` | `44` |
-| `cancelText` | 取消按钮的文字 | `String` | `t('up.common.cancel')` |
-| `confirmText` | 确认按钮的文字 | `String` | `t('up.common.confirm')` |
+| `cancelText` | 取消按钮的文字 | `String` | `'取消'` |
+| `confirmText` | 确认按钮的文字 | `String` | `'确定'` |
 | `cancelColor` | 取消按钮的颜色 | `String` | `'#909193'` |
-| `confirmColor` | 确认按钮的颜色 | `String` | `''` |
+| `confirmColor` | 确认按钮的颜色 | `String` | `'#3c9cff'` |
 | `visibleItemCount` | 每列中可见选项的数量 | `String / Number` | `5` |
 | `keyName` | 选项对象中，需要展示的属性键名 | `String` | `'text'` |
-| `valueName` | 选项对象中，需要获取的属性值键名 | `String` | `'value'` |
 | `closeOnClickOverlay` | 是否允许点击遮罩关闭选择器 | `Boolean` | `false` |
 | `defaultIndex` | 各列的默认索引 | `Array` | `[]` |
 | `immediateChange` | 是否在手指松开时立即触发 change 事件。若不开启则会在滚动动画结束后触发 change 事件，只在微信2.21.1及以上有效 | `Boolean` | `true` |
 | `toolbarRightSlot` | 工具栏右侧插槽是否开启 | `Boolean` | `—` |
-| `zIndex` | 层级 | `String / Number` | `10076` |
-| `bgColor` | 弹窗背景色，设置为transparent可去除白色背景 | `String` | `''` |
-| `round` | 是否显示圆角 | `Boolean / String / Number` | `0` |
-| `duration` | 动画时长，单位ms | `String / Number` | `300` |
-| `overlayOpacity` | 遮罩的透明度，0-1之间 | `Number / String` | `0.5` |
-| `pageInline` | 是否页面内展示 | `Boolean` | `false` |
-| `maskClass` | 蒙层样式样式 | `String` | `—` |
-| `maskStyle` | 蒙层样式样式 | `String` | `—` |
+| `pageInline` | 是否内联在页面中（不使用弹窗形式） | `Boolean` | `false` |
 
 #### Events
 
@@ -180,7 +161,6 @@ The reference below is extracted from the uview-plus source, whose property name
 | `close` |
 | `closed` |
 | `confirm` |
-| `update:show` |
 
 #### Slots
 
@@ -189,20 +169,8 @@ The reference below is extracted from the uview-plus source, whose property name
 | `default` |
 | `toolbar-bottom` |
 | `toolbar-right` |
-| `trigger` |
 
 ### `<up-picker-data>`
-
-#### Props
-
-| Prop | Description | Type | Default |
-| --- | --- | --- | --- |
-| `modelValue` | — | `String / Number` | `—` |
-| `title` | — | `String` | `—` |
-| `description` | — | `String` | `—` |
-| `options` | — | `Array` | `—` |
-| `valueKey` | — | `String` | `—` |
-| `labelKey` | — | `String` | `—` |
 
 #### Events
 
@@ -227,6 +195,6 @@ The reference below is extracted from the uview-plus source, whose property name
 | Flutter · Dart | `UPPicker` | `packages/ultra_ui/lib/src/widgets/up_picker.dart` |
 | React Native · TypeScript | `UPPicker` | `src/components/picker` |
 | Taro · React + TypeScript | `UPPicker` | `src/ultra-ui/components/up-picker` |
-| uni-app · Vue 3 | `up-picker` | `src/uni_modules/uview-plus/components/u-picker` |
+| uni-app · Vue 3 | `up-picker` | `uni_modules/uview-ultra/components/up-picker` |
 | uni-app-x · UTS / UVUE | `up-picker` | `uni_modules/uview-ultra/components/up-picker` |
 

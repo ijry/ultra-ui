@@ -111,6 +111,154 @@ export function extractTag(text, tag) {
 }
 
 /**
+ * 根据平台语法提取多个示例段落。
+ * 每个段落包含标题和代码示例。
+ */
+function extractSections(text, platformId, symbol, tag) {
+  const sections = []
+
+  // iOS: sectionTitle("标题")
+  if (platformId === 'ios') {
+    const titleRe = /sectionTitle\("([^"]+)"\)/g
+    const matches = [...text.matchAll(titleRe)]
+
+    for (let i = 0; i < matches.length; i++) {
+      const titleMatch = matches[i]
+      const title = titleMatch[1]
+      const start = titleMatch.index + titleMatch[0].length
+      const end = i < matches.length - 1 ? matches[i + 1].index : text.length
+
+      const sectionText = text.slice(start, end)
+      const block = extractCall(sectionText, symbol)
+      if (block && !tooLong(block)) {
+        sections.push({ title, code: unwrap(block).trimEnd() })
+      }
+    }
+  }
+
+  // HarmonyOS: Text('标题').fontSize(18) 作为分段标题
+  else if (platformId === 'harmony') {
+    const titleRe = /Text\s*\(\s*['"]([^'"]+)['"]\s*\)\s*\.fontSize\s*\(\s*18\s*\)/g
+    const matches = [...text.matchAll(titleRe)]
+
+    for (let i = 0; i < matches.length; i++) {
+      const titleMatch = matches[i]
+      const title = titleMatch[1]
+      const start = titleMatch.index + titleMatch[0].length
+      const end = i < matches.length - 1 ? matches[i + 1].index : text.length
+
+      const sectionText = text.slice(start, end)
+      const block = extractCall(sectionText, symbol)
+      if (block && !tooLong(block)) {
+        sections.push({ title, code: unwrap(block).trimEnd() })
+      }
+    }
+  }
+
+  // Flutter: _ButtonBlock(title: "标题")
+  else if (platformId === 'flutter') {
+    const titleRe = /_\w+Block\s*\(\s*title:\s*["']([^"']+)["']/g
+    const matches = [...text.matchAll(titleRe)]
+
+    for (let i = 0; i < matches.length; i++) {
+      const titleMatch = matches[i]
+      const title = titleMatch[1]
+      const start = titleMatch.index
+      const end = i < matches.length - 1 ? matches[i + 1].index : text.length
+
+      const sectionText = text.slice(start, end)
+      const block = extractCall(sectionText, symbol)
+      if (block && !tooLong(block)) {
+        sections.push({ title, code: unwrap(block).trimEnd() })
+      }
+    }
+  }
+
+  // Taro: <DemoSection title="标题" desc="说明">
+  else if (platformId === 'taro') {
+    const titleRe = /<DemoSection\s+title=["']([^"']+)["'](?:\s+desc=["']([^"']+)["'])?\s*>/g
+    const matches = [...text.matchAll(titleRe)]
+
+    for (let i = 0; i < matches.length; i++) {
+      const titleMatch = matches[i]
+      const title = titleMatch[1]
+      const desc = titleMatch[2] || ''
+      const closeTag = text.indexOf('</DemoSection>', titleMatch.index)
+      if (closeTag === -1) continue
+
+      const sectionText = text.slice(titleMatch.index, closeTag)
+      const block = extractTag(sectionText, tag) ?? (symbol ? extractTag(sectionText, symbol) : null)
+      if (block && !tooLong(block)) {
+        sections.push({ title, desc, code: unwrap(block).trimEnd() })
+      }
+    }
+  }
+
+  // uni-app / uni-app-x: <view class="u-demo-block__title"><text>标题</text></view>
+  else if (platformId === 'uniapp' || platformId === 'uniappx') {
+    const titleRe = /<view\s+class=["']u-demo-block__title["']\s*>\s*<text[^>]*>([^<]+)<\/text>\s*<\/view>/g
+    const matches = [...text.matchAll(titleRe)]
+
+    for (let i = 0; i < matches.length; i++) {
+      const titleMatch = matches[i]
+      const title = titleMatch[1].trim()
+      const start = titleMatch.index + titleMatch[0].length
+      const end = i < matches.length - 1 ? matches[i + 1].index : text.length
+
+      const sectionText = text.slice(start, end)
+      const block = extractTag(sectionText, tag)
+      if (block && !tooLong(block)) {
+        sections.push({ title, code: unwrap(block).trimEnd() })
+      }
+    }
+  }
+
+  // Android: DemoSection(title = "标题") { ... }
+  // 一个文件包含多个组件，需要找到特定组件的所有出现位置
+  else if (platformId === 'android' && symbol) {
+    const sectionRe = /DemoSection\s*\(\s*title\s*=\s*["']([^"']+)["']\s*\)\s*\{/g
+    const matches = [...text.matchAll(sectionRe)]
+
+    for (let i = 0; i < matches.length; i++) {
+      const titleMatch = matches[i]
+      const sectionTitle = titleMatch[1]
+      const start = titleMatch.index + titleMatch[0].length
+      const end = i < matches.length - 1 ? matches[i + 1].index : text.length
+
+      const sectionText = text.slice(start, end)
+      // 检查这个 section 中是否包含目标组件
+      if (sectionText.includes(symbol)) {
+        const block = extractCall(sectionText, symbol)
+        if (block && !tooLong(block)) {
+          sections.push({ title: sectionTitle, code: unwrap(block).trimEnd() })
+        }
+      }
+    }
+  }
+
+  // React Native: <Section title="标题">
+  else if (platformId === 'reactnative' && tag) {
+    const sectionRe = /<Section\s+title=["']([^"']+)["']/g
+    const matches = [...text.matchAll(sectionRe)]
+
+    for (let i = 0; i < matches.length; i++) {
+      const titleMatch = matches[i]
+      const sectionTitle = titleMatch[1].trim()
+      const start = titleMatch.index + titleMatch[0].length
+      const end = i < matches.length - 1 ? matches[i + 1].index : text.length
+
+      const sectionText = text.slice(start, end)
+      const block = extractTag(sectionText, tag)
+      if (block && !tooLong(block)) {
+        sections.push({ title: sectionTitle, code: unwrap(block).trimEnd() })
+      }
+    }
+  }
+
+  return sections
+}
+
+/**
  * Lift a real usage example out of a platform's own demo app.
  *
  * Files whose name looks like the component are tried first, so `ButtonDemo.ets`
@@ -141,13 +289,24 @@ export function findSnippet({ root, platform, componentId, detect, symbol, tag }
 
   for (const file of ordered.slice(0, 40)) {
     const text = fs.readFileSync(file, 'utf8')
+
+    // 尝试提取多个段落
+    const sections = extractSections(text, platform.id, symbol, tag)
+    if (sections.length > 0) {
+      return {
+        sections,
+        file: path.relative(path.join(root, platform.dir), file)
+      }
+    }
+
+    // 回退到单个示例提取
     const block =
       platform.syntax === 'tag'
         ? extractTag(text, tag) ?? (symbol ? extractTag(text, symbol) : null)
         : extractCall(text, symbol)
     if (block) {
       return {
-        code: unwrap(block).trimEnd(),
+        sections: [{ title: '', code: unwrap(block).trimEnd() }],
         file: path.relative(path.join(root, platform.dir), file)
       }
     }

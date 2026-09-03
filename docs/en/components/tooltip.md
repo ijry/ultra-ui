@@ -46,10 +46,36 @@ UPTooltip(
 
 <template #reactnative>
 
+### 基础使用
+
 ```tsx
 import { UPTooltip } from 'ultra-ui-rn';
 
 <UPTooltip overlay text="长按文本，上方提示" />
+```
+
+### 扩展按钮
+
+```tsx
+<UPTooltip buttons={['扩展']} onClick={click} text="显示多个扩展按钮" />
+```
+
+### 自动调整位置
+
+```tsx
+<UPTooltip buttons={['扩展', '搜索', '翻译']} text="自动调整气泡位置" />
+```
+
+### 高亮选中文本背景色
+
+```tsx
+<UPTooltip
+  bgColor="#e3e4e6"
+  buttons={['扩展', '搜索', '翻译']}
+  direction="top"
+  text="长按文本，显示背景色"
+  triggerMode="click"
+/>
 ```
 
 <small>Snippet from `ultra-ui-rn/example/pages/components/feedback/TooltipDemo.tsx`</small>
@@ -58,11 +84,20 @@ import { UPTooltip } from 'ultra-ui-rn';
 
 <template #taro>
 
+### 自定义颜色 / 禁用
+
+color / bgColor / disabled
+
 ```tsx
 import { UPTooltip } from '@ultra-ui'
 
-<UPTooltip text='这是一条上方的文字提示' placement='top'>
-  <Text className='tooltip-demo__trigger'>点我查看提示</Text>
+<UPTooltip
+  text='自定义文字与背景色'
+  placement='top'
+  color='#ffffff'
+  bgColor='#3c9cff'
+>
+  <UPButton size='small' type='warning' text='彩色提示' />
 </UPTooltip>
 ```
 
@@ -72,6 +107,8 @@ import { UPTooltip } from '@ultra-ui'
 
 <template #uniapp>
 
+### 基础使用
+
 ```vue
 <up-tooltip
     :text="text1"
@@ -79,16 +116,94 @@ import { UPTooltip } from '@ultra-ui'
 ></up-tooltip>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus/src/pages/componentsC/tooltip/tooltip.vue`</small>
+### 下方显示
+
+```vue
+<up-tooltip
+    :text="text2"
+    direction="bottom"
+></up-tooltip>
+```
+
+### 扩展按钮
+
+```vue
+<up-tooltip
+    :text="text3"
+    :buttons="buttons1"
+    @click="click"
+></up-tooltip>
+```
+
+### 自动调整位置
+
+```vue
+<up-tooltip
+    :text="text4"
+    :buttons="buttons2"
+></up-tooltip>
+```
+
+### 高亮选中文本背景色
+
+```vue
+<up-tooltip
+    :text="text5"
+    :buttons="buttons3"
+    bgColor="#e3e4e6"
+></up-tooltip>
+```
+
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsC/tooltip/tooltip.uvue`</small>
 
 </template>
 
 <template #uniappx>
 
+### 基础使用
+
 ```vue
 <up-tooltip
     :text="text1"
     overlay
+></up-tooltip>
+```
+
+### 下方显示
+
+```vue
+<up-tooltip
+    :text="text2"
+    direction="bottom"
+></up-tooltip>
+```
+
+### 扩展按钮
+
+```vue
+<up-tooltip
+    :text="text3"
+    :buttons="buttons1"
+    @click="click"
+></up-tooltip>
+```
+
+### 自动调整位置
+
+```vue
+<up-tooltip
+    :text="text4"
+    :buttons="buttons2"
+></up-tooltip>
+```
+
+### 高亮选中文本背景色
+
+```vue
+<up-tooltip
+    :text="text5"
+    :buttons="buttons3"
+    bgColor="#e3e4e6"
 ></up-tooltip>
 ```
 
@@ -111,33 +226,18 @@ The reference below is extracted from the uview-plus source, whose property name
 | `size` | 文本大小 | `String / Number` | `14` |
 | `color` | 字体颜色 | `String` | `'#606266'` |
 | `bgColor` | 弹出提示框时，文本的背景色 | `String` | `'transparent'` |
-| `popupBgColor` | 弹出提示框的背景色 | `String` | `''` |
-| `direction` | 弹出提示的方向，top-上方，bottom-下方，left-左方，right-右方 | `String` | `'top'` |
+| `direction` | 弹出提示的方向，top-上方，bottom-下方 | `String` | `'top'` |
 | `zIndex` | 弹出提示的z-index，nvue无效 | `String / Number` | `10071` |
 | `showCopy` | 是否显示复制按钮 | `Boolean` | `true` |
 | `buttons` | 扩展的按钮组 | `Array` | `[]` |
 | `overlay` | 是否显示透明遮罩以防止触摸穿透 | `Boolean` | `true` |
 | `showToast` | 是否显示复制成功或者失败的toast | `Boolean` | `true` |
-| `triggerMode` | 触发方式，可选值：longpress/click | `String` | `'longpress'` |
-| `forcePosition` | 强制定位 | `Object` | `{}` |
-| `show` | 是否显示，triggerMode为manual时使用 | `Boolean` | `false` |
-| `singleton` | 是否开启单例模式，开启该属性的tooltip同一页面同时只显示一个 | `Boolean` | `false` |
 
 ### Events
 
 | Event |
 | --- |
 | `click` |
-| `close` |
-| `open` |
-| `update:show` |
-
-### Slots
-
-| Slot |
-| --- |
-| `content` |
-| `trigger` |
 
 ## Source on each platform
 
@@ -147,6 +247,6 @@ The reference below is extracted from the uview-plus source, whose property name
 | Flutter · Dart | `UPTooltip` | `packages/ultra_ui/lib/src/widgets/up_tooltip.dart` |
 | React Native · TypeScript | `UPTooltip` | `src/components/tooltip` |
 | Taro · React + TypeScript | `UPTooltip` | `src/ultra-ui/components/up-tooltip` |
-| uni-app · Vue 3 | `up-tooltip` | `src/uni_modules/uview-plus/components/u-tooltip` |
+| uni-app · Vue 3 | `up-tooltip` | `uni_modules/uview-ultra/components/up-tooltip` |
 | uni-app-x · UTS / UVUE | `up-tooltip` | `uni_modules/uview-ultra/components/up-tooltip` |
 

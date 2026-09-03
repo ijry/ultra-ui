@@ -63,6 +63,8 @@ UPSteps(
 
 <template #reactnative>
 
+### 基础演示
+
 ```tsx
 import { UPSteps } from 'ultra-ui-rn';
 
@@ -76,20 +78,108 @@ import { UPSteps } from 'ultra-ui-rn';
 </UPSteps>
 ```
 
+### 显示点类型
+
+```tsx
+<UPSteps current={1} dot>
+  <UPStepsItem desc="10:30" title="已下单" />
+  <UPStepsItem desc="10:35" title="已出库" />
+  <UPStepsItem desc="11:40" title="运输中" />
+</UPSteps>
+```
+
+### 错误状态
+
+```tsx
+<UPSteps current={1}>
+  <UPStepsItem desc="10:30" title="已下单" />
+  <UPStepsItem desc="10:35" error title="仓库着火" />
+  <UPStepsItem desc="11:40" title="破产清算" />
+</UPSteps>
+```
+
+### 自定义图标
+
+```tsx
+<UPSteps activeIcon="checkmark" current={1} inactiveIcon="arrow-right">
+  <UPStepsItem desc="10:30" title="已下单" />
+  <UPStepsItem desc="10:35" title="已出库" />
+  <UPStepsItem desc="11:40" title="运输中" />
+</UPSteps>
+```
+
+### 自定义插槽
+
+```tsx
+<UPSteps current={1}>
+  <UPStepsItem desc="10:30" title="已下单" />
+  <UPStepsItem desc="10:35" title="已出库" />
+  <UPStepsItem desc="11:40" iconNode={<Text style={s.slotIcon}>运</Text>} title="运输中" />
+</UPSteps>
+```
+
+### 自定义颜色
+
+```tsx
+<UPSteps activeColor="#3c9cff" current={1}>
+  <UPStepsItem desc="10:30" title="已下单" />
+  <UPStepsItem desc="10:35" title="已出库" />
+  <UPStepsItem desc="11:40" title="运输中" />
+</UPSteps>
+```
+
+### 竖向展示
+
+```tsx
+<UPSteps current={1} direction="column">
+  <UPStepsItem desc="10:30" title="已下单" />
+  <UPStepsItem desc="10:35" title="已出库" />
+  <UPStepsItem desc="11:40" title="运输中" />
+</UPSteps>
+```
+
 <small>示例来源 `ultra-ui-rn/example/pages/components/navigation/StepsDemo.tsx`</small>
 
 </template>
 
 <template #taro>
 
+### 圆点模式
+
+dot，以圆点代替数字
+
 ```tsx
 import { UPSteps } from '@ultra-ui'
 
-<UPSteps current={current} onClick={setCurrent}>
-  <UPStepsItem title='买家下单' desc='2024-01-01' />
-  <UPStepsItem title='商家发货' desc='2024-01-02' />
-  <UPStepsItem title='买家签收' desc='2024-01-03' />
-  <UPStepsItem title='完成' desc='2024-01-04' />
+<UPSteps current={1} dot activeColor='#19be6b'>
+  <UPStepsItem title='待付款' />
+  <UPStepsItem title='待发货' />
+  <UPStepsItem title='待收货' />
+  <UPStepsItem title='已完成' />
+</UPSteps>
+```
+
+### 自定义图标
+
+activeIcon / inactiveIcon
+
+```tsx
+<UPSteps current={1} activeIcon='checkmark-circle-fill' inactiveIcon='more-circle'>
+  <UPStepsItem title='基础' />
+  <UPStepsItem title='进阶' />
+  <UPStepsItem title='高级' />
+</UPSteps>
+```
+
+### 纵向 + 自定义内容
+
+content 插槽
+
+```tsx
+<UPSteps direction='column' current={1}>
+  <UPStepsItem title='阶段一' content={<View className='steps-demo__card'>自定义卡片内容 A</View>} />
+  <UPStepsItem title='阶段二' content={<View className='steps-demo__card'>自定义卡片内容 B</View>} />
+  <UPStepsItem title='阶段三' content={<View className='steps-demo__card'>自定义卡片内容 C</View>} />
 </UPSteps>
 ```
 
@@ -98,6 +188,30 @@ import { UPSteps } from '@ultra-ui'
 </template>
 
 <template #uniapp>
+
+### 基础演示
+
+```vue
+<up-steps :current="current1">
+    <up-steps-item
+        title="已下单"
+        desc="10:30"
+    >
+    </up-steps-item>
+    <up-steps-item
+        title="已出库"
+        desc="10:35"
+    >
+    </up-steps-item>
+    <up-steps-item
+        title="运输中"
+        desc="11:40"
+    >
+    </up-steps-item>
+</up-steps>
+```
+
+### 显示点类型
 
 ```vue
 <up-steps
@@ -122,14 +236,283 @@ import { UPSteps } from '@ultra-ui'
 </up-steps>
 ```
 
-<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus/src/pages/componentsC/steps/steps.vue`</small>
+### 错误状态
+
+```vue
+<up-steps :current="1">
+    <up-steps-item
+        title="已下单"
+        desc="10:30"
+    >
+    </up-steps-item>
+    <up-steps-item
+        error
+        title="仓库着火"
+        desc="10:35"
+    >
+    </up-steps-item>
+    <up-steps-item
+        title="破产清算"
+        desc="11:40"
+    >
+    </up-steps-item>
+</up-steps>
+```
+
+### 自定义图标
+
+```vue
+<up-steps
+    :current="1"
+    activeIcon="checkmark"
+    inactiveIcon="arrow-right"
+>
+    <up-steps-item
+        title="已下单"
+        desc="10:30"
+    >
+    </up-steps-item>
+    <up-steps-item
+        title="已出库"
+        desc="10:35"
+    >
+    </up-steps-item>
+    <up-steps-item
+        title="运输中"
+        desc="11:40"
+    >
+    </up-steps-item>
+</up-steps>
+```
+
+### 自定义插槽
+
+```vue
+<up-steps :current="1">
+    <up-steps-item
+        title="已下单"
+        desc="10:30"
+    >
+    </up-steps-item>
+    <up-steps-item
+        title="已出库"
+        desc="10:35"
+    >
+    </up-steps-item>
+    <up-steps-item
+        title="运输中"
+        desc="11:40"
+    >
+        <template v-slot:icon>
+            <text class="slot-icon">运</text>
+        </template>
+    </up-steps-item>
+</up-steps>
+```
+
+### 自定义颜色
+
+```vue
+<up-steps :current="1" activeColor="#3c9cff">
+    <up-steps-item
+        title="已下单"
+        desc="10:30"
+    >
+    </up-steps-item>
+    <up-steps-item
+        title="已出库"
+        desc="10:35"
+    >
+    </up-steps-item>
+    <up-steps-item
+        title="运输中"
+        desc="11:40"
+    >
+    </up-steps-item>
+</up-steps>
+```
+
+### 竖向展示
+
+```vue
+<up-steps
+    :current="1"
+    direction="column"
+>
+    <up-steps-item
+        title="已下单"
+        desc="10:30"
+    >
+    </up-steps-item>
+    <up-steps-item
+        title="已出库"
+        desc="10:35"
+    >
+    </up-steps-item>
+    <up-steps-item
+        title="运输中"
+        desc="11:40"
+    >
+    </up-steps-item>
+</up-steps>
+```
+
+<small>配置 easycom 规则后自动引入，无需手动 import。</small><br><small>示例来源 `uview-plus4/pages/componentsC/steps/steps.uvue`</small>
 
 </template>
 
 <template #uniappx>
 
+### 基础演示
+
 ```vue
 <up-steps :current="current1">
+    <up-steps-item
+        title="已下单"
+        desc="10:30"
+    >
+    </up-steps-item>
+    <up-steps-item
+        title="已出库"
+        desc="10:35"
+    >
+    </up-steps-item>
+    <up-steps-item
+        title="运输中"
+        desc="11:40"
+    >
+    </up-steps-item>
+</up-steps>
+```
+
+### 显示点类型
+
+```vue
+<up-steps
+    :current="1"
+    dot
+>
+    <up-steps-item
+        title="已下单"
+        desc="10:30"
+    >
+    </up-steps-item>
+    <up-steps-item
+        title="已出库"
+        desc="10:35"
+    >
+    </up-steps-item>
+    <up-steps-item
+        title="运输中"
+        desc="11:40"
+    >
+    </up-steps-item>
+</up-steps>
+```
+
+### 错误状态
+
+```vue
+<up-steps :current="1">
+    <up-steps-item
+        title="已下单"
+        desc="10:30"
+    >
+    </up-steps-item>
+    <up-steps-item
+        error
+        title="仓库着火"
+        desc="10:35"
+    >
+    </up-steps-item>
+    <up-steps-item
+        title="破产清算"
+        desc="11:40"
+    >
+    </up-steps-item>
+</up-steps>
+```
+
+### 自定义图标
+
+```vue
+<up-steps
+    :current="1"
+    activeIcon="checkmark"
+    inactiveIcon="arrow-right"
+>
+    <up-steps-item
+        title="已下单"
+        desc="10:30"
+    >
+    </up-steps-item>
+    <up-steps-item
+        title="已出库"
+        desc="10:35"
+    >
+    </up-steps-item>
+    <up-steps-item
+        title="运输中"
+        desc="11:40"
+    >
+    </up-steps-item>
+</up-steps>
+```
+
+### 自定义插槽
+
+```vue
+<up-steps :current="1">
+    <up-steps-item
+        title="已下单"
+        desc="10:30"
+    >
+    </up-steps-item>
+    <up-steps-item
+        title="已出库"
+        desc="10:35"
+    >
+    </up-steps-item>
+    <up-steps-item
+        title="运输中"
+        desc="11:40"
+    >
+        <template v-slot:icon>
+            <text class="slot-icon">运</text>
+        </template>
+    </up-steps-item>
+</up-steps>
+```
+
+### 自定义颜色
+
+```vue
+<up-steps :current="1" activeColor="#3c9cff">
+    <up-steps-item
+        title="已下单"
+        desc="10:30"
+    >
+    </up-steps-item>
+    <up-steps-item
+        title="已出库"
+        desc="10:35"
+    >
+    </up-steps-item>
+    <up-steps-item
+        title="运输中"
+        desc="11:40"
+    >
+    </up-steps-item>
+</up-steps>
+```
+
+### 竖向展示
+
+```vue
+<up-steps
+    :current="1"
+    direction="column"
+>
     <up-steps-item
         title="已下单"
         desc="10:30"
@@ -208,6 +591,6 @@ import { UPSteps } from '@ultra-ui'
 | Flutter · Dart | `UPSteps` | `packages/ultra_ui/lib/src/widgets/up_steps.dart` |
 | React Native · TypeScript | `UPSteps` | `src/components/steps` |
 | Taro · React + TypeScript | `UPSteps` | `src/ultra-ui/components/up-steps` |
-| uni-app · Vue 3 | `up-steps` | `src/uni_modules/uview-plus/components/u-steps` |
+| uni-app · Vue 3 | `up-steps` | `uni_modules/uview-ultra/components/up-steps` |
 | uni-app-x · UTS / UVUE | `up-steps` | `uni_modules/uview-ultra/components/up-steps` |
 

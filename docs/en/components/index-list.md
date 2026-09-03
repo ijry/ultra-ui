@@ -72,31 +72,19 @@ UPIndexList(
 
 ```tsx
 import { UPIndexList } from 'ultra-ui-rn';
-
-<UPIndexList
-indexList={INDEXES}
-height={300}
-sticky
-onSelect={(index) => console.log('select:', index)}
->
-{INDEXES.map((letter) => (
-<UPIndexItem key={letter} index={letter}>
-<UPIndexAnchor text={letter} />
-{Array.from({ length: 3 }, (_, i) => (
-<View key={i} style={styles.item}>
-<Text>{letter} 列表项 {i + 1}</Text>
-</View>
-))}
-</UPIndexItem>
-))}
-</UPIndexList>
 ```
 
-<small>Snippet from `ultra-ui-rn/example/pages/components/advanced/IndexListDemo.tsx`</small>
+::: tip
+No snippet could be extracted automatically — please read the source.
+:::
 
 </template>
 
 <template #taro>
+
+### 基础用法
+
+右侧字母栏点击滚动定位，锚点吸顶（sticky）
 
 ```tsx
 import { UPIndexList } from '@ultra-ui'
@@ -210,6 +198,6 @@ The reference below is extracted from the uview-plus source, whose property name
 | Flutter · Dart | `UPIndexList` | `packages/ultra_ui/lib/src/widgets/up_index_list.dart` |
 | React Native · TypeScript | `UPIndexList` | `src/components/index-list` |
 | Taro · React + TypeScript | `UPIndexList` | `src/ultra-ui/components/up-index-list` |
-| uni-app · Vue 3 | `up-index-list` | `src/uni_modules/uview-plus/components/u-index-list` |
+| uni-app · Vue 3 | `up-index-list` | `uni_modules/uview-ultra/components/up-index-list` |
 | uni-app-x · UTS / UVUE | `up-index-list` | `uni_modules/uview-ultra/components/up-index-list` |
 

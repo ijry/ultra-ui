@@ -30,6 +30,8 @@ No snippet could be extracted automatically — please read the source.
 
 <template #reactnative>
 
+### 隐藏状态
+
 ```tsx
 import { UPToolbar } from 'ultra-ui-rn';
 
@@ -42,10 +44,40 @@ import { UPToolbar } from 'ultra-ui-rn';
 
 <template #taro>
 
+### 基础用法
+
+三个等宽子项，每个 flex:1；默认主色强调
+
 ```tsx
 import { UPToolbar } from '@ultra-ui'
 
 <UPToolbar borderTop>
+  <ToolItem icon='home' label='首页' />
+  <ToolItem icon='grid' label='分类' />
+  <ToolItem icon='account' label='我的' />
+</UPToolbar>
+```
+
+### 更多子项
+
+子项数量自适应均分，超出自动压缩
+
+```tsx
+<UPToolbar borderTop>
+  <ToolItem icon='home' label='首页' />
+  <ToolItem icon='grid' label='分类' />
+  <ToolItem icon='photo' label='发现' />
+  <ToolItem icon='account' label='我的' />
+  <ToolItem icon='more-dot-fill' label='更多' />
+</UPToolbar>
+```
+
+### 自定义强调色
+
+activeColor 控制子项文字 / 图标颜色
+
+```tsx
+<UPToolbar borderTop activeColor='#3c9cff'>
   <ToolItem icon='home' label='首页' />
   <ToolItem icon='grid' label='分类' />
   <ToolItem icon='account' label='我的' />
@@ -87,10 +119,10 @@ The reference below is extracted from the uview-plus source, whose property name
 | Prop | Description | Type | Default |
 | --- | --- | --- | --- |
 | `show` | 是否展示工具条 | `Boolean` | `true` |
-| `cancelText` | 取消按钮的文字 | `String` | `t('up.common.cancel')` |
-| `confirmText` | 确认按钮的文字 | `String` | `t('up.common.confirm')` |
+| `cancelText` | 取消按钮的文字 | `String` | `'取消'` |
+| `confirmText` | 确认按钮的文字 | `String` | `'确认'` |
 | `cancelColor` | 取消按钮的颜色 | `String` | `'#909193'` |
-| `confirmColor` | 确认按钮的颜色 | `String` | `''` |
+| `confirmColor` | 确认按钮的颜色 | `String` | `'#3c9cff'` |
 | `title` | 标题文字 | `String` | `''` |
 | `rightSlot` | 开启右侧插槽 | `Boolean` | `—` |
 
@@ -114,6 +146,6 @@ The reference below is extracted from the uview-plus source, whose property name
 | Flutter · Dart | `UPToolbar` | `packages/ultra_ui/lib/src/widgets/up_toolbar.dart` |
 | React Native · TypeScript | `UPToolbar` | `src/components/toolbar` |
 | Taro · React + TypeScript | `UPToolbar` | `src/ultra-ui/components/up-toolbar` |
-| uni-app · Vue 3 | `up-toolbar` | `src/uni_modules/uview-plus/components/u-toolbar` |
+| uni-app · Vue 3 | `up-toolbar` | `uni_modules/uview-ultra/components/up-toolbar` |
 | uni-app-x · UTS / UVUE | `up-toolbar` | `uni_modules/uview-ultra/components/up-toolbar` |
 

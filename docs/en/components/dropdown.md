@@ -18,6 +18,8 @@ Switch tabs to see the syntax for each platform. Every snippet is lifted verbati
 
 <template #android>
 
+### 下拉菜单
+
 ```kotlin
 import net.lingyun.ultraui.android.components.UPDropdown
 import net.lingyun.ultraui.android.components.UPDropdownProps
@@ -125,16 +127,17 @@ No snippet could be extracted automatically — please read the source.
 <template #uniapp>
 
 ```vue
-<up-dropdown :close-on-click-mask="mask" ref="uDropdownRef"
+<up-dropdown :close-on-click-mask="mask" ref="upDropdownRef"
     :activeColor="activeColor" :borderBottom="borderBottom">
     <up-dropdown-item @change="change" v-model="value1" title="距离" :options="options1"></up-dropdown-item>
     <up-dropdown-item @change="change" v-model="value2" title="温度" :options="options2"></up-dropdown-item>
     <up-dropdown-item title="属性">
         <view class="slot-content">
             <view class="item-box">
-                <view class="item" :class="[item.active ? 'active' : '']"
-                    @tap="tagClick(index)" v-for="(item, index) in list" :key="index">
-                    {{item.label}}
+                <view class="item" :class="[item['active'] as Boolean ? 'active' : '']"
+                    @tap="tagClick(index)"
+                    v-for="(item, index) in list" :key="index">
+                    {{item['label']}}
                 </view>
             </view>
             <up-button type="primary" @click="closeDropdown">确定</up-button>
@@ -143,7 +146,7 @@ No snippet could be extracted automatically — please read the source.
 </up-dropdown>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus/src/pages/componentsB/dropdown/dropdown.nvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsB/dropdown/dropdown.uvue`</small>
 
 </template>
 
@@ -246,6 +249,6 @@ The reference below is extracted from the uview-plus source, whose property name
 | Flutter · Dart | `UPDropdown` | `packages/ultra_ui/lib/src/widgets/up_dropdown.dart` |
 | React Native · TypeScript | `UPDropdown` | `src/components/dropdown` |
 | Taro · React + TypeScript | `UPDropdown` | `src/ultra-ui/components/up-dropdown` |
-| uni-app · Vue 3 | `up-dropdown` | `src/uni_modules/uview-plus/components/u-dropdown` |
+| uni-app · Vue 3 | `up-dropdown` | `uni_modules/uview-ultra/components/up-dropdown` |
 | uni-app-x · UTS / UVUE | `up-dropdown` | `uni_modules/uview-ultra/components/up-dropdown` |
 

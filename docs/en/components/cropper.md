@@ -54,18 +54,45 @@ No snippet could be extracted automatically — please read the source.
 
 </template>
 
+<template #taro>
+
+```tsx
+import { UPCropper } from '@ultra-ui'
+
+<UPCropper onConfirm={handleConfirm} onAvtinit={handleAvtinit}>
+  <View className="cropper-demo__avatar-wrapper">
+    {avatarUrl ? (
+      <Image src={avatarUrl} className="cropper-demo__avatar" mode="aspectFill" />
+    ) : (
+      <View className="cropper-demo__avatar-placeholder">点击选择图片</View>
+    )}
+  </View>
+</UPCropper>
+```
+
+<small>Snippet from `ultra-ui-taro/src/pages/components/cropper/index.tsx`</small>
+
+</template>
+
 <template #uniapp>
 
 ```vue
-<up-cropper @confirm="cutImage" ref="avatarRef0" :canChangeSize="false"
-    areaWidth="300rpx" areaHeight="300rpx" exportWidth="260rpx" exportHeight="260rpx">
+<up-cropper
+    ref="avatarRef0"
+    :can-change-size="false"
+    area-width="300rpx"
+    area-height="300rpx"
+    export-width="260rpx"
+    export-height="260rpx"
+    @confirm="cutImage"
+>
     <view class="avatar-wrapper">
-        <up-avatar class="avatar" :src="urls[0]" size="120px"></up-avatar>
+        <up-avatar :src="avatarUrl" size="120px"></up-avatar>
     </view>
 </up-cropper>
 ```
 
-<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus/src/pages/componentsD/cropper/cropper.nvue`</small>
+<small>Auto-imported through easycom — no import statement needed.</small><br><small>Snippet from `uview-plus4/pages/componentsD/cropper/cropper.uvue`</small>
 
 </template>
 
@@ -97,12 +124,6 @@ No snippet could be extracted automatically — please read the source.
 
 The reference below is extracted from the uview-plus source, whose property names the other ports keep. For per-platform differences, compare the tabs above.
 
-### Props
-
-| Prop | Description | Type | Default |
-| --- | --- | --- | --- |
-| `fillColor` | 画布填充色，默认透明，可传 'black'、'#ffffff' 等 | `String` | `—` |
-
 ### Events
 
 | Event |
@@ -123,6 +144,7 @@ The reference below is extracted from the uview-plus source, whose property name
 | --- | --- | --- |
 | Flutter · Dart | `UPCropper` | `packages/ultra_ui/lib/src/widgets/up_cropper.dart` |
 | React Native · TypeScript | `UPCropper` | `src/components/cropper` |
-| uni-app · Vue 3 | `up-cropper` | `src/uni_modules/uview-plus/components/u-cropper` |
+| Taro · React + TypeScript | `UPCropper` | `src/ultra-ui/components/up-cropper` |
+| uni-app · Vue 3 | `up-cropper` | `uni_modules/uview-ultra/components/up-cropper` |
 | uni-app-x · UTS / UVUE | `up-cropper` | `uni_modules/uview-ultra/components/up-cropper` |
 
